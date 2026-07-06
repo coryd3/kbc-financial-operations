@@ -1,92 +1,89 @@
 # KBC Financial Operations Leadership Review Packet
 
-Purpose: Prepare KBC leadership to review and align around the financial operations modernization plan.
+**Draft for Leadership Alignment**
 
-Status: Draft for leadership review
+Date: July 6, 2026
 
-This packet is intended for leadership alignment. It is not a final policy, job approval, budget approval, software recommendation, or church motion.
+Prepared for: KBC Leadership, Finance Committee, Personnel Committee, Deacons, Pastor
 
-## 1. Executive Summary
+Prepared by: TBD
 
-KBC is in a Treasurer transition. Linda McConville is helping as interim Treasurer so the church can keep necessary financial work moving while leadership reviews the longer-term structure.
+This packet is intended to help KBC leadership review and align around a more sustainable financial operations structure. It is not a final policy, job approval, budget approval, software recommendation, or church motion.
 
-The main concern is not one person or one committee. The concern is that the financial operations system has become too dependent on individual knowledge and too broad for one elected volunteer role to carry alone.
+```{=openxml}
+<w:p><w:r><w:br w:type="page"/></w:r></w:p>
+```
 
-The recommended direction is to build a clearer, more sustainable structure:
+## 2. Executive Summary
 
-- The Treasurer / Financial Officer remains an accountable elected role focused on review, reporting, stewardship, and coordination with the Finance Committee.
-- A Bookkeeper / Financial Administrator role may be needed to handle routine financial administration, records, transaction entry, reimbursements, report preparation, and documentation.
-- The Finance Committee should lead financial decisions, including software, controls, reimbursement policy, card/payment policy, budget review, monthly reporting, and audit/review process.
-- The Personnel Committee should lead people-related decisions, including role descriptions, hiring process, applications, references, compensation recommendations, and evaluation process.
-- Church approval should be sought where bylaws, budget, role creation, compensation, policy, or church practice require it.
+KBC is in a Treasurer transition. Linda McConville is helping as interim Treasurer so necessary financial work can continue while leadership reviews the longer-term structure.
 
-The next step is not to rush to a final vote. The next step is for leadership, Finance Committee, and Personnel Committee to agree on the right order of decisions.
+The concern is not one person or one committee. The concern is that the current financial operations system has become too dependent on individual knowledge and too broad for one elected volunteer role to carry alone.
 
-## 2. Current Situation
+KBC should use this transition as an opportunity to clarify responsibilities, strengthen accountability, document routine work, and make the system easier to hand off in the future.
 
-KBC currently has an interim Treasurer arrangement. This provides needed continuity, but it is not meant to solve the full long-term issue by itself.
+> **Main Recommendation**
+>
+> Clarify the financial operations structure before making permanent decisions. The Treasurer / Financial Officer should remain an accountable elected role focused on review, reporting, stewardship, and Finance Committee coordination. Bookkeeping or financial administration support may be considered if approved. Finance Committee should own financial process decisions, and Personnel Committee should own people and role process decisions.
 
-The current Treasurer role appears to include both officer-level accountability and many routine bookkeeping duties. That creates a role that is difficult to fill, difficult to hand off, and difficult to sustain over time.
+> **Decisions Needed**
+>
+> Leadership needs to confirm which questions belong to Personnel Committee, which belong to Finance Committee, which require bylaw or Nominating Committee review, and which items must come back to the church for approval.
 
-Several draft documents have now been organized for leadership and committee review. These include role descriptions, committee review packets, draft procedures, policy drafts, software evaluation materials, and a responsibility matrix.
+No final recommendation should be treated as approved until the proper committee, leadership, bylaw, and church approval steps are complete.
 
-Leadership now needs to decide how the work should move forward:
+## 3. Current Situation
 
-- What should be handled by the elected Treasurer?
-- What should be handled by a Bookkeeper / Financial Administrator?
-- What decisions belong to Finance Committee?
-- What decisions belong to Personnel Committee?
-- What decisions need Deacon, Nominating Committee, bylaw, or church review?
+- The Treasurer position is in transition.
+- Interim Treasurer coverage is helping maintain continuity.
+- The current Treasurer role appears to include both officer-level accountability and many routine bookkeeping duties.
+- Draft role descriptions, procedures, policy outlines, committee packets, and software evaluation materials have been organized for review.
+- Leadership now needs to decide the right order for committee review and church action.
 
-This should be approached as a stewardship and systems improvement effort. It should not be framed as blame toward any past or current volunteer, officer, committee, or staff member.
+This should be framed as a stewardship and systems improvement effort, not as blame toward any past or current volunteer, officer, committee, or staff member.
 
-## 3. Core Problem
+## 4. Core Problem
 
-The core problem is that KBC needs a financial operations system that is clear, accountable, transferable, and sustainable.
+KBC needs a financial operations system that is clear, accountable, transferable, and sustainable.
 
-At present, several things need clarification:
+At present:
 
 - The Treasurer role is too broad if it includes both officer accountability and most routine financial administration.
-- Governance, bookkeeping, approval, reporting, and review responsibilities are not separated clearly enough.
+- Governance, bookkeeping, approval, reporting, and review responsibilities need clearer separation.
 - Finance Committee needs a regular monthly review rhythm and clear ownership of financial controls.
-- Personnel Committee needs Finance Committee input before finalizing any Bookkeeper role.
-- Reimbursement, spending authority, card/payment controls, audit/review expectations, and software requirements need committee review.
-- Software may help, but software will not fix unclear responsibilities by itself.
+- Personnel Committee needs Finance Committee input before finalizing any Bookkeeper / Financial Administrator role materials.
+- Software may help, but software will not solve unclear responsibilities by itself.
 
-The goal is not simply to find another person to carry the same load. The goal is to make the work more orderly, more transparent, and easier to hand off in the future.
+The goal is not simply to find another person to carry the same load. The goal is to make the work more orderly, more transparent, and easier to hand off.
 
-## 4. Proposed Structure
+## 5. Proposed Structure
 
-The proposed structure separates officer accountability, daily operations, committee oversight, and church approval.
+The proposed structure separates officer accountability, day-to-day operations, committee oversight, and church approval.
 
-| Role or Body | Proposed Responsibility |
-| --- | --- |
-| Treasurer / Financial Officer | Elected officer accountable to the church for financial review, reporting, stewardship, coordination with Finance Committee, and support for audit/review. |
-| Bookkeeper / Financial Administrator | Operational role responsible for routine transaction entry, records, deposits documentation, reimbursements, report packet preparation, software workflow, and monthly close support. |
-| Finance Committee | Leads financial policies, controls, software selection, budget oversight, reimbursement process, spending authority, card/payment policy, monthly review, audit/review process, and outside-budget recommendations. |
-| Personnel Committee | Leads role descriptions, applications, hiring process, references/background checks, compensation recommendations, supervision questions, and evaluation process. |
-| Nominating Committee | Involved where bylaws assign responsibility for elected officer recommendations or Treasurer nomination. |
-| Pastor and Deacons | Provide leadership review, communication support, counsel, and review where church practice requires. |
-| Congregation | Votes where bylaws, budget, role creation, compensation, software contracts, policy changes, or church practice require. |
+| Role or Body | Primary Responsibility | Notes |
+| --- | --- | --- |
+| Treasurer / Financial Officer | Elected financial accountability, report review, church reporting, and Finance Committee coordination. | Remains accountable to the church. |
+| Bookkeeper / Financial Administrator | Routine financial administration, documentation, report preparation, and monthly close support if approved. | Could be volunteer, staff, contractor, or stipend-based. |
+| Finance Committee | Financial controls, software, reimbursement process, spending authority, card/payment policy, budget oversight, monthly review, and audit/review process. | Defines financial duties and controls. |
+| Personnel Committee | Role descriptions, applications, hiring process, references/background checks, compensation recommendations, and evaluation process. | Leads the people process. |
+| Nominating Committee | Elected officer recommendations where bylaws assign that responsibility. | Especially relevant for Treasurer / Financial Officer. |
+| Pastor and Deacons | Leadership review, communication support, counsel, and review where church practice requires. | Helps keep the process orderly. |
+| Congregation | Approval where bylaws, budget, role creation, compensation, policy, or church practice require it. | Final votes come back to the church as needed. |
 
-This structure allows each group to serve in its proper lane while still working together.
+## 6. Treasurer vs. Bookkeeper Distinction
 
-## 5. Treasurer vs. Bookkeeper Distinction
+The Treasurer should not lose accountability. The recommended distinction is that the Treasurer keeps officer-level review and reporting responsibilities while routine financial administration is documented and assigned clearly.
 
-The Treasurer should remain an accountable financial officer. The proposed change is not to remove accountability from the Treasurer. The proposed change is to avoid expecting the Treasurer to personally carry every routine task.
-
-The Treasurer / Financial Officer should focus on:
+**Treasurer / Financial Officer should focus on:**
 
 - Accountability to the church.
 - Review of monthly and annual financial reports.
-- Coordination with the Finance Committee.
-- Confirmation that approved policies and controls are being followed.
+- Coordination with Finance Committee.
+- Confirmation that approved policies and controls are followed.
 - Presentation or support of financial reports to the church.
-- Review of unusual items, exceptions, or concerns.
 - Coordination of audit/review records.
-- Communication with outside accounting or payroll support if assigned.
 
-The Bookkeeper / Financial Administrator should focus on:
+**Bookkeeper / Financial Administrator should focus on, if approved:**
 
 - Entering income, expenses, transfers, and reimbursements.
 - Maintaining supporting documentation.
@@ -95,96 +92,78 @@ The Bookkeeper / Financial Administrator should focus on:
 - Preparing monthly report packets.
 - Supporting bank reconciliation and monthly close.
 - Tracking missing receipts, unclear transactions, and documentation issues.
-- Helping maintain records in the approved software or filing system.
-
-The key distinction is simple: the Treasurer should provide accountability and review; the Bookkeeper should support orderly day-to-day administration.
 
 Bylaws and church practice should be reviewed before finalizing any change to Treasurer responsibilities.
 
-## 6. Committee Responsibility Matrix
+## 7. Committee Responsibility Summary
 
-The table below summarizes the main decision areas and where leadership responsibility should likely sit.
+The table below is a meeting-level summary. A more detailed responsibility matrix is included in Appendix A.
 
-| Decision Area | Lead Responsibility | Supporting Input | Notes |
+| Area | Lead Responsibility | Supporting Input | Approval Notes |
 | --- | --- | --- | --- |
-| Software selection | Finance Committee | Treasurer, Bookkeeper if assigned, Pastor or administrative users, Personnel for staffing impact | Church approval may be needed for cost, contract, or budget impact. |
-| Treasurer nomination or confirmation | Nominating Committee if assigned by bylaws | Finance Committee, Pastor, Deacons, current or interim Treasurer | Congregational vote may be required. |
-| Bookkeeper / Financial Administrator role | Personnel Committee | Finance Committee defines duties, controls, budget impact, and reporting needs | Church approval may be needed if paid, budgeted, or newly created. |
-| Treasurer role description | Finance Committee for financial duties; Nominating or leadership review as required | Treasurer, Personnel Committee, Pastor, Deacons | Bylaws should be checked. |
-| Bookkeeper job description | Personnel Committee | Finance Committee, Treasurer, Pastor or supervisor | Finance should define financial duties before Personnel finalizes role materials. |
-| Reimbursement process | Finance Committee | Treasurer and Bookkeeper | Routine in-budget expenses should be easy to submit and reviewed monthly. Exceptions need approval. |
-| Spending authority | Finance Committee | Pastor, Deacons, Treasurer, Bookkeeper | Church approval may be required for thresholds or spending outside budget. |
-| Credit card or controlled payment policy | Finance Committee | Treasurer, Bookkeeper, Pastor, cardholders | Controls should address limits, receipts, review, and exceptions. |
-| Monthly financial reporting | Finance Committee and Treasurer | Bookkeeper prepares supporting packet if assigned | Reports should be reviewed before business meetings. |
-| Annual audit or financial review | Finance Committee | Treasurer, Bookkeeper, outside reviewer if used | Professional review may be needed depending on scope. |
-| Business meeting financial action items | Responsible committee and church leadership | Pastor, Deacons, Treasurer, Finance Committee, Personnel Committee | Congregation votes where required. |
+| Software selection | Finance Committee | Treasurer, Bookkeeper if assigned, Pastor/admin users, Personnel for staffing impact | Church approval may be needed for cost, contract, or budget impact. |
+| Bookkeeper role | Personnel Committee | Finance Committee defines financial duties, controls, and budget impact | Church approval may be needed if paid, budgeted, or newly created. |
+| Treasurer role | Nominating Committee if bylaws require; Finance Committee for financial expectations | Pastor, Deacons, current or interim Treasurer | Congregational vote may be required. |
+| Reimbursement and spending authority | Finance Committee | Treasurer, Bookkeeper, Pastor, Deacons as appropriate | Church approval may be needed for policy or budget changes. |
+| Monthly reporting | Treasurer and Finance Committee | Bookkeeper prepares supporting packet if assigned | Business meeting reporting continues as appropriate. |
+| Audit or financial review | Finance Committee | Treasurer, Bookkeeper, outside reviewer if used | Professional review and/or church approval may be needed. |
 
-The most important boundary is this: Personnel Committee should not be asked to decide financial controls, software, reimbursement rules, or spending authority. Finance Committee should not be asked to run the personnel process. Both committees need to work together before any final recommendation is brought forward.
+Personnel Committee should not be asked to decide financial controls, software, reimbursement rules, or spending authority. Finance Committee should not be asked to run the personnel process.
 
-## 7. Decisions Needed
+Both committees need to work together before any final recommendation is brought to the church.
 
-Personnel Committee needs to decide or recommend:
+## 8. Decisions Needed
 
-- Whether to support creating a Bookkeeper / Financial Administrator role.
-- Whether the role should be volunteer, paid staff, contractor, or stipend-based.
-- What title should be used.
-- What qualifications should be required.
-- What application, interview, reference, and background-check process should apply.
-- Who should supervise and evaluate the role.
-- What compensation recommendation should be made if the role is paid.
-- What job-description language should be reviewed by Finance Committee before final approval.
+**Personnel Committee**
 
-Finance Committee needs to decide or recommend:
+- Should KBC create a Bookkeeper / Financial Administrator role?
+- Should the role be volunteer, paid staff, contractor, or stipend-based?
+- What title, qualifications, application process, interview process, references, and background-check process should apply?
+- Who should supervise and evaluate the role?
+- What compensation recommendation is needed if the role is paid?
 
-- Which duties should remain with the elected Treasurer.
-- Which duties should be assigned to a Bookkeeper / Financial Administrator.
-- What software requirements should be approved before demos or purchase.
-- Which software options should be evaluated.
-- What reimbursement process should be used.
-- What spending authority thresholds should apply.
-- What card/payment controls should be adopted.
-- What monthly review packet should be required.
-- What audit/review process is appropriate.
-- Whether payroll or accounting support should involve an outside vendor.
-- What budget impact should be recommended for software, bookkeeping support, or outside services.
+**Finance Committee**
 
-Leadership, Deacons, and Nominating Committee may need to help decide:
+- Which duties should remain with the elected Treasurer?
+- Which duties should be assigned to a Bookkeeper / Financial Administrator if approved?
+- What software requirements should be approved before demos or purchase?
+- What reimbursement, spending authority, and card/payment controls should be adopted?
+- What monthly review packet should be required?
+- What audit/review process is appropriate?
+- What budget impact should be recommended for software, bookkeeping support, or outside services?
 
-- What the bylaws require for Treasurer election, replacement, or role changes.
-- What items need Deacon review before being brought to the church.
-- What items need a church vote.
-- How and when the congregation should receive updates.
-- How long the interim Treasurer arrangement should continue.
+**Leadership / Nominating / Church**
 
-## 8. 30/60/90 Day Roadmap
+- What do the bylaws require for Treasurer election, replacement, or role changes?
+- What items need Deacon review before being brought to the church?
+- What items need a church vote?
+- How and when should the congregation receive updates?
+- How long should the interim Treasurer arrangement continue?
 
-The roadmap below gives leadership a steady path that avoids rushing decisions before the right bodies have reviewed them.
+## 9. 30/60/90 Day Roadmap
 
 | Timeframe | Goal | Main Work |
 | --- | --- | --- |
-| First 30 days | Stabilize the transition and clarify ownership. | Confirm interim Treasurer coverage and authority; review the Treasurer vs. Bookkeeper duty split; review the responsibility matrix; have Personnel Committee review role materials; have Finance Committee review financial decision areas; identify bylaw, Deacon, Nominating Committee, or church vote questions. |
-| 60 days | Move from role clarity to committee recommendations. | Approve software requirements for demos; complete software demos and scorecards; set draft reimbursement and spending thresholds; decide preferred card/payment direction; identify budget impact; refine Bookkeeper role materials after Finance Committee input. |
-| 90 days | Begin implementation of approved direction. | Prepare any needed business meeting summary or motion; begin using the monthly Finance Committee checklist; implement approved reimbursement and review processes; select or plan software implementation if approved; launch Bookkeeper role process if approved; move approved decisions into the decision log. |
+| First 30 days | Stabilize the transition and clarify ownership. | Confirm interim Treasurer coverage and authority; review the Treasurer vs. Bookkeeper distinction; review committee responsibility boundaries; identify bylaw, Deacon, Nominating Committee, or church vote questions. |
+| 60 days | Move from role clarity to committee recommendations. | Approve software requirements for demos; review reimbursement and spending thresholds; decide card/payment direction; estimate budget impact; refine Bookkeeper role materials after Finance Committee input. |
+| 90 days | Begin implementation of approved direction. | Prepare any needed business meeting summary or motion; use the monthly Finance Committee checklist; implement approved reimbursement and review processes; plan software implementation if approved; launch role process if approved. |
 
 The long-term goal is to move approved materials into a Financial Operations Manual that can be maintained and handed off.
 
-## 9. Immediate Action Items
+## 10. Immediate Action Items
 
-Recommended immediate action items:
-
-- Confirm the interim Treasurer arrangement, including authority, time period, and support needed.
-- Identify weekly must-do financial tasks, including deposits, bills, payroll coordination, reimbursements, reports, and account review.
+- Confirm the interim Treasurer arrangement, including authority, expected time period, and support needed.
+- Identify weekly must-do financial tasks: deposits, bills, payroll coordination, reimbursements, reports, and account review.
 - Confirm access to current records and systems without storing passwords or sensitive information in shared documents.
 - Begin a monthly Finance Committee review rhythm.
-- Have leadership review this packet before asking committees to make final recommendations.
-- Assign clear owners for Personnel Committee questions and Finance Committee questions.
+- Assign owners for Personnel Committee questions and Finance Committee questions.
 - Review bylaws and church practice for Treasurer responsibilities, nominations, approvals, and votes.
 - Keep a decision log and open questions list so unresolved issues do not get lost.
-- Prepare a short church update when leadership is ready, focused on continuity, stewardship, and the review process.
+- Prepare a short church update when leadership is ready.
 
-## 10. Items Requiring Church Approval Later
+## 11. Items That May Require Church Approval Later
 
-The following items may require church approval later, depending on bylaws, budget, policy, or church practice:
+The following items may require church approval depending on bylaws, budget, policy, or church practice:
 
 - Election or confirmation of a Treasurer / Financial Officer.
 - Creation of a paid Bookkeeper / Financial Administrator role.
@@ -194,10 +173,32 @@ The following items may require church approval later, depending on bylaws, budg
 - Changes to spending authority that affect church approval rights.
 - Changes to reimbursement, card/payment, or financial policy that require congregational approval.
 - Major purchases, debt, or long-term financial commitments.
-- Any change to officer duties that is controlled by the bylaws.
+- Any change to officer duties controlled by the bylaws.
 
 Leadership should confirm the approval path before presenting recommendations for church action.
 
-## Closing Note
+```{=openxml}
+<w:p><w:r><w:br w:type="page"/></w:r></w:p>
+```
 
-This work should be handled patiently and plainly. KBC does not need to solve every question in one meeting. The most important next step is to agree on the structure, assign the right decisions to the right bodies, and move forward in an orderly way.
+## 12. Appendix A: Detailed Responsibility Matrix
+
+This appendix provides a more detailed working matrix for leadership and committee review. It should be checked against KBC bylaws, committee charters, and church practice before use.
+
+| Responsibility Area | Treasurer / Financial Officer | Bookkeeper / Financial Administrator | Committee / Leadership Lead | Congregation / Approval Notes |
+| --- | --- | --- | --- | --- |
+| Software selection | Provides finance requirements; reviews reporting and control needs. | Provides workflow input; tests usability; supports setup if assigned. | Finance Committee leads evaluation, recommendation, implementation direction, and control requirements. | Church votes if required by budget, contract, or church policy. |
+| Treasurer candidate / officer recommendation | Provides transition input if currently serving or interim. | No approval role. | Nominating Committee leads if bylaws assign this role; Finance Committee consults on needed finance skills and expectations. | Congregation votes if bylaws require election or confirmation. |
+| Bookkeeper / Financial Administrator hiring | Provides role and workflow input; may participate in interviews if assigned. | Applicant or role holder; no approval role. | Personnel Committee leads hiring process; Finance Committee defines duties, controls, budget impact, and reporting needs. | Church votes if role creation, compensation, or budget change requires it. |
+| Treasurer job description approval | Provides input on practicality and transition needs. | No primary role. | Finance Committee defines financial governance, controls, reporting, and committee relationship; Nominating Committee reviews if tied to officer nomination. | Church approves if bylaws or church policy require it. |
+| Bookkeeper job description approval | Provides workflow and reporting input. | Provides practical feedback if role is already filled. | Personnel Committee leads drafting; Finance Committee approves or recommends finance duties, access, controls, and reporting expectations. | Church votes if paid role, budget change, or policy requires it. |
+| Reimbursement approval | Reviews documentation and policy compliance; approves if assigned by policy. | Processes requests after documentation and approval are complete; tracks missing receipts. | Finance Committee owns reimbursement policy, approval thresholds, exceptions, and monthly review. | Church votes only if reimbursement policy or budget impact requires it. |
+| Budget oversight | Reviews reports and helps explain variances. | Records transactions and prepares reports if assigned. | Finance Committee owns budget monitoring, variance review, exceptions, and recommendations; Personnel reviews staffing/compensation impact. | Congregation approves annual budget and major budget changes if required. |
+| Monthly reporting | Presents or helps present reports; reviews reconciliations and exceptions. | Prepares report packet, reconciliations, and supporting documentation if assigned. | Finance Committee owns monthly financial review and follow-up; Pastor and Deacons receive updates as appropriate. | Congregation receives business meeting reports as appropriate. |
+| Annual audit / financial review | Coordinates records and responds to reviewer questions. | Provides records, reports, and documentation if assigned. | Finance Committee owns recommendation, scope, timing, reviewer selection, and follow-up. | Church votes if bylaws, budget, or policy require outside review approval. |
+| Credit card / controlled payment policy | Reviews card activity and helps enforce policy. | Maintains receipts, coding, and transaction records if assigned; may hold a card only if approved. | Finance Committee owns card/payment policy, limits, cardholder approval, review, suspension, and revocation process. | Church votes if policy, budget, or liability concern requires it. |
+| Spending outside budget | Flags concern and seeks approval before payment when practical. | Does not process payment until approval path is documented, except emergency process if policy allows. | Finance Committee leads review and recommendation; Pastor and Deacons consult on ministry urgency or leadership practice. | Church votes if bylaws, budget, amount, or church policy require it. |
+| Emergency spending | Helps confirm need, documentation, and after-the-fact review. | Processes only after emergency approval is documented. | Finance Committee defines emergency authority and reviews after the fact; Pastor or Deacons may authorize within policy if delay would cause harm or prevent urgent ministry need. | Congregation receives report or votes afterward if required. |
+| Business meeting financial report | Presents or helps present report and answer questions. | Prepares supporting packet if assigned. | Finance Committee reviews report before presentation; Pastor and Deacons support communication where appropriate. | Congregation receives, discusses, and votes on items requiring action. |
+
+Needs Review: Confirm each ownership area with KBC bylaws, committee charters, and church practice.

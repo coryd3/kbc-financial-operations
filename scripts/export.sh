@@ -147,7 +147,13 @@ polish_docx() {
     perl -0pi -e "s#<w:pgMar\\b[^>]*/>#<w:pgMar w:top=\"${margin}\" w:right=\"${margin}\" w:bottom=\"${margin}\" w:left=\"${margin}\" w:header=\"360\" w:footer=\"360\" w:gutter=\"0\"/>#g" \
       "${docx_dir}/word/document.xml"
 
+    perl -0pi -e 's#<w:pPr>(<w:pStyle w:val="Heading[1-3]"[^/]*/>)#<w:pPr><w:keepNext/>$1#g' \
+      "${docx_dir}/word/document.xml"
+
     perl -0pi -e 's#<w:trPr>#<w:trPr><w:cantSplit/>#g' \
+      "${docx_dir}/word/document.xml"
+
+    perl -0pi -e 's#<w:tr>(?!<w:trPr>)#<w:tr><w:trPr><w:cantSplit/></w:trPr>#g' \
       "${docx_dir}/word/document.xml"
   fi
 
