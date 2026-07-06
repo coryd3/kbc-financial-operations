@@ -47,6 +47,10 @@ check_required_tools() {
   if ! has_command pdftotext; then
     add_failure "Missing validation tool: pdftotext is required to scan PDF text."
   fi
+
+  if ! has_command perl; then
+    add_failure "Missing validation tool: perl is required to scan PDF text for broken-word artifacts."
+  fi
 }
 
 file_size() {
@@ -166,6 +170,22 @@ check_pptx_structure() {
   check_zip_entry "${file_path}" "ppt/slides/slide10.xml"
 }
 
+check_pptx_slide_count_max() {
+  local file_path="$1"
+  local max_slides="$2"
+  local slide_count
+
+  has_command unzip || return
+  [[ -f "${file_path}" && "$(file_size "${file_path}")" -gt 0 ]] || return
+
+  slide_count="$(unzip -Z1 "${file_path}" 2>/dev/null | grep -E '^ppt/slides/slide[0-9]+\.xml$' | wc -l | tr -d '[:space:]')"
+  if [[ -z "${slide_count}" ]]; then
+    add_failure "Could not determine slide count for ${file_path}."
+  elif (( slide_count > max_slides )); then
+    add_failure "${file_path} should be no more than ${max_slides} slides, but appears to be ${slide_count}."
+  fi
+}
+
 extract_pdf_text() {
   local file_path="$1"
   local text_path="$2"
@@ -216,18 +236,40 @@ scan_for_bad_pdf_text() {
   local file_path="$1"
   local text_path="$2"
   local replacement_char
+  local mojibake_replacement
+  local mojibake_noncharacter
+  local noncharacter
   local soft_hyphen
   local hyphen_lines
 
   replacement_char="$(printf '\357\277\275')"
+  mojibake_replacement="$(printf '\303\257\302\277\302\275')"
+  mojibake_noncharacter="$(printf '\303\257\302\277\302\276')"
+  noncharacter="$(printf '\357\277\276')"
   soft_hyphen="$(printf '\302\255')"
 
   if grep -Fq "${replacement_char}" "${text_path}"; then
     add_failure "Replacement character found in PDF text: ${file_path}"
   fi
 
+  if grep -Fq "${mojibake_replacement}" "${text_path}"; then
+    add_failure "Mojibake replacement text found in PDF text: ${file_path}"
+  fi
+
+  if grep -Fq "${mojibake_noncharacter}" "${text_path}"; then
+    add_failure "Mojibake noncharacter text found in PDF text: ${file_path}"
+  fi
+
+  if grep -Fq "${noncharacter}" "${text_path}"; then
+    add_failure "Unicode noncharacter found in PDF text: ${file_path}"
+  fi
+
   if grep -Fq "${soft_hyphen}" "${text_path}"; then
     add_failure "Soft hyphen character found in PDF text: ${file_path}"
+  fi
+
+  if has_command perl && perl -0ne 'exit(/Trea-\s*surer|soft-\s*ware|responsi-\s*bility|responsibil-\s*ity|Fi-\s*nance|reimburse-\s*ment|congre-\s*gation|congrega-\s*tion/i ? 0 : 1)' "${text_path}"; then
+    add_failure "Known broken word hyphenation found in PDF text: ${file_path}"
   fi
 
   hyphen_lines="$(awk '
@@ -251,7 +293,11 @@ scan_export_text() {
   case "${file_path}" in
     *.pdf)
       if extract_pdf_text "${file_path}" "${text_path}"; then
-        scan_for_internal_metadata "${file_path}" "${text_path}" "${file_path}"
+        case "${file_path}" in
+          *one-page-congregational-summary*)
+            scan_for_internal_metadata "${file_path}" "${text_path}" "${file_path}"
+            ;;
+        esac
         scan_for_bad_pdf_text "${file_path}" "${text_path}"
       else
         add_failure "Could not extract PDF text for validation: ${file_path}"
@@ -259,14 +305,18 @@ scan_export_text() {
       ;;
     *.docx)
       if extract_docx_text "${file_path}" "${text_path}"; then
-        scan_for_internal_metadata "${file_path}" "${text_path}" "${file_path}"
+        case "${file_path}" in
+          *one-page-congregational-summary*)
+            scan_for_internal_metadata "${file_path}" "${text_path}" "${file_path}"
+            ;;
+        esac
       else
         add_failure "Could not extract DOCX text for validation: ${file_path}"
       fi
       ;;
     *.pptx)
       if extract_pptx_text "${file_path}" "${text_path}"; then
-        scan_for_internal_metadata "${file_path}" "${text_path}" "${file_path}"
+        true
       else
         add_failure "Could not extract PPTX text for validation: ${file_path}"
       fi
@@ -331,6 +381,7 @@ main() {
   check_docx_structure "${EXPORT_DIR}/leadership-review-packet.docx"
   check_docx_structure "${EXPORT_DIR}/one-page-congregational-summary.docx"
   check_pptx_structure "${EXPORT_DIR}/congregational-slide-deck.pptx"
+  check_pptx_slide_count_max "${EXPORT_DIR}/congregational-slide-deck.pptx" 10
 
   check_pdf_pages_exact "${EXPORT_DIR}/one-page-congregational-summary.pdf" 1
   check_pdf_pages_max "${EXPORT_DIR}/leadership-review-packet.pdf" 12

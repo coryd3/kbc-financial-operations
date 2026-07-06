@@ -99,13 +99,18 @@ EOF
   fi
 }
 
-prepare_public_markdown() {
+prepare_markdown() {
   local source_file="$1"
+  local output_name="$2"
   local prepared_file="${WORK_DIR}/$(basename "${source_file}")"
 
-  grep -Ev '^(Purpose:|Status:)[[:space:]]*' "${source_file}" \
-    | grep -Fv 'Draft for congregational sharing' \
-    > "${prepared_file}"
+  if [[ "${output_name}" == "one-page-congregational-summary" ]]; then
+    grep -Ev '^(Purpose:|Status:)[[:space:]]*' "${source_file}" \
+      | grep -Fv 'Draft for congregational sharing' \
+      > "${prepared_file}"
+  else
+    cp "${source_file}" "${prepared_file}"
+  fi
 
   printf '%s\n' "${prepared_file}"
 }
@@ -115,16 +120,16 @@ polish_docx() {
   local output_name="$2"
   local docx_dir="${WORK_DIR}/docx-${output_name}"
   local rebuilt_docx="${WORK_DIR}/${output_name}.docx"
-  local font_size="22"
-  local margin="1080"
+  local font_size="20"
+  local margin="900"
   local spacing_after="120"
-  local line_spacing="276"
+  local line_spacing="252"
 
   if [[ "${output_name}" == "one-page-congregational-summary" ]]; then
-    font_size="18"
-    margin="540"
-    spacing_after="60"
-    line_spacing="220"
+    font_size="17"
+    margin="420"
+    spacing_after="30"
+    line_spacing="190"
   fi
 
   rm -rf "${docx_dir}"
@@ -139,6 +144,12 @@ polish_docx() {
         s/<w:autoHyphenation\b[^>]*\/>/<w:autoHyphenation w:val="false"\/>/g;
       } else {
         s#</w:settings>#<w:autoHyphenation w:val="false"/></w:settings>#;
+      }
+      if (! /<w:doNotHyphenateCaps\b/) {
+        s#</w:settings>#<w:doNotHyphenateCaps/></w:settings>#;
+      }
+      if (! /<w:hyphenationZone\b/) {
+        s#</w:settings>#<w:hyphenationZone w:val="0"/></w:settings>#;
       }
     ' "${docx_dir}/word/settings.xml"
   fi
@@ -206,7 +217,7 @@ export_document() {
   local docx_file="${EXPORT_DIR}/${output_name}.docx"
 
   printf 'Exporting %s\n' "${source_file}"
-  prepared_file="$(prepare_public_markdown "${source_file}")"
+  prepared_file="$(prepare_markdown "${source_file}" "${output_name}")"
 
   pandoc "${prepared_file}" \
     --standalone \

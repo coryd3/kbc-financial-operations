@@ -26,12 +26,19 @@ jobs:
           sudo apt-get install -y make pandoc libreoffice-writer fonts-liberation poppler-utils unzip zip perl
           npm install --global @marp-team/marp-cli
 
-      - name: Export documents
-        run: make export
+      - name: Create release packet
+        run: make release
 
       - name: Upload generated exports
         uses: actions/upload-artifact@v4
         with:
           name: kbc-financial-operations-exports
           path: dist/exports/
+          if-no-files-found: error
+
+      - name: Upload release packet
+        uses: actions/upload-artifact@v4
+        with:
+          name: kbc-financial-operations-release
+          path: dist/releases/
           if-no-files-found: error

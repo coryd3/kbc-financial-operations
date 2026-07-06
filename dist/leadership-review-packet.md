@@ -1,12 +1,14 @@
 # KBC Financial Operations Leadership Review Packet
 
-**Draft for Leadership Alignment**
+**Purpose:** Prepare KBC leadership to review and align around the financial operations modernization plan.
+
+**Status:** Draft for Leadership Alignment
 
 Date: July 6, 2026
 
 Prepared for: KBC Leadership, Finance Committee, Personnel Committee, Deacons, Pastor
 
-Prepared by: TBD
+Prepared by: KBC Financial Operations Review Draft
 
 This packet is intended to help KBC leadership review and align around a more sustainable financial operations structure. It is not a final policy, job approval, budget approval, software recommendation, or church motion.
 
@@ -99,9 +101,9 @@ The Treasurer should not lose accountability. The recommended distinction is tha
 
 Bylaws and church practice should be reviewed before finalizing any change to Treasurer responsibilities.
 
-## Committee Responsibility Summary
+## Committee Responsibility Matrix
 
-The table below is a meeting-level summary. A more detailed responsibility matrix is included in Appendix A.
+The table below is a meeting-level responsibility matrix. A more detailed matrix is included in Appendix A.
 
 | Area | Lead Responsibility | Supporting Input | Approval Notes |
 | --- | --- | --- | --- |
@@ -165,7 +167,7 @@ The long-term goal is to move approved materials into a Financial Operations Man
 - Keep a decision log and open questions list so unresolved issues do not get lost.
 - Prepare a short church update when leadership is ready.
 
-## Items That May Require Church Approval Later
+## Items Requiring Church Approval Later
 
 The following items may require church approval depending on bylaws, budget, policy, or church practice:
 
@@ -180,6 +182,10 @@ The following items may require church approval depending on bylaws, budget, pol
 - Any change to officer duties controlled by the bylaws.
 
 Leadership should confirm the approval path before presenting recommendations for church action.
+
+## Closing Note
+
+This packet is a tool for careful leadership alignment. It should help KBC move in the right order: stabilize current work, clarify responsibilities, let the proper committees review their areas, and bring church approval items back to the congregation at the proper time.
 
 ```{=openxml}
 <w:p><w:r><w:br w:type="page"/></w:r></w:p>

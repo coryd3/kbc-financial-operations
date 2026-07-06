@@ -39,6 +39,8 @@ Generated files are placed in `dist/exports/`:
 - `congregational-slide-deck.pptx`
 - `congregational-slide-deck.pdf`
 
+If your computer does not have the export tools installed, use the GitHub Action named `Export Docs`. It creates the same exports and a release packet as downloadable workflow artifacts.
+
 ## How to Validate
 
 Run:
@@ -47,9 +49,9 @@ Run:
 make validate
 ```
 
-Validation checks that expected exports exist, are not zero bytes, have readable PDF/DOCX/PPTX structure, meet page-count expectations, and do not include internal metadata lines such as `Purpose:` or `Status:`.
+Validation checks that expected exports exist, are not zero bytes, have readable PDF/DOCX/PPTX structure, meet page-count expectations, keep the congregational handout to one page, keep the leadership packet to 12 pages or fewer, and keep internal metadata out of the public handout.
 
-Validation does not replace human review of content, formatting, or sensitive information.
+Validation also scans exported PDFs for obvious artifact characters, including replacement characters, soft hyphen characters, and known broken-word hyphenation patterns. It does not replace human review of content, formatting, or sensitive information.
 
 ## How to Clean Generated Files
 
@@ -102,15 +104,19 @@ Do not store confidential or personally sensitive information here, including:
 - Actual candidate applications, reference checks, or background-check results.
 - Member lists, deacon family lists, or private pastoral/personnel details.
 
-Use placeholders such as `TBD` or `Needs Review` where details must be supplied by the Finance Committee, Personnel Committee, CPA, attorney, church leadership, or congregation.
+Use placeholders such as `TBD`, `Needs Finance Review`, `Needs Personnel Review`, `Needs Bylaw Review`, or `Needs Professional Review` where details must be supplied by the Finance Committee, Personnel Committee, CPA, attorney, church leadership, or congregation.
 
 ## Review Status
 
 Use clear review status language when sharing documents:
 
 - Draft
-- Committee Review
-- Ready for Vote
+- Needs Committee Review
+- Needs Finance Review
+- Needs Personnel Review
+- Needs Bylaw Review
+- Needs Professional Review
+- Ready for Church Consideration
 - Approved
 - Superseded
 

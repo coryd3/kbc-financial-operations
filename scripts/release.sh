@@ -44,6 +44,10 @@ copy_exports() {
 
     cp "${EXPORT_DIR}/${file_name}" "${RELEASE_DIR}/${file_name}"
   done
+
+  if [[ -f "${EXPORT_DIR}/README.md" ]]; then
+    cp "${EXPORT_DIR}/README.md" "${RELEASE_DIR}/README.md"
+  fi
 }
 
 create_zip() {

@@ -30,7 +30,7 @@ Run:
 make validate
 ```
 
-Validation checks that the expected files exist, are not zero bytes, have readable file structure, meet page-count expectations, and do not include internal metadata lines.
+Validation checks that the expected files exist, are not zero bytes, have readable file structure, meet page-count expectations, keep the congregational handout to one page, keep the leadership packet to 12 pages or fewer, keep internal metadata out of the public handout, and scan PDFs for obvious artifact characters.
 
 ## Clean Generated Files
 
@@ -57,10 +57,16 @@ This runs export and validation, creates a dated folder under `dist/releases/YYY
 Use clear review status language in document titles, notes, or release communication:
 
 - Draft
-- Committee Review
-- Ready for Vote
+- Needs Committee Review
+- Needs Finance Review
+- Needs Personnel Review
+- Needs Bylaw Review
+- Needs Professional Review
+- Ready for Church Consideration
 - Approved
 - Superseded
+
+If local export tools are not installed, use the GitHub Action named `Export Docs` to create downloadable export and release artifacts.
 
 ## Sensitive Information Warning
 
