@@ -20,6 +20,10 @@ EXPECTED_FILES=(
   "congregational-slide-deck.pdf"
 )
 
+DIST_RELEASE_FILES=(
+  "leadership-review-task-tracker.csv"
+)
+
 fail() {
   printf '\nRelease stopped: %s\n' "$1" >&2
   exit 1
@@ -48,6 +52,14 @@ copy_exports() {
   if [[ -f "${EXPORT_DIR}/README.md" ]]; then
     cp "${EXPORT_DIR}/README.md" "${RELEASE_DIR}/README.md"
   fi
+
+  for file_name in "${DIST_RELEASE_FILES[@]}"; do
+    if [[ ! -f "dist/${file_name}" ]]; then
+      fail "Missing expected release file: dist/${file_name}"
+    fi
+
+    cp "dist/${file_name}" "${RELEASE_DIR}/${file_name}"
+  done
 }
 
 create_zip() {

@@ -8,7 +8,7 @@ Date: July 6, 2026
 
 Prepared for: KBC Leadership, Finance Committee, Personnel Committee, Deacons, Pastor
 
-Prepared by: KBC Financial Operations Review Draft
+Prepared by: Cory Davis
 
 This packet is intended to help KBC leadership review and align around a more sustainable financial operations structure. It is not a final policy, job approval, budget approval, software recommendation, or church motion.
 

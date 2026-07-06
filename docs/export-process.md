@@ -12,6 +12,12 @@ Edit the Markdown source files in `dist/`:
 
 Do not edit generated PDF, DOCX, or PPTX files as the long-term source. Regenerate them from Markdown instead.
 
+The leadership task tracker is also in `dist/`:
+
+- `dist/leadership-review-task-tracker.csv`
+
+Open it in Excel or Google Sheets to update task owners, due dates, status, and notes after leadership or committee discussion.
+
 ## Export Review Files
 
 Run:
@@ -50,7 +56,7 @@ Run:
 make release
 ```
 
-This runs export and validation, creates a dated folder under `dist/releases/YYYY-MM-DD/`, copies the generated files into that folder, creates `dist/releases/YYYY-MM-DD.zip`, and prints the release paths.
+This runs export and validation, creates a dated folder under `dist/releases/YYYY-MM-DD/`, copies the generated files and task tracker into that folder, creates `dist/releases/YYYY-MM-DD.zip`, and prints the release paths.
 
 ## Review Status Labels
 

@@ -19,6 +19,9 @@ Main release artifact sources live in `dist/`:
 - `dist/leadership-review-packet.md`
 - `dist/one-page-congregational-summary.md`
 - `dist/congregational-slide-deck.md`
+- `dist/leadership-review-task-tracker.csv`
+
+The task tracker is an Excel-friendly CSV for assigning owners, due dates, status, and notes for the action items and decisions in the leadership review packet.
 
 ## How to Export
 
@@ -40,6 +43,14 @@ Generated files are placed in `dist/exports/`:
 - `congregational-slide-deck.pdf`
 
 If your computer does not have the export tools installed, use the GitHub Action named `Export Docs`. It creates the same exports and a release packet as downloadable workflow artifacts.
+
+## How to Use the Task Tracker
+
+Open `dist/leadership-review-task-tracker.csv` in Excel, Google Sheets, or another spreadsheet tool.
+
+The tracker includes suggested owners and due dates based on the July 6, 2026 leadership packet. Update the owner, due date, status, and notes columns after leadership, Finance Committee, Personnel Committee, Deacon, or Nominating Committee discussion.
+
+Do not put confidential financial, donor, payroll, bank, password, personnel, application, reference-check, or background-check details in the tracker.
 
 ## How to Validate
 
@@ -77,6 +88,7 @@ This will:
 - Run validation.
 - Create a dated folder under `dist/releases/YYYY-MM-DD/`.
 - Copy generated exports into that folder.
+- Copy `dist/leadership-review-task-tracker.csv` into that folder.
 - Create `dist/releases/YYYY-MM-DD.zip`.
 - Print the release folder and zip paths.
 

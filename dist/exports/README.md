@@ -28,6 +28,8 @@ To create a dated release packet from generated exports, run:
 make release
 ```
 
+The release packet also includes `leadership-review-task-tracker.csv` from `dist/` so leaders can assign owners, due dates, status, and notes.
+
 Validation checks that the expected files exist, are not zero bytes, have readable PDF/DOCX/PPTX structure, meet the required page counts, keep internal metadata out of the public handout, and scan exported PDFs for obvious artifact characters.
 
 The Markdown files in `dist/` are the source of truth. Files generated here are review copies and should be regenerated when the Markdown changes.
