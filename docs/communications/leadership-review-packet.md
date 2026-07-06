@@ -192,4 +192,3 @@ Goal: Begin implementation of approved direction.
 Leadership should review this packet, confirm the right committee review order, and decide which questions need to be answered before anything is presented to the church for action.
 
 Needs Review: This packet is a leadership summary only. It is not a final policy, job approval, budget approval, software recommendation, or church motion.
-
