@@ -16,6 +16,8 @@ EXPECTED_FILES=(
   "leadership-review-packet.docx"
   "one-page-congregational-summary.pdf"
   "one-page-congregational-summary.docx"
+  "bookkeeper-financial-administrator-job-description.pdf"
+  "bookkeeper-financial-administrator-job-description.docx"
   "congregational-slide-deck.pptx"
   "congregational-slide-deck.pdf"
 )

@@ -1,6 +1,6 @@
 # Export and Release Process
 
-This page explains how to turn the public Markdown artifacts in `dist/` into review files and release bundles.
+This page explains how to turn selected Markdown artifacts into review files and release bundles.
 
 ## What To Edit
 
@@ -9,6 +9,10 @@ Edit the Markdown source files in `dist/`:
 - `dist/leadership-review-packet.md`
 - `dist/one-page-congregational-summary.md`
 - `dist/congregational-slide-deck.md`
+
+The Bookkeeper job description export is generated from:
+
+- `docs/roles/bookkeeper-financial-administrator-job-description.md`
 
 Do not edit generated PDF, DOCX, or PPTX files as the long-term source. Regenerate them from Markdown instead.
 

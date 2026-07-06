@@ -21,6 +21,10 @@ Main release artifact sources live in `dist/`:
 - `dist/congregational-slide-deck.md`
 - `dist/leadership-review-task-tracker.csv`
 
+The Bookkeeper job description export is generated from:
+
+- `docs/roles/bookkeeper-financial-administrator-job-description.md`
+
 The task tracker is an Excel-friendly CSV for assigning owners, due dates, status, and notes for the action items and decisions in the leadership review packet.
 
 ## How to Export
@@ -39,6 +43,8 @@ Generated files are placed in `dist/exports/`:
 - `leadership-review-packet.docx`
 - `one-page-congregational-summary.pdf`
 - `one-page-congregational-summary.docx`
+- `bookkeeper-financial-administrator-job-description.pdf`
+- `bookkeeper-financial-administrator-job-description.docx`
 - `congregational-slide-deck.pptx`
 - `congregational-slide-deck.pdf`
 
