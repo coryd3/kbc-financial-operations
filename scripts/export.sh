@@ -117,10 +117,14 @@ polish_docx() {
   local rebuilt_docx="${WORK_DIR}/${output_name}.docx"
   local font_size="22"
   local margin="1080"
+  local spacing_after="120"
+  local line_spacing="276"
 
   if [[ "${output_name}" == "one-page-congregational-summary" ]]; then
-    font_size="20"
-    margin="720"
+    font_size="18"
+    margin="540"
+    spacing_after="60"
+    line_spacing="220"
   fi
 
   rm -rf "${docx_dir}"
@@ -149,7 +153,7 @@ polish_docx() {
 
   if [[ -f "${docx_dir}/word/styles.xml" ]]; then
     perl -0pi -e "
-      my \$defaults = '<w:docDefaults><w:rPrDefault><w:rPr><w:rFonts w:ascii=\"Liberation Sans\" w:hAnsi=\"Liberation Sans\" w:eastAsia=\"Liberation Sans\" w:cs=\"Liberation Sans\"/><w:sz w:val=\"${font_size}\"/><w:szCs w:val=\"${font_size}\"/></w:rPr></w:rPrDefault><w:pPrDefault><w:pPr><w:suppressAutoHyphens/><w:spacing w:after=\"120\" w:line=\"276\" w:lineRule=\"auto\"/></w:pPr></w:pPrDefault></w:docDefaults>';
+      my \$defaults = '<w:docDefaults><w:rPrDefault><w:rPr><w:rFonts w:ascii=\"Liberation Sans\" w:hAnsi=\"Liberation Sans\" w:eastAsia=\"Liberation Sans\" w:cs=\"Liberation Sans\"/><w:sz w:val=\"${font_size}\"/><w:szCs w:val=\"${font_size}\"/></w:rPr></w:rPrDefault><w:pPrDefault><w:pPr><w:suppressAutoHyphens/><w:spacing w:after=\"${spacing_after}\" w:line=\"${line_spacing}\" w:lineRule=\"auto\"/></w:pPr></w:pPrDefault></w:docDefaults>';
       if (/<w:docDefaults>.*?<\/w:docDefaults>/s) {
         s#<w:docDefaults>.*?</w:docDefaults>#\$defaults#s;
       } else {
