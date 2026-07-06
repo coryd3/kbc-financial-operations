@@ -24,3 +24,5 @@ scratch/
 # Generated review exports
 dist/exports/*
 !dist/exports/README.md
+dist/releases/*
+!dist/releases/README.md

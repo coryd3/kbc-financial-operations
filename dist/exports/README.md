@@ -22,6 +22,12 @@ To remove generated export files, run:
 make clean
 ```
 
+To create a dated release packet from generated exports, run:
+
+```sh
+make release
+```
+
 Validation checks that the expected files exist, are not zero bytes, have readable PDF/DOCX/PPTX structure, meet the required page counts, and do not include internal metadata lines such as `Purpose:` or `Status:`.
 
 The Markdown files in `dist/` are the source of truth. Files generated here are review copies and should be regenerated when the Markdown changes.

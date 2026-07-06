@@ -261,10 +261,15 @@ main() {
     printf '  - %s\n' "${generated_file}"
   done
 
-  printf '\nRunning export validation...\n'
-  "${SCRIPT_DIR}/validate-exports.sh"
+  if [[ "${SKIP_EXPORT_VALIDATION:-0}" == "1" ]]; then
+    printf '\nExport validation skipped because release validation will run next.\n'
+  else
+    printf '\nRunning export validation...\n'
+    "${SCRIPT_DIR}/validate-exports.sh"
+  fi
 
   printf '\nDone. Markdown files remain the source of truth; exported files are generated review copies.\n'
+  printf 'To create a dated release packet, run: make release\n'
 }
 
 main "$@"
