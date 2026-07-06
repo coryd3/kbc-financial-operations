@@ -42,5 +42,6 @@ The Finance Committee should provide direction on:
 
 The Personnel Committee requests that the Finance Committee review these financial operations questions and provide direction before final job descriptions, applications, compensation recommendations, or church motions are finalized.
 
-Needs Review: This recommendation should be reviewed by Personnel Committee before sending to Finance Committee.
+Needs Personnel Review: This recommendation should be reviewed by Personnel Committee before sending to Finance Committee.
 
+Needs Bylaw Review: Any recommendation involving an elected Treasurer / Financial Officer, creation of a paid Bookkeeper / Financial Administrator role, compensation, budget impact, or church motion should have its final approval path confirmed by church leadership, KBC Constitution and Bylaws, and church practice.

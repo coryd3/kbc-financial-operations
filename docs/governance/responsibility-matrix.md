@@ -29,5 +29,6 @@ This matrix separates governance, operations, recommendations, and approvals. It
 - Nominating Committee should be involved where bylaws assign responsibility for elected officer recommendations.
 - Congregation should vote where bylaws, budget, policy, or church practice require.
 
-Needs Review: Confirm each ownership area with KBC bylaws, committee charters, and church practice.
+Needs Bylaw Review: Confirm each ownership area with KBC Constitution and Bylaws, committee charters, and church practice before treating this matrix as authoritative.
 
+Final approval path to be confirmed by church leadership, bylaws, and church practice for elected officers, paid roles, compensation, software contracts, spending authority, policies, and church votes.

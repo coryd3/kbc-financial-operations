@@ -41,7 +41,7 @@ Possible operational duties, if assigned:
 - Payroll coordination.
 - Monthly report preparation.
 
-Needs Review: KBC should decide whether the Treasurer role is primarily a governance role, an operational bookkeeping role, or a combined role during an interim period.
+Needs Bylaw Review: KBC should decide whether the Treasurer role is primarily a governance role, an operational bookkeeping role, or a combined role during an interim period only after checking KBC Constitution and Bylaws, elected officer requirements, and church practice.
 
 ## Qualifications
 
@@ -57,3 +57,4 @@ Needs Review: KBC should decide whether the Treasurer role is primarily a govern
 - Works closely with the Finance Committee.
 - Coordinates with Pastor, Deacons, Personnel Committee, and Bookkeeper / Financial Administrator as appropriate.
 
+Final approval path to be confirmed by church leadership, bylaws, and church practice before changing elected Treasurer duties, election process, term, bonding, or reporting expectations.

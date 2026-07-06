@@ -77,5 +77,8 @@ This role is operational. It does not replace the governance responsibilities of
 - Employment or volunteer-role oversight: Personnel Committee or other assigned supervisor, TBD.
 - Evaluation process: TBD.
 
-Needs Review: Final reporting line, paid/volunteer status, compensation, time expectations, and approval path must be confirmed before adoption.
+Needs Personnel Review: Final title, reporting line, paid/volunteer status, time expectations, application process, supervision, and evaluation process must be confirmed by Personnel Committee before use.
 
+Needs Finance Review: Finance Committee should confirm financial duties, access, controls, software responsibilities, and budget impact before this role is finalized.
+
+Needs Bylaw Review: Creation of a paid role, compensation, budget impact, and final approval path should be checked against KBC Constitution and Bylaws and church practice before adoption.

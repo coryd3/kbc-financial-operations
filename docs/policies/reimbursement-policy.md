@@ -65,5 +65,6 @@ Each reimbursement request should include:
 4. Treasurer or assigned reviewer checks documentation and policy compliance.
 5. Finance Committee reviews reimbursement activity as part of monthly financial review.
 
-Needs Review: Finance Committee should set dollar thresholds, approval roles, timing, and any exceptions before adoption.
+Needs Finance Review: Finance Committee should set dollar thresholds, approval roles, timing, documentation requirements, and any exceptions before adoption.
 
+Needs Bylaw Review: Reimbursement thresholds, spending authority, and church vote triggers should be checked against KBC Constitution and Bylaws, budget requirements, and church practice.

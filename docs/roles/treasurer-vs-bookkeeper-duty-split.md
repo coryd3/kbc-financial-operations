@@ -119,4 +119,8 @@ Note: The approved Treasurer job description uses "Stewardship Committee" in one
 5. Choose payroll/accounting vendor responsibilities before assigning payroll compliance to a volunteer.
 6. Adopt policies for reimbursement, spending authority, card/payment controls, offering/deposits, monthly review, and audit/review.
 
-Needs Review: This split should be reviewed by Finance Committee, Personnel Committee, Nominating Committee, Pastor, Deacons, and any professional advisor needed for payroll, tax, accounting, or legal questions.
+Needs Committee Review: This split should be reviewed by Finance Committee, Personnel Committee, Nominating Committee, Pastor, and Deacons before being treated as a recommendation.
+
+Needs Bylaw Review: Treasurer duties, election, replacement, bonding, officer accountability, creation of a paid Bookkeeper / Financial Administrator role, compensation, and church vote requirements should be checked against KBC Constitution and Bylaws and church practice.
+
+Needs Professional Review: Payroll, tax, accounting, employment, and legal questions should be reviewed by the appropriate qualified advisor before final assignment.

@@ -2,7 +2,9 @@
 
 Purpose: 10-slide church business meeting presentation outline.
 
-Status: Draft for congregational presentation
+Status: Draft
+
+Final approval path to be confirmed by church leadership, bylaws, and church practice before any recommendation is presented for church action.
 
 ## Slide 1: Strengthening KBC Financial Operations
 

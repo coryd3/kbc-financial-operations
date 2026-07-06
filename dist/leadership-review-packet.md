@@ -205,4 +205,4 @@ This appendix provides a more detailed working matrix for leadership and committ
 | Emergency spending | Helps confirm need, documentation, and after-the-fact review. | Processes only after emergency approval is documented. | Finance Committee defines emergency authority and reviews after the fact; Pastor or Deacons may authorize within policy if delay would cause harm or prevent urgent ministry need. | Congregation receives report or votes afterward if required. |
 | Business meeting financial report | Presents or helps present report and answer questions. | Prepares supporting packet if assigned. | Finance Committee reviews report before presentation; Pastor and Deacons support communication where appropriate. | Congregation receives, discusses, and votes on items requiring action. |
 
-Needs Review: Confirm each ownership area with KBC bylaws, committee charters, and church practice.
+Needs Bylaw Review: Confirm each ownership area with KBC Constitution and Bylaws, committee charters, and church practice before treating this appendix as authoritative.

@@ -70,7 +70,7 @@ Bookkeeper / Financial Administrator should focus on:
 - Supporting bank reconciliation and monthly close.
 - Tracking missing receipts, unclear transactions, and documentation issues.
 
-Needs Review: Bylaws should be checked before finalizing any change to Treasurer responsibilities.
+Needs Bylaw Review: Bylaws should be checked before finalizing any change to Treasurer responsibilities.
 
 ## 6. Responsibility Matrix Summary
 
@@ -128,7 +128,7 @@ These items may require church approval depending on bylaws, budget, and church 
 - Major purchases, debt, or long-term commitments.
 - Any bylaw-related change to officer responsibilities.
 
-Needs Review: Leadership should confirm the approval path before presenting recommendations.
+Needs Bylaw Review: Leadership should confirm the approval path before presenting recommendations.
 
 ## 10. Recommended 30/60/90 Day Roadmap
 
@@ -191,4 +191,4 @@ Goal: Begin implementation of approved direction.
 
 Leadership should review this packet, confirm the right committee review order, and decide which questions need to be answered before anything is presented to the church for action.
 
-Needs Review: This packet is a leadership summary only. It is not a final policy, job approval, budget approval, software recommendation, or church motion.
+Needs Committee Review: This packet is a leadership summary only. It is not a final policy, job approval, budget approval, software recommendation, or church motion.

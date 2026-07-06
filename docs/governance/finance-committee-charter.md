@@ -68,5 +68,4 @@ The Finance Committee should define:
 - What summary is presented at church business meetings.
 - Which items require formal motion or church vote.
 
-Needs Review: Final committee authority, reporting lines, and voting requirements should be checked against KBC bylaws and church practice.
-
+Needs Bylaw Review: Final committee authority, reporting lines, policy authority, software contract authority, budget authority, and voting requirements should be checked against KBC Constitution and Bylaws and church practice before adoption.

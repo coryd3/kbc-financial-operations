@@ -196,7 +196,7 @@ Preferred:
 - Employment or volunteer-role oversight: Personnel Committee or other assigned supervisor, TBD.
 - Evaluation process: TBD.
 
-Needs Review: Final reporting line, paid/volunteer status, compensation, time expectations, and approval path must be confirmed before adoption.
+Needs Personnel Review: Final reporting line, paid/volunteer status, compensation, time expectations, and approval path must be confirmed before adoption.
 
 ## Draft Bookkeeper Application
 
@@ -224,7 +224,7 @@ Key screening questions currently included:
 
 Full draft: `docs/roles/bookkeeper-job-application.md`
 
-Needs Review: Personnel Committee should decide whether to add background-check consent language, membership/attendance expectations, compensation expectations, conflict-of-interest language, or financial confidentiality acknowledgment.
+Needs Personnel Review: Personnel Committee should decide whether to add background-check consent language, membership/attendance expectations, compensation expectations, conflict-of-interest language, or financial confidentiality acknowledgment.
 
 ## Recommendations To Finance Committee
 
@@ -296,4 +296,4 @@ Recommended requests for Finance Committee direction:
 5. Decide what questions need Finance Committee direction before Personnel can finalize hiring materials.
 6. Approve a recommendation to Finance Committee, if appropriate.
 
-Needs Review: This packet is a working draft for Personnel Committee discussion. It should not be treated as final policy, job approval, compensation approval, or church authorization.
+Needs Personnel Review: This packet is a working draft for Personnel Committee discussion. It should not be treated as final policy, job approval, compensation approval, or church authorization.

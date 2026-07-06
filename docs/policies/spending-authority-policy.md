@@ -35,5 +35,6 @@ Dollar amounts are placeholders until reviewed by the Finance Committee.
 
 The Finance Committee should review this policy at least annually or when budget practice changes.
 
-Needs Review: Dollar thresholds, approval roles, and church vote triggers must be confirmed by Finance Committee and checked against KBC bylaws.
+Needs Finance Review: Dollar thresholds, approval roles, emergency authority, contract authority, and review cadence must be confirmed by Finance Committee before adoption.
 
+Needs Bylaw Review: Church vote triggers and final approval path must be checked against KBC Constitution and Bylaws, budget requirements, and church practice.

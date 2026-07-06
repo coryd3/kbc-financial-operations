@@ -19,3 +19,4 @@ Define temporary coverage expectations when the treasurer role is vacant, transi
 - Expected end date:
 - Review date:
 
+Needs Bylaw Review: Interim Treasurer appointment authority, term, duties, reporting expectations, signing authority, and replacement process should be confirmed against KBC Constitution and Bylaws before final approval.

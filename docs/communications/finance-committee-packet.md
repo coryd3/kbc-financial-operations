@@ -86,7 +86,7 @@ Finance Committee should define requirements before comparing ChurchTrac, IconCM
 - What training is needed for Treasurer, Bookkeeper, Pastor, Finance Committee, and ministry leaders?
 - What is the target go-live date?
 
-Needs Review: Finance Committee should approve software requirements before demos or vendor selection.
+Needs Finance Review: Finance Committee should approve software requirements before demos or vendor selection.
 
 ## Reimbursement Policy Questions
 
@@ -106,7 +106,7 @@ Finance Committee should answer:
 - How will reimbursement activity be reviewed monthly?
 - What happens if someone repeatedly submits late, incomplete, or undocumented requests?
 
-Needs Review: Finance Committee should set approval roles, submission deadlines, thresholds, and exceptions.
+Needs Finance Review: Finance Committee should set approval roles, submission deadlines, thresholds, and exceptions.
 
 ## Spending Authority Questions
 
@@ -126,7 +126,7 @@ Finance Committee should answer:
 - How quickly must emergency spending be reported back to Finance Committee?
 - How will outside-budget spending be documented in monthly reports?
 
-Needs Review: Spending thresholds must be checked against KBC bylaws, budget practice, and church vote requirements.
+Needs Bylaw Review: Spending thresholds must be checked against KBC Constitution and Bylaws, budget practice, and church vote requirements.
 
 ## Credit Card / Debit Card Questions
 
@@ -147,7 +147,7 @@ Finance Committee should answer:
 - Who can suspend or revoke card access?
 - What happens when a cardholder changes roles or leaves the role?
 
-Needs Review: Card policy should reduce risk, connect each purchase to a responsible person, and make monthly review easier.
+Needs Finance Review: Card policy should reduce risk, connect each purchase to a responsible person, and make monthly review easier.
 
 ## Budget Impact Questions
 
@@ -185,7 +185,7 @@ Finance Committee should identify the budget impact of each proposed change befo
 - Will audit/review expectations require outside professional fees?
 - Are there insurance, bonding, or background-check costs connected to Treasurer or Bookkeeper duties?
 
-Needs Review: Finance Committee should identify which budget impacts can be handled within existing budget and which require Deacon or congregational review.
+Needs Finance Review: Finance Committee should identify which budget impacts can be handled within existing budget and which require Deacon or congregational review.
 
 ## Proposed Monthly Review Rhythm
 
@@ -230,7 +230,7 @@ Monthly financial review should become a predictable rhythm rather than an occas
 - Are any policy changes needed?
 - What should be reported to Deacons or congregation?
 
-Needs Review: Finance Committee should decide the monthly review cadence, packet format, meeting owner, report recipients, and follow-up process.
+Needs Finance Review: Finance Committee should decide the monthly review cadence, packet format, meeting owner, report recipients, and follow-up process.
 
 ## Recommended Finance Committee Actions
 
@@ -243,4 +243,4 @@ Needs Review: Finance Committee should decide the monthly review cadence, packet
 7. Identify budget impact for bookkeeping support, software, and outside payroll/accounting support.
 8. Decide which items require Deacon review, church vote, CPA/accounting review, or bylaw review.
 
-Needs Review: This packet is a working draft for Finance Committee discussion. It should not be treated as final policy, budget approval, software selection, or church authorization.
+Needs Finance Review: This packet is a working draft for Finance Committee discussion. It should not be treated as final policy, budget approval, software selection, or church authorization.

@@ -26,7 +26,7 @@ Potential cardholders:
 - Ministry leaders: TBD.
 - Other approved staff or volunteers: TBD.
 
-Needs Review: Finance Committee should decide who may receive cards and whether cards are credit cards, controlled debit cards, prepaid cards, software-based virtual cards, or another method.
+Needs Finance Review: Finance Committee should decide who may receive cards and whether cards are credit cards, controlled debit cards, prepaid cards, software-based virtual cards, or another method.
 
 ## Spending Limits
 
@@ -88,5 +88,6 @@ Card access may be suspended or revoked if:
 - The cardholder leaves the role requiring access.
 - The Finance Committee, Treasurer, Pastor, or assigned supervisor identifies a control concern.
 
-Needs Review: Final authority to issue, suspend, revoke, and review cards should be approved by Finance Committee and checked against church policy.
+Needs Finance Review: Finance Committee should recommend cardholder eligibility, issuance, suspension, revocation, review process, and controls before adoption.
 
+Needs Bylaw Review: Cardholder authority, spending limits, reimbursement interaction, and church vote triggers should be checked against KBC Constitution and Bylaws, budget requirements, and church practice.

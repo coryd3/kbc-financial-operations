@@ -16,4 +16,4 @@ The church is also beginning to evaluate financial software options that may hel
 
 Any future recommendation will come back through the proper committee process. If a church vote is needed for a role, budget item, software decision, or policy change, that will be brought to the church before final action is taken.
 
-Needs Review: This summary should be reviewed by Pastor, Deacons, Finance Committee, and Personnel Committee before presentation to the congregation.
+Needs Committee Review: This summary should be reviewed by Pastor, Deacons, Finance Committee, and Personnel Committee before presentation to the congregation.
