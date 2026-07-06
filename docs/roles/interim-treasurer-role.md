@@ -1,0 +1,21 @@
+# Interim Treasurer Role
+
+Status: Draft
+
+## Purpose
+
+Define temporary coverage expectations when the treasurer role is vacant, transitioning, or temporarily unavailable.
+
+## Responsibilities
+
+- Maintain minimum required financial oversight.
+- Ensure recurring obligations are paid.
+- Review reconciliations and reports.
+- Communicate urgent issues to the finance committee.
+
+## Term
+
+- Start date:
+- Expected end date:
+- Review date:
+

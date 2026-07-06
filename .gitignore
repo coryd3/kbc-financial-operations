@@ -1,0 +1,23 @@
+# OS and editor noise
+.DS_Store
+Thumbs.db
+desktop.ini
+*.swp
+*.swo
+
+# Office temporary files
+~$*
+*.tmp
+
+# Python/tooling cache
+__pycache__/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+coverage/
+
+# Local-only scratch space
+.local/
+scratch/
+
