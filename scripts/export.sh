@@ -6,12 +6,15 @@ REPO_ROOT="$(cd "${SCRIPT_DIR}/.." && pwd)"
 cd "${REPO_ROOT}"
 
 EXPORT_DIR="dist/exports"
+WORK_DIR="$(mktemp -d)"
 
 LEADERSHIP_SRC="dist/leadership-review-packet.md"
 SUMMARY_SRC="dist/one-page-congregational-summary.md"
 SLIDES_SRC="dist/congregational-slide-deck.md"
 
 generated_files=()
+
+trap 'rm -rf "${WORK_DIR}"' EXIT
 
 fail() {
   printf '\nExport stopped: %s\n' "$1" >&2
@@ -88,24 +91,43 @@ EOF
   fi
 }
 
+prepare_public_markdown() {
+  local source_file="$1"
+  local prepared_file="${WORK_DIR}/$(basename "${source_file}")"
+
+  grep -Ev '^(Purpose:|Status:)[[:space:]]*' "${source_file}" \
+    | grep -Fv 'Draft for congregational sharing' \
+    > "${prepared_file}"
+
+  printf '%s\n' "${prepared_file}"
+}
+
 export_document() {
   local source_file="$1"
   local output_name="$2"
+  local prepared_file
   local pdf_file="${EXPORT_DIR}/${output_name}.pdf"
   local docx_file="${EXPORT_DIR}/${output_name}.docx"
+  local pdf_options=()
 
   printf 'Exporting %s\n' "${source_file}"
+  prepared_file="$(prepare_public_markdown "${source_file}")"
 
-  pandoc "${source_file}" \
+  pandoc "${prepared_file}" \
     --standalone \
     --from markdown \
     --to docx \
     --output "${docx_file}"
 
-  pandoc "${source_file}" \
+  if [[ "${output_name}" == "one-page-congregational-summary" ]]; then
+    pdf_options+=(--variable "geometry:margin=0.6in" --variable "fontsize=10pt")
+  fi
+
+  pandoc "${prepared_file}" \
     --standalone \
     --from markdown \
     --pdf-engine="${PDF_ENGINE}" \
+    "${pdf_options[@]}" \
     --output "${pdf_file}"
 
   generated_files+=("${pdf_file}" "${docx_file}")
@@ -151,6 +173,9 @@ main() {
   for generated_file in "${generated_files[@]}"; do
     printf '  - %s\n' "${generated_file}"
   done
+
+  printf '\nRunning export validation...\n'
+  "${SCRIPT_DIR}/validate-exports.sh"
 
   printf '\nDone. Markdown files remain the source of truth; exported files are generated review copies.\n'
 }

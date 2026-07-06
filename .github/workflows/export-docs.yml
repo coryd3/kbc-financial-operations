@@ -23,7 +23,7 @@ jobs:
       - name: Install export tools
         run: |
           sudo apt-get update
-          sudo apt-get install -y make pandoc texlive-xetex texlive-latex-recommended texlive-fonts-recommended
+          sudo apt-get install -y make pandoc poppler-utils texlive-xetex texlive-latex-recommended texlive-fonts-recommended unzip
           npm install --global @marp-team/marp-cli
 
       - name: Export documents

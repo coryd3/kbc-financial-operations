@@ -38,6 +38,16 @@ Run this from the repository root:
 make export
 ```
 
+This generates the review files and then validates that the expected files exist and are readable.
+
+Common commands:
+
+```sh
+make export    # generate files and validate them
+make validate  # validate existing files in dist/exports/
+make clean     # remove generated export files
+```
+
 You can also run the script directly:
 
 ```sh
@@ -59,13 +69,36 @@ Required tools:
 - Pandoc for document exports.
 - A Pandoc PDF engine, such as Tectonic, XeLaTeX, LuaLaTeX, pdfLaTeX, Typst, or wkhtmltopdf.
 - Marp CLI for slide exports.
+- `unzip` for validating DOCX and PPTX files.
+- Poppler tools, including `pdfinfo` and `pdftotext`, for PDF page counts and text validation.
 
 Helpful install links:
 
 - Pandoc: `https://pandoc.org/installing.html`
 - Marp CLI: `npm install -g @marp-team/marp-cli`
+- Poppler: install the package that provides `pdfinfo` and `pdftotext`
 
 The export script only exports the selected Markdown files in `dist/`. Do not place confidential church financial data, donor records, payroll details, bank information, applications, or other sensitive material in these distribution files.
+
+## Validating Existing Exports
+
+To validate files already in `dist/exports/`, run:
+
+```sh
+make validate
+```
+
+Validation checks that all six expected files exist, are not zero bytes, have the expected PDF, DOCX, or PPTX structure, meet the page-count expectations, and do not contain internal metadata lines such as `Purpose:`, `Status:`, or `Draft for congregational sharing`.
+
+Validation also scans generated PDFs for obvious text extraction problems such as replacement characters and soft hyphen artifacts. Possible line-break hyphenation is reported as a warning for manual review because it can be hard to detect perfectly.
+
+To remove generated review files, run:
+
+```sh
+make clean
+```
+
+Validation does not replace human review of content, formatting, or confidential information.
 
 ## Working Principles
 
