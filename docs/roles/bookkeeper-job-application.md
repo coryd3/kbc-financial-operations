@@ -166,6 +166,6 @@ Date: __________________________________________________________________________
 
 Needs Personnel Review: Final application language should be reviewed by Personnel Committee before use.
 
-Needs Professional Review: Employment eligibility, background-check, privacy, and authorization language should be reviewed by an appropriate legal, HR, or background-check advisor before use if the role is paid or involves formal screening.
+Needs Professional Review: Employment eligibility, background-check, privacy, and authorization language should be reviewed by an appropriate legal, HR, or background-check advisor before use for this paid role.
 
 Needs Bylaw Review: If this application is used for a paid church role, final approval path, compensation, and church vote requirements should be checked against KBC Constitution and Bylaws and church practice.

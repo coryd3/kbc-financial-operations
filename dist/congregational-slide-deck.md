@@ -197,15 +197,15 @@ The lesson is not that anyone did something wrong. The lesson is that the work h
 ## Proposed Direction
 
 - Treasurer remains an accountable elected role.
-- Bookkeeping support may be considered.
+- Paid bookkeeping support has been authorized.
 - Finance owns financial process.
-- Personnel owns role and hiring process.
+- Personnel owns job description and hiring.
 - Church votes where required.
 
 <!--
 Speaker notes:
 
-The main idea is simple: keep accountability clear, support the routine work appropriately, and let each committee do the part that belongs to it. Any final decision that requires church approval will come back to the church.
+The main idea is simple: keep accountability clear, support the routine work appropriately, and let each committee do the part that belongs to it. The church has already authorized Personnel Committee to hire paid bookkeeping support, and any other decision that requires church approval will still come back to the church.
 -->
 
 ---
@@ -223,7 +223,7 @@ The main idea is simple: keep accountability clear, support the routine work app
 <!--
 Speaker notes:
 
-This is the simplest way to picture the proposed structure. The Treasurer remains accountable. A Bookkeeper or Financial Administrator, if approved, would help with routine records. Finance and Personnel each have their proper lanes, and the congregation votes where required.
+This is the simplest way to picture the proposed structure. The Treasurer remains accountable. The authorized Bookkeeper or Financial Administrator role would help with routine records. Finance and Personnel each have their proper lanes, and the congregation votes where required.
 -->
 
 ---
@@ -245,7 +245,7 @@ This is the simplest way to picture the proposed structure. The Treasurer remain
 </div>
 <div class="card">
 <h3>Roles</h3>
-<p>Review job description and application questions.</p>
+<p>Finalize job description and hiring steps.</p>
 </div>
 <div class="card">
 <h3>Monthly review</h3>
@@ -269,14 +269,14 @@ This work does not have to be solved all at once. We can divide it into practica
 
 - Confirm interim coverage.
 - Document must-do financial tasks.
-- Review Treasurer vs. Bookkeeper split.
-- Finance reviews software and process questions.
-- Personnel reviews role questions.
+- Finalize Bookkeeper job description.
+- Finance confirms duties and controls.
+- Personnel begins the hiring process.
 
 <!--
 Speaker notes:
 
-The next month is about stabilizing and clarifying. Finance should work on financial process questions. Personnel should work on role and hiring questions. Leadership should keep track of what may need bylaw review or a church vote.
+The next month is about stabilizing and moving from authorization to implementation. Finance should confirm financial duties and controls. Personnel should finalize the job description, application, and hiring process. Leadership should keep track of what may still need bylaw review or a church vote.
 -->
 
 ---
@@ -286,14 +286,14 @@ The next month is about stabilizing and clarifying. Finance should work on finan
 <div class="grid two">
 <div class="card"><h3>Prayer</h3><p>For wisdom and unity.</p></div>
 <div class="card"><h3>Patience</h3><p>For a careful process.</p></div>
-<div class="card"><h3>Support</h3><p>For committee work in proper lanes.</p></div>
+<div class="card"><h3>Support</h3><p>For the authorized hiring process.</p></div>
 <div class="card"><h3>Service</h3><p>For willingness to help where needed.</p></div>
 </div>
 
 <!--
 Speaker notes:
 
-We are asking the church to support the process. That means praying, being patient, encouraging unity, and letting the committees do their work. There may also be places where people can serve as needs become clearer.
+We are asking the church to support the process. That means praying, being patient, encouraging unity, and letting Personnel and Finance do their work in the lanes the church has set. There may also be places where people can serve as needs become clearer.
 -->
 
 ---

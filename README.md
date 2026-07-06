@@ -4,7 +4,7 @@
 
 This repository manages Kingsville Baptist Church financial operations modernization documents.
 
-It supports the current Treasurer transition, the review of finance and bookkeeping responsibilities, and the creation of clearer policies, procedures, role descriptions, committee responsibilities, software evaluation materials, and public review documents.
+It supports the current Treasurer transition, the review of finance and bookkeeping responsibilities, the implementation of the paid Bookkeeper / Financial Administrator role already authorized by congregational vote, and the creation of clearer policies, procedures, role descriptions, committee responsibilities, software evaluation materials, and public review documents.
 
 The purpose is not simply to replace one person with another person. The purpose is to build a financial system that is clear, accountable, transferable, and sustainable.
 

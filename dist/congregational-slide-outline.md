@@ -64,7 +64,7 @@ The proposed direction is to keep accountability where it belongs while making t
 
 - Treasurer focuses on accountability and review
 - Treasurer supports reporting to the church
-- Bookkeeper handles routine records if approved
+- Bookkeeper handles routine records under the paid role already authorized
 - Bookkeeper supports reports, reimbursements, and documentation
 
 Speaker notes:
@@ -80,7 +80,7 @@ The Treasurer would not lose responsibility. The distinction is that the Treasur
 
 Speaker notes:
 
-Different parts of this work belong to different groups. Finance should review the financial process. Personnel should review people and role questions. The congregation should vote on matters that require church approval.
+Different parts of this work belong to different groups. Finance should review the financial process. Personnel should finalize the authorized paid Bookkeeper role and hiring process. The congregation should vote on any remaining matters that require church approval.
 
 ## Slide 8: What Comes Next
 

@@ -14,6 +14,8 @@ The Treasurer position is open again. Linda Davis stepped back because the role 
 
 This interim arrangement gives the church time to make a thoughtful plan rather than rushing into another person-dependent model.
 
+The congregation has already voted to give Personnel Committee authority to hire a paid Bookkeeper / Financial Administrator. This project should now help KBC finalize the job description, hiring process, financial duties, controls, and budget implications for that authorized role.
+
 ## Deeper Issue
 
 The vacancy has revealed that KBC's financial operations have historically depended too much on one person's knowledge, memory, and manual process.
@@ -32,11 +34,10 @@ Known concerns include:
 KBC should have a financial operations model where:
 
 - The elected Treasurer / Financial Officer provides governance, accountability, reporting, and coordination with the Finance Committee.
-- A Bookkeeper / Financial Administrator, whether paid or volunteer, handles routine transaction entry, deposits, reimbursements, payroll coordination, reconciliations, and monthly reports.
+- The authorized paid Bookkeeper / Financial Administrator handles routine transaction entry, deposits, reimbursements, payroll coordination, reconciliations, and monthly reports.
 - The Finance Committee owns financial policies, software direction, budget oversight, monthly review, spending authority, reimbursement rules, and controls.
 - The Personnel Committee owns job descriptions, applications, hiring process, compensation recommendations, and evaluations.
 - The Nominating Committee and Congregation are involved where bylaws or church policy require.
 - Procedures are documented clearly enough that the work can continue when people change roles.
 
-Needs Review: Any final recommendation should be reviewed against KBC bylaws and approved through the appropriate committee, leadership, and congregational process.
-
+Needs Committee Review: Any final recommendation should be reviewed against KBC bylaws, the prior congregational authorization, and the appropriate committee, leadership, and congregational process.

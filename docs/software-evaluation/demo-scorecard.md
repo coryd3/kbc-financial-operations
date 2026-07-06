@@ -185,4 +185,4 @@ Use this scorecard during IconCMO and ChurchTrac demos. Do not fill in vendor ca
 - Which system gives KBC the best long-term handoff and documentation support?
 - What questions must be answered before a recommendation can be made?
 
-Needs Review: Finance Committee should set weights before demos and should not make a final software recommendation until cost, controls, reporting, migration, and support questions are answered.
+Needs Finance Review: Finance Committee should set weights before demos and should not make a final software recommendation until cost, controls, reporting, migration, and support questions are answered.

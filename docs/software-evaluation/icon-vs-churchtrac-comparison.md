@@ -38,5 +38,4 @@ Use this template during vendor research and demos. Do not fill in vendor claims
 
 TBD
 
-Needs Review: Finance Committee should approve the final comparison and recommendation.
-
+Needs Finance Review: Finance Committee should approve the final comparison and recommendation.

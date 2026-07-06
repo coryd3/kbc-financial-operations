@@ -48,5 +48,4 @@ KBC should define requirements before selecting ChurchTrac, IconCMO, QuickBooks,
 - What support is available during setup and migration?
 - What is the total annual cost, including add-ons?
 
-Needs Review: Requirements should be approved by the Finance Committee before demos or final selection.
-
+Needs Finance Review: Requirements should be approved by the Finance Committee before demos or final selection.

@@ -118,4 +118,4 @@ The reimbursement section of the monthly Finance Committee packet should include
 - Requests pending approval or documentation.
 - Recommended follow-up items.
 
-Needs Review: Finance Committee should set the `TBD` thresholds, approved approver roles, submission deadline, emergency authority, and missing-receipt approval standard.
+Needs Finance Review: Finance Committee should set the `TBD` thresholds, approved approver roles, submission deadline, emergency authority, and missing-receipt approval standard.

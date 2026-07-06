@@ -130,4 +130,4 @@ The packet should include:
 - Are there any budget concerns that need early attention?
 - Are there any issues that should be communicated to Pastor, Deacons, Personnel Committee, or Congregation?
 
-Needs Review: Finance Committee should confirm the monthly packet format, meeting cadence, approval authority, business meeting reporting expectations, and who maintains this checklist.
+Needs Finance Review: Finance Committee should confirm the monthly packet format, meeting cadence, approval authority, business meeting reporting expectations, and who maintains this checklist.

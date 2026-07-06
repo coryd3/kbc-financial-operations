@@ -4,11 +4,12 @@ Status: Draft
 
 ## Personnel Committee
 
-- Should KBC create a Bookkeeper / Financial Administrator role, and should it be volunteer, paid staff, contractor, or stipend-based?
+- What exact vote date, motion language, compensation or budget limits, and conditions apply to the congregational authorization for Personnel Committee to hire a paid Bookkeeper / Financial Administrator?
 - What qualifications should be required for bookkeeping or financial administration work?
-- Who should supervise or evaluate a paid Bookkeeper / Financial Administrator?
+- Should the paid Bookkeeper / Financial Administrator be employee, contractor, stipend-based, or another approved classification?
+- Who should supervise or evaluate the paid Bookkeeper / Financial Administrator?
 - What application, interview, reference, and background-check process should apply?
-- What compensation range or stipend should be recommended, if any?
+- What compensation range, hours, and start date should be recommended within the authority granted by the congregation?
 
 ## Finance Committee
 
@@ -39,11 +40,10 @@ Status: Draft
 ## Congregation
 
 - Which decisions require a church vote?
-- Does creating or funding a bookkeeping role require congregational approval?
+- Does any proposed Bookkeeper compensation, hours, budget impact, or classification exceed the prior congregational authorization?
 - Do any policies require adoption at a business meeting?
 
 ## Professional Review
 
 - What items need review by a CPA, attorney, payroll provider, or insurance provider?
 - Are there legal, tax, employment, or accounting constraints before final approval?
-

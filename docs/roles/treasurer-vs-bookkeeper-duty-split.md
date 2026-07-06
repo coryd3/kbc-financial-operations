@@ -8,6 +8,8 @@ This document compares the current approved Treasurer job description with the p
 
 The goal is not to remove accountability from the elected Treasurer. The goal is to separate governance, review, and church accountability from routine bookkeeping operations so KBC's financial work is clear, transferable, and sustainable.
 
+Context: The congregation has already voted to give Personnel Committee authority to hire a paid Bookkeeper / Financial Administrator. This document should help define what that authorized role should do and what should remain with the Treasurer, Finance Committee, Personnel Committee, and any outside vendor.
+
 ## Sources Reviewed
 
 - `source-materials/existing-job-descriptions/final-approved/KBC_Treasurer_Job_Description_Rev_Nov2025.pdf`
@@ -25,7 +27,7 @@ Note: The approved Treasurer job description uses "Stewardship Committee" in one
 | Elected Treasurer / Financial Officer | Governance, accountability, review, reporting, and church trust. | Oversight of financial integrity, report review/presentation, policy compliance, audit coordination, liaison with Finance Committee and outside providers. | All routine transaction entry, payroll filings, contribution entry, card administration, and recordkeeping by default. |
 | Bookkeeper / Financial Administrator | Day-to-day financial operations. | Transaction entry, deposits documentation, reimbursement processing, bill/payment preparation, report packet preparation, records organization, software workflow, reconciliation support. | Final financial policy authority, committee decisions, audit scope, budget approval, or elected officer accountability. |
 | Finance Committee | Financial governance and controls. | Budget oversight, software selection, financial policies, spending authority, reimbursement rules, credit card policy, monthly review, audit/review process. | Personnel hiring process or employment evaluation details. |
-| Personnel Committee | Role definition, hiring, compensation recommendation, and evaluation process. | Job descriptions, applications, interviews, background-check process, compensation recommendation, evaluation framework. | Financial software, spending authority, reimbursement rules, or financial controls. |
+| Personnel Committee | Role definition, hiring, compensation recommendation, and evaluation process for the authorized paid Bookkeeper role. | Job descriptions, applications, interviews, background-check process, compensation recommendation, evaluation framework. | Financial software, spending authority, reimbursement rules, or financial controls. |
 | Outside Payroll / Accounting Vendor | Specialized processing, filings, and professional support. | Payroll processing, W-2/1099 preparation, payroll tax filings, accounting support, audit/review support, compliance guidance as contracted. | Church governance decisions, budget approval, spending authorization, or committee accountability. |
 
 ## Duty Split Table
@@ -95,9 +97,9 @@ Note: The approved Treasurer job description uses "Stewardship Committee" in one
 ## Duties That Should Belong To Personnel Committee
 
 - Maintain role descriptions and job descriptions.
-- Lead hiring process for any paid or volunteer Bookkeeper / Financial Administrator role.
+- Lead hiring process for the paid Bookkeeper / Financial Administrator role authorized by congregational vote.
 - Manage applications, interviews, references, background-check process, and evaluation process.
-- Recommend compensation or stipend structure if a bookkeeping role is paid.
+- Recommend compensation, hours, and classification for the authorized paid bookkeeping role.
 - Administer or coordinate evaluation framework where appropriate.
 - Consult with Finance Committee on financial duties, controls, and budget impact without taking over Finance Committee decisions.
 
@@ -115,12 +117,12 @@ Note: The approved Treasurer job description uses "Stewardship Committee" in one
 1. Confirm bylaw requirements for Treasurer duties, election, bonding, and church reporting.
 2. Have Finance Committee approve the financial duty split in principle.
 3. Have Personnel Committee update job descriptions based on Finance Committee's financial-control requirements.
-4. Decide whether the Bookkeeper / Financial Administrator role is paid, volunteer, contractor, staff, or interim support.
+4. Record the congregational vote authorizing Personnel Committee to hire a paid Bookkeeper / Financial Administrator, including date, motion language, and any limits.
 5. Choose payroll/accounting vendor responsibilities before assigning payroll compliance to a volunteer.
 6. Adopt policies for reimbursement, spending authority, card/payment controls, offering/deposits, monthly review, and audit/review.
 
 Needs Committee Review: This split should be reviewed by Finance Committee, Personnel Committee, Nominating Committee, Pastor, and Deacons before being treated as a recommendation.
 
-Needs Bylaw Review: Treasurer duties, election, replacement, bonding, officer accountability, creation of a paid Bookkeeper / Financial Administrator role, compensation, and church vote requirements should be checked against KBC Constitution and Bylaws and church practice.
+Needs Bylaw Review: Treasurer duties, election, replacement, bonding, officer accountability, the scope of the prior paid Bookkeeper authorization, compensation, and remaining church vote requirements should be checked against KBC Constitution and Bylaws and church practice.
 
 Needs Professional Review: Payroll, tax, accounting, employment, and legal questions should be reviewed by the appropriate qualified advisor before final assignment.

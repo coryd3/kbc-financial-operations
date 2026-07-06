@@ -8,7 +8,7 @@ This draft frames a recommendation from the Personnel Committee to the Finance C
 
 ## Draft Recommendation
 
-The Personnel Committee believes the current Treasurer vacancy has revealed broader financial operations needs. We recommend that the Finance Committee evaluate and provide direction on financial software, reimbursement procedures, spending authority, credit/debit card use, monthly financial review, compensation for bookkeeping work, and the long-term division of responsibilities between the Treasurer, Bookkeeper, and Finance Committee.
+The Personnel Committee recognizes that the congregation has authorized Personnel Committee to hire a paid Bookkeeper / Financial Administrator. Before finalizing the job description and hiring process, we recommend that the Finance Committee evaluate and provide direction on financial software, reimbursement procedures, spending authority, credit/debit card use, monthly financial review, budget impact, and the long-term division of responsibilities between the Treasurer, Bookkeeper, and Finance Committee.
 
 ## Rationale
 
@@ -22,8 +22,8 @@ The Personnel Committee can help by:
 
 - Drafting job descriptions.
 - Preparing application and interview materials.
-- Recommending compensation options if a paid role is considered.
-- Supporting an evaluation process for any paid or volunteer operational role.
+- Recommending compensation, hours, and classification for the authorized paid role.
+- Supporting an evaluation process for the operational role.
 
 ## Finance Committee Scope
 
@@ -40,8 +40,8 @@ The Finance Committee should provide direction on:
 
 ## Requested Action
 
-The Personnel Committee requests that the Finance Committee review these financial operations questions and provide direction before final job descriptions, applications, compensation recommendations, or church motions are finalized.
+The Personnel Committee requests that the Finance Committee review these financial operations questions and provide direction before final job descriptions, applications, compensation recommendations, or hiring action are finalized.
 
 Needs Personnel Review: This recommendation should be reviewed by Personnel Committee before sending to Finance Committee.
 
-Needs Bylaw Review: Any recommendation involving an elected Treasurer / Financial Officer, creation of a paid Bookkeeper / Financial Administrator role, compensation, budget impact, or church motion should have its final approval path confirmed by church leadership, KBC Constitution and Bylaws, and church practice.
+Needs Bylaw Review: Any recommendation involving an elected Treasurer / Financial Officer, compensation, budget impact beyond the prior authorization, or church motion should have its final approval path confirmed by church leadership, KBC Constitution and Bylaws, and church practice.

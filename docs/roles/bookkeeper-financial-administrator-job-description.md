@@ -6,6 +6,8 @@ Status: Draft
 
 The Bookkeeper / Financial Administrator supports the day-to-day financial operations of Kingsville Baptist Church. This role helps maintain accurate records, process routine transactions, support financial reporting, and keep documentation organized according to church policy.
 
+The congregation has authorized Personnel Committee to hire this as a paid role. The exact vote date, motion language, compensation limits, and budget authority should be recorded in the decision log before final hiring action.
+
 This role is operational. It does not replace the governance responsibilities of the Treasurer or Finance Committee.
 
 ## Primary Duties
@@ -74,11 +76,11 @@ This role is operational. It does not replace the governance responsibilities of
 
 - Reports to: TBD.
 - Financial workflow oversight: Finance Committee and Treasurer / Financial Officer.
-- Employment or volunteer-role oversight: Personnel Committee or other assigned supervisor, TBD.
+- Employment oversight: Personnel Committee or other assigned supervisor, TBD.
 - Evaluation process: TBD.
 
-Needs Personnel Review: Final title, reporting line, paid/volunteer status, time expectations, application process, supervision, and evaluation process must be confirmed by Personnel Committee before use.
+Needs Personnel Review: Final title, reporting line, employment classification, compensation, time expectations, application process, supervision, evaluation process, and hiring timeline must be confirmed by Personnel Committee before use.
 
 Needs Finance Review: Finance Committee should confirm financial duties, access, controls, software responsibilities, and budget impact before this role is finalized.
 
-Needs Bylaw Review: Creation of a paid role, compensation, budget impact, and final approval path should be checked against KBC Constitution and Bylaws and church practice before adoption.
+Needs Bylaw Review: The congregational authorization for this paid role should be documented with vote date, motion language, compensation or budget limits, and final approval path before hiring is completed.
