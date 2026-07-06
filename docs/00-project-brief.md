@@ -4,36 +4,39 @@ Status: Draft
 
 ## Purpose
 
-Organize and modernize Kingsville Baptist Church financial operations documents, roles, policies, procedures, and software decision materials.
+This project organizes and modernizes Kingsville Baptist Church financial operations documentation during a Treasurer transition.
 
-## Outcomes
+The goal is not simply to replace one Treasurer with another Treasurer. The goal is to build a financial operations structure that is clear, accountable, transferable, sustainable, and easier for future volunteers or paid staff to follow.
 
-- Clarify the governance role of the treasurer and finance committee.
-- Define the operational bookkeeping and financial administration role.
-- Establish repeatable finance policies and procedures.
-- Evaluate financial/church management software against actual requirements.
-- Prepare committee and church communication materials for recommendations and motions.
+## Current Situation
 
-## Scope
+The Treasurer position is open again. Linda Davis stepped back because the role had become too much. Linda McConville, a former long-time Treasurer, has agreed to step in temporarily as interim Treasurer to help maintain continuity.
 
-Included:
+This interim arrangement gives the church time to make a thoughtful plan rather than rushing into another person-dependent model.
 
-- Finance committee governance and monthly review.
-- Treasurer and bookkeeper/financial administrator roles.
-- Spending authority, reimbursement, credit card, offering/deposit, close, reporting, and audit/review policies.
-- Software evaluation and implementation planning.
-- Committee recommendation and church business meeting communication.
+## Deeper Issue
 
-Out of scope unless later added:
+The vacancy has revealed that KBC's financial operations have historically depended too much on one person's knowledge, memory, and manual process.
 
-- Donor record migration details.
-- Payroll provider contract negotiation.
-- Broader personnel committee reorganization unrelated to finance.
-- Sensitive applicant, reference, or payroll records.
+Known concerns include:
 
-## Current Working Assumptions
+- The Treasurer role has become too broad.
+- Governance and day-to-day bookkeeping are mixed together.
+- The Finance Committee needs clearer ownership of financial systems, controls, and monthly review.
+- Written policies and procedures are incomplete or scattered.
+- Software may help, but software will not fix unclear responsibilities.
+- The system needs to be easier to hand off to future volunteers or paid staff.
 
-- The repository should remain private.
-- Source materials are reference copies, not the final authoritative policy set.
-- Markdown documents under `docs/` are the active drafting location.
+## Desired Future State
+
+KBC should have a financial operations model where:
+
+- The elected Treasurer / Financial Officer provides governance, accountability, reporting, and coordination with the Finance Committee.
+- A Bookkeeper / Financial Administrator, whether paid or volunteer, handles routine transaction entry, deposits, reimbursements, payroll coordination, reconciliations, and monthly reports.
+- The Finance Committee owns financial policies, software direction, budget oversight, monthly review, spending authority, reimbursement rules, and controls.
+- The Personnel Committee owns job descriptions, applications, hiring process, compensation recommendations, and evaluations.
+- The Nominating Committee and Congregation are involved where bylaws or church policy require.
+- Procedures are documented clearly enough that the work can continue when people change roles.
+
+Needs Review: Any final recommendation should be reviewed against KBC bylaws and approved through the appropriate committee, leadership, and congregational process.
 

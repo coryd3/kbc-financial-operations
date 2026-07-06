@@ -1,23 +1,59 @@
-# Treasurer Governance Role
+# Treasurer / Financial Officer Governance Role
 
 Status: Draft
 
 ## Purpose
 
-Define the treasurer as a governance and oversight role rather than the only operational finance worker, unless church policy states otherwise.
+The Treasurer / Financial Officer is an elected church officer who helps ensure that KBC's financial records, reports, controls, and accountability practices are maintained faithfully and transparently.
 
-## Core Duties
+This role should be focused on governance, accountability, reporting, and coordination with the Finance Committee. Day-to-day bookkeeping may be performed by the Treasurer only if the church chooses that model; otherwise those tasks may be assigned to a Bookkeeper / Financial Administrator.
 
-- Provide financial oversight.
-- Review reports and reconciliations.
-- Support budget and policy development.
-- Report to the finance committee and church as required.
-- Ensure controls are followed.
+## Core Responsibilities
 
-## Boundaries
+- Work with the Finance Committee to maintain financial accountability and stewardship.
+- Review financial reports, reconciliations, and supporting documentation.
+- Help ensure that spending, reimbursements, deposits, payroll coordination, and reporting follow approved policies.
+- Present or support financial reporting to the church as required.
+- Help prepare for audits, financial reviews, or outside accounting support.
+- Ensure that financial records are organized and transferable.
+- Coordinate with the Bookkeeper / Financial Administrator if that role exists.
+- Communicate exceptions, concerns, or needed decisions to the Finance Committee.
 
-- Operational bookkeeping:
-- Software administration:
-- Payroll processing:
-- Spending approval:
+## Governance Duties
+
+- Confirm that monthly financial review is completed.
+- Review budget-to-actual reports and significant variances.
+- Review bank reconciliations and restricted/designated fund balances.
+- Confirm that documentation exists for expenses and reimbursements.
+- Confirm that financial policies are being followed.
+- Support clear reporting to church leadership and business meetings.
+
+## Optional Operational Duties
+
+The Treasurer may perform some or all routine bookkeeping tasks only if KBC intentionally assigns those duties to the role.
+
+Possible operational duties, if assigned:
+
+- Transaction entry.
+- Deposit records.
+- Bill payment preparation.
+- Reimbursement processing.
+- Payroll coordination.
+- Monthly report preparation.
+
+Needs Review: KBC should decide whether the Treasurer role is primarily a governance role, an operational bookkeeping role, or a combined role during an interim period.
+
+## Qualifications
+
+- Trustworthy and committed to the church's stewardship.
+- Able to handle confidential financial information with care.
+- Comfortable reviewing financial reports and asking clarifying questions.
+- Willing to work with the Finance Committee and follow approved policies.
+- Able to communicate financial matters clearly and calmly.
+
+## Accountability
+
+- Accountable to the church according to bylaws and church practice.
+- Works closely with the Finance Committee.
+- Coordinates with Pastor, Deacons, Personnel Committee, and Bookkeeper / Financial Administrator as appropriate.
 
