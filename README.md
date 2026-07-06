@@ -67,16 +67,19 @@ Required tools:
 
 - Bash and Make.
 - Pandoc for document exports.
-- A Pandoc PDF engine, such as Tectonic, XeLaTeX, LuaLaTeX, pdfLaTeX, Typst, or wkhtmltopdf.
+- LibreOffice for converting document DOCX files to polished PDFs.
 - Marp CLI for slide exports.
-- `unzip` for validating DOCX and PPTX files.
+- `zip`, `unzip`, and `perl` for light DOCX cleanup before PDF conversion.
 - Poppler tools, including `pdfinfo` and `pdftotext`, for PDF page counts and text validation.
 
 Helpful install links:
 
 - Pandoc: `https://pandoc.org/installing.html`
+- LibreOffice: `https://www.libreoffice.org/download/download-libreoffice/`
 - Marp CLI: `npm install -g @marp-team/marp-cli`
 - Poppler: install the package that provides `pdfinfo` and `pdftotext`
+
+The leadership packet and one-page summary are exported to DOCX with Pandoc, lightly cleaned for margins, font, table behavior, and hyphenation settings, then converted to PDF with LibreOffice. The slide deck is exported with Marp CLI.
 
 The export script only exports the selected Markdown files in `dist/`. Do not place confidential church financial data, donor records, payroll details, bank information, applications, or other sensitive material in these distribution files.
 

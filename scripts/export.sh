@@ -29,12 +29,12 @@ check_source() {
   fi
 }
 
-find_pdf_engine() {
-  local engine
+find_libreoffice() {
+  local command_name
 
-  for engine in tectonic xelatex lualatex pdflatex typst wkhtmltopdf; do
-    if command -v "${engine}" >/dev/null 2>&1; then
-      printf '%s\n' "${engine}"
+  for command_name in soffice libreoffice; do
+    if command -v "${command_name}" >/dev/null 2>&1; then
+      printf '%s\n' "${command_name}"
       return 0
     fi
   done
@@ -53,6 +53,31 @@ check_tools() {
     missing+=("marp")
   fi
 
+  if ! command -v unzip >/dev/null 2>&1; then
+    missing+=("unzip")
+  fi
+
+  if ! command -v zip >/dev/null 2>&1; then
+    missing+=("zip")
+  fi
+
+  if ! command -v perl >/dev/null 2>&1; then
+    missing+=("perl")
+  fi
+
+  if ! command -v pdfinfo >/dev/null 2>&1; then
+    missing+=("pdfinfo")
+  fi
+
+  if ! command -v pdftotext >/dev/null 2>&1; then
+    missing+=("pdftotext")
+  fi
+
+  LIBREOFFICE_CMD="$(find_libreoffice || true)"
+  if [[ -z "${LIBREOFFICE_CMD}" ]]; then
+    missing+=("LibreOffice")
+  fi
+
   if (( ${#missing[@]} > 0 )); then
     cat >&2 <<'EOF'
 
@@ -60,33 +85,16 @@ Export tools are missing.
 
 Please install:
   - Pandoc: https://pandoc.org/installing.html
+  - LibreOffice: https://www.libreoffice.org/download/download-libreoffice/
   - Marp CLI: npm install -g @marp-team/marp-cli
-
-For PDF exports from Pandoc, also install one PDF engine:
-  - Tectonic, XeLaTeX, LuaLaTeX, pdfLaTeX, Typst, or wkhtmltopdf
+  - Poppler tools: pdfinfo and pdftotext
+  - zip, unzip, and perl
 
 After installing the tools, run:
   make export
 
 EOF
     printf 'Missing command(s): %s\n' "${missing[*]}" >&2
-    exit 1
-  fi
-
-  PDF_ENGINE="$(find_pdf_engine || true)"
-
-  if [[ -z "${PDF_ENGINE}" ]]; then
-    cat >&2 <<'EOF'
-
-Pandoc is installed, but no PDF engine was found.
-
-Please install one PDF engine:
-  - Tectonic, XeLaTeX, LuaLaTeX, pdfLaTeX, Typst, or wkhtmltopdf
-
-Then run:
-  make export
-
-EOF
     exit 1
   fi
 }
@@ -102,13 +110,90 @@ prepare_public_markdown() {
   printf '%s\n' "${prepared_file}"
 }
 
+polish_docx() {
+  local docx_file="$1"
+  local output_name="$2"
+  local docx_dir="${WORK_DIR}/docx-${output_name}"
+  local rebuilt_docx="${WORK_DIR}/${output_name}.docx"
+  local font_size="22"
+  local margin="1080"
+
+  if [[ "${output_name}" == "one-page-congregational-summary" ]]; then
+    font_size="20"
+    margin="720"
+  fi
+
+  rm -rf "${docx_dir}"
+  mkdir -p "${docx_dir}"
+
+  unzip -q "${docx_file}" -d "${docx_dir}" \
+    || fail "Could not open generated DOCX for polishing: ${docx_file}"
+
+  if [[ -f "${docx_dir}/word/settings.xml" ]]; then
+    perl -0pi -e '
+      if (/<w:autoHyphenation\b[^>]*\/>/) {
+        s/<w:autoHyphenation\b[^>]*\/>/<w:autoHyphenation w:val="false"\/>/g;
+      } else {
+        s#</w:settings>#<w:autoHyphenation w:val="false"/></w:settings>#;
+      }
+    ' "${docx_dir}/word/settings.xml"
+  fi
+
+  if [[ -f "${docx_dir}/word/document.xml" ]]; then
+    perl -0pi -e "s#<w:pgMar\\b[^>]*/>#<w:pgMar w:top=\"${margin}\" w:right=\"${margin}\" w:bottom=\"${margin}\" w:left=\"${margin}\" w:header=\"360\" w:footer=\"360\" w:gutter=\"0\"/>#g" \
+      "${docx_dir}/word/document.xml"
+
+    perl -0pi -e 's#<w:trPr>#<w:trPr><w:cantSplit/>#g' \
+      "${docx_dir}/word/document.xml"
+  fi
+
+  if [[ -f "${docx_dir}/word/styles.xml" ]]; then
+    perl -0pi -e "
+      my \$defaults = '<w:docDefaults><w:rPrDefault><w:rPr><w:rFonts w:ascii=\"Liberation Sans\" w:hAnsi=\"Liberation Sans\" w:eastAsia=\"Liberation Sans\" w:cs=\"Liberation Sans\"/><w:sz w:val=\"${font_size}\"/><w:szCs w:val=\"${font_size}\"/></w:rPr></w:rPrDefault><w:pPrDefault><w:pPr><w:suppressAutoHyphens/><w:spacing w:after=\"120\" w:line=\"276\" w:lineRule=\"auto\"/></w:pPr></w:pPrDefault></w:docDefaults>';
+      if (/<w:docDefaults>.*?<\/w:docDefaults>/s) {
+        s#<w:docDefaults>.*?</w:docDefaults>#\$defaults#s;
+      } else {
+        s#(<w:styles\b[^>]*>)#\$1\$defaults#s;
+      }
+    " "${docx_dir}/word/styles.xml"
+  fi
+
+  (cd "${docx_dir}" && zip -qr "${rebuilt_docx}" .) \
+    || fail "Could not rebuild polished DOCX: ${docx_file}"
+
+  mv "${rebuilt_docx}" "${docx_file}"
+}
+
+convert_docx_to_pdf() {
+  local docx_file="$1"
+  local pdf_file="$2"
+  local output_name="$3"
+  local converted_pdf="${WORK_DIR}/${output_name}.pdf"
+  local conversion_log="${WORK_DIR}/${output_name}-libreoffice.log"
+
+  rm -f "${converted_pdf}" "${pdf_file}"
+
+  "${LIBREOFFICE_CMD}" --headless --convert-to pdf --outdir "${WORK_DIR}" "${docx_file}" \
+    > "${conversion_log}" 2>&1 \
+    || {
+      cat "${conversion_log}" >&2
+      fail "LibreOffice could not convert ${docx_file} to PDF."
+    }
+
+  if [[ ! -f "${converted_pdf}" ]]; then
+    cat "${conversion_log}" >&2
+    fail "LibreOffice did not create the expected PDF: ${converted_pdf}"
+  fi
+
+  mv "${converted_pdf}" "${pdf_file}"
+}
+
 export_document() {
   local source_file="$1"
   local output_name="$2"
   local prepared_file
   local pdf_file="${EXPORT_DIR}/${output_name}.pdf"
   local docx_file="${EXPORT_DIR}/${output_name}.docx"
-  local pdf_options=()
 
   printf 'Exporting %s\n' "${source_file}"
   prepared_file="$(prepare_public_markdown "${source_file}")"
@@ -119,16 +204,8 @@ export_document() {
     --to docx \
     --output "${docx_file}"
 
-  if [[ "${output_name}" == "one-page-congregational-summary" ]]; then
-    pdf_options+=(--variable "geometry:margin=0.6in" --variable "fontsize=10pt")
-  fi
-
-  pandoc "${prepared_file}" \
-    --standalone \
-    --from markdown \
-    --pdf-engine="${PDF_ENGINE}" \
-    "${pdf_options[@]}" \
-    --output "${pdf_file}"
+  polish_docx "${docx_file}" "${output_name}"
+  convert_docx_to_pdf "${docx_file}" "${pdf_file}" "${output_name}"
 
   generated_files+=("${pdf_file}" "${docx_file}")
 }
@@ -162,7 +239,7 @@ main() {
 
   printf 'Exporting KBC review artifacts...\n'
   printf 'Only the selected Markdown files in dist/ are exported. Confidential source materials are not included.\n\n'
-  printf 'Using Pandoc PDF engine: %s\n\n' "${PDF_ENGINE}"
+  printf 'Document PDFs are generated by converting DOCX files with LibreOffice: %s\n\n' "${LIBREOFFICE_CMD}"
 
   export_document "${LEADERSHIP_SRC}" "leadership-review-packet"
   export_document "${SUMMARY_SRC}" "one-page-congregational-summary"
