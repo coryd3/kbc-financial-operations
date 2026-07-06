@@ -1,16 +1,24 @@
-# Bookkeeper / Financial Administrator Job Description
+# Kingsville Baptist Church
+
+# Bookkeeper / Financial Administrator - Job Description
 
 Status: Draft
 
+Rev. July 2026
+
 ## Position Summary
 
-The Bookkeeper / Financial Administrator supports the day-to-day financial operations of Kingsville Baptist Church. This role helps maintain accurate records, process routine transactions, support financial reporting, and keep documentation organized according to church policy.
+The Bookkeeper / Financial Administrator is a part-time, non-ministerial staff role that supports the day-to-day financial operations of Kingsville Baptist Church.
+
+This role helps maintain accurate financial records, process routine transactions, support financial reporting, and keep documentation organized according to approved church policy and financial controls.
 
 The congregation has authorized Personnel Committee to hire this as a paid role. The exact vote date, motion language, compensation limits, and budget authority should be recorded in the decision log before final hiring action.
 
 This role is operational. It does not replace the governance responsibilities of the Treasurer or Finance Committee.
 
-## Primary Duties
+Success in this role means KBC's routine financial records are accurate, timely, confidential, well organized, and ready for review by the Treasurer, Finance Committee, and other authorized reviewers.
+
+## Core Responsibilities
 
 ### Bookkeeping And Records
 
@@ -31,8 +39,9 @@ This role is operational. It does not replace the governance responsibilities of
 
 - Process bills and reimbursement requests according to approved policy.
 - Confirm required documentation and approvals are present.
-- Prepare payments or payment batches as assigned.
+- Prepare checks, electronic payments, or payment batches as assigned.
 - Track missing receipts or incomplete reimbursement requests.
+- Flag unusual, outside-budget, over-budget, or unclear expenses before payment when required by policy.
 
 ### Payroll Coordination
 
@@ -47,6 +56,13 @@ This role is operational. It does not replace the governance responsibilities of
 - Maintain accurate vendor, fund, account, and budget coding.
 - Assist with bank reconciliation and report preparation.
 - Support software migration, cleanup, and process documentation as needed.
+
+### Confidentiality, Controls, And Records
+
+- Protect donor records, payroll information, bank information, personnel information, and other confidential financial records.
+- Follow approved access controls, documentation standards, and retention practices.
+- Keep digital and physical records organized for continuity, review, and audit support.
+- Ask clarifying questions when information is incomplete, inconsistent, or outside normal practice.
 
 ### Coordination
 
@@ -63,6 +79,8 @@ This role is operational. It does not replace the governance responsibilities of
 - Basic comfort with spreadsheets and financial software.
 - Ability to follow written procedures and ask questions when something is unclear.
 - Willingness to work within KBC policies, bylaws, and committee direction.
+- Ability to work cooperatively with the Treasurer, Finance Committee, Personnel Committee, Pastor, and assigned supervisor.
+- Willingness to complete any required background check, confidentiality agreement, or onboarding process.
 
 ## Preferred Qualifications
 
@@ -72,12 +90,36 @@ This role is operational. It does not replace the governance responsibilities of
 - Familiarity with payroll coordination.
 - Ability to help document repeatable procedures.
 
-## Accountability
+## Accountability And Support
 
 - Reports to: TBD.
-- Financial workflow oversight: Finance Committee and Treasurer / Financial Officer.
-- Employment oversight: Personnel Committee or other assigned supervisor, TBD.
-- Evaluation process: TBD.
+- Day-to-day supervision: TBD.
+- Financial workflow direction and review: Finance Committee and Treasurer / Financial Officer.
+- Employment oversight: Personnel Committee or assigned supervisor, according to church practice.
+- Evaluation process: TBD by Personnel Committee with input from Finance Committee on financial duties and controls.
+
+The Bookkeeper / Financial Administrator should receive clear written procedures, regular support, and timely feedback. The goal of supervision and review is clarity, encouragement, accountability, and healthy continuity for the church.
+
+## Expectations For Character And Work Ethic
+
+- Demonstrate honesty, discretion, and care in handling church financial information.
+- Maintain confidentiality in all financial, donor, payroll, personnel, and committee-related matters.
+- Be dependable, consistent, accurate, and timely in completing assigned work.
+- Communicate clearly and respectfully with church leadership and committee members.
+- Take initiative to identify missing documentation, unclear transactions, or process gaps.
+- Serve with a cooperative and Christ-like attitude, recognizing this work as a ministry of service to the church.
+
+## Compensation And Schedule
+
+- Paid position authorized by congregational vote.
+- Employment classification: TBD.
+- Expected weekly hours: TBD.
+- Compensation range or fixed amount: TBD.
+- Work schedule and reporting deadlines should be defined by Personnel Committee after Finance Committee confirms financial workflow needs.
+
+## Terms Of Service
+
+The Bookkeeper / Financial Administrator is employed as needed by Kingsville Baptist Church. Employment and continuation in this role are overseen by Personnel Committee or the assigned supervisor, in coordination with the Finance Committee for financial duties and controls, and in accordance with KBC Constitution and Bylaws, church practice, and approved policies.
 
 Needs Personnel Review: Final title, reporting line, employment classification, compensation, time expectations, application process, supervision, evaluation process, and hiring timeline must be confirmed by Personnel Committee before use.
 
