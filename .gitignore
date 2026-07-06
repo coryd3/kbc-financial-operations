@@ -21,3 +21,6 @@ coverage/
 .local/
 scratch/
 
+# Generated review exports
+dist/exports/*
+!dist/exports/README.md

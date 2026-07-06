@@ -1,6 +1,9 @@
 * text=auto
 *.md text eol=lf
 *.py text eol=lf
+*.sh text eol=lf
+Makefile text eol=lf
+.github/workflows/*.yml text eol=lf
 
 *.docx binary
 *.pdf binary

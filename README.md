@@ -24,8 +24,48 @@ Use placeholders such as `TBD` or `Needs Review` where details must be supplied 
 
 - `source-materials/` - Existing reference materials copied from prior church documents.
 - `docs/` - Active working documents for assessment, decisions, governance, policies, procedures, roles, software evaluation, and communications.
+- `dist/` - Review-ready Markdown artifacts and generated export folder.
 - `templates/` - Reusable formats for motions, agendas, recommendations, policies, and job descriptions.
 - `archive/` - Superseded drafts and historical working material that should no longer be treated as current.
+
+## Exporting Review Files
+
+The Markdown files are the source of truth. PDF, DOCX, and PPTX files are generated review copies and should be regenerated when the Markdown changes.
+
+Run this from the repository root:
+
+```sh
+make export
+```
+
+You can also run the script directly:
+
+```sh
+./scripts/export.sh
+```
+
+Generated files are placed in `dist/exports/`:
+
+- `leadership-review-packet.pdf`
+- `leadership-review-packet.docx`
+- `one-page-congregational-summary.pdf`
+- `one-page-congregational-summary.docx`
+- `congregational-slide-deck.pptx`
+- `congregational-slide-deck.pdf`
+
+Required tools:
+
+- Bash and Make.
+- Pandoc for document exports.
+- A Pandoc PDF engine, such as Tectonic, XeLaTeX, LuaLaTeX, pdfLaTeX, Typst, or wkhtmltopdf.
+- Marp CLI for slide exports.
+
+Helpful install links:
+
+- Pandoc: `https://pandoc.org/installing.html`
+- Marp CLI: `npm install -g @marp-team/marp-cli`
+
+The export script only exports the selected Markdown files in `dist/`. Do not place confidential church financial data, donor records, payroll details, bank information, applications, or other sensitive material in these distribution files.
 
 ## Working Principles
 
@@ -47,4 +87,3 @@ Use placeholders such as `TBD` or `Needs Review` where details must be supplied 
 6. Draft and review the Bookkeeper / Financial Administrator job description and application.
 7. Define software requirements before selecting a tool.
 8. Convert committee direction into policies, procedures, recommendations, and motions.
-
