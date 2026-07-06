@@ -14,7 +14,7 @@ This packet is intended to help KBC leadership review and align around a more su
 <w:p><w:r><w:br w:type="page"/></w:r></w:p>
 ```
 
-## 2. Executive Summary
+## Executive Summary
 
 KBC is in a Treasurer transition. Linda McConville is helping as interim Treasurer so necessary financial work can continue while leadership reviews the longer-term structure.
 
@@ -32,7 +32,11 @@ KBC should use this transition as an opportunity to clarify responsibilities, st
 
 No final recommendation should be treated as approved until the proper committee, leadership, bylaw, and church approval steps are complete.
 
-## 3. Current Situation
+```{=openxml}
+<w:p><w:r><w:br w:type="page"/></w:r></w:p>
+```
+
+## Current Situation
 
 - The Treasurer position is in transition.
 - Interim Treasurer coverage is helping maintain continuity.
@@ -42,7 +46,7 @@ No final recommendation should be treated as approved until the proper committee
 
 This should be framed as a stewardship and systems improvement effort, not as blame toward any past or current volunteer, officer, committee, or staff member.
 
-## 4. Core Problem
+## Core Problem
 
 KBC needs a financial operations system that is clear, accountable, transferable, and sustainable.
 
@@ -56,7 +60,7 @@ At present:
 
 The goal is not simply to find another person to carry the same load. The goal is to make the work more orderly, more transparent, and easier to hand off.
 
-## 5. Proposed Structure
+## Proposed Structure
 
 The proposed structure separates officer accountability, day-to-day operations, committee oversight, and church approval.
 
@@ -70,7 +74,7 @@ The proposed structure separates officer accountability, day-to-day operations, 
 | Pastor and Deacons | Leadership review, communication support, counsel, and review where church practice requires. | Helps keep the process orderly. |
 | Congregation | Approval where bylaws, budget, role creation, compensation, policy, or church practice require it. | Final votes come back to the church as needed. |
 
-## 6. Treasurer vs. Bookkeeper Distinction
+## Treasurer vs. Bookkeeper Distinction
 
 The Treasurer should not lose accountability. The recommended distinction is that the Treasurer keeps officer-level review and reporting responsibilities while routine financial administration is documented and assigned clearly.
 
@@ -95,7 +99,7 @@ The Treasurer should not lose accountability. The recommended distinction is tha
 
 Bylaws and church practice should be reviewed before finalizing any change to Treasurer responsibilities.
 
-## 7. Committee Responsibility Summary
+## Committee Responsibility Summary
 
 The table below is a meeting-level summary. A more detailed responsibility matrix is included in Appendix A.
 
@@ -112,7 +116,7 @@ Personnel Committee should not be asked to decide financial controls, software, 
 
 Both committees need to work together before any final recommendation is brought to the church.
 
-## 8. Decisions Needed
+## Decisions Needed
 
 **Personnel Committee**
 
@@ -140,7 +144,7 @@ Both committees need to work together before any final recommendation is brought
 - How and when should the congregation receive updates?
 - How long should the interim Treasurer arrangement continue?
 
-## 9. 30/60/90 Day Roadmap
+## 30/60/90 Day Roadmap
 
 | Timeframe | Goal | Main Work |
 | --- | --- | --- |
@@ -150,7 +154,7 @@ Both committees need to work together before any final recommendation is brought
 
 The long-term goal is to move approved materials into a Financial Operations Manual that can be maintained and handed off.
 
-## 10. Immediate Action Items
+## Immediate Action Items
 
 - Confirm the interim Treasurer arrangement, including authority, expected time period, and support needed.
 - Identify weekly must-do financial tasks: deposits, bills, payroll coordination, reimbursements, reports, and account review.
@@ -161,7 +165,7 @@ The long-term goal is to move approved materials into a Financial Operations Man
 - Keep a decision log and open questions list so unresolved issues do not get lost.
 - Prepare a short church update when leadership is ready.
 
-## 11. Items That May Require Church Approval Later
+## Items That May Require Church Approval Later
 
 The following items may require church approval depending on bylaws, budget, policy, or church practice:
 
@@ -181,7 +185,7 @@ Leadership should confirm the approval path before presenting recommendations fo
 <w:p><w:r><w:br w:type="page"/></w:r></w:p>
 ```
 
-## 12. Appendix A: Detailed Responsibility Matrix
+## Appendix A: Detailed Responsibility Matrix
 
 This appendix provides a more detailed working matrix for leadership and committee review. It should be checked against KBC bylaws, committee charters, and church practice before use.
 
