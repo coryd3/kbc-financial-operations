@@ -31,6 +31,7 @@ markdown_extensions:
 nav:
   - Start Here:
       - Home: index.md
+      - Leader-Friendly Dashboard: start-here/project-dashboard.md
       - Project Brief: 00-project-brief.md
       - Current State Assessment: 01-current-state-assessment.md
       - Project Dashboard: project-dashboard.md

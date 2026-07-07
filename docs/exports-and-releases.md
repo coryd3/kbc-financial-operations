@@ -9,6 +9,7 @@ The documentation site is for browsing and searching working Markdown documents.
 - Use the documentation site when leaders need to read, search, or review working material.
 - Use exports when leaders need PDF, DOCX, PPTX, or spreadsheet files for a meeting packet.
 - Use releases when the church needs a dated bundle of review files.
+- Use the NotebookLM sourcebook when leaders need one Markdown source that can be uploaded to NotebookLM for question-and-answer review across the current materials.
 
 ## Source Files
 
@@ -18,6 +19,11 @@ The main release source files live in `dist/`:
 - `dist/one-page-congregational-summary.md`
 - `dist/congregational-slide-deck.md`
 - `dist/leadership-review-task-tracker.csv`
+
+The NotebookLM sourcebook is generated at:
+
+- `dist/notebooklm/kbc-financial-operations-sourcebook.md`
+- `dist/notebooklm/kbc-financial-operations-sourcebook.pdf` if the local PDF tools are available
 
 The Bookkeeper job description export is generated from:
 
@@ -48,6 +54,14 @@ make release
 ```
 
 to create a dated release bundle.
+
+Run:
+
+```sh
+make notebooklm
+```
+
+to create the NotebookLM sourcebook.
 
 ## GitHub Pages Warning
 

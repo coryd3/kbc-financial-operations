@@ -25,6 +25,7 @@ This site is mainly for:
 
 Start with these pages:
 
+- [Leader-Friendly Dashboard](start-here/project-dashboard.md) for the quickest view of what needs attention.
 - [Project Brief](00-project-brief.md) for the short purpose and current situation.
 - [Leadership Review Packet](communications/leadership-review-packet.md) for the main leadership alignment document.
 - [Project Dashboard](project-dashboard.md) for document status and review needs.
@@ -50,6 +51,7 @@ This work should be treated as a stewardship and systems improvement effort, not
 ## Key Documents
 
 - [Responsibility Matrix](governance/responsibility-matrix.md)
+- [Leader-Friendly Dashboard](start-here/project-dashboard.md)
 - [Treasurer vs. Bookkeeper Duty Split](roles/treasurer-vs-bookkeeper-duty-split.md)
 - [Bookkeeper Job Description](roles/bookkeeper-financial-administrator-job-description.md)
 - [Bookkeeper Hiring Process](roles/bookkeeper-hiring-process.md)

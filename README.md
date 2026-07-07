@@ -27,6 +27,11 @@ The Bookkeeper job description export is generated from:
 
 The task tracker is an Excel-friendly CSV for assigning owners, due dates, status, and notes for the action items and decisions in the leadership review packet.
 
+The NotebookLM sourcebook is generated from the most important current Markdown files:
+
+- `dist/notebooklm/kbc-financial-operations-sourcebook.md`
+- `dist/notebooklm/kbc-financial-operations-sourcebook.pdf` if Pandoc can create it locally
+
 ## Documentation Site
 
 This repository includes a searchable documentation site built with MkDocs and Material for MkDocs.
@@ -108,6 +113,32 @@ Generated files are placed in `dist/exports/`:
 
 If your computer does not have the export tools installed, use the GitHub Action named `Export Docs`. It creates the same exports and a release packet as downloadable workflow artifacts.
 
+## How to Build the NotebookLM Sourcebook
+
+Run:
+
+```sh
+make notebooklm
+```
+
+If your computer does not have `make` installed, run:
+
+```sh
+python scripts/build_notebooklm_bundle.py
+```
+
+This creates a single sourcebook at:
+
+- `dist/notebooklm/kbc-financial-operations-sourcebook.md`
+
+If Pandoc is installed and can create a PDF on your machine, it also creates:
+
+- `dist/notebooklm/kbc-financial-operations-sourcebook.pdf`
+
+Upload the Markdown sourcebook to NotebookLM when leaders need to ask questions across the current financial operations materials.
+
+Do not add donor records, payroll details, bank account numbers, passwords, Social Security numbers, confidential personnel issues, private financial data, actual candidate applications, reference-check notes, or background-check results to the sourcebook.
+
 ## How to Use the Task Tracker
 
 Open `dist/leadership-review-task-tracker.csv` in Excel, Google Sheets, or another spreadsheet tool.
@@ -164,6 +195,7 @@ Review the release folder before sharing it outside the working team.
 - `docs/` - Active working documents for assessment, decisions, governance, policies, procedures, roles, software evaluation, and communications.
 - `dist/` - Source Markdown for release artifacts.
 - `dist/exports/` - Generated PDF, DOCX, and PPTX review files.
+- `dist/notebooklm/` - Generated NotebookLM sourcebook files.
 - `dist/releases/` - Dated release folders and zip bundles created by `make release`.
 - `templates/` - Reusable formats for motions, agendas, recommendations, policies, and job descriptions.
 - `archive/` - Superseded drafts and historical working material that should no longer be treated as current.

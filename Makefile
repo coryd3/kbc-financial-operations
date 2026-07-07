@@ -1,7 +1,7 @@
 PYTHON ?= python
 MKDOCS ?= $(PYTHON) -m mkdocs
 
-.PHONY: export validate release clean clean-exports serve docs-build docs-deploy
+.PHONY: export validate release notebooklm clean clean-exports serve docs-build docs-deploy
 
 export:
 	@./scripts/export.sh
@@ -11,6 +11,9 @@ validate:
 
 release:
 	@./scripts/release.sh
+
+notebooklm:
+	@$(PYTHON) scripts/build_notebooklm_bundle.py
 
 serve:
 	@$(MKDOCS) serve
