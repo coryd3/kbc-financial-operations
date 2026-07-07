@@ -52,13 +52,13 @@ The concern is not that people have failed. The concern is that the system shoul
 ## Slide 5: Proposed Direction
 
 - Keep the Treasurer as an accountable elected role
-- Consider bookkeeping or financial administration support
+- Move forward carefully with the authorized paid Bookkeeper role
 - Clarify what each committee owns
 - Bring needed recommendations back to the church
 
 Speaker notes:
 
-The proposed direction is to keep accountability where it belongs while making the routine work more manageable and better documented. This will take committee review before any final recommendation comes to the church.
+The proposed direction is to keep accountability where it belongs while making the routine work more manageable and better documented. The paid Bookkeeper role has already been authorized, and the remaining work is to make the duties, hiring process, and controls clear.
 
 ## Slide 6: Treasurer And Bookkeeper Distinction
 
@@ -69,7 +69,7 @@ The proposed direction is to keep accountability where it belongs while making t
 
 Speaker notes:
 
-The Treasurer would not lose responsibility. The distinction is that the Treasurer would focus on review, accountability, and reporting, while routine financial administration could be handled separately if the church approves that direction.
+The Treasurer would not lose responsibility. The distinction is that the Treasurer would focus on review, accountability, and reporting, while the authorized Bookkeeper role would support routine financial administration under clear controls.
 
 ## Slide 7: Committee Roles
 
@@ -86,7 +86,7 @@ Different parts of this work belong to different groups. Finance should review t
 
 - Leadership reviews the proposed structure
 - Finance Committee reviews financial questions
-- Personnel Committee reviews role questions
+- Personnel Committee reviews job description, application, and hiring process
 - Bylaws and church practice guide approvals
 - Recommendations come back in the proper order
 

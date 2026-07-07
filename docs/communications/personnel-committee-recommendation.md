@@ -8,7 +8,7 @@ This draft frames a recommendation from the Personnel Committee to the Finance C
 
 ## Draft Recommendation
 
-The Personnel Committee recognizes that the congregation has authorized Personnel Committee to hire a paid Bookkeeper / Financial Administrator. Before finalizing the job description and hiring process, we recommend that the Finance Committee evaluate and provide direction on financial software, reimbursement procedures, spending authority, credit/debit card use, monthly financial review, budget impact, and the long-term division of responsibilities between the Treasurer, Bookkeeper, and Finance Committee.
+The Personnel Committee recognizes that the congregation has authorized Personnel Committee to hire a paid Bookkeeper / Financial Administrator. Before finalizing the job description, application, hiring process, or compensation recommendation, we recommend that the Finance Committee evaluate and provide direction on financial software, reimbursement procedures, spending authority, credit/debit card use, monthly financial review, budget impact, and the long-term division of responsibilities between the Treasurer, Bookkeeper, and Finance Committee.
 
 ## Rationale
 
@@ -21,7 +21,7 @@ This is not a criticism of prior or current Treasurers. It is a recognition that
 The Personnel Committee can help by:
 
 - Drafting job descriptions.
-- Preparing application and interview materials.
+- Preparing application, interview, reference-check, and candidate evaluation materials.
 - Recommending compensation, hours, and classification for the authorized paid role.
 - Supporting an evaluation process for the operational role.
 
@@ -40,7 +40,7 @@ The Finance Committee should provide direction on:
 
 ## Requested Action
 
-The Personnel Committee requests that the Finance Committee review these financial operations questions and provide direction before final job descriptions, applications, compensation recommendations, or hiring action are finalized.
+The Personnel Committee requests that the Finance Committee review these financial operations questions and provide direction before the job description, application, hiring process, compensation recommendation, role posting, interviews, or hiring action are finalized.
 
 Needs Personnel Review: This recommendation should be reviewed by Personnel Committee before sending to Finance Committee.
 

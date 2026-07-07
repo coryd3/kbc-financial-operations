@@ -8,7 +8,7 @@ This document adapts the prior KBC Custodian hiring workflow for the authorized 
 
 The goal is to help Personnel Committee run a simple, fair, confidential, and well-documented hiring process while getting Finance Committee input on the financial duties, controls, software access, and reporting expectations before final hiring materials are used.
 
-Needs Personnel Review: Personnel Committee should confirm the hiring steps, interview team, reference process, background-check process, and final candidate selection process before use.
+Needs Personnel Review: Personnel Committee should confirm the hiring process, interview team, reference process, background-check process, and final candidate selection process before use.
 
 Needs Finance Review: Finance Committee should confirm financial duties, access, controls, software responsibilities, monthly reporting expectations, and budget impact before the position is posted or interviews begin.
 
@@ -30,7 +30,7 @@ Target Hire Date: ____________________
 - [ ] Confirm employment classification and onboarding requirements.
 - [ ] Confirm who will supervise the role day to day.
 - [ ] Ask Finance Committee to confirm financial duties, access, controls, reporting expectations, and software responsibilities.
-- [ ] Finalize job description and application materials.
+- [ ] Finalize job description, application, and hiring process materials.
 
 ### Phase 2: Receive And Review Applications
 

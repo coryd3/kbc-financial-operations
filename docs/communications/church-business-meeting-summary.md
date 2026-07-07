@@ -4,11 +4,11 @@ Status: Draft
 
 ## Summary
 
-The Treasurer position is currently in transition. Linda McConville has agreed to help as interim Treasurer so the church can maintain continuity while we take time to review the best long-term plan.
+The Treasurer position is currently in transition, and interim Treasurer coverage is helping the church maintain continuity while we take time to review the best long-term plan.
 
 We are thankful for those who have served and helped carry this work. This review is not about blaming anyone. It is about making sure our financial process is clear, sustainable, and easier to pass on in the future.
 
-The congregation has already authorized the Personnel Committee to hire a paid Bookkeeper / Financial Administrator. The Personnel Committee is now reviewing the job description, application materials, compensation details, supervision/evaluation process, and hiring steps.
+The congregation has already authorized the Personnel Committee to hire a paid Bookkeeper / Financial Administrator. The Personnel Committee is now reviewing the job description, application, hiring process, compensation details, and supervision/evaluation process.
 
 The Finance Committee is reviewing the financial side, including how responsibilities should be divided, what controls are needed, what kind of monthly review is needed, and what tools or software may help.
 

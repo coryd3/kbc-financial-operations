@@ -14,6 +14,8 @@ The congregation has already voted to give Personnel Committee authority to hire
 - `docs/01-current-state-assessment.md`
 - `docs/governance/responsibility-matrix.md`
 - `docs/roles/treasurer-vs-bookkeeper-duty-split.md`
+- `docs/roles/bookkeeper-financial-administrator-job-description.md`
+- `docs/roles/bookkeeper-hiring-process.md`
 - `docs/policies/reimbursement-policy.md`
 - `docs/policies/spending-authority-policy.md`
 - `docs/policies/credit-card-policy.md`
@@ -25,11 +27,11 @@ The congregation has already voted to give Personnel Committee authority to hire
 
 ## Current Situation Summary
 
-The Treasurer position is open again. Linda Davis stepped back because the role had become too much. Linda McConville, a former long-time Treasurer, has agreed to serve temporarily as interim Treasurer to maintain continuity.
+The Treasurer position is in transition. Interim coverage is helping KBC maintain continuity while leadership reviews the longer-term structure.
 
 This interim arrangement gives KBC time to review the deeper financial operations structure instead of rushing into another person-dependent model.
 
-The paid Bookkeeper / Financial Administrator role has already been authorized by congregational vote. The urgent Finance Committee question is not whether Personnel may hire the role, but what financial duties, access, controls, software responsibilities, and monthly review expectations must be built into the job description before hiring moves forward.
+The paid Bookkeeper / Financial Administrator role has already been authorized by congregational vote. The urgent Finance Committee question is not whether Personnel may hire the role, but what financial duties, access, controls, software responsibilities, and monthly review expectations must be built into the job description and hiring process before hiring moves forward.
 
 The current situation has revealed several needs:
 
@@ -37,7 +39,7 @@ The current situation has revealed several needs:
 - Governance and day-to-day bookkeeping are mixed together.
 - Financial software, policies, procedures, and monthly review need clearer ownership.
 - Reimbursement, spending authority, credit/debit card use, and audit/review expectations need written guidance.
-- The authorized Bookkeeper / Financial Administrator role needs Finance Committee input before Personnel Committee can finalize job materials and begin or complete hiring.
+- The authorized Bookkeeper / Financial Administrator role needs Finance Committee input before Personnel Committee finalizes job materials, posts the role, begins interviews, or makes an offer.
 
 This should be framed as a systems maturity issue, not a person failure.
 
@@ -45,7 +47,7 @@ This should be framed as a systems maturity issue, not a person failure.
 
 | Decision Area | Finance Committee Decision Needed | Related Bodies | Notes |
 | --- | --- | --- | --- |
-| Treasurer vs. Bookkeeper division | Decide which financial duties belong with the elected Treasurer, Bookkeeper / Financial Administrator, Finance Committee, and outside vendor. | Personnel Committee, Treasurer, Nominating Committee, Congregation if required | Personnel needs this before job descriptions can be finalized. |
+| Treasurer vs. Bookkeeper division | Decide which financial duties belong with the elected Treasurer, Bookkeeper / Financial Administrator, Finance Committee, and outside vendor. | Personnel Committee, Treasurer, Nominating Committee, Congregation if required | Personnel needs this before the job description, application, and hiring process are finalized. |
 | Financial software | Decide requirements, shortlist, demo process, recommendation, and implementation direction. | Treasurer, Bookkeeper, Pastor, Personnel Committee where staffing is affected | Software should support governance and controls, not replace them. |
 | Reimbursement policy | Decide approval roles, required documentation, routine expense handling, exceptions, and review process. | Treasurer, Bookkeeper, ministry leaders | Routine budgeted expenses should not be overburdened, but must be documented. |
 | Spending authority | Set dollar thresholds and approval paths for routine, outside-budget, over-budget, large, recurring, emergency, and church vote items. | Pastor, Deacons, Congregation if required | Thresholds are currently `TBD`. |
@@ -153,7 +155,7 @@ Needs Finance Review: Card policy should reduce risk, connect each purchase to a
 
 ## Budget Impact Questions
 
-Finance Committee should identify the budget impact of each proposed change before Personnel Committee finalizes the paid Bookkeeper hiring process or compensation details.
+Finance Committee should identify the budget impact of each proposed change before Personnel Committee finalizes the paid Bookkeeper hiring process, posts the role, begins interviews, makes an offer, or confirms compensation details.
 
 ### Bookkeeper / Financial Administrator
 
@@ -243,6 +245,7 @@ Needs Finance Review: Finance Committee should decide the monthly review cadence
 5. Decide whether shared debit cards should be replaced.
 6. Define monthly review packet and meeting rhythm.
 7. Identify budget impact for bookkeeping support, software, and outside payroll/accounting support.
-8. Decide which items require Deacon review, church vote, CPA/accounting review, or bylaw review.
+8. Provide written direction to Personnel Committee before the Bookkeeper role is posted, interviews begin, or an offer is made.
+9. Decide which items require Deacon review, church vote, CPA/accounting review, or bylaw review.
 
 Needs Finance Review: This packet is a working draft for Finance Committee discussion. It should not be treated as final policy, budget approval, software selection, or church authorization.

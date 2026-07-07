@@ -10,11 +10,11 @@ The goal is not simply to replace one Treasurer with another Treasurer. The goal
 
 ## Current Situation
 
-The Treasurer position is open again. Linda Davis stepped back because the role had become too much. Linda McConville, a former long-time Treasurer, has agreed to step in temporarily as interim Treasurer to help maintain continuity.
+The Treasurer position is in transition, and interim coverage is helping KBC maintain continuity while the church reviews the longer-term structure.
 
 This interim arrangement gives the church time to make a thoughtful plan rather than rushing into another person-dependent model.
 
-The congregation has already voted to give Personnel Committee authority to hire a paid Bookkeeper / Financial Administrator. This project should now help KBC finalize the job description, hiring process, financial duties, controls, and budget implications for that authorized role.
+The congregation has already voted to give Personnel Committee authority to hire a paid Bookkeeper / Financial Administrator. This project should now help KBC finalize the job description, application, hiring process, financial duties, controls, and budget implications for that authorized role.
 
 ## Deeper Issue
 

@@ -15,16 +15,17 @@ The goal is not to replace one person with another person. The goal is to help K
 - `docs/roles/treasurer-governance-role.md`
 - `docs/roles/bookkeeper-financial-administrator-job-description.md`
 - `docs/roles/bookkeeper-job-application.md`
+- `docs/roles/bookkeeper-hiring-process.md`
 - `docs/communications/personnel-committee-recommendation.md`
 - `source-materials/existing-job-descriptions/final-approved/KBC_Treasurer_Job_Description_Rev_Nov2025.pdf`
 
 ## Current Situation Summary
 
-The Treasurer position is open again. Linda Davis stepped back because the role had become too much. Linda McConville, a former long-time Treasurer, has agreed to serve temporarily as interim Treasurer to maintain continuity.
+The Treasurer position is in transition. Interim coverage is helping KBC maintain continuity while leadership reviews the longer-term structure.
 
 This interim arrangement gives KBC time to review the role carefully instead of rushing into another person-dependent structure.
 
-The congregation has already voted to give Personnel Committee authority to hire a paid Bookkeeper / Financial Administrator. The remaining Personnel work is to finalize the job description, application, compensation details, supervision/evaluation process, and hiring steps, with Finance Committee input on duties, controls, access, software, and budget impact.
+The congregation has already voted to give Personnel Committee authority to hire a paid Bookkeeper / Financial Administrator. The remaining Personnel work is to finalize the job description, application, hiring process, compensation details, and supervision/evaluation process, with Finance Committee input on duties, controls, access, software, and budget impact.
 
 The larger issue is that KBC's financial operations have historically depended too much on one person's knowledge, memory, and manual process. The church needs clearer documentation, role boundaries, committee ownership, and repeatable procedures.
 
@@ -92,6 +93,8 @@ Recommended Bookkeeper focus:
 - Maintain software records, vendor records, account coding, fund coding, and files.
 - Support bank reconciliation and monthly close.
 - Track missing receipts, incomplete forms, or unclear transactions.
+- Protect confidential donor, payroll, bank, personnel, and financial records.
+- Flag unusual, outside-budget, over-budget, or unclear expenses before payment when required by policy.
 
 ### Finance Committee
 
@@ -121,84 +124,32 @@ Personnel Committee should not take over Finance Committee decisions about finan
 
 ## Draft Bookkeeper / Financial Administrator Job Description
 
-### Position Summary
+The standalone job description should be treated as the source of truth:
 
-The Bookkeeper / Financial Administrator supports the day-to-day financial operations of Kingsville Baptist Church. This role helps maintain accurate records, process routine transactions, support financial reporting, and keep documentation organized according to church policy.
+- `docs/roles/bookkeeper-financial-administrator-job-description.md`
 
-This role is operational. It does not replace the governance responsibilities of the Treasurer or Finance Committee.
+The current draft follows the newer KBC job-description pattern:
 
-### Primary Duties
+- Position Summary.
+- Core Responsibilities.
+- Required Qualifications.
+- Preferred Qualifications.
+- Accountability and Support.
+- Expectations for Character and Work Ethic.
+- Compensation and Schedule.
+- Terms of Service.
 
-Bookkeeping and records:
+Key points for Personnel Committee review:
 
-- Enter income, expenses, transfers, and other financial activity into the approved system.
-- Maintain supporting documentation for transactions.
-- Keep financial records organized and accessible to authorized reviewers.
-- Assist with monthly close tasks.
-- Prepare routine financial reports for Treasurer and Finance Committee review.
+- The role is a part-time, non-ministerial paid staff role authorized by congregational vote.
+- The role is operational and does not replace the governance responsibilities of the Treasurer or Finance Committee.
+- The role includes routine bookkeeping, contribution/deposit support, reimbursement/payment preparation after approval, payroll coordination if assigned, software/reporting support, records organization, and confidentiality responsibilities.
+- The role should have one clear day-to-day supervisor.
+- Finance Committee should confirm financial duties, access, controls, software responsibilities, reporting expectations, and budget impact before the position is posted, interviews begin, or hiring action is finalized.
 
-Contributions and deposits:
+Needs Personnel Review: Final title, reporting line, employment classification, compensation, time expectations, application process, supervision, evaluation process, and hiring timeline must be confirmed before use.
 
-- Enter contributions according to approved procedures.
-- Confirm contribution totals match count sheets and deposit records.
-- Maintain donor confidentiality.
-- Assist with year-end giving statements if assigned.
-
-Bills, reimbursements, and payments:
-
-- Process bills and reimbursement requests according to approved policy.
-- Confirm required documentation and approvals are present.
-- Prepare payments or payment batches as assigned.
-- Track missing receipts or incomplete reimbursement requests.
-
-Payroll coordination:
-
-- Coordinate payroll inputs, approvals, and records if assigned.
-- Work with payroll provider or software if applicable.
-- Maintain payroll documentation without sharing confidential details unnecessarily.
-- Flag payroll questions for the appropriate supervisor, Finance Committee, or outside professional.
-
-Software and reporting:
-
-- Use the church's approved finance or church management software.
-- Maintain accurate vendor, fund, account, and budget coding.
-- Assist with bank reconciliation and report preparation.
-- Support software migration, cleanup, and process documentation as needed.
-
-Coordination:
-
-- Work with the Treasurer / Financial Officer on reports, reconciliations, and exceptions.
-- Support the Finance Committee's monthly review process.
-- Communicate process gaps, missing documentation, or unusual transactions promptly.
-- Coordinate with Personnel Committee only on employment, evaluation, and role matters.
-
-### Qualifications
-
-Required:
-
-- Demonstrated bookkeeping, accounting, office administration, or equivalent financial recordkeeping experience.
-- Ability to maintain confidentiality.
-- Careful attention to detail.
-- Basic comfort with spreadsheets and financial software.
-- Ability to follow written procedures and ask questions when something is unclear.
-- Willingness to work within KBC policies, bylaws, and committee direction.
-
-Preferred:
-
-- Experience with church, nonprofit, or fund accounting.
-- Experience with contribution records and donor confidentiality.
-- Experience with ChurchTrac, IconCMO, QuickBooks, or similar systems.
-- Familiarity with payroll coordination.
-- Ability to help document repeatable procedures.
-
-### Accountability
-
-- Reports to: TBD.
-- Financial workflow oversight: Finance Committee and Treasurer / Financial Officer.
-- Employment oversight: Personnel Committee or other assigned supervisor, TBD.
-- Evaluation process: TBD.
-
-Needs Personnel Review: Final reporting line, employment classification, compensation, time expectations, application process, supervision, evaluation process, and hiring timeline must be confirmed before use.
+Needs Finance Review: Finance Committee should confirm financial duties, access, controls, software responsibilities, reporting expectations, and budget impact before the job description is finalized for hiring.
 
 ## Draft Bookkeeper Application
 
@@ -228,11 +179,30 @@ Full draft: `docs/roles/bookkeeper-job-application.md`
 
 Needs Personnel Review: Personnel Committee should decide whether to add background-check consent language, membership/attendance expectations, compensation expectations, conflict-of-interest language, or financial confidentiality acknowledgment.
 
+## Draft Bookkeeper Hiring Process
+
+The standalone hiring process should be treated as the source of truth:
+
+- `docs/roles/bookkeeper-hiring-process.md`
+
+It adapts the prior KBC Custodian hiring workflow for a financial role and includes:
+
+- Role-confirmation checklist before posting.
+- Application review steps.
+- Reference-check process.
+- Interview guide.
+- Candidate evaluation rubric.
+- Onboarding and support checklist.
+
+Needs Personnel Review: Personnel Committee should confirm the hiring lead, interview team, reference process, background-check process, secure storage location for hiring records, and final candidate selection process.
+
+Needs Finance Review: Finance Committee should confirm financial duties and controls before the position is posted, interviews begin, or an offer is made.
+
 ## Recommendations To Finance Committee
 
 The Personnel Committee should consider sending the following recommendation to the Finance Committee:
 
-> The Personnel Committee recognizes that the congregation has authorized Personnel Committee to hire a paid Bookkeeper / Financial Administrator. Before finalizing the job description and hiring process, we request that the Finance Committee provide direction on financial software, reimbursement procedures, spending authority, credit/debit card use, monthly financial review, budget impact, and the long-term division of responsibilities between the Treasurer, Bookkeeper, and Finance Committee.
+> The Personnel Committee recognizes that the congregation has authorized Personnel Committee to hire a paid Bookkeeper / Financial Administrator. Before finalizing the job description, application, hiring process, or compensation recommendation, we request that the Finance Committee provide direction on financial software, reimbursement procedures, spending authority, credit/debit card use, monthly financial review, budget impact, and the long-term division of responsibilities between the Treasurer, Bookkeeper, and Finance Committee.
 
 Recommended requests for Finance Committee direction:
 
@@ -244,7 +214,7 @@ Recommended requests for Finance Committee direction:
 6. Should shared debit cards be replaced with individual church credit cards or another controlled payment method?
 7. What should be included in the monthly financial review packet?
 8. Should payroll and tax filings be outsourced to a payroll/accounting vendor?
-9. What budget impact should Personnel consider before posting the paid role?
+9. What budget impact should Personnel consider before posting the paid role, beginning interviews, or making an offer?
 
 ## Open Questions For Discussion
 
@@ -294,7 +264,8 @@ Recommended requests for Finance Committee direction:
 2. Record the prior congregational vote authorizing Personnel Committee to hire a paid Bookkeeper / Financial Administrator, including date, motion language, and any limits.
 3. Revise the Bookkeeper / Financial Administrator job description.
 4. Revise the Bookkeeper application.
-5. Decide what questions need Finance Committee direction before Personnel can finalize hiring materials.
-6. Approve a request for Finance Committee direction, if appropriate.
+5. Revise the Bookkeeper hiring process, interview guide, reference questions, and candidate rubric.
+6. Decide what questions need Finance Committee direction before Personnel can post the role, begin interviews, or make an offer.
+7. Approve a request for Finance Committee direction, if appropriate.
 
 Needs Personnel Review: This packet is a working draft for Personnel Committee discussion. It should not be treated as final policy, job approval, compensation approval, or church authorization.

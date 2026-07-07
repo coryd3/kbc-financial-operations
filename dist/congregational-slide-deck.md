@@ -245,7 +245,7 @@ This is the simplest way to picture the proposed structure. The Treasurer remain
 </div>
 <div class="card">
 <h3>Roles</h3>
-<p>Finalize job description and hiring steps.</p>
+<p>Finalize job description, application, and hiring process.</p>
 </div>
 <div class="card">
 <h3>Monthly review</h3>
@@ -269,7 +269,7 @@ This work does not have to be solved all at once. We can divide it into practica
 
 - Confirm interim coverage.
 - Document must-do financial tasks.
-- Finalize Bookkeeper job description.
+- Finalize Bookkeeper job description and application.
 - Finance confirms duties and controls.
 - Personnel begins the hiring process.
 

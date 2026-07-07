@@ -13,7 +13,7 @@ Start date: TBD
 | Phase | Main Goal | Primary Owner | Main Output |
 | --- | --- | --- | --- |
 | Immediate stabilization | Keep financial work moving safely during Treasurer transition. | Interim Treasurer, Finance Committee | Continuity plan and immediate control checklist. |
-| 30-day plan | Clarify responsibilities and prepare authorized hiring materials. | Finance Committee, Personnel Committee | Duty split, review packets, Bookkeeper job description/application, and first-round committee decisions. |
+| 30-day plan | Clarify responsibilities and prepare authorized hiring materials. | Finance Committee, Personnel Committee | Duty split, review packets, Bookkeeper job description/application/hiring process, and first-round committee decisions. |
 | 60-day plan | Choose operating model and begin implementation materials. | Finance Committee, Personnel Committee | Software recommendation, policy drafts, hiring process, and budget impact review. |
 | 90-day plan | Begin implementation and monthly operating rhythm. | Finance Committee, Treasurer, Bookkeeper / Financial Administrator | Software/setup plan, monthly review rhythm, Bookkeeper onboarding if hired, and reporting process. |
 | Long-term Operations Manual integration | Convert approved documents into a maintained manual. | Finance Committee, document owner TBD | Approved manual sections, review schedule, and document control process. |
@@ -45,7 +45,7 @@ Start date: TBD
 | Goal | Clarify the future role structure and identify decisions Finance Committee and Personnel Committee must make before recommendations go to the church. |
 | Owner | Finance Committee and Personnel Committee. |
 | Supporting bodies | Interim Treasurer, Pastor, Deacons, Nominating Committee if bylaws require. |
-| Deliverables | Reviewed responsibility matrix; Treasurer vs. Bookkeeper duty split; Personnel Committee packet; Finance Committee packet; updated open questions; initial decision log entries. |
+| Deliverables | Reviewed responsibility matrix; Treasurer vs. Bookkeeper duty split; Personnel Committee packet; Finance Committee packet; updated open questions; initial decision log entries; draft Bookkeeper hiring process reviewed by Personnel Committee. |
 | Dependencies | Review of current Treasurer job description; review of bylaws; committee meeting dates; agreement on Finance vs. Personnel decision boundaries. |
 | Open questions | Which Treasurer duties are required by bylaws? What exact scope did the congregation authorize for the paid Bookkeeper role? What direction should Finance give Personnel before job materials are finalized? What items, if any, still need Deacon review or church vote? |
 
@@ -54,6 +54,7 @@ Start date: TBD
 - [ ] Review `docs/roles/treasurer-vs-bookkeeper-duty-split.md`.
 - [ ] Review `docs/governance/responsibility-matrix.md`.
 - [ ] Personnel Committee reviews `docs/communications/personnel-committee-packet.md`.
+- [ ] Personnel Committee reviews `docs/roles/bookkeeper-hiring-process.md`.
 - [ ] Finance Committee reviews `docs/communications/finance-committee-packet.md`.
 - [ ] Record the prior congregational vote authorizing Personnel Committee to hire a paid Bookkeeper / Financial Administrator.
 - [ ] Confirm the duty split between Treasurer / Financial Officer and the authorized Bookkeeper / Financial Administrator.
@@ -80,7 +81,7 @@ Start date: TBD
 - [ ] Set proposed `TBD` thresholds in spending and reimbursement drafts.
 - [ ] Decide whether shared debit cards should be replaced with individual cards or another controlled payment method.
 - [ ] Identify budget impact for software, bookkeeping support, outside payroll/accounting support, bonding, background checks, or audit/review.
-- [ ] Personnel Committee finalizes Bookkeeper job description and application based on Finance direction.
+- [ ] Personnel Committee finalizes Bookkeeper job description, application, and hiring process based on Finance direction.
 
 ## 90-Day Plan
 

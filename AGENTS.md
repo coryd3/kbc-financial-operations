@@ -8,9 +8,9 @@ The project is about a Treasurer transition, financial operations modernization,
 
 - KBC is an old, small Baptist church in Kingsville, Missouri.
 - KBC uses congregational governance and must remain faithful to its bylaws.
-- The Treasurer position is currently open again.
-- Linda Davis stepped back because the role became too much.
-- Linda McConville, a former long-time Treasurer, has agreed to serve temporarily as interim Treasurer to maintain continuity.
+- The Treasurer position is in transition.
+- Interim Treasurer coverage is helping maintain continuity while KBC reviews the longer-term structure.
+- The congregation has authorized Personnel Committee to hire a paid Bookkeeper / Financial Administrator.
 - The deeper issue is that finance operations have historically depended too much on one person's knowledge and manual process.
 
 Do not frame this as a person failure. Frame it as a systems maturity issue.
@@ -65,14 +65,14 @@ Other governance notes:
 - Preserve original source documents under `source-materials/`; draft new content in Markdown under `docs/`.
 - When summarizing source materials, cite the source file path and avoid copying unnecessary personal details.
 - Use `TBD` for unresolved facts, dollar amounts, dates, owners, and approval thresholds.
-- Use `Needs Review` callouts where Finance Committee, Personnel Committee, CPA, attorney, church leadership, or church vote may be required.
+- Use clear review callouts such as `Needs Committee Review`, `Needs Finance Review`, `Needs Personnel Review`, `Needs Bylaw Review`, or `Needs Professional Review` where committee, professional, leadership, or church approval may be required.
 
 ## Writing Style
 
 - Use plain, respectful church language.
 - Avoid sounding corporate, harsh, accusatory, or overly bureaucratic.
 - Use words like clarity, stewardship, accountability, support, sustainability, and order.
-- Do not blame Linda Davis, Linda McConville, the Treasurer, Finance Committee, or prior volunteers.
+- Do not blame any current or former Treasurer, interim helper, committee, staff member, or volunteer.
 - Separate governance decisions from procedures.
 - Use "proposed" or "draft" labels until the church has formally approved a document.
 
@@ -90,7 +90,11 @@ Other governance notes:
 Use one of these near the top of active documents:
 
 - `Status: Draft`
-- `Status: Proposed`
+- `Status: Needs Committee Review`
+- `Status: Needs Finance Review`
+- `Status: Needs Personnel Review`
+- `Status: Needs Bylaw Review`
+- `Status: Needs Professional Review`
+- `Status: Ready for Church Consideration`
 - `Status: Approved`
 - `Status: Superseded`
-

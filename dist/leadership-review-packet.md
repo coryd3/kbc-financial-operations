@@ -18,13 +18,13 @@ This packet is intended to help KBC leadership review and align around a more su
 
 ## Executive Summary
 
-KBC is in a Treasurer transition. Linda McConville is helping as interim Treasurer so necessary financial work can continue while leadership reviews the longer-term structure.
+KBC is in a Treasurer transition, and interim Treasurer coverage is helping necessary financial work continue while leadership reviews the longer-term structure.
 
 The concern is not one person or one committee. The concern is that the current financial operations system has become too dependent on individual knowledge and too broad for one elected volunteer role to carry alone.
 
 KBC should use this transition as an opportunity to clarify responsibilities, strengthen accountability, document routine work, and make the system easier to hand off in the future.
 
-The congregation has already voted to give the Personnel Committee authority to hire a paid Bookkeeper / Financial Administrator. The remaining work is to finalize the job description, application, supervision and evaluation process, compensation details, and Finance Committee input on duties, controls, access, software, and budget impact.
+The congregation has already voted to give the Personnel Committee authority to hire a paid Bookkeeper / Financial Administrator. The remaining work is to finalize the job description, application, hiring process, supervision and evaluation process, compensation details, and Finance Committee input on duties, controls, access, software, and budget impact.
 
 > **Main Recommendation**
 >
@@ -47,7 +47,7 @@ No final recommendation should be treated as approved until the proper committee
 - The current Treasurer role appears to include both officer-level accountability and many routine bookkeeping duties.
 - The congregation has already authorized the Personnel Committee to hire a paid Bookkeeper / Financial Administrator.
 - Draft role descriptions, procedures, policy outlines, committee packets, and software evaluation materials have been organized for review.
-- Leadership now needs to move from general authorization to a clear job description, hiring process, and financial control structure.
+- Leadership now needs to move from general authorization to a clear job description, application, hiring process, and financial control structure.
 
 This should be framed as a stewardship and systems improvement effort, not as blame toward any past or current volunteer, officer, committee, or staff member.
 
@@ -126,7 +126,8 @@ Both committees need to work together before any final recommendation is brought
 **Personnel Committee**
 
 - What final title should be used for the authorized paid Bookkeeper / Financial Administrator role?
-- What qualifications, application process, interview process, references, and background-check process should apply?
+- What qualifications, application process, interview process, references, background-check process, and candidate evaluation process should apply?
+- Who should serve as hiring lead, interview coordinator, reference checker, and Finance workflow reviewer?
 - Who should supervise and evaluate the role?
 - What compensation recommendation, hours, and employment classification should be used within the authority granted by the congregation?
 - When should the job be posted and interviews begin?
@@ -154,7 +155,7 @@ Both committees need to work together before any final recommendation is brought
 
 | Timeframe | Goal | Main Work |
 | --- | --- | --- |
-| First 30 days | Stabilize the transition and prepare hiring materials. | Confirm interim Treasurer coverage and authority; record the congregational authorization for the paid Bookkeeper role; review the Treasurer vs. Bookkeeper distinction; have Finance Committee confirm financial duties and controls; have Personnel Committee finalize job description and application materials. |
+| First 30 days | Stabilize the transition and prepare hiring materials. | Confirm interim Treasurer coverage and authority; record the congregational authorization for the paid Bookkeeper role; review the Treasurer vs. Bookkeeper distinction; have Finance Committee confirm financial duties and controls; have Personnel Committee finalize job description, application, and hiring process materials. |
 | 60 days | Move from role clarity to hiring and committee recommendations. | Begin or continue the Bookkeeper hiring process; approve software requirements for demos; review reimbursement and spending thresholds; decide card/payment direction; estimate budget impact; refine role materials after Finance Committee input. |
 | 90 days | Begin implementation of approved direction. | Onboard the Bookkeeper if hired; use the monthly Finance Committee checklist; implement approved reimbursement and review processes; plan software implementation if software is approved; prepare any needed business meeting summary or motion for items still requiring church action. |
 
@@ -168,6 +169,7 @@ The long-term goal is to move approved materials into a Financial Operations Man
 - Confirm access to current records and systems without storing passwords or sensitive information in shared documents.
 - Begin a monthly Finance Committee review rhythm.
 - Assign owners for Personnel Committee hiring tasks and Finance Committee financial-control tasks.
+- Review the draft Bookkeeper hiring process, including interview guide, reference questions, candidate evaluation rubric, and secure handling of hiring records.
 - Review bylaws and church practice for Treasurer responsibilities, nominations, approvals, and votes.
 - Keep a decision log and open questions list so unresolved issues do not get lost.
 - Prepare a short church update when leadership is ready.
