@@ -36,6 +36,8 @@ extra_css:
   - assets/stylesheets/extra.css
 
 extra_javascript:
+  - assets/javascripts/analytics-config.js
+  - assets/javascripts/site-analytics.js
   - assets/javascripts/diagram-viewer.js
 
 hooks:

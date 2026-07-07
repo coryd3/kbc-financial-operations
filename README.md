@@ -104,6 +104,28 @@ PUBLISH_DOCS_SITE=yes make docs-deploy
 
 That command is guarded so a normal `make docs-deploy` prints a warning and stops.
 
+### Lightweight Site Analytics
+
+The site includes optional lightweight analytics support using GoatCounter. It is disabled until a GoatCounter site code is added.
+
+To enable it:
+
+1. Create a GoatCounter site at `https://www.goatcounter.com/`.
+2. Copy the site code from the GoatCounter address, such as `my-site-name` from `https://my-site-name.goatcounter.com/`.
+3. Open `docs/assets/javascripts/analytics-config.js`.
+4. Set `goatcounterCode` to that code:
+
+```js
+window.KBC_SITE_ANALYTICS = {
+  provider: "goatcounter",
+  goatcounterCode: "my-site-name",
+  enabledHosts: ["coryd3.github.io"],
+  trackLocal: false,
+};
+```
+
+By default, local browsing at `127.0.0.1` or `localhost` is not tracked. The analytics loader only runs on the configured host list.
+
 ## How to Export
 
 Run this from the repository root:
