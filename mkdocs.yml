@@ -23,10 +23,17 @@ markdown_extensions:
   - toc:
       permalink: true
   - pymdownx.details
-  - pymdownx.superfences
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
   - pymdownx.snippets:
       base_path: .
       check_paths: true
+
+extra_css:
+  - assets/stylesheets/extra.css
 
 nav:
   - Start Here:

@@ -19,51 +19,67 @@ Needs Bylaw Review: This chart should be checked against the KBC Constitution an
 ## Simple Governance View
 
 ```mermaid
+%%{init: {"flowchart": {"curve": "basis", "nodeSpacing": 45, "rankSpacing": 60, "padding": 16}}}%%
 flowchart TD
-    Congregation["Congregation<br/>Final authority where bylaws, budget, policy, or church practice require a vote"]
+    Congregation["Congregation<br/>Final church authority"]
 
-    Pastor["Pastor<br/>Spiritual leadership, ministry leadership, communication, counsel"]
-    Deacons["Deacons<br/>Servant leadership, care, counsel, leadership review where church practice requires"]
-    Officers["Elected Officers<br/>Including Treasurer / Financial Officer and other officers defined by bylaws"]
-    Committees["Church Committees<br/>Finance, Personnel, Nominating, and other committees"]
+    subgraph Leadership [Leadership and Governance]
+        Pastor["Pastor<br/>Spiritual and ministry leadership"]
+        Deacons["Deacons<br/>Care, counsel, leadership review"]
+        Officers["Elected Officers<br/>Roles defined by bylaws"]
+        Committees["Church Committees<br/>Assigned church work"]
+    end
+
+    subgraph CommitteesGroup [Key Committees]
+        Nominating["Nominating<br/>Officer and committee process"]
+        Finance["Finance<br/>Controls, budget, software, review"]
+        Personnel["Personnel<br/>Hiring, compensation, evaluation"]
+    end
+
+    subgraph FinanceOps [Financial Operations]
+        Treasurer["Treasurer / Financial Officer<br/>Accountability and reporting"]
+        Bookkeeper["Bookkeeper / Financial Administrator<br/>Day-to-day records and support"]
+        Vendor["Outside Payroll / Accounting Vendor<br/>Specialized support if contracted"]
+    end
 
     Congregation --> Pastor
     Congregation --> Deacons
     Congregation --> Officers
     Congregation --> Committees
-
-    Nominating["Nominating Committee<br/>Officer and committee nomination process where assigned by bylaws"]
-    Finance["Finance Committee<br/>Financial policy, controls, budget oversight, software, monthly review"]
-    Personnel["Personnel Committee<br/>Job descriptions, hiring process, compensation recommendations, evaluations"]
-
     Committees --> Nominating
     Committees --> Finance
     Committees --> Personnel
-
-    Treasurer["Treasurer / Financial Officer<br/>Elected accountability, reporting, review, Finance Committee coordination"]
-    Bookkeeper["Bookkeeper / Financial Administrator<br/>Authorized paid role for day-to-day financial records and support"]
-    Vendor["Outside Payroll / Accounting Vendor<br/>Specialized payroll, tax, accounting, or review support if contracted"]
-
     Officers --> Treasurer
     Personnel --> Bookkeeper
-    Finance -. financial duties, controls, reports .-> Bookkeeper
+    Finance -. duties, controls, reports .-> Bookkeeper
     Treasurer -. review and coordination .-> Bookkeeper
     Finance -. scope and review .-> Vendor
-    Treasurer -. liaison if assigned .-> Vendor
+
+    classDef authority fill:#e8f1ff,stroke:#2f5f98,color:#102033,stroke-width:1px;
+    classDef leadership fill:#f3f6f8,stroke:#6b7280,color:#172033,stroke-width:1px;
+    classDef committee fill:#eef8f3,stroke:#2f7d5b,color:#10291f,stroke-width:1px;
+    classDef operations fill:#fff6df,stroke:#a76f00,color:#2d2100,stroke-width:1px;
+    classDef vendor fill:#f6efff,stroke:#7551a6,color:#241633,stroke-width:1px;
+    class Congregation authority;
+    class Pastor,Deacons,Officers,Committees leadership;
+    class Nominating,Finance,Personnel committee;
+    class Treasurer,Bookkeeper operations;
+    class Vendor vendor;
 ```
 
 ## Financial Operations View
 
 ```mermaid
+%%{init: {"flowchart": {"curve": "basis", "nodeSpacing": 42, "rankSpacing": 55, "padding": 16}}}%%
 flowchart LR
-    Congregation["Congregation<br/>Approves Treasurer election, budget, and other items required by bylaws or church practice"]
-    Nominating["Nominating Committee<br/>Recommends elected officers if assigned by bylaws"]
-    Treasurer["Treasurer / Financial Officer<br/>Elected accountability and reporting"]
-    Finance["Finance Committee<br/>Financial policies, controls, software, budget oversight, monthly review"]
-    Personnel["Personnel Committee<br/>Authorized hiring process for paid Bookkeeper role"]
-    Bookkeeper["Bookkeeper / Financial Administrator<br/>Day-to-day records, reports, deposits, reimbursements, documentation"]
-    PastorDeacons["Pastor and Deacons<br/>Leadership counsel, communication support, review where appropriate"]
-    Vendor["Outside Payroll / Accounting Vendor<br/>Payroll, tax, accounting support if contracted"]
+    Congregation["Congregation<br/>Votes where required"]
+    Nominating["Nominating Committee<br/>Officer recommendation"]
+    Treasurer["Treasurer / Financial Officer<br/>Review and reporting"]
+    Finance["Finance Committee<br/>Financial controls and review"]
+    Personnel["Personnel Committee<br/>Authorized hiring process"]
+    Bookkeeper["Bookkeeper / Financial Administrator<br/>Records and reports"]
+    PastorDeacons["Pastor and Deacons<br/>Counsel and communication"]
+    Vendor["Outside Vendor<br/>Payroll, tax, accounting support"]
 
     Congregation --> Nominating
     Nominating --> Treasurer
@@ -72,14 +88,25 @@ flowchart LR
     Congregation --> PastorDeacons
 
     Finance <--> Treasurer
-    Finance -. defines financial duties and controls .-> Bookkeeper
+    Finance -. duties and controls .-> Bookkeeper
     Personnel --> Bookkeeper
-    Bookkeeper -. prepares records and reports .-> Treasurer
-    Bookkeeper -. prepares monthly packet .-> Finance
-    Finance -. recommends vendor scope .-> Vendor
+    Bookkeeper -. records and reports .-> Treasurer
+    Bookkeeper -. monthly packet .-> Finance
+    Finance -. vendor scope .-> Vendor
     Treasurer -. coordinates if assigned .-> Vendor
-    PastorDeacons -. counsel and communication .-> Finance
-    PastorDeacons -. counsel and communication .-> Personnel
+    PastorDeacons -. counsel .-> Finance
+    PastorDeacons -. counsel .-> Personnel
+
+    classDef authority fill:#e8f1ff,stroke:#2f5f98,color:#102033,stroke-width:1px;
+    classDef committee fill:#eef8f3,stroke:#2f7d5b,color:#10291f,stroke-width:1px;
+    classDef operations fill:#fff6df,stroke:#a76f00,color:#2d2100,stroke-width:1px;
+    classDef support fill:#f3f6f8,stroke:#6b7280,color:#172033,stroke-width:1px;
+    classDef vendor fill:#f6efff,stroke:#7551a6,color:#241633,stroke-width:1px;
+    class Congregation authority;
+    class Nominating,Finance,Personnel committee;
+    class Treasurer,Bookkeeper operations;
+    class PastorDeacons support;
+    class Vendor vendor;
 ```
 
 ## Practical Role Summary
