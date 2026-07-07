@@ -64,7 +64,7 @@ To build the site without starting a preview server:
 make docs-build
 ```
 
-The built site is placed in `site/`, which is generated output and should not be committed.
+The built site is placed in `site/`, which is generated output and should not be committed. Each build also creates `site/open-local-site.bat`; on Windows, double-click that file to launch the built site in your browser from the generated `site/` folder.
 
 If your computer does not have `make` installed, run:
 

@@ -35,6 +35,9 @@ markdown_extensions:
 extra_css:
   - assets/stylesheets/extra.css
 
+hooks:
+  - scripts/mkdocs_hooks.py
+
 nav:
   - Start Here:
       - Home: index.md
