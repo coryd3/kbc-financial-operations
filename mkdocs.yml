@@ -1,0 +1,87 @@
+site_name: KBC Financial Operations Documentation
+site_description: Searchable working documentation for KBC financial operations modernization.
+repo_url: https://github.com/coryd3/kbc-financial-operations
+
+theme:
+  name: material
+  language: en
+  features:
+    - navigation.sections
+    - navigation.top
+    - search.highlight
+    - search.suggest
+    - toc.follow
+  palette:
+    - scheme: default
+      primary: blue grey
+      accent: teal
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - md_in_html
+  - toc:
+      permalink: true
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.snippets:
+      base_path: .
+      check_paths: true
+
+nav:
+  - Start Here:
+      - Home: index.md
+      - Project Brief: 00-project-brief.md
+      - Current State Assessment: 01-current-state-assessment.md
+      - Project Dashboard: project-dashboard.md
+      - Document Inventory: document-inventory.md
+  - Leadership Review:
+      - Overview: leadership-review/index.md
+      - Leadership Review Packet: communications/leadership-review-packet.md
+      - Implementation Roadmap: implementation-roadmap.md
+      - Decision Log: 02-decision-log.md
+      - Open Questions: 03-open-questions.md
+  - Governance and Responsibility:
+      - Church Organization Chart: governance/church-organization-chart.md
+      - Responsibility Matrix: governance/responsibility-matrix.md
+      - Finance Committee Charter: governance/finance-committee-charter.md
+      - Personnel Committee Role: governance/personnel-committee-role.md
+  - Roles and Hiring:
+      - Treasurer vs. Bookkeeper Duty Split: roles/treasurer-vs-bookkeeper-duty-split.md
+      - Treasurer Governance Role: roles/treasurer-governance-role.md
+      - Interim Treasurer Role: roles/interim-treasurer-role.md
+      - Bookkeeper Job Description: roles/bookkeeper-financial-administrator-job-description.md
+      - Bookkeeper Application: roles/bookkeeper-job-application.md
+      - Bookkeeper Hiring Process: roles/bookkeeper-hiring-process.md
+  - Finance Operations:
+      - Reimbursement Policy: policies/reimbursement-policy.md
+      - Reimbursement Process: procedures/reimbursement-process.md
+      - Spending Authority Policy: policies/spending-authority-policy.md
+      - Credit Card Policy: policies/credit-card-policy.md
+      - Monthly Financial Review Policy: policies/monthly-financial-review-policy.md
+      - Monthly Finance Committee Checklist: procedures/monthly-finance-committee-meeting-checklist.md
+      - Offering Counting and Deposit Policy: policies/offering-counting-and-deposit-policy.md
+      - Contribution Entry Process: procedures/contribution-entry-process.md
+      - Weekly Bookkeeping Checklist: procedures/weekly-bookkeeping-checklist.md
+      - Monthly Close Checklist: procedures/monthly-close-checklist.md
+      - Business Meeting Report Process: procedures/business-meeting-report-process.md
+      - Payroll Process: procedures/payroll-process.md
+      - Audit and Review Policy: policies/audit-and-review-policy.md
+  - Software Evaluation:
+      - Software Requirements: software-evaluation/software-requirements.md
+      - Demo Scorecard: software-evaluation/demo-scorecard.md
+      - IconCMO vs. ChurchTrac Comparison: software-evaluation/icon-vs-churchtrac-comparison.md
+      - Implementation Plan: software-evaluation/implementation-plan.md
+  - Communications:
+      - Personnel Committee Packet: communications/personnel-committee-packet.md
+      - Finance Committee Packet: communications/finance-committee-packet.md
+      - Personnel Committee Recommendation: communications/personnel-committee-recommendation.md
+      - Finance Committee Recommendation: communications/finance-committee-recommendation.md
+      - Deacon Update: communications/deacon-update.md
+      - Church Business Meeting Summary: communications/church-business-meeting-summary.md
+      - One-Page Congregational Summary: communications/one-page-congregational-summary.md
+      - Congregational Slide Outline: communications/congregational-slide-outline.md
+  - Exports and Releases:
+      - Export Process: export-process.md
+      - Exported Files and Release Bundles: exports-and-releases.md
+      - Document Workflow Notes: document-workflow-upgrade-notes.md

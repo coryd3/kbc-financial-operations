@@ -1,0 +1,1 @@
+--8<-- "dist/congregational-slide-outline.md"

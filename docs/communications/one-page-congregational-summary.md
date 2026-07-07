@@ -1,0 +1,1 @@
+--8<-- "dist/one-page-congregational-summary.md"

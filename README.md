@@ -27,6 +27,64 @@ The Bookkeeper job description export is generated from:
 
 The task tracker is an Excel-friendly CSV for assigning owners, due dates, status, and notes for the action items and decisions in the leadership review packet.
 
+## Documentation Site
+
+This repository includes a searchable documentation site built with MkDocs and Material for MkDocs.
+
+Use the site when leaders need to browse or search the working documents. Use exports when you need formal PDF, DOCX, PPTX, or spreadsheet files for a meeting packet.
+
+To install the documentation-site tools:
+
+```sh
+python -m pip install -r requirements.txt
+```
+
+To preview the site locally:
+
+```sh
+make serve
+```
+
+Then open the local address printed in the terminal, usually `http://127.0.0.1:8000/`.
+
+If your computer does not have `make` installed, run the same preview directly:
+
+```sh
+python -m mkdocs serve
+```
+
+To build the site without starting a preview server:
+
+```sh
+make docs-build
+```
+
+The built site is placed in `site/`, which is generated output and should not be committed.
+
+If your computer does not have `make` installed, run:
+
+```sh
+python -m mkdocs build --strict
+```
+
+GitHub also runs a workflow named `Build Docs Site` on pushes to `main`. That workflow builds the site and uploads it as a workflow artifact.
+
+### GitHub Pages Warning
+
+A manual workflow named `Deploy Docs Site to GitHub Pages` is included, but do not run it casually.
+
+GitHub Pages may expose the documentation publicly depending on repository, account, organization, and GitHub Pages settings. Do not deploy the site unless church leadership is comfortable with the content being exposed under those settings.
+
+The local documentation site and the GitHub build artifact are safer ways to review the material before any public or semi-public publishing decision.
+
+If leadership intentionally decides to publish through the local deploy command, run:
+
+```sh
+PUBLISH_DOCS_SITE=yes make docs-deploy
+```
+
+That command is guarded so a normal `make docs-deploy` prints a warning and stops.
+
 ## How to Export
 
 Run this from the repository root:
