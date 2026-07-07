@@ -2,6 +2,11 @@ name: Deploy Docs Site to GitHub Pages
 
 on:
   workflow_dispatch:
+    inputs:
+      confirm_publication:
+        description: Type DEPLOY to confirm this may publish the docs site through GitHub Pages.
+        required: true
+        type: string
 
 permissions:
   contents: read
@@ -21,6 +26,14 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
 
     steps:
+      - name: Confirm deploy intent
+        run: |
+          if [ "${{ github.event.inputs.confirm_publication }}" != "DEPLOY" ]; then
+            echo "This workflow publishes the documentation site through GitHub Pages."
+            echo "Re-run it and type DEPLOY only if church leadership is comfortable with the content and exposure risk."
+            exit 1
+          fi
+
       - name: Public exposure warning
         run: |
           echo "::warning::GitHub Pages may expose this documentation publicly depending on repository, account, organization, and Pages settings."
@@ -43,6 +56,8 @@ jobs:
 
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5
+        with:
+          enablement: true
 
       - name: Upload GitHub Pages artifact
         uses: actions/upload-pages-artifact@v3

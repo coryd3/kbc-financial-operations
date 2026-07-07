@@ -82,6 +82,20 @@ GitHub Pages may expose the documentation publicly depending on repository, acco
 
 The local documentation site and the GitHub build artifact are safer ways to review the material before any public or semi-public publishing decision.
 
+The GitHub workflow named `Build Docs Site` only builds a site artifact for review. It does not publish a website.
+
+The GitHub workflow named `Deploy Docs Site to GitHub Pages` publishes the site through GitHub Pages. When you run it manually, type `DEPLOY` in the confirmation field only if you intend to publish the docs site.
+
+If the deploy workflow reports `Get Pages site failed` or `Not Found`, GitHub Pages may not be enabled for the repository yet. Go to the GitHub repository, then:
+
+1. Open `Settings`.
+2. Open `Pages`.
+3. Under `Build and deployment`, set `Source` to `GitHub Actions`.
+4. Save the setting if GitHub shows a save button.
+5. Re-run the deploy workflow.
+
+The workflow also asks GitHub to enable Pages automatically where GitHub permits it, but the manual repository setting is the clearest fallback.
+
 If leadership intentionally decides to publish through the local deploy command, run:
 
 ```sh
