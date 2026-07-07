@@ -38,6 +38,14 @@ This repository includes a searchable documentation site built with MkDocs and M
 
 Use the site when leaders need to browse or search the working documents. Use exports when you need formal PDF, DOCX, PPTX, or spreadsheet files for a meeting packet.
 
+Published site:
+
+```text
+https://coryd3.github.io/kbc-financial-operations/
+```
+
+For deployment, GitHub Pages, and analytics notes, see `SITE_DEPLOYMENT.md`.
+
 To install the documentation-site tools:
 
 ```sh
