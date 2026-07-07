@@ -12,3 +12,121 @@
   max-width: 100%;
   height: auto;
 }
+
+.diagram-inline-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin: 1rem 0 -0.75rem;
+}
+
+.diagram-enlarge-button,
+.diagram-viewer__controls button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2rem;
+  padding: 0.35rem 0.65rem;
+  color: var(--md-primary-fg-color);
+  font: inherit;
+  font-size: 0.75rem;
+  font-weight: 600;
+  line-height: 1;
+  cursor: pointer;
+  background: var(--md-default-bg-color);
+  border: 1px solid var(--md-primary-fg-color--light);
+  border-radius: 0.35rem;
+}
+
+.diagram-enlarge-button:hover,
+.diagram-viewer__controls button:hover {
+  color: var(--md-primary-bg-color);
+  background: var(--md-primary-fg-color);
+}
+
+.diagram-viewer-open {
+  overflow: hidden;
+}
+
+.diagram-viewer {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  display: none;
+}
+
+.diagram-viewer--open {
+  display: block;
+}
+
+.diagram-viewer__backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.72);
+}
+
+.diagram-viewer__panel {
+  position: absolute;
+  inset: 4vh 3vw;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background: var(--md-default-bg-color);
+  border-radius: 0.5rem;
+  box-shadow: 0 1rem 3rem rgba(15, 23, 42, 0.35);
+}
+
+.diagram-viewer__header {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--md-default-fg-color--lightest);
+}
+
+.diagram-viewer__header h2 {
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.2;
+}
+
+.diagram-viewer__controls {
+  display: flex;
+  flex: 0 0 auto;
+  gap: 0.4rem;
+  align-items: center;
+}
+
+.diagram-viewer__body {
+  flex: 1 1 auto;
+  padding: 1.25rem;
+  overflow: auto;
+  text-align: center;
+}
+
+.diagram-viewer__content {
+  display: inline-block;
+  transition: transform 120ms ease;
+}
+
+.diagram-viewer__content svg,
+svg.diagram-viewer__content {
+  width: auto;
+  min-width: min(72rem, 100%);
+  max-width: none;
+}
+
+@media screen and (max-width: 40rem) {
+  .diagram-viewer__panel {
+    inset: 1rem;
+  }
+
+  .diagram-viewer__header {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .diagram-viewer__controls {
+    flex-wrap: wrap;
+  }
+}

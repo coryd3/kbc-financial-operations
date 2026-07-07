@@ -35,6 +35,9 @@ markdown_extensions:
 extra_css:
   - assets/stylesheets/extra.css
 
+extra_javascript:
+  - assets/javascripts/diagram-viewer.js
+
 hooks:
   - scripts/mkdocs_hooks.py
 
