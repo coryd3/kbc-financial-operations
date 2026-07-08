@@ -6,7 +6,7 @@ This page gives leaders a single place to find the current KBC Constitution, Byl
 
 ## Primary Reference
 
-[Open KBC Constitution, Bylaws, and Covenant 2018 PDF](../generated/source-materials/bylaws/Constitution-Bylaws-and-Covenant-2018.pdf)
+[Open KBC Constitution, Bylaws, and Covenant 2018 PDF](../generated/source-materials/bylaws/Constitution-Bylaws-and-Covenant-2018.pdf){ target="_blank" rel="noopener" }
 
 Source file:
 
