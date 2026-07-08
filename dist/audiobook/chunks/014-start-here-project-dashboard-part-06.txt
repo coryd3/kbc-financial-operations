@@ -1,0 +1,18 @@
+Section: Source Material References.
+
+Table summary.
+Document: source-materials/bylaws/Constitution, Bylaws, and Covenant 2018.pdf. Purpose: Current bylaws/covenant source for officer and approval questions.. Owner: Church / Clerk TBD. Status: Needs bylaw review. Review needed by: Pastor, Deacons, Nominating Committee, Finance Committee, Personnel Committee. Priority: High. Notes: Surfaced in the site through docs/governance/constitution-and-bylaws-reference.md; confirm this is the current authoritative version..
+Document: source-materials/existing-job-descriptions/final-approved/KBC_Treasurer_Job_Description_Rev_Nov2025.pdf. Purpose: Current approved Treasurer job description source.. Owner: Personnel Committee. Status: Needs committee input. Review needed by: Personnel Committee, Finance Committee, Nominating Committee. Priority: High. Notes: Key source for duty split discussion..
+Document: source-materials/existing-job-descriptions/accountability-frameworks/4_Treasurer Evaluation & Accountability Framework.docx. Purpose: Treasurer evaluation source.. Owner: Personnel Committee. Status: Needs Personnel input. Review needed by: Personnel Committee, Finance Committee. Priority: Medium. Notes: Determine whether this is approved, draft, or superseded..
+Document: source-materials/prior-proposals/treasurer/KBC Treasurer - Alternative Proposal 010926.pdf. Purpose: Prior Treasurer structure proposal.. Owner: Finance Committee / Personnel Committee. Status: Needs committee input. Review needed by: Finance Committee, Personnel Committee. Priority: Medium. Notes: Mine for useful ideas after leadership direction..
+Document: source-materials/prior-proposals/miller-management/The Kingsville Baptist Church Proposal-Level 1 Accounting - with QuickBooks.pdf. Purpose: Outsourced accounting / QuickBooks proposal source.. Owner: Finance Committee. Status: Needs Finance input. Review needed by: Finance Committee. Priority: Medium. Notes: Review only after software/vendor requirements are set..
+Document: source-materials/prior-proposals/finance/July 20th, 2025 budget meeting handout.pdf. Purpose: Prior budget meeting source.. Owner: Finance Committee. Status: Needs Finance input. Review needed by: Finance Committee. Priority: Medium. Notes: Use for context, not as current policy..
+
+Section: Dashboard Notes.
+
+Ready for review means the document is ready for the named body to read and discuss, not approved.
+Needs committee input means more than one body needs to discuss ownership or direction.
+Parking lot means the document should wait until more urgent decisions are made.
+Status should be updated after each committee meeting.
+
+End of chapter: Project Dashboard.

@@ -58,6 +58,7 @@ nav:
       - Decision Log: 02-decision-log.md
       - Open Questions: 03-open-questions.md
   - Governance and Responsibility:
+      - Constitution and Bylaws Reference: governance/constitution-and-bylaws-reference.md
       - Church Organization Chart: governance/church-organization-chart.md
       - Responsibility Matrix: governance/responsibility-matrix.md
       - Finance Committee Charter: governance/finance-committee-charter.md
@@ -69,6 +70,7 @@ nav:
       - Bookkeeper Job Description: roles/bookkeeper-financial-administrator-job-description.md
       - Bookkeeper Application: roles/bookkeeper-job-application.md
       - Bookkeeper Hiring Process: roles/bookkeeper-hiring-process.md
+      - Job Description Consistency Check: roles/job-description-consistency-check.md
   - Finance Operations:
       - Reimbursement Policy: policies/reimbursement-policy.md
       - Reimbursement Process: procedures/reimbursement-process.md

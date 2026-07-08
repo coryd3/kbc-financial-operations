@@ -32,6 +32,13 @@ The NotebookLM sourcebook is generated from the most important current Markdown 
 - `dist/notebooklm/kbc-financial-operations-sourcebook.md`
 - `dist/notebooklm/kbc-financial-operations-sourcebook.pdf` if Pandoc can create it locally
 
+The audiobook/TTS bundle is generated from the current documentation site sources:
+
+- `dist/audiobook/kbc-financial-operations-complete-document.md`
+- `dist/audiobook/kbc-financial-operations-tts-script.txt`
+- `dist/audiobook/chunks/`
+- `dist/audiobook/chunk-index.csv`
+
 ## Documentation Site
 
 This repository includes a searchable documentation site built with MkDocs and Material for MkDocs.
@@ -43,6 +50,8 @@ Published site:
 ```text
 https://coryd3.github.io/kbc-financial-operations/
 ```
+
+Treat the published GitHub Pages site and the public GitHub repository as public unless repository and Pages settings are intentionally changed and verified.
 
 For deployment, GitHub Pages, and analytics notes, see `SITE_DEPLOYMENT.md`.
 
@@ -82,13 +91,13 @@ python -m mkdocs build --strict
 
 GitHub also runs a workflow named `Build Docs Site` on pushes to `main`. That workflow builds the site and uploads it as a workflow artifact.
 
-### GitHub Pages Warning
+### GitHub Pages Publishing
 
-A manual workflow named `Deploy Docs Site to GitHub Pages` is included, but do not run it casually.
+The live site is published by the manual GitHub Actions workflow named `Deploy Docs Site to GitHub Pages`.
 
-GitHub Pages may expose the documentation publicly depending on repository, account, organization, and GitHub Pages settings. Do not deploy the site unless church leadership is comfortable with the content being exposed under those settings.
+GitHub Pages can expose the documentation publicly depending on repository, account, organization, and GitHub Pages settings. Because this repository has been used with a public Pages site, all committed content should be safe for public viewing.
 
-The local documentation site and the GitHub build artifact are safer ways to review the material before any public or semi-public publishing decision.
+The local documentation site and the GitHub build artifact are safer ways to review material before publishing updates to the live site.
 
 The GitHub workflow named `Build Docs Site` only builds a site artifact for review. It does not publish a website.
 
@@ -102,37 +111,48 @@ If the deploy workflow reports `Get Pages site failed` or `Not Found`, GitHub Pa
 4. Save the setting if GitHub shows a save button.
 5. Re-run the deploy workflow.
 
-The workflow also asks GitHub to enable Pages automatically where GitHub permits it, but the manual repository setting is the clearest fallback.
-
-If leadership intentionally decides to publish through the local deploy command, run:
+The local Makefile target does not publish with `mkdocs gh-deploy`. It prints the GitHub Actions deployment instructions:
 
 ```sh
-PUBLISH_DOCS_SITE=yes make docs-deploy
+make docs-deploy
 ```
-
-That command is guarded so a normal `make docs-deploy` prints a warning and stops.
 
 ### Lightweight Site Analytics
 
-The site includes optional lightweight analytics support using GoatCounter. It is disabled until a GoatCounter site code is added.
+The live site uses lightweight analytics through GoatCounter.
 
-To enable it:
+GoatCounter site:
 
-1. Create a GoatCounter site at `https://www.goatcounter.com/`.
-2. Copy the site code from the GoatCounter address, such as `my-site-name` from `https://my-site-name.goatcounter.com/`.
-3. Open `docs/assets/javascripts/analytics-config.js`.
-4. Set `goatcounterCode` to that code:
+```text
+https://kbc-financial-operations.goatcounter.com/
+```
+
+Tracking endpoint:
+
+```text
+https://kbc-financial-operations.goatcounter.com/count
+```
+
+Configuration file:
+
+```text
+docs/assets/javascripts/analytics-config.js
+```
+
+Current configuration:
 
 ```js
 window.KBC_SITE_ANALYTICS = {
   provider: "goatcounter",
-  goatcounterCode: "my-site-name",
+  goatcounterCode: "kbc-financial-operations",
   enabledHosts: ["coryd3.github.io"],
   trackLocal: false,
 };
 ```
 
 By default, local browsing at `127.0.0.1` or `localhost` is not tracked. The analytics loader only runs on the configured host list.
+
+To disable analytics later, set `goatcounterCode` to an empty string, then rebuild and redeploy the site.
 
 ## How to Export
 
@@ -183,6 +203,92 @@ Upload the Markdown sourcebook to NotebookLM when leaders need to ask questions 
 
 Do not add donor records, payroll details, bank account numbers, passwords, Social Security numbers, confidential personnel issues, private financial data, actual candidate applications, reference-check notes, or background-check results to the sourcebook.
 
+## How to Build the Audiobook / TTS Script
+
+Run:
+
+```sh
+make audiobook
+```
+
+If your computer does not have `make` installed, run:
+
+```sh
+python scripts/build_audiobook_bundle.py
+```
+
+This creates:
+
+- `dist/audiobook/kbc-financial-operations-complete-document.md` - a comprehensive compiled Markdown document.
+- `dist/audiobook/kbc-financial-operations-tts-script.txt` - a cleaner text-to-speech script for listening.
+- `dist/audiobook/chunks/` - smaller chapter/part text files for NaturalReader, Piper, or another TTS tool.
+- `dist/audiobook/chunk-index.csv` - a simple index of the generated chunk files.
+
+The TTS script removes most Markdown syntax, converts tables into spoken summaries, omits technical diagram/code blocks, and adds chapter transitions. Review the script before uploading it to a TTS app.
+
+If a TTS app has file size limits, create a shorter copy from the generated script or ask for a chunked export.
+
+## How to Generate Local Audio With Piper
+
+Piper is a local text-to-speech tool. It runs on your computer instead of sending the text to a cloud service.
+
+Install Piper:
+
+```sh
+python -m pip install piper-tts
+```
+
+Build the audiobook text and chunk files:
+
+```sh
+make audiobook
+```
+
+Download the default Piper voice:
+
+```sh
+make tts-local-download-voice
+```
+
+Create one sample WAV file first:
+
+```sh
+make tts-local-sample
+```
+
+If the sample sounds acceptable, generate all local WAV files:
+
+```sh
+make tts-local
+```
+
+The full local Piper run may take a while because the audiobook is split into many chunks. Use the sample command first to make sure the voice, pacing, and setup are acceptable.
+
+If Piper stops partway through with a WAV write error, rerun the same command. The script writes through a local temp folder, skips valid WAV files that already exist, regenerates incomplete WAV files, and resumes from the remaining chunks.
+
+Generated audio is placed in:
+
+- `dist/audiobook/audio/`
+
+The script also creates a playlist:
+
+- `dist/audiobook/audio/kbc-financial-operations-audiobook.m3u`
+
+The local voice model files are placed in:
+
+- `dist/audiobook/piper-voices/`
+
+The `audio/` and `piper-voices/` folders are ignored by Git because they can be large generated files.
+
+Without `make`, use:
+
+```sh
+python scripts/build_audiobook_bundle.py
+python scripts/run_piper_tts.py --download-voice --no-audio
+python scripts/run_piper_tts.py --sample
+python scripts/run_piper_tts.py
+```
+
 ## How to Use the Task Tracker
 
 Open `dist/leadership-review-task-tracker.csv` in Excel, Google Sheets, or another spreadsheet tool.
@@ -190,6 +296,26 @@ Open `dist/leadership-review-task-tracker.csv` in Excel, Google Sheets, or anoth
 The tracker includes suggested owners and due dates based on the July 6, 2026 leadership packet. Update the owner, due date, status, and notes columns after leadership, Finance Committee, Personnel Committee, Deacon, or Nominating Committee discussion.
 
 Do not put confidential financial, donor, payroll, bank, password, personnel, application, reference-check, or background-check details in the tracker.
+
+If an `.xlsx` copy is created for sharing, treat it as generated output. The CSV remains the source of truth.
+
+## How to Audit Public Content
+
+Run:
+
+```sh
+make audit-public
+```
+
+If your computer does not have `make` installed, run:
+
+```sh
+python scripts/audit_public_content.py
+```
+
+The audit checks tracked text files for obvious private-data or secret patterns, reports high-risk terms that may need review, and reminds you that binary files under `source-materials/` need manual review before broad public sharing.
+
+The audit is a helper, not a substitute for human review.
 
 ## How to Validate
 
@@ -240,13 +366,17 @@ Review the release folder before sharing it outside the working team.
 - `dist/` - Source Markdown for release artifacts.
 - `dist/exports/` - Generated PDF, DOCX, and PPTX review files.
 - `dist/notebooklm/` - Generated NotebookLM sourcebook files.
+- `dist/audiobook/` - Generated comprehensive document and text-to-speech script.
+- `dist/audiobook/chunks/` - Generated TTS chunk files.
+- `dist/audiobook/audio/` - Generated local Piper WAV files, ignored by Git.
+- `dist/audiobook/piper-voices/` - Downloaded local Piper voice models, ignored by Git.
 - `dist/releases/` - Dated release folders and zip bundles created by `make release`.
 - `templates/` - Reusable formats for motions, agendas, recommendations, policies, and job descriptions.
 - `archive/` - Superseded drafts and historical working material that should no longer be treated as current.
 
 ## Sensitive Information Warning
 
-Keep this repository private.
+Treat this repository and the published site as public unless privacy settings have been intentionally changed and verified.
 
 Do not store confidential or personally sensitive information here, including:
 
@@ -257,6 +387,8 @@ Do not store confidential or personally sensitive information here, including:
 - Member lists, deacon family lists, or private pastoral/personnel details.
 
 Use placeholders such as `TBD`, `Needs Finance Review`, `Needs Personnel Review`, `Needs Bylaw Review`, or `Needs Professional Review` where details must be supplied by the Finance Committee, Personnel Committee, CPA, attorney, church leadership, or congregation.
+
+Before publishing or sharing the site broadly, run `make audit-public` and manually review any binary source files that remain under `source-materials/`.
 
 ## Review Status
 
@@ -285,12 +417,17 @@ The export and release commands require:
 - `zip`, `unzip`, and `perl` for DOCX cleanup and release bundles.
 - Poppler tools, including `pdfinfo` and `pdftotext`, for PDF page counts and text validation.
 
+The local Piper audio workflow additionally requires:
+
+- Piper TTS: `python -m pip install piper-tts`
+
 Helpful install links:
 
 - Pandoc: `https://pandoc.org/installing.html`
 - LibreOffice: `https://www.libreoffice.org/download/download-libreoffice/`
 - Marp CLI: `npm install -g @marp-team/marp-cli`
 - Poppler: install the package that provides `pdfinfo` and `pdftotext`
+- Piper: `https://github.com/OHF-Voice/piper1-gpl`
 
 The GitHub Action named `Export Docs` can also generate exports as a downloadable workflow artifact.
 

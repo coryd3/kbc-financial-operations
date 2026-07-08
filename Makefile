@@ -1,7 +1,7 @@
 PYTHON ?= python
 MKDOCS ?= $(PYTHON) -m mkdocs
 
-.PHONY: export validate release notebooklm clean clean-exports serve docs-build docs-deploy
+.PHONY: export validate release notebooklm audiobook audiobook-chunks tts-local tts-local-sample tts-local-download-voice audit-public clean clean-exports serve docs-build docs-deploy
 
 export:
 	@./scripts/export.sh
@@ -15,6 +15,24 @@ release:
 notebooklm:
 	@$(PYTHON) scripts/build_notebooklm_bundle.py
 
+audiobook:
+	@$(PYTHON) scripts/build_audiobook_bundle.py
+
+audiobook-chunks:
+	@$(PYTHON) scripts/build_audiobook_bundle.py
+
+tts-local-download-voice:
+	@$(PYTHON) scripts/run_piper_tts.py --download-voice --no-audio
+
+tts-local-sample:
+	@$(PYTHON) scripts/run_piper_tts.py --sample
+
+tts-local:
+	@$(PYTHON) scripts/run_piper_tts.py
+
+audit-public:
+	@$(PYTHON) scripts/audit_public_content.py
+
 serve:
 	@$(MKDOCS) serve
 
@@ -23,9 +41,9 @@ docs-build:
 
 docs-deploy:
 	@echo "WARNING: GitHub Pages may expose this documentation publicly depending on repository, account, organization, and Pages settings."
-	@echo "Deploy only after church leadership is comfortable with the content and exposure risk."
-	@if [ "$$PUBLISH_DOCS_SITE" != "yes" ]; then echo "To deploy intentionally, run: PUBLISH_DOCS_SITE=yes make docs-deploy"; exit 1; fi
-	@$(MKDOCS) gh-deploy --force
+	@echo "This repo uses the GitHub Actions workflow named 'Deploy Docs Site to GitHub Pages' as the normal deploy path."
+	@echo "To publish: push changes to main, open GitHub Actions, run that workflow, and type DEPLOY."
+	@echo "Local mkdocs gh-deploy is intentionally not used here."
 
 clean clean-exports:
 	@rm -f dist/exports/*.pdf dist/exports/*.docx dist/exports/*.pptx

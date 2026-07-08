@@ -36,21 +36,24 @@ Start with these pages:
 
 KBC is in a Treasurer transition, and interim coverage is helping the church maintain continuity while leaders review the longer-term structure.
 
-The congregation has already authorized the Personnel Committee to hire a paid Bookkeeper / Financial Administrator. The remaining work is to finalize the job description, application, hiring process, compensation details, supervision/evaluation process, and Finance Committee input on financial duties, access, controls, software responsibilities, reporting expectations, and budget impact.
+On June 28, 2026, the congregation approved adding a paid, part-time Bookkeeper position. The motion tasked Personnel and Nominating Committees to work together to add the position, gave Personnel Committee authority to hire the right candidate, gave Finance Committee responsibility for adjusting the budget to fund this specific operational need, and set a limit of `$150` per week, described as `$18.75` per hour for approximately 8 hours.
+
+The remaining work is to finalize the job description, application, hiring process, supervision/evaluation process, employment classification, Personnel/Nominating coordination, and Finance Committee input on financial duties, access, controls, software responsibilities, reporting expectations, budget adjustment, and budget impact.
 
 This work should be treated as a stewardship and systems improvement effort, not a blame discussion.
 
 ## Top 5 Decisions Needed
 
-1. Record the exact congregational vote date, motion language, budget or compensation limits, and any conditions for the authorized paid Bookkeeper role.
+1. Confirm the official June 28, 2026 minutes and keep the hiring plan within the authorization already granted.
 2. Confirm which duties remain with the elected Treasurer / Financial Officer and which duties move to the Bookkeeper / Financial Administrator.
 3. Have Finance Committee define the financial duties, access, controls, software responsibilities, monthly reporting expectations, and budget impact before hiring materials are used.
-4. Have Personnel Committee finalize the job description, application, hiring process, compensation recommendation, supervision, and evaluation process.
+4. Have Personnel Committee finalize the job description, application, hiring process, supervision, evaluation process, and employment details, coordinating with Nominating Committee as needed under the motion.
 5. Confirm what remaining items need Deacon review, bylaw review, professional review, church vote, or later congregational updates.
 
 ## Key Documents
 
 - [Responsibility Matrix](governance/responsibility-matrix.md)
+- [Constitution and Bylaws Reference](governance/constitution-and-bylaws-reference.md)
 - [Leader-Friendly Dashboard](start-here/project-dashboard.md)
 - [Treasurer vs. Bookkeeper Duty Split](roles/treasurer-vs-bookkeeper-duty-split.md)
 - [Bookkeeper Job Description](roles/bookkeeper-financial-administrator-job-description.md)
@@ -69,4 +72,4 @@ Do not store donor records, giving details, payroll details, bank account number
 Use placeholders such as `TBD`, `Needs Finance Review`, `Needs Personnel Review`, `Needs Bylaw Review`, or `Needs Professional Review` until the proper body supplies the information.
 
 !!! warning "Public Site Caution"
-    If this site is deployed to GitHub Pages, it may be visible publicly depending on repository, account, organization, and GitHub Pages settings. Do not deploy the site unless church leadership is comfortable with the content being exposed under those settings.
+    The published GitHub Pages site and public repository should be treated as public unless privacy settings are intentionally changed and verified. Do not add sensitive records or confidential details to this repository or site.

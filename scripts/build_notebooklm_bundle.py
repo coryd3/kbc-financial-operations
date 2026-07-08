@@ -77,6 +77,15 @@ SOURCE_DOCS = [
     SourceDoc("Open Questions", "docs/03-open-questions.md", "Project lead TBD"),
     SourceDoc("Decision Log", "docs/02-decision-log.md", "Project lead TBD"),
     SourceDoc(
+        "Constitution and Bylaws Reference",
+        "docs/governance/constitution-and-bylaws-reference.md",
+        "Church / Clerk TBD",
+        note=(
+            "This sourcebook includes the reference page and review questions, not the full PDF. "
+            "Check the Constitution, Bylaws, and Covenant PDF before making final governance decisions."
+        ),
+    ),
+    SourceDoc(
         "Leadership Review Packet Summary",
         "docs/communications/leadership-review-packet.md",
         "Pastor / leadership team",

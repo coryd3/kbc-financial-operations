@@ -1,0 +1,54 @@
+Part: Software Evaluation.
+
+Chapter: Software Requirements.
+Current document status: Draft.
+
+Section: Software Requirements.
+
+KBC should define requirements before selecting ChurchTrac, IconCMO, QuickBooks, or another system. Software should support the financial structure KBC chooses; it should not be used as a substitute for clear governance.
+
+Section: Must Have.
+
+Table summary.
+Requirement: Contribution tracking. Description: Record gifts by donor, fund, date, and giving method.. Notes: Must protect donor confidentiality..
+Requirement: Year-end giving statements. Description: Produce accurate annual giving statements.. Notes: Confirm format and correction process..
+Requirement: Fund accounting. Description: Track general, designated, restricted, and ministry funds appropriately.. Notes: Needs Finance Committee review..
+Requirement: Budget reporting. Description: Show budget-to-actual reports by category or ministry.. Notes: Must support monthly review..
+Requirement: Expense tracking. Description: Record bills, reimbursements, card transactions, and other expenses.. Notes: Must preserve documentation..
+Requirement: Receipt attachment or documentation link. Description: Attach receipts if available, or clearly link transactions to supporting files.. Notes: Vendor confirmation needed..
+Requirement: Bank reconciliation. Description: Support monthly reconciliation or provide clean reconciliation workflow.. Notes: Required for monthly close..
+Requirement: User permissions. Description: Assign appropriate access by role.. Notes: Treasurer, Bookkeeper, Finance Committee, Pastor, and staff access may differ..
+Requirement: Monthly reports. Description: Produce reports useful for Treasurer and Finance Committee review.. Notes: Define exact packet..
+Requirement: Payroll handling or integration. Description: Either process payroll or integrate/support payroll recordkeeping.. Notes: Needs professional review..
+Requirement: Audit/review support. Description: Provide exports, reports, and audit trail.. Notes: Important for accountability..
+Requirement: Data export. Description: Export financial and contribution records in usable formats.. Notes: Avoid lock-in where possible..
+
+Section: Should Have.
+
+Table summary.
+Requirement: Approval workflow. Description: Support reimbursement or spending review steps.. Notes: If unavailable, process can be handled outside software..
+Requirement: Credit card transaction import. Description: Import or match card transactions.. Notes: Helpful for monthly review..
+Requirement: Bank feed. Description: Import bank activity.. Notes: Must be reviewed for controls and access..
+Requirement: Role-specific dashboards. Description: Provide simple views for Treasurer, Bookkeeper, or committee.. Notes: Nice to have..
+Requirement: Document storage. Description: Store receipts, invoices, and supporting records.. Notes: Confirm storage limits and privacy..
+Requirement: Migration tools. Description: Import donors, accounts, funds, balances, or vendors.. Notes: Needed if moving from existing systems..
+Requirement: Training and support. Description: Provide understandable help for volunteers or small church staff.. Notes: Important for sustainability..
+
+Section: Questions For Vendors.
+
+Can the system handle both contributions and accounting in one place?
+Can it track restricted/designated funds cleanly?
+Can it produce the exact reports KBC needs monthly?
+Can users have different permission levels?
+Can receipts be attached to transactions?
+Can it import bank or credit card transactions?
+How are corrections and audit trails handled?
+What data can be exported if KBC changes systems later?
+How are year-end giving statements produced and corrected?
+How does payroll work, or what payroll systems does it integrate with?
+What support is available during setup and migration?
+What is the total annual cost, including add-ons?
+
+Needs Finance Review: Requirements should be approved by the Finance Committee before demos or final selection.
+
+End of chapter: Software Requirements.

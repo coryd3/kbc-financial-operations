@@ -1,0 +1,11 @@
+Section: Decision Notes.
+
+Which system best supports Finance Committee monthly review?
+Which system is easiest for a new Bookkeeper / Financial Administrator?
+Which system best protects donor confidentiality and financial controls?
+Which system gives KBC the best long-term handoff and documentation support?
+What questions must be answered before a recommendation can be made?
+
+Needs Finance Review: Finance Committee should set weights before demos and should not make a final software recommendation until cost, controls, reporting, migration, and support questions are answered.
+
+End of chapter: Demo Scorecard.

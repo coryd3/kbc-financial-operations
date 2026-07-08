@@ -11,8 +11,8 @@ The current Treasurer vacancy has exposed broader financial operations needs. Th
 Known concerns:
 
 - The Treasurer role appears to include both governance responsibilities and day-to-day bookkeeping tasks.
-- The congregation has authorized Personnel Committee to hire a paid Bookkeeper / Financial Administrator, but the exact duty split still needs to be defined.
-- The relationship between Treasurer, Finance Committee, Personnel Committee, Pastor, and church office support needs clearer definition.
+- On June 28, 2026, the congregation authorized adding a paid, part-time Bookkeeper position, but the exact duty split still needs to be defined.
+- The relationship between Treasurer, Finance Committee, Personnel Committee, Nominating Committee, Pastor, and church office support needs clearer definition.
 
 Needed work:
 
@@ -78,14 +78,15 @@ Needed work:
 
 Known concerns:
 
-- Day-to-day bookkeeping has been authorized as a paid role, but compensation, hours, classification, supervision, and budget impact still need committee review.
-- The approval path needs to be clear before hiring is completed, especially if proposed compensation or budget impact exceeds the prior congregational authorization.
+- Day-to-day bookkeeping has been authorized as a paid role not to exceed `$150` per week, described in the June 28, 2026 motion as `$18.75` per hour for approximately 8 hours.
+- Employment classification, supervision, evaluation, financial duties, controls, and budget adjustment still need committee review.
+- The approval path needs to be clear before hiring is completed, especially if proposed compensation, hours, or budget impact exceeds the June 28, 2026 authorization.
 
 Needed work:
 
 - Identify whether the paid Bookkeeper / Financial Administrator should be employee, contractor, stipend-based, or another approved classification.
-- Define compensation recommendation responsibility.
-- Determine whether any additional church vote is required for budget change or compensation beyond the prior authorization.
+- Confirm compensation and hours stay within the June 28, 2026 authorization unless additional approval is obtained.
+- Determine whether any additional church vote is required for budget changes or compensation beyond the authorization.
 
 ## Documentation Gaps
 

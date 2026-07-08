@@ -4,12 +4,12 @@ Status: Draft
 
 ## Personnel Committee
 
-- What exact vote date, motion language, compensation or budget limits, and conditions apply to the congregational authorization for Personnel Committee to hire a paid Bookkeeper / Financial Administrator?
 - What qualifications should be required for bookkeeping or financial administration work?
 - Should the paid Bookkeeper / Financial Administrator be employee, contractor, stipend-based, or another approved classification?
 - Who should supervise or evaluate the paid Bookkeeper / Financial Administrator?
 - What application, interview, reference, and background-check process should apply?
-- What compensation range, hours, and start date should be recommended within the authority granted by the congregation?
+- What start date should be recommended?
+- How should Personnel Committee coordinate with Nominating Committee under the June 28, 2026 motion to add the position?
 
 ## Finance Committee
 
@@ -40,7 +40,7 @@ Status: Draft
 ## Congregation
 
 - Which decisions require a church vote?
-- Does any proposed Bookkeeper compensation, hours, budget impact, or classification exceed the prior congregational authorization?
+- Does any proposed Bookkeeper compensation, hours, budget impact, or classification exceed the June 28, 2026 authorization of a paid, part-time Bookkeeper position not to exceed `$150` per week, described as `$18.75` per hour for approximately 8 hours?
 - Do any policies require adoption at a business meeting?
 
 ## Professional Review

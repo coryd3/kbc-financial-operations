@@ -1,0 +1,30 @@
+Requester notifies the Bookkeeper that the receipt is missing.
+Requester provides a written explanation including:
+Date of purchase.
+Vendor.
+Amount.
+Ministry or budget category.
+Church purpose.
+Reason the receipt is unavailable.
+Bookkeeper checks whether other documentation is available, such as invoice, email confirmation, packing slip, bank/card record, or vendor reprint.
+Treasurer or assigned approver reviews the missing-receipt explanation before payment.
+If approved, Bookkeeper records the reimbursement and files the explanation with the transaction.
+Missing-receipt reimbursements are listed for monthly Finance Committee review.
+Repeated missing receipts by the same person or ministry should be addressed by Finance Committee or the appropriate supervisor/committee.
+
+Section: Monthly Review Packet Items.
+
+The reimbursement section of the monthly Finance Committee packet should include:
+
+Total reimbursements paid during the month.
+Reimbursements by ministry or budget category.
+Any outside-budget or over-budget reimbursements.
+Any above-threshold reimbursements.
+Missing receipt explanations.
+Unusual or recurring reimbursements.
+Requests pending approval or documentation.
+Recommended follow-up items.
+
+Needs Finance Review: Finance Committee should set the TBD thresholds, approved approver roles, submission deadline, emergency authority, and missing-receipt approval standard.
+
+End of chapter: Reimbursement Process.

@@ -1,0 +1,43 @@
+Table summary.
+Decision Area: Treasurer vs. Bookkeeper division. Finance Committee Decision Needed: Decide which financial duties belong with the elected Treasurer, Bookkeeper / Financial Administrator, Finance Committee, and outside vendor.. Related Bodies: Personnel Committee, Treasurer, Nominating Committee, Congregation if required. Notes: Personnel needs this before the job description, application, and hiring process are finalized..
+Decision Area: Financial software. Finance Committee Decision Needed: Decide requirements, shortlist, demo process, recommendation, and implementation direction.. Related Bodies: Treasurer, Bookkeeper, Pastor, Personnel Committee where staffing is affected. Notes: Software should support governance and controls, not replace them..
+Decision Area: Reimbursement policy. Finance Committee Decision Needed: Decide approval roles, required documentation, routine expense handling, exceptions, and review process.. Related Bodies: Treasurer, Bookkeeper, ministry leaders. Notes: Routine budgeted expenses should not be overburdened, but must be documented..
+Decision Area: Spending authority. Finance Committee Decision Needed: Set dollar thresholds and approval paths for routine, outside-budget, over-budget, large, recurring, emergency, and church vote items.. Related Bodies: Pastor, Deacons, Congregation if required. Notes: Thresholds are currently TBD..
+Decision Area: Credit/debit card policy. Finance Committee Decision Needed: Decide whether to replace shared debit cards with individual cards or another controlled payment method.. Related Bodies: Treasurer, Bookkeeper, Pastor, ministry leaders, Personnel Committee for accountability. Notes: Policy should cover limits, receipts, review, suspension, and revocation..
+Decision Area: Budget impact. Finance Committee Decision Needed: Decide how software cost, authorized bookkeeping compensation, vendor cost, and policy changes affect the budget.. Related Bodies: Personnel Committee, Deacons, Congregation if required. Notes: The June 28 motion gave Finance Committee responsibility for adjusting the budget to fund this specific operational need; determine whether any cost exceeds the authorization or current budget authority..
+Decision Area: Monthly review rhythm. Finance Committee Decision Needed: Decide cadence, required packet, reviewers, follow-up process, and business meeting reporting.. Related Bodies: Treasurer, Bookkeeper, Pastor, Deacons if appropriate. Notes: Monthly review is the main accountability rhythm..
+Decision Area: Audit / financial review. Finance Committee Decision Needed: Decide scope, frequency, reviewer type, and follow-up process.. Related Bodies: Treasurer, Bookkeeper, outside accountant or CPA, Congregation if required. Notes: May be internal, external, CPA-led, or another model..
+
+Section: Software Selection Questions.
+
+Finance Committee should define requirements before comparing ChurchTrac, IconCMO, QuickBooks, Miller Management, or any other option.
+
+Section: Requirements.
+
+Does the system need to handle both contributions and accounting?
+Does it support fund accounting for general, designated, restricted, and ministry funds?
+Can it produce budget-to-actual reports useful for monthly review?
+Can it track expenses, reimbursements, card transactions, and supporting documentation?
+Can receipts be attached or clearly linked to transactions?
+Can it handle bank reconciliation or support a clean reconciliation workflow?
+Can it produce year-end giving statements?
+Can users have different permissions for Treasurer, Bookkeeper, Pastor, Finance Committee, and staff?
+Can it export data if KBC later changes systems?
+Can it support audit/review needs with reports, exports, and audit trail?
+
+Section: Demo Process.
+
+Who should attend demos?
+Should Treasurer, interim Treasurer, potential Bookkeeper, Pastor, and selected Finance Committee members all participate?
+Should Personnel Committee attend only for job-impact and training questions?
+What scorecard weights should be used?
+What workflows must vendors demonstrate live?
+What cost information is needed before making a recommendation?
+
+Section: Implementation.
+
+Who will configure accounts, funds, users, permissions, and reports?
+What historical data must be migrated?
+Who will verify opening balances and fund balances?
+What training is needed for Treasurer, Bookkeeper, Pastor, Finance Committee, and ministry leaders?
+What is the target go-live date?

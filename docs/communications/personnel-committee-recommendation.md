@@ -8,7 +8,7 @@ This draft frames a recommendation from the Personnel Committee to the Finance C
 
 ## Draft Recommendation
 
-The Personnel Committee recognizes that the congregation has authorized Personnel Committee to hire a paid Bookkeeper / Financial Administrator. Before finalizing the job description, application, hiring process, or compensation recommendation, we recommend that the Finance Committee evaluate and provide direction on financial software, reimbursement procedures, spending authority, credit/debit card use, monthly financial review, budget impact, and the long-term division of responsibilities between the Treasurer, Bookkeeper, and Finance Committee.
+The Personnel Committee recognizes that the congregation authorized adding a paid, part-time Bookkeeper position on June 28, 2026. The motion gave Personnel Committee authority to hire the right candidate and gave Finance Committee responsibility for adjusting the budget to fund this specific operational need. Before finalizing the job description, application, hiring process, or compensation details, we recommend that the Finance Committee evaluate and provide direction on financial software, reimbursement procedures, spending authority, credit/debit card use, monthly financial review, budget impact, and the long-term division of responsibilities between the Treasurer, Bookkeeper, and Finance Committee.
 
 ## Rationale
 
@@ -22,7 +22,7 @@ The Personnel Committee can help by:
 
 - Drafting job descriptions.
 - Preparing application, interview, reference-check, and candidate evaluation materials.
-- Recommending compensation, hours, and classification for the authorized paid role.
+- Recommending classification, supervision, evaluation process, and any compensation details within the authorized limit.
 - Supporting an evaluation process for the operational role.
 
 ## Finance Committee Scope

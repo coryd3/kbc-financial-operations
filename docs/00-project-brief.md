@@ -14,7 +14,9 @@ The Treasurer position is in transition, and interim coverage is helping KBC mai
 
 This interim arrangement gives the church time to make a thoughtful plan rather than rushing into another person-dependent model.
 
-The congregation has already voted to give Personnel Committee authority to hire a paid Bookkeeper / Financial Administrator. This project should now help KBC finalize the job description, application, hiring process, financial duties, controls, and budget implications for that authorized role.
+On June 28, 2026, the congregation approved adding a paid, part-time Bookkeeper position. The motion tasked Personnel and Nominating Committees to work together to add the position, gave Personnel Committee authority to hire the right candidate, gave Finance Committee responsibility for adjusting the budget to fund this specific operational need, and set a limit of `$150` per week, described as `$18.75` per hour for approximately 8 hours.
+
+This project should now help KBC finalize the job description, application, hiring process, financial duties, controls, and budget implications for that authorized role.
 
 ## Deeper Issue
 
@@ -40,4 +42,4 @@ KBC should have a financial operations model where:
 - The Nominating Committee and Congregation are involved where bylaws or church policy require.
 - Procedures are documented clearly enough that the work can continue when people change roles.
 
-Needs Committee Review: Any final recommendation should be reviewed against KBC bylaws, the prior congregational authorization, and the appropriate committee, leadership, and congregational process.
+Needs Committee Review: Any final recommendation should be reviewed against KBC bylaws, the June 28, 2026 congregational authorization, and the appropriate committee, leadership, and congregational process.

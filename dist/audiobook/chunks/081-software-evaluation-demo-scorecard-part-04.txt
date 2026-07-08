@@ -1,0 +1,131 @@
+Section: Workflow-Specific Demo Prompts.
+
+Section: Weekly Offering Entry.
+
+Show how counters' totals are entered.
+Show how anonymous cash is handled.
+Show how donor gifts are entered or imported.
+Show how corrections are made if a gift is entered incorrectly.
+Show what report proves offering entry matches the deposit.
+
+Section: Designated Funds.
+
+Show how KBC would track general fund, missions, building, benevolence, or other designated funds.
+Show a report of beginning balance, gifts, spending, and ending balance for one designated fund.
+Explain whether fund balances connect to accounting reports automatically.
+
+Section: Online Giving.
+
+Show how online gifts enter the system.
+Show how processing fees are recorded.
+Show how failed, refunded, or corrected gifts are handled.
+Explain whether online giving requires a separate merchant account or add-on cost.
+
+Section: Bank Deposits.
+
+Show how a deposit is created, printed, exported, or matched to bank activity.
+Show how multiple giving batches or payment methods are grouped into one bank deposit.
+Explain how deposit documentation is preserved.
+
+Section: Reimbursements.
+
+Show how a reimbursement request is entered.
+Show how ministry/category coding is assigned.
+Show how payment status is tracked.
+Show how the system prevents or flags incomplete documentation, if it can.
+
+Section: Receipt And Documentation Tracking.
+
+Show whether receipts can be attached directly.
+Explain storage limits and supported file types.
+Show how a reviewer finds the receipt later.
+Explain the workaround if attachments are not supported.
+
+Section: Approval Workflow Or Workaround.
+
+Show whether approval steps are built into the system.
+If approval is not built in, explain the recommended outside process.
+Show how approved-by, approval date, and policy exception notes can be recorded.
+
+Section: Budget vs. Actual Reporting.
+
+Show budget setup by ministry/category.
+Show year-to-date budget versus actual.
+Show monthly activity and variances.
+Show how over-budget items are flagged or reviewed.
+
+Section: Monthly Business Meeting Report.
+
+Show a plain summary report that could be shared at a business meeting.
+Show whether detail can be hidden while still providing useful transparency.
+Show export options for PDF, Excel, or print.
+
+Section: Payroll Or Payroll Integration.
+
+Show whether payroll is processed inside the system or recorded from another provider.
+Explain W-2, 1099, payroll tax, and liability handling.
+Explain what KBC would still need an outside payroll/accounting vendor to do.
+
+Section: Bank Reconciliation.
+
+Show imported or manually entered bank activity.
+Show reconciliation workflow.
+Show reconciliation reports and unresolved item handling.
+
+Section: Year-End Contribution Statements.
+
+Show statement generation.
+Show donor household handling.
+Show corrections and reissued statements.
+Show email, print, or portal delivery options.
+
+Section: User Permissions.
+
+Show permission levels for:
+Treasurer / Financial Officer.
+Bookkeeper / Financial Administrator.
+Pastor.
+Finance Committee reviewer.
+Ministry leader.
+Explain whether donor giving details can be restricted from users who do not need access.
+
+Section: Audit Trail.
+
+Show transaction history.
+Show user activity logs.
+Show whether deleted or changed transactions remain visible to reviewers.
+Explain audit trail export options.
+
+Section: Ease Of Use For A New Bookkeeper.
+
+Show the weekly workflow from login to completed reports.
+Explain what a new bookkeeper would need to learn first.
+Show built-in guidance, checklists, or help resources.
+Identify which tasks are most likely to confuse a new user.
+
+Section: Training And Support.
+
+Explain implementation support.
+Explain live support availability and response times.
+Show help documentation and training videos.
+Explain whether support is included in base cost.
+
+Section: Cost.
+
+Provide itemized cost for:
+Base subscription.
+Accounting module.
+Contribution/giving module.
+Online giving fees.
+Payroll module or integration.
+Additional users.
+Setup or implementation.
+Migration.
+Training/support.
+Any contract minimums.
+
+Section: Summary Scoring.
+
+Table summary.
+Vendor: IconCMO. Total Weighted Score: TBD. Major Strengths: TBD. Major Concerns: TBD. Required Workarounds: TBD. Estimated Annual Cost: TBD. Recommendation: TBD.
+Vendor: ChurchTrac. Total Weighted Score: TBD. Major Strengths: TBD. Major Concerns: TBD. Required Workarounds: TBD. Estimated Annual Cost: TBD. Recommendation: TBD.

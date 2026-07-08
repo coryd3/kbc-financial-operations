@@ -1,0 +1,71 @@
+Recommended application sections:
+
+Applicant information.
+Employment information.
+Availability.
+Bookkeeping and accounting experience.
+Software experience.
+Confidentiality and accuracy.
+Church and ministry perspective.
+References.
+Applicant statement and certification.
+
+Key screening questions currently included:
+
+Previous bookkeeping, accounting, payroll, office administration, or financial recordkeeping experience.
+Experience with transaction entry, bank reconciliation, accounts payable, reimbursements, contributions, payroll coordination, budget reports, and financial statements.
+Experience with ChurchTrac, IconCMO, QuickBooks, Excel/Google Sheets, or payroll provider portals.
+Willingness to maintain confidentiality and follow KBC financial policies and procedures.
+Ability to explain how the applicant approaches accuracy, confidentiality, and asking questions when financial information is unclear.
+
+Full draft: docs/roles/bookkeeper-job-application.md.
+
+Needs Personnel Review: Personnel Committee should decide whether to add background-check consent language, membership/attendance expectations, compensation expectations, conflict-of-interest language, or financial confidentiality acknowledgment.
+
+Section: Draft Bookkeeper Hiring Process.
+
+The standalone hiring process should be treated as the source of truth:
+
+docs/roles/bookkeeper-hiring-process.md.
+
+It adapts the prior KBC Custodian hiring workflow for a financial role and includes:
+
+Role-confirmation checklist before posting.
+Application review steps.
+Reference-check process.
+Interview guide.
+Candidate evaluation rubric.
+Onboarding and support checklist.
+
+Needs Personnel Review: Personnel Committee should confirm the hiring lead, interview team, reference process, background-check process, secure storage location for hiring records, and final candidate selection process.
+
+Needs Finance Review: Finance Committee should confirm financial duties and controls before the position is posted, interviews begin, or an offer is made.
+
+Section: Recommendations To Finance Committee.
+
+The Personnel Committee should consider sending the following recommendation to the Finance Committee:
+
+The Personnel Committee recognizes that the congregation authorized adding a paid, part-time Bookkeeper position on June 28, 2026. The motion gave Personnel Committee authority to hire the right candidate and gave Finance Committee responsibility for adjusting the budget to fund this specific operational need. Before finalizing the job description, application, hiring process, or compensation details, we request that the Finance Committee provide direction on financial software, reimbursement procedures, spending authority, credit/debit card use, monthly financial review, budget impact, and the long-term division of responsibilities between the Treasurer, Bookkeeper, and Finance Committee.
+
+Recommended requests for Finance Committee direction:
+
+Should the Treasurer role be primarily governance/accountability rather than day-to-day bookkeeping?
+What financial duties should be assigned to the authorized Bookkeeper role?
+What software should KBC use for contributions, bookkeeping, reports, and records?
+What reimbursement process should be adopted?
+What spending authority thresholds should be used?
+Should shared debit cards be replaced with individual church credit cards or another controlled payment method?
+What should be included in the monthly financial review packet?
+Should payroll and tax filings be outsourced to a payroll/accounting vendor?
+What budget impact should Personnel consider before posting the paid role, beginning interviews, or making an offer?
+
+Section: Open Questions For Discussion.
+
+Section: Role Structure.
+
+How should the authorized Bookkeeper / Financial Administrator role be separated from the elected Treasurer role?
+Should the role begin before software selection, after software selection, or with an interim workflow?
+What duties must remain with the elected Treasurer under KBC bylaws?
+What title is best: Bookkeeper, Financial Administrator, Finance Assistant, or another title?
+
+Section: Hiring And Compensation.

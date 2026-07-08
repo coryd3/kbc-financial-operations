@@ -4,6 +4,8 @@ Status: Draft
 
 Imported from `G:\My Drive\KBC Personal\Kingsville Baptist Church` on 2026-07-06.
 
+Public Caution: This repository and its GitHub Pages site should be treated as public unless settings are intentionally changed and verified. Binary source files listed below need manual review before broad public sharing.
+
 ## Imported
 
 - Current bylaws and one editable archived bylaws document.
@@ -29,4 +31,3 @@ Imported from `G:\My Drive\KBC Personal\Kingsville Baptist Church` on 2026-07-06
 ## Notes
 
 The original copied document archive remains outside this repo. Revisit exclusions before adding any additional binary source files.
-

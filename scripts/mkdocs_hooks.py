@@ -1,11 +1,29 @@
-"""MkDocs build hooks for generated local-preview helpers."""
+"""MkDocs build hooks for generated local-preview helpers and reference files."""
 
 from __future__ import annotations
 
+import shutil
 from pathlib import Path
 
 
+ROOT = Path(__file__).resolve().parents[1]
 LAUNCHER_NAME = "open-local-site.bat"
+BYLAWS_SOURCE = ROOT / "source-materials" / "bylaws" / "Constitution, Bylaws, and Covenant 2018.pdf"
+BYLAWS_SITE_COPY = (
+    ROOT
+    / "docs"
+    / "generated"
+    / "source-materials"
+    / "bylaws"
+    / "Constitution-Bylaws-and-Covenant-2018.pdf"
+)
+
+
+def on_pre_build(config, **kwargs):
+    """Copy selected source references into docs/generated so the site can link to them."""
+    if BYLAWS_SOURCE.exists():
+        BYLAWS_SITE_COPY.parent.mkdir(parents=True, exist_ok=True)
+        shutil.copy2(BYLAWS_SOURCE, BYLAWS_SITE_COPY)
 
 
 def on_post_build(config, **kwargs):

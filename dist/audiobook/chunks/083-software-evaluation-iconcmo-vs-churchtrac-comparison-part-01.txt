@@ -1,0 +1,43 @@
+Chapter: IconCMO vs. ChurchTrac Comparison.
+Current document status: Draft.
+
+Section: IconCMO vs ChurchTrac Comparison.
+
+Use this template during vendor research and demos. Do not fill in vendor claims unless confirmed from source documents, vendor demos, contracts, or official vendor materials.
+
+Table summary.
+Requirement: Contribution tracking. IconCMO: TBD. ChurchTrac: TBD. Evidence / Notes: Vendor confirmation needed..
+Requirement: Year-end giving statements. IconCMO: TBD. ChurchTrac: TBD. Evidence / Notes: Vendor confirmation needed..
+Requirement: Fund accounting. IconCMO: TBD. ChurchTrac: TBD. Evidence / Notes: Vendor confirmation needed..
+Requirement: Budget reporting. IconCMO: TBD. ChurchTrac: TBD. Evidence / Notes: Vendor confirmation needed..
+Requirement: Expense tracking. IconCMO: TBD. ChurchTrac: TBD. Evidence / Notes: Vendor confirmation needed..
+Requirement: Receipt attachment or documentation link. IconCMO: TBD. ChurchTrac: TBD. Evidence / Notes: Vendor confirmation needed..
+Requirement: Bank reconciliation. IconCMO: TBD. ChurchTrac: TBD. Evidence / Notes: Vendor confirmation needed..
+Requirement: User permissions. IconCMO: TBD. ChurchTrac: TBD. Evidence / Notes: Vendor confirmation needed..
+Requirement: Monthly finance reports. IconCMO: TBD. ChurchTrac: TBD. Evidence / Notes: Vendor confirmation needed..
+Requirement: Payroll handling or integration. IconCMO: TBD. ChurchTrac: TBD. Evidence / Notes: Vendor confirmation needed..
+Requirement: Credit card or bank transaction import. IconCMO: TBD. ChurchTrac: TBD. Evidence / Notes: Vendor confirmation needed..
+Requirement: Data import / migration. IconCMO: TBD. ChurchTrac: TBD. Evidence / Notes: Vendor confirmation needed..
+Requirement: Data export. IconCMO: TBD. ChurchTrac: TBD. Evidence / Notes: Vendor confirmation needed..
+Requirement: Audit trail. IconCMO: TBD. ChurchTrac: TBD. Evidence / Notes: Vendor confirmation needed..
+Requirement: Ease of use for volunteers. IconCMO: TBD. ChurchTrac: TBD. Evidence / Notes: Confirm through demo..
+Requirement: Training and support. IconCMO: TBD. ChurchTrac: TBD. Evidence / Notes: Vendor confirmation needed..
+Requirement: Total annual cost. IconCMO: TBD. ChurchTrac: TBD. Evidence / Notes: Include modules, add-ons, setup, and support..
+
+Section: Demo Notes.
+
+Section: IconCMO.
+
+TBD.
+
+Section: ChurchTrac.
+
+TBD.
+
+Section: Recommendation.
+
+TBD.
+
+Needs Finance Review: Finance Committee should approve the final comparison and recommendation.
+
+End of chapter: IconCMO vs. ChurchTrac Comparison.

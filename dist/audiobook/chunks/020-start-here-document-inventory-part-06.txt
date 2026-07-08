@@ -1,0 +1,26 @@
+Section: Repository Support Documents.
+
+Table summary.
+File name: README.md. Type of document: Repository overview. Purpose: Explain repository purpose, privacy warnings, layout, working principles, and immediate next steps.. Current status: Active repository guide. Related committee/body: All project reviewers. Operations Manual: No. Open questions: Should this be updated after the project moves from setup to active committee review?.
+File name: AGENTS.md. Type of document: Agent instructions. Purpose: Provide durable guidance for future Codex sessions, including tone, governance boundaries, safety rules, and documentation standards.. Current status: Active repository guide. Related committee/body: All project reviewers. Operations Manual: No. Open questions: Who approves changes to future agent instructions?.
+File name: archive/superseded-drafts/README.md. Type of document: Archive guide. Purpose: Explain use of the superseded drafts archive.. Current status: Repository guide. Related committee/body: Document maintainers. Operations Manual: No. Open questions: What process marks a draft as superseded?.
+
+Section: Templates.
+
+Table summary.
+File name: templates/meeting-agenda-template.md. Type of document: Template. Purpose: Provide reusable committee meeting agenda format.. Current status: Draft template. Related committee/body: All committees. Operations Manual: No. Open questions: Should each committee have its own agenda format?.
+File name: templates/committee-recommendation-template.md. Type of document: Template. Purpose: Provide reusable recommendation format with background, rationale, financial impact, motion, and implementation plan.. Current status: Draft template. Related committee/body: All committees. Operations Manual: No. Open questions: Should this become the standard format for committee recommendations?.
+File name: templates/motion-template.md. Type of document: Template. Purpose: Provide reusable church motion format.. Current status: Draft template. Related committee/body: Committees, Congregation. Operations Manual: No. Open questions: Should motions require review by Moderator, Clerk, Pastor, or Deacons before presentation?.
+File name: templates/policy-template.md. Type of document: Template. Purpose: Provide reusable policy format.. Current status: Draft template. Related committee/body: All policy owners. Operations Manual: No. Open questions: What approval and review schedule should each policy include?.
+File name: templates/job-description-template.md. Type of document: Template. Purpose: Provide reusable job description format.. Current status: Draft template. Related committee/body: Personnel Committee. Operations Manual: No. Open questions: Should Personnel Committee adopt this as the standard job-description format?.
+
+Section: Source Material Administration.
+
+Table summary.
+File name: source-materials/README.md. Type of document: Source folder guide. Purpose: Explain import policy and what source materials are intentionally excluded.. Current status: Repository guide. Related committee/body: All project reviewers. Operations Manual: No. Open questions: Should any additional exclusion categories be added?.
+File name: source-materials/import-manifest.md. Type of document: Import manifest. Purpose: Record what was imported and intentionally excluded from the original document archive.. Current status: Draft / source control note. Related committee/body: All project reviewers. Operations Manual: No. Open questions: Who approves future source imports?.
+File name: source-materials/reference-archive/README.md. Type of document: Archive guide. Purpose: Explain use of reference archive for context-only materials.. Current status: Repository guide. Related committee/body: All project reviewers. Operations Manual: No. Open questions: What criteria should move a source file into reference archive?.
+
+Section: Imported Source Documents.
+
+Section: Bylaws And Governance Sources.

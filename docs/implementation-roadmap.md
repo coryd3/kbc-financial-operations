@@ -47,7 +47,7 @@ Start date: TBD
 | Supporting bodies | Interim Treasurer, Pastor, Deacons, Nominating Committee if bylaws require. |
 | Deliverables | Reviewed responsibility matrix; Treasurer vs. Bookkeeper duty split; Personnel Committee packet; Finance Committee packet; updated open questions; initial decision log entries; draft Bookkeeper hiring process reviewed by Personnel Committee. |
 | Dependencies | Review of current Treasurer job description; review of bylaws; committee meeting dates; agreement on Finance vs. Personnel decision boundaries. |
-| Open questions | Which Treasurer duties are required by bylaws? What exact scope did the congregation authorize for the paid Bookkeeper role? What direction should Finance give Personnel before job materials are finalized? What items, if any, still need Deacon review or church vote? |
+| Open questions | Which Treasurer duties are required by bylaws? How should Personnel Committee and Nominating Committee coordinate under the June 28, 2026 motion? What direction should Finance give Personnel before job materials are finalized? What items, if any, still need Deacon review or church vote? |
 
 ### 30-Day Actions
 
@@ -56,7 +56,8 @@ Start date: TBD
 - [ ] Personnel Committee reviews `docs/communications/personnel-committee-packet.md`.
 - [ ] Personnel Committee reviews `docs/roles/bookkeeper-hiring-process.md`.
 - [ ] Finance Committee reviews `docs/communications/finance-committee-packet.md`.
-- [ ] Record the prior congregational vote authorizing Personnel Committee to hire a paid Bookkeeper / Financial Administrator.
+- [ ] Confirm the official June 28, 2026 minutes and recorded motion authorizing the paid, part-time Bookkeeper position.
+- [ ] Confirm how Personnel Committee and Nominating Committee should coordinate under the motion.
 - [ ] Confirm the duty split between Treasurer / Financial Officer and the authorized Bookkeeper / Financial Administrator.
 - [ ] Decide what items need Deacon review, Nominating Committee review, or church vote.
 - [ ] Update `docs/02-decision-log.md` after committee direction is given.
@@ -157,8 +158,8 @@ Start date: TBD
 - Which current bylaws provisions control Treasurer duties, election, bonding, and replacement?
 - Which recommendations require Deacon review before church presentation?
 - Which decisions require a church vote?
-- What employment classification, hours, and compensation should be used for the authorized paid Bookkeeper / Financial Administrator role?
-- Does any Bookkeeper recommendation exceed the prior congregational authorization?
+- What employment classification, supervision plan, evaluation process, and start date should be used for the authorized paid Bookkeeper / Financial Administrator role?
+- Does any Bookkeeper recommendation exceed the June 28, 2026 authorization of a paid, part-time Bookkeeper position not to exceed `$150` per week, described as `$18.75` per hour for approximately 8 hours?
 - What professional review is needed for payroll, tax, accounting, employment, or legal questions?
 - What software best supports KBC's actual workflow and monthly review needs?
 - Who will maintain the Operations Manual after initial adoption?

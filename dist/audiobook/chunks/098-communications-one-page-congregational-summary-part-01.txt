@@ -1,0 +1,6 @@
+Chapter: One-Page Congregational Summary.
+Current document status: TBD.
+
+--8<-- "dist/one-page-congregational-summary.md".
+
+End of chapter: One-Page Congregational Summary.

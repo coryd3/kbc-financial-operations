@@ -1,0 +1,5 @@
+Table summary.
+File name: source-materials/bylaws/Constitution, Bylaws, and Covenant 2018.pdf. Type of document: Bylaws / covenant source. Purpose: Provide current governance authority for officer, committee, and church approval questions.. Current status: Imported source reference. Related committee/body: Congregation, Pastor, Deacons, Nominating Committee, Finance Committee, Personnel Committee. Operations Manual: Maybe. Open questions: Surfaced in the site through docs/governance/constitution-and-bylaws-reference.md; confirm this is the current authoritative bylaws version..
+File name: source-materials/bylaws/archived/KBC_Constitution_ByLaws_Converted to Editable form.docx. Type of document: Archived bylaws source. Purpose: Provide editable historical reference for bylaws text.. Current status: Imported archived source. Related committee/body: Congregation, Pastor, Deacons. Operations Manual: No. Open questions: Is this superseded by the 2018 bylaws PDF or still useful for text extraction?.
+
+Section: Existing Job Descriptions And Role Sources.

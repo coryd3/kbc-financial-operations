@@ -113,11 +113,11 @@ flowchart LR
 
 | Body / Role | Primary Accountability | Main Responsibilities In This Project |
 | --- | --- | --- |
-| Congregation | Final church authority where bylaws, budget, policy, officer election, or church practice require a vote. | Has already authorized Personnel Committee to hire a paid Bookkeeper / Financial Administrator; votes later on items that require church approval. |
+| Congregation | Final church authority where bylaws, budget, policy, officer election, or church practice require a vote. | On June 28, 2026, authorized adding a paid, part-time Bookkeeper position not to exceed `$150` per week and gave Personnel Committee authority to hire the right candidate; votes later on items that require additional church approval. |
 | Pastor | Spiritual and ministry leadership, communication, and counsel. | Helps keep the process calm, ministry-focused, and aligned with church leadership. |
 | Deacons | Servant leadership, care, counsel, and leadership review where church practice requires. | May review major recommendations, help preserve unity, and support communication with the church. |
-| Nominating Committee | Officer and committee nomination process where assigned by bylaws. | Involved in Treasurer / Financial Officer recommendations if bylaws assign that role. |
-| Finance Committee | Financial governance, controls, budget oversight, software, monthly review, and financial policies. | Defines financial duties, software requirements, reimbursement rules, spending authority, card/payment controls, audit/review process, and budget impact. |
+| Nominating Committee | Officer and committee nomination process where assigned by bylaws. | Works with Personnel Committee to add the paid Bookkeeper position under the June 28, 2026 motion; involved in Treasurer / Financial Officer recommendations if bylaws assign that role. |
+| Finance Committee | Financial governance, controls, budget oversight, software, monthly review, and financial policies. | Defines financial duties, software requirements, reimbursement rules, spending authority, card/payment controls, audit/review process, and budget impact; adjusts the budget to fund the Bookkeeper need under the June 28, 2026 motion. |
 | Personnel Committee | Job descriptions, hiring, compensation recommendations, and evaluation process. | Leads the authorized hiring process for the paid Bookkeeper / Financial Administrator after Finance Committee confirms financial duties and controls. |
 | Treasurer / Financial Officer | Elected financial accountability, reporting, review, and coordination with Finance Committee. | Reviews reports, helps present financial information, confirms policies are followed, and coordinates with the Bookkeeper and Finance Committee. |
 | Bookkeeper / Financial Administrator | Day-to-day financial operations under assigned supervision and approved financial controls. | Maintains records, enters transactions, supports deposits, processes reimbursements after approval, prepares report packets, and supports monthly close. |
@@ -137,10 +137,10 @@ These lines should be confirmed before hiring or final implementation:
 ## Open Questions
 
 - Who is the day-to-day supervisor for the Bookkeeper / Financial Administrator?
-- What exact motion did the congregation approve for the paid Bookkeeper role?
+- How should Personnel Committee and Nominating Committee coordinate under the June 28, 2026 motion?
 - Do bylaws assign Treasurer nomination to the Nominating Committee, Deacons, or another process?
 - Which financial decisions require Finance Committee recommendation only, and which require church vote?
 - Which recommendations should go to Deacons or broader leadership before coming to the congregation?
 - What reports should go monthly to Finance Committee, Deacons, church leadership, and the congregation?
 
-Final approval path to be confirmed by church leadership, bylaws, church practice, and the recorded scope of the prior congregational vote.
+Final approval path to be confirmed by church leadership, bylaws, church practice, and the June 28, 2026 congregational authorization.

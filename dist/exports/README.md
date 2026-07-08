@@ -117,9 +117,11 @@ to browse it locally.
 
 ## GitHub Pages Note
 
-The workflow named `Deploy Docs Site to GitHub Pages` publishes the site as a website. For a private repository, GitHub Pages may require a paid GitHub plan or may expose content depending on account and repository settings.
+The workflow named `Deploy Docs Site to GitHub Pages` publishes the site as a website.
 
-For now, local browsing and downloadable GitHub Actions artifacts are the safer path for draft church documents.
+Because this repository has been published through GitHub Pages, treat the live site and public repository as public unless settings are intentionally changed and verified.
+
+Local browsing and downloadable GitHub Actions artifacts are safer paths for reviewing draft changes before publishing a new live site version.
 
 ## Validation
 
@@ -140,3 +142,9 @@ The files generated here are review copies and should be regenerated when the so
 ## Sensitive Information Warning
 
 Do not store donor records, payroll details, bank account numbers, passwords, Social Security numbers, confidential personnel issues, private financial data, actual candidate applications, reference-check notes, or background-check results in exported packets or site bundles.
+
+Before publishing or broadly sharing updated materials, run the public-content audit from the repository root:
+
+```powershell
+python scripts/audit_public_content.py
+```

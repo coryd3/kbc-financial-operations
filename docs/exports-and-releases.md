@@ -10,6 +10,7 @@ The documentation site is for browsing and searching working Markdown documents.
 - Use exports when leaders need PDF, DOCX, PPTX, or spreadsheet files for a meeting packet.
 - Use releases when the church needs a dated bundle of review files.
 - Use the NotebookLM sourcebook when leaders need one Markdown source that can be uploaded to NotebookLM for question-and-answer review across the current materials.
+- Use the audiobook/TTS bundle when leaders want a listening version of the documentation.
 
 ## Source Files
 
@@ -24,6 +25,13 @@ The NotebookLM sourcebook is generated at:
 
 - `dist/notebooklm/kbc-financial-operations-sourcebook.md`
 - `dist/notebooklm/kbc-financial-operations-sourcebook.pdf` if the local PDF tools are available
+
+The audiobook/TTS bundle is generated at:
+
+- `dist/audiobook/kbc-financial-operations-complete-document.md`
+- `dist/audiobook/kbc-financial-operations-tts-script.txt`
+- `dist/audiobook/chunks/`
+- `dist/audiobook/chunk-index.csv`
 
 The Bookkeeper job description export is generated from:
 
@@ -63,8 +71,34 @@ make notebooklm
 
 to create the NotebookLM sourcebook.
 
+Run:
+
+```sh
+make audiobook
+```
+
+to create a comprehensive compiled Markdown document and a cleaner text-to-speech script.
+
+Run:
+
+```sh
+make tts-local-sample
+```
+
+to create one sample WAV file with Piper after Piper and a voice model have been installed.
+
+Run:
+
+```sh
+make tts-local
+```
+
+to generate local Piper WAV files for the full audiobook.
+
 ## GitHub Pages Warning
 
-The MkDocs site can be deployed to GitHub Pages, but GitHub Pages may expose content publicly depending on repository, account, organization, and Pages settings.
+The MkDocs site is published through GitHub Pages when the manual deploy workflow is run.
 
-Do not deploy the documentation site until church leadership has reviewed the content and is comfortable with the exposure risk.
+Treat the live site and public repository as public unless settings are intentionally changed and verified. Review content before deploying updates.
+
+Run `make audit-public` before broad public sharing or major publishing updates.

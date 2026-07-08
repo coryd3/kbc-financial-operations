@@ -1,0 +1,76 @@
+Part: Communications.
+
+Chapter: Personnel Committee Packet.
+Current document status: Draft.
+
+Section: Personnel Committee Review Packet.
+
+Section: Purpose.
+
+This packet is for Personnel Committee review of the Treasurer transition and the paid Bookkeeper / Financial Administrator role already authorized by congregational vote.
+
+The goal is not to replace one person with another person. The goal is to help KBC build a financial operations structure that is clear, accountable, transferable, and sustainable.
+
+Section: Source Documents For Review.
+
+docs/00-project-brief.md.
+docs/roles/treasurer-vs-bookkeeper-duty-split.md.
+docs/roles/treasurer-governance-role.md.
+docs/roles/bookkeeper-financial-administrator-job-description.md.
+docs/roles/bookkeeper-job-application.md.
+docs/roles/bookkeeper-hiring-process.md.
+docs/communications/personnel-committee-recommendation.md.
+source-materials/existing-job-descriptions/final-approved/KBC_Treasurer_Job_Description_Rev_Nov2025.pdf.
+
+Section: Current Situation Summary.
+
+The Treasurer position is in transition. Interim coverage is helping KBC maintain continuity while leadership reviews the longer-term structure.
+
+This interim arrangement gives KBC time to review the role carefully instead of rushing into another person-dependent structure.
+
+On June 28, 2026, the congregation approved adding a paid, part-time Bookkeeper position. The motion tasked Personnel and Nominating Committees to work together to add the position, gave Personnel Committee authority to hire the right candidate, gave Finance Committee responsibility for adjusting the budget to fund this specific operational need, and set a limit of $150 per week, described as $18.75 per hour for approximately 8 hours.
+
+The remaining Personnel work is to finalize the job description, application, hiring process, supervision/evaluation process, employment classification, and hiring timeline, with Finance Committee input on duties, controls, access, software, and budget impact.
+
+The larger issue is that KBC's financial operations have historically depended too much on one person's knowledge, memory, and manual process. The church needs clearer documentation, role boundaries, committee ownership, and repeatable procedures.
+
+This should be framed as a systems maturity issue, not a person failure.
+
+Section: Why The Current Treasurer Role Is Too Broad.
+
+The current approved Treasurer job description includes both elected-officer accountability and many day-to-day operational duties.
+
+Current Treasurer duties include:
+
+Receiving and depositing contributed funds.
+Disbursing funds.
+Issuing checks and electronic payments.
+Overseeing online giving.
+Overseeing church credit and debit cards.
+Maintaining itemized records of receipts and disbursements.
+Rendering monthly reports to the church.
+Preparing annual financial summaries.
+Managing payroll, W-2s, 1099s, payroll taxes, and tax reporting.
+Coordinating salaries and benefits with Finance Committee.
+Maintaining accounts, financial records, and backups.
+Providing records for annual audit or review.
+Working with Pastor, Deacons, Finance Committee, Personnel Committee, and outside auditors.
+
+This combines several different kinds of work:
+
+Table summary.
+Kind of work: Governance and accountability. Why it matters: Belongs with the elected Treasurer / Financial Officer and Finance Committee..
+Kind of work: Routine bookkeeping. Why it matters: Can be documented and assigned to a Bookkeeper / Financial Administrator..
+Kind of work: Financial policy and controls. Why it matters: Should be owned by the Finance Committee..
+Kind of work: Hiring, compensation, and evaluation. Why it matters: Should be owned by the Personnel Committee..
+Kind of work: Payroll and tax compliance. Why it matters: May be best handled by an outside payroll/accounting vendor..
+
+When all of these duties sit on one person, the role becomes hard to recruit for, hard to train, hard to hand off, and risky if that person becomes unavailable.
+
+Section: Proposed Treasurer vs. Bookkeeper Distinction.
+
+Section: Elected Treasurer / Financial Officer.
+
+The Treasurer / Financial Officer should remain an elected church officer focused on governance, accountability, reporting, and coordination with the Finance Committee.
+
+Recommended Treasurer focus:

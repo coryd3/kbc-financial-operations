@@ -24,6 +24,8 @@ The site is a searchable MkDocs/Material website built from the Markdown files i
 
 The repository remains the source of truth. The website is a browser-friendly reading layer.
 
+Because this repository has been published through GitHub Pages, treat both the repository and the live site as public unless privacy settings are intentionally changed and verified.
+
 ## How The Site Is Built
 
 Local preview:
@@ -94,6 +96,8 @@ This workflow is manual. To run it:
 
 GitHub Pages source should be set to `GitHub Actions` under repository `Settings` -> `Pages`.
 
+The Makefile target `make docs-deploy` is guidance-only. It prints the GitHub Actions deployment instructions and does not run `mkdocs gh-deploy`.
+
 ## Publishing Reminder
 
 Pushing to `main` updates the repository and triggers the build workflow, but the live GitHub Pages site is updated only when the deploy workflow runs.
@@ -154,9 +158,17 @@ then rebuild and redeploy the site.
 
 ## Privacy And Content Caution
 
-The site is public if published through GitHub Pages.
+The site and public repository should be treated as public.
 
 Do not put donor records, payroll details, bank account numbers, passwords, Social Security numbers, candidate applications, background-check results, reference-check notes, confidential personnel issues, or private financial data in this repository or on the site.
+
+Run this before publishing or broadly sharing updates:
+
+```powershell
+python scripts/audit_public_content.py
+```
+
+The audit checks tracked text files for obvious private-data or secret patterns and warns that binary files under `source-materials/` need manual review.
 
 ## Troubleshooting
 

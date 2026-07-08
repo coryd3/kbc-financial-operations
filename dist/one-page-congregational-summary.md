@@ -10,7 +10,7 @@
 
 | Proposed Direction | How Work Will Be Divided |
 | --- | --- |
-| The Treasurer remains an accountable elected officer.<br>The congregation has already authorized Personnel Committee to hire a paid Bookkeeper / Financial Administrator.<br>The goal now is to make the job description, duties, controls, and hiring process clear. | Treasurer: accountability, review, reporting, and Finance Committee coordination.<br>Bookkeeper / Financial Administrator: records, reimbursements, reports, deposits, and documentation.<br>Finance Committee: controls, software, budget review, reimbursements, and monthly reporting.<br>Personnel Committee: job description, application, hiring, compensation, and evaluation process. |
+| The Treasurer remains an accountable elected officer.<br>The congregation authorized a paid, part-time Bookkeeper position on June 28, 2026.<br>The goal now is to make the job description, duties, controls, and hiring process clear. | Treasurer: accountability, review, reporting, and Finance Committee coordination.<br>Bookkeeper / Financial Administrator: records, reimbursements, reports, deposits, and documentation.<br>Finance Committee: controls, software, budget review, reimbursements, and monthly reporting.<br>Personnel Committee: job description, application, hiring, compensation, and evaluation process.<br>Nominating Committee: coordination as named in the motion. |
 
 | What Comes Next | What the Church Is Being Asked to Support |
 | --- | --- |

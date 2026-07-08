@@ -25,7 +25,9 @@ The Treasurer position is in transition. Interim coverage is helping KBC maintai
 
 This interim arrangement gives KBC time to review the role carefully instead of rushing into another person-dependent structure.
 
-The congregation has already voted to give Personnel Committee authority to hire a paid Bookkeeper / Financial Administrator. The remaining Personnel work is to finalize the job description, application, hiring process, compensation details, and supervision/evaluation process, with Finance Committee input on duties, controls, access, software, and budget impact.
+On June 28, 2026, the congregation approved adding a paid, part-time Bookkeeper position. The motion tasked Personnel and Nominating Committees to work together to add the position, gave Personnel Committee authority to hire the right candidate, gave Finance Committee responsibility for adjusting the budget to fund this specific operational need, and set a limit of `$150` per week, described as `$18.75` per hour for approximately 8 hours.
+
+The remaining Personnel work is to finalize the job description, application, hiring process, supervision/evaluation process, employment classification, and hiring timeline, with Finance Committee input on duties, controls, access, software, and budget impact.
 
 The larger issue is that KBC's financial operations have historically depended too much on one person's knowledge, memory, and manual process. The church needs clearer documentation, role boundaries, committee ownership, and repeatable procedures.
 
@@ -117,7 +119,7 @@ The Personnel Committee should own personnel process, including:
 - Applications.
 - Interviews.
 - References and background-check process.
-- Compensation recommendation, hours, and classification for the authorized paid role.
+- Compensation details within the authorized limit, employment classification, supervision, and evaluation process for the authorized paid role.
 - Evaluation process.
 
 Personnel Committee should not take over Finance Committee decisions about financial software, reimbursement policy, spending authority, card policy, monthly review, or financial controls.
@@ -142,6 +144,7 @@ The current draft follows the newer KBC job-description pattern:
 Key points for Personnel Committee review:
 
 - The role is a part-time, non-ministerial paid staff role authorized by congregational vote.
+- The June 28, 2026 motion limits the role to not more than `$150` per week, described as `$18.75` per hour for approximately 8 hours.
 - The role is operational and does not replace the governance responsibilities of the Treasurer or Finance Committee.
 - The role includes routine bookkeeping, contribution/deposit support, reimbursement/payment preparation after approval, payroll coordination if assigned, software/reporting support, records organization, and confidentiality responsibilities.
 - The role should have one clear day-to-day supervisor.
@@ -202,7 +205,7 @@ Needs Finance Review: Finance Committee should confirm financial duties and cont
 
 The Personnel Committee should consider sending the following recommendation to the Finance Committee:
 
-> The Personnel Committee recognizes that the congregation has authorized Personnel Committee to hire a paid Bookkeeper / Financial Administrator. Before finalizing the job description, application, hiring process, or compensation recommendation, we request that the Finance Committee provide direction on financial software, reimbursement procedures, spending authority, credit/debit card use, monthly financial review, budget impact, and the long-term division of responsibilities between the Treasurer, Bookkeeper, and Finance Committee.
+> The Personnel Committee recognizes that the congregation authorized adding a paid, part-time Bookkeeper position on June 28, 2026. The motion gave Personnel Committee authority to hire the right candidate and gave Finance Committee responsibility for adjusting the budget to fund this specific operational need. Before finalizing the job description, application, hiring process, or compensation details, we request that the Finance Committee provide direction on financial software, reimbursement procedures, spending authority, credit/debit card use, monthly financial review, budget impact, and the long-term division of responsibilities between the Treasurer, Bookkeeper, and Finance Committee.
 
 Recommended requests for Finance Committee direction:
 
@@ -229,10 +232,10 @@ Recommended requests for Finance Committee direction:
 
 - Should the paid Bookkeeper / Financial Administrator role be employee, contractor, stipend-based, or another approved classification?
 - What weekly hours are expected?
-- What compensation range should Personnel recommend within the authority granted by the congregation?
+- Does the role schedule and compensation stay within the authorized limit of not more than `$150` per week?
 - Who supervises the role day to day?
 - Who performs the evaluation?
-- Does the proposed compensation, hours, or budget impact fit within the prior congregational authorization?
+- Does the proposed compensation, hours, or budget impact fit within the June 28, 2026 authorization?
 
 ### Application And Screening
 
@@ -254,6 +257,7 @@ Recommended requests for Finance Committee direction:
 ### Bylaws And Church Approval
 
 - What do the bylaws say about Treasurer duties, election, bonding, and replacement?
+- How should Personnel Committee coordinate with Nominating Committee under the June 28, 2026 motion?
 - Does the Nominating Committee need to recommend a Treasurer candidate?
 - Which recommendations require Deacon review?
 - Which recommendations still require church vote beyond the Bookkeeper hiring authority already granted?
@@ -261,11 +265,12 @@ Recommended requests for Finance Committee direction:
 ## Suggested Personnel Committee Actions
 
 1. Review this packet for accuracy and tone.
-2. Record the prior congregational vote authorizing Personnel Committee to hire a paid Bookkeeper / Financial Administrator, including date, motion language, and any limits.
-3. Revise the Bookkeeper / Financial Administrator job description.
-4. Revise the Bookkeeper application.
-5. Revise the Bookkeeper hiring process, interview guide, reference questions, and candidate rubric.
-6. Decide what questions need Finance Committee direction before Personnel can post the role, begin interviews, or make an offer.
-7. Approve a request for Finance Committee direction, if appropriate.
+2. Confirm the official June 28, 2026 minutes and recorded motion authorizing the paid, part-time Bookkeeper position.
+3. Clarify how Personnel Committee and Nominating Committee should coordinate under the motion.
+4. Revise the Bookkeeper / Financial Administrator job description.
+5. Revise the Bookkeeper application.
+6. Revise the Bookkeeper hiring process, interview guide, reference questions, and candidate rubric.
+7. Decide what questions need Finance Committee direction before Personnel can post the role, begin interviews, or make an offer.
+8. Approve a request for Finance Committee direction, if appropriate.
 
 Needs Personnel Review: This packet is a working draft for Personnel Committee discussion. It should not be treated as final policy, job approval, compensation approval, or church authorization.

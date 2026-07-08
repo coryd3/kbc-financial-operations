@@ -22,25 +22,25 @@ TBD
 
 - TBD
 
-## Accountability And Support
+## Accountability & Support
 
 - Reports to:
 - Day-to-day supervision:
 - Committee or ministry coordination:
 - Evaluation process:
 
-## Expectations For Character And Work Ethic
+## Expectations for Character & Work Ethic
 
 - TBD
 
-## Compensation And Schedule
+## Compensation & Schedule
 
 - Employment classification:
 - Expected hours:
 - Compensation:
 - Schedule:
 
-## Terms Of Service
+## Terms of Service
 
 TBD
 

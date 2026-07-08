@@ -1,0 +1,8 @@
+KBC Financial Operations Listening Script.
+
+Generated on 2026-07-07.
+
+This is a text to speech version of the current KBC financial operations documentation.
+The GitHub repository Markdown files remain the source of truth.
+
+Sensitive information warning. Do not include donor records, payroll details, bank account numbers, passwords, Social Security numbers, confidential personnel issues, actual applications, reference checks, background-check results, or private financial data in this file.

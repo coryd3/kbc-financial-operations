@@ -17,6 +17,7 @@ __pycache__/
 .coverage
 coverage/
 site/
+docs/generated/
 
 # Local-only scratch space
 .local/
@@ -27,3 +28,8 @@ dist/exports/*
 !dist/exports/README.md
 dist/releases/*
 !dist/releases/README.md
+dist/*.xlsx
+
+# Local audiobook audio/model output
+dist/audiobook/audio/
+dist/audiobook/piper-voices/

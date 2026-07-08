@@ -62,6 +62,52 @@ make release
 
 This runs export and validation, creates a dated folder under `dist/releases/YYYY-MM-DD/`, copies the generated files and task tracker into that folder, creates `dist/releases/YYYY-MM-DD.zip`, and prints the release paths.
 
+## Create a Listening Script
+
+Run:
+
+```sh
+make audiobook
+```
+
+This creates a comprehensive compiled Markdown document and a cleaner text-to-speech script in `dist/audiobook/`.
+
+The TTS script is meant for listening, not formal approval. Review it before uploading it to a text-to-speech app.
+
+The same command also creates smaller text chunks in `dist/audiobook/chunks/` and an index at `dist/audiobook/chunk-index.csv`.
+
+## Create Local Audio With Piper
+
+Install Piper:
+
+```sh
+python -m pip install piper-tts
+```
+
+Download the default voice:
+
+```sh
+make tts-local-download-voice
+```
+
+Generate one sample WAV file:
+
+```sh
+make tts-local-sample
+```
+
+Generate all local WAV files:
+
+```sh
+make tts-local
+```
+
+The full Piper run may take a while because the audiobook is split into many chunks. Use the sample command first.
+
+If Piper stops partway through with a WAV write error, rerun the same command. The script skips valid WAV files, regenerates incomplete WAV files, and resumes from the remaining chunks.
+
+Generated audio is placed in `dist/audiobook/audio/`. Local Piper voice models are placed in `dist/audiobook/piper-voices/`. Both folders are ignored by Git.
+
 ## Review Status Labels
 
 Use clear review status language in document titles, notes, or release communication:
@@ -77,6 +123,16 @@ Use clear review status language in document titles, notes, or release communica
 - Superseded
 
 If local export tools are not installed, use the GitHub Action named `Export Docs` to create downloadable export and release artifacts.
+
+## Public Content Audit
+
+Run:
+
+```sh
+make audit-public
+```
+
+This checks tracked text files for obvious private-data or secret patterns and warns that binary files under `source-materials/` need manual review before broad public sharing.
 
 ## Sensitive Information Warning
 

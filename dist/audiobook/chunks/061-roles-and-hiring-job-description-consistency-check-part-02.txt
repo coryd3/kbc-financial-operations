@@ -1,0 +1,21 @@
+Added language that the role is both a job and a ministry of service.
+Changed responsibility subheadings to numbered groups, matching prior KBC formatting.
+Updated section headings to use the established & style: Accountability & Support, Expectations for Character & Work Ethic, and Compensation & Schedule.
+Added short lead-in language under Required Qualifications and Preferred Qualifications.
+Moved draft-only status items under a Review Notes section so they can be removed cleanly from any final approved version.
+
+Section: Recommendations for Future Job Descriptions.
+
+Keep Markdown as the editable source of truth and export review copies as needed.
+Use the standard KBC section order unless a role clearly needs a special section.
+Use Biblical Qualifications for ministerial or elected spiritual leadership roles; use Required Qualifications and Preferred Qualifications for operational staff roles.
+Use numbered responsibility groups under Core Responsibilities.
+Include a clear Accountability & Support section naming supervision, committee coordination, and evaluation rhythm.
+Include a service-oriented character section for every role.
+Keep draft review notes in a separate Review Notes section and remove them from final approved versions.
+Confirm compensation, classification, approval path, and bylaw implications before final approval.
+Preserve simple one-page role summaries when they are helpful for committee review, but keep the full approved job description in the standard structure.
+
+Needs Personnel Review: Personnel Committee should confirm whether this pattern should become the standard format for future KBC job descriptions.
+
+End of chapter: Job Description Consistency Check.

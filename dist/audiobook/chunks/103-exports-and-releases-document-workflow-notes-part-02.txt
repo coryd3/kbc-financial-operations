@@ -1,0 +1,25 @@
+The current Bash export workflow works well in GitHub Actions, but local Windows export is still too technical.
+
+Future improvement:
+
+Add a Windows-friendly scripts/export.ps1.
+Add a simple scripts/validate-exports.ps1, if practical.
+Keep GitHub Actions as the no-install option for non-developers.
+
+Section: Recommended Next Improvements.
+
+Create a Bookkeeper evaluation framework after the job description and supervision path are settled.
+Create a formal Bookkeeper onboarding checklist after software and financial procedures are confirmed.
+Create a Windows-friendly export script for local use.
+Decide whether final approved release files should use KBC formal naming convention.
+Keep candidate-specific hiring materials outside this repository and store them only in the approved confidential Personnel Committee location.
+
+Section: Current Changes Made From This Review.
+
+Updated docs/roles/bookkeeper-financial-administrator-job-description.md to better match KBC job-description structure.
+Updated templates/job-description-template.md to reflect the stronger KBC format.
+Added docs/roles/bookkeeper-hiring-process.md based on the prior Custodian hiring process, adapted for a financial role.
+
+Needs Committee Review: Personnel Committee should confirm whether this document workflow direction fits current church practice.
+
+End of chapter: Document Workflow Notes.

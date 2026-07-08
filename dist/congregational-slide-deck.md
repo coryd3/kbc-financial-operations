@@ -197,7 +197,7 @@ The lesson is not that anyone did something wrong. The lesson is that the work h
 ## Proposed Direction
 
 - Treasurer remains an accountable elected role.
-- Paid bookkeeping support has been authorized.
+- Paid part-time bookkeeping support has been authorized.
 - Finance owns financial process.
 - Personnel owns job description and hiring.
 - Church votes where required.
@@ -205,7 +205,7 @@ The lesson is not that anyone did something wrong. The lesson is that the work h
 <!--
 Speaker notes:
 
-The main idea is simple: keep accountability clear, support the routine work appropriately, and let each committee do the part that belongs to it. The church has already authorized Personnel Committee to hire paid bookkeeping support, and any other decision that requires church approval will still come back to the church.
+The main idea is simple: keep accountability clear, support the routine work appropriately, and let each committee do the part that belongs to it. The church has already authorized paid part-time bookkeeping support, and any other decision that requires church approval will still come back to the church.
 -->
 
 ---
@@ -218,6 +218,7 @@ The main idea is simple: keep accountability clear, support the routine work app
 | Bookkeeper / Financial Administrator | Day-to-day records |
 | Finance Committee | Policy, software, budget, oversight |
 | Personnel Committee | Job description, application, hiring |
+| Nominating Committee | Coordination named in the motion |
 | Congregation | Approval where required |
 
 <!--

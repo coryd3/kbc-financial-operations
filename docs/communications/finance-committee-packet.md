@@ -6,7 +6,9 @@ Status: Draft
 
 This packet is for Finance Committee review of the Treasurer transition and the financial operations decisions that need Finance Committee ownership.
 
-The congregation has already voted to give Personnel Committee authority to hire a paid Bookkeeper / Financial Administrator. Personnel Committee owns the job description, application, hiring process, compensation recommendation, and evaluation process. Finance Committee should provide direction on financial software, policies, controls, monthly review, spending authority, reimbursement, card use, budget impact, and the financial duties assigned to the Bookkeeper role.
+On June 28, 2026, the congregation approved adding a paid, part-time Bookkeeper position. The motion tasked Personnel and Nominating Committees to work together to add the position, gave Personnel Committee authority to hire the right candidate, gave Finance Committee responsibility for adjusting the budget to fund this specific operational need, and set a limit of `$150` per week, described as `$18.75` per hour for approximately 8 hours.
+
+Personnel Committee owns the job description, application, hiring process, compensation recommendation, and evaluation process. Finance Committee should provide direction on financial software, policies, controls, monthly review, spending authority, reimbursement, card use, budget impact, and the financial duties assigned to the Bookkeeper role.
 
 ## Source Documents For Review
 
@@ -31,7 +33,7 @@ The Treasurer position is in transition. Interim coverage is helping KBC maintai
 
 This interim arrangement gives KBC time to review the deeper financial operations structure instead of rushing into another person-dependent model.
 
-The paid Bookkeeper / Financial Administrator role has already been authorized by congregational vote. The urgent Finance Committee question is not whether Personnel may hire the role, but what financial duties, access, controls, software responsibilities, and monthly review expectations must be built into the job description and hiring process before hiring moves forward.
+The paid Bookkeeper / Financial Administrator role has already been authorized by congregational vote. The urgent Finance Committee question is not whether Personnel may hire the role, but what financial duties, access, controls, software responsibilities, monthly review expectations, and budget adjustment must be built into the job description and hiring process before hiring moves forward.
 
 The current situation has revealed several needs:
 
@@ -52,7 +54,7 @@ This should be framed as a systems maturity issue, not a person failure.
 | Reimbursement policy | Decide approval roles, required documentation, routine expense handling, exceptions, and review process. | Treasurer, Bookkeeper, ministry leaders | Routine budgeted expenses should not be overburdened, but must be documented. |
 | Spending authority | Set dollar thresholds and approval paths for routine, outside-budget, over-budget, large, recurring, emergency, and church vote items. | Pastor, Deacons, Congregation if required | Thresholds are currently `TBD`. |
 | Credit/debit card policy | Decide whether to replace shared debit cards with individual cards or another controlled payment method. | Treasurer, Bookkeeper, Pastor, ministry leaders, Personnel Committee for accountability | Policy should cover limits, receipts, review, suspension, and revocation. |
-| Budget impact | Decide how software cost, authorized bookkeeping compensation, vendor cost, and policy changes affect the budget. | Personnel Committee, Deacons, Congregation if required | Determine whether any cost exceeds the prior congregational authorization or current budget authority. |
+| Budget impact | Decide how software cost, authorized bookkeeping compensation, vendor cost, and policy changes affect the budget. | Personnel Committee, Deacons, Congregation if required | The June 28 motion gave Finance Committee responsibility for adjusting the budget to fund this specific operational need; determine whether any cost exceeds the authorization or current budget authority. |
 | Monthly review rhythm | Decide cadence, required packet, reviewers, follow-up process, and business meeting reporting. | Treasurer, Bookkeeper, Pastor, Deacons if appropriate | Monthly review is the main accountability rhythm. |
 | Audit / financial review | Decide scope, frequency, reviewer type, and follow-up process. | Treasurer, Bookkeeper, outside accountant or CPA, Congregation if required | May be internal, external, CPA-led, or another model. |
 
@@ -159,11 +161,11 @@ Finance Committee should identify the budget impact of each proposed change befo
 
 ### Bookkeeper / Financial Administrator
 
-- What hourly rate, stipend, or salary range is realistic for the authorized paid role?
+- Does the proposed schedule and compensation fit within the authorized limit of not more than `$150` per week, described as `$18.75` per hour for approximately 8 hours?
 - Should the paid role be employee, contractor, stipend-based, or another approved classification?
-- How many hours per week or month should be budgeted?
+- How many hours per week or month should be budgeted within that limit?
 - Which budget line should cover the cost?
-- Does the proposed cost fit within the prior congregational authorization and current budget?
+- Does the proposed cost fit within the June 28, 2026 authorization and current budget?
 - Who supervises the role for financial workflow?
 - Who evaluates the role for employment or volunteer accountability?
 

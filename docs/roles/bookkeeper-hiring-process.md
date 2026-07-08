@@ -4,9 +4,11 @@ Status: Draft
 
 ## Purpose
 
-This document adapts the prior KBC Custodian hiring workflow for the authorized paid Bookkeeper / Financial Administrator role.
+This document adapts the prior KBC Custodian hiring workflow for the paid, part-time Bookkeeper role authorized by congregational vote on June 28, 2026.
 
 The goal is to help Personnel Committee run a simple, fair, confidential, and well-documented hiring process while getting Finance Committee input on the financial duties, controls, software access, and reporting expectations before final hiring materials are used.
+
+The June 28, 2026 motion tasked Personnel and Nominating Committees to work together to add the position, gave Personnel Committee authority to hire the right candidate, gave Finance Committee responsibility for adjusting the budget to fund this specific operational need, and set a limit of `$150` per week, described as `$18.75` per hour for approximately 8 hours.
 
 Needs Personnel Review: Personnel Committee should confirm the hiring process, interview team, reference process, background-check process, and final candidate selection process before use.
 
@@ -24,11 +26,12 @@ Target Hire Date: ____________________
 
 ### Phase 1: Confirm Role Before Posting
 
-- [ ] Record the congregational vote date, motion language, and any compensation or budget limits.
+- [ ] Confirm the official June 28, 2026 minutes and motion language.
 - [ ] Confirm the final job title.
-- [ ] Confirm expected weekly hours and compensation range.
+- [ ] Confirm expected weekly hours and compensation fit within the authorized limit of `$150` per week, described as `$18.75` per hour for approximately 8 hours.
 - [ ] Confirm employment classification and onboarding requirements.
 - [ ] Confirm who will supervise the role day to day.
+- [ ] Confirm how Personnel Committee and Nominating Committee should coordinate under the motion.
 - [ ] Ask Finance Committee to confirm financial duties, access, controls, reporting expectations, and software responsibilities.
 - [ ] Finalize job description, application, and hiring process materials.
 
