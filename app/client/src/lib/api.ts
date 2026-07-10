@@ -60,6 +60,18 @@ async function request<T>(method: string, url: string, body?: unknown): Promise<
 
 export type ManagedUser = SafeUser & { canManage: boolean };
 
+export type DocumentationFeedback = {
+  id: number;
+  pageSlug: string;
+  documentationRevision: string;
+  helpful: boolean;
+  category: "unclear" | "inaccurate" | "outdated" | "suggestion" | "other";
+  comment: string | null;
+  status: "new" | "reviewed" | "planned" | "resolved" | "declined";
+  createdAt: string;
+  submittedBy: string;
+};
+
 export interface AnalyticsSummary {
   days: number;
   totals: { totalViews: number; uniqueVisitors: number };
@@ -251,11 +263,17 @@ export const api = {
   register: (data: { username: string; password: string; fullName: string; email?: string; phone?: string }) =>
     request<{ message: string; user: SafeUser }>("POST", "/api/auth/register", data),
   login: (data: { username: string; password: string }) =>
-    request<{ user: SafeUser }>("POST", "/api/auth/login", data),
+    request<{ user: SafeUser; mfaRequired: boolean; mfaSetupRequired: boolean }>("POST", "/api/auth/login", data),
   logout: () => request<{ message: string }>("POST", "/api/auth/logout"),
-  me: () => request<{ user: SafeUser }>("GET", "/api/auth/me"),
+  me: () => request<{ user: SafeUser; mfaRequired: boolean; mfaVerified: boolean }>("GET", "/api/auth/me"),
   changePassword: (data: { currentPassword: string; newPassword: string }) =>
     request<{ message: string }>("POST", "/api/auth/change-password", data),
+  getMfaSetup: () => request<{ secret: string; qrDataUrl: string }>("GET", "/api/auth/mfa/setup"),
+  enableMfa: (token: string) =>
+    request<{ message: string; recoveryCodes: string[] }>("POST", "/api/auth/mfa/enable", { token }),
+  verifyMfa: (token: string) => request<{ user: SafeUser }>("POST", "/api/auth/mfa/verify", { token }),
+  resetPassword: (data: { username: string; resetCode: string; newPassword: string }) =>
+    request<{ message: string }>("POST", "/api/auth/reset-password", data),
 
   // announcements
   getAnnouncements: () => request<{ announcements: Announcement[] }>("GET", "/api/announcements"),
@@ -281,8 +299,10 @@ export const api = {
   reactivateUser: (id: number) => request<{ user: SafeUser }>("POST", `/api/admin/users/${id}/reactivate`),
   assignRole: (id: number, role: Role) =>
     request<{ user: SafeUser }>("PATCH", `/api/admin/users/${id}/role`, { role }),
-  setUserPassword: (id: number, newPassword: string) =>
-    request<{ user: SafeUser }>("POST", `/api/admin/users/${id}/set-password`, { newPassword }),
+  assignRoles: (id: number, roles: Role[]) =>
+    request<{ user: SafeUser }>("PATCH", `/api/admin/users/${id}/roles`, { roles }),
+  createPasswordResetCode: (id: number) =>
+    request<{ resetCode: string; expiresAt: string }>("POST", `/api/admin/users/${id}/reset-code`),
 
   // documentation
   getDocsPage: (slug: string) =>
@@ -291,13 +311,32 @@ export const api = {
       title: string;
       section: string | null;
       markdown: string;
+      revision: string;
       prev: { slug: string; title: string } | null;
       next: { slug: string; title: string } | null;
     }>("GET", `/api/docs/page/${slug}`),
+  getDocsNav: () =>
+    request<{ sections: import("@shared/docsNav").DocsSection[] }>("GET", "/api/docs/nav"),
   searchDocs: (q: string) =>
     request<{
       results: { slug: string; title: string; section: string | null; snippets: string[] }[];
     }>("GET", `/api/docs/search?q=${encodeURIComponent(q)}`),
+  submitDocsFeedback: (data: {
+    pageSlug: string;
+    documentationRevision: string;
+    helpful: boolean;
+    category: "unclear" | "inaccurate" | "outdated" | "suggestion" | "other";
+    comment?: string;
+  }) => request<{ feedback: { id: number } }>("POST", "/api/docs/feedback", data),
+  getDocsFeedback: (status?: string) =>
+    request<{ feedback: DocumentationFeedback[] }>(
+      "GET",
+      `/api/admin/docs/feedback${status ? `?status=${encodeURIComponent(status)}` : ""}`,
+    ),
+  getNewDocsFeedbackCount: () =>
+    request<{ newFeedbackCount: number }>("GET", "/api/admin/docs/feedback/new-count"),
+  reviewDocsFeedback: (id: number, status: DocumentationFeedback["status"]) =>
+    request<{ feedback: DocumentationFeedback }>("PATCH", `/api/admin/docs/feedback/${id}`, { status }),
 
   // membership directory
   getMembers: (params?: {
@@ -484,8 +523,9 @@ export const api = {
     request<{ close: MonthlyCloseRow }>("POST", "/api/finance/closes", data),
   toggleCloseItem: (closeId: number, itemId: number, isDone: boolean) =>
     request<{ item: MonthlyCloseItem }>("PATCH", `/api/finance/closes/${closeId}/items/${itemId}`, { isDone }),
-  signoffClose: (id: number, notes?: string, acknowledgeOpenBatches?: boolean) =>
+  signoffClose: (id: number, externalLedgerReference: string, notes?: string, acknowledgeOpenBatches?: boolean) =>
     request<{ close: MonthlyClose }>("POST", `/api/finance/closes/${id}/signoff`, {
+      externalLedgerReference,
       notes,
       acknowledgeOpenBatches,
     }),
@@ -531,8 +571,8 @@ export const api = {
   updateGivingBatch: (id: number, data: Partial<GivingBatchInput>) =>
     request<{ batch: ContributionBatch }>("PATCH", `/api/giving/batches/${id}`, data),
   deleteGivingBatch: (id: number) => request<{ message: string }>("DELETE", `/api/giving/batches/${id}`),
-  closeGivingBatch: (id: number, allowMismatch = false) =>
-    request<{ batch: ContributionBatch }>("POST", `/api/giving/batches/${id}/close`, { allowMismatch }),
+  closeGivingBatch: (id: number, data: { allowMismatch?: boolean; mismatchOverrideReason?: string; externalLedgerReference: string }) =>
+    request<{ batch: ContributionBatch }>("POST", `/api/giving/batches/${id}/close`, data),
   reopenGivingBatch: (id: number) =>
     request<{ batch: ContributionBatch }>("POST", `/api/giving/batches/${id}/reopen`),
   createContribution: (batchId: number, data: ContributionInput) =>
@@ -541,6 +581,13 @@ export const api = {
     request<{ contribution: Contribution }>("PATCH", `/api/giving/contributions/${id}`, data),
   deleteContribution: (id: number) =>
     request<{ message: string }>("DELETE", `/api/giving/contributions/${id}`),
+  adjustContribution: (id: number, data: {
+    replacementFundId?: number;
+    replacementAmountCents?: number;
+    replacementDate?: string;
+    reason: string;
+    externalLedgerReference: string;
+  }) => request<{ batch: ContributionBatch }>("POST", `/api/giving/contributions/${id}/adjust`, data),
 
   // giving: fund summary (aggregates only)
   getFundSummary: (params?: { year?: number; start?: string; end?: string }) => {

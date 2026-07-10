@@ -3,7 +3,6 @@ import { Link, useLocation } from "wouter";
 import { useQuery } from "@tanstack/react-query";
 import { api } from "../lib/api";
 import { Card, CardHeader, CardTitle, CardContent, Input } from "../components/ui";
-import { DOCS_NAV } from "@shared/docsNav";
 import { BookText, Search, FileText, ChevronRight } from "lucide-react";
 import { useDebounce } from "../lib/useDebounce";
 
@@ -11,6 +10,8 @@ export default function Docs() {
   const [, setLocation] = useLocation();
   const [query, setQuery] = useState("");
   const debounced = useDebounce(query, 250);
+  const { data: navData } = useQuery({ queryKey: ["docsNav"], queryFn: api.getDocsNav, staleTime: Infinity });
+  const docsNav = navData?.sections ?? [];
 
   const { data: searchData, isFetching } = useQuery({
     queryKey: ["docsSearch", debounced],
@@ -78,7 +79,7 @@ export default function Docs() {
         </div>
       ) : (
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {DOCS_NAV.map((section) => (
+          {docsNav.map((section) => (
             <Card key={section.title} className="flex flex-col h-full hover:border-primary/30 transition-colors">
               <CardHeader className="pb-3">
                 <div className="flex items-center gap-2 text-primary">

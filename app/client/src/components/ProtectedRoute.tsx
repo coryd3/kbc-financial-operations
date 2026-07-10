@@ -14,16 +14,19 @@ export function ProtectedRoute({
   requireLeadership?: boolean;
   allowedRoles?: Role[];
 }) {
-  const { user, isLoading, isAdmin, isLeadership } = useAuth();
+  const { user, isLoading, isAdmin, isLeadership, mfaRequired, mfaVerified } = useAuth();
   const [location, setLocation] = useLocation();
 
-  const roleAllowed = !allowedRoles || (user ? allowedRoles.includes(user.role) : false);
+  const roles = user?.roles ?? (user ? [user.role] : []);
+  const roleAllowed = !allowedRoles || roles.some((role) => allowedRoles.includes(role));
 
   useEffect(() => {
     if (!isLoading) {
       if (!user) {
         setLocation("/login");
       } else if (user.mustChangePassword && location !== "/account") {
+        setLocation("/account");
+      } else if (mfaRequired && !mfaVerified && location !== "/account") {
         setLocation("/account");
       } else if (requireAdmin && !isAdmin) {
         setLocation("/dashboard");
@@ -33,7 +36,7 @@ export function ProtectedRoute({
         setLocation("/dashboard");
       }
     }
-  }, [user, isLoading, isAdmin, isLeadership, location, setLocation, requireAdmin, requireLeadership, roleAllowed]);
+  }, [user, isLoading, isAdmin, isLeadership, mfaRequired, mfaVerified, location, setLocation, requireAdmin, requireLeadership, roleAllowed]);
 
   if (isLoading) {
     return (
@@ -48,7 +51,8 @@ export function ProtectedRoute({
     (requireAdmin && !isAdmin) ||
     (requireLeadership && !isLeadership) ||
     !roleAllowed ||
-    (user.mustChangePassword && location !== "/account")
+    (user.mustChangePassword && location !== "/account") ||
+    (mfaRequired && !mfaVerified && location !== "/account")
   ) {
     return null;
   }

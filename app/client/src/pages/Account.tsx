@@ -211,8 +211,89 @@ function ReminderPrefsCard() {
   );
 }
 
-export default function Account() {
+function MfaCard() {
   const { user, refresh } = useAuth();
+  const [setup, setSetup] = useState<{ secret: string; qrDataUrl: string } | null>(null);
+  const [token, setToken] = useState("");
+  const [recoveryCodes, setRecoveryCodes] = useState<string[]>([]);
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  const beginSetup = async () => {
+    setLoading(true);
+    setError("");
+    try {
+      setSetup(await api.getMfaSetup());
+    } catch (err) {
+      setError(err instanceof ApiError ? err.message : "Unable to start MFA setup");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const submit = async () => {
+    setLoading(true);
+    setError("");
+    try {
+      if (user?.mfaEnabled) {
+        await api.verifyMfa(token);
+      } else {
+        const result = await api.enableMfa(token);
+        setRecoveryCodes(result.recoveryCodes);
+      }
+      setToken("");
+      await refresh();
+    } catch (err) {
+      setError(err instanceof ApiError ? err.message : "Unable to verify that code");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  return (
+    <Card>
+      <CardHeader>
+        <CardTitle className="text-2xl text-primary">Multi-Factor Authentication</CardTitle>
+      </CardHeader>
+      <CardContent className="space-y-4">
+        {error && <div className="rounded-md border border-destructive/20 bg-destructive/10 p-3 text-sm text-destructive">{error}</div>}
+        {recoveryCodes.length > 0 ? (
+          <div className="space-y-3">
+            <p className="text-sm font-medium">Save these one-time recovery codes in a secure place. They will not be shown again.</p>
+            <div className="grid grid-cols-2 gap-2 rounded-md border bg-muted/40 p-3 font-mono text-sm">
+              {recoveryCodes.map((code) => <span key={code}>{code}</span>)}
+            </div>
+            <Button onClick={() => setRecoveryCodes([])}>I saved the codes</Button>
+          </div>
+        ) : user?.mfaEnabled ? (
+          <div className="space-y-3">
+            <p className="text-sm text-muted-foreground">Enter the six-digit code from your authenticator app, or use one recovery code.</p>
+            <Label htmlFor="mfa-token">Verification code</Label>
+            <Input id="mfa-token" autoComplete="one-time-code" value={token} onChange={(event) => setToken(event.target.value)} />
+            <Button disabled={loading || !token.trim()} onClick={submit}>{loading ? "Verifying..." : "Verify"}</Button>
+          </div>
+        ) : setup ? (
+          <div className="space-y-3">
+            <p className="text-sm text-muted-foreground">Scan this code with an authenticator app, then enter the six-digit code it shows.</p>
+            <img src={setup.qrDataUrl} alt="Authenticator setup QR code" className="mx-auto h-60 w-60 rounded border" />
+            <details className="text-sm"><summary>Cannot scan the code?</summary><code className="mt-2 block break-all rounded bg-muted p-2">{setup.secret}</code></details>
+            <Label htmlFor="mfa-enable-token">Verification code</Label>
+            <Input id="mfa-enable-token" autoComplete="one-time-code" value={token} onChange={(event) => setToken(event.target.value)} />
+            <Button disabled={loading || !token.trim()} onClick={submit}>{loading ? "Enabling..." : "Enable MFA"}</Button>
+          </div>
+        ) : (
+          <div className="space-y-3">
+            <p className="text-sm text-muted-foreground">This role requires an authenticator app to protect church operational and financial access.</p>
+            <Button disabled={loading} onClick={beginSetup}>{loading ? "Starting..." : "Set Up MFA"}</Button>
+          </div>
+        )}
+      </CardContent>
+    </Card>
+  );
+}
+
+export default function Account() {
+  const { user, refresh, mfaRequired, mfaVerified } = useAuth();
   const [, setLocation] = useLocation();
   const [currentPassword, setCurrentPassword] = useState("");
   const [newPassword, setNewPassword] = useState("");
@@ -269,8 +350,9 @@ export default function Account() {
         </div>
       )}
 
-      {!user?.mustChangePassword && <MemberProfileCard />}
-      {!user?.mustChangePassword && <ReminderPrefsCard />}
+      {!user?.mustChangePassword && mfaRequired && !mfaVerified && <MfaCard />}
+      {!user?.mustChangePassword && (!mfaRequired || mfaVerified) && <MemberProfileCard />}
+      {!user?.mustChangePassword && (!mfaRequired || mfaVerified) && <ReminderPrefsCard />}
 
       <Card>
         <CardHeader>

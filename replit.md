@@ -76,5 +76,5 @@ super_admin, admin, treasurer, bookkeeper, finance_committee, personnel_committe
 - GoatCounter snippet (kbc-financial-operations.goatcounter.com) is embedded in `app/client/index.html` and counts SPA navigations (skips localhost by design).
 
 ## User preferences
-- Never use the user's work email (cldavis@burnsmcd.com) for anything in this app — no storage, no sending, no notifications. Personal contact email is coryd3@gmail.com. Note: Replit Mail always delivers to the Replit account owner's verified email; if that is ever the work email, do not use Replit Mail until it's changed or replaced with another provider.
-- Do not use the email cldavis@burnsmcd.com anywhere in this app (no seeding, contact info, notifications, or test data).
+- Do not place personal or workplace email addresses in public repository guidance. Use church-controlled contact settings and deployment secrets for operational notifications.
+- Replit Mail is optional development tooling only. Production notification delivery must not depend on a developer's personal account.

@@ -160,7 +160,7 @@ export default function FinanceDonors() {
   return (
     <FinanceLayout
       title="Donors"
-      description="Donor records used for contribution entry and giving statements. Donors can be linked to membership directory records. Confidential — visible only to the Bookkeeper, Treasurer, and Super Admin."
+      description="Donor records used for contribution entry and giving statements. Donors can be linked to membership directory records. Confidential — visible only to authorized Bookkeeper and Treasurer roles."
     >
       <div className="grid lg:grid-cols-5 gap-8">
         <div className="lg:col-span-2 space-y-8 h-max">

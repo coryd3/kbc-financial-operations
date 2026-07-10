@@ -18,7 +18,9 @@ function buildTestApp() {
     const raw = req.headers["x-test-user-id"];
     (req as any).session = {
       ...(raw ? { userId: Number(raw) } : {}),
+      cookie: {},
       destroy: (cb: () => void) => cb(),
+      regenerate: (cb: () => void) => cb(),
     };
     next();
   });
@@ -494,89 +496,80 @@ describe("repeated failed logins are throttled", () => {
   });
 });
 
-describe("super admin password management (set-password)", () => {
+describe("one-time password reset codes", () => {
   beforeEach(async () => {
     await resetLoginThrottle();
   });
 
   const NEW_PW = "BrandNewPass42!";
 
-  it("a super admin can set a user's password and the user can log in with it", async () => {
-    const res = await request(app)
-      .post(`/api/admin/users/${memberId}/set-password`)
-      .set(as(superAdminId))
-      .send({ newPassword: NEW_PW });
-    expect(res.status).toBe(200);
-    expect(res.body.user.passwordHash).toBeUndefined();
-    expect(JSON.stringify(res.body)).not.toContain("passwordHash");
+  async function resetPassword(userId: number, username: string, newPassword: string) {
+    const issued = await request(app)
+      .post(`/api/admin/users/${userId}/reset-code`)
+      .set(as(superAdminId));
+    expect(issued.status).toBe(200);
+    expect(issued.body.resetCode).toBeTruthy();
+    const reset = await request(app).post("/api/auth/reset-password").send({
+      username,
+      resetCode: issued.body.resetCode,
+      newPassword,
+    });
+    expect(reset.status).toBe(200);
+    return issued.body.resetCode as string;
+  }
 
-    const ok = await login(`${PREFIX}member`, NEW_PW);
-    expect(ok.status).toBe(200);
-    const old = await login(`${PREFIX}member`, PASSWORD);
-    expect(old.status).toBe(401);
-
-    // restore for other tests
-    await request(app)
-      .post(`/api/admin/users/${memberId}/set-password`)
-      .set(as(superAdminId))
-      .send({ newPassword: PASSWORD });
+  it("a super admin can issue a code and the user can choose a new password", async () => {
+    await resetPassword(memberId, `${PREFIX}member`, NEW_PW);
+    expect((await login(`${PREFIX}member`, NEW_PW)).status).toBe(200);
+    expect((await login(`${PREFIX}member`, PASSWORD)).status).toBe(401);
+    await resetLoginThrottle();
+    await resetPassword(memberId, `${PREFIX}member`, PASSWORD);
   });
 
-  it("an admin cannot set passwords, even for a plain member", async () => {
+  it("an admin cannot issue reset codes", async () => {
     const res = await request(app)
-      .post(`/api/admin/users/${memberId}/set-password`)
-      .set(as(adminId))
-      .send({ newPassword: NEW_PW });
+      .post(`/api/admin/users/${memberId}/reset-code`)
+      .set(as(adminId));
     expect(res.status).toBe(403);
-    const stillOld = await login(`${PREFIX}member`, PASSWORD);
-    expect(stillOld.status).toBe(200);
   });
 
   it("non-admin roles get 403 from the endpoint", async () => {
     for (const actor of [treasurerId, memberId]) {
       const res = await request(app)
-        .post(`/api/admin/users/${adminId}/set-password`)
-        .set(as(actor))
-        .send({ newPassword: NEW_PW });
+        .post(`/api/admin/users/${adminId}/reset-code`)
+        .set(as(actor));
       expect(res.status).toBe(403);
     }
   });
 
-  it("a super admin cannot set their own password through this endpoint", async () => {
+  it("a super admin cannot issue their own reset code", async () => {
     const res = await request(app)
-      .post(`/api/admin/users/${superAdminId}/set-password`)
-      .set(as(superAdminId))
-      .send({ newPassword: NEW_PW });
+      .post(`/api/admin/users/${superAdminId}/reset-code`)
+      .set(as(superAdminId));
     expect(res.status).toBe(403);
-  });
-
-  it("rejects passwords shorter than 8 characters", async () => {
-    const res = await request(app)
-      .post(`/api/admin/users/${memberId}/set-password`)
-      .set(as(superAdminId))
-      .send({ newPassword: "short" });
-    expect(res.status).toBe(400);
   });
 
   it("returns 404 for a nonexistent user", async () => {
     const res = await request(app)
-      .post(`/api/admin/users/999999/set-password`)
-      .set(as(superAdminId))
-      .send({ newPassword: NEW_PW });
+      .post(`/api/admin/users/999999/reset-code`)
+      .set(as(superAdminId));
     expect(res.status).toBe(404);
   });
 
-  it("clears mustChangePassword so the user can log in normally", async () => {
-    const res = await request(app)
-      .post(`/api/admin/users/${mustChangeId}/set-password`)
-      .set(as(superAdminId))
-      .send({ newPassword: NEW_PW });
-    expect(res.status).toBe(200);
+  it("a completed reset clears mustChangePassword and a code cannot be reused", async () => {
+    const usedCode = await resetPassword(mustChangeId, `${PREFIX}mustchange`, NEW_PW);
     const dbUser = await getDbUser(mustChangeId);
     expect(dbUser.mustChangePassword).toBe(false);
+    const reused = await request(app).post("/api/auth/reset-password").send({
+      username: `${PREFIX}mustchange`,
+      resetCode: usedCode,
+      newPassword: PASSWORD,
+    });
+    expect(reused.status).toBe(400);
+    await resetPassword(mustChangeId, `${PREFIX}mustchange`, PASSWORD);
   });
 
-  it("setting a password clears a username lockout", async () => {
+  it("a completed reset clears a username lockout", async () => {
     for (let i = 0; i < 5; i++) {
       await login(`${PREFIX}member`, "wrong-password");
     }
@@ -588,18 +581,9 @@ describe("super admin password management (set-password)", () => {
       await login(`${PREFIX}member`, "wrong-password");
     }
 
-    const res = await request(app)
-      .post(`/api/admin/users/${memberId}/set-password`)
-      .set(as(superAdminId))
-      .send({ newPassword: NEW_PW });
-    expect(res.status).toBe(200);
-
-    const ok = await login(`${PREFIX}member`, NEW_PW);
-    expect(ok.status).toBe(200);
-
-    await request(app)
-      .post(`/api/admin/users/${memberId}/set-password`)
-      .set(as(superAdminId))
-      .send({ newPassword: PASSWORD });
+    await resetPassword(memberId, `${PREFIX}member`, NEW_PW);
+    expect((await login(`${PREFIX}member`, NEW_PW)).status).toBe(200);
+    await resetLoginThrottle();
+    await resetPassword(memberId, `${PREFIX}member`, PASSWORD);
   });
 });

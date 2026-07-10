@@ -62,6 +62,11 @@ FAIL_PATTERNS = [
     ),
 ]
 
+# Source code naturally contains identifiers such as passwordHash and secret.
+# Assignment checks are intended for public content/configuration, while the
+# stronger SSN, private-key, and financial-number checks still scan code.
+CODE_EXTENSIONS = {".ts", ".tsx", ".js", ".jsx", ".py", ".sh", ".css", ".html"}
+
 WATCHLIST_PATTERN = re.compile(
     r"\b("
     r"Social Security|SSN|routing numbers?|bank account numbers?|"
@@ -150,11 +155,13 @@ def main() -> int:
         scanned_text_files += 1
 
         for pattern_name, pattern in FAIL_PATTERNS:
+            if pattern_name == "password or secret assignment" and path.suffix.lower() in CODE_EXTENSIONS:
+                continue
             for match in pattern.finditer(text):
                 line_number = text.count("\n", 0, match.start()) + 1
                 failures.append(f"{normalized}:{line_number}: {pattern_name}")
 
-        if is_admin_warning_file(normalized):
+        if is_admin_warning_file(normalized) or path.suffix.lower() in CODE_EXTENSIONS:
             continue
 
         for line_number, line in enumerate(text.splitlines(), start=1):

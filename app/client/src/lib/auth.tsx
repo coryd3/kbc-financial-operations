@@ -8,6 +8,8 @@ interface AuthContextValue {
   isLoading: boolean;
   isAdmin: boolean;
   isLeadership: boolean;
+  mfaRequired: boolean;
+  mfaVerified: boolean;
   refresh: () => Promise<void>;
 }
 
@@ -16,6 +18,8 @@ const AuthContext = createContext<AuthContextValue>({
   isLoading: true,
   isAdmin: false,
   isLeadership: false,
+  mfaRequired: false,
+  mfaVerified: false,
   refresh: async () => {},
 });
 
@@ -26,7 +30,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     queryFn: async () => {
       try {
         const res = await api.me();
-        return res.user;
+        return res;
       } catch (err) {
         if (err instanceof ApiError && err.status === 401) return null;
         throw err;
@@ -36,9 +40,10 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     retry: false,
   });
 
-  const user = data ?? null;
-  const isAdmin = user?.role === "super_admin" || user?.role === "admin";
-  const isLeadership = !!user && LEADERSHIP_ROLES.includes(user.role);
+  const user = data?.user ?? null;
+  const roles = user?.roles ?? (user ? [user.role] : []);
+  const isAdmin = roles.some((role) => role === "super_admin" || role === "admin");
+  const isLeadership = roles.some((role) => LEADERSHIP_ROLES.includes(role));
 
   return (
     <AuthContext.Provider
@@ -47,6 +52,8 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         isLoading,
         isAdmin,
         isLeadership,
+        mfaRequired: data?.mfaRequired ?? false,
+        mfaVerified: data?.mfaVerified ?? false,
         refresh: async () => {
           await queryClient.invalidateQueries({ queryKey: ["me"] });
         },

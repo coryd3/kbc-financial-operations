@@ -1,4 +1,4 @@
-modules = ["python-3.12", "bash", "nodejs-20", "postgresql-16"]
+modules = ["python-3.12", "bash", "nodejs-22", "postgresql-16"]
 [agent]
 expertMode = true
 stack = "BEST_EFFORT_FALLBACK"
@@ -49,12 +49,6 @@ isValidation = true
 [[ports]]
 localPort = 5000
 externalPort = 80
-
-[deployment]
-deploymentTarget = "autoscale"
-build = ["bash", "-c", "cd app && npm run build"]
-publicDir = "site"
-run = ["bash", "-c", "cd app && npm start"]
 
 [postMerge]
 path = "scripts/post-merge.sh"

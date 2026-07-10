@@ -197,7 +197,7 @@ describe("batch entry and reconciliation against offering counts", () => {
     const close = await request(app)
       .post(`/api/giving/batches/${batch.id}/close`)
       .set(as(treasurerId))
-      .send({});
+      .send({ externalLedgerReference: "test-ledger-1" });
     expect(close.status).toBe(409);
     expect(close.body.varianceCents).toBe(-5000);
     expect(close.body.batchTotalCents).toBe(10000);
@@ -208,7 +208,7 @@ describe("batch entry and reconciliation against offering counts", () => {
     const close2 = await request(app)
       .post(`/api/giving/batches/${batch.id}/close`)
       .set(as(treasurerId))
-      .send({});
+      .send({ externalLedgerReference: "test-ledger-2" });
     expect(close2.status).toBe(200);
     expect(close2.body.batch.status).toBe("closed");
   });
@@ -234,7 +234,11 @@ describe("batch entry and reconciliation against offering counts", () => {
     const close = await request(app)
       .post(`/api/giving/batches/${batch.id}/close`)
       .set(as(treasurerId))
-      .send({ allowMismatch: true });
+      .send({
+        allowMismatch: true,
+        mismatchOverrideReason: "Test discrepancy approved after review",
+        externalLedgerReference: "test-ledger-3",
+      });
     expect(close.status).toBe(200);
   });
 
@@ -242,12 +246,12 @@ describe("batch entry and reconciliation against offering counts", () => {
     const batch = await createBatch();
     const close = await request(app)
       .post(`/api/giving/batches/${batch.id}/close`)
-      .set(as(bookkeeperId))
-      .send({});
+      .set(as(treasurerId))
+      .send({ externalLedgerReference: "test-ledger-4" });
     expect(close.status).toBe(400);
   });
 
-  it("closed batches block adding, editing, and deleting contributions until reopened", async () => {
+  it("closed batches are immutable and cannot be reopened", async () => {
     const donor = await createDonor("Locked");
     const batch = await createBatch();
     const added = await addContribution(batch.id, donor.id, 2500);
@@ -256,8 +260,8 @@ describe("batch entry and reconciliation against offering counts", () => {
 
     const close = await request(app)
       .post(`/api/giving/batches/${batch.id}/close`)
-      .set(as(bookkeeperId))
-      .send({});
+      .set(as(treasurerId))
+      .send({ externalLedgerReference: "test-ledger-5" });
     expect(close.status).toBe(200);
 
     const addBlocked = await addContribution(batch.id, donor.id, 1000);
@@ -282,13 +286,13 @@ describe("batch entry and reconciliation against offering counts", () => {
     const reopen = await request(app)
       .post(`/api/giving/batches/${batch.id}/reopen`)
       .set(as(treasurerId));
-    expect(reopen.status).toBe(200);
+    expect(reopen.status).toBe(409);
 
-    const editOk = await request(app)
+    const editStillBlocked = await request(app)
       .patch(`/api/giving/contributions/${contributionId}`)
       .set(as(bookkeeperId))
       .send({ donorId: donor.id, fundId, amountCents: 9999, method: "cash" });
-    expect(editOk.status).toBe(200);
+    expect(editStillBlocked.status).toBe(400);
   });
 
   it("check contributions require a check number", async () => {
@@ -296,6 +300,40 @@ describe("batch entry and reconciliation against offering counts", () => {
     const batch = await createBatch();
     const res = await addContribution(batch.id, donor.id, 1000, { method: "check" });
     expect(res.status).toBe(400);
+  });
+
+  it("corrects a closed contribution with an immutable adjustment batch", async () => {
+    const donor = await createDonor("Adjustment");
+    const batch = await createBatch();
+    const added = await addContribution(batch.id, donor.id, 2500);
+    await request(app)
+      .post(`/api/giving/batches/${batch.id}/close`)
+      .set(as(treasurerId))
+      .send({ externalLedgerReference: "adjustment-original" });
+
+    const adjusted = await request(app)
+      .post(`/api/giving/contributions/${added.body.contribution.id}/adjust`)
+      .set(as(bookkeeperId))
+      .send({
+        replacementAmountCents: 3000,
+        reason: "Correct amount after reviewing the original receipt",
+        externalLedgerReference: "adjustment-prepared",
+      });
+    expect(adjusted.status).toBe(201);
+    expect(adjusted.body.batch.kind).toBe("adjustment");
+    expect(adjusted.body.batch.status).toBe("open");
+
+    const detail = await request(app)
+      .get(`/api/giving/batches/${adjusted.body.batch.id}`)
+      .set(as(bookkeeperId));
+    expect(detail.body.contributions).toHaveLength(2);
+    expect(detail.body.contributions.map((entry: any) => entry.amountCents).sort((a: number, b: number) => a - b)).toEqual([-2500, 3000]);
+
+    const approved = await request(app)
+      .post(`/api/giving/batches/${adjusted.body.batch.id}/close`)
+      .set(as(treasurerId))
+      .send({ externalLedgerReference: "adjustment-approved" });
+    expect(approved.status).toBe(200);
   });
 });
 
@@ -330,6 +368,10 @@ describe("donor management", () => {
     await addContribution(batch.id, donor.id, 2000, { contributionDate: "2026-01-15" });
     await addContribution(batch.id, donor.id, 3000, { contributionDate: "2026-06-15" });
     await addContribution(batch.id, donor.id, 7000, { contributionDate: "2025-12-31" });
+    await request(app)
+      .post(`/api/giving/batches/${batch.id}/close`)
+      .set(as(treasurerId))
+      .send({ externalLedgerReference: "statement-test" });
 
     const res = await request(app)
       .get(`/api/giving/donors/${donor.id}/statement?start=2026-01-01&end=2026-12-31`)
@@ -355,6 +397,10 @@ describe("donor management", () => {
     await addContribution(batch.id, alpha.id, 3000, { contributionDate: "2026-03-01" });
     await addContribution(batch.id, beta.id, 4000, { contributionDate: "2026-04-01" });
     await addContribution(batch.id, outside.id, 5000, { contributionDate: "2025-06-01" });
+    await request(app)
+      .post(`/api/giving/batches/${batch.id}/close`)
+      .set(as(treasurerId))
+      .send({ externalLedgerReference: "bulk-statement-test" });
 
     const res = await request(app)
       .get("/api/giving/statements?start=2026-01-01&end=2026-12-31")

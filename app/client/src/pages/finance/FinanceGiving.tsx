@@ -7,12 +7,15 @@ import { Button, Card, CardContent, CardHeader, CardTitle, Input, Label } from "
 import { formatCents } from "../../lib/money";
 import { format } from "date-fns";
 import { Lock, Link2, AlertTriangle } from "lucide-react";
+import { useAuth } from "../../lib/auth";
 
 function fmtDate(d: string) {
   return format(new Date(d + "T00:00:00"), "MMM d, yyyy");
 }
 
 export default function FinanceGiving() {
+  const { user } = useAuth();
+  const canPrepare = (user?.roles ?? (user ? [user.role] : [])).includes("bookkeeper");
   const queryClient = useQueryClient();
   const [, setLocation] = useLocation();
   const [form, setForm] = useState({
@@ -51,10 +54,10 @@ export default function FinanceGiving() {
   return (
     <FinanceLayout
       title="Contribution Batches"
-      description="Enter individual contributions in batches and reconcile each batch against its offering count. Individual giving records are visible only to the Bookkeeper, Treasurer, and Super Admin."
+      description="The Bookkeeper prepares contribution batches and the Treasurer approves them. Individual giving records are limited to those authorized roles."
     >
       <div className="grid lg:grid-cols-5 gap-8">
-        <Card className="lg:col-span-2 h-max">
+        {canPrepare && <Card className="lg:col-span-2 h-max">
           <CardHeader>
             <CardTitle className="text-xl">Start a Batch</CardTitle>
           </CardHeader>
@@ -104,9 +107,9 @@ export default function FinanceGiving() {
               </Button>
             </form>
           </CardContent>
-        </Card>
+        </Card>}
 
-        <div className="lg:col-span-3 space-y-3">
+        <div className={canPrepare ? "lg:col-span-3 space-y-3" : "lg:col-span-5 space-y-3"}>
           {isLoading ? (
             <div className="animate-pulse h-32 bg-muted rounded-lg" />
           ) : data?.batches.length ? (

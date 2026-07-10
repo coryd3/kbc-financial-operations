@@ -13,10 +13,24 @@ export function usePageTracking() {
     api.track(location).catch(() => {
       // Tracking failures should never break the app.
     });
-    // Also notify GoatCounter of SPA navigation if the script loaded.
-    const gc = (window as any).goatcounter;
-    if (gc && typeof gc.count === "function") {
-      gc.count({ path: location });
+    const isPublic = location === "/" || location === "/docs" || location.startsWith("/docs/") || location === "/login" || location === "/register" || location === "/reset-password";
+    if (!isPublic) return;
+    const normalized = location.replace(/\/\d+(?=\/|$)/g, "/:id");
+    const count = () => {
+      const gc = (window as any).goatcounter;
+      if (gc && typeof gc.count === "function") gc.count({ path: normalized });
+    };
+    const existing = document.querySelector<HTMLScriptElement>("script[data-goatcounter]");
+    if (existing) {
+      count();
+      return;
     }
+    const script = document.createElement("script");
+    script.async = true;
+    script.src = "https://gc.zgo.at/count.js";
+    script.dataset.goatcounter = "https://kbc-financial-operations.goatcounter.com/count";
+    script.dataset.goatcounterSettings = JSON.stringify({ no_onload: true });
+    script.addEventListener("load", count, { once: true });
+    document.head.appendChild(script);
   }, [location]);
 }

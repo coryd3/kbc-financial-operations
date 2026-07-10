@@ -15,7 +15,7 @@ export default function ChecklistDetail() {
   const { user } = useAuth();
   const [, setLocation] = useLocation();
   const queryClient = useQueryClient();
-  const isManager = !!user && CHECKLIST_MANAGER_ROLES.includes(user.role);
+  const isManager = !!user && (user.roles ?? [user.role]).some((role) => CHECKLIST_MANAGER_ROLES.includes(role));
 
   const { data, isLoading, error } = useQuery({
     queryKey: ["checklistInstance", id],

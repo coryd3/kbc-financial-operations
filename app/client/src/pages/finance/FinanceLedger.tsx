@@ -21,7 +21,7 @@ const emptyForm = {
 export default function FinanceLedger() {
   const { user } = useAuth();
   const queryClient = useQueryClient();
-  const canEdit = !!user && LEDGER_EDIT_ROLES.includes(user.role);
+  const canEdit = !!user && (user.roles ?? [user.role]).some((role) => LEDGER_EDIT_ROLES.includes(role));
 
   const [form, setForm] = useState(emptyForm);
   const [editingId, setEditingId] = useState<number | null>(null);

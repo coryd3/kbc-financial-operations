@@ -1,13 +1,64 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { Link, useLocation } from "wouter";
-import { useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery } from "@tanstack/react-query";
 import { api } from "../lib/api";
 import { Button, Input } from "../components/ui";
-import { DOCS_NAV } from "@shared/docsNav";
 import { DocsMarkdown } from "../components/DocsMarkdown";
 import { cn } from "../lib/utils";
 import { ArrowLeft, ArrowRight, BookOpen, ChevronLeft, FileText, Menu, Search, X } from "lucide-react";
 import { useDebounce } from "../lib/useDebounce";
+import { useAuth } from "../lib/auth";
+
+function DocumentationFeedbackForm({ slug, revision }: { slug: string; revision: string }) {
+  const { user } = useAuth();
+  const [helpful, setHelpful] = useState<boolean | null>(null);
+  const [category, setCategory] = useState<"unclear" | "inaccurate" | "outdated" | "suggestion" | "other">("suggestion");
+  const [comment, setComment] = useState("");
+  const [message, setMessage] = useState("");
+  const mutation = useMutation({
+    mutationFn: () => api.submitDocsFeedback({ pageSlug: slug, documentationRevision: revision, helpful: helpful!, category, comment }),
+    onSuccess: () => setMessage("Thank you. Your feedback was sent privately to the review team."),
+    onError: (error: Error) => setMessage(error.message),
+  });
+
+  return (
+    <section className="mt-10 rounded-md border border-border bg-muted/30 p-4" aria-labelledby="docs-feedback-title">
+      <h2 id="docs-feedback-title" className="text-base font-semibold text-foreground">Was this page helpful?</h2>
+      {!user ? (
+        <p className="mt-2 text-sm text-muted-foreground"><Link href="/login" className="text-primary underline">Sign in</Link> to submit private feedback.</p>
+      ) : message ? (
+        <p className="mt-2 text-sm" role="status">{message}</p>
+      ) : (
+        <div className="mt-3 space-y-3">
+          <div className="flex gap-2">
+            <Button type="button" size="sm" variant={helpful === true ? "default" : "outline"} onClick={() => setHelpful(true)}>Yes</Button>
+            <Button type="button" size="sm" variant={helpful === false ? "default" : "outline"} onClick={() => setHelpful(false)}>No</Button>
+          </div>
+          {helpful !== null && (
+            <>
+              <label className="block text-sm font-medium">
+                Feedback type
+                <select className="mt-1 block w-full rounded-md border border-border bg-background px-3 py-2" value={category} onChange={(event) => setCategory(event.target.value as typeof category)}>
+                  <option value="suggestion">Suggestion</option>
+                  <option value="unclear">Unclear</option>
+                  <option value="inaccurate">Inaccurate</option>
+                  <option value="outdated">Outdated</option>
+                  <option value="other">Other</option>
+                </select>
+              </label>
+              <label className="block text-sm font-medium">
+                Comment (optional)
+                <textarea className="mt-1 min-h-24 w-full rounded-md border border-border bg-background px-3 py-2" maxLength={2000} value={comment} onChange={(event) => setComment(event.target.value)} />
+              </label>
+              <p className="text-xs text-muted-foreground">Do not include donor, personnel, pastoral, banking, payroll, or other private information.</p>
+              <Button type="button" size="sm" disabled={mutation.isPending} onClick={() => mutation.mutate()}>{mutation.isPending ? "Sending..." : "Send feedback"}</Button>
+            </>
+          )}
+        </div>
+      )}
+    </section>
+  );
+}
 
 export default function DocsReader() {
   const [location, setLocation] = useLocation();
@@ -17,6 +68,10 @@ export default function DocsReader() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [query, setQuery] = useState("");
   const debounced = useDebounce(query, 250);
+
+  const { data: navData } = useQuery({ queryKey: ["docsNav"], queryFn: api.getDocsNav, staleTime: Infinity });
+  const docsNav = navData?.sections ?? [];
+  const validSlugs = useMemo(() => new Set(docsNav.flatMap((section) => section.pages.map((page) => page.slug))), [docsNav]);
 
   const { data: page, isLoading, error } = useQuery({
     queryKey: ["docsPage", slug],
@@ -80,7 +135,7 @@ export default function DocsReader() {
           ))}
         </div>
       ) : (
-        DOCS_NAV.map((section) => (
+        docsNav.map((section) => (
           <div key={section.title}>
             <h3 className="text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-2 px-1">
               {section.title}
@@ -156,7 +211,8 @@ export default function DocsReader() {
                 {page.section}
               </p>
             )}
-            <DocsMarkdown markdown={page.markdown} currentSlug={page.slug} />
+            <DocsMarkdown markdown={page.markdown} currentSlug={page.slug} validSlugs={validSlugs} />
+            <DocumentationFeedbackForm slug={page.slug} revision={page.revision} />
             <div className="mt-12 pt-6 border-t border-border flex flex-col sm:flex-row justify-between gap-3">
               {page.prev ? (
                 <Link

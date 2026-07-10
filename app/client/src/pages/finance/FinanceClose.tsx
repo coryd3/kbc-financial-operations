@@ -8,19 +8,21 @@ import { FinanceLayout } from "../../components/FinanceLayout";
 import { Button, Card, CardContent, CardHeader, CardTitle, Input, Label } from "../../components/ui";
 import { MONTH_NAMES, formatCents } from "../../lib/money";
 import { format } from "date-fns";
-import { AlertTriangle, CheckCircle2, Lock, RotateCcw } from "lucide-react";
+import { AlertTriangle, CheckCircle2, Lock } from "lucide-react";
 
 export default function FinanceClose() {
   const { user } = useAuth();
   const queryClient = useQueryClient();
-  const canManage = !!user && CLOSE_MANAGE_ROLES.includes(user.role);
-  const canSignoff = !!user && CLOSE_SIGNOFF_ROLES.includes(user.role);
-  const canViewGiving = !!user && GIVING_ROLES.includes(user.role);
+  const roles = user?.roles ?? (user ? [user.role] : []);
+  const canManage = roles.some((role) => CLOSE_MANAGE_ROLES.includes(role));
+  const canSignoff = roles.some((role) => CLOSE_SIGNOFF_ROLES.includes(role));
+  const canViewGiving = roles.some((role) => GIVING_ROLES.includes(role));
 
   const now = new Date();
   const [newYear, setNewYear] = useState(String(now.getFullYear()));
   const [newMonth, setNewMonth] = useState(String(now.getMonth() + 1));
   const [signoffNotes, setSignoffNotes] = useState<Record<number, string>>({});
+  const [externalRefs, setExternalRefs] = useState<Record<number, string>>({});
   const [acknowledged, setAcknowledged] = useState<Record<number, boolean>>({});
   const [error, setError] = useState<string | null>(null);
 
@@ -44,20 +46,14 @@ export default function FinanceClose() {
     onError,
   });
   const signoffMutation = useMutation({
-    mutationFn: (v: { id: number; notes?: string; acknowledgeOpenBatches?: boolean }) =>
-      api.signoffClose(v.id, v.notes, v.acknowledgeOpenBatches),
+    mutationFn: (v: { id: number; externalLedgerReference: string; notes?: string; acknowledgeOpenBatches?: boolean }) =>
+      api.signoffClose(v.id, v.externalLedgerReference, v.notes, v.acknowledgeOpenBatches),
     onSuccess: () => {
       invalidate();
       setError(null);
     },
     onError,
   });
-  const reopenMutation = useMutation({
-    mutationFn: (id: number) => api.reopenClose(id),
-    onSuccess: invalidate,
-    onError,
-  });
-
   const statusBadge = (status: string) => {
     if (status === "closed")
       return (
@@ -230,11 +226,7 @@ export default function FinanceClose() {
                           {close.signedOffAt ? ` on ${format(new Date(close.signedOffAt), "MMM d, yyyy")}` : ""}
                           {close.notes ? ` — ${close.notes}` : ""}
                         </p>
-                        {canSignoff && (
-                          <Button size="sm" variant="outline" onClick={() => reopenMutation.mutate(close.id)}>
-                            <RotateCcw className="w-4 h-4 mr-1" /> Reopen
-                          </Button>
-                        )}
+                        {close.externalLedgerReference && <span className="text-xs text-green-900">Ledger ref: {close.externalLedgerReference}</span>}
                       </div>
                     ) : canSignoff ? (
                       <div className="space-y-2">
@@ -256,6 +248,11 @@ export default function FinanceClose() {
                         )}
                         <div className="flex flex-col md:flex-row gap-2 md:items-center">
                           <Input
+                            placeholder="External ledger reference (required)"
+                            value={externalRefs[close.id] ?? ""}
+                            onChange={(e) => setExternalRefs((s) => ({ ...s, [close.id]: e.target.value }))}
+                          />
+                          <Input
                             placeholder="Sign-off notes (optional)"
                             value={signoffNotes[close.id] ?? ""}
                             onChange={(e) => setSignoffNotes((s) => ({ ...s, [close.id]: e.target.value }))}
@@ -263,7 +260,7 @@ export default function FinanceClose() {
                           <Button
                             variant="accent"
                             className="whitespace-nowrap"
-                            disabled={!allDone || (hasOpenBatches && !isAcknowledged) || signoffMutation.isPending}
+                            disabled={!allDone || !externalRefs[close.id]?.trim() || (hasOpenBatches && !isAcknowledged) || signoffMutation.isPending}
                             title={
                               !allDone
                                 ? "All checklist items must be completed first"
@@ -274,6 +271,7 @@ export default function FinanceClose() {
                             onClick={() =>
                               signoffMutation.mutate({
                                 id: close.id,
+                                externalLedgerReference: externalRefs[close.id],
                                 notes: signoffNotes[close.id],
                                 acknowledgeOpenBatches: hasOpenBatches ? isAcknowledged : undefined,
                               })

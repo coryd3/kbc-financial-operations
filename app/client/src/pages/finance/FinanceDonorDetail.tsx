@@ -94,7 +94,7 @@ export default function FinanceDonorDetail() {
   return (
     <FinanceLayout
       title={`${donor.firstName} ${donor.lastName}`}
-      description="Full giving history and statements — confidential to the Bookkeeper, Treasurer, and Super Admin."
+      description="Full giving history and statements — confidential to the authorized Bookkeeper and Treasurer roles."
     >
       <div className="mb-4">
         <Link href="/finance/donors" className="inline-flex items-center gap-1.5 text-sm text-muted-foreground hover:text-foreground">

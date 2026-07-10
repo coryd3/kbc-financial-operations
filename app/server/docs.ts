@@ -1,138 +1,260 @@
-import type { Express } from "express";
+import type { Express, Request } from "express";
+import crypto from "node:crypto";
 import fs from "node:fs";
 import path from "node:path";
-import { DOCS_NAV, DOCS_PAGES, findDocsPage, docsSectionFor } from "../shared/docsNav.ts";
+import YAML from "yaml";
+import { and, count, desc, eq, gte } from "drizzle-orm";
+import { db } from "./db.ts";
+import { getSessionUser, requireAuth, requireCapability } from "./auth.ts";
+import { recordAuditEvent } from "./audit.ts";
+import {
+  documentationFeedback,
+  documentationFeedbackReviewSchema,
+  documentationFeedbackSchema,
+  users,
+} from "../shared/schema.ts";
+import type { DocsPageRef, DocsSection } from "../shared/docsNav.ts";
 
-// The app lives in app/, the markdown lives in <repo>/docs and snippet
-// sources in <repo>/dist. Both dev (`cd app && npm run dev`) and production
-// (`cd app && npm start`) run with app/ as cwd.
-const REPO_ROOT = path.resolve(process.cwd(), "..");
-const DOCS_ROOT = path.join(REPO_ROOT, "docs");
+const isProduction = process.env.NODE_ENV === "production";
+const contentRoot = isProduction
+  ? path.resolve(import.meta.dirname, "content")
+  : path.resolve(process.cwd(), "..");
+const docsRoot = path.join(contentRoot, "docs");
+const mkdocsPath = path.join(contentRoot, "mkdocs.yml");
+const snippetRoot = isProduction ? path.join(contentRoot, "repo") : contentRoot;
+const assetRoot = path.join(contentRoot, "assets");
 
-/** Resolve pymdownx-style snippet includes: --8<-- "dist/file.md" */
+function page(file: string, title: string): DocsPageRef {
+  return { slug: file.replace(/\.md$/, ""), file, title };
+}
+
+function flattenPages(value: unknown): DocsPageRef[] {
+  if (!Array.isArray(value)) return [];
+  const pages: DocsPageRef[] = [];
+  for (const item of value) {
+    if (!item || typeof item !== "object" || Array.isArray(item)) continue;
+    for (const [title, target] of Object.entries(item)) {
+      if (typeof target === "string" && target.endsWith(".md")) pages.push(page(target, title));
+      else pages.push(...flattenPages(target));
+    }
+  }
+  return pages;
+}
+
+function loadNavigation(): DocsSection[] {
+  const raw = fs.readFileSync(mkdocsPath, "utf8");
+  const navOffset = raw.search(/^nav:\s*$/m);
+  if (navOffset < 0) throw new Error("mkdocs.yml does not define navigation");
+  const parsed = YAML.parse(raw.slice(navOffset)) as { nav?: unknown[] };
+  return (parsed.nav ?? []).flatMap((item) => {
+    if (!item || typeof item !== "object" || Array.isArray(item)) return [];
+    return Object.entries(item).map(([title, value]) => ({ title, pages: flattenPages(value) }));
+  });
+}
+
+const DOCS_NAV = loadNavigation();
+const DOCS_PAGES = DOCS_NAV.flatMap((section) => section.pages);
+const pagesBySlug = new Map(DOCS_PAGES.map((item) => [item.slug, item]));
+
 function resolveSnippets(markdown: string): string {
-  return markdown.replace(/^--8<--\s+"([^"]+)"\s*$/gm, (_m, rel: string) => {
-    // Snippets are only ever repo-relative markdown files; refuse anything else.
-    if (!/^[\w./-]+\.md$/.test(rel) || rel.includes("..")) return "";
-    const abs = path.join(REPO_ROOT, rel);
-    if (!abs.startsWith(REPO_ROOT + path.sep)) return "";
+  return markdown.replace(/^--8<--\s+"([^"]+)"\s*$/gm, (_match, relative: string) => {
+    if (!/^[\w./-]+\.md$/.test(relative) || relative.includes("..")) return "";
+    const absolute = path.resolve(snippetRoot, relative);
+    if (!absolute.startsWith(snippetRoot + path.sep)) return "";
     try {
-      return fs.readFileSync(abs, "utf8");
+      return fs.readFileSync(absolute, "utf8");
     } catch {
       return "";
     }
   });
 }
 
-/**
- * Convert MkDocs admonitions into blockquotes react-markdown can render:
- *   !!! warning "Public Site Caution"
- *       Indented body text…
- * becomes
- *   > **Public Site Caution**
- *   >
- *   > Indented body text…
- */
 function convertAdmonitions(markdown: string): string {
   const lines = markdown.split("\n");
-  const out: string[] = [];
-  for (let i = 0; i < lines.length; i++) {
-    const m = lines[i].match(/^!!!\s+(\w+)(?:\s+"([^"]*)")?\s*$/);
-    if (!m) {
-      out.push(lines[i]);
+  const output: string[] = [];
+  for (let index = 0; index < lines.length; index += 1) {
+    const match = lines[index].match(/^!!!\s+(\w+)(?:\s+"([^"]*)")?\s*$/);
+    if (!match) {
+      output.push(lines[index]);
       continue;
     }
-    const title = m[2] || m[1].charAt(0).toUpperCase() + m[1].slice(1);
-    out.push(`> **${title}**`);
-    out.push(">");
-    i++;
-    while (i < lines.length && (lines[i].startsWith("    ") || lines[i].trim() === "")) {
-      if (lines[i].trim() === "" && !(i + 1 < lines.length && lines[i + 1].startsWith("    "))) {
-        break;
-      }
-      out.push(lines[i].trim() === "" ? ">" : `> ${lines[i].slice(4)}`);
-      i++;
+    const title = match[2] || match[1].charAt(0).toUpperCase() + match[1].slice(1);
+    output.push(`> **${title}**`, ">");
+    index += 1;
+    while (index < lines.length && (lines[index].startsWith("    ") || lines[index].trim() === "")) {
+      if (lines[index].trim() === "" && !lines[index + 1]?.startsWith("    ")) break;
+      output.push(lines[index].trim() === "" ? ">" : `> ${lines[index].slice(4)}`);
+      index += 1;
     }
-    i--;
+    index -= 1;
   }
-  return out.join("\n");
+  return output.join("\n");
 }
 
-function loadPageMarkdown(file: string): string | null {
-  const abs = path.join(DOCS_ROOT, file);
-  if (!abs.startsWith(DOCS_ROOT + path.sep)) return null;
-  try {
-    const raw = fs.readFileSync(abs, "utf8");
-    return convertAdmonitions(resolveSnippets(raw));
-  } catch {
-    return null;
-  }
+function cleanMkDocsSyntax(markdown: string): string {
+  return markdown
+    .replace(/\(\.\.\/generated\/source-materials\/bylaws\/Constitution-Bylaws-and-Covenant-2018\.pdf\)/g,
+      "(/api/docs/assets/constitution-bylaws-2018.pdf)")
+    .replace(/\{\s*target="_blank"\s+rel="noopener"\s*\}/g, "");
 }
+
+type CachedPage = {
+  markdown: string;
+  revision: string;
+  searchableLines: string[];
+};
+
+const pageCache = new Map<string, CachedPage>();
+for (const reference of DOCS_PAGES) {
+  const absolute = path.resolve(docsRoot, reference.file);
+  if (!absolute.startsWith(docsRoot + path.sep) || !fs.existsSync(absolute)) continue;
+  const markdown = cleanMkDocsSyntax(convertAdmonitions(resolveSnippets(fs.readFileSync(absolute, "utf8"))));
+  pageCache.set(reference.slug, {
+    markdown,
+    revision: crypto.createHash("sha256").update(markdown).digest("hex").slice(0, 12),
+    searchableLines: markdown.split("\n"),
+  });
+}
+
+function sectionFor(slug: string): DocsSection | undefined {
+  return DOCS_NAV.find((section) => section.pages.some((candidate) => candidate.slug === slug));
+}
+
+const reviewFeedback = requireCapability("documentation_feedback_review");
 
 export function registerDocsRoutes(app: Express) {
-  // Full page content. Slug is the markdown path without ".md".
+  app.get("/api/docs/nav", (_req, res) => res.json({ sections: DOCS_NAV }));
+
   app.get(/^\/api\/docs\/page\/(.+)$/, (req, res) => {
     const slug = String((req.params as any)[0] ?? "");
-    const pageRef = findDocsPage(slug);
-    if (!pageRef) {
-      return res.status(404).json({ message: "Documentation page not found" });
-    }
-    const markdown = loadPageMarkdown(pageRef.file);
-    if (markdown === null) {
-      return res.status(404).json({ message: "Documentation page not found" });
-    }
-    const idx = DOCS_PAGES.findIndex((p) => p.slug === slug);
-    const prev = idx > 0 ? DOCS_PAGES[idx - 1] : null;
-    const next = idx >= 0 && idx < DOCS_PAGES.length - 1 ? DOCS_PAGES[idx + 1] : null;
+    const reference = pagesBySlug.get(slug);
+    const cached = pageCache.get(slug);
+    if (!reference || !cached) return res.status(404).json({ message: "Documentation page not found" });
+    const index = DOCS_PAGES.findIndex((candidate) => candidate.slug === slug);
+    const prev = index > 0 ? DOCS_PAGES[index - 1] : null;
+    const next = index < DOCS_PAGES.length - 1 ? DOCS_PAGES[index + 1] : null;
     res.json({
-      slug: pageRef.slug,
-      title: pageRef.title,
-      section: docsSectionFor(slug)?.title ?? null,
-      markdown,
+      slug,
+      title: reference.title,
+      section: sectionFor(slug)?.title ?? null,
+      markdown: cached.markdown,
+      revision: cached.revision,
       prev: prev ? { slug: prev.slug, title: prev.title } : null,
       next: next ? { slug: next.slug, title: next.title } : null,
     });
   });
 
-  // Simple full-text search across all pages.
   app.get("/api/docs/search", (req, res) => {
-    const q = String(req.query.q ?? "").trim();
-    if (q.length < 2) return res.json({ results: [] });
-    const needle = q.toLowerCase();
-    const results: {
-      slug: string;
-      title: string;
-      section: string | null;
-      snippets: string[];
-    }[] = [];
-    for (const pageRef of DOCS_PAGES) {
-      const markdown = loadPageMarkdown(pageRef.file);
-      if (markdown === null) continue;
-      const titleHit = pageRef.title.toLowerCase().includes(needle);
-      const snippets: string[] = [];
-      for (const line of markdown.split("\n")) {
-        if (snippets.length >= 3) break;
-        if (line.toLowerCase().includes(needle)) {
-          const clean = line
-            .replace(/^#+\s*/, "")
-            .replace(/[*_`>|]/g, "")
-            .replace(/\[([^\]]*)\]\([^)]*\)/g, "$1")
-            .trim();
-          if (clean) snippets.push(clean.length > 160 ? clean.slice(0, 157) + "…" : clean);
-        }
-      }
-      if (titleHit || snippets.length > 0) {
-        results.push({
-          slug: pageRef.slug,
-          title: pageRef.title,
-          section: docsSectionFor(pageRef.slug)?.title ?? null,
-          snippets,
-        });
-      }
-      if (results.length >= 25) break;
-    }
+    const query = String(req.query.q ?? "").trim().toLowerCase();
+    if (query.length < 2) return res.json({ results: [] });
+    const results = DOCS_PAGES.flatMap((reference) => {
+      const cached = pageCache.get(reference.slug);
+      if (!cached) return [];
+      const snippets = cached.searchableLines
+        .filter((line) => line.toLowerCase().includes(query))
+        .map((line) => line.replace(/^#+\s*/, "").replace(/[*_`>|]/g, "").replace(/\[([^\]]*)\]\([^)]*\)/g, "$1").trim())
+        .filter(Boolean)
+        .slice(0, 3)
+        .map((line) => (line.length > 160 ? `${line.slice(0, 157)}...` : line));
+      if (!reference.title.toLowerCase().includes(query) && !snippets.length) return [];
+      return [{ slug: reference.slug, title: reference.title, section: sectionFor(reference.slug)?.title ?? null, snippets }];
+    }).slice(0, 25);
     res.json({ results });
+  });
+
+  app.get("/api/docs/assets/constitution-bylaws-2018.pdf", (_req, res) => {
+    const file = path.join(assetRoot, "constitution-bylaws-2018.pdf");
+    if (!fs.existsSync(file)) return res.status(404).json({ message: "Document asset not found" });
+    res.set({ "Content-Type": "application/pdf", "Content-Disposition": "inline" });
+    res.sendFile(file);
+  });
+
+  app.post("/api/docs/feedback", requireAuth, async (req, res) => {
+    const parsed = documentationFeedbackSchema.safeParse(req.body);
+    if (!parsed.success) return res.status(400).json({ message: parsed.error.errors[0]?.message ?? "Invalid feedback" });
+    const current = pageCache.get(parsed.data.pageSlug);
+    if (!current || current.revision !== parsed.data.documentationRevision) {
+      return res.status(409).json({ message: "This page changed. Refresh it before submitting feedback." });
+    }
+    const user = (req as any).user as { id: number };
+    const since = new Date(Date.now() - 24 * 60 * 60_000);
+    const [daily] = await db
+      .select({ value: count() })
+      .from(documentationFeedback)
+      .where(and(eq(documentationFeedback.userId, user.id), gte(documentationFeedback.createdAt, since)));
+    if ((daily?.value ?? 0) >= 10) {
+      return res.status(429).json({ message: "You have reached the daily feedback limit." });
+    }
+    try {
+      const [created] = await db
+        .insert(documentationFeedback)
+        .values({
+          ...parsed.data,
+          comment: parsed.data.comment || null,
+          userId: user.id,
+        })
+        .returning();
+      await recordAuditEvent(req, "docs.feedback_created", {
+        entityType: "documentation_feedback",
+        entityId: created.id,
+        details: { pageSlug: created.pageSlug },
+      });
+      res.status(201).json({ feedback: created });
+    } catch (error: any) {
+      if (error?.code === "23505") {
+        return res.status(409).json({ message: "You already submitted feedback for this version of the page." });
+      }
+      throw error;
+    }
+  });
+
+  app.get("/api/admin/docs/feedback", reviewFeedback, async (req, res) => {
+    const status = typeof req.query.status === "string" ? req.query.status : undefined;
+    const rows = await db
+      .select({
+        feedback: documentationFeedback,
+        submittedBy: users.fullName,
+      })
+      .from(documentationFeedback)
+      .innerJoin(users, eq(users.id, documentationFeedback.userId))
+      .where(status ? eq(documentationFeedback.status, status as any) : undefined)
+      .orderBy(desc(documentationFeedback.createdAt));
+    res.json({ feedback: rows.map((row) => ({ ...row.feedback, submittedBy: row.submittedBy })) });
+  });
+
+  app.get("/api/admin/docs/feedback/new-count", reviewFeedback, async (_req, res) => {
+    const [row] = await db
+      .select({ value: count() })
+      .from(documentationFeedback)
+      .where(eq(documentationFeedback.status, "new"));
+    res.json({ newFeedbackCount: row?.value ?? 0 });
+  });
+
+  app.patch("/api/admin/docs/feedback/:id", reviewFeedback, async (req, res) => {
+    const id = Number(req.params.id);
+    if (!Number.isInteger(id)) return res.status(400).json({ message: "Invalid feedback id" });
+    const parsed = documentationFeedbackReviewSchema.safeParse(req.body);
+    if (!parsed.success) return res.status(400).json({ message: "Invalid feedback status" });
+    const user = (req as any).user as { id: number };
+    const now = new Date();
+    const [updated] = await db
+      .update(documentationFeedback)
+      .set({
+        status: parsed.data.status,
+        reviewerId: user.id,
+        reviewedAt: now,
+        resolvedAt: ["resolved", "declined"].includes(parsed.data.status) ? now : null,
+      })
+      .where(eq(documentationFeedback.id, id))
+      .returning();
+    if (!updated) return res.status(404).json({ message: "Feedback not found" });
+    await recordAuditEvent(req, "docs.feedback_reviewed", {
+      entityType: "documentation_feedback",
+      entityId: id,
+      details: { status: parsed.data.status },
+    });
+    res.json({ feedback: updated });
   });
 }
 
-export const __docsInternals = { resolveSnippets, convertAdmonitions, loadPageMarkdown, DOCS_NAV };
+export const __docsInternals = { resolveSnippets, convertAdmonitions, DOCS_NAV, DOCS_PAGES };

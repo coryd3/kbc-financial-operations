@@ -17,6 +17,7 @@ export default function AdminUsers() {
   const [pwValue, setPwValue] = useState("");
   const [pwError, setPwError] = useState("");
   const [pwSuccess, setPwSuccess] = useState("");
+  const [roleTarget, setRoleTarget] = useState<{ id: number; fullName: string; roles: Role[] } | null>(null);
 
   const toggleSuggestionDetails = (userId: number, memberId: number) => {
     const key = `${userId}:${memberId}`;
@@ -83,19 +84,19 @@ export default function AdminUsers() {
   });
 
   const roleMut = useMutation({
-    mutationFn: ({ id, role }: { id: number; role: Role }) => api.assignRole(id, role),
-    onSuccess: () => queryClient.invalidateQueries({ queryKey: ["users"] }),
+    mutationFn: ({ id, roles }: { id: number; roles: Role[] }) => api.assignRoles(id, roles),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["users"] });
+      setRoleTarget(null);
+    },
   });
 
   const setPasswordMut = useMutation({
-    mutationFn: ({ id, newPassword }: { id: number; newPassword: string }) =>
-      api.setUserPassword(id, newPassword),
-    onSuccess: () => {
-      const target = pwTarget;
+    mutationFn: (id: number) => api.createPasswordResetCode(id),
+    onSuccess: (result) => {
       setPwError("");
-      setPwValue("");
-      setPwTarget(null);
-      setPwSuccess(target ? `Password updated for @${target.username}.` : "Password updated.");
+      setPwValue(result.resetCode);
+      setPwSuccess("One-time reset code created. It expires in 30 minutes.");
     },
     onError: (err: Error) => setPwError(err.message),
   });
@@ -110,11 +111,7 @@ export default function AdminUsers() {
   const submitPassword = (e: React.FormEvent) => {
     e.preventDefault();
     if (!pwTarget) return;
-    if (pwValue.length < 8) {
-      setPwError("Password must be at least 8 characters");
-      return;
-    }
-    setPasswordMut.mutate({ id: pwTarget.id, newPassword: pwValue });
+    setPasswordMut.mutate(pwTarget.id);
   };
 
   const users = data?.users || [];
@@ -303,16 +300,16 @@ export default function AdminUsers() {
                         <div className="text-xs text-muted-foreground mt-0.5">@{user.username}</div>
                       </td>
                       <td className="py-3 px-4">
-                        <select
-                          className="text-sm bg-transparent border border-transparent hover:border-input rounded px-1 py-0.5 focus:outline-none focus:ring-1 focus:ring-ring disabled:opacity-50"
-                          value={user.role}
-                          disabled={!user.canManage || roleMut.isPending}
-                          onChange={(e) => roleMut.mutate({ id: user.id, role: e.target.value as Role })}
-                        >
-                          {ROLES.map(r => (
-                            <option key={r} value={r}>{ROLE_LABELS[r]}</option>
+                        <div className="flex flex-wrap items-center gap-1">
+                          {(user.roles ?? [user.role]).map((role) => (
+                            <span key={role} className="rounded bg-muted px-2 py-0.5 text-xs">{ROLE_LABELS[role]}</span>
                           ))}
-                        </select>
+                          {user.canManage && (
+                            <Button variant="ghost" size="sm" className="h-7" onClick={() => setRoleTarget({ id: user.id, fullName: user.fullName, roles: [...(user.roles ?? [user.role])] })}>
+                              Edit
+                            </Button>
+                          )}
+                        </div>
                       </td>
                       <td className="py-3 px-4">
                         <span className={`inline-flex items-center px-2 py-0.5 rounded text-xs font-medium ${
@@ -351,14 +348,14 @@ export default function AdminUsers() {
                                 <CheckCircle className="w-3.5 h-3.5 mr-1" /> Reactivate
                               </Button>
                             ) : null}
-                            {me?.role === "super_admin" && (
+                            {(me?.roles ?? (me ? [me.role] : [])).includes("super_admin") && (
                               <Button
                                 variant="ghost"
                                 size="sm"
                                 className="h-8 text-muted-foreground hover:text-foreground"
                                 onClick={() => openPwDialog({ id: user.id, username: user.username, fullName: user.fullName })}
                               >
-                                <KeyRound className="w-3.5 h-3.5 mr-1" /> Set Password
+                                <KeyRound className="w-3.5 h-3.5 mr-1" /> Reset Access
                               </Button>
                             )}
                           </div>
@@ -388,7 +385,7 @@ export default function AdminUsers() {
           <Card className="w-full max-w-sm">
             <CardHeader className="flex flex-row items-center justify-between pb-2">
               <CardTitle className="text-lg flex items-center gap-2">
-                <KeyRound className="w-4 h-4" /> Set Password
+                <KeyRound className="w-4 h-4" /> Create Reset Code
               </CardTitle>
               <button
                 onClick={() => { setPwTarget(null); setPwError(""); setPwValue(""); }}
@@ -400,20 +397,19 @@ export default function AdminUsers() {
             </CardHeader>
             <CardContent>
               <p className="text-sm text-muted-foreground mb-4">
-                Set a new password for <span className="font-medium text-foreground">{pwTarget.fullName}</span>{" "}
-                (@{pwTarget.username}). They can log in with it immediately.
+                Create a one-time reset code for <span className="font-medium text-foreground">{pwTarget.fullName}</span>{" "}
+                (@{pwTarget.username}). Share it privately. It expires in 30 minutes.
               </p>
               <form onSubmit={submitPassword} className="space-y-3">
                 <div>
-                  <Label htmlFor="new-password">New password</Label>
+                  <Label htmlFor="new-password">One-time reset code</Label>
                   <Input
                     id="new-password"
                     type="text"
-                    autoFocus
+                    readOnly
                     autoComplete="off"
                     value={pwValue}
-                    onChange={(e) => setPwValue(e.target.value)}
-                    placeholder="At least 8 characters"
+                    placeholder="Select Create Code"
                   />
                 </div>
                 {pwError && <p className="text-sm text-destructive">{pwError}</p>}
@@ -426,10 +422,44 @@ export default function AdminUsers() {
                     Cancel
                   </Button>
                   <Button type="submit" disabled={setPasswordMut.isPending}>
-                    {setPasswordMut.isPending ? "Saving..." : "Save Password"}
+                    {setPasswordMut.isPending ? "Creating..." : pwValue ? "Create Another Code" : "Create Code"}
                   </Button>
                 </div>
               </form>
+            </CardContent>
+          </Card>
+        </div>
+      )}
+
+      {roleTarget && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 p-4">
+          <Card className="w-full max-w-md">
+            <CardHeader><CardTitle className="text-lg">Roles for {roleTarget.fullName}</CardTitle></CardHeader>
+            <CardContent className="space-y-4">
+              <p className="text-sm text-muted-foreground">Assign only the responsibilities this person currently holds. Technical administrator roles do not include donor or finance access.</p>
+              <div className="grid gap-2 sm:grid-cols-2">
+                {ROLES.map((role) => (
+                  <label key={role} className="flex items-center gap-2 rounded border border-border p-2 text-sm">
+                    <input
+                      type="checkbox"
+                      checked={roleTarget.roles.includes(role)}
+                      onChange={(event) => setRoleTarget((current) => current ? {
+                        ...current,
+                        roles: event.target.checked
+                          ? [...current.roles, role]
+                          : current.roles.filter((candidate) => candidate !== role),
+                      } : null)}
+                    />
+                    {ROLE_LABELS[role]}
+                  </label>
+                ))}
+              </div>
+              <div className="flex justify-end gap-2">
+                <Button variant="outline" onClick={() => setRoleTarget(null)}>Cancel</Button>
+                <Button disabled={roleMut.isPending || roleTarget.roles.length === 0} onClick={() => roleMut.mutate({ id: roleTarget.id, roles: roleTarget.roles })}>
+                  {roleMut.isPending ? "Saving..." : "Save Roles"}
+                </Button>
+              </div>
             </CardContent>
           </Card>
         </div>

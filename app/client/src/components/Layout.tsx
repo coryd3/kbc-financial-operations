@@ -2,7 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import { Link, useLocation } from "wouter";
 import { useAuth } from "../lib/auth";
 import { api } from "../lib/api";
-import { LogOut, BookOpen, Home, User, Shield, BarChart, LayoutDashboard, Users, ContactRound, CheckSquare, Gavel, Landmark } from "lucide-react";
+import { LogOut, BookOpen, Home, User, Shield, BarChart, LayoutDashboard, Users, ContactRound, CheckSquare, Gavel, Landmark, MessageSquareText } from "lucide-react";
 import { cn } from "../lib/utils";
 import { CHURCH_CONTACT } from "../lib/contact";
 import { NotificationBell } from "./NotificationBell";
@@ -23,6 +23,13 @@ export function Layout({ children }: { children: React.ReactNode }) {
     queryKey: ["checklistSummary"],
     queryFn: api.getChecklistSummary,
     enabled: !!user,
+    refetchInterval: 60000,
+  });
+
+  const { data: feedbackCount } = useQuery({
+    queryKey: ["newDocsFeedbackCount"],
+    queryFn: () => api.getNewDocsFeedbackCount().then((data) => data.newFeedbackCount),
+    enabled: isAdmin,
     refetchInterval: 60000,
   });
 
@@ -51,9 +58,10 @@ export function Layout({ children }: { children: React.ReactNode }) {
     },
     { href: "/committees", label: "Committees", icon: Users, show: !!user },
     { href: "/decisions", label: "Decisions", icon: Gavel, show: !!user },
-    { href: "/finance", label: "Finance", icon: Landmark, show: !!user && FINANCE_NAV_ROLES.includes(user.role) },
+    { href: "/finance", label: "Finance", icon: Landmark, show: !!user && (user.roles ?? [user.role]).some((role) => FINANCE_NAV_ROLES.includes(role)) },
     { href: "/admin", label: "Admin", icon: Shield, show: isAdmin, badge: pendingCount ? pendingCount : null },
     { href: "/admin/analytics", label: "Analytics", icon: BarChart, show: isAdmin },
+    { href: "/admin/documentation-feedback", label: "Doc Feedback", icon: MessageSquareText, show: isAdmin, badge: feedbackCount || null },
   ];
 
   return (

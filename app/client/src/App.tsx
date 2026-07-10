@@ -5,6 +5,7 @@ import { ProtectedRoute } from "./components/ProtectedRoute";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
+import ResetPassword from "./pages/ResetPassword";
 import Docs from "./pages/Docs";
 import DocsReader from "./pages/DocsReader";
 import Dashboard from "./pages/Dashboard";
@@ -18,6 +19,7 @@ import ChecklistTemplates from "./pages/ChecklistTemplates";
 import ChecklistHistory from "./pages/ChecklistHistory";
 import AdminAnnouncements from "./pages/AdminAnnouncements";
 import AdminAnalytics from "./pages/AdminAnalytics";
+import AdminDocsFeedback from "./pages/AdminDocsFeedback";
 import Committees from "./pages/Committees";
 import CommitteeDetail from "./pages/CommitteeDetail";
 import Decisions from "./pages/Decisions";
@@ -50,6 +52,7 @@ function Router() {
         <Route path="/" component={Home} />
         <Route path="/login" component={Login} />
         <Route path="/register" component={Register} />
+        <Route path="/reset-password" component={ResetPassword} />
         <Route path="/docs" component={Docs} />
         <Route path="/docs/*" component={DocsReader} />
         
@@ -155,6 +158,10 @@ function Router() {
         
         <Route path="/admin/analytics">
           <ProtectedRoute requireAdmin><AdminAnalytics /></ProtectedRoute>
+        </Route>
+
+        <Route path="/admin/documentation-feedback">
+          <ProtectedRoute requireAdmin><AdminDocsFeedback /></ProtectedRoute>
         </Route>
         
         <Route>

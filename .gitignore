@@ -37,3 +37,8 @@ dist/audiobook/piper-voices/
 # Church app (Node)
 node_modules/
 app/dist/
+app/.env
+app/.env.*
+!app/.env.example
+*.dump
+*.backup

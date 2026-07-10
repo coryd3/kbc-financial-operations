@@ -173,7 +173,7 @@ describe("monthly close vs open contribution batches", () => {
     const res = await request(app)
       .post(`/api/finance/closes/${close.id}/signoff`)
       .set(as(treasurerId))
-      .send({});
+      .send({ externalLedgerReference: "close-test-open" });
     expect(res.status).toBe(409);
     expect(res.body.message).toMatch(/still open/i);
     expect(res.body.openBatches).toHaveLength(1);
@@ -187,7 +187,11 @@ describe("monthly close vs open contribution batches", () => {
     const res = await request(app)
       .post(`/api/finance/closes/${close.id}/signoff`)
       .set(as(treasurerId))
-      .send({ acknowledgeOpenBatches: true, notes: "signed with open batch" });
+      .send({
+        acknowledgeOpenBatches: true,
+        notes: "signed with open batch",
+        externalLedgerReference: "close-test-acknowledged",
+      });
     expect(res.status).toBe(200);
     expect(res.body.close.status).toBe("closed");
   });
@@ -206,14 +210,14 @@ describe("monthly close vs open contribution batches", () => {
     const closeBatchRes = await request(app)
       .post(`/api/giving/batches/${batch.id}/close`)
       .set(as(treasurerId))
-      .send({});
+      .send({ externalLedgerReference: "close-test-batch" });
     expect(closeBatchRes.status).toBe(200);
 
     await completeAllItems(close);
     const res = await request(app)
       .post(`/api/finance/closes/${close.id}/signoff`)
       .set(as(treasurerId))
-      .send({});
+      .send({ externalLedgerReference: "close-test-clean" });
     expect(res.status).toBe(200);
     expect(res.body.close.status).toBe("closed");
   });

@@ -2,7 +2,6 @@ import { useMemo, useState } from "react";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { api, ApiError } from "../../lib/api";
 import { useAuth } from "../../lib/auth";
-import { DEPOSIT_MANAGE_ROLES } from "@shared/schema";
 import { FinanceLayout } from "../../components/FinanceLayout";
 import { Button, Card, CardContent, CardHeader, CardTitle, Input, Label } from "../../components/ui";
 import { formatCents, parseDollars } from "../../lib/money";
@@ -12,7 +11,9 @@ import { BadgeCheck, Link2 } from "lucide-react";
 export default function FinanceDeposits() {
   const { user } = useAuth();
   const queryClient = useQueryClient();
-  const canManage = !!user && DEPOSIT_MANAGE_ROLES.includes(user.role);
+  const roles = user?.roles ?? (user ? [user.role] : []);
+  const canPrepare = roles.includes("bookkeeper");
+  const canReconcile = roles.includes("treasurer");
 
   const [form, setForm] = useState({
     depositDate: format(new Date(), "yyyy-MM-dd"),
@@ -27,7 +28,7 @@ export default function FinanceDeposits() {
   const { data: unlinkedData } = useQuery({
     queryKey: ["counts", "unlinked"],
     queryFn: () => api.getCounts(true),
-    enabled: canManage,
+    enabled: canPrepare,
   });
 
   const verifiedUnlinked = useMemo(
@@ -83,7 +84,7 @@ export default function FinanceDeposits() {
       description="Record bank deposits, link them to verified offering counts, and mark them reconciled against the bank statement."
     >
       <div className="grid lg:grid-cols-5 gap-8">
-        {canManage && (
+        {canPrepare && (
           <Card className="lg:col-span-2 h-max">
             <CardHeader>
               <CardTitle className="text-xl">Record Deposit</CardTitle>
@@ -174,7 +175,7 @@ export default function FinanceDeposits() {
           </Card>
         )}
 
-        <div className={canManage ? "lg:col-span-3 space-y-3" : "lg:col-span-5 space-y-3"}>
+        <div className={canPrepare ? "lg:col-span-3 space-y-3" : "lg:col-span-5 space-y-3"}>
           {isLoading ? (
             <div className="animate-pulse h-32 bg-muted rounded-lg" />
           ) : depositsData?.deposits.length ? (
@@ -213,7 +214,7 @@ export default function FinanceDeposits() {
                     </div>
                     <div className="flex items-center gap-3">
                       <span className="text-lg font-semibold whitespace-nowrap">{formatCents(d.amountCents)}</span>
-                      {canManage && d.status === "recorded" && (
+                      {canReconcile && d.status === "recorded" && (
                         <Button
                           size="sm"
                           variant="outline"

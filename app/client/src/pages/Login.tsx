@@ -10,11 +10,11 @@ export default function Login() {
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [, setLocation] = useLocation();
-  const { user, refresh } = useAuth();
+  const { user, refresh, mfaRequired, mfaVerified } = useAuth();
 
   useEffect(() => {
-    if (user) setLocation("/dashboard");
-  }, [user, setLocation]);
+    if (user) setLocation(user.mustChangePassword || (mfaRequired && !mfaVerified) ? "/account" : "/dashboard");
+  }, [user, mfaRequired, mfaVerified, setLocation]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -22,9 +22,9 @@ export default function Login() {
     setIsLoading(true);
     
     try {
-      await api.login({ username, password });
+      const result = await api.login({ username, password });
       await refresh();
-      setLocation("/dashboard");
+      setLocation(result.user.mustChangePassword || result.mfaRequired || result.mfaSetupRequired ? "/account" : "/dashboard");
     } catch (err) {
       if (err instanceof ApiError) {
         setError(err.message);
@@ -79,6 +79,7 @@ export default function Login() {
           <div className="mt-6 text-center text-sm text-muted-foreground">
             Don't have an account? <Link href="/register" className="text-primary hover:underline">Register here</Link>
           </div>
+          <div className="mt-2 text-center text-sm"><Link href="/reset-password" className="text-primary hover:underline">Use a password reset code</Link></div>
         </CardContent>
       </Card>
     </div>

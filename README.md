@@ -55,6 +55,16 @@ Treat the published GitHub Pages site and the public GitHub repository as public
 
 For deployment, GitHub Pages, and analytics notes, see `SITE_DEPLOYMENT.md`.
 
+## Operations Portal
+
+The repository also contains the KBC Operations Portal in `app/`. The portal provides authenticated committee, checklist, documentation-feedback, offering-count, deposit, giving-record, and operational-close workflows. It is intentionally configured in `hybrid` financial mode: the church's external accounting and payroll systems remain the official ledger.
+
+The recommended production host is Render. Replit may still be used as an optional development editor, but production does not depend on a paid Replit account. The expected starting Render cost is approximately $13-$15 per month for one Starter web service and one Basic PostgreSQL database, subject to Render's current pricing and storage use.
+
+Production deployment is defined in `render.yaml`. GitHub Actions runs application, migration, documentation, and public-content checks before Render deploys `main`.
+
+See `SITE_DEPLOYMENT.md` for initial Render setup, required environment variables, administrator bootstrap, backups, deployment checks, and rollback guidance.
+
 To install the documentation-site tools:
 
 ```sh

@@ -24,15 +24,20 @@ export const FINANCE_TABS: { href: string; label: string; icon: any; roles: Role
   { href: "/finance/categories", label: "Categories", icon: Tags, roles: CATEGORY_MANAGE_ROLES },
 ];
 
-export function financeTabsForRole(role: Role) {
-  return FINANCE_TABS.filter((t) => t.roles.includes(role));
+const HYBRID_DISABLED_TABS = new Set(["/finance/ledger", "/finance/reports", "/finance/categories"]);
+
+export function financeTabsForRoles(roles: Role[]) {
+  const hybrid = (import.meta.env.VITE_FINANCIAL_MODE || "hybrid") === "hybrid";
+  return FINANCE_TABS.filter((tab) =>
+    roles.some((role) => tab.roles.includes(role)) && (!hybrid || !HYBRID_DISABLED_TABS.has(tab.href)),
+  );
 }
 
 export function FinanceLayout({ title, description, children }: { title: string; description?: string; children: React.ReactNode }) {
   const { user } = useAuth();
   const [location] = useLocation();
   if (!user) return null;
-  const tabs = financeTabsForRole(user.role);
+  const tabs = financeTabsForRoles(user.roles ?? [user.role]);
 
   return (
     <div className="space-y-6">
