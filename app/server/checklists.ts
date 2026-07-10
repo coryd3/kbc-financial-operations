@@ -291,6 +291,61 @@ export function registerChecklistRoutes(app: Express) {
     res.json({ message: "Deleted" });
   });
 
+  // Per-template run history with step-level who/when detail (managers only)
+  app.get("/api/checklists/templates/:id/history", requireChecklistManager, async (req, res) => {
+    const id = Number(req.params.id);
+    if (!Number.isInteger(id)) return res.status(400).json({ message: "Invalid id" });
+    const [template] = await db.select().from(checklistTemplates).where(eq(checklistTemplates.id, id));
+    if (!template) return res.status(404).json({ message: "Template not found" });
+
+    const instances = await db
+      .select()
+      .from(checklistInstances)
+      .where(eq(checklistInstances.templateId, id))
+      .orderBy(desc(checklistInstances.createdAt))
+      .limit(200);
+
+    const instanceIds = instances.map((i) => i.id);
+    const steps = instanceIds.length
+      ? await db
+          .select({
+            id: checklistInstanceSteps.id,
+            instanceId: checklistInstanceSteps.instanceId,
+            position: checklistInstanceSteps.position,
+            title: checklistInstanceSteps.title,
+            assignedRole: checklistInstanceSteps.assignedRole,
+            completedAt: checklistInstanceSteps.completedAt,
+            completedBy: checklistInstanceSteps.completedBy,
+            completedByName: users.fullName,
+          })
+          .from(checklistInstanceSteps)
+          .leftJoin(users, eq(checklistInstanceSteps.completedBy, users.id))
+          .where(inArray(checklistInstanceSteps.instanceId, instanceIds))
+          .orderBy(asc(checklistInstanceSteps.instanceId), asc(checklistInstanceSteps.position))
+      : [];
+
+    const now = new Date();
+    res.json({
+      template,
+      instances: instances.map((i) => {
+        const instanceSteps = steps.filter((s) => s.instanceId === i.id);
+        const completedSteps = instanceSteps.filter((s) => s.completedAt).length;
+        let timeliness: "on_time" | "late" | "overdue" | null = null;
+        if (i.status === "completed" && i.completedAt && i.dueDate) {
+          timeliness = i.completedAt <= i.dueDate ? "on_time" : "late";
+        } else if (i.status === "open" && i.dueDate && i.dueDate < now) {
+          timeliness = "overdue";
+        }
+        return {
+          ...i,
+          timeliness,
+          progress: { total: instanceSteps.length, completed: completedSteps },
+          steps: instanceSteps,
+        };
+      }),
+    });
+  });
+
   app.post("/api/checklists/templates/:id/start", requireChecklistManager, async (req, res) => {
     const id = Number(req.params.id);
     if (!Number.isInteger(id)) return res.status(400).json({ message: "Invalid id" });

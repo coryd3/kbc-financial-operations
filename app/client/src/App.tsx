@@ -14,6 +14,7 @@ import AdminMembers from "./pages/AdminMembers";
 import Checklists from "./pages/Checklists";
 import ChecklistDetail from "./pages/ChecklistDetail";
 import ChecklistTemplates from "./pages/ChecklistTemplates";
+import ChecklistHistory from "./pages/ChecklistHistory";
 import AdminAnnouncements from "./pages/AdminAnnouncements";
 import AdminAnalytics from "./pages/AdminAnalytics";
 import Committees from "./pages/Committees";
@@ -43,6 +44,10 @@ function Router() {
 
         <Route path="/checklists/templates">
           <ProtectedRoute><ChecklistTemplates /></ProtectedRoute>
+        </Route>
+
+        <Route path="/checklists/templates/:id/history">
+          <ProtectedRoute><ChecklistHistory /></ProtectedRoute>
         </Route>
 
         <Route path="/checklists/:id">

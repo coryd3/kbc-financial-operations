@@ -124,6 +124,19 @@ export interface MyTask {
   dueDate: string | null;
 }
 
+export type Timeliness = "on_time" | "late" | "overdue" | null;
+
+export type HistoryInstance = ChecklistInstance & {
+  timeliness: Timeliness;
+  progress: { total: number; completed: number };
+  steps: InstanceStepDetail[];
+};
+
+export interface TemplateHistory {
+  template: ChecklistTemplate;
+  instances: HistoryInstance[];
+}
+
 export interface ChecklistSummary {
   openCount: number;
   myOpenSteps: number;
@@ -282,6 +295,8 @@ export const api = {
     request<{ template: ChecklistTemplate }>("PATCH", `/api/checklists/templates/${id}`, data),
   deleteChecklistTemplate: (id: number) =>
     request<{ message: string }>("DELETE", `/api/checklists/templates/${id}`),
+  getChecklistTemplateHistory: (id: number) =>
+    request<TemplateHistory>("GET", `/api/checklists/templates/${id}/history`),
   startChecklist: (templateId: number) =>
     request<{ instance: ChecklistInstance }>("POST", `/api/checklists/templates/${templateId}/start`),
   getChecklistInstances: (status?: "open" | "completed") =>

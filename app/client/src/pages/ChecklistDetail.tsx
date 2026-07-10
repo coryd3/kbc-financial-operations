@@ -4,7 +4,7 @@ import { useAuth } from "../lib/auth";
 import { api, ApiError, type InstanceDetail } from "../lib/api";
 import { Card, CardContent, Button } from "../components/ui";
 import { ROLE_LABELS, CHECKLIST_MANAGER_ROLES } from "@shared/schema";
-import { ArrowLeft, Check, Trash2, RotateCcw } from "lucide-react";
+import { ArrowLeft, Check, Trash2, RotateCcw, History } from "lucide-react";
 import { format } from "date-fns";
 import { cn } from "../lib/utils";
 import { DueBadge } from "./Checklists";
@@ -91,18 +91,27 @@ export default function ChecklistDetail() {
           </div>
         </div>
         {isManager && (
-          <Button
-            variant="ghost"
-            size="sm"
-            className="text-destructive hover:text-destructive hover:bg-destructive/10 gap-1.5"
-            onClick={() => {
-              if (confirm("Delete this checklist and its history? This cannot be undone.")) {
-                deleteMut.mutate();
-              }
-            }}
-          >
-            <Trash2 className="w-4 h-4" /> Delete
-          </Button>
+          <div className="flex gap-2 flex-shrink-0">
+            {instance.templateId && (
+              <Link href={`/checklists/templates/${instance.templateId}/history`}>
+                <Button variant="outline" size="sm" className="gap-1.5" title="View past runs of this checklist">
+                  <History className="w-4 h-4" /> History
+                </Button>
+              </Link>
+            )}
+            <Button
+              variant="ghost"
+              size="sm"
+              className="text-destructive hover:text-destructive hover:bg-destructive/10 gap-1.5"
+              onClick={() => {
+                if (confirm("Delete this checklist and its history? This cannot be undone.")) {
+                  deleteMut.mutate();
+                }
+              }}
+            >
+              <Trash2 className="w-4 h-4" /> Delete
+            </Button>
+          </div>
         )}
       </div>
 

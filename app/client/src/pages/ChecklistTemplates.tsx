@@ -13,7 +13,7 @@ import {
   type Recurrence,
 } from "@shared/schema";
 import { useAuth } from "../lib/auth";
-import { ArrowLeft, Plus, Pencil, Trash2, Play, GripVertical, X, ArrowUp, ArrowDown } from "lucide-react";
+import { ArrowLeft, Plus, Pencil, Trash2, Play, GripVertical, X, ArrowUp, ArrowDown, History } from "lucide-react";
 import { cn } from "../lib/utils";
 
 interface StepForm {
@@ -323,6 +323,11 @@ export default function ChecklistTemplates() {
                   </div>
                 </div>
                 <div className="flex gap-2 flex-shrink-0">
+                  <Link href={`/checklists/templates/${t.id}/history`}>
+                    <Button variant="outline" size="sm" className="gap-1.5" title="View past runs of this checklist">
+                      <History className="w-3.5 h-3.5" /> History
+                    </Button>
+                  </Link>
                   <Button
                     variant="outline"
                     size="sm"

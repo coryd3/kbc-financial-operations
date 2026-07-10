@@ -31,6 +31,7 @@ super_admin, admin, treasurer, bookkeeper, finance_committee, personnel_committe
 - Recurring instances are spawned lazily via `ensureScheduledInstances()` in `app/server/checklists.ts` (throttled, called on checklist reads + at seed). Duplicate spawns are prevented by a unique index on (template_id, period_key) + `onConflictDoNothing`.
 - Instances snapshot template steps at spawn; step check-off records who/when; completing all steps auto-completes the instance (unchecking reopens it). Non-managers can only check steps matching their role or unassigned; managers can check any.
 - UI: `/checklists` (My Tasks / Active / Completed tabs), `/checklists/:id` detail, Dashboard panel + nav overdue badge fed by `/api/checklists/summary`.
+- Run history: `/checklists/templates/:id/history` (managers only) shows all past runs of a template with on-time/late/overdue status, summary stats, and expandable step-level who/when detail; backed by `GET /api/checklists/templates/:id/history`. Linked via "History" buttons on `/checklists/templates` and instance detail pages.
 - Seeded templates: Payroll Run (monthly), Weekly Bookkeeping (weekly), Monthly Close Prep (monthly), Business Meeting Prep (on-demand).
 
 ### Committees & governance
