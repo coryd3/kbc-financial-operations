@@ -59,8 +59,8 @@ export function Layout({ children }: { children: React.ReactNode }) {
   return (
     <div className="min-h-[100dvh] flex flex-col">
       <header className="bg-primary text-primary-foreground py-4 px-6 md:px-8 shadow-sm">
-        <div className="max-w-6xl mx-auto flex flex-col md:flex-row md:items-center justify-between gap-4">
-          <Link href="/" className="flex items-center gap-3 hover:opacity-90 transition-opacity group">
+        <div className="max-w-6xl mx-auto flex flex-col lg:flex-row lg:items-center justify-between gap-4">
+          <Link href="/" className="flex items-center gap-3 hover:opacity-90 transition-opacity group shrink-0">
             <div className="w-10 h-10 bg-accent rounded-full flex items-center justify-center text-accent-foreground font-serif text-xl font-bold shadow-sm group-hover:scale-105 transition-transform">
               KBC
             </div>
@@ -69,7 +69,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
               <p className="text-primary-foreground/80 text-xs md:text-sm font-medium tracking-wide">Operations Portal</p>
             </div>
           </Link>
-          <nav className="flex items-center gap-2 overflow-x-auto pb-2 md:pb-0 scrollbar-hide text-sm">
+          <nav className="flex flex-wrap items-center gap-1.5 text-sm lg:justify-end">
             {navItems.filter((i) => i.show).map((item) => (
               <Link
                 key={item.href}
