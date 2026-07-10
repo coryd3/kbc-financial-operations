@@ -346,6 +346,57 @@ describe("donor management", () => {
     expect(bad.status).toBe(400);
   });
 
+  it("bulk statements endpoint groups by donor and only includes donors with giving in range", async () => {
+    const alpha = await createDonor("BulkAlpha");
+    const beta = await createDonor("BulkBeta");
+    const outside = await createDonor("BulkOutside");
+    const batch = await createBatch();
+    await addContribution(batch.id, alpha.id, 2000, { contributionDate: "2026-02-01" });
+    await addContribution(batch.id, alpha.id, 3000, { contributionDate: "2026-03-01" });
+    await addContribution(batch.id, beta.id, 4000, { contributionDate: "2026-04-01" });
+    await addContribution(batch.id, outside.id, 5000, { contributionDate: "2025-06-01" });
+
+    const res = await request(app)
+      .get("/api/giving/statements?start=2026-01-01&end=2026-12-31")
+      .set(as(treasurerId));
+    expect(res.status).toBe(200);
+    const ids = res.body.statements.map((s: any) => s.donor.id);
+    expect(ids).toContain(alpha.id);
+    expect(ids).toContain(beta.id);
+    expect(ids).not.toContain(outside.id);
+    const alphaStmt = res.body.statements.find((s: any) => s.donor.id === alpha.id);
+    expect(alphaStmt.totalCents).toBe(5000);
+    expect(alphaStmt.contributions).toHaveLength(2);
+    expect(alphaStmt.fundTotals[0].totalCents).toBe(5000);
+    const betaStmt = res.body.statements.find((s: any) => s.donor.id === beta.id);
+    expect(betaStmt.totalCents).toBe(4000);
+
+    const bad = await request(app)
+      .get("/api/giving/statements?start=2026-12-31&end=2026-01-01")
+      .set(as(treasurerId));
+    expect(bad.status).toBe(400);
+
+    const invalid = await request(app)
+      .get("/api/giving/statements?start=notadate&end=2026-12-31")
+      .set(as(treasurerId));
+    expect(invalid.status).toBe(400);
+  });
+
+  it("bulk statements endpoint is restricted to giving roles (admin excluded)", async () => {
+    for (const role of ROLES) {
+      const res = await request(app)
+        .get("/api/giving/statements?start=2026-01-01&end=2026-12-31")
+        .set(as(roleUserIds[role]));
+      if ((GIVING_ROLES as readonly string[]).includes(role)) {
+        expect(res.status, role).toBe(200);
+      } else {
+        expect(res.status, role).toBe(403);
+      }
+    }
+    const anon = await request(app).get("/api/giving/statements?start=2026-01-01&end=2026-12-31");
+    expect(anon.status).toBe(401);
+  });
+
   it("a member cannot be linked to two donor records", async () => {
     // create a household-less member directly
     const { members } = await import("../shared/schema.ts");

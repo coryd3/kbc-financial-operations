@@ -498,6 +498,8 @@ export const api = {
     request<{ message: string }>("POST", `/api/giving/donors/${id}/merge`, { intoDonorId }),
   getDonorStatement: (id: number, start: string, end: string) =>
     request<DonorStatement>("GET", `/api/giving/donors/${id}/statement?start=${start}&end=${end}`),
+  getBulkStatements: (start: string, end: string) =>
+    request<BulkStatements>("GET", `/api/giving/statements?start=${start}&end=${end}`),
 
   // giving: batches & contributions
   getGivingBatches: () => request<{ batches: GivingBatchRow[] }>("GET", "/api/giving/batches"),
@@ -620,6 +622,17 @@ export interface DonorStatement {
   contributions: (Contribution & { fundName: string })[];
   fundTotals: { fundName: string; totalCents: number }[];
   totalCents: number;
+}
+
+export interface BulkStatements {
+  start: string;
+  end: string;
+  statements: {
+    donor: Donor;
+    contributions: (Contribution & { fundName: string })[];
+    fundTotals: { fundName: string; totalCents: number }[];
+    totalCents: number;
+  }[];
 }
 
 export interface GivingBatchInput {

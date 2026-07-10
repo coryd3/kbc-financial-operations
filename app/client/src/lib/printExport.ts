@@ -83,8 +83,12 @@ const PRINT_STYLES = `
   .signature-block .line { flex: 1; }
   .signature-block .rule { border-bottom: 1px solid #1a1a1a; height: 36px; }
   .signature-block .caption { font-size: 11px; color: #555; margin-top: 4px; }
+  .statement-page { page-break-after: always; break-after: page; }
+  .statement-page:last-child { page-break-after: auto; break-after: auto; }
+  .statement-page + .statement-page { margin-top: 48px; border-top: 4px double #1a1a1a; padding-top: 48px; }
   @media print {
     body { padding: 0; max-width: none; }
+    .statement-page + .statement-page { margin-top: 0; border-top: none; padding-top: 0; }
   }
 `;
 
@@ -212,7 +216,7 @@ export type PrintableStatement = {
   totalLabel: string;
 };
 
-export function printGivingStatement(s: PrintableStatement): boolean {
+function givingStatementBody(s: PrintableStatement): string {
   const sections: string[] = [];
 
   sections.push(`<header class="doc-header">
@@ -288,9 +292,27 @@ export function printGivingStatement(s: PrintableStatement): boolean {
 
   sections.push(docFooter());
 
+  return sections.join("\n");
+}
+
+export function printGivingStatement(s: PrintableStatement): boolean {
   return openPrintWindow(
     `Giving Statement — ${s.donorName} — ${formatDate(s.start)} to ${formatDate(s.end)}`,
-    sections.join("\n"),
+    givingStatementBody(s),
+  );
+}
+
+export function printGivingStatementsBulk(
+  statements: PrintableStatement[],
+  start: string,
+  end: string,
+): boolean {
+  const body = statements
+    .map((s) => `<div class="statement-page">${givingStatementBody(s)}</div>`)
+    .join("\n");
+  return openPrintWindow(
+    `Giving Statements — ${formatDate(start)} to ${formatDate(end)} (${statements.length} donors)`,
+    body,
   );
 }
 

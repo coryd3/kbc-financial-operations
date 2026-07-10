@@ -5,8 +5,10 @@ import { api, ApiError, type DonorInput, type DonorRow } from "../../lib/api";
 import { FinanceLayout } from "../../components/FinanceLayout";
 import { Button, Card, CardContent, CardHeader, CardTitle, Input, Label } from "../../components/ui";
 import { formatCents } from "../../lib/money";
+import { printGivingStatementsBulk } from "../../lib/printExport";
+import { CONTRIBUTION_METHOD_LABELS } from "@shared/schema";
 import { format } from "date-fns";
-import { Search, UserPlus, Link2 } from "lucide-react";
+import { Search, UserPlus, Link2, Printer } from "lucide-react";
 
 const emptyForm: DonorInput & { memberIdStr: string } = {
   firstName: "",
@@ -27,6 +29,10 @@ export default function FinanceDonors() {
   const [form, setForm] = useState({ ...emptyForm });
   const [editingId, setEditingId] = useState<number | null>(null);
   const [error, setError] = useState<string | null>(null);
+  const [statementYear, setStatementYear] = useState(String(new Date().getFullYear() - (new Date().getMonth() < 6 ? 1 : 0)));
+  const [statementError, setStatementError] = useState<string | null>(null);
+  const [statementInfo, setStatementInfo] = useState<string | null>(null);
+  const [printingStatements, setPrintingStatements] = useState(false);
 
   const { data, isLoading } = useQuery({ queryKey: ["donors", "all"], queryFn: () => api.getDonors() });
   const { data: membersData } = useQuery({
@@ -85,6 +91,55 @@ export default function FinanceDonors() {
     });
   };
 
+  const handlePrintYearEnd = async () => {
+    setStatementError(null);
+    setStatementInfo(null);
+    const year = Number(statementYear);
+    if (!Number.isInteger(year) || year < 1900 || year > 2200) {
+      setStatementError("Please enter a valid four-digit year");
+      return;
+    }
+    setPrintingStatements(true);
+    try {
+      const res = await api.getBulkStatements(`${year}-01-01`, `${year}-12-31`);
+      if (!res.statements.length) {
+        setStatementError(`No contributions were recorded in ${year}.`);
+        return;
+      }
+      const ok = printGivingStatementsBulk(
+        res.statements.map((s) => ({
+          donorName: `${s.donor.firstName} ${s.donor.lastName}`,
+          address: s.donor.address,
+          envelopeNumber: s.donor.envelopeNumber,
+          start: res.start,
+          end: res.end,
+          contributions: s.contributions.map((c) => ({
+            contributionDate: c.contributionDate,
+            fundName: c.fundName,
+            methodLabel: CONTRIBUTION_METHOD_LABELS[c.method],
+            checkNumber: c.checkNumber,
+            amountLabel: formatCents(c.amountCents),
+          })),
+          fundTotals: s.fundTotals.map((f) => ({ fundName: f.fundName, amountLabel: formatCents(f.totalCents) })),
+          totalLabel: formatCents(s.totalCents),
+        })),
+        res.start,
+        res.end,
+      );
+      if (ok) {
+        setStatementInfo(
+          `Prepared ${res.statements.length} statement${res.statements.length === 1 ? "" : "s"} for ${year}. Each donor starts on a new page.`,
+        );
+      } else {
+        setStatementError("Your browser blocked the print window. Please allow pop-ups and try again.");
+      }
+    } catch (e) {
+      setStatementError(e instanceof ApiError ? e.message : "Could not load statement data");
+    } finally {
+      setPrintingStatements(false);
+    }
+  };
+
   const startEdit = (d: DonorRow) => {
     setEditingId(d.id);
     setForm({
@@ -108,7 +163,8 @@ export default function FinanceDonors() {
       description="Donor records used for contribution entry and giving statements. Donors can be linked to membership directory records. Confidential — visible only to the Bookkeeper, Treasurer, and Super Admin."
     >
       <div className="grid lg:grid-cols-5 gap-8">
-        <Card className="lg:col-span-2 h-max">
+        <div className="lg:col-span-2 space-y-8 h-max">
+        <Card>
           <CardHeader>
             <CardTitle className="text-xl">{editingId ? "Edit Donor" : "Add Donor"}</CardTitle>
           </CardHeader>
@@ -231,6 +287,40 @@ export default function FinanceDonors() {
             </form>
           </CardContent>
         </Card>
+
+        <Card>
+          <CardHeader>
+            <CardTitle className="text-xl">Year-End Statements</CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            <p className="text-sm text-muted-foreground">
+              Print giving statements for every donor with contributions in a year — one document, one
+              statement per donor, each on its own page. Uses the same letterhead and tax wording as
+              individual statements.
+            </p>
+            <div className="flex items-end gap-3">
+              <div className="space-y-1.5">
+                <Label htmlFor="statementYear">Year</Label>
+                <Input
+                  id="statementYear"
+                  type="number"
+                  className="w-28"
+                  min={1900}
+                  max={2200}
+                  value={statementYear}
+                  onChange={(e) => setStatementYear(e.target.value)}
+                />
+              </div>
+              <Button type="button" onClick={handlePrintYearEnd} disabled={printingStatements}>
+                <Printer className="w-4 h-4 mr-1.5" />
+                {printingStatements ? "Preparing..." : "Print All Statements"}
+              </Button>
+            </div>
+            {statementError && <p className="text-sm text-destructive">{statementError}</p>}
+            {statementInfo && <p className="text-sm text-muted-foreground">{statementInfo}</p>}
+          </CardContent>
+        </Card>
+        </div>
 
         <div className="lg:col-span-3 space-y-4">
           <div className="flex items-center gap-3 flex-wrap">

@@ -378,6 +378,56 @@ export function registerContributionRoutes(app: Express) {
     });
   });
 
+  // Bulk statements: every donor with contributions in the range, in one
+  // response (used for year-end statement printing for all donors at once).
+  app.get("/api/giving/statements", requireGiving, async (req, res) => {
+    const start = String(req.query.start ?? "");
+    const end = String(req.query.end ?? "");
+    if (!DATE_RE.test(start) || !DATE_RE.test(end)) {
+      return res.status(400).json({ message: "start and end must be YYYY-MM-DD dates" });
+    }
+    if (start > end) return res.status(400).json({ message: "The start date must be before the end date" });
+    const rows = await db
+      .select({
+        contribution: contributions,
+        fundName: givingFunds.name,
+        donor: donors,
+      })
+      .from(contributions)
+      .innerJoin(givingFunds, eq(contributions.fundId, givingFunds.id))
+      .innerJoin(donors, eq(contributions.donorId, donors.id))
+      .where(and(gte(contributions.contributionDate, start), lte(contributions.contributionDate, end)))
+      .orderBy(
+        asc(donors.lastName),
+        asc(donors.firstName),
+        asc(donors.id),
+        asc(contributions.contributionDate),
+        asc(contributions.id),
+      );
+    type Statement = {
+      donor: typeof donors.$inferSelect;
+      contributions: (typeof contributions.$inferSelect & { fundName: string })[];
+      fundTotals: { fundName: string; totalCents: number }[];
+      totalCents: number;
+    };
+    const byDonor = new Map<number, Statement & { fundMap: Map<string, number> }>();
+    for (const r of rows) {
+      let entry = byDonor.get(r.donor.id);
+      if (!entry) {
+        entry = { donor: r.donor, contributions: [], fundTotals: [], totalCents: 0, fundMap: new Map() };
+        byDonor.set(r.donor.id, entry);
+      }
+      entry.contributions.push({ ...r.contribution, fundName: r.fundName });
+      entry.totalCents += r.contribution.amountCents;
+      entry.fundMap.set(r.fundName, (entry.fundMap.get(r.fundName) ?? 0) + r.contribution.amountCents);
+    }
+    const statements = [...byDonor.values()].map(({ fundMap, ...s }) => ({
+      ...s,
+      fundTotals: [...fundMap.entries()].map(([fundName, cents]) => ({ fundName, totalCents: cents })),
+    }));
+    res.json({ start, end, statements });
+  });
+
   // ---------- Batches ----------
   app.get("/api/giving/batches", requireGiving, async (_req, res) => {
     const rows = await db
