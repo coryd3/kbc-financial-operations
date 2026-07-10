@@ -7,6 +7,8 @@ import {
   announcements,
   checklistTemplates,
   checklistTemplateSteps,
+  committees,
+  decisions,
   type Role,
 } from "../shared/schema.ts";
 import { ensureScheduledInstances } from "./checklists.ts";
@@ -80,6 +82,75 @@ export async function seed() {
 
   await seedChecklistTemplates();
   await ensureScheduledInstances(true);
+
+  const existingCommittees = await db.select({ id: committees.id }).from(committees).limit(1);
+  if (existingCommittees.length === 0) {
+    await db.insert(committees).values([
+      {
+        name: "Finance Committee",
+        description:
+          "Oversees the church budget, financial controls, and reporting. Responsible for adjusting the budget to fund approved operational needs.",
+        isSensitive: false,
+      },
+      {
+        name: "Personnel Committee",
+        description:
+          "Handles staffing, hiring, and personnel matters. Access to this committee's records is restricted to its members.",
+        isSensitive: true,
+      },
+      {
+        name: "Deacons",
+        description: "The deacon body providing spiritual leadership and member care.",
+        isSensitive: false,
+      },
+      {
+        name: "Nominating Committee",
+        description: "Recommends members for committee service and church offices.",
+        isSensitive: false,
+      },
+    ]);
+    console.log("[seed] Created starter committees.");
+  }
+
+  const existingDecisions = await db.select({ id: decisions.id }).from(decisions).limit(1);
+  if (existingDecisions.length === 0) {
+    const [superAdmin] = await db.select().from(users).where(eq(users.username, SUPER_ADMIN_USERNAME));
+    const allCommittees = await db.select().from(committees);
+    const financeId = allCommittees.find((c) => c.name === "Finance Committee")?.id ?? null;
+
+    await db.insert(decisions).values([
+      {
+        committeeId: null,
+        decisionDate: "2026-06-28",
+        decision: "Congregation approved adding a paid, part-time Bookkeeper position.",
+        owner: "Congregation / Personnel Committee / Nominating Committee / Finance Committee",
+        status: "complete",
+        notes:
+          "Motion tasked Personnel and Nominating Committees to work together to add a paid, part-time Bookkeeper position, not to exceed $150 per week ($18.75 per hour for approximately 8 hours). Personnel Committee has authority to hire; Finance Committee is responsible for adjusting the budget to fund this need.",
+        createdBy: superAdmin?.id ?? null,
+      },
+      {
+        committeeId: null,
+        decisionDate: "2026-07-06",
+        decision: "Repository structure created for KBC financial operations modernization.",
+        owner: "Cory Davis",
+        status: "complete",
+        notes: "Created source-materials, docs, templates, and archive structure.",
+        createdBy: superAdmin?.id ?? null,
+      },
+      {
+        committeeId: financeId,
+        decisionDate: null,
+        decision: "Confirm Treasurer and authorized Bookkeeper / Financial Administrator duty split.",
+        owner: "Finance Committee",
+        status: "needs_review",
+        notes:
+          "Personnel Committee owns hiring, but Finance should define duties, access, controls, reporting expectations, and budget impact before hiring materials are finalized.",
+        createdBy: superAdmin?.id ?? null,
+      },
+    ]);
+    console.log("[seed] Created starter decision log entries.");
+  }
 }
 
 type SeedStep = { title: string; role?: Role };

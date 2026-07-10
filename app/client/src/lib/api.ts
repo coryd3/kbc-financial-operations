@@ -8,6 +8,12 @@ import type {
   ChecklistTemplateStep,
   ChecklistInstance,
   ChecklistTemplateInput,
+  Committee,
+  CommitteeMember,
+  CommitteePosition,
+  Meeting,
+  Decision,
+  DecisionStatus,
 } from "@shared/schema";
 
 export class ApiError extends Error {
@@ -125,6 +131,70 @@ export interface ChecklistSummary {
   upcoming: InstanceWithProgress[];
 }
 
+export type CommitteeSummary = Committee & {
+  memberCount: number;
+  myPosition: CommitteePosition | null;
+  canManage: boolean;
+};
+
+export type RosterEntry = {
+  id: number;
+  userId: number;
+  position: CommitteePosition;
+  termStart: string | null;
+  termEnd: string | null;
+  fullName: string;
+  username: string;
+  email: string | null;
+};
+
+export type CommitteeDetail = {
+  committee: Committee;
+  roster: RosterEntry[];
+  meetings: Meeting[];
+  decisions: Decision[];
+  canManage: boolean;
+};
+
+export type DecisionLogEntry = Decision & {
+  committeeName: string | null;
+  meetingTitle: string | null;
+  meetingDate: string | null;
+  canManage: boolean;
+};
+
+export type DecisionLog = {
+  decisions: DecisionLogEntry[];
+  committees: { id: number; name: string }[];
+  canCreateGeneral: boolean;
+};
+
+export type GovernanceOverview = {
+  myCommittees: {
+    committeeId: number;
+    position: CommitteePosition;
+    termStart: string | null;
+    termEnd: string | null;
+    name: string;
+    isSensitive: boolean;
+  }[];
+  upcomingMeetings: { id: number; committeeId: number; committeeName: string; title: string; meetingDate: string }[];
+  recentMeetings: { id: number; committeeId: number; committeeName: string; title: string; meetingDate: string }[];
+};
+
+export type CommitteeInput = { name: string; description?: string; isSensitive: boolean };
+export type CommitteeMemberInput = { userId: number; position: CommitteePosition; termStart?: string; termEnd?: string };
+export type MeetingInput = { title: string; meetingDate: string; attendees?: string; agenda?: string; minutes?: string };
+export type DecisionInput = {
+  committeeId?: number | null;
+  meetingId?: number | null;
+  decisionDate?: string;
+  decision: string;
+  owner?: string;
+  status: DecisionStatus;
+  notes?: string;
+};
+
 export const api = {
   // auth
   register: (data: { username: string; password: string; fullName: string; email?: string; phone?: string }) =>
@@ -229,4 +299,39 @@ export const api = {
     request<{ instance: InstanceDetail }>("POST", `/api/checklists/steps/${stepId}/uncomplete`),
   getMyTasks: () => request<{ tasks: MyTask[] }>("GET", "/api/checklists/my-tasks"),
   getChecklistSummary: () => request<ChecklistSummary>("GET", "/api/checklists/summary"),
+
+  // committees & governance
+  getCommittees: () =>
+    request<{ committees: CommitteeSummary[]; canCreate: boolean }>("GET", "/api/committees"),
+  createCommittee: (data: CommitteeInput) =>
+    request<{ committee: Committee }>("POST", "/api/committees", data),
+  updateCommittee: (id: number, data: Partial<CommitteeInput>) =>
+    request<{ committee: Committee }>("PATCH", `/api/committees/${id}`, data),
+  deleteCommittee: (id: number) =>
+    request<{ message: string }>("DELETE", `/api/committees/${id}`),
+  getCommittee: (id: number) => request<CommitteeDetail>("GET", `/api/committees/${id}`),
+  getEligibleUsers: (committeeId: number) =>
+    request<{ users: { id: number; fullName: string; username: string; role: Role }[] }>(
+      "GET",
+      `/api/committees/${committeeId}/eligible-users`,
+    ),
+  addCommitteeMember: (committeeId: number, data: CommitteeMemberInput) =>
+    request<{ member: CommitteeMember }>("POST", `/api/committees/${committeeId}/members`, data),
+  updateCommitteeMember: (committeeId: number, memberId: number, data: Partial<CommitteeMemberInput>) =>
+    request<{ member: CommitteeMember }>("PATCH", `/api/committees/${committeeId}/members/${memberId}`, data),
+  removeCommitteeMember: (committeeId: number, memberId: number) =>
+    request<{ message: string }>("DELETE", `/api/committees/${committeeId}/members/${memberId}`),
+  createMeeting: (committeeId: number, data: MeetingInput) =>
+    request<{ meeting: Meeting }>("POST", `/api/committees/${committeeId}/meetings`, data),
+  updateMeeting: (committeeId: number, meetingId: number, data: Partial<MeetingInput>) =>
+    request<{ meeting: Meeting }>("PATCH", `/api/committees/${committeeId}/meetings/${meetingId}`, data),
+  deleteMeeting: (committeeId: number, meetingId: number) =>
+    request<{ message: string }>("DELETE", `/api/committees/${committeeId}/meetings/${meetingId}`),
+  getDecisions: () => request<DecisionLog>("GET", "/api/decisions"),
+  createDecision: (data: DecisionInput) =>
+    request<{ decision: Decision }>("POST", "/api/decisions", data),
+  updateDecision: (id: number, data: Partial<DecisionInput>) =>
+    request<{ decision: Decision }>("PATCH", `/api/decisions/${id}`, data),
+  deleteDecision: (id: number) => request<{ message: string }>("DELETE", `/api/decisions/${id}`),
+  getGovernanceOverview: () => request<GovernanceOverview>("GET", "/api/governance/overview"),
 };

@@ -204,6 +204,100 @@ export const checklistInstanceSteps = pgTable(
   (table) => [index("checklist_instance_steps_instance_idx").on(table.instanceId)],
 );
 
+// ---------- Committees & governance ----------
+
+export const COMMITTEE_POSITIONS = ["chair", "vice_chair", "secretary", "member"] as const;
+export type CommitteePosition = (typeof COMMITTEE_POSITIONS)[number];
+
+export const COMMITTEE_POSITION_LABELS: Record<CommitteePosition, string> = {
+  chair: "Chair",
+  vice_chair: "Vice Chair",
+  secretary: "Secretary",
+  member: "Member",
+};
+
+export const DECISION_STATUSES = [
+  "proposed",
+  "approved",
+  "rejected",
+  "complete",
+  "needs_review",
+  "superseded",
+] as const;
+export type DecisionStatus = (typeof DECISION_STATUSES)[number];
+
+export const DECISION_STATUS_LABELS: Record<DecisionStatus, string> = {
+  proposed: "Proposed",
+  approved: "Approved",
+  rejected: "Rejected",
+  complete: "Complete",
+  needs_review: "Needs Review",
+  superseded: "Superseded",
+};
+
+export const committees = pgTable("committees", {
+  id: serial("id").primaryKey(),
+  name: varchar("name", { length: 120 }).notNull().unique(),
+  description: text("description"),
+  isSensitive: boolean("is_sensitive").notNull().default(false),
+  createdAt: timestamp("created_at").notNull().defaultNow(),
+});
+
+export const committeeMembers = pgTable(
+  "committee_members",
+  {
+    id: serial("id").primaryKey(),
+    committeeId: integer("committee_id")
+      .notNull()
+      .references(() => committees.id, { onDelete: "cascade" }),
+    userId: integer("user_id")
+      .notNull()
+      .references(() => users.id, { onDelete: "cascade" }),
+    position: varchar("position", { length: 20 }).$type<CommitteePosition>().notNull().default("member"),
+    termStart: varchar("term_start", { length: 10 }),
+    termEnd: varchar("term_end", { length: 10 }),
+    createdAt: timestamp("created_at").notNull().defaultNow(),
+  },
+  (table) => [index("committee_members_committee_idx").on(table.committeeId)],
+);
+
+export const meetings = pgTable(
+  "meetings",
+  {
+    id: serial("id").primaryKey(),
+    committeeId: integer("committee_id")
+      .notNull()
+      .references(() => committees.id, { onDelete: "cascade" }),
+    title: varchar("title", { length: 200 }).notNull(),
+    meetingDate: varchar("meeting_date", { length: 10 }).notNull(),
+    attendees: text("attendees"),
+    agenda: text("agenda"),
+    minutes: text("minutes"),
+    createdBy: integer("created_by").references(() => users.id),
+    createdAt: timestamp("created_at").notNull().defaultNow(),
+    updatedAt: timestamp("updated_at").notNull().defaultNow(),
+  },
+  (table) => [index("meetings_committee_idx").on(table.committeeId)],
+);
+
+export const decisions = pgTable(
+  "decisions",
+  {
+    id: serial("id").primaryKey(),
+    committeeId: integer("committee_id").references(() => committees.id, { onDelete: "set null" }),
+    meetingId: integer("meeting_id").references(() => meetings.id, { onDelete: "set null" }),
+    decisionDate: varchar("decision_date", { length: 10 }),
+    decision: text("decision").notNull(),
+    owner: varchar("owner", { length: 200 }),
+    status: varchar("status", { length: 20 }).$type<DecisionStatus>().notNull().default("proposed"),
+    notes: text("notes"),
+    createdBy: integer("created_by").references(() => users.id),
+    createdAt: timestamp("created_at").notNull().defaultNow(),
+    updatedAt: timestamp("updated_at").notNull().defaultNow(),
+  },
+  (table) => [index("decisions_committee_idx").on(table.committeeId)],
+);
+
 export type User = typeof users.$inferSelect;
 export type Announcement = typeof announcements.$inferSelect;
 export type PageView = typeof pageViews.$inferSelect;
@@ -213,6 +307,10 @@ export type ChecklistTemplate = typeof checklistTemplates.$inferSelect;
 export type ChecklistTemplateStep = typeof checklistTemplateSteps.$inferSelect;
 export type ChecklistInstance = typeof checklistInstances.$inferSelect;
 export type ChecklistInstanceStep = typeof checklistInstanceSteps.$inferSelect;
+export type Committee = typeof committees.$inferSelect;
+export type CommitteeMember = typeof committeeMembers.$inferSelect;
+export type Meeting = typeof meetings.$inferSelect;
+export type Decision = typeof decisions.$inferSelect;
 
 export type SafeUser = Omit<User, "passwordHash">;
 
@@ -326,3 +424,38 @@ export const session = pgTable(
   },
   (table) => [index("IDX_session_expire").on(table.expire)],
 );
+
+const dateString = z
+  .string()
+  .regex(/^\d{4}-\d{2}-\d{2}$/, "Please use YYYY-MM-DD format");
+
+export const committeeSchema = z.object({
+  name: z.string().min(2, "Committee name is required").max(120),
+  description: z.string().max(5000).optional().or(z.literal("")),
+  isSensitive: z.boolean().default(false),
+});
+
+export const committeeMemberSchema = z.object({
+  userId: z.number().int().positive(),
+  position: z.enum(COMMITTEE_POSITIONS).default("member"),
+  termStart: dateString.optional().or(z.literal("")),
+  termEnd: dateString.optional().or(z.literal("")),
+});
+
+export const meetingSchema = z.object({
+  title: z.string().min(1, "Meeting title is required").max(200),
+  meetingDate: dateString,
+  attendees: z.string().max(2000).optional().or(z.literal("")),
+  agenda: z.string().max(20000).optional().or(z.literal("")),
+  minutes: z.string().max(50000).optional().or(z.literal("")),
+});
+
+export const decisionSchema = z.object({
+  committeeId: z.number().int().positive().nullable().optional(),
+  meetingId: z.number().int().positive().nullable().optional(),
+  decisionDate: dateString.optional().or(z.literal("")),
+  decision: z.string().min(1, "Decision text is required").max(10000),
+  owner: z.string().max(200).optional().or(z.literal("")),
+  status: z.enum(DECISION_STATUSES).default("proposed"),
+  notes: z.string().max(10000).optional().or(z.literal("")),
+});

@@ -1,17 +1,30 @@
 import { useAuth } from "../lib/auth";
-import { ROLE_LABELS } from "@shared/schema";
+import { ROLE_LABELS, COMMITTEE_POSITION_LABELS } from "@shared/schema";
 import { useQuery } from "@tanstack/react-query";
 import { Link } from "wouter";
 import { api } from "../lib/api";
 import { Card, CardHeader, CardTitle, CardContent } from "../components/ui";
-import { Calendar, Lock, Users, Receipt, FileText, CheckSquare, Settings, AlertTriangle, ArrowRight } from "lucide-react";
+import { Calendar, Lock, Users, Receipt, FileText, CheckSquare, Settings, AlertTriangle, ArrowRight, ChevronRight } from "lucide-react";
 import { format } from "date-fns";
+
+function formatMeetingDate(d: string) {
+  try {
+    return format(new Date(d + "T00:00:00"), "EEE, MMM d, yyyy");
+  } catch {
+    return d;
+  }
+}
 
 export default function Dashboard() {
   const { user } = useAuth();
   const { data, isLoading } = useQuery({
     queryKey: ["announcements"],
     queryFn: api.getAnnouncements,
+  });
+  const { data: governance } = useQuery({
+    queryKey: ["governanceOverview"],
+    queryFn: api.getGovernanceOverview,
+    enabled: !!user,
   });
 
   const { data: checklistSummary } = useQuery({
@@ -134,6 +147,72 @@ export default function Dashboard() {
               </Link>
             </CardContent>
           </Card>
+          <h2 className="text-2xl font-serif font-semibold border-b border-border pb-2">My Committees</h2>
+          {governance?.myCommittees.length ? (
+            <div className="grid gap-3">
+              {governance.myCommittees.map((c) => (
+                <Link key={c.committeeId} href={`/committees/${c.committeeId}`}>
+                  <Card className="hover:border-primary/40 hover:shadow-md transition-all cursor-pointer">
+                    <CardContent className="p-4 flex items-center gap-3">
+                      <div className="p-2 bg-primary/10 rounded-md text-primary">
+                        <Users className="w-5 h-5" />
+                      </div>
+                      <div className="min-w-0">
+                        <h3 className="font-medium text-sm truncate">{c.name}</h3>
+                        <p className="text-xs text-muted-foreground">
+                          {COMMITTEE_POSITION_LABELS[c.position]}
+                          {c.termEnd ? ` · Term ends ${formatMeetingDate(c.termEnd)}` : ""}
+                        </p>
+                      </div>
+                      <ChevronRight className="w-4 h-4 text-muted-foreground ml-auto" />
+                    </CardContent>
+                  </Card>
+                </Link>
+              ))}
+            </div>
+          ) : (
+            <div className="text-center py-6 bg-muted/50 rounded-lg border border-border border-dashed">
+              <p className="text-sm text-muted-foreground px-4">
+                You're not on a committee roster yet.{" "}
+                <Link href="/committees" className="text-primary underline">Browse committees</Link>
+              </p>
+            </div>
+          )}
+
+          {(governance?.upcomingMeetings.length || governance?.recentMeetings.length) ? (
+            <>
+              <h2 className="text-2xl font-serif font-semibold border-b border-border pb-2">Meetings</h2>
+              <div className="space-y-3">
+                {governance.upcomingMeetings.map((m) => (
+                  <Link key={m.id} href={`/committees/${m.committeeId}`}>
+                    <Card className="hover:border-primary/40 transition-all cursor-pointer border-primary/20 bg-primary/5">
+                      <CardContent className="p-4">
+                        <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-primary mb-1">
+                          <Calendar className="w-3.5 h-3.5" /> Upcoming
+                        </div>
+                        <h3 className="font-medium text-sm">{m.title}</h3>
+                        <p className="text-xs text-muted-foreground mt-0.5">
+                          {m.committeeName} · {formatMeetingDate(m.meetingDate)}
+                        </p>
+                      </CardContent>
+                    </Card>
+                  </Link>
+                ))}
+                {governance.recentMeetings.slice(0, 3).map((m) => (
+                  <Link key={m.id} href={`/committees/${m.committeeId}`}>
+                    <Card className="hover:border-primary/40 transition-all cursor-pointer">
+                      <CardContent className="p-4">
+                        <h3 className="font-medium text-sm">{m.title}</h3>
+                        <p className="text-xs text-muted-foreground mt-0.5">
+                          {m.committeeName} · {formatMeetingDate(m.meetingDate)}
+                        </p>
+                      </CardContent>
+                    </Card>
+                  </Link>
+                ))}
+              </div>
+            </>
+          ) : null}
 
           <h2 className="text-2xl font-serif font-semibold border-b border-border pb-2">Future Modules</h2>
           <div className="grid gap-3">
@@ -141,7 +220,6 @@ export default function Dashboard() {
               { title: "Finance Dashboard", icon: Receipt, desc: "Budget tracking and reports" },
               { title: "Giving Records", icon: FileText, desc: "Contribution statements" },
               { title: "Member Directory", icon: Users, desc: "Congregation contact list" },
-              { title: "Committees", icon: Settings, desc: "Group workspaces" },
             ].map((module, i) => (
               <Card key={i} className="opacity-60 grayscale cursor-not-allowed">
                 <CardContent className="p-4 flex items-center gap-3">

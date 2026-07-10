@@ -33,6 +33,12 @@ super_admin, admin, treasurer, bookkeeper, finance_committee, personnel_committe
 - UI: `/checklists` (My Tasks / Active / Completed tabs), `/checklists/:id` detail, Dashboard panel + nav overdue badge fed by `/api/checklists/summary`.
 - Seeded templates: Payroll Run (monthly), Weekly Bookkeeping (weekly), Monthly Close Prep (monthly), Business Meeting Prep (on-demand).
 
+### Committees & governance
+- Tables: `committees` (with `isSensitive` flag), `committee_members` (positions: chair/vice_chair/secretary/member, term dates), `meetings` (date, attendees, agenda, minutes), `decisions` (date, decision, owner, status, notes; optional links to committee and meeting — mirrors the docs' decision log columns).
+- Routes in `app/server/governance.ts`. Access rules: sensitive committees (e.g. Personnel) visible only to their members + Super Admin; other committees visible to their members + leadership (super_admin, admin, deacon). Managing rosters/meetings/decisions: committee chair/secretary or admins (Super Admin only for sensitive ones). Congregation-level decisions (no committee) visible to all logged-in users; only admins can record them.
+- Client pages: `/committees` (list + create for admins), `/committees/:id` (roster, meetings & minutes, decisions), `/decisions` (filterable decision log + link to historical log on the docs site). Dashboard shows "My Committees" and upcoming/recent meetings.
+- Seed: Finance, Personnel (restricted), Deacons, Nominating committees plus three decision log entries carried over from `docs/02-decision-log.md`.
+
 ### Usage tracking
 - In-app: POST `/api/track` records path/visitor/role in `page_views`; admin analytics at `/admin/analytics` (daily views, top pages, by role).
 - GoatCounter snippet (kbc-financial-operations.goatcounter.com) is embedded in `app/client/index.html` and counts SPA navigations (skips localhost by design).

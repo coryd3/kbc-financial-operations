@@ -16,6 +16,9 @@ import ChecklistDetail from "./pages/ChecklistDetail";
 import ChecklistTemplates from "./pages/ChecklistTemplates";
 import AdminAnnouncements from "./pages/AdminAnnouncements";
 import AdminAnalytics from "./pages/AdminAnalytics";
+import Committees from "./pages/Committees";
+import CommitteeDetail from "./pages/CommitteeDetail";
+import Decisions from "./pages/Decisions";
 
 function Router() {
   return (
@@ -52,6 +55,18 @@ function Router() {
         
         <Route path="/admin/members">
           <ProtectedRoute requireLeadership><AdminMembers /></ProtectedRoute>
+        </Route>
+
+        <Route path="/committees">
+          <ProtectedRoute><Committees /></ProtectedRoute>
+        </Route>
+        
+        <Route path="/committees/:id">
+          <ProtectedRoute><CommitteeDetail /></ProtectedRoute>
+        </Route>
+        
+        <Route path="/decisions">
+          <ProtectedRoute><Decisions /></ProtectedRoute>
         </Route>
         
         <Route path="/admin">

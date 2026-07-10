@@ -2,7 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import { Link, useLocation } from "wouter";
 import { useAuth } from "../lib/auth";
 import { api } from "../lib/api";
-import { LogOut, BookOpen, Home, User, Shield, BarChart, LayoutDashboard, Users, ContactRound, CheckSquare } from "lucide-react";
+import { LogOut, BookOpen, Home, User, Shield, BarChart, LayoutDashboard, Users, ContactRound, CheckSquare, Gavel } from "lucide-react";
 import { cn } from "../lib/utils";
 import { CHURCH_CONTACT } from "../lib/contact";
 
@@ -47,6 +47,8 @@ export function Layout({ children }: { children: React.ReactNode }) {
       show: !!user,
       badge: checklistSummary?.overdue.length ? checklistSummary.overdue.length : null,
     },
+    { href: "/committees", label: "Committees", icon: Users, show: !!user },
+    { href: "/decisions", label: "Decisions", icon: Gavel, show: !!user },
     { href: "/admin", label: "Admin", icon: Shield, show: isAdmin, badge: pendingCount ? pendingCount : null },
     { href: "/admin/analytics", label: "Analytics", icon: BarChart, show: isAdmin },
   ];
