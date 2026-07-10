@@ -32,7 +32,11 @@ export default function FinanceGivingBatch() {
   const [entry, setEntry] = useState({ ...emptyEntry });
   const [editingId, setEditingId] = useState<number | null>(null);
   const [error, setError] = useState<string | null>(null);
-  const [mismatch, setMismatch] = useState<{ varianceCents: number; countTotalCents: number } | null>(null);
+  const [mismatch, setMismatch] = useState<{
+    varianceCents: number | null;
+    batchTotalCents: number | null;
+    countTotalCents: number | null;
+  } | null>(null);
 
   const { data, isLoading } = useQuery({
     queryKey: ["givingBatch", id],
@@ -62,6 +66,7 @@ export default function FinanceGivingBatch() {
       setEntry((e) => ({ ...emptyEntry, contributionDate: e.contributionDate, method: e.method, fundId: e.fundId }));
       setEditingId(null);
       setError(null);
+      setMismatch(null);
     },
     onError: (e) => setError(e instanceof ApiError ? e.message : "Something went wrong"),
   });
@@ -82,7 +87,12 @@ export default function FinanceGivingBatch() {
     onError: async (e: any) => {
       if (e instanceof ApiError && e.status === 409) {
         setError(e.message);
-        setMismatch({ varianceCents: 0, countTotalCents: 0 });
+        const body = e.body ?? {};
+        setMismatch({
+          varianceCents: typeof body.varianceCents === "number" ? body.varianceCents : null,
+          batchTotalCents: typeof body.batchTotalCents === "number" ? body.batchTotalCents : null,
+          countTotalCents: typeof body.countTotalCents === "number" ? body.countTotalCents : null,
+        });
       } else {
         setError(e instanceof ApiError ? e.message : "Something went wrong");
       }
@@ -242,15 +252,43 @@ export default function FinanceGivingBatch() {
         <div className="mb-4 rounded-md border border-destructive/40 bg-destructive/5 px-4 py-3 text-sm text-destructive">
           <p>{error}</p>
           {mismatch && isOpen && (
-            <Button
-              size="sm"
-              variant="destructive"
-              className="mt-2"
-              onClick={() => closeMutation.mutate(true)}
-              disabled={closeMutation.isPending}
-            >
-              Close anyway with the discrepancy noted
-            </Button>
+            <>
+              {mismatch.batchTotalCents != null && mismatch.countTotalCents != null && mismatch.varianceCents != null && (
+                <div className="mt-3 rounded-md border border-destructive/30 bg-background/60 px-3 py-2 max-w-sm">
+                  <dl className="space-y-1">
+                    <div className="flex items-center justify-between gap-6">
+                      <dt className="text-muted-foreground">Batch total</dt>
+                      <dd className="font-medium tabular-nums text-foreground">
+                        {formatCents(mismatch.batchTotalCents)}
+                      </dd>
+                    </div>
+                    <div className="flex items-center justify-between gap-6">
+                      <dt className="text-muted-foreground">Offering count total</dt>
+                      <dd className="font-medium tabular-nums text-foreground">
+                        {formatCents(mismatch.countTotalCents)}
+                      </dd>
+                    </div>
+                    <div className="flex items-center justify-between gap-6 border-t border-destructive/20 pt-1">
+                      <dt className="font-medium">Difference</dt>
+                      <dd className="font-semibold tabular-nums">
+                        {mismatch.varianceCents > 0 ? "+" : "−"}
+                        {formatCents(Math.abs(mismatch.varianceCents))}{" "}
+                        {mismatch.varianceCents > 0 ? "over" : "under"}
+                      </dd>
+                    </div>
+                  </dl>
+                </div>
+              )}
+              <Button
+                size="sm"
+                variant="destructive"
+                className="mt-3"
+                onClick={() => closeMutation.mutate(true)}
+                disabled={closeMutation.isPending}
+              >
+                Close anyway with the discrepancy noted
+              </Button>
+            </>
           )}
         </div>
       )}

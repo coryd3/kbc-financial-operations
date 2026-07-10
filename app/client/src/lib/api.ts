@@ -31,9 +31,11 @@ import type {
 
 export class ApiError extends Error {
   status: number;
-  constructor(status: number, message: string) {
+  body: Record<string, unknown> | null;
+  constructor(status: number, message: string, body: Record<string, unknown> | null = null) {
     super(message);
     this.status = status;
+    this.body = body;
   }
 }
 
@@ -51,7 +53,7 @@ async function request<T>(method: string, url: string, body?: unknown): Promise<
     // no body
   }
   if (!res.ok) {
-    throw new ApiError(res.status, data?.message ?? `Request failed (${res.status})`);
+    throw new ApiError(res.status, data?.message ?? `Request failed (${res.status})`, data ?? null);
   }
   return data as T;
 }
