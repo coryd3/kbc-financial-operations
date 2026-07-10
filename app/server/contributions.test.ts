@@ -8,6 +8,7 @@ import {
   donors,
   givingFunds,
   contributionBatches,
+  contributions,
   offeringCounts,
   GIVING_ROLES,
   FUND_REPORT_ROLES,
@@ -78,13 +79,22 @@ async function cleanup() {
     .select({ id: contributionBatches.id })
     .from(contributionBatches)
     .where(like(contributionBatches.description, `${PREFIX}%`));
-  if (batches.length) {
+  const donorBatchIds = testDonors.length
+    ? await db
+        .select({ id: contributions.batchId })
+        .from(contributions)
+        .where(
+          inArray(
+            contributions.donorId,
+            testDonors.map((d) => d.id),
+          ),
+        )
+    : [];
+  const batchIds = [...new Set([...batches, ...donorBatchIds].map((batch) => batch.id))];
+  if (batchIds.length) {
     // contributions cascade with batch deletion
     await db.delete(contributionBatches).where(
-      inArray(
-        contributionBatches.id,
-        batches.map((b) => b.id),
-      ),
+      inArray(contributionBatches.id, batchIds),
     );
   }
   if (testDonors.length) {
