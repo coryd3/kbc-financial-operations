@@ -1,9 +1,10 @@
 import { useMemo, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { api, type DirectoryMember } from "../lib/api";
-import { Card, CardHeader, CardTitle, CardContent, Input } from "../components/ui";
+import { Card, CardHeader, CardTitle, CardContent, Input, Button } from "../components/ui";
 import { MEMBER_STATUS_LABELS } from "@shared/schema";
-import { Search, Mail, Phone, MapPin, Users, List } from "lucide-react";
+import { Search, Mail, Phone, MapPin, Users, List, Download, Printer } from "lucide-react";
+import { downloadCsv, openPrintView } from "../lib/printDirectory";
 
 function StatusBadge({ status }: { status: string }) {
   const cls =
@@ -78,6 +79,15 @@ export default function Directory() {
 
   const members = membersData?.members ?? [];
   const households = householdsData?.households ?? [];
+
+  const householdName = (id: number | null) =>
+    id ? households.find((h) => h.id === id)?.name ?? "" : "";
+
+  const exportFilters = {
+    search: search || undefined,
+    status: statusFilter || undefined,
+    householdId: householdFilter || undefined,
+  };
 
   const grouped = useMemo(() => {
     const byHousehold = new Map<number, DirectoryMember[]>();
@@ -161,6 +171,31 @@ export default function Directory() {
                 <Users className="w-4 h-4" /> Households
               </button>
             </div>
+            <Button
+              variant="outline"
+              size="sm"
+              className="h-9"
+              onClick={() => downloadCsv("/api/members/export.csv", exportFilters)}
+              disabled={isLoading || members.length === 0}
+            >
+              <Download className="w-4 h-4 mr-1.5" /> Export CSV
+            </Button>
+            <Button
+              variant="outline"
+              size="sm"
+              className="h-9"
+              onClick={() =>
+                openPrintView({
+                  title: "KBC Member Directory",
+                  subtitle: "Contact info shown as shared by each member",
+                  members,
+                  householdName,
+                })
+              }
+              disabled={isLoading || members.length === 0}
+            >
+              <Printer className="w-4 h-4 mr-1.5" /> Print
+            </Button>
           </div>
         </CardHeader>
         <CardContent>

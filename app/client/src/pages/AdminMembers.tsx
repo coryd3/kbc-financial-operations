@@ -3,7 +3,8 @@ import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { api, ApiError, type DirectoryMember, type MemberInput } from "../lib/api";
 import { Card, CardHeader, CardTitle, CardContent, Button, Input, Label } from "../components/ui";
 import { MEMBER_STATUS_LABELS, MEMBER_STATUSES, type MemberStatus } from "@shared/schema";
-import { Search, Plus, Pencil, Trash2, Link2, Unlink, Users, X } from "lucide-react";
+import { Search, Plus, Pencil, Trash2, Link2, Unlink, Users, X, Download, Printer } from "lucide-react";
+import { downloadCsv, openPrintView } from "../lib/printDirectory";
 
 const emptyForm: MemberInput = {
   firstName: "",
@@ -468,6 +469,37 @@ export default function AdminMembers() {
               <option value="inactive">Inactive</option>
               <option value="visitor">Visitor</option>
             </select>
+            <Button
+              variant="outline"
+              size="sm"
+              className="h-9"
+              onClick={() =>
+                downloadCsv("/api/admin/members/export.csv", {
+                  search: search || undefined,
+                  status: statusFilter || undefined,
+                })
+              }
+              disabled={isLoading || members.length === 0}
+            >
+              <Download className="w-4 h-4 mr-1.5" /> Export CSV
+            </Button>
+            <Button
+              variant="outline"
+              size="sm"
+              className="h-9"
+              onClick={() =>
+                openPrintView({
+                  title: "KBC Members — Leadership Roster",
+                  subtitle: "Full contact info (includes hidden entries) — leadership use only",
+                  members,
+                  householdName: (id) => (id ? householdName(id) : ""),
+                  includeNotes: true,
+                })
+              }
+              disabled={isLoading || members.length === 0}
+            >
+              <Printer className="w-4 h-4 mr-1.5" /> Print
+            </Button>
           </div>
         </CardHeader>
         <CardContent>

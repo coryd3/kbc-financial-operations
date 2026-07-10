@@ -59,6 +59,58 @@ function toDirectoryMember(member: Member, viewer: User) {
   return base;
 }
 
+// Build the shared directory filters (search / status / household) from query params.
+function buildMemberFilters(req: Request) {
+  const search = String(req.query.search ?? "").trim();
+  const status = String(req.query.status ?? "").trim();
+  const householdId = Number(req.query.householdId);
+
+  const conditions = [];
+  if (search) {
+    conditions.push(
+      or(
+        ilike(members.firstName, `%${search}%`),
+        ilike(members.lastName, `%${search}%`),
+        ilike(sql`${members.firstName} || ' ' || ${members.lastName}`, `%${search}%`),
+      ),
+    );
+  }
+  if (status && MEMBER_STATUSES.includes(status as any)) {
+    conditions.push(eq(members.status, status as any));
+  }
+  if (Number.isInteger(householdId) && householdId > 0) {
+    conditions.push(eq(members.householdId, householdId));
+  }
+  return conditions;
+}
+
+function csvEscape(value: unknown): string {
+  let s = value == null ? "" : String(value);
+  // Guard against CSV formula injection: if a cell would be interpreted as a
+  // formula by Excel/Sheets (=, +, -, @, or tab/CR at the start), prefix it
+  // with a single quote so it is treated as text.
+  if (/^[\s]*[=+\-@\t\r]/.test(s)) {
+    s = `'${s}`;
+  }
+  if (/[",\n\r]/.test(s)) {
+    return `"${s.replace(/"/g, '""')}"`;
+  }
+  return s;
+}
+
+function toCsv(headers: string[], rows: (unknown[])[]): string {
+  const lines = [headers.map(csvEscape).join(",")];
+  for (const row of rows) lines.push(row.map(csvEscape).join(","));
+  // BOM so Excel opens it as UTF-8.
+  return "\ufeff" + lines.join("\r\n") + "\r\n";
+}
+
+function sendCsv(res: Response, filename: string, csv: string) {
+  res.setHeader("Content-Type", "text/csv; charset=utf-8");
+  res.setHeader("Content-Disposition", `attachment; filename="${filename}"`);
+  res.send(csv);
+}
+
 function normalizeMemberInput(data: Record<string, any>) {
   const out: Record<string, any> = { ...data };
   for (const key of ["email", "phone", "address", "notes", "joinDate"]) {
@@ -72,26 +124,7 @@ export function registerMemberRoutes(app: Express) {
   // ---------- Directory (all approved users) ----------
   app.get("/api/members", requireAuth, async (req, res) => {
     const viewer = getUser(req);
-    const search = String(req.query.search ?? "").trim();
-    const status = String(req.query.status ?? "").trim();
-    const householdId = Number(req.query.householdId);
-
-    const conditions = [];
-    if (search) {
-      conditions.push(
-        or(
-          ilike(members.firstName, `%${search}%`),
-          ilike(members.lastName, `%${search}%`),
-          ilike(sql`${members.firstName} || ' ' || ${members.lastName}`, `%${search}%`),
-        ),
-      );
-    }
-    if (status && MEMBER_STATUSES.includes(status as any)) {
-      conditions.push(eq(members.status, status as any));
-    }
-    if (Number.isInteger(householdId) && householdId > 0) {
-      conditions.push(eq(members.householdId, householdId));
-    }
+    const conditions = buildMemberFilters(req);
 
     const rows = await db
       .select()
@@ -100,6 +133,45 @@ export function registerMemberRoutes(app: Express) {
       .orderBy(asc(members.lastName), asc(members.firstName));
 
     res.json({ members: rows.map((m) => toDirectoryMember(m, viewer)) });
+  });
+
+  // ---------- Directory CSV export (all approved users, privacy-filtered) ----------
+  // Never includes leadership notes, even for leadership viewers — this is the
+  // member-facing export. Leadership can use the admin export for full data.
+  app.get("/api/members/export.csv", requireAuth, async (req, res) => {
+    const viewer = getUser(req);
+    const conditions = buildMemberFilters(req);
+
+    const rows = await db
+      .select()
+      .from(members)
+      .where(conditions.length ? and(...conditions) : undefined)
+      .orderBy(asc(members.lastName), asc(members.firstName));
+    const householdRows = await db.select().from(households);
+    const householdNames = new Map(householdRows.map((h) => [h.id, h.name]));
+
+    const csvRows = rows.map((m) => {
+      const filtered = toDirectoryMember(m, viewer);
+      return [
+        m.lastName,
+        m.firstName,
+        m.householdId ? householdNames.get(m.householdId) ?? "" : "",
+        m.status,
+        filtered.email ?? "",
+        filtered.phone ?? "",
+        filtered.address ?? "",
+        m.joinDate ?? "",
+      ];
+    });
+
+    sendCsv(
+      res,
+      "kbc-member-directory.csv",
+      toCsv(
+        ["Last Name", "First Name", "Household", "Status", "Email", "Phone", "Address", "Join Date"],
+        csvRows,
+      ),
+    );
   });
 
   // ---------- Households (all approved users, for grouping/filtering) ----------
@@ -145,6 +217,59 @@ export function registerMemberRoutes(app: Express) {
   });
 
   // ---------- Leadership: member management ----------
+  // Full-data CSV export for leadership: includes hidden contact info, privacy
+  // flags, and leadership notes. Never exposed to non-leadership roles.
+  app.get("/api/admin/members/export.csv", requireLeadership, async (req, res) => {
+    const conditions = buildMemberFilters(req);
+
+    const rows = await db
+      .select()
+      .from(members)
+      .where(conditions.length ? and(...conditions) : undefined)
+      .orderBy(asc(members.lastName), asc(members.firstName));
+    const householdRows = await db.select().from(households);
+    const householdNames = new Map(householdRows.map((h) => [h.id, h.name]));
+
+    const csvRows = rows.map((m) => [
+      m.lastName,
+      m.firstName,
+      m.householdId ? householdNames.get(m.householdId) ?? "" : "",
+      m.status,
+      m.email ?? "",
+      m.phone ?? "",
+      m.address ?? "",
+      m.joinDate ?? "",
+      m.hideEmail ? "yes" : "no",
+      m.hidePhone ? "yes" : "no",
+      m.hideAddress ? "yes" : "no",
+      m.userId != null ? "yes" : "no",
+      m.notes ?? "",
+    ]);
+
+    sendCsv(
+      res,
+      "kbc-members-full.csv",
+      toCsv(
+        [
+          "Last Name",
+          "First Name",
+          "Household",
+          "Status",
+          "Email",
+          "Phone",
+          "Address",
+          "Join Date",
+          "Email Hidden",
+          "Phone Hidden",
+          "Address Hidden",
+          "Linked Account",
+          "Leadership Notes",
+        ],
+        csvRows,
+      ),
+    );
+  });
+
   app.post("/api/admin/members", requireLeadership, async (req, res) => {
     const parsed = memberSchema.safeParse(req.body);
     if (!parsed.success) {
