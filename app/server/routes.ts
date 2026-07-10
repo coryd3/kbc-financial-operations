@@ -17,6 +17,7 @@ import {
 import { getSessionUser, requireAuth, requireAdmin, toSafeUser } from "./auth.ts";
 import { registerChecklistRoutes } from "./checklists.ts";
 import { loginBlockedForSeconds, recordLoginFailure, recordLoginSuccess } from "./loginThrottle.ts";
+import { notifyNewRegistration } from "./notifications.ts";
 
 function getUser(req: Request): User {
   return (req as any).user as User;
@@ -52,6 +53,7 @@ export function registerRoutes(app: Express) {
         status: "pending",
       })
       .returning();
+    notifyNewRegistration(created);
     res.status(201).json({
       message: "Registration received. An administrator will review your request.",
       user: toSafeUser(created),
