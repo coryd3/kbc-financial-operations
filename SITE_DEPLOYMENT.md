@@ -204,6 +204,8 @@ Current pricing can change. Confirm the plans shown by Render before creating pa
 
 The root `render.yaml` is the production blueprint. It creates one web service and one private PostgreSQL database with 1 GB of initial storage, waits for GitHub checks, runs checked-in migrations before deployment, and checks `/api/health`.
 
+Render sets `NODE_ENV=production`, but the build still needs Vite, TypeScript, and other development dependencies. The Blueprint therefore runs `npm ci --include=dev` during the build. These tools compile the production bundle; the deployed server still runs in production mode. GitHub Actions separately audits production dependencies before deployment.
+
 ### First Render Setup
 
 1. Merge a tested branch into `main` on GitHub.
