@@ -3,6 +3,7 @@ import crypto from "node:crypto";
 import fs from "node:fs";
 import path from "node:path";
 import YAML from "yaml";
+import GithubSlugger from "github-slugger";
 import { and, count, desc, eq, gte } from "drizzle-orm";
 import { db } from "./db.ts";
 import { getSessionUser, requireAuth, requireCapability } from "./auth.ts";
@@ -102,7 +103,26 @@ type CachedPage = {
   markdown: string;
   revision: string;
   searchableLines: string[];
+  feedbackSections: Map<string, string>;
 };
+
+function extractFeedbackSections(markdown: string): Map<string, string> {
+  const slugger = new GithubSlugger();
+  const sections = new Map<string, string>();
+  for (const line of markdown.split("\n")) {
+    const match = line.match(/^(#{1,6})\s+(.+?)\s*#*\s*$/);
+    if (!match) continue;
+    const level = match[1].length;
+    const title = match[2]
+      .replace(/\[([^\]]+)\]\([^)]+\)/g, "$1")
+      .replace(/<[^>]+>/g, "")
+      .replace(/[*_`~]/g, "")
+      .trim();
+    const id = slugger.slug(title);
+    if (level >= 2 && level <= 4 && title) sections.set(id, title);
+  }
+  return sections;
+}
 
 const pageCache = new Map<string, CachedPage>();
 for (const reference of DOCS_PAGES) {
@@ -113,6 +133,7 @@ for (const reference of DOCS_PAGES) {
     markdown,
     revision: crypto.createHash("sha256").update(markdown).digest("hex").slice(0, 12),
     searchableLines: markdown.split("\n"),
+    feedbackSections: extractFeedbackSections(markdown),
   });
 }
 
@@ -121,6 +142,17 @@ function sectionFor(slug: string): DocsSection | undefined {
 }
 
 const reviewFeedback = requireCapability("documentation_feedback_review");
+
+function databaseErrorCode(error: unknown): string | undefined {
+  let current = error as { code?: unknown; cause?: unknown } | undefined;
+  const seen = new Set<unknown>();
+  while (current && !seen.has(current)) {
+    seen.add(current);
+    if (typeof current.code === "string") return current.code;
+    current = current.cause as typeof current;
+  }
+  return undefined;
+}
 
 export function registerDocsRoutes(app: Express) {
   app.get("/api/docs/nav", (_req, res) => res.json({ sections: DOCS_NAV }));
@@ -139,6 +171,7 @@ export function registerDocsRoutes(app: Express) {
       section: sectionFor(slug)?.title ?? null,
       markdown: cached.markdown,
       revision: cached.revision,
+      feedbackSections: [...cached.feedbackSections].map(([id, title]) => ({ id, title })),
       prev: prev ? { slug: prev.slug, title: prev.title } : null,
       next: next ? { slug: next.slug, title: next.title } : null,
     });
@@ -176,6 +209,12 @@ export function registerDocsRoutes(app: Express) {
     if (!current || current.revision !== parsed.data.documentationRevision) {
       return res.status(409).json({ message: "This page changed. Refresh it before submitting feedback." });
     }
+    const canonicalSectionTitle = parsed.data.sectionId
+      ? current.feedbackSections.get(parsed.data.sectionId)
+      : null;
+    if (parsed.data.sectionId && !canonicalSectionTitle) {
+      return res.status(400).json({ message: "That document section does not exist in this page version." });
+    }
     const user = (req as any).user as { id: number };
     const since = new Date(Date.now() - 24 * 60 * 60_000);
     const [daily] = await db
@@ -191,6 +230,7 @@ export function registerDocsRoutes(app: Express) {
         .values({
           ...parsed.data,
           comment: parsed.data.comment || null,
+          sectionTitle: canonicalSectionTitle,
           userId: user.id,
         })
         .returning();
@@ -200,12 +240,27 @@ export function registerDocsRoutes(app: Express) {
         details: { pageSlug: created.pageSlug },
       });
       res.status(201).json({ feedback: created });
-    } catch (error: any) {
-      if (error?.code === "23505") {
-        return res.status(409).json({ message: "You already submitted feedback for this version of the page." });
+    } catch (error: unknown) {
+      if (databaseErrorCode(error) === "23505") {
+        return res.status(409).json({ message: "You already submitted feedback for this section of this page version." });
       }
       throw error;
     }
+  });
+
+  app.get("/api/docs/feedback/mine", requireAuth, async (req, res) => {
+    const user = (req as any).user as { id: number };
+    const rows = await db
+      .select()
+      .from(documentationFeedback)
+      .where(eq(documentationFeedback.userId, user.id))
+      .orderBy(desc(documentationFeedback.createdAt));
+    res.json({
+      feedback: rows.map((item) => ({
+        ...item,
+        pageTitle: pagesBySlug.get(item.pageSlug)?.title ?? item.pageSlug,
+      })),
+    });
   });
 
   app.get("/api/admin/docs/feedback", reviewFeedback, async (req, res) => {
@@ -219,7 +274,13 @@ export function registerDocsRoutes(app: Express) {
       .innerJoin(users, eq(users.id, documentationFeedback.userId))
       .where(status ? eq(documentationFeedback.status, status as any) : undefined)
       .orderBy(desc(documentationFeedback.createdAt));
-    res.json({ feedback: rows.map((row) => ({ ...row.feedback, submittedBy: row.submittedBy })) });
+    res.json({
+      feedback: rows.map((row) => ({
+        ...row.feedback,
+        pageTitle: pagesBySlug.get(row.feedback.pageSlug)?.title ?? row.feedback.pageSlug,
+        submittedBy: row.submittedBy,
+      })),
+    });
   });
 
   app.get("/api/admin/docs/feedback/new-count", reviewFeedback, async (_req, res) => {
@@ -228,6 +289,52 @@ export function registerDocsRoutes(app: Express) {
       .from(documentationFeedback)
       .where(eq(documentationFeedback.status, "new"));
     res.json({ newFeedbackCount: row?.value ?? 0 });
+  });
+
+  app.get("/api/admin/docs/feedback/export", reviewFeedback, async (req, res) => {
+    const requestedStatus = typeof req.query.status === "string" ? req.query.status : "accepted";
+    if (!["accepted", "planned", "resolved"].includes(requestedStatus)) {
+      return res.status(400).json({ message: "Export status must be accepted, planned, or resolved" });
+    }
+    const rows = await db
+      .select({ feedback: documentationFeedback, submittedBy: users.fullName })
+      .from(documentationFeedback)
+      .innerJoin(users, eq(users.id, documentationFeedback.userId))
+      .where(eq(documentationFeedback.status, requestedStatus as any))
+      .orderBy(documentationFeedback.pageSlug, documentationFeedback.sectionTitle, documentationFeedback.createdAt);
+    const lines = [
+      "# KBC Documentation Feedback Export",
+      "",
+      `Status: ${requestedStatus}`,
+      `Generated: ${new Date().toISOString()}`,
+      "",
+      "Use these comments as review input. Verify every proposed change against the source document, committee authority, and KBC governance requirements.",
+      "",
+    ];
+    for (const row of rows) {
+      const item = row.feedback;
+      const pageTitle = pagesBySlug.get(item.pageSlug)?.title ?? item.pageSlug;
+      const sectionLabel = item.sectionTitle || "Whole page";
+      const anchor = item.sectionId ? `#${item.sectionId}` : "";
+      lines.push(
+        `## ${pageTitle}: ${sectionLabel}`,
+        "",
+        `- Source: /docs/${item.pageSlug}${anchor}`,
+        `- Revision: ${item.documentationRevision}`,
+        `- Category: ${item.category}`,
+        `- Submitted by: ${row.submittedBy}`,
+        "",
+        item.comment?.trim() || "No written comment was provided.",
+        "",
+        "---",
+        "",
+      );
+    }
+    res.set({
+      "Content-Type": "text/markdown; charset=utf-8",
+      "Content-Disposition": `attachment; filename="documentation-feedback-${requestedStatus}.md"`,
+    });
+    res.send(lines.join("\n"));
   });
 
   app.patch("/api/admin/docs/feedback/:id", reviewFeedback, async (req, res) => {
@@ -257,4 +364,4 @@ export function registerDocsRoutes(app: Express) {
   });
 }
 
-export const __docsInternals = { resolveSnippets, convertAdmonitions, DOCS_NAV, DOCS_PAGES };
+export const __docsInternals = { resolveSnippets, convertAdmonitions, extractFeedbackSections, DOCS_NAV, DOCS_PAGES };

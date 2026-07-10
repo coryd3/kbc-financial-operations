@@ -3,10 +3,12 @@ import { Link, useLocation } from "wouter";
 import { useQuery } from "@tanstack/react-query";
 import { api } from "../lib/api";
 import { Card, CardHeader, CardTitle, CardContent, Input } from "../components/ui";
-import { BookText, Search, FileText, ChevronRight } from "lucide-react";
+import { BookText, Search, FileText, ChevronRight, MessageSquareText } from "lucide-react";
 import { useDebounce } from "../lib/useDebounce";
+import { useAuth } from "../lib/auth";
 
 export default function Docs() {
+  const { user } = useAuth();
   const [, setLocation] = useLocation();
   const [query, setQuery] = useState("");
   const debounced = useDebounce(query, 250);
@@ -30,6 +32,11 @@ export default function Docs() {
           Church policies, procedures, committee charters, and operation guides — all readable
           and searchable right here.
         </p>
+        {user && (
+          <Link href="/docs/my-feedback" className="mt-4 inline-flex items-center gap-2 rounded-md border border-border px-3 py-2 text-sm font-medium text-primary hover:bg-muted/50">
+            <MessageSquareText className="h-4 w-4" /> Review my feedback
+          </Link>
+        )}
         <div className="relative max-w-xl mt-5">
           <Search className="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground" />
           <Input

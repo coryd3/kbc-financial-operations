@@ -63,13 +63,16 @@ export type ManagedUser = SafeUser & { canManage: boolean };
 export type DocumentationFeedback = {
   id: number;
   pageSlug: string;
+  pageTitle: string;
   documentationRevision: string;
+  sectionId: string;
+  sectionTitle: string | null;
   helpful: boolean;
   category: "unclear" | "inaccurate" | "outdated" | "suggestion" | "other";
   comment: string | null;
-  status: "new" | "reviewed" | "planned" | "resolved" | "declined";
+  status: "new" | "reviewed" | "accepted" | "planned" | "resolved" | "declined";
   createdAt: string;
-  submittedBy: string;
+  submittedBy?: string;
 };
 
 export interface AnalyticsSummary {
@@ -324,10 +327,14 @@ export const api = {
   submitDocsFeedback: (data: {
     pageSlug: string;
     documentationRevision: string;
+    sectionId?: string;
+    sectionTitle?: string;
     helpful: boolean;
     category: "unclear" | "inaccurate" | "outdated" | "suggestion" | "other";
     comment?: string;
   }) => request<{ feedback: { id: number } }>("POST", "/api/docs/feedback", data),
+  getMyDocsFeedback: () =>
+    request<{ feedback: DocumentationFeedback[] }>("GET", "/api/docs/feedback/mine"),
   getDocsFeedback: (status?: string) =>
     request<{ feedback: DocumentationFeedback[] }>(
       "GET",
