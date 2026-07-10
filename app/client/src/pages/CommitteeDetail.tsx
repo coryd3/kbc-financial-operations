@@ -17,8 +17,9 @@ import {
   type Decision,
 } from "@shared/schema";
 import { Button, Card, CardContent, Input, Label } from "../components/ui";
-import { Users, Lock, Plus, Calendar, Gavel, Trash2, Pencil, ArrowLeft, X } from "lucide-react";
+import { Users, Lock, Plus, Calendar, Gavel, Trash2, Pencil, ArrowLeft, X, Printer } from "lucide-react";
 import { format } from "date-fns";
+import { printMeetingMinutes } from "../lib/printExport";
 
 function formatDate(d: string | null | undefined) {
   if (!d) return "TBD";
@@ -115,6 +116,29 @@ export default function CommitteeDetail() {
     onSuccess: invalidate,
     onError,
   });
+
+  const handlePrintMeeting = (m: Meeting, linkedDecisions: Decision[]) => {
+    const opened = printMeetingMinutes(
+      data!.committee.name,
+      {
+        title: m.title,
+        meetingDate: m.meetingDate,
+        attendees: m.attendees,
+        agenda: m.agenda,
+        minutes: m.minutes,
+      },
+      linkedDecisions.map((d) => ({
+        decision: d.decision,
+        decisionDate: d.decisionDate,
+        statusLabel: DECISION_STATUS_LABELS[d.status],
+        owner: d.owner,
+        notes: d.notes,
+      })),
+    );
+    if (!opened) {
+      setActionError("Your browser blocked the print window. Please allow pop-ups for this site and try again.");
+    }
+  };
 
   const startEditMeeting = (m: Meeting) => {
     setEditingMeetingId(m.id);
@@ -340,24 +364,34 @@ export default function CommitteeDetail() {
                               )}
                             </p>
                           </button>
-                          {canManage && (
-                            <div className="flex gap-1">
-                              <Button variant="ghost" size="sm" onClick={() => startEditMeeting(m)}>
-                                <Pencil className="w-4 h-4" />
-                              </Button>
-                              <Button
-                                variant="ghost"
-                                size="sm"
-                                onClick={() => {
-                                  if (confirm("Delete this meeting record? Linked decisions will remain in the decision log.")) {
-                                    deleteMeeting.mutate(m.id);
-                                  }
-                                }}
-                              >
-                                <Trash2 className="w-4 h-4 text-destructive" />
-                              </Button>
-                            </div>
-                          )}
+                          <div className="flex gap-1">
+                            <Button
+                              variant="ghost"
+                              size="sm"
+                              title="Print / Export minutes"
+                              onClick={() => handlePrintMeeting(m, linkedDecisions)}
+                            >
+                              <Printer className="w-4 h-4" />
+                            </Button>
+                            {canManage && (
+                              <>
+                                <Button variant="ghost" size="sm" onClick={() => startEditMeeting(m)}>
+                                  <Pencil className="w-4 h-4" />
+                                </Button>
+                                <Button
+                                  variant="ghost"
+                                  size="sm"
+                                  onClick={() => {
+                                    if (confirm("Delete this meeting record? Linked decisions will remain in the decision log.")) {
+                                      deleteMeeting.mutate(m.id);
+                                    }
+                                  }}
+                                >
+                                  <Trash2 className="w-4 h-4 text-destructive" />
+                                </Button>
+                              </>
+                            )}
+                          </div>
                         </div>
                         {expanded && (
                           <div className="mt-4 pt-4 border-t border-border space-y-4 text-sm">

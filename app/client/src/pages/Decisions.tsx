@@ -4,8 +4,9 @@ import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { api, ApiError, type DecisionInput, type DecisionLogEntry } from "../lib/api";
 import { DECISION_STATUSES, DECISION_STATUS_LABELS } from "@shared/schema";
 import { Button, Card, CardContent, Input, Label } from "../components/ui";
-import { Gavel, Plus, Pencil, Trash2, ExternalLink, X } from "lucide-react";
+import { Gavel, Plus, Pencil, Trash2, ExternalLink, X, Printer } from "lucide-react";
 import { format } from "date-fns";
+import { printDecisionLog } from "../lib/printExport";
 
 const DOCS_DECISION_LOG_URL =
   "https://coryd3.github.io/kbc-financial-operations/02-decision-log/";
@@ -105,6 +106,33 @@ export default function Decisions() {
 
   const canCreate = data?.canCreateGeneral || (data?.committees.length ?? 0) > 0;
 
+  const handlePrint = () => {
+    const committeeName =
+      committeeFilter === "all"
+        ? "All bodies"
+        : committeeFilter === "general"
+          ? "Congregation / General"
+          : data?.committees.find((c) => String(c.id) === committeeFilter)?.name ?? "Selected committee";
+    const statusName =
+      statusFilter === "all" ? "All statuses" : DECISION_STATUS_LABELS[statusFilter as keyof typeof DECISION_STATUS_LABELS] ?? statusFilter;
+    const opened = printDecisionLog(
+      committeeFilter === "all" && statusFilter === "all" ? "Full Log" : "Filtered View",
+      `${committeeName} · ${statusName}`,
+      filtered.map((d) => ({
+        decisionDate: d.decisionDate,
+        decision: d.decision,
+        bodyName: d.committeeName ?? "Congregation / General",
+        statusLabel: DECISION_STATUS_LABELS[d.status],
+        owner: d.owner,
+        meetingTitle: d.meetingTitle,
+        notes: d.notes,
+      })),
+    );
+    if (!opened) {
+      setActionError("Your browser blocked the print window. Please allow pop-ups for this site and try again.");
+    }
+  };
+
   return (
     <div className="space-y-8">
       <header className="border-b border-border pb-6 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
@@ -116,11 +144,16 @@ export default function Decisions() {
             Motions, approvals, and governance decisions across committees and the congregation.
           </p>
         </div>
-        {canCreate && (
-          <Button onClick={() => { setFormOpen((v) => !v); setEditingId(null); setForm(emptyForm); }}>
-            <Plus className="w-4 h-4 mr-1.5" /> Record Decision
+        <div className="flex gap-2 flex-wrap">
+          <Button variant="outline" onClick={handlePrint} disabled={isLoading}>
+            <Printer className="w-4 h-4 mr-1.5" /> Print / Export
           </Button>
-        )}
+          {canCreate && (
+            <Button onClick={() => { setFormOpen((v) => !v); setEditingId(null); setForm(emptyForm); }}>
+              <Plus className="w-4 h-4 mr-1.5" /> Record Decision
+            </Button>
+          )}
+        </div>
       </header>
 
       <div className="bg-muted/50 border border-border rounded-md px-4 py-3 text-sm flex items-center justify-between gap-3 flex-wrap">
