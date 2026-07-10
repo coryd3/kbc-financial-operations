@@ -1,16 +1,22 @@
 import { useState } from "react";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { api } from "../lib/api";
-import { Card, CardHeader, CardTitle, CardContent, Button, Input } from "../components/ui";
+import { useAuth } from "../lib/auth";
+import { Card, CardHeader, CardTitle, CardContent, Button, Input, Label } from "../components/ui";
 import { ROLE_LABELS, ROLES, Role } from "@shared/schema";
-import { Search, CheckCircle, XCircle, ShieldOff, ShieldAlert, Link2, UserCheck, ChevronDown, ChevronUp, Home, Phone, Mail } from "lucide-react";
+import { Search, CheckCircle, XCircle, ShieldOff, ShieldAlert, Link2, UserCheck, ChevronDown, ChevronUp, Home, Phone, Mail, KeyRound, X } from "lucide-react";
 import { format } from "date-fns";
 
 export default function AdminUsers() {
   const queryClient = useQueryClient();
+  const { user: me } = useAuth();
   const [search, setSearch] = useState("");
   const [statusFilter, setStatusFilter] = useState("");
   const [expandedSuggestions, setExpandedSuggestions] = useState<Set<string>>(new Set());
+  const [pwTarget, setPwTarget] = useState<{ id: number; username: string; fullName: string } | null>(null);
+  const [pwValue, setPwValue] = useState("");
+  const [pwError, setPwError] = useState("");
+  const [pwSuccess, setPwSuccess] = useState("");
 
   const toggleSuggestionDetails = (userId: number, memberId: number) => {
     const key = `${userId}:${memberId}`;
@@ -80,6 +86,36 @@ export default function AdminUsers() {
     mutationFn: ({ id, role }: { id: number; role: Role }) => api.assignRole(id, role),
     onSuccess: () => queryClient.invalidateQueries({ queryKey: ["users"] }),
   });
+
+  const setPasswordMut = useMutation({
+    mutationFn: ({ id, newPassword }: { id: number; newPassword: string }) =>
+      api.setUserPassword(id, newPassword),
+    onSuccess: () => {
+      const target = pwTarget;
+      setPwError("");
+      setPwValue("");
+      setPwTarget(null);
+      setPwSuccess(target ? `Password updated for @${target.username}.` : "Password updated.");
+    },
+    onError: (err: Error) => setPwError(err.message),
+  });
+
+  const openPwDialog = (u: { id: number; username: string; fullName: string }) => {
+    setPwSuccess("");
+    setPwError("");
+    setPwValue("");
+    setPwTarget(u);
+  };
+
+  const submitPassword = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!pwTarget) return;
+    if (pwValue.length < 8) {
+      setPwError("Password must be at least 8 characters");
+      return;
+    }
+    setPasswordMut.mutate({ id: pwTarget.id, newPassword: pwValue });
+  };
 
   const users = data?.users || [];
   const pendingUsers = users.filter((u) => u.status === "pending");
@@ -292,27 +328,41 @@ export default function AdminUsers() {
                           <span className="text-xs text-muted-foreground flex items-center gap-1 opacity-70">
                             <ShieldAlert className="w-3 h-3" /> Managed by Super Admin
                           </span>
-                        ) : user.status === 'active' ? (
-                          <Button 
-                            variant="ghost" 
-                            size="sm" 
-                            className="text-destructive hover:text-destructive hover:bg-destructive/10 h-8"
-                            onClick={() => deactivateMut.mutate(user.id)}
-                            disabled={deactivateMut.isPending}
-                          >
-                            <ShieldOff className="w-3.5 h-3.5 mr-1" /> Deactivate
-                          </Button>
-                        ) : user.status === 'deactivated' ? (
-                          <Button 
-                            variant="ghost" 
-                            size="sm" 
-                            className="text-primary hover:text-primary hover:bg-primary/10 h-8"
-                            onClick={() => reactivateMut.mutate(user.id)}
-                            disabled={reactivateMut.isPending}
-                          >
-                            <CheckCircle className="w-3.5 h-3.5 mr-1" /> Reactivate
-                          </Button>
-                        ) : null}
+                        ) : (
+                          <div className="flex items-center gap-1 flex-wrap">
+                            {user.status === 'active' ? (
+                              <Button 
+                                variant="ghost" 
+                                size="sm" 
+                                className="text-destructive hover:text-destructive hover:bg-destructive/10 h-8"
+                                onClick={() => deactivateMut.mutate(user.id)}
+                                disabled={deactivateMut.isPending}
+                              >
+                                <ShieldOff className="w-3.5 h-3.5 mr-1" /> Deactivate
+                              </Button>
+                            ) : user.status === 'deactivated' ? (
+                              <Button 
+                                variant="ghost" 
+                                size="sm" 
+                                className="text-primary hover:text-primary hover:bg-primary/10 h-8"
+                                onClick={() => reactivateMut.mutate(user.id)}
+                                disabled={reactivateMut.isPending}
+                              >
+                                <CheckCircle className="w-3.5 h-3.5 mr-1" /> Reactivate
+                              </Button>
+                            ) : null}
+                            {me?.role === "super_admin" && (
+                              <Button
+                                variant="ghost"
+                                size="sm"
+                                className="h-8 text-muted-foreground hover:text-foreground"
+                                onClick={() => openPwDialog({ id: user.id, username: user.username, fullName: user.fullName })}
+                              >
+                                <KeyRound className="w-3.5 h-3.5 mr-1" /> Set Password
+                              </Button>
+                            )}
+                          </div>
+                        )}
                       </td>
                     </tr>
                   ))
@@ -322,6 +372,68 @@ export default function AdminUsers() {
           </div>
         </CardContent>
       </Card>
+
+      {pwSuccess && (
+        <div className="fixed bottom-6 right-6 bg-primary text-primary-foreground text-sm px-4 py-3 rounded-md shadow-lg flex items-center gap-3 z-50">
+          <CheckCircle className="w-4 h-4" />
+          {pwSuccess}
+          <button onClick={() => setPwSuccess("")} className="opacity-80 hover:opacity-100">
+            <X className="w-4 h-4" />
+          </button>
+        </div>
+      )}
+
+      {pwTarget && (
+        <div className="fixed inset-0 bg-black/40 flex items-center justify-center z-50 p-4">
+          <Card className="w-full max-w-sm">
+            <CardHeader className="flex flex-row items-center justify-between pb-2">
+              <CardTitle className="text-lg flex items-center gap-2">
+                <KeyRound className="w-4 h-4" /> Set Password
+              </CardTitle>
+              <button
+                onClick={() => { setPwTarget(null); setPwError(""); setPwValue(""); }}
+                className="text-muted-foreground hover:text-foreground"
+                aria-label="Close"
+              >
+                <X className="w-4 h-4" />
+              </button>
+            </CardHeader>
+            <CardContent>
+              <p className="text-sm text-muted-foreground mb-4">
+                Set a new password for <span className="font-medium text-foreground">{pwTarget.fullName}</span>{" "}
+                (@{pwTarget.username}). They can log in with it immediately.
+              </p>
+              <form onSubmit={submitPassword} className="space-y-3">
+                <div>
+                  <Label htmlFor="new-password">New password</Label>
+                  <Input
+                    id="new-password"
+                    type="text"
+                    autoFocus
+                    autoComplete="off"
+                    value={pwValue}
+                    onChange={(e) => setPwValue(e.target.value)}
+                    placeholder="At least 8 characters"
+                  />
+                </div>
+                {pwError && <p className="text-sm text-destructive">{pwError}</p>}
+                <div className="flex justify-end gap-2 pt-1">
+                  <Button
+                    type="button"
+                    variant="outline"
+                    onClick={() => { setPwTarget(null); setPwError(""); setPwValue(""); }}
+                  >
+                    Cancel
+                  </Button>
+                  <Button type="submit" disabled={setPasswordMut.isPending}>
+                    {setPasswordMut.isPending ? "Saving..." : "Save Password"}
+                  </Button>
+                </div>
+              </form>
+            </CardContent>
+          </Card>
+        </div>
+      )}
     </div>
   );
 }

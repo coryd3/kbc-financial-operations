@@ -21,6 +21,10 @@ super_admin, admin, treasurer, bookkeeper, finance_committee, personnel_committe
 - Super Admin bootstrap: at server start, if no super_admin exists, one is seeded (username from `SUPER_ADMIN_USERNAME`, default `kbcadmin`) with a one-time temporary password taken from `SUPER_ADMIN_TEMP_PASSWORD` or randomly generated and printed once to the server console. Password change is forced on first login.
 - Production requires a `SESSION_SECRET` secret — the server refuses to start without it when `NODE_ENV=production`.
 
+### Test accounts & password management
+- Super Admin can set any manageable user's password from `/admin` ("Set Password" button per row): `POST /api/admin/users/:id/set-password` (super_admin only, canManage enforced, min 8 chars). Sets `mustChangePassword=false` and clears that username's login-throttle lockout.
+- Dev DB has 8 seeded role test accounts `test_<role>` (test_admin, test_treasurer, test_bookkeeper, test_finance_committee, test_personnel_committee, test_deacon, test_counting_team, test_member), all active; passwords are managed by the Super Admin via the Set Password button.
+
 ### Membership directory
 - Tables: `households`, `members` (profiles independent of `users`; optional one-to-one `user_id` link, unique). Member statuses: active / inactive / visitor. Privacy flags `hide_email` / `hide_phone` / `hide_address` control what other members see in the directory.
 - Leadership roles for member management and full detail (incl. leadership-only notes): `LEADERSHIP_ROLES` in `app/shared/schema.ts` = super_admin, admin, deacon.

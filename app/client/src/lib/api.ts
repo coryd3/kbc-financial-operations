@@ -281,6 +281,8 @@ export const api = {
   reactivateUser: (id: number) => request<{ user: SafeUser }>("POST", `/api/admin/users/${id}/reactivate`),
   assignRole: (id: number, role: Role) =>
     request<{ user: SafeUser }>("PATCH", `/api/admin/users/${id}/role`, { role }),
+  setUserPassword: (id: number, newPassword: string) =>
+    request<{ user: SafeUser }>("POST", `/api/admin/users/${id}/set-password`, { newPassword }),
 
   // membership directory
   getMembers: (params?: {

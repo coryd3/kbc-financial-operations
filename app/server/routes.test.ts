@@ -493,3 +493,113 @@ describe("repeated failed logins are throttled", () => {
     expect(blocked.status).toBe(429);
   });
 });
+
+describe("super admin password management (set-password)", () => {
+  beforeEach(async () => {
+    await resetLoginThrottle();
+  });
+
+  const NEW_PW = "BrandNewPass42!";
+
+  it("a super admin can set a user's password and the user can log in with it", async () => {
+    const res = await request(app)
+      .post(`/api/admin/users/${memberId}/set-password`)
+      .set(as(superAdminId))
+      .send({ newPassword: NEW_PW });
+    expect(res.status).toBe(200);
+    expect(res.body.user.passwordHash).toBeUndefined();
+    expect(JSON.stringify(res.body)).not.toContain("passwordHash");
+
+    const ok = await login(`${PREFIX}member`, NEW_PW);
+    expect(ok.status).toBe(200);
+    const old = await login(`${PREFIX}member`, PASSWORD);
+    expect(old.status).toBe(401);
+
+    // restore for other tests
+    await request(app)
+      .post(`/api/admin/users/${memberId}/set-password`)
+      .set(as(superAdminId))
+      .send({ newPassword: PASSWORD });
+  });
+
+  it("an admin cannot set passwords, even for a plain member", async () => {
+    const res = await request(app)
+      .post(`/api/admin/users/${memberId}/set-password`)
+      .set(as(adminId))
+      .send({ newPassword: NEW_PW });
+    expect(res.status).toBe(403);
+    const stillOld = await login(`${PREFIX}member`, PASSWORD);
+    expect(stillOld.status).toBe(200);
+  });
+
+  it("non-admin roles get 403 from the endpoint", async () => {
+    for (const actor of [treasurerId, memberId]) {
+      const res = await request(app)
+        .post(`/api/admin/users/${adminId}/set-password`)
+        .set(as(actor))
+        .send({ newPassword: NEW_PW });
+      expect(res.status).toBe(403);
+    }
+  });
+
+  it("a super admin cannot set their own password through this endpoint", async () => {
+    const res = await request(app)
+      .post(`/api/admin/users/${superAdminId}/set-password`)
+      .set(as(superAdminId))
+      .send({ newPassword: NEW_PW });
+    expect(res.status).toBe(403);
+  });
+
+  it("rejects passwords shorter than 8 characters", async () => {
+    const res = await request(app)
+      .post(`/api/admin/users/${memberId}/set-password`)
+      .set(as(superAdminId))
+      .send({ newPassword: "short" });
+    expect(res.status).toBe(400);
+  });
+
+  it("returns 404 for a nonexistent user", async () => {
+    const res = await request(app)
+      .post(`/api/admin/users/999999/set-password`)
+      .set(as(superAdminId))
+      .send({ newPassword: NEW_PW });
+    expect(res.status).toBe(404);
+  });
+
+  it("clears mustChangePassword so the user can log in normally", async () => {
+    const res = await request(app)
+      .post(`/api/admin/users/${mustChangeId}/set-password`)
+      .set(as(superAdminId))
+      .send({ newPassword: NEW_PW });
+    expect(res.status).toBe(200);
+    const dbUser = await getDbUser(mustChangeId);
+    expect(dbUser.mustChangePassword).toBe(false);
+  });
+
+  it("setting a password clears a username lockout", async () => {
+    for (let i = 0; i < 5; i++) {
+      await login(`${PREFIX}member`, "wrong-password");
+    }
+    const blocked = await login(`${PREFIX}member`, PASSWORD);
+    expect(blocked.status).toBe(429);
+
+    await resetLoginThrottle(); // clear the per-IP lock from the failures above
+    for (let i = 0; i < 5; i++) {
+      await login(`${PREFIX}member`, "wrong-password");
+    }
+
+    const res = await request(app)
+      .post(`/api/admin/users/${memberId}/set-password`)
+      .set(as(superAdminId))
+      .send({ newPassword: NEW_PW });
+    expect(res.status).toBe(200);
+
+    const ok = await login(`${PREFIX}member`, NEW_PW);
+    expect(ok.status).toBe(200);
+
+    await request(app)
+      .post(`/api/admin/users/${memberId}/set-password`)
+      .set(as(superAdminId))
+      .send({ newPassword: PASSWORD });
+  });
+});

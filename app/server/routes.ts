@@ -10,6 +10,7 @@ import {
   registerSchema,
   loginSchema,
   changePasswordSchema,
+  setPasswordSchema,
   announcementSchema,
   assignRoleSchema,
   type User,
@@ -321,6 +322,27 @@ export function registerRoutes(app: Express) {
       .set({ role: newRole })
       .where(eq(users.id, target.id))
       .returning();
+    res.json({ user: toSafeUser(updated) });
+  });
+
+  app.post("/api/admin/users/:id/set-password", requireAdmin, async (req, res) => {
+    const actor = getUser(req);
+    if (actor.role !== "super_admin") {
+      return res.status(403).json({ message: "Only a Super Admin can set user passwords" });
+    }
+    const parsed = setPasswordSchema.safeParse(req.body);
+    if (!parsed.success) {
+      return res.status(400).json({ message: parsed.error.errors[0]?.message ?? "Invalid password" });
+    }
+    const target = await loadTarget(req, res);
+    if (!target) return;
+    const passwordHash = await bcrypt.hash(parsed.data.newPassword, 10);
+    const [updated] = await db
+      .update(users)
+      .set({ passwordHash, mustChangePassword: false })
+      .where(eq(users.id, target.id))
+      .returning();
+    await recordLoginSuccess(req.ip ?? "", target.username);
     res.json({ user: toSafeUser(updated) });
   });
 
