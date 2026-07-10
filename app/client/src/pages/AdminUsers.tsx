@@ -3,7 +3,7 @@ import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { api } from "../lib/api";
 import { Card, CardHeader, CardTitle, CardContent, Button, Input } from "../components/ui";
 import { ROLE_LABELS, ROLES, Role } from "@shared/schema";
-import { Search, CheckCircle, XCircle, ShieldOff, ShieldAlert } from "lucide-react";
+import { Search, CheckCircle, XCircle, ShieldOff, ShieldAlert, Link2, UserCheck } from "lucide-react";
 import { format } from "date-fns";
 
 export default function AdminUsers() {
@@ -16,11 +16,34 @@ export default function AdminUsers() {
     queryFn: () => api.getUsers({ search, status: statusFilter }),
   });
 
+  const { data: suggestionsData } = useQuery({
+    queryKey: ["memberLinkSuggestions"],
+    queryFn: api.getMemberLinkSuggestions,
+  });
+
+  const invalidateAfterApproval = () => {
+    queryClient.invalidateQueries({ queryKey: ["users"] });
+    queryClient.invalidateQueries({ queryKey: ["pendingCount"] });
+    queryClient.invalidateQueries({ queryKey: ["memberLinkSuggestions"] });
+    queryClient.invalidateQueries({ queryKey: ["members"] });
+  };
+
   const approveMut = useMutation({
     mutationFn: api.approveUser,
-    onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ["users"] });
-      queryClient.invalidateQueries({ queryKey: ["pendingCount"] });
+    onSuccess: invalidateAfterApproval,
+  });
+
+  const [linkError, setLinkError] = useState<string | null>(null);
+  const approveAndLinkMut = useMutation({
+    mutationFn: async ({ userId, memberId }: { userId: number; memberId: number }) => {
+      await api.approveUser(userId);
+      await api.linkMember(memberId, userId);
+    },
+    onMutate: () => setLinkError(null),
+    onSuccess: invalidateAfterApproval,
+    onError: (err: Error) => {
+      setLinkError(err.message);
+      invalidateAfterApproval();
     },
   });
 
@@ -50,6 +73,7 @@ export default function AdminUsers() {
   const users = data?.users || [];
   const pendingUsers = users.filter((u) => u.status === "pending");
   const otherUsers = users.filter((u) => u.status !== "pending");
+  const suggestions = suggestionsData?.suggestions ?? {};
 
   return (
     <div className="space-y-8">
@@ -67,40 +91,79 @@ export default function AdminUsers() {
             </CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
-            {pendingUsers.map((user) => (
-              <div key={user.id} className="bg-background border border-border p-4 rounded-md flex flex-col md:flex-row justify-between gap-4 shadow-sm">
-                <div>
-                  <h3 className="font-semibold">{user.fullName}</h3>
-                  <div className="text-sm text-muted-foreground flex gap-4 mt-1">
-                    <span>@{user.username}</span>
-                    {user.email && <span>{user.email}</span>}
-                    {user.phone && <span>{user.phone}</span>}
-                  </div>
-                  <div className="text-xs text-muted-foreground mt-2">
-                    Registered: {format(new Date(user.createdAt), "MMM d, yyyy h:mm a")}
-                  </div>
-                </div>
-                <div className="flex items-center gap-2 shrink-0">
-                  <Button 
-                    size="sm" 
-                    variant="outline" 
-                    className="text-destructive hover:bg-destructive/10 hover:text-destructive"
-                    onClick={() => rejectMut.mutate(user.id)}
-                    disabled={rejectMut.isPending}
-                  >
-                    <XCircle className="w-4 h-4 mr-1.5" /> Reject
-                  </Button>
-                  <Button 
-                    size="sm" 
-                    className="bg-primary hover:bg-primary/90"
-                    onClick={() => approveMut.mutate(user.id)}
-                    disabled={approveMut.isPending}
-                  >
-                    <CheckCircle className="w-4 h-4 mr-1.5" /> Approve
-                  </Button>
-                </div>
+            {linkError && (
+              <div className="text-sm text-destructive bg-destructive/10 border border-destructive/30 rounded-md px-3 py-2">
+                {linkError}
               </div>
-            ))}
+            )}
+            {pendingUsers.map((user) => {
+              const userSuggestions = suggestions[user.id] ?? [];
+              const busy = approveMut.isPending || approveAndLinkMut.isPending;
+              return (
+                <div key={user.id} className="bg-background border border-border p-4 rounded-md shadow-sm">
+                  <div className="flex flex-col md:flex-row justify-between gap-4">
+                    <div>
+                      <h3 className="font-semibold">{user.fullName}</h3>
+                      <div className="text-sm text-muted-foreground flex gap-4 mt-1">
+                        <span>@{user.username}</span>
+                        {user.email && <span>{user.email}</span>}
+                        {user.phone && <span>{user.phone}</span>}
+                      </div>
+                      <div className="text-xs text-muted-foreground mt-2">
+                        Registered: {format(new Date(user.createdAt), "MMM d, yyyy h:mm a")}
+                      </div>
+                    </div>
+                    <div className="flex items-center gap-2 shrink-0">
+                      <Button 
+                        size="sm" 
+                        variant="outline" 
+                        className="text-destructive hover:bg-destructive/10 hover:text-destructive"
+                        onClick={() => rejectMut.mutate(user.id)}
+                        disabled={rejectMut.isPending || busy}
+                      >
+                        <XCircle className="w-4 h-4 mr-1.5" /> Reject
+                      </Button>
+                      <Button 
+                        size="sm" 
+                        className="bg-primary hover:bg-primary/90"
+                        onClick={() => approveMut.mutate(user.id)}
+                        disabled={busy}
+                      >
+                        <CheckCircle className="w-4 h-4 mr-1.5" /> Approve
+                      </Button>
+                    </div>
+                  </div>
+                  {userSuggestions.length > 0 && (
+                    <div className="mt-3 pt-3 border-t border-border/60">
+                      <div className="text-xs font-medium text-muted-foreground flex items-center gap-1.5 mb-2">
+                        <UserCheck className="w-3.5 h-3.5" />
+                        Suggested member profile {userSuggestions.length > 1 ? "matches" : "match"}
+                      </div>
+                      <div className="space-y-2">
+                        {userSuggestions.map((s) => (
+                          <div key={s.id} className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 bg-muted/40 rounded-md px-3 py-2">
+                            <div className="text-sm">
+                              <span className="font-medium">{s.firstName} {s.lastName}</span>
+                              {s.email && <span className="text-muted-foreground ml-2">{s.email}</span>}
+                              <span className="text-xs text-muted-foreground ml-2">(matched on {s.matchedOn})</span>
+                            </div>
+                            <Button
+                              size="sm"
+                              variant="outline"
+                              className="text-primary hover:bg-primary/10 hover:text-primary shrink-0"
+                              onClick={() => approveAndLinkMut.mutate({ userId: user.id, memberId: s.id })}
+                              disabled={busy}
+                            >
+                              <Link2 className="w-4 h-4 mr-1.5" /> Approve & Link
+                            </Button>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+                </div>
+              );
+            })}
           </CardContent>
         </Card>
       )}

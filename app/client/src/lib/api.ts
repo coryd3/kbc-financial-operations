@@ -95,6 +95,15 @@ export interface LinkableUser {
   status: string;
 }
 
+export interface MemberLinkSuggestion {
+  id: number;
+  firstName: string;
+  lastName: string;
+  email: string | null;
+  status: string;
+  matchedOn: string;
+}
+
 export type TemplateWithSteps = ChecklistTemplate & { steps: ChecklistTemplateStep[] };
 
 export type InstanceWithProgress = ChecklistInstance & {
@@ -274,6 +283,8 @@ export const api = {
   linkMember: (id: number, userId: number | null) =>
     request<{ member: DirectoryMember }>("POST", `/api/admin/members/${id}/link`, { userId }),
   getLinkableUsers: () => request<{ users: LinkableUser[] }>("GET", "/api/admin/linkable-users"),
+  getMemberLinkSuggestions: () =>
+    request<{ suggestions: Record<number, MemberLinkSuggestion[]> }>("GET", "/api/admin/member-link-suggestions"),
   createHousehold: (data: { name: string; address?: string }) =>
     request<{ household: Household }>("POST", "/api/admin/households", data),
   updateHousehold: (id: number, data: Partial<{ name: string; address?: string }>) =>

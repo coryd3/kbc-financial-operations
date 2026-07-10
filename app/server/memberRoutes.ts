@@ -353,6 +353,50 @@ export function registerMemberRoutes(app: Express) {
     res.json({ member: updated });
   });
 
+  // Suggested member-profile matches for pending registrations. For each
+  // pending user, find unlinked member profiles whose email matches exactly
+  // (case-insensitive) or whose full name matches the registration name.
+  app.get("/api/admin/member-link-suggestions", requireLeadership, async (_req, res) => {
+    const pendingUsers = await db
+      .select({ id: users.id, fullName: users.fullName, email: users.email })
+      .from(users)
+      .where(eq(users.status, "pending"));
+    if (pendingUsers.length === 0) return res.json({ suggestions: {} });
+
+    const unlinked = await db
+      .select()
+      .from(members)
+      .where(sql`${members.userId} is null`);
+
+    const norm = (s: string | null | undefined) =>
+      (s ?? "").trim().toLowerCase().replace(/\s+/g, " ");
+
+    const suggestions: Record<number, Array<{ id: number; firstName: string; lastName: string; email: string | null; status: string; matchedOn: string }>> = {};
+    for (const u of pendingUsers) {
+      const userEmail = norm(u.email);
+      const userName = norm(u.fullName);
+      const matches = unlinked
+        .map((m) => {
+          const memberEmail = norm(m.email);
+          const memberName = norm(`${m.firstName} ${m.lastName}`);
+          const emailMatch = !!userEmail && !!memberEmail && userEmail === memberEmail;
+          const nameMatch = !!userName && userName === memberName;
+          if (!emailMatch && !nameMatch) return null;
+          return {
+            id: m.id,
+            firstName: m.firstName,
+            lastName: m.lastName,
+            email: m.email,
+            status: m.status,
+            matchedOn: emailMatch && nameMatch ? "email and name" : emailMatch ? "email" : "name",
+          };
+        })
+        .filter((m): m is NonNullable<typeof m> => m !== null);
+      if (matches.length > 0) suggestions[u.id] = matches;
+    }
+    res.json({ suggestions });
+  });
+
   // User accounts available for linking (active/pending users not yet linked).
   app.get("/api/admin/linkable-users", requireLeadership, async (_req, res) => {
     const rows = await db
