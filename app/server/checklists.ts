@@ -9,11 +9,13 @@ import {
   checklistInstanceSteps,
   checklistTemplateSchema,
   CHECKLIST_MANAGER_ROLES,
+  ROLE_LABELS,
   type ChecklistTemplate,
   type Recurrence,
   type User,
 } from "../shared/schema.ts";
 import { requireAuth, requireRole } from "./auth.ts";
+import { toCsv, sendCsv } from "./csv.ts";
 
 const requireChecklistManager = requireRole(...CHECKLIST_MANAGER_ROLES);
 
@@ -329,12 +331,10 @@ export function registerChecklistRoutes(app: Express) {
     res.json({ template: restored });
   });
 
-  // Per-template run history with step-level who/when detail (managers only)
-  app.get("/api/checklists/templates/:id/history", requireChecklistManager, async (req, res) => {
-    const id = Number(req.params.id);
-    if (!Number.isInteger(id)) return res.status(400).json({ message: "Invalid id" });
+  // Shared loader for the per-template run history (JSON + CSV endpoints).
+  async function loadTemplateHistory(id: number) {
     const [template] = await db.select().from(checklistTemplates).where(eq(checklistTemplates.id, id));
-    if (!template) return res.status(404).json({ message: "Template not found" });
+    if (!template) return null;
 
     const instances = await db
       .select()
@@ -363,7 +363,7 @@ export function registerChecklistRoutes(app: Express) {
       : [];
 
     const now = new Date();
-    res.json({
+    return {
       template,
       instances: instances.map((i) => {
         const instanceSteps = steps.filter((s) => s.instanceId === i.id);
@@ -381,7 +381,85 @@ export function registerChecklistRoutes(app: Express) {
           steps: instanceSteps,
         };
       }),
-    });
+    };
+  }
+
+  // Per-template run history with step-level who/when detail (managers only)
+  app.get("/api/checklists/templates/:id/history", requireChecklistManager, async (req, res) => {
+    const id = Number(req.params.id);
+    if (!Number.isInteger(id)) return res.status(400).json({ message: "Invalid id" });
+    const history = await loadTemplateHistory(id);
+    if (!history) return res.status(404).json({ message: "Template not found" });
+    res.json(history);
+  });
+
+  // CSV export of the run history: one row per step (runs with no steps get a
+  // single summary row). Managers only — same audience as the history page.
+  app.get("/api/checklists/templates/:id/history.csv", requireChecklistManager, async (req, res) => {
+    const id = Number(req.params.id);
+    if (!Number.isInteger(id)) return res.status(400).json({ message: "Invalid id" });
+    const history = await loadTemplateHistory(id);
+    if (!history) return res.status(404).json({ message: "Template not found" });
+
+    const timelinessLabel = (t: string | null, status: string) => {
+      if (t === "on_time") return "On time";
+      if (t === "late") return "Completed late";
+      if (t === "overdue") return "Overdue";
+      return status === "completed" ? "Completed" : "In progress";
+    };
+    const fmt = (d: Date | null) => (d ? d.toISOString() : "");
+
+    const rows: unknown[][] = [];
+    for (const run of history.instances) {
+      const runCells = [
+        run.name,
+        run.periodKey ?? "",
+        fmt(run.createdAt),
+        fmt(run.dueDate),
+        fmt(run.completedAt),
+        run.status === "completed" ? "Completed" : "Open",
+        timelinessLabel(run.timeliness, run.status),
+        `${run.progress.completed}/${run.progress.total}`,
+      ];
+      if (run.steps.length === 0) {
+        rows.push([...runCells, "", "", "", "", ""]);
+      } else {
+        for (const step of run.steps) {
+          rows.push([
+            ...runCells,
+            step.position,
+            step.title,
+            step.assignedRole ? ROLE_LABELS[step.assignedRole] : "",
+            step.completedAt ? (step.completedByName ?? "Unknown") : "",
+            fmt(step.completedAt),
+          ]);
+        }
+      }
+    }
+
+    const safeName = history.template.name.replace(/[^a-zA-Z0-9-_]+/g, "-").replace(/^-+|-+$/g, "").toLowerCase() || "checklist";
+    sendCsv(
+      res,
+      `kbc-${safeName}-history.csv`,
+      toCsv(
+        [
+          "Run",
+          "Period",
+          "Started",
+          "Due Date",
+          "Completed",
+          "Status",
+          "Timeliness",
+          "Steps Done",
+          "Step #",
+          "Step Title",
+          "Assigned Role",
+          "Step Completed By",
+          "Step Completed At",
+        ],
+        rows,
+      ),
+    );
   });
 
   app.post("/api/checklists/templates/:id/start", requireChecklistManager, async (req, res) => {

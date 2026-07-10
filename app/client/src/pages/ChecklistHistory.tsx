@@ -5,9 +5,10 @@ import { useAuth } from "../lib/auth";
 import { api, type HistoryInstance, type Timeliness } from "../lib/api";
 import { Card, CardContent } from "../components/ui";
 import { ROLE_LABELS, RECURRENCE_LABELS, CHECKLIST_MANAGER_ROLES } from "@shared/schema";
-import { ArrowLeft, Check, ChevronDown, ChevronRight, ClipboardList, AlertTriangle, Clock } from "lucide-react";
+import { ArrowLeft, Check, ChevronDown, ChevronRight, ClipboardList, AlertTriangle, Clock, Printer, Download } from "lucide-react";
 import { format } from "date-fns";
 import { cn } from "../lib/utils";
+import { openChecklistHistoryPrintView } from "../lib/printChecklistHistory";
 
 function TimelinessBadge({ timeliness, status }: { timeliness: Timeliness; status: string }) {
   if (timeliness === "on_time") {
@@ -175,19 +176,36 @@ export default function ChecklistHistory() {
         <ArrowLeft className="w-4 h-4" /> Back to templates
       </Link>
 
-      <div className="space-y-2">
-        <h1 className="text-3xl font-serif text-primary font-bold">{template.name} — History</h1>
-        <div className="flex flex-wrap items-center gap-2 text-xs">
-          <span className="bg-primary/10 text-primary px-2 py-1 rounded font-medium">
-            {RECURRENCE_LABELS[template.recurrence]}
-          </span>
-          {template.archivedAt && (
-            <span className="bg-muted text-muted-foreground px-2 py-1 rounded font-medium">
-              Retired — history preserved
+      <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3">
+        <div className="space-y-2">
+          <h1 className="text-3xl font-serif text-primary font-bold">{template.name} — History</h1>
+          <div className="flex flex-wrap items-center gap-2 text-xs">
+            <span className="bg-primary/10 text-primary px-2 py-1 rounded font-medium">
+              {RECURRENCE_LABELS[template.recurrence]}
             </span>
-          )}
+            {template.archivedAt && (
+              <span className="bg-muted text-muted-foreground px-2 py-1 rounded font-medium">
+                Retired — history preserved
+              </span>
+            )}
+          </div>
+          {template.description && <p className="text-sm text-muted-foreground">{template.description}</p>}
         </div>
-        {template.description && <p className="text-sm text-muted-foreground">{template.description}</p>}
+        <div className="flex items-center gap-2 flex-shrink-0">
+          <button
+            onClick={() => openChecklistHistoryPrintView(template, instances)}
+            className="inline-flex items-center gap-1.5 text-sm font-medium border border-input rounded-md px-3 py-1.5 hover:bg-muted transition-colors"
+          >
+            <Printer className="w-4 h-4" /> Print
+          </button>
+          <a
+            href={`/api/checklists/templates/${id}/history.csv`}
+            download
+            className="inline-flex items-center gap-1.5 text-sm font-medium border border-input rounded-md px-3 py-1.5 hover:bg-muted transition-colors"
+          >
+            <Download className="w-4 h-4" /> CSV
+          </a>
+        </div>
       </div>
 
       <div className="grid grid-cols-3 gap-3">
