@@ -42,13 +42,16 @@ The remaining work is to finalize the job description, application, hiring proce
 
 This work should be treated as a stewardship and systems improvement effort, not a blame discussion.
 
+!!! note "Congregation Final Authority"
+    The congregation remains the final authority where KBC bylaws, budget, policy, officer election, major non-budgeted spending, or church practice require a vote. Committee recommendations should preserve that authority, not bypass it.
+
 ## Top 5 Decisions Needed
 
 1. Confirm the official June 28, 2026 minutes and keep the hiring plan within the authorization already granted.
 2. Confirm which duties remain with the elected Treasurer / Financial Officer and which duties move to the Bookkeeper / Financial Administrator.
 3. Have Finance Committee define the financial duties, access, controls, software responsibilities, monthly reporting expectations, and budget impact before hiring materials are used.
 4. Have Personnel Committee finalize the job description, application, hiring process, supervision, evaluation process, and employment details, coordinating with Nominating Committee as needed under the motion.
-5. Confirm what remaining items need Deacon review, bylaw review, professional review, church vote, or later congregational updates.
+5. Confirm what remaining items need Deacon review, bylaw review, professional review, church vote, or later congregational updates, especially annual budget approval and major non-budgeted spending.
 
 ## Key Documents
 
@@ -60,6 +63,7 @@ This work should be treated as a stewardship and systems improvement effort, not
 - [Bookkeeper Hiring Process](roles/bookkeeper-hiring-process.md)
 - [Finance Committee Packet](communications/finance-committee-packet.md)
 - [Personnel Committee Packet](communications/personnel-committee-packet.md)
+- [Future Governance Expansion](governance/future-governance-expansion.md)
 - [Software Requirements](software-evaluation/software-requirements.md)
 - [Export Process](export-process.md)
 

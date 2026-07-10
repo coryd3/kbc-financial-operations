@@ -23,11 +23,17 @@ On June 28, 2026, the congregation approved adding a paid, part-time Bookkeeper 
 
 The main work now is to move carefully from authorization to implementation: clarify duties, confirm controls, finalize hiring materials, coordinate the committees named in the motion, and document decisions.
 
+!!! note "Congregation Final Authority"
+    The congregation remains the final authority where KBC bylaws, budget, policy, officer election, major non-budgeted spending, or church practice require a vote. The current committee work should prepare clear recommendations and preserve that authority.
+
 ## 2. Most Important Next Step
 
 Confirm the official minutes for the June 28, 2026 motion and make sure the job description, hiring process, supervision plan, compensation, and budget adjustment stay within the authorization already granted.
 
 At the same time, Finance Committee should confirm the financial duties, controls, access, software responsibilities, monthly reporting expectations, and budget impact before Personnel Committee uses final hiring materials.
+
+!!! tip "Immediate Next Step"
+    Personnel Committee should prepare candidate outreach and an application window, while Finance Committee confirms the financial duties, controls, reporting line, and interim supervision expectations.
 
 ## 3. Top Decisions Needed
 
@@ -89,6 +95,7 @@ At the same time, Finance Committee should confirm the financial duties, control
 | Deacon Update | Placeholder for Deacon update or counsel request. | Pastor / leadership team | Parking Lot | Deacons, Pastor | Low | [Open](../communications/deacon-update.md) |
 | Audit and Review Policy | Draft annual financial review or audit expectations. | Finance Committee | Needs Finance Review | Finance Committee, CPA/accounting advisor if used | Medium | [Open](../policies/audit-and-review-policy.md) |
 | Payroll Process | Draft payroll coordination process. | Finance Committee | Needs Finance Review | Finance Committee, Personnel Committee, payroll/accounting advisor | Medium | [Open](../procedures/payroll-process.md) |
+| Future Governance Expansion | Preserve later questions about Benevolence, other committee spending, confidentiality, Deacon counsel, and congregational approval paths. | Pastor / Deacons / Finance Committee | Parking Lot | Pastor, Deacons, Finance Committee, Personnel Committee, Nominating Committee | Medium | [Open](../governance/future-governance-expansion.md) |
 
 ## 9. Recent Decisions
 
@@ -104,6 +111,7 @@ At the same time, Finance Committee should confirm the financial duties, control
 - What employment classification, supervision, evaluation process, and start date should Personnel Committee recommend within the June 28, 2026 authorization?
 - How should Personnel Committee and Nominating Committee coordinate under the motion?
 - Which remaining items need Deacon review, church vote, CPA/accounting review, attorney/HR review, or software/vendor review?
+- What future governance review is needed for Benevolence or other committee spending without slowing the immediate Bookkeeper hiring process?
 
 See [Open Questions](../03-open-questions.md) for the full list.
 

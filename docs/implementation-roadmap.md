@@ -59,6 +59,10 @@ Start date: TBD
 - [ ] Confirm the official June 28, 2026 minutes and recorded motion authorizing the paid, part-time Bookkeeper position.
 - [ ] Confirm how Personnel Committee and Nominating Committee should coordinate under the motion.
 - [ ] Confirm the duty split between Treasurer / Financial Officer and the authorized Bookkeeper / Financial Administrator.
+- [ ] Contact the three known interested Bookkeeper candidates and invite them to complete the approved application process.
+- [ ] Prepare a bulletin or announcement request for additional candidates.
+- [ ] Define the application collection window, submission method, and secure storage location.
+- [ ] Confirm the interim supervision and financial-review line, while marking final supervisor as needing committee confirmation.
 - [ ] Decide what items need Deacon review, Nominating Committee review, or church vote.
 - [ ] Update `docs/02-decision-log.md` after committee direction is given.
 
@@ -83,6 +87,8 @@ Start date: TBD
 - [ ] Decide whether shared debit cards should be replaced with individual cards or another controlled payment method.
 - [ ] Identify budget impact for software, bookkeeping support, outside payroll/accounting support, bonding, background checks, or audit/review.
 - [ ] Personnel Committee finalizes Bookkeeper job description, application, and hiring process based on Finance direction.
+- [ ] Coordinate interviews, reference checks, and candidate evaluation for the authorized Bookkeeper role.
+- [ ] Decide whether other interested people could serve later through Finance Committee involvement, controlled volunteer helper roles, or another approved support path.
 
 ## 90-Day Plan
 
@@ -105,6 +111,7 @@ Start date: TBD
 - [ ] Launch or continue the authorized Bookkeeper / Financial Administrator hiring process.
 - [ ] Train Treasurer, Bookkeeper, and committee reviewers on the monthly packet and documentation expectations.
 - [ ] Move approved decisions from open questions into `docs/02-decision-log.md`.
+- [ ] Move broader committee-spending questions, including Benevolence, into a future governance review only after the immediate hiring and control work is stable.
 
 ## Long-Term Operations Manual Integration
 
@@ -163,5 +170,6 @@ Start date: TBD
 - What professional review is needed for payroll, tax, accounting, employment, or legal questions?
 - What software best supports KBC's actual workflow and monthly review needs?
 - Who will maintain the Operations Manual after initial adoption?
+- What later governance review is needed for Benevolence or other committees with spending authority?
 
 Needs Committee Review: This roadmap should be reviewed by Finance Committee, Personnel Committee, Pastor, Deacons, and any other body required by KBC bylaws or church practice.

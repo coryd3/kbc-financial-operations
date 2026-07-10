@@ -45,13 +45,16 @@ The remaining work is to finalize the job description, application, hiring proce
 
 This work should be treated as a stewardship and systems improvement effort, not a blame discussion.
 
+Note: Congregation Final Authority.
+The congregation remains the final authority where KBC bylaws, budget, policy, officer election, major non-budgeted spending, or church practice require a vote. Committee recommendations should preserve that authority, not bypass it.
+
 Section: Top 5 Decisions Needed.
 
 Confirm the official June 28, 2026 minutes and keep the hiring plan within the authorization already granted.
 Confirm which duties remain with the elected Treasurer / Financial Officer and which duties move to the Bookkeeper / Financial Administrator.
 Have Finance Committee define the financial duties, access, controls, software responsibilities, monthly reporting expectations, and budget impact before hiring materials are used.
 Have Personnel Committee finalize the job description, application, hiring process, supervision, evaluation process, and employment details, coordinating with Nominating Committee as needed under the motion.
-Confirm what remaining items need Deacon review, bylaw review, professional review, church vote, or later congregational updates.
+Confirm what remaining items need Deacon review, bylaw review, professional review, church vote, or later congregational updates, especially annual budget approval and major non-budgeted spending.
 
 Section: Key Documents.
 
@@ -63,6 +66,7 @@ Bookkeeper Job Description.
 Bookkeeper Hiring Process.
 Finance Committee Packet.
 Personnel Committee Packet.
+Future Governance Expansion.
 Software Requirements.
 Export Process.
 
@@ -71,10 +75,3 @@ Section: Sensitive Information Warning.
 Keep confidential information out of this repository and out of this documentation site.
 
 Do not store donor records, giving details, payroll details, bank account numbers, Social Security numbers, passwords, candidate applications, reference-check notes, background-check results, confidential personnel matters, or private pastoral care information here.
-
-Use placeholders such as TBD, Needs Finance Review, Needs Personnel Review, Needs Bylaw Review, or Needs Professional Review until the proper body supplies the information.
-
-Warning: Public Site Caution.
-The published GitHub Pages site and public repository should be treated as public unless privacy settings are intentionally changed and verified. Do not add sensitive records or confidential details to this repository or site.
-
-End of chapter: Home.

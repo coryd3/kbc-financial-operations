@@ -59,6 +59,15 @@ SOURCE_DOCS = [
         include_mode="summary",
     ),
     SourceDoc("Finance Committee Charter", "docs/governance/finance-committee-charter.md", "Finance Committee"),
+    SourceDoc(
+        "Future Governance Expansion",
+        "docs/governance/future-governance-expansion.md",
+        "Pastor / Deacons / Finance Committee",
+        note=(
+            "This is a parking-lot governance review item. It should not be treated as approved policy "
+            "or allowed to slow the immediate Bookkeeper hiring work unless an urgent issue requires action."
+        ),
+    ),
     SourceDoc("Reimbursement Policy", "docs/policies/reimbursement-policy.md", "Finance Committee"),
     SourceDoc("Spending Authority Policy", "docs/policies/spending-authority-policy.md", "Finance Committee"),
     SourceDoc("Credit Card Policy", "docs/policies/credit-card-policy.md", "Finance Committee"),

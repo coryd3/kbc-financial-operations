@@ -8,6 +8,9 @@ This policy defines who may approve spending and when additional review, committ
 
 Dollar amounts are placeholders until reviewed by the Finance Committee.
 
+!!! note "Congregation Final Authority"
+    The congregation should approve the annual budget and major non-budgeted expenses where KBC bylaws, budget, policy, amount, or church practice require a vote.
+
 ## Spending Authority Matrix
 
 | Spending Type | Suggested Threshold | Approval Needed | Notes |
@@ -19,6 +22,7 @@ Dollar amounts are placeholders until reviewed by the Finance Committee.
 | Large purchase | Over `$TBD` | Finance Committee recommendation | May require Deacon review or church vote. |
 | Capital item / equipment | Over `$TBD` | Finance Committee recommendation | Include funding source, maintenance, and stewardship impact. |
 | Recurring commitment or contract | Any recurring obligation over `$TBD` per month or `$TBD` per year | Finance Committee review | May require church vote if it affects budget or long-term obligation. |
+| Major non-budgeted project | Over `$TBD` or otherwise significant to church stewardship | Finance Committee recommendation, with Deacon counsel if church practice expects it | Should come to the congregation when bylaws, budget practice, amount, or church expectation require a vote. |
 | Emergency purchase | Up to `$TBD` if delay would create harm or prevent urgent need | Pastor, Treasurer, Deacon chair, or Finance chair, with after-the-fact review | Document reason and report to Finance Committee. |
 | Church vote item | TBD by bylaws, budget, or church policy | Congregational approval | Examples may include budget adoption, major purchases, debt, staff compensation, or role creation. |
 
@@ -30,6 +34,8 @@ Dollar amounts are placeholders until reviewed by the Finance Committee.
 - Budgeted does not mean undocumented.
 - Unbudgeted or over-budget spending should be reviewed before purchase whenever practical.
 - Exceptions should be reported to the Finance Committee.
+- No one person should have too much control over church money.
+- Deacon counsel may be helpful for major or sensitive matters, but it should not replace Finance Committee review or congregational approval where required.
 
 ## Review And Revision
 
