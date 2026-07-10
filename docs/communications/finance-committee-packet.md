@@ -45,6 +45,20 @@ The current situation has revealed several needs:
 
 This should be framed as a systems maturity issue, not a person failure.
 
+## Finance, Treasurer, Bookkeeper, And Deacon Lanes
+
+Recent leadership feedback reinforces a helpful principle: no one person should have too much control over church money.
+
+For review purposes, the working lanes are:
+
+- Finance Committee owns financial policy, budget oversight, spending controls, software direction, monthly review, and recommendations on annual budget or major non-budgeted expenses.
+- Treasurer / Financial Officer is an elected officer who coordinates with Finance Committee, reviews reports, helps carry out approved financial direction, and supports church reporting without becoming the only gatekeeper.
+- Bookkeeper / Financial Administrator supports day-to-day records, payments after approval, documentation, reports, and software workflows under clear supervision and approved controls.
+- Deacons may counsel, raise concerns, and recommend issues back to committees or the congregation through proper process, but should not become a unilateral financial authority.
+- The congregation remains the final authority where bylaws, budget, policy, officer election, major non-budgeted spending, or church practice require a vote.
+
+Needs Bylaw Review: These lanes are a working draft and should be confirmed against KBC Constitution and Bylaws and church practice before being treated as authoritative.
+
 ## Decisions Finance Committee Needs To Own
 
 | Decision Area | Finance Committee Decision Needed | Related Bodies | Notes |
@@ -125,6 +139,7 @@ Finance Committee should answer:
 - What dollar amount requires Finance Committee review before purchase?
 - What dollar amount requires Deacon review, if any?
 - What dollar amount or category requires church vote?
+- What large non-budgeted expenses should go to the congregation even if Finance Committee recommends them?
 - How should over-budget expenses be handled?
 - Can funds be transferred between budget categories, and who approves that?
 - What recurring subscriptions, contracts, or commitments require committee review?
@@ -247,7 +262,9 @@ Needs Finance Review: Finance Committee should decide the monthly review cadence
 5. Decide whether shared debit cards should be replaced.
 6. Define monthly review packet and meeting rhythm.
 7. Identify budget impact for bookkeeping support, software, and outside payroll/accounting support.
-8. Provide written direction to Personnel Committee before the Bookkeeper role is posted, interviews begin, or an offer is made.
-9. Decide which items require Deacon review, church vote, CPA/accounting review, or bylaw review.
+8. Confirm the interim and long-term financial review line for the Bookkeeper role, including whether the supervisor should be Treasurer/Finance-related or another role confirmed by committee action.
+9. Consider whether to consult a trusted church finance peer, CPA/accounting advisor, or experienced church bookkeeper before finalizing software, payroll, or control decisions.
+10. Provide written direction to Personnel Committee before the Bookkeeper role is posted, interviews begin, or an offer is made.
+11. Decide which items require Deacon review, church vote, CPA/accounting review, or bylaw review.
 
 Needs Finance Review: This packet is a working draft for Finance Committee discussion. It should not be treated as final policy, budget approval, software selection, or church authorization.

@@ -201,6 +201,22 @@ Needs Personnel Review: Personnel Committee should confirm the hiring lead, inte
 
 Needs Finance Review: Finance Committee should confirm financial duties and controls before the position is posted, interviews begin, or an offer is made.
 
+## Immediate Hiring Next Steps
+
+Personnel Committee can begin preparing the hiring process while Finance Committee confirms duties and controls.
+
+Recommended immediate steps:
+
+1. Contact the three known interested candidates and invite them to complete the approved application process.
+2. Prepare a short bulletin or announcement request so other interested candidates have a fair opportunity to apply.
+3. Define the application collection period, including start date, deadline, submission method, and secure storage location.
+4. Coordinate interviews, reference checks, and candidate evaluation after applications are received.
+5. Confirm the interim supervision path, likely tied to Finance Committee and Treasurer / Financial Officer review, while marking the final supervisor as needing committee confirmation.
+6. Clarify that KBC is authorized for one paid Bookkeeper role unless further approval is granted.
+7. Consider whether other interested people could serve later through Finance Committee involvement, controlled volunteer helper roles, or other approved service opportunities after confidentiality, access, and controls are defined.
+
+Needs Personnel Review: Candidate outreach, application timing, interview team, and final selection process should be approved by Personnel Committee before use.
+
 ## Recommendations To Finance Committee
 
 The Personnel Committee should consider sending the following recommendation to the Finance Committee:
@@ -236,6 +252,7 @@ Recommended requests for Finance Committee direction:
 - Who supervises the role day to day?
 - Who performs the evaluation?
 - Does the proposed compensation, hours, or budget impact fit within the June 28, 2026 authorization?
+- How should Personnel Committee handle interested candidates who are not selected for the paid role but may still be willing to serve in an approved volunteer or committee-support capacity?
 
 ### Application And Screening
 
@@ -270,7 +287,8 @@ Recommended requests for Finance Committee direction:
 4. Revise the Bookkeeper / Financial Administrator job description.
 5. Revise the Bookkeeper application.
 6. Revise the Bookkeeper hiring process, interview guide, reference questions, and candidate rubric.
-7. Decide what questions need Finance Committee direction before Personnel can post the role, begin interviews, or make an offer.
-8. Approve a request for Finance Committee direction, if appropriate.
+7. Approve candidate outreach, bulletin/announcement wording, application window, secure application storage, interview process, and reference process.
+8. Decide what questions need Finance Committee direction before Personnel can post the role, begin interviews, or make an offer.
+9. Approve a request for Finance Committee direction, if appropriate.
 
 Needs Personnel Review: This packet is a working draft for Personnel Committee discussion. It should not be treated as final policy, job approval, compensation approval, or church authorization.

@@ -1,104 +1,112 @@
 sequence,file,group,title,part,characters,words
 1,dist/audiobook/chunks/001-introduction-introduction-part-01.txt,Introduction,Introduction,1,495,65
-2,dist/audiobook/chunks/002-start-here-home-part-01.txt,Start Here,Home,1,4453,594
-3,dist/audiobook/chunks/003-start-here-leader-friendly-dashboard-part-01.txt,Start Here,Leader-Friendly Dashboard,1,3757,511
-4,dist/audiobook/chunks/004-start-here-leader-friendly-dashboard-part-02.txt,Start Here,Leader-Friendly Dashboard,2,3659,438
-5,dist/audiobook/chunks/005-start-here-leader-friendly-dashboard-part-03.txt,Start Here,Leader-Friendly Dashboard,3,4112,513
-6,dist/audiobook/chunks/006-start-here-project-brief-part-01.txt,Start Here,Project Brief,1,3104,418
-7,dist/audiobook/chunks/007-start-here-current-state-assessment-part-01.txt,Start Here,Current State Assessment,1,4361,571
-8,dist/audiobook/chunks/008-start-here-current-state-assessment-part-02.txt,Start Here,Current State Assessment,2,243,35
-9,dist/audiobook/chunks/009-start-here-project-dashboard-part-01.txt,Start Here,Project Dashboard,1,382,50
-10,dist/audiobook/chunks/010-start-here-project-dashboard-part-02.txt,Start Here,Project Dashboard,2,4487,529
-11,dist/audiobook/chunks/011-start-here-project-dashboard-part-03.txt,Start Here,Project Dashboard,3,4459,486
-12,dist/audiobook/chunks/012-start-here-project-dashboard-part-04.txt,Start Here,Project Dashboard,4,4446,480
-13,dist/audiobook/chunks/013-start-here-project-dashboard-part-05.txt,Start Here,Project Dashboard,5,1546,164
-14,dist/audiobook/chunks/014-start-here-project-dashboard-part-06.txt,Start Here,Project Dashboard,6,2688,294
-15,dist/audiobook/chunks/015-start-here-document-inventory-part-01.txt,Start Here,Document Inventory,1,862,116
-16,dist/audiobook/chunks/016-start-here-document-inventory-part-02.txt,Start Here,Document Inventory,2,4431,510
-17,dist/audiobook/chunks/017-start-here-document-inventory-part-03.txt,Start Here,Document Inventory,3,4481,494
-18,dist/audiobook/chunks/018-start-here-document-inventory-part-04.txt,Start Here,Document Inventory,4,4482,491
-19,dist/audiobook/chunks/019-start-here-document-inventory-part-05.txt,Start Here,Document Inventory,5,3460,385
-20,dist/audiobook/chunks/020-start-here-document-inventory-part-06.txt,Start Here,Document Inventory,6,3966,469
-21,dist/audiobook/chunks/021-start-here-document-inventory-part-07.txt,Start Here,Document Inventory,7,1062,118
-22,dist/audiobook/chunks/022-start-here-document-inventory-part-08.txt,Start Here,Document Inventory,8,4475,443
-23,dist/audiobook/chunks/023-start-here-document-inventory-part-09.txt,Start Here,Document Inventory,9,3557,380
-24,dist/audiobook/chunks/024-start-here-document-inventory-part-10.txt,Start Here,Document Inventory,10,2568,263
-25,dist/audiobook/chunks/025-start-here-document-inventory-part-11.txt,Start Here,Document Inventory,11,3567,368
-26,dist/audiobook/chunks/026-start-here-document-inventory-part-12.txt,Start Here,Document Inventory,12,1621,170
-27,dist/audiobook/chunks/027-leadership-review-leadership-review-overview-part-01.txt,Leadership Review,Leadership Review Overview,1,994,132
-28,dist/audiobook/chunks/028-leadership-review-leadership-review-packet-part-01.txt,Leadership Review,Leadership Review Packet,1,2958,399
-29,dist/audiobook/chunks/029-leadership-review-leadership-review-packet-part-02.txt,Leadership Review,Leadership Review Packet,2,3808,460
-30,dist/audiobook/chunks/030-leadership-review-leadership-review-packet-part-03.txt,Leadership Review,Leadership Review Packet,3,3964,520
-31,dist/audiobook/chunks/031-leadership-review-leadership-review-packet-part-04.txt,Leadership Review,Leadership Review Packet,4,1589,219
-32,dist/audiobook/chunks/032-leadership-review-implementation-roadmap-part-01.txt,Leadership Review,Implementation Roadmap,1,3400,418
-33,dist/audiobook/chunks/033-leadership-review-implementation-roadmap-part-02.txt,Leadership Review,Implementation Roadmap,2,3875,444
-34,dist/audiobook/chunks/034-leadership-review-implementation-roadmap-part-03.txt,Leadership Review,Implementation Roadmap,3,4401,528
-35,dist/audiobook/chunks/035-leadership-review-implementation-roadmap-part-04.txt,Leadership Review,Implementation Roadmap,4,218,31
-36,dist/audiobook/chunks/036-leadership-review-decision-log-part-01.txt,Leadership Review,Decision Log,1,2588,355
-37,dist/audiobook/chunks/037-leadership-review-open-questions-part-01.txt,Leadership Review,Open Questions,1,2395,324
-38,dist/audiobook/chunks/038-governance-and-responsibility-constitution-and-bylaws-reference-part-01.txt,Governance and Responsibility,Constitution and Bylaws Reference,1,3831,496
-39,dist/audiobook/chunks/039-governance-and-responsibility-church-organization-chart-part-01.txt,Governance and Responsibility,Church Organization Chart,1,4104,507
-40,dist/audiobook/chunks/040-governance-and-responsibility-church-organization-chart-part-02.txt,Governance and Responsibility,Church Organization Chart,2,1395,183
-41,dist/audiobook/chunks/041-governance-and-responsibility-responsibility-matrix-part-01.txt,Governance and Responsibility,Responsibility Matrix,1,291,34
-42,dist/audiobook/chunks/042-governance-and-responsibility-responsibility-matrix-part-02.txt,Governance and Responsibility,Responsibility Matrix,2,4477,546
-43,dist/audiobook/chunks/043-governance-and-responsibility-responsibility-matrix-part-03.txt,Governance and Responsibility,Responsibility Matrix,3,4252,512
-44,dist/audiobook/chunks/044-governance-and-responsibility-responsibility-matrix-part-04.txt,Governance and Responsibility,Responsibility Matrix,4,1252,161
-45,dist/audiobook/chunks/045-governance-and-responsibility-finance-committee-charter-part-01.txt,Governance and Responsibility,Finance Committee Charter,1,2965,370
-46,dist/audiobook/chunks/046-governance-and-responsibility-personnel-committee-role-part-01.txt,Governance and Responsibility,Personnel Committee Role,1,1565,205
-47,dist/audiobook/chunks/047-roles-and-hiring-treasurer-vs-bookkeeper-duty-split-part-01.txt,Roles and Hiring,Treasurer vs. Bookkeeper Duty Split,1,4403,515
-48,dist/audiobook/chunks/048-roles-and-hiring-treasurer-vs-bookkeeper-duty-split-part-02.txt,Roles and Hiring,Treasurer vs. Bookkeeper Duty Split,2,4434,545
-49,dist/audiobook/chunks/049-roles-and-hiring-treasurer-vs-bookkeeper-duty-split-part-03.txt,Roles and Hiring,Treasurer vs. Bookkeeper Duty Split,3,4468,566
-50,dist/audiobook/chunks/050-roles-and-hiring-treasurer-vs-bookkeeper-duty-split-part-04.txt,Roles and Hiring,Treasurer vs. Bookkeeper Duty Split,4,2331,282
-51,dist/audiobook/chunks/051-roles-and-hiring-treasurer-vs-bookkeeper-duty-split-part-05.txt,Roles and Hiring,Treasurer vs. Bookkeeper Duty Split,5,4312,544
-52,dist/audiobook/chunks/052-roles-and-hiring-treasurer-vs-bookkeeper-duty-split-part-06.txt,Roles and Hiring,Treasurer vs. Bookkeeper Duty Split,6,517,67
-53,dist/audiobook/chunks/053-roles-and-hiring-treasurer-governance-role-part-01.txt,Roles and Hiring,Treasurer Governance Role,1,3155,400
-54,dist/audiobook/chunks/054-roles-and-hiring-interim-treasurer-role-part-01.txt,Roles and Hiring,Interim Treasurer Role,1,762,93
-55,dist/audiobook/chunks/055-roles-and-hiring-bookkeeper-job-description-part-01.txt,Roles and Hiring,Bookkeeper Job Description,1,4157,525
-56,dist/audiobook/chunks/056-roles-and-hiring-bookkeeper-job-description-part-02.txt,Roles and Hiring,Bookkeeper Job Description,2,3854,489
-57,dist/audiobook/chunks/057-roles-and-hiring-bookkeeper-application-part-01.txt,Roles and Hiring,Bookkeeper Application,1,3651,476
-58,dist/audiobook/chunks/058-roles-and-hiring-bookkeeper-hiring-process-part-01.txt,Roles and Hiring,Bookkeeper Hiring Process,1,4471,580
-59,dist/audiobook/chunks/059-roles-and-hiring-bookkeeper-hiring-process-part-02.txt,Roles and Hiring,Bookkeeper Hiring Process,2,4235,612
-60,dist/audiobook/chunks/060-roles-and-hiring-job-description-consistency-check-part-01.txt,Roles and Hiring,Job Description Consistency Check,1,4352,447
-61,dist/audiobook/chunks/061-roles-and-hiring-job-description-consistency-check-part-02.txt,Roles and Hiring,Job Description Consistency Check,2,1708,232
-62,dist/audiobook/chunks/062-finance-operations-reimbursement-policy-part-01.txt,Finance Operations,Reimbursement Policy,1,3128,406
-63,dist/audiobook/chunks/063-finance-operations-reimbursement-process-part-01.txt,Finance Operations,Reimbursement Process,1,4293,558
-64,dist/audiobook/chunks/064-finance-operations-reimbursement-process-part-02.txt,Finance Operations,Reimbursement Process,2,1438,178
-65,dist/audiobook/chunks/065-finance-operations-spending-authority-policy-part-01.txt,Finance Operations,Spending Authority Policy,1,3285,435
-66,dist/audiobook/chunks/066-finance-operations-credit-card-policy-part-01.txt,Finance Operations,Credit Card Policy,1,3468,451
-67,dist/audiobook/chunks/067-finance-operations-monthly-financial-review-policy-part-01.txt,Finance Operations,Monthly Financial Review Policy,1,787,98
-68,dist/audiobook/chunks/068-finance-operations-monthly-finance-committee-checklist-part-01.txt,Finance Operations,Monthly Finance Committee Checklist,1,4365,576
-69,dist/audiobook/chunks/069-finance-operations-monthly-finance-committee-checklist-part-02.txt,Finance Operations,Monthly Finance Committee Checklist,2,1362,183
-70,dist/audiobook/chunks/070-finance-operations-offering-counting-and-deposit-policy-part-01.txt,Finance Operations,Offering Counting and Deposit Policy,1,757,92
-71,dist/audiobook/chunks/071-finance-operations-contribution-entry-process-part-01.txt,Finance Operations,Contribution Entry Process,1,489,58
-72,dist/audiobook/chunks/072-finance-operations-weekly-bookkeeping-checklist-part-01.txt,Finance Operations,Weekly Bookkeeping Checklist,1,373,45
-73,dist/audiobook/chunks/073-finance-operations-monthly-close-checklist-part-01.txt,Finance Operations,Monthly Close Checklist,1,353,43
-74,dist/audiobook/chunks/074-finance-operations-business-meeting-report-process-part-01.txt,Finance Operations,Business Meeting Report Process,1,474,60
-75,dist/audiobook/chunks/075-finance-operations-payroll-process-part-01.txt,Finance Operations,Payroll Process,1,474,60
-76,dist/audiobook/chunks/076-finance-operations-audit-and-review-policy-part-01.txt,Finance Operations,Audit and Review Policy,1,854,110
-77,dist/audiobook/chunks/077-software-evaluation-software-requirements-part-01.txt,Software Evaluation,Software Requirements,1,4043,503
-78,dist/audiobook/chunks/078-software-evaluation-demo-scorecard-part-01.txt,Software Evaluation,Demo Scorecard,1,915,125
-79,dist/audiobook/chunks/079-software-evaluation-demo-scorecard-part-02.txt,Software Evaluation,Demo Scorecard,2,4442,560
-80,dist/audiobook/chunks/080-software-evaluation-demo-scorecard-part-03.txt,Software Evaluation,Demo Scorecard,3,929,119
-81,dist/audiobook/chunks/081-software-evaluation-demo-scorecard-part-04.txt,Software Evaluation,Demo Scorecard,4,4476,621
-82,dist/audiobook/chunks/082-software-evaluation-demo-scorecard-part-05.txt,Software Evaluation,Demo Scorecard,5,615,85
-83,dist/audiobook/chunks/083-software-evaluation-iconcmo-vs-churchtrac-comparison-part-01.txt,Software Evaluation,IconCMO vs. ChurchTrac Comparison,1,2530,297
-84,dist/audiobook/chunks/084-software-evaluation-implementation-plan-part-01.txt,Software Evaluation,Implementation Plan,1,383,48
-85,dist/audiobook/chunks/085-communications-personnel-committee-packet-part-01.txt,Communications,Personnel Committee Packet,1,4302,538
-86,dist/audiobook/chunks/086-communications-personnel-committee-packet-part-02.txt,Communications,Personnel Committee Packet,2,4480,540
-87,dist/audiobook/chunks/087-communications-personnel-committee-packet-part-03.txt,Communications,Personnel Committee Packet,3,4132,503
-88,dist/audiobook/chunks/088-communications-personnel-committee-packet-part-04.txt,Communications,Personnel Committee Packet,4,2469,334
-89,dist/audiobook/chunks/089-communications-finance-committee-packet-part-01.txt,Communications,Finance Committee Packet,1,3147,349
-90,dist/audiobook/chunks/090-communications-finance-committee-packet-part-02.txt,Communications,Finance Committee Packet,2,4461,563
-91,dist/audiobook/chunks/091-communications-finance-committee-packet-part-03.txt,Communications,Finance Committee Packet,3,4241,587
-92,dist/audiobook/chunks/092-communications-finance-committee-packet-part-04.txt,Communications,Finance Committee Packet,4,3894,495
-93,dist/audiobook/chunks/093-communications-finance-committee-packet-part-05.txt,Communications,Finance Committee Packet,5,1027,136
-94,dist/audiobook/chunks/094-communications-personnel-committee-recommendation-part-01.txt,Communications,Personnel Committee Recommendation,1,2996,382
-95,dist/audiobook/chunks/095-communications-finance-committee-recommendation-part-01.txt,Communications,Finance Committee Recommendation,1,584,72
-96,dist/audiobook/chunks/096-communications-deacon-update-part-01.txt,Communications,Deacon Update,1,429,59
-97,dist/audiobook/chunks/097-communications-church-business-meeting-summary-part-01.txt,Communications,Church Business Meeting Summary,1,1750,258
-98,dist/audiobook/chunks/098-communications-one-page-congregational-summary-part-01.txt,Communications,One-Page Congregational Summary,1,172,16
-99,dist/audiobook/chunks/099-communications-congregational-slide-outline-part-01.txt,Communications,Congregational Slide Outline,1,163,16
-100,dist/audiobook/chunks/100-exports-and-releases-export-process-part-01.txt,Exports and Releases,Export Process,1,4104,555
-101,dist/audiobook/chunks/101-exports-and-releases-exported-files-and-release-bundles-part-01.txt,Exports and Releases,Exported Files and Release Bundles,1,2962,370
-102,dist/audiobook/chunks/102-exports-and-releases-document-workflow-notes-part-01.txt,Exports and Releases,Document Workflow Notes,1,4448,553
-103,dist/audiobook/chunks/103-exports-and-releases-document-workflow-notes-part-02.txt,Exports and Releases,Document Workflow Notes,2,1374,167
+2,dist/audiobook/chunks/002-start-here-home-part-01.txt,Start Here,Home,1,4365,573
+3,dist/audiobook/chunks/003-start-here-home-part-02.txt,Start Here,Home,2,453,67
+4,dist/audiobook/chunks/004-start-here-leader-friendly-dashboard-part-01.txt,Start Here,Leader-Friendly Dashboard,1,4275,577
+5,dist/audiobook/chunks/005-start-here-leader-friendly-dashboard-part-02.txt,Start Here,Leader-Friendly Dashboard,2,3659,438
+6,dist/audiobook/chunks/006-start-here-leader-friendly-dashboard-part-03.txt,Start Here,Leader-Friendly Dashboard,3,4322,538
+7,dist/audiobook/chunks/007-start-here-leader-friendly-dashboard-part-04.txt,Start Here,Leader-Friendly Dashboard,4,309,37
+8,dist/audiobook/chunks/008-start-here-project-brief-part-01.txt,Start Here,Project Brief,1,3104,418
+9,dist/audiobook/chunks/009-start-here-current-state-assessment-part-01.txt,Start Here,Current State Assessment,1,4361,571
+10,dist/audiobook/chunks/010-start-here-current-state-assessment-part-02.txt,Start Here,Current State Assessment,2,243,35
+11,dist/audiobook/chunks/011-start-here-project-dashboard-part-01.txt,Start Here,Project Dashboard,1,382,50
+12,dist/audiobook/chunks/012-start-here-project-dashboard-part-02.txt,Start Here,Project Dashboard,2,4487,529
+13,dist/audiobook/chunks/013-start-here-project-dashboard-part-03.txt,Start Here,Project Dashboard,3,4479,486
+14,dist/audiobook/chunks/014-start-here-project-dashboard-part-04.txt,Start Here,Project Dashboard,4,4488,489
+15,dist/audiobook/chunks/015-start-here-project-dashboard-part-05.txt,Start Here,Project Dashboard,5,1963,209
+16,dist/audiobook/chunks/016-start-here-project-dashboard-part-06.txt,Start Here,Project Dashboard,6,2688,294
+17,dist/audiobook/chunks/017-start-here-document-inventory-part-01.txt,Start Here,Document Inventory,1,862,116
+18,dist/audiobook/chunks/018-start-here-document-inventory-part-02.txt,Start Here,Document Inventory,2,4431,510
+19,dist/audiobook/chunks/019-start-here-document-inventory-part-03.txt,Start Here,Document Inventory,3,4460,493
+20,dist/audiobook/chunks/020-start-here-document-inventory-part-04.txt,Start Here,Document Inventory,4,4460,490
+21,dist/audiobook/chunks/021-start-here-document-inventory-part-05.txt,Start Here,Document Inventory,5,4057,450
+22,dist/audiobook/chunks/022-start-here-document-inventory-part-06.txt,Start Here,Document Inventory,6,3966,469
+23,dist/audiobook/chunks/023-start-here-document-inventory-part-07.txt,Start Here,Document Inventory,7,1062,118
+24,dist/audiobook/chunks/024-start-here-document-inventory-part-08.txt,Start Here,Document Inventory,8,4475,443
+25,dist/audiobook/chunks/025-start-here-document-inventory-part-09.txt,Start Here,Document Inventory,9,3557,380
+26,dist/audiobook/chunks/026-start-here-document-inventory-part-10.txt,Start Here,Document Inventory,10,2568,263
+27,dist/audiobook/chunks/027-start-here-document-inventory-part-11.txt,Start Here,Document Inventory,11,3567,368
+28,dist/audiobook/chunks/028-start-here-document-inventory-part-12.txt,Start Here,Document Inventory,12,1621,170
+29,dist/audiobook/chunks/029-leadership-review-leadership-review-overview-part-01.txt,Leadership Review,Leadership Review Overview,1,994,132
+30,dist/audiobook/chunks/030-leadership-review-leadership-review-packet-part-01.txt,Leadership Review,Leadership Review Packet,1,3156,425
+31,dist/audiobook/chunks/031-leadership-review-leadership-review-packet-part-02.txt,Leadership Review,Leadership Review Packet,2,4246,521
+32,dist/audiobook/chunks/032-leadership-review-leadership-review-packet-part-03.txt,Leadership Review,Leadership Review Packet,3,4365,569
+33,dist/audiobook/chunks/033-leadership-review-leadership-review-packet-part-04.txt,Leadership Review,Leadership Review Packet,4,1589,219
+34,dist/audiobook/chunks/034-leadership-review-implementation-roadmap-part-01.txt,Leadership Review,Implementation Roadmap,1,3400,418
+35,dist/audiobook/chunks/035-leadership-review-implementation-roadmap-part-02.txt,Leadership Review,Implementation Roadmap,2,3493,413
+36,dist/audiobook/chunks/036-leadership-review-implementation-roadmap-part-03.txt,Leadership Review,Implementation Roadmap,3,3966,466
+37,dist/audiobook/chunks/037-leadership-review-implementation-roadmap-part-04.txt,Leadership Review,Implementation Roadmap,4,1964,243
+38,dist/audiobook/chunks/038-leadership-review-decision-log-part-01.txt,Leadership Review,Decision Log,1,2999,405
+39,dist/audiobook/chunks/039-leadership-review-open-questions-part-01.txt,Leadership Review,Open Questions,1,3655,485
+40,dist/audiobook/chunks/040-governance-and-responsibility-constitution-and-bylaws-reference-part-01.txt,Governance and Responsibility,Constitution and Bylaws Reference,1,4078,522
+41,dist/audiobook/chunks/041-governance-and-responsibility-constitution-and-bylaws-reference-part-02.txt,Governance and Responsibility,Constitution and Bylaws Reference,2,1173,160
+42,dist/audiobook/chunks/042-governance-and-responsibility-church-organization-chart-part-01.txt,Governance and Responsibility,Church Organization Chart,1,4496,558
+43,dist/audiobook/chunks/043-governance-and-responsibility-church-organization-chart-part-02.txt,Governance and Responsibility,Church Organization Chart,2,2071,280
+44,dist/audiobook/chunks/044-governance-and-responsibility-responsibility-matrix-part-01.txt,Governance and Responsibility,Responsibility Matrix,1,489,60
+45,dist/audiobook/chunks/045-governance-and-responsibility-responsibility-matrix-part-02.txt,Governance and Responsibility,Responsibility Matrix,2,4477,546
+46,dist/audiobook/chunks/046-governance-and-responsibility-responsibility-matrix-part-03.txt,Governance and Responsibility,Responsibility Matrix,3,4498,543
+47,dist/audiobook/chunks/047-governance-and-responsibility-responsibility-matrix-part-04.txt,Governance and Responsibility,Responsibility Matrix,4,1110,136
+48,dist/audiobook/chunks/048-governance-and-responsibility-responsibility-matrix-part-05.txt,Governance and Responsibility,Responsibility Matrix,5,2005,265
+49,dist/audiobook/chunks/049-governance-and-responsibility-finance-committee-charter-part-01.txt,Governance and Responsibility,Finance Committee Charter,1,4078,517
+50,dist/audiobook/chunks/050-governance-and-responsibility-personnel-committee-role-part-01.txt,Governance and Responsibility,Personnel Committee Role,1,1565,205
+51,dist/audiobook/chunks/051-governance-and-responsibility-future-governance-expansion-part-01.txt,Governance and Responsibility,Future Governance Expansion,1,4306,572
+52,dist/audiobook/chunks/052-governance-and-responsibility-future-governance-expansion-part-02.txt,Governance and Responsibility,Future Governance Expansion,2,655,87
+53,dist/audiobook/chunks/053-roles-and-hiring-treasurer-vs-bookkeeper-duty-split-part-01.txt,Roles and Hiring,Treasurer vs. Bookkeeper Duty Split,1,4481,525
+54,dist/audiobook/chunks/054-roles-and-hiring-treasurer-vs-bookkeeper-duty-split-part-02.txt,Roles and Hiring,Treasurer vs. Bookkeeper Duty Split,2,26,4
+55,dist/audiobook/chunks/055-roles-and-hiring-treasurer-vs-bookkeeper-duty-split-part-03.txt,Roles and Hiring,Treasurer vs. Bookkeeper Duty Split,3,4434,545
+56,dist/audiobook/chunks/056-roles-and-hiring-treasurer-vs-bookkeeper-duty-split-part-04.txt,Roles and Hiring,Treasurer vs. Bookkeeper Duty Split,4,4468,566
+57,dist/audiobook/chunks/057-roles-and-hiring-treasurer-vs-bookkeeper-duty-split-part-05.txt,Roles and Hiring,Treasurer vs. Bookkeeper Duty Split,5,2331,282
+58,dist/audiobook/chunks/058-roles-and-hiring-treasurer-vs-bookkeeper-duty-split-part-06.txt,Roles and Hiring,Treasurer vs. Bookkeeper Duty Split,6,4468,564
+59,dist/audiobook/chunks/059-roles-and-hiring-treasurer-vs-bookkeeper-duty-split-part-07.txt,Roles and Hiring,Treasurer vs. Bookkeeper Duty Split,7,517,67
+60,dist/audiobook/chunks/060-roles-and-hiring-treasurer-governance-role-part-01.txt,Roles and Hiring,Treasurer Governance Role,1,3544,459
+61,dist/audiobook/chunks/061-roles-and-hiring-interim-treasurer-role-part-01.txt,Roles and Hiring,Interim Treasurer Role,1,762,93
+62,dist/audiobook/chunks/062-roles-and-hiring-bookkeeper-job-description-part-01.txt,Roles and Hiring,Bookkeeper Job Description,1,4157,525
+63,dist/audiobook/chunks/063-roles-and-hiring-bookkeeper-job-description-part-02.txt,Roles and Hiring,Bookkeeper Job Description,2,3854,489
+64,dist/audiobook/chunks/064-roles-and-hiring-bookkeeper-application-part-01.txt,Roles and Hiring,Bookkeeper Application,1,3651,476
+65,dist/audiobook/chunks/065-roles-and-hiring-bookkeeper-hiring-process-part-01.txt,Roles and Hiring,Bookkeeper Hiring Process,1,4484,591
+66,dist/audiobook/chunks/066-roles-and-hiring-bookkeeper-hiring-process-part-02.txt,Roles and Hiring,Bookkeeper Hiring Process,2,3992,565
+67,dist/audiobook/chunks/067-roles-and-hiring-bookkeeper-hiring-process-part-03.txt,Roles and Hiring,Bookkeeper Hiring Process,3,1383,193
+68,dist/audiobook/chunks/068-roles-and-hiring-job-description-consistency-check-part-01.txt,Roles and Hiring,Job Description Consistency Check,1,4352,447
+69,dist/audiobook/chunks/069-roles-and-hiring-job-description-consistency-check-part-02.txt,Roles and Hiring,Job Description Consistency Check,2,1708,232
+70,dist/audiobook/chunks/070-finance-operations-reimbursement-policy-part-01.txt,Finance Operations,Reimbursement Policy,1,3128,406
+71,dist/audiobook/chunks/071-finance-operations-reimbursement-process-part-01.txt,Finance Operations,Reimbursement Process,1,4293,558
+72,dist/audiobook/chunks/072-finance-operations-reimbursement-process-part-02.txt,Finance Operations,Reimbursement Process,2,1438,178
+73,dist/audiobook/chunks/073-finance-operations-spending-authority-policy-part-01.txt,Finance Operations,Spending Authority Policy,1,4039,541
+74,dist/audiobook/chunks/074-finance-operations-credit-card-policy-part-01.txt,Finance Operations,Credit Card Policy,1,3468,451
+75,dist/audiobook/chunks/075-finance-operations-monthly-financial-review-policy-part-01.txt,Finance Operations,Monthly Financial Review Policy,1,787,98
+76,dist/audiobook/chunks/076-finance-operations-monthly-finance-committee-checklist-part-01.txt,Finance Operations,Monthly Finance Committee Checklist,1,4365,576
+77,dist/audiobook/chunks/077-finance-operations-monthly-finance-committee-checklist-part-02.txt,Finance Operations,Monthly Finance Committee Checklist,2,1362,183
+78,dist/audiobook/chunks/078-finance-operations-offering-counting-and-deposit-policy-part-01.txt,Finance Operations,Offering Counting and Deposit Policy,1,757,92
+79,dist/audiobook/chunks/079-finance-operations-contribution-entry-process-part-01.txt,Finance Operations,Contribution Entry Process,1,489,58
+80,dist/audiobook/chunks/080-finance-operations-weekly-bookkeeping-checklist-part-01.txt,Finance Operations,Weekly Bookkeeping Checklist,1,373,45
+81,dist/audiobook/chunks/081-finance-operations-monthly-close-checklist-part-01.txt,Finance Operations,Monthly Close Checklist,1,353,43
+82,dist/audiobook/chunks/082-finance-operations-business-meeting-report-process-part-01.txt,Finance Operations,Business Meeting Report Process,1,474,60
+83,dist/audiobook/chunks/083-finance-operations-payroll-process-part-01.txt,Finance Operations,Payroll Process,1,474,60
+84,dist/audiobook/chunks/084-finance-operations-audit-and-review-policy-part-01.txt,Finance Operations,Audit and Review Policy,1,854,110
+85,dist/audiobook/chunks/085-software-evaluation-software-requirements-part-01.txt,Software Evaluation,Software Requirements,1,4043,503
+86,dist/audiobook/chunks/086-software-evaluation-demo-scorecard-part-01.txt,Software Evaluation,Demo Scorecard,1,915,125
+87,dist/audiobook/chunks/087-software-evaluation-demo-scorecard-part-02.txt,Software Evaluation,Demo Scorecard,2,4442,560
+88,dist/audiobook/chunks/088-software-evaluation-demo-scorecard-part-03.txt,Software Evaluation,Demo Scorecard,3,929,119
+89,dist/audiobook/chunks/089-software-evaluation-demo-scorecard-part-04.txt,Software Evaluation,Demo Scorecard,4,4476,621
+90,dist/audiobook/chunks/090-software-evaluation-demo-scorecard-part-05.txt,Software Evaluation,Demo Scorecard,5,615,85
+91,dist/audiobook/chunks/091-software-evaluation-iconcmo-vs-churchtrac-comparison-part-01.txt,Software Evaluation,IconCMO vs. ChurchTrac Comparison,1,2530,297
+92,dist/audiobook/chunks/092-software-evaluation-implementation-plan-part-01.txt,Software Evaluation,Implementation Plan,1,383,48
+93,dist/audiobook/chunks/093-communications-personnel-committee-packet-part-01.txt,Communications,Personnel Committee Packet,1,4302,538
+94,dist/audiobook/chunks/094-communications-personnel-committee-packet-part-02.txt,Communications,Personnel Committee Packet,2,4480,540
+95,dist/audiobook/chunks/095-communications-personnel-committee-packet-part-03.txt,Communications,Personnel Committee Packet,3,4219,507
+96,dist/audiobook/chunks/096-communications-personnel-committee-packet-part-04.txt,Communications,Personnel Committee Packet,4,4019,543
+97,dist/audiobook/chunks/097-communications-finance-committee-packet-part-01.txt,Communications,Finance Committee Packet,1,4472,524
+98,dist/audiobook/chunks/098-communications-finance-committee-packet-part-02.txt,Communications,Finance Committee Packet,2,4461,563
+99,dist/audiobook/chunks/099-communications-finance-committee-packet-part-03.txt,Communications,Finance Committee Packet,3,4347,602
+100,dist/audiobook/chunks/100-communications-finance-committee-packet-part-04.txt,Communications,Finance Committee Packet,4,3894,495
+101,dist/audiobook/chunks/101-communications-finance-committee-packet-part-05.txt,Communications,Finance Committee Packet,5,1399,184
+102,dist/audiobook/chunks/102-communications-personnel-committee-recommendation-part-01.txt,Communications,Personnel Committee Recommendation,1,2996,382
+103,dist/audiobook/chunks/103-communications-finance-committee-recommendation-part-01.txt,Communications,Finance Committee Recommendation,1,584,72
+104,dist/audiobook/chunks/104-communications-deacon-update-part-01.txt,Communications,Deacon Update,1,429,59
+105,dist/audiobook/chunks/105-communications-church-business-meeting-summary-part-01.txt,Communications,Church Business Meeting Summary,1,1750,258
+106,dist/audiobook/chunks/106-communications-one-page-congregational-summary-part-01.txt,Communications,One-Page Congregational Summary,1,172,16
+107,dist/audiobook/chunks/107-communications-congregational-slide-outline-part-01.txt,Communications,Congregational Slide Outline,1,163,16
+108,dist/audiobook/chunks/108-exports-and-releases-export-process-part-01.txt,Exports and Releases,Export Process,1,4104,555
+109,dist/audiobook/chunks/109-exports-and-releases-exported-files-and-release-bundles-part-01.txt,Exports and Releases,Exported Files and Release Bundles,1,2962,370
+110,dist/audiobook/chunks/110-exports-and-releases-document-workflow-notes-part-01.txt,Exports and Releases,Document Workflow Notes,1,4448,553
+111,dist/audiobook/chunks/111-exports-and-releases-document-workflow-notes-part-02.txt,Exports and Releases,Document Workflow Notes,2,1374,167

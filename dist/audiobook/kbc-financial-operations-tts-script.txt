@@ -1,6 +1,6 @@
 KBC Financial Operations Listening Script.
 
-Generated on 2026-07-07.
+Generated on 2026-07-08.
 
 This is a text to speech version of the current KBC financial operations documentation.
 The goal is to help leaders listen through the material without reading every document on screen.
@@ -57,13 +57,16 @@ The remaining work is to finalize the job description, application, hiring proce
 
 This work should be treated as a stewardship and systems improvement effort, not a blame discussion.
 
+Note: Congregation Final Authority.
+The congregation remains the final authority where KBC bylaws, budget, policy, officer election, major non-budgeted spending, or church practice require a vote. Committee recommendations should preserve that authority, not bypass it.
+
 Section: Top 5 Decisions Needed.
 
 Confirm the official June 28, 2026 minutes and keep the hiring plan within the authorization already granted.
 Confirm which duties remain with the elected Treasurer / Financial Officer and which duties move to the Bookkeeper / Financial Administrator.
 Have Finance Committee define the financial duties, access, controls, software responsibilities, monthly reporting expectations, and budget impact before hiring materials are used.
 Have Personnel Committee finalize the job description, application, hiring process, supervision, evaluation process, and employment details, coordinating with Nominating Committee as needed under the motion.
-Confirm what remaining items need Deacon review, bylaw review, professional review, church vote, or later congregational updates.
+Confirm what remaining items need Deacon review, bylaw review, professional review, church vote, or later congregational updates, especially annual budget approval and major non-budgeted spending.
 
 Section: Key Documents.
 
@@ -75,6 +78,7 @@ Bookkeeper Job Description.
 Bookkeeper Hiring Process.
 Finance Committee Packet.
 Personnel Committee Packet.
+Future Governance Expansion.
 Software Requirements.
 Export Process.
 
@@ -117,11 +121,17 @@ On June 28, 2026, the congregation approved adding a paid, part-time Bookkeeper 
 
 The main work now is to move carefully from authorization to implementation: clarify duties, confirm controls, finalize hiring materials, coordinate the committees named in the motion, and document decisions.
 
+Note: Congregation Final Authority.
+The congregation remains the final authority where KBC bylaws, budget, policy, officer election, major non-budgeted spending, or church practice require a vote. The current committee work should prepare clear recommendations and preserve that authority.
+
 Section: 2. Most Important Next Step.
 
 Confirm the official minutes for the June 28, 2026 motion and make sure the job description, hiring process, supervision plan, compensation, and budget adjustment stay within the authorization already granted.
 
 At the same time, Finance Committee should confirm the financial duties, controls, access, software responsibilities, monthly reporting expectations, and budget impact before Personnel Committee uses final hiring materials.
+
+Tip: Immediate Next Step.
+Personnel Committee should prepare candidate outreach and an application window, while Finance Committee confirms the financial duties, controls, reporting line, and interim supervision expectations.
 
 Section: 3. Top Decisions Needed.
 
@@ -178,6 +188,7 @@ Document: Software Implementation Plan. Purpose: Outline software setup and tran
 Document: Deacon Update. Purpose: Placeholder for Deacon update or counsel request.. Owner: Pastor / leadership team. Status: Parking Lot. Review Needed By: Deacons, Pastor. Priority: Low. Link: Open.
 Document: Audit and Review Policy. Purpose: Draft annual financial review or audit expectations.. Owner: Finance Committee. Status: Needs Finance Review. Review Needed By: Finance Committee, CPA/accounting advisor if used. Priority: Medium. Link: Open.
 Document: Payroll Process. Purpose: Draft payroll coordination process.. Owner: Finance Committee. Status: Needs Finance Review. Review Needed By: Finance Committee, Personnel Committee, payroll/accounting advisor. Priority: Medium. Link: Open.
+Document: Future Governance Expansion. Purpose: Preserve later questions about Benevolence, other committee spending, confidentiality, Deacon counsel, and congregational approval paths.. Owner: Pastor / Deacons / Finance Committee. Status: Parking Lot. Review Needed By: Pastor, Deacons, Finance Committee, Personnel Committee, Nominating Committee. Priority: Medium. Link: Open.
 
 Section: 9. Recent Decisions.
 
@@ -192,6 +203,7 @@ What financial controls must Finance Committee define before hiring materials ar
 What employment classification, supervision, evaluation process, and start date should Personnel Committee recommend within the June 28, 2026 authorization?
 How should Personnel Committee and Nominating Committee coordinate under the motion?
 Which remaining items need Deacon review, church vote, CPA/accounting review, attorney/HR review, or software/vendor review?
+What future governance review is needed for Benevolence or other committee spending without slowing the immediate Bookkeeper hiring process?
 
 See Open Questions for the full list.
 
@@ -392,6 +404,7 @@ Document: docs/governance/church-organization-chart.md. Purpose: Show a draft ch
 Document: docs/governance/responsibility-matrix.md. Purpose: Clarify ownership among Treasurer, Bookkeeper, Finance, Personnel, Nominating, Pastor, Deacons, and Congregation.. Owner: Finance Committee. Status: Needs bylaw review. Review needed by: Finance Committee, Personnel Committee, Nominating Committee, Pastor, Deacons. Priority: High. Notes: Reflects June 28 Bookkeeper authorization, Personnel hiring authority, Nominating coordination, and Finance budget-adjustment responsibility; still needs bylaw/practice check..
 Document: docs/governance/finance-committee-charter.md. Purpose: Define Finance Committee purpose, responsibilities, monthly review, software ownership, and reporting.. Owner: Finance Committee. Status: Needs bylaw review. Review needed by: Finance Committee, Pastor, Deacons. Priority: High. Notes: Needs confirmation against bylaws and church practice..
 Document: docs/governance/personnel-committee-role.md. Purpose: Clarify Personnel Committee role in finance-related staffing and evaluations.. Owner: Personnel Committee. Status: Needs Personnel input. Review needed by: Personnel Committee, Nominating Committee, Finance Committee. Priority: Medium. Notes: Should document how Personnel will use the already-granted hiring authority and coordinate with Nominating under the motion..
+Document: docs/governance/future-governance-expansion.md. Purpose: Park later governance-control questions for Benevolence, other committees, Deacon counsel, and congregational approval paths.. Owner: Pastor / Deacons / Finance Committee. Status: Parking lot. Review needed by: Pastor, Deacons, Finance Committee, Personnel Committee, Nominating Committee. Priority: Medium. Notes: Keep this out of the immediate Bookkeeper hiring packet unless an urgent issue requires action..
 Document: docs/roles/treasurer-vs-bookkeeper-duty-split.md. Purpose: Compare current Treasurer duties with proposed Treasurer, Bookkeeper, committee, and vendor responsibilities.. Owner: Finance Committee. Status: Needs committee input. Review needed by: Finance Committee, Personnel Committee, Nominating Committee. Priority: High. Notes: Core document for role separation..
 Document: docs/roles/treasurer-governance-role.md. Purpose: Draft governance-focused Treasurer / Financial Officer role.. Owner: Finance Committee. Status: Needs bylaw review. Review needed by: Finance Committee, Nominating Committee, Personnel Committee. Priority: High. Notes: Must align with bylaws before adoption..
 Document: docs/roles/interim-treasurer-role.md. Purpose: Define temporary Treasurer coverage expectations.. Owner: Finance Committee. Status: Needs bylaw review. Review needed by: Finance Committee, Nominating Committee, Pastor, Deacons. Priority: High. Notes: Should be clarified during stabilization..
@@ -472,6 +485,7 @@ File name: docs/governance/constitution-and-bylaws-reference.md. Type of documen
 File name: docs/governance/finance-committee-charter.md. Type of document: Committee charter. Purpose: Define Finance Committee purpose, responsibilities, meeting cadence, monthly review, software ownership, and reporting.. Current status: Draft. Related committee/body: Finance Committee. Operations Manual: Yes. Open questions: Does this match KBC bylaws and current committee authority?.
 File name: docs/governance/personnel-committee-role.md. Type of document: Committee role clarification. Purpose: Clarify Personnel Committee role in finance-related staffing, job descriptions, accountability, and evaluations.. Current status: Draft. Related committee/body: Personnel Committee. Operations Manual: Maybe. Open questions: Should this live in a broader personnel manual instead of the financial operations manual?.
 File name: docs/governance/responsibility-matrix.md. Type of document: Responsibility matrix. Purpose: Show which committee/body owns which finance operations decisions.. Current status: Draft. Related committee/body: Personnel Committee, Finance Committee, Nominating Committee, Deacons, Pastor, Treasurer, Bookkeeper, Congregation. Operations Manual: Yes. Open questions: Which cells require bylaw confirmation or church practice confirmation?.
+File name: docs/governance/future-governance-expansion.md. Type of document: Parking lot / governance review note. Purpose: Preserve future review questions for Benevolence, other committee spending, Deacon counsel, and congregational approval paths.. Current status: Parking Lot. Related committee/body: Pastor, Deacons, Finance Committee, Personnel Committee, Nominating Committee, Congregation if required. Operations Manual: Maybe. Open questions: Which future issues should wait until Bookkeeper hiring and immediate financial controls are stable?.
 File name: docs/roles/treasurer-governance-role.md. Type of document: Role description. Purpose: Draft the elected Treasurer / Financial Officer role focused on governance, accountability, reporting, and Finance Committee coordination.. Current status: Draft. Related committee/body: Treasurer, Finance Committee, Nominating Committee, Congregation. Operations Manual: Yes. Open questions: Should day-to-day bookkeeping be optional, interim-only, or removed from this role?.
 File name: docs/roles/bookkeeper-financial-administrator-job-description.md. Type of document: Job description. Purpose: Draft operational paid Bookkeeper / Financial Administrator duties, qualifications, software responsibilities, and accountability.. Current status: Draft. Related committee/body: Personnel Committee, Finance Committee. Operations Manual: Maybe. Open questions: What compensation, hours, classification, supervision, and Finance Committee duty/control input are needed before hiring?.
 File name: docs/roles/bookkeeper-hiring-process.md. Type of document: Hiring process / checklist. Purpose: Provide hiring checklist, interview guide, reference questions, and candidate evaluation rubric for the authorized paid Bookkeeper role.. Current status: Draft. Related committee/body: Personnel Committee, Finance Committee. Operations Manual: No. Open questions: Who will serve as hiring lead, interview coordinator, reference checker, and Finance workflow reviewer?.
@@ -629,6 +643,9 @@ The recommended direction is to clarify responsibilities while moving toward imp
 
 No final recommendation should be treated as approved until the proper committee, bylaw, leadership, and church approval steps are complete.
 
+Note: Congregation Final Authority.
+The congregation remains the final authority where KBC bylaws, budget, policy, officer election, major non-budgeted spending, or church practice require a vote.
+
 Section: 2. Current Situation.
 
 The Treasurer position is in transition.
@@ -660,7 +677,7 @@ Area: Bookkeeper / Financial Administrator. Recommended Structure: Authorized pa
 Area: Finance Committee. Recommended Structure: Owner of financial controls, software selection, reimbursement policy, spending authority, card/payment policy, budget oversight, monthly review, audit/review process, outside-budget spending recommendations, and the budget adjustment assigned by the June 28 motion..
 Area: Personnel Committee. Recommended Structure: Owner of job description, application, hiring process, references/background checks, compensation recommendation, and evaluation process for the authorized paid Bookkeeper role; authorized to hire the right candidate..
 Area: Nominating Committee. Recommended Structure: Works with Personnel Committee to add the Bookkeeper position as named in the June 28 motion; involved where bylaws assign responsibility for elected officer recommendations..
-Area: Pastor and Deacons. Recommended Structure: Provide leadership review, communication support, counsel, and review where church practice requires..
+Area: Pastor and Deacons. Recommended Structure: Provide leadership review, communication support, counsel, and review where church practice requires; Deacons may raise concerns and recommend issues back to committees or the congregation through proper process, but should not become a unilateral financial authority..
 Area: Congregation. Recommended Structure: Authorized the paid, part-time Bookkeeper position on June 28, 2026, with a limit of $150 per week; votes later where bylaws, budget, compensation beyond prior authorization, software contracts, policy changes, or church practice require..
 
 Section: 5. Treasurer vs. Bookkeeper Distinction.
@@ -703,6 +720,8 @@ Congregation votes when required.
 
 The most important boundary is this: Personnel Committee should not make Finance Committee decisions about software, reimbursement, spending authority, card policy, monthly financial review, or audit/review process. Personnel can prepare role materials, but Finance should define the financial duties, controls, budget impact, and review expectations.
 
+Another important boundary is that Deacon counsel should help keep the process faithful, orderly, and unified, but it should not replace Finance Committee ownership, Personnel Committee ownership, bylaw requirements, or congregational approval where a vote is required.
+
 Section: 7. Decisions Needed From Personnel Committee.
 
 Personnel Committee needs to decide or recommend:
@@ -731,6 +750,7 @@ What monthly financial review packet should be required.
 What audit/review process is appropriate.
 Whether payroll or accounting work should be supported by an outside vendor.
 What budget impact should be recommended for software, bookkeeping support, or outside services.
+What annual budget and major non-budgeted spending approval path should be documented so congregational authority remains clear.
 
 Section: 9. Decisions Likely Requiring Church Approval.
 
@@ -739,6 +759,7 @@ These items may require church approval depending on bylaws, budget, and church 
 Election or confirmation of a Treasurer / Financial Officer.
 Bookkeeper compensation, hours, or budget impact beyond the June 28, 2026 authorization.
 Budget changes needed for software, payroll/accounting vendor, or staffing.
+Annual budget approval and major non-budgeted expenses where bylaws, amount, policy, or church practice require a vote.
 Software contracts or recurring financial commitments above church-approved thresholds.
 Spending authority or policy changes that affect church approval rights.
 Major purchases, debt, or long-term commitments.
@@ -759,6 +780,7 @@ Review the Treasurer vs. Bookkeeper duty split.
 Review the responsibility matrix.
 Have Personnel Committee review role, application, and hiring process materials.
 Have Finance Committee review financial decision areas.
+Begin practical Bookkeeper candidate outreach, bulletin/announcement preparation, and application-window planning after Personnel confirms the process.
 Identify which items need bylaw review, Deacon review, or church vote.
 
 Section: 60 Days.
@@ -872,6 +894,10 @@ Finance Committee reviews docs/communications/finance-committee-packet.md.
 Confirm the official June 28, 2026 minutes and recorded motion authorizing the paid, part-time Bookkeeper position.
 Confirm how Personnel Committee and Nominating Committee should coordinate under the motion.
 Confirm the duty split between Treasurer / Financial Officer and the authorized Bookkeeper / Financial Administrator.
+Contact the three known interested Bookkeeper candidates and invite them to complete the approved application process.
+Prepare a bulletin or announcement request for additional candidates.
+Define the application collection window, submission method, and secure storage location.
+Confirm the interim supervision and financial-review line, while marking final supervisor as needing committee confirmation.
 Decide what items need Deacon review, Nominating Committee review, or church vote.
 Update docs/02-decision-log.md after committee direction is given.
 
@@ -895,6 +921,8 @@ Set proposed TBD thresholds in spending and reimbursement drafts.
 Decide whether shared debit cards should be replaced with individual cards or another controlled payment method.
 Identify budget impact for software, bookkeeping support, outside payroll/accounting support, bonding, background checks, or audit/review.
 Personnel Committee finalizes Bookkeeper job description, application, and hiring process based on Finance direction.
+Coordinate interviews, reference checks, and candidate evaluation for the authorized Bookkeeper role.
+Decide whether other interested people could serve later through Finance Committee involvement, controlled volunteer helper roles, or another approved support path.
 
 Section: 90-Day Plan.
 
@@ -916,6 +944,7 @@ Prepare business meeting report or motion using docs/communications/church-busin
 Launch or continue the authorized Bookkeeper / Financial Administrator hiring process.
 Train Treasurer, Bookkeeper, and committee reviewers on the monthly packet and documentation expectations.
 Move approved decisions from open questions into docs/02-decision-log.md.
+Move broader committee-spending questions, including Benevolence, into a future governance review only after the immediate hiring and control work is stable.
 
 Section: Long-Term Operations Manual Integration.
 
@@ -973,6 +1002,7 @@ Does any Bookkeeper recommendation exceed the June 28, 2026 authorization of a p
 What professional review is needed for payroll, tax, accounting, employment, or legal questions?
 What software best supports KBC's actual workflow and monthly review needs?
 Who will maintain the Operations Manual after initial adoption?
+What later governance review is needed for Benevolence or other committees with spending authority?
 
 Needs Committee Review: This roadmap should be reviewed by Finance Committee, Personnel Committee, Pastor, Deacons, and any other body required by KBC bylaws or church practice.
 
@@ -988,6 +1018,7 @@ Use this log for meaningful project decisions, committee direction, approval ste
 Table summary.
 Date: 2026-07-06. Decision: Repository structure created for KBC financial operations modernization.. Owner: Cory Davis. Status: Complete. Notes: Created source-materials, docs, templates, and archive structure..
 Date: 2026-06-28. Decision: Congregation approved adding a paid, part-time Bookkeeper position.. Owner: Congregation / Personnel Committee / Nominating Committee / Finance Committee. Status: Complete - recorded. Notes: Motion tasked Personnel and Nominating Committees to work together to add a paid, part-time Bookkeeper position, not to exceed $150 per week, described as $18.75 per hour for approximately 8 hours. The congregation gave Personnel Committee authority to hire the right candidate and gave Finance Committee responsibility for adjusting the budget to fund this specific operational need..
+Date: 2026-07-08. Decision: Leadership review feedback captured for the next phase.. Owner: Project lead / leadership reviewers. Status: Review input captured. Notes: Keep congregational authority prominent; clarify Finance, Treasurer, Bookkeeper, Deacon, and committee lanes; preserve Benevolence and other committee-spending questions for future governance review. This is review input, not approved policy..
 Date: TBD. Decision: Confirm Treasurer and authorized Bookkeeper / Financial Administrator duty split.. Owner: Finance Committee. Status: Needs Finance Review. Notes: Personnel Committee owns hiring, but Finance should define duties, access, controls, reporting expectations, and budget impact before hiring materials are finalized..
 
 Section: Recorded Motion Summary.
@@ -1027,9 +1058,12 @@ Which day-to-day tasks can be assigned to a Bookkeeper / Financial Administrator
 What financial software should KBC use going forward?
 What reimbursement process should be adopted?
 What spending authority thresholds should apply?
+What annual budget approval process should be documented so the congregation remains clearly involved where required?
+What threshold or type of major non-budgeted expense should require congregational approval?
 Should shared debit cards be replaced with individual church credit cards or another controlled payment method?
 What should be included in the monthly financial review packet?
 What audit, review, or outside accounting support is needed?
+How should confidential committee spending, including Benevolence, be reviewed without exposing private details?
 
 Section: Nominating Committee.
 
@@ -1040,6 +1074,7 @@ Section: Deacons.
 
 What leadership review or counsel should Deacons provide before recommendations go to the church?
 How should this transition be communicated to avoid alarm or blame?
+How can Deacons raise concerns or recommend matters back to committees or the congregation without becoming a unilateral financial authority?
 
 Section: Pastor.
 
@@ -1049,8 +1084,17 @@ Should the Pastor help frame the change as stewardship, clarity, and support?
 Section: Congregation.
 
 Which decisions require a church vote?
+How should annual budget approval and major non-budgeted expenses be handled so congregational authority remains clear?
 Does any proposed Bookkeeper compensation, hours, budget impact, or classification exceed the June 28, 2026 authorization of a paid, part-time Bookkeeper position not to exceed $150 per week, described as $18.75 per hour for approximately 8 hours?
 Do any policies require adoption at a business meeting?
+
+Section: Future Governance Expansion / Parking Lot.
+
+What written guidance is needed for Benevolence Committee spending authority, documentation, and reporting?
+How can Benevolence confidentiality be protected while still avoiding secrecy or lack of financial oversight?
+What other committees or ministries currently spend money, recommend projects, manage designated funds, or create recurring commitments?
+Should the organization chart and responsibility matrix eventually include additional committees beyond Finance, Personnel, and Nominating?
+Which future governance questions should wait until the immediate Bookkeeper hiring and Treasurer transition work is stable?
 
 Section: Professional Review.
 
@@ -1069,9 +1113,12 @@ Section: Constitution and Bylaws Reference.
 
 This page gives leaders a single place to find the current KBC Constitution, Bylaws, and Covenant reference while reviewing financial operations documents.
 
+Note: Congregation Final Authority.
+Use the Constitution and Bylaws to confirm when the congregation must approve budgets, officers, policies, major non-budgeted spending, contracts, role changes, or other church decisions. Committee recommendations should not be treated as final when church approval is required.
+
 Section: Primary Reference.
 
-Open KBC Constitution, Bylaws, and Covenant 2018 PDF.
+Open KBC Constitution, Bylaws, and Covenant 2018 PDF{ target="_blank" rel="noopener" }.
 
 Source file:
 
@@ -1098,6 +1145,9 @@ Area: Treasurer role. Why It Matters: Treasurer duties, election, reporting, bon
 Area: Nonministerial staff. Why It Matters: The Bookkeeper / Financial Administrator role should fit the existing authority for nonministerial staff and the June 28, 2026 congregational motion.. Related Working Documents: Bookkeeper Job Description, Bookkeeper Hiring Process.
 Area: Personnel Committee authority. Why It Matters: Personnel Committee responsibilities for employment matters, salaries, benefits, policies, and job descriptions should be confirmed.. Related Working Documents: Personnel Committee Role, Personnel Committee Packet.
 Area: Finance / stewardship responsibilities. Why It Matters: Budget preparation, approval, funds handling, reporting, and accounting procedures may affect Finance Committee recommendations.. Related Working Documents: Finance Committee Charter, Monthly Financial Review Policy.
+Area: Annual budget and major non-budgeted expenses. Why It Matters: Congregational authority should remain clear where the annual budget, major projects, or large outside-budget spending require a vote.. Related Working Documents: Spending Authority Policy, Responsibility Matrix.
+Area: Deacon counsel and escalation. Why It Matters: Deacons may have a meaningful review or counsel role, but final authority and committee lanes should be confirmed before assigning decision power.. Related Working Documents: Church Organization Chart, Future Governance Expansion.
+Area: Benevolence and other committee spending. Why It Matters: Confidential care and committee spending may need future review to balance privacy, oversight, reporting, and approval authority.. Related Working Documents: Future Governance Expansion, Open Questions.
 Area: Annual audit or review. Why It Matters: Treasurer and Finance Committee responsibilities should align with any bylaw language about annual audit or account review.. Related Working Documents: Audit and Review Policy, Monthly Finance Committee Checklist.
 
 Section: Practical Review Questions.
@@ -1108,6 +1158,8 @@ What exact bylaw language controls nonministerial staff hiring and termination?
 What exact bylaw language controls Personnel Committee responsibility for job descriptions, salaries, benefits, policies, and employment matters?
 What exact bylaw language controls budget approval, accounting procedures, funds handling, and annual audit or review?
 Which financial operations decisions can be made by committee, and which must come back to the congregation?
+What bylaw or church-practice language applies to annual budget approval and major non-budgeted expenses?
+What role, if any, do Deacons have in raising concerns, reviewing recommendations, or bringing unresolved items to the congregation?
 
 Section: Review Note.
 
@@ -1134,6 +1186,9 @@ Committee recommendations and coordination.
 
 Needs Bylaw Review: This chart should be checked against the KBC Constitution and Bylaws, committee charters, and current church practice before being treated as authoritative.
 
+Note: Congregation Final Authority.
+The congregation remains the final authority where KBC bylaws, budget, policy, officer election, major non-budgeted spending, or church practice require a vote.
+
 Section: Simple Governance View.
 
 Diagram omitted. See the documentation site for the visual version.
@@ -1147,11 +1202,11 @@ Section: Practical Role Summary.
 Table summary.
 Body / Role: Congregation. Primary Accountability: Final church authority where bylaws, budget, policy, officer election, or church practice require a vote.. Main Responsibilities In This Project: On June 28, 2026, authorized adding a paid, part-time Bookkeeper position not to exceed $150 per week and gave Personnel Committee authority to hire the right candidate; votes later on items that require additional church approval..
 Body / Role: Pastor. Primary Accountability: Spiritual and ministry leadership, communication, and counsel.. Main Responsibilities In This Project: Helps keep the process calm, ministry-focused, and aligned with church leadership..
-Body / Role: Deacons. Primary Accountability: Servant leadership, care, counsel, and leadership review where church practice requires.. Main Responsibilities In This Project: May review major recommendations, help preserve unity, and support communication with the church..
+Body / Role: Deacons. Primary Accountability: Servant leadership, care, counsel, and leadership review where church practice requires.. Main Responsibilities In This Project: May review major recommendations, raise concerns, recommend issues back to committees or the congregation through proper process, help preserve unity, and support communication with the church..
 Body / Role: Nominating Committee. Primary Accountability: Officer and committee nomination process where assigned by bylaws.. Main Responsibilities In This Project: Works with Personnel Committee to add the paid Bookkeeper position under the June 28, 2026 motion; involved in Treasurer / Financial Officer recommendations if bylaws assign that role..
-Body / Role: Finance Committee. Primary Accountability: Financial governance, controls, budget oversight, software, monthly review, and financial policies.. Main Responsibilities In This Project: Defines financial duties, software requirements, reimbursement rules, spending authority, card/payment controls, audit/review process, and budget impact; adjusts the budget to fund the Bookkeeper need under the June 28, 2026 motion..
+Body / Role: Finance Committee. Primary Accountability: Financial governance, controls, budget oversight, software, monthly review, and financial policies.. Main Responsibilities In This Project: Defines financial duties, software requirements, reimbursement rules, spending authority, card/payment controls, annual budget and major non-budgeted spending recommendations, audit/review process, and budget impact; adjusts the budget to fund the Bookkeeper need under the June 28, 2026 motion..
 Body / Role: Personnel Committee. Primary Accountability: Job descriptions, hiring, compensation recommendations, and evaluation process.. Main Responsibilities In This Project: Leads the authorized hiring process for the paid Bookkeeper / Financial Administrator after Finance Committee confirms financial duties and controls..
-Body / Role: Treasurer / Financial Officer. Primary Accountability: Elected financial accountability, reporting, review, and coordination with Finance Committee.. Main Responsibilities In This Project: Reviews reports, helps present financial information, confirms policies are followed, and coordinates with the Bookkeeper and Finance Committee..
+Body / Role: Treasurer / Financial Officer. Primary Accountability: Elected financial accountability, reporting, review, and coordination with Finance Committee.. Main Responsibilities In This Project: Reviews reports, helps present financial information, helps carry out approved Finance Committee direction, confirms policies are followed, and coordinates with the Bookkeeper and Finance Committee without becoming the sole point of financial control..
 Body / Role: Bookkeeper / Financial Administrator. Primary Accountability: Day-to-day financial operations under assigned supervision and approved financial controls.. Main Responsibilities In This Project: Maintains records, enters transactions, supports deposits, processes reimbursements after approval, prepares report packets, and supports monthly close..
 Body / Role: Outside Payroll / Accounting Vendor. Primary Accountability: Professional processing and compliance support if contracted.. Main Responsibilities In This Project: Handles payroll, tax forms, accounting setup, review, or other specialized services assigned by church-approved process..
 
@@ -1162,9 +1217,12 @@ These lines should be confirmed before hiring or final implementation:
 The Bookkeeper / Financial Administrator should have one clear day-to-day supervisor.
 The Finance Committee should define the Bookkeeper's financial duties, access, reports, and controls.
 The Treasurer should review and coordinate with the Bookkeeper but should not become the sole source of operational knowledge.
+The Treasurer should help carry out approved Finance Committee direction, but financial controls should not depend on one person's knowledge or approval alone.
+Deacons may counsel, raise concerns, and recommend items back to committees or the congregation through proper process, but should not become a unilateral financial authority.
 Personnel Committee should manage hiring, personnel records, evaluation process, and compensation recommendations.
 Finance Committee should not run the hiring process.
 Personnel Committee should not decide financial controls, software, reimbursement rules, card policy, or spending authority.
+Other committees, including Benevolence, may need a later governance review, but that should be treated as future expansion unless an urgent issue requires action now.
 
 Section: Open Questions.
 
@@ -1174,6 +1232,7 @@ Do bylaws assign Treasurer nomination to the Nominating Committee, Deacons, or a
 Which financial decisions require Finance Committee recommendation only, and which require church vote?
 Which recommendations should go to Deacons or broader leadership before coming to the congregation?
 What reports should go monthly to Finance Committee, Deacons, church leadership, and the congregation?
+What later governance review is needed for Benevolence or other committees with spending authority?
 
 Final approval path to be confirmed by church leadership, bylaws, church practice, and the June 28, 2026 congregational authorization.
 
@@ -1186,6 +1245,9 @@ Section: Responsibility Matrix.
 
 This matrix separates governance, operations, recommendations, and approvals. It should be reviewed against KBC bylaws and actual committee practice before use.
 
+Note: Congregation Final Authority.
+The congregation remains the final authority where KBC bylaws, budget, policy, officer election, major non-budgeted spending, or church practice require a vote.
+
 Section: Responsibility Matrix.
 
 Table summary.
@@ -1196,19 +1258,25 @@ Responsibility Area: Treasurer job description approval. Treasurer: Provides inp
 Responsibility Area: Bookkeeper job description approval. Treasurer: Provides workflow and reporting input.. Bookkeeper / Financial Administrator: Provides practical feedback if role is already filled.. Finance Committee: Approves or recommends finance duties, access, controls, and reporting requirements.. Personnel Committee: Leads drafting and recommends final job description, qualifications, compensation, and evaluation process.. Nominating Committee: No primary role.. Pastor: Consults on supervision and office workflow.. Deacons: Reviews if leadership practice requires.. Congregation: Prior authorization supports hiring; votes again only if compensation, budget change, or policy requires..
 Responsibility Area: Reimbursement approval. Treasurer: Reviews documentation and policy compliance; approves if assigned by policy.. Bookkeeper / Financial Administrator: Processes requests after documentation and approval are complete; tracks missing receipts.. Finance Committee: Owns reimbursement policy, approval thresholds, exceptions, and monthly review.. Personnel Committee: Consults only if staff or volunteer-role accountability is affected.. Nominating Committee: No role.. Pastor: May approve ministry expenses if assigned by policy.. Deacons: Reviews exceptions if leadership practice requires.. Congregation: Votes only if reimbursement policy or budget impact requires..
 Responsibility Area: Budget oversight. Treasurer: Reviews reports and helps explain variances.. Bookkeeper / Financial Administrator: Records transactions and prepares reports if assigned.. Finance Committee: Owns budget monitoring, variance review, budget exceptions, and recommendations.. Personnel Committee: Reviews staffing and compensation budget implications.. Nominating Committee: No primary role.. Pastor: Consults on ministry priorities and operational needs.. Deacons: Reviews major budget matters if church practice requires.. Congregation: Approves annual budget and major budget changes if required..
+Responsibility Area: Annual budget approval. Treasurer: Helps review and present financial information.. Bookkeeper / Financial Administrator: Prepares supporting reports if assigned.. Finance Committee: Leads budget development, review, and recommendation.. Personnel Committee: Reviews staffing and compensation budget implications.. Nominating Committee: No primary role unless bylaws assign.. Pastor: Consults on ministry priorities.. Deacons: Reviews and counsels if church practice requires.. Congregation: Approves the annual budget where bylaws or church practice require..
 Responsibility Area: Monthly reporting. Treasurer: Presents or helps present financial reports; reviews reconciliations and exceptions.. Bookkeeper / Financial Administrator: Prepares report packet, reconciliations, and supporting documentation if assigned.. Finance Committee: Owns monthly financial review and follow-up.. Personnel Committee: Receives personnel-related financial information only as appropriate.. Nominating Committee: No role.. Pastor: Receives or reviews reports as needed for leadership.. Deacons: Receives updates if church practice requires.. Congregation: Receives business meeting reports as appropriate..
 Responsibility Area: Annual audit / financial review. Treasurer: Coordinates records and responds to reviewer questions.. Bookkeeper / Financial Administrator: Provides records, reports, and documentation if assigned.. Finance Committee: Owns recommendation, scope, timing, reviewer selection, and follow-up.. Personnel Committee: Consults if review affects staff roles or accountability.. Nominating Committee: No role.. Pastor: Consults and supports leadership communication.. Deacons: Reviews findings if church practice requires.. Congregation: Votes if bylaws, budget, or policy require outside review approval..
 Responsibility Area: Credit card / controlled payment policy. Treasurer: Reviews card activity and helps enforce policy.. Bookkeeper / Financial Administrator: Maintains receipts, coding, and transaction records if assigned; may hold a card only if approved.. Finance Committee: Owns card/payment policy, limits, cardholder approval, review, suspension, and revocation process.. Personnel Committee: Consults on employee/volunteer accountability and role expectations.. Nominating Committee: No role.. Pastor: May hold card or approve ministry purchases if policy allows.. Deacons: Reviews policy or exceptions if church practice requires.. Congregation: Votes if policy, budget, or liability concern requires..
 Responsibility Area: Spending outside budget. Treasurer: Flags concern and seeks approval before payment when practical.. Bookkeeper / Financial Administrator: Does not process payment until approval path is documented, except emergency process if policy allows.. Finance Committee: Leads review and recommendation; determines funding source and budget impact.. Personnel Committee: Consults if staffing or compensation is involved.. Nominating Committee: No role.. Pastor: Consults on ministry urgency or operational need.. Deacons: Reviews if leadership practice or amount requires.. Congregation: Votes if bylaws, budget, amount, or church policy require..
+Responsibility Area: Large non-budgeted expense / major project. Treasurer: Flags the issue and helps explain financial impact.. Bookkeeper / Financial Administrator: Provides records or supporting reports if assigned.. Finance Committee: Reviews funding source, budget impact, timing, and control requirements before recommendation.. Personnel Committee: Consults only if staffing or compensation is involved.. Nominating Committee: No primary role unless bylaws or church practice assign.. Pastor: Consults on ministry need and timing.. Deacons: May counsel, raise concerns, or recommend church consideration through proper process; does not approve alone unless church policy says so.. Congregation: Votes when bylaws, budget, amount, policy, or church practice require..
 Responsibility Area: Emergency spending. Treasurer: Helps confirm need, documentation, and after-the-fact review.. Bookkeeper / Financial Administrator: Processes only after emergency approval is documented.. Finance Committee: Defines emergency authority and reviews after the fact.. Personnel Committee: No primary role unless staff accountability is involved.. Nominating Committee: No role.. Pastor: May authorize within policy if delay would create harm or prevent urgent ministry need.. Deacons: May authorize or review within policy if assigned.. Congregation: Receives report or votes afterward if required..
 Responsibility Area: Business meeting financial report. Treasurer: Presents or helps present report and answer questions.. Bookkeeper / Financial Administrator: Prepares supporting packet if assigned.. Finance Committee: Reviews report before presentation.. Personnel Committee: No primary role.. Nominating Committee: No role.. Pastor: Supports communication and framing.. Deacons: Reviews if church practice requires.. Congregation: Receives, discusses, and votes on items requiring action..
 
 Section: General Guidance.
 
 Finance Committee should own financial policy, controls, software direction, budget oversight, monthly review, audit/review process, reimbursement rules, card policy, and outside-budget spending recommendations.
+The Treasurer / Financial Officer is an elected officer who should coordinate with Finance Committee, review reports, help carry out approved financial direction, and keep the church informed without becoming the sole point of financial control.
+The Bookkeeper / Financial Administrator should support day-to-day records and reports under clear supervision, approved duties, controlled access, and regular Finance Committee review.
 Personnel Committee should own job descriptions, hiring process, applications, interviews, compensation recommendations, and evaluation process for the paid Bookkeeper role already authorized by congregational vote.
 Nominating Committee should work with Personnel Committee to add the paid Bookkeeper position as named in the June 28, 2026 motion and should also be involved where bylaws assign responsibility for elected officer recommendations.
 Congregation should vote where bylaws, budget, policy, or church practice require.
+Deacons may counsel, raise concerns, and recommend that issues go back to committees or to the congregation through the proper process, but should not become a unilateral financial authority.
+No one person should have too much control over church money; responsibilities should be documented, reviewed, and transferable.
 
 Needs Bylaw Review: Confirm each ownership area with KBC Constitution and Bylaws, committee charters, and church practice before treating this matrix as authoritative.
 
@@ -1227,15 +1295,20 @@ The Finance Committee supports the church's stewardship by providing oversight, 
 
 The committee's role is governance and accountability. It should not depend on one person carrying all financial knowledge or all routine financial work.
 
+Note: Congregation Final Authority.
+The Finance Committee should prepare clear recommendations, but the congregation remains the final authority where KBC bylaws, budget, policy, major non-budgeted spending, or church practice require a vote.
+
 Section: Core Responsibilities.
 
 Recommend and maintain financial policies.
 Oversee budget development, budget monitoring, and budget exceptions.
+Prepare annual budget and major non-budgeted spending recommendations for congregational approval where required.
 Define spending authority and reimbursement requirements.
 Own credit/debit card or controlled payment policy.
 Own accounting and church finance software evaluation and recommendation.
 Review monthly financial reports, reconciliations, restricted funds, and unusual transactions.
 Coordinate with the Treasurer / Financial Officer.
+Define how the Treasurer / Financial Officer carries out Finance Committee direction without becoming the sole point of financial control.
 Clarify which tasks may be assigned to a Bookkeeper / Financial Administrator.
 Recommend audit, review, or outside accounting support.
 Report financial matters to church leadership and congregation as required.
@@ -1278,6 +1351,8 @@ Documentation and receipt retention.
 Monthly review.
 Audit or financial review.
 
+The committee should also define which routine expenses can move quickly within approved budgets, which expenses require Finance Committee approval, and which major or outside-budget expenses should come to the congregation.
+
 Section: Reporting Expectations.
 
 The Finance Committee should define:
@@ -1286,6 +1361,12 @@ What reports go to the committee monthly.
 What reports go to Deacons or church leadership.
 What summary is presented at church business meetings.
 Which items require formal motion or church vote.
+
+Section: Deacon And Congregational Communication.
+
+Deacons may provide counsel, raise concerns, and recommend that matters return to Finance Committee or move toward congregational consideration through the proper process.
+
+The Finance Committee should not treat Deacon counsel as a substitute for committee action, bylaw requirements, or congregational approval where a vote is required.
 
 Needs Bylaw Review: Final committee authority, reporting lines, policy authority, software contract authority, budget authority, and voting requirements should be checked against KBC Constitution and Bylaws and church practice before adoption.
 
@@ -1319,6 +1400,93 @@ Needs Bylaw Review: The June 28, 2026 authorization, changes to elected Treasure
 
 End of chapter: Personnel Committee Role.
 
+Chapter: Future Governance Expansion.
+Current document status: Parking Lot.
+
+Section: Future Governance Expansion.
+
+Section: Purpose.
+
+This page captures governance and financial-control questions that are important, but not part of the immediate Bookkeeper hiring package.
+
+The current priority remains the Treasurer transition, the paid Bookkeeper role already authorized by congregational vote on June 28, 2026, and the Finance Committee controls needed before hiring and implementation move too far ahead.
+
+Note: Congregation Final Authority.
+The congregation remains the final authority where KBC bylaws, budget, policy, officer election, major non-budgeted spending, or church practice require a vote.
+
+Section: Why This Is Parked.
+
+KBC may need a broader review of committee authority, spending controls, transparency, and reporting expectations beyond the Treasurer and Bookkeeper questions.
+
+That broader review matters, but it should not delay the immediate hiring and financial-operations stabilization work unless a current spending or approval issue requires urgent action.
+
+Section: Future Review Areas.
+
+Section: Benevolence Committee.
+
+The Benevolence Committee may need a future review because benevolence work naturally involves both confidentiality and financial accountability.
+
+Questions to preserve for later review:
+
+What spending authority does Benevolence currently have?
+What approval path applies before benevolence funds are spent?
+How can recipient confidentiality be protected while still providing proper financial oversight?
+What summary reporting should Finance Committee receive without exposing private pastoral-care details?
+Should Benevolence have written thresholds, documentation requirements, and monthly or quarterly review?
+What items, if any, should come to Deacons, Finance Committee, or the congregation?
+
+Section: Other Committees With Spending Authority.
+
+KBC may also need to review other committees or ministries that spend church funds, manage restricted funds, recommend projects, or commit the church to recurring expenses.
+
+Future review questions:
+
+Which committees may spend within approved budget lines?
+Which committees may recommend outside-budget spending?
+Which committees may sign contracts or create recurring commitments?
+What expenses need Finance Committee review before payment?
+What expenses need congregational approval?
+What reporting should be provided to the church?
+
+Section: Deacon Role In Governance Review.
+
+Deacons may provide counsel, raise concerns, and recommend that issues go back to the proper committee or to the congregation through the proper process.
+
+Future review questions:
+
+How should Deacons raise financial or governance concerns to Finance Committee, Personnel Committee, or Nominating Committee?
+When should Deacons recommend that an unresolved matter come to the congregation?
+What does church practice expect from Deacons as a leadership review body?
+How can Deacons have a meaningful role without becoming a unilateral financial authority?
+
+Section: Guiding Principles For Later Review.
+
+No one person should have too much control over church money.
+Confidentiality should be protected, but confidentiality should not become secrecy or remove appropriate oversight.
+The Finance Committee should define financial controls, spending thresholds, reporting expectations, and review rhythm.
+The Personnel Committee should not be asked to decide financial controls, software, reimbursement rules, or spending authority.
+The Deacons may counsel and recommend, but should not become a substitute for committee authority, bylaw requirements, or congregational approval.
+The congregation should approve the annual budget and major non-budgeted expenses where bylaws, budget, policy, or church practice require.
+
+Section: Not Part Of Immediate Bookkeeper Hiring.
+
+This page should not slow down these immediate next steps:
+
+Confirm Finance Committee direction for Bookkeeper financial duties, access, controls, reports, and budget impact.
+Finalize the Bookkeeper job description, application, hiring process, and interview process.
+Contact known interested candidates and invite additional applications.
+Confirm the application window, interview process, references, and interim supervision plan.
+
+Section: Review Notes.
+
+Needs Bylaw Review: Final authority, committee responsibility, spending approval, Deacon role, and congregational vote requirements must be checked against the KBC Constitution and Bylaws before adoption.
+
+Needs Finance Review: Any future committee spending review should be shaped by Finance Committee because it affects financial controls, monthly review, budget oversight, and reporting.
+
+Needs Leadership Review: Pastor, Deacons, Finance Committee, Personnel Committee, Nominating Committee, and the Church Clerk may need to help confirm the proper review path before this becomes a formal recommendation.
+
+End of chapter: Future Governance Expansion.
+
 
 Part: Roles and Hiring.
 
@@ -1348,7 +1516,7 @@ Note: The approved Treasurer job description uses "Stewardship Committee" in one
 Section: Recommended Role Boundaries.
 
 Table summary.
-Role / Body: Elected Treasurer / Financial Officer. Primary Focus: Governance, accountability, review, reporting, and church trust.. Should Own: Oversight of financial integrity, report review/presentation, policy compliance, audit coordination, liaison with Finance Committee and outside providers.. Should Not Own Alone: All routine transaction entry, payroll filings, contribution entry, card administration, and recordkeeping by default..
+Role / Body: Elected Treasurer / Financial Officer. Primary Focus: Governance, accountability, review, reporting, and church trust.. Should Own: Oversight of financial integrity, report review/presentation, policy compliance, audit coordination, liaison with Finance Committee and outside providers, and carrying out approved Finance Committee direction.. Should Not Own Alone: All routine transaction entry, payroll filings, contribution entry, card administration, recordkeeping by default, or sole control over financial knowledge and approval..
 Role / Body: Bookkeeper / Financial Administrator. Primary Focus: Day-to-day financial operations.. Should Own: Transaction entry, deposits documentation, reimbursement processing, bill/payment preparation, report packet preparation, records organization, software workflow, reconciliation support.. Should Not Own Alone: Final financial policy authority, committee decisions, audit scope, budget approval, or elected officer accountability..
 Role / Body: Finance Committee. Primary Focus: Financial governance and controls.. Should Own: Budget oversight, software selection, financial policies, spending authority, reimbursement rules, credit card policy, monthly review, audit/review process.. Should Not Own Alone: Personnel hiring process or employment evaluation details..
 Role / Body: Personnel Committee. Primary Focus: Role definition, hiring, compensation recommendation, and evaluation process for the authorized paid Bookkeeper role.. Should Own: Job descriptions, applications, interviews, background-check process, compensation recommendation, evaluation framework.. Should Not Own Alone: Financial software, spending authority, reimbursement rules, or financial controls..
@@ -1414,7 +1582,7 @@ Own financial software evaluation and recommendation.
 Own spending authority, reimbursement, credit card, offering/deposit, monthly review, and audit/review policies.
 Define controls for cash handling, deposits, online giving, cards, payments, and access.
 Review monthly reports, reconciliations, budget variances, and exceptions.
-Own annual budget oversight and outside-budget spending recommendations.
+Own annual budget oversight, Finance Committee recommendations, and outside-budget spending review.
 Define audit/review scope and follow-up.
 Review payroll/accounting vendor performance and compliance process annually.
 
@@ -1450,6 +1618,7 @@ Have Personnel Committee update job descriptions based on Finance Committee's fi
 Confirm the official June 28, 2026 minutes and ensure the hiring process stays within the approved limit of not more than $150 per week.
 Choose payroll/accounting vendor responsibilities before assigning payroll compliance to a volunteer.
 Adopt policies for reimbursement, spending authority, card/payment controls, offering/deposits, monthly review, and audit/review.
+Confirm how annual budget approval and major non-budgeted spending recommendations come back to the congregation where required.
 
 Needs Committee Review: This split should be reviewed by Finance Committee, Personnel Committee, Nominating Committee, Pastor, and Deacons before being treated as a recommendation.
 
@@ -1470,11 +1639,14 @@ The Treasurer / Financial Officer is an elected church officer who helps ensure 
 
 This role should be focused on governance, accountability, reporting, and coordination with the Finance Committee. Day-to-day bookkeeping may be performed by the Treasurer only if the church chooses that model; otherwise those tasks may be assigned to a Bookkeeper / Financial Administrator.
 
+The Treasurer should help carry out approved Finance Committee direction and keep the church informed, but the role should not become the only place financial knowledge, approval, or control lives.
+
 Section: Core Responsibilities.
 
 Work with the Finance Committee to maintain financial accountability and stewardship.
 Review financial reports, reconciliations, and supporting documentation.
 Help ensure that spending, reimbursements, deposits, payroll coordination, and reporting follow approved policies.
+Help carry out Finance Committee direction after proper approval.
 Present or support financial reporting to the church as required.
 Help prepare for audits, financial reviews, or outside accounting support.
 Ensure that financial records are organized and transferable.
@@ -1518,6 +1690,7 @@ Section: Accountability.
 Accountable to the church according to bylaws and church practice.
 Works closely with the Finance Committee.
 Coordinates with Pastor, Deacons, Personnel Committee, and Bookkeeper / Financial Administrator as appropriate.
+Should be supported by written procedures, monthly review, and shared knowledge so KBC does not depend on one person alone.
 
 Final approval path to be confirmed by church leadership, bylaws, and church practice before changing elected Treasurer duties, election process, term, bonding, or reporting expectations.
 
@@ -1898,9 +2071,20 @@ Confirm the final job title.
 Confirm expected weekly hours and compensation fit within the authorized limit of $150 per week, described as $18.75 per hour for approximately 8 hours.
 Confirm employment classification and onboarding requirements.
 Confirm who will supervise the role day to day.
+Mark the final supervision and financial-review path as needing committee confirmation before hiring is finalized.
 Confirm how Personnel Committee and Nominating Committee should coordinate under the motion.
 Ask Finance Committee to confirm financial duties, access, controls, reporting expectations, and software responsibilities.
 Finalize job description, application, and hiring process materials.
+
+Section: Phase 1A: Candidate Outreach And Application Window.
+
+Contact the three known interested candidates and invite them to complete the approved application process.
+Prepare a short bulletin or announcement request for additional candidates.
+Confirm who should submit the bulletin or announcement request and by what deadline.
+Define the application collection period: start date, end date, and how late applications will be handled.
+Confirm where applications will be received and securely stored.
+Tell interested people that KBC is authorized for one paid Bookkeeper role unless additional approval is granted.
+Consider whether other interested people may serve through Finance Committee involvement, controlled volunteer helper roles, or future support roles after confidentiality, access, and financial controls are approved.
 
 Section: Phase 2: Receive And Review Applications.
 
@@ -1935,6 +2119,7 @@ Confirm whether any additional church approval is required before making an offe
 Document the decision and reason.
 Contact the selected candidate.
 Contact other candidates respectfully after the decision is final.
+Invite candidates who are not selected, if appropriate, to consider other approved service opportunities only after the proper committee confirms the role, access level, and confidentiality requirements.
 
 Section: Phase 6: Onboard And Support.
 
@@ -2358,6 +2543,9 @@ This policy defines who may approve spending and when additional review, committ
 
 Dollar amounts are placeholders until reviewed by the Finance Committee.
 
+Note: Congregation Final Authority.
+The congregation should approve the annual budget and major non-budgeted expenses where KBC bylaws, budget, policy, amount, or church practice require a vote.
+
 Section: Spending Authority Matrix.
 
 Table summary.
@@ -2368,6 +2556,7 @@ Spending Type: Over-budget expense. Suggested Threshold: Any amount that exceeds
 Spending Type: Large purchase. Suggested Threshold: Over $TBD. Approval Needed: Finance Committee recommendation. Notes: May require Deacon review or church vote..
 Spending Type: Capital item / equipment. Suggested Threshold: Over $TBD. Approval Needed: Finance Committee recommendation. Notes: Include funding source, maintenance, and stewardship impact..
 Spending Type: Recurring commitment or contract. Suggested Threshold: Any recurring obligation over $TBD per month or $TBD per year. Approval Needed: Finance Committee review. Notes: May require church vote if it affects budget or long-term obligation..
+Spending Type: Major non-budgeted project. Suggested Threshold: Over $TBD or otherwise significant to church stewardship. Approval Needed: Finance Committee recommendation, with Deacon counsel if church practice expects it. Notes: Should come to the congregation when bylaws, budget practice, amount, or church expectation require a vote..
 Spending Type: Emergency purchase. Suggested Threshold: Up to $TBD if delay would create harm or prevent urgent need. Approval Needed: Pastor, Treasurer, Deacon chair, or Finance chair, with after-the-fact review. Notes: Document reason and report to Finance Committee..
 Spending Type: Church vote item. Suggested Threshold: TBD by bylaws, budget, or church policy. Approval Needed: Congregational approval. Notes: Examples may include budget adoption, major purchases, debt, staff compensation, or role creation..
 
@@ -2379,6 +2568,8 @@ The person benefiting from a payment should not be the only approver.
 Budgeted does not mean undocumented.
 Unbudgeted or over-budget spending should be reviewed before purchase whenever practical.
 Exceptions should be reported to the Finance Committee.
+No one person should have too much control over church money.
+Deacon counsel may be helpful for major or sensitive matters, but it should not replace Finance Committee review or congregational approval where required.
 
 Section: Review And Revision.
 
@@ -3296,6 +3487,22 @@ Needs Personnel Review: Personnel Committee should confirm the hiring lead, inte
 
 Needs Finance Review: Finance Committee should confirm financial duties and controls before the position is posted, interviews begin, or an offer is made.
 
+Section: Immediate Hiring Next Steps.
+
+Personnel Committee can begin preparing the hiring process while Finance Committee confirms duties and controls.
+
+Recommended immediate steps:
+
+Contact the three known interested candidates and invite them to complete the approved application process.
+Prepare a short bulletin or announcement request so other interested candidates have a fair opportunity to apply.
+Define the application collection period, including start date, deadline, submission method, and secure storage location.
+Coordinate interviews, reference checks, and candidate evaluation after applications are received.
+Confirm the interim supervision path, likely tied to Finance Committee and Treasurer / Financial Officer review, while marking the final supervisor as needing committee confirmation.
+Clarify that KBC is authorized for one paid Bookkeeper role unless further approval is granted.
+Consider whether other interested people could serve later through Finance Committee involvement, controlled volunteer helper roles, or other approved service opportunities after confidentiality, access, and controls are defined.
+
+Needs Personnel Review: Candidate outreach, application timing, interview team, and final selection process should be approved by Personnel Committee before use.
+
 Section: Recommendations To Finance Committee.
 
 The Personnel Committee should consider sending the following recommendation to the Finance Committee:
@@ -3331,6 +3538,7 @@ Does the role schedule and compensation stay within the authorized limit of not 
 Who supervises the role day to day?
 Who performs the evaluation?
 Does the proposed compensation, hours, or budget impact fit within the June 28, 2026 authorization?
+How should Personnel Committee handle interested candidates who are not selected for the paid role but may still be willing to serve in an approved volunteer or committee-support capacity?
 
 Section: Application And Screening.
 
@@ -3365,6 +3573,7 @@ Clarify how Personnel Committee and Nominating Committee should coordinate under
 Revise the Bookkeeper / Financial Administrator job description.
 Revise the Bookkeeper application.
 Revise the Bookkeeper hiring process, interview guide, reference questions, and candidate rubric.
+Approve candidate outreach, bulletin/announcement wording, application window, secure application storage, interview process, and reference process.
 Decide what questions need Finance Committee direction before Personnel can post the role, begin interviews, or make an offer.
 Approve a request for Finance Committee direction, if appropriate.
 
@@ -3419,6 +3628,20 @@ Reimbursement, spending authority, credit/debit card use, and audit/review expec
 The authorized Bookkeeper / Financial Administrator role needs Finance Committee input before Personnel Committee finalizes job materials, posts the role, begins interviews, or makes an offer.
 
 This should be framed as a systems maturity issue, not a person failure.
+
+Section: Finance, Treasurer, Bookkeeper, And Deacon Lanes.
+
+Recent leadership feedback reinforces a helpful principle: no one person should have too much control over church money.
+
+For review purposes, the working lanes are:
+
+Finance Committee owns financial policy, budget oversight, spending controls, software direction, monthly review, and recommendations on annual budget or major non-budgeted expenses.
+Treasurer / Financial Officer is an elected officer who coordinates with Finance Committee, reviews reports, helps carry out approved financial direction, and supports church reporting without becoming the only gatekeeper.
+Bookkeeper / Financial Administrator supports day-to-day records, payments after approval, documentation, reports, and software workflows under clear supervision and approved controls.
+Deacons may counsel, raise concerns, and recommend issues back to committees or the congregation through proper process, but should not become a unilateral financial authority.
+The congregation remains the final authority where bylaws, budget, policy, officer election, major non-budgeted spending, or church practice require a vote.
+
+Needs Bylaw Review: These lanes are a working draft and should be confirmed against KBC Constitution and Bylaws and church practice before being treated as authoritative.
 
 Section: Decisions Finance Committee Needs To Own.
 
@@ -3499,6 +3722,7 @@ What is the threshold for routine operating expenses?
 What dollar amount requires Finance Committee review before purchase?
 What dollar amount requires Deacon review, if any?
 What dollar amount or category requires church vote?
+What large non-budgeted expenses should go to the congregation even if Finance Committee recommends them?
 How should over-budget expenses be handled?
 Can funds be transferred between budget categories, and who approves that?
 What recurring subscriptions, contracts, or commitments require committee review?
@@ -3620,6 +3844,8 @@ Set draft reimbursement and spending authority thresholds.
 Decide whether shared debit cards should be replaced.
 Define monthly review packet and meeting rhythm.
 Identify budget impact for bookkeeping support, software, and outside payroll/accounting support.
+Confirm the interim and long-term financial review line for the Bookkeeper role, including whether the supervisor should be Treasurer/Finance-related or another role confirmed by committee action.
+Consider whether to consult a trusted church finance peer, CPA/accounting advisor, or experienced church bookkeeper before finalizing software, payroll, or control decisions.
 Provide written direction to Personnel Committee before the Bookkeeper role is posted, interviews begin, or an offer is made.
 Decide which items require Deacon review, church vote, CPA/accounting review, or bylaw review.
 

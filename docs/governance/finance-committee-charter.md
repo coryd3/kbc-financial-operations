@@ -8,15 +8,20 @@ The Finance Committee supports the church's stewardship by providing oversight, 
 
 The committee's role is governance and accountability. It should not depend on one person carrying all financial knowledge or all routine financial work.
 
+!!! note "Congregation Final Authority"
+    The Finance Committee should prepare clear recommendations, but the congregation remains the final authority where KBC bylaws, budget, policy, major non-budgeted spending, or church practice require a vote.
+
 ## Core Responsibilities
 
 - Recommend and maintain financial policies.
 - Oversee budget development, budget monitoring, and budget exceptions.
+- Prepare annual budget and major non-budgeted spending recommendations for congregational approval where required.
 - Define spending authority and reimbursement requirements.
 - Own credit/debit card or controlled payment policy.
 - Own accounting and church finance software evaluation and recommendation.
 - Review monthly financial reports, reconciliations, restricted funds, and unusual transactions.
 - Coordinate with the Treasurer / Financial Officer.
+- Define how the Treasurer / Financial Officer carries out Finance Committee direction without becoming the sole point of financial control.
 - Clarify which tasks may be assigned to a Bookkeeper / Financial Administrator.
 - Recommend audit, review, or outside accounting support.
 - Report financial matters to church leadership and congregation as required.
@@ -59,6 +64,8 @@ The Finance Committee should own policies for:
 - Monthly review.
 - Audit or financial review.
 
+The committee should also define which routine expenses can move quickly within approved budgets, which expenses require Finance Committee approval, and which major or outside-budget expenses should come to the congregation.
+
 ## Reporting Expectations
 
 The Finance Committee should define:
@@ -67,5 +74,11 @@ The Finance Committee should define:
 - What reports go to Deacons or church leadership.
 - What summary is presented at church business meetings.
 - Which items require formal motion or church vote.
+
+## Deacon And Congregational Communication
+
+Deacons may provide counsel, raise concerns, and recommend that matters return to Finance Committee or move toward congregational consideration through the proper process.
+
+The Finance Committee should not treat Deacon counsel as a substitute for committee action, bylaw requirements, or congregational approval where a vote is required.
 
 Needs Bylaw Review: Final committee authority, reporting lines, policy authority, software contract authority, budget authority, and voting requirements should be checked against KBC Constitution and Bylaws and church practice before adoption.

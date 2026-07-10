@@ -72,6 +72,7 @@ DOCS: list[DocEntry] = [
     DocEntry("Governance and Responsibility", "Responsibility Matrix", "docs/governance/responsibility-matrix.md"),
     DocEntry("Governance and Responsibility", "Finance Committee Charter", "docs/governance/finance-committee-charter.md"),
     DocEntry("Governance and Responsibility", "Personnel Committee Role", "docs/governance/personnel-committee-role.md"),
+    DocEntry("Governance and Responsibility", "Future Governance Expansion", "docs/governance/future-governance-expansion.md"),
     DocEntry("Roles and Hiring", "Treasurer vs. Bookkeeper Duty Split", "docs/roles/treasurer-vs-bookkeeper-duty-split.md"),
     DocEntry("Roles and Hiring", "Treasurer Governance Role", "docs/roles/treasurer-governance-role.md"),
     DocEntry("Roles and Hiring", "Interim Treasurer Role", "docs/roles/interim-treasurer-role.md"),

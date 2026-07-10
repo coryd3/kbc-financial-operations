@@ -8,11 +8,14 @@ The Treasurer / Financial Officer is an elected church officer who helps ensure 
 
 This role should be focused on governance, accountability, reporting, and coordination with the Finance Committee. Day-to-day bookkeeping may be performed by the Treasurer only if the church chooses that model; otherwise those tasks may be assigned to a Bookkeeper / Financial Administrator.
 
+The Treasurer should help carry out approved Finance Committee direction and keep the church informed, but the role should not become the only place financial knowledge, approval, or control lives.
+
 ## Core Responsibilities
 
 - Work with the Finance Committee to maintain financial accountability and stewardship.
 - Review financial reports, reconciliations, and supporting documentation.
 - Help ensure that spending, reimbursements, deposits, payroll coordination, and reporting follow approved policies.
+- Help carry out Finance Committee direction after proper approval.
 - Present or support financial reporting to the church as required.
 - Help prepare for audits, financial reviews, or outside accounting support.
 - Ensure that financial records are organized and transferable.
@@ -56,5 +59,6 @@ Needs Bylaw Review: KBC should decide whether the Treasurer role is primarily a 
 - Accountable to the church according to bylaws and church practice.
 - Works closely with the Finance Committee.
 - Coordinates with Pastor, Deacons, Personnel Committee, and Bookkeeper / Financial Administrator as appropriate.
+- Should be supported by written procedures, monthly review, and shared knowledge so KBC does not depend on one person alone.
 
 Final approval path to be confirmed by church leadership, bylaws, and church practice before changing elected Treasurer duties, election process, term, bonding, or reporting expectations.

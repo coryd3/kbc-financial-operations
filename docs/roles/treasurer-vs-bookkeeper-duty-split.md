@@ -24,7 +24,7 @@ Note: The approved Treasurer job description uses "Stewardship Committee" in one
 
 | Role / Body | Primary Focus | Should Own | Should Not Own Alone |
 | --- | --- | --- | --- |
-| Elected Treasurer / Financial Officer | Governance, accountability, review, reporting, and church trust. | Oversight of financial integrity, report review/presentation, policy compliance, audit coordination, liaison with Finance Committee and outside providers. | All routine transaction entry, payroll filings, contribution entry, card administration, and recordkeeping by default. |
+| Elected Treasurer / Financial Officer | Governance, accountability, review, reporting, and church trust. | Oversight of financial integrity, report review/presentation, policy compliance, audit coordination, liaison with Finance Committee and outside providers, and carrying out approved Finance Committee direction. | All routine transaction entry, payroll filings, contribution entry, card administration, recordkeeping by default, or sole control over financial knowledge and approval. |
 | Bookkeeper / Financial Administrator | Day-to-day financial operations. | Transaction entry, deposits documentation, reimbursement processing, bill/payment preparation, report packet preparation, records organization, software workflow, reconciliation support. | Final financial policy authority, committee decisions, audit scope, budget approval, or elected officer accountability. |
 | Finance Committee | Financial governance and controls. | Budget oversight, software selection, financial policies, spending authority, reimbursement rules, credit card policy, monthly review, audit/review process. | Personnel hiring process or employment evaluation details. |
 | Personnel Committee | Role definition, hiring, compensation recommendation, and evaluation process for the authorized paid Bookkeeper role. | Job descriptions, applications, interviews, background-check process, compensation recommendation, evaluation framework. | Financial software, spending authority, reimbursement rules, or financial controls. |
@@ -91,7 +91,7 @@ Note: The approved Treasurer job description uses "Stewardship Committee" in one
 - Own spending authority, reimbursement, credit card, offering/deposit, monthly review, and audit/review policies.
 - Define controls for cash handling, deposits, online giving, cards, payments, and access.
 - Review monthly reports, reconciliations, budget variances, and exceptions.
-- Own annual budget oversight and outside-budget spending recommendations.
+- Own annual budget oversight, Finance Committee recommendations, and outside-budget spending review.
 - Define audit/review scope and follow-up.
 - Review payroll/accounting vendor performance and compliance process annually.
 
@@ -127,6 +127,7 @@ Note: The approved Treasurer job description uses "Stewardship Committee" in one
 4. Confirm the official June 28, 2026 minutes and ensure the hiring process stays within the approved limit of not more than `$150` per week.
 5. Choose payroll/accounting vendor responsibilities before assigning payroll compliance to a volunteer.
 6. Adopt policies for reimbursement, spending authority, card/payment controls, offering/deposits, monthly review, and audit/review.
+7. Confirm how annual budget approval and major non-budgeted spending recommendations come back to the congregation where required.
 
 Needs Committee Review: This split should be reviewed by Finance Committee, Personnel Committee, Nominating Committee, Pastor, and Deacons before being treated as a recommendation.
 

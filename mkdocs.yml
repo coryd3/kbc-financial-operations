@@ -13,7 +13,7 @@ theme:
     - toc.follow
   palette:
     - scheme: default
-      primary: blue grey
+      primary: indigo
       accent: teal
 
 markdown_extensions:
@@ -63,6 +63,7 @@ nav:
       - Responsibility Matrix: governance/responsibility-matrix.md
       - Finance Committee Charter: governance/finance-committee-charter.md
       - Personnel Committee Role: governance/personnel-committee-role.md
+      - Future Governance Expansion: governance/future-governance-expansion.md
   - Roles and Hiring:
       - Treasurer vs. Bookkeeper Duty Split: roles/treasurer-vs-bookkeeper-duty-split.md
       - Treasurer Governance Role: roles/treasurer-governance-role.md
