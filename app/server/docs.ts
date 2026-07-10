@@ -143,6 +143,17 @@ function sectionFor(slug: string): DocsSection | undefined {
 
 const reviewFeedback = requireCapability("documentation_feedback_review");
 
+function databaseErrorCode(error: unknown): string | undefined {
+  let current = error as { code?: unknown; cause?: unknown } | undefined;
+  const seen = new Set<unknown>();
+  while (current && !seen.has(current)) {
+    seen.add(current);
+    if (typeof current.code === "string") return current.code;
+    current = current.cause as typeof current;
+  }
+  return undefined;
+}
+
 export function registerDocsRoutes(app: Express) {
   app.get("/api/docs/nav", (_req, res) => res.json({ sections: DOCS_NAV }));
 
@@ -229,8 +240,8 @@ export function registerDocsRoutes(app: Express) {
         details: { pageSlug: created.pageSlug },
       });
       res.status(201).json({ feedback: created });
-    } catch (error: any) {
-      if (error?.code === "23505") {
+    } catch (error: unknown) {
+      if (databaseErrorCode(error) === "23505") {
         return res.status(409).json({ message: "You already submitted feedback for this section of this page version." });
       }
       throw error;
