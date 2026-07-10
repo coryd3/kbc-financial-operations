@@ -347,20 +347,24 @@ export function registerMemberRoutes(app: Express) {
     if (pendingUsers.length === 0) return res.json({ suggestions: {} });
 
     const unlinked = await db
-      .select()
+      .select({
+        member: members,
+        householdName: households.name,
+      })
       .from(members)
+      .leftJoin(households, eq(members.householdId, households.id))
       .where(sql`${members.userId} is null`);
 
-    const suggestions: Record<number, Array<{ id: number; firstName: string; lastName: string; email: string | null; status: string; matchedOn: string; matchType: "exact" | "close" }>> = {};
+    const suggestions: Record<number, Array<{ id: number; firstName: string; lastName: string; email: string | null; phone: string | null; status: string; householdName: string | null; matchedOn: string; matchType: "exact" | "close" }>> = {};
     for (const u of pendingUsers) {
       const scored = unlinked
-        .map((m) => {
+        .map((row) => {
           const result = scoreMatch(
             { fullName: u.fullName, email: u.email },
-            { firstName: m.firstName, lastName: m.lastName, email: m.email },
+            { firstName: row.member.firstName, lastName: row.member.lastName, email: row.member.email },
           );
           if (!result) return null;
-          return { member: m, result };
+          return { row, result };
         })
         .filter((x): x is NonNullable<typeof x> => x !== null)
         .sort((a, b) => b.result.score - a.result.score);
@@ -370,12 +374,14 @@ export function registerMemberRoutes(app: Express) {
         .filter((s) => s.result.matchType === "close")
         .slice(0, MAX_CLOSE_SUGGESTIONS);
 
-      const matches = [...exact, ...close].map(({ member: m, result }) => ({
-        id: m.id,
-        firstName: m.firstName,
-        lastName: m.lastName,
-        email: m.email,
-        status: m.status,
+      const matches = [...exact, ...close].map(({ row, result }) => ({
+        id: row.member.id,
+        firstName: row.member.firstName,
+        lastName: row.member.lastName,
+        email: row.member.email,
+        phone: row.member.phone,
+        status: row.member.status,
+        householdName: row.householdName,
         matchedOn: result.matchedOn,
         matchType: result.matchType,
       }));

@@ -3,13 +3,24 @@ import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { api } from "../lib/api";
 import { Card, CardHeader, CardTitle, CardContent, Button, Input } from "../components/ui";
 import { ROLE_LABELS, ROLES, Role } from "@shared/schema";
-import { Search, CheckCircle, XCircle, ShieldOff, ShieldAlert, Link2, UserCheck } from "lucide-react";
+import { Search, CheckCircle, XCircle, ShieldOff, ShieldAlert, Link2, UserCheck, ChevronDown, ChevronUp, Home, Phone, Mail } from "lucide-react";
 import { format } from "date-fns";
 
 export default function AdminUsers() {
   const queryClient = useQueryClient();
   const [search, setSearch] = useState("");
   const [statusFilter, setStatusFilter] = useState("");
+  const [expandedSuggestions, setExpandedSuggestions] = useState<Set<string>>(new Set());
+
+  const toggleSuggestionDetails = (userId: number, memberId: number) => {
+    const key = `${userId}:${memberId}`;
+    setExpandedSuggestions((prev) => {
+      const next = new Set(prev);
+      if (next.has(key)) next.delete(key);
+      else next.add(key);
+      return next;
+    });
+  };
 
   const { data, isLoading } = useQuery({
     queryKey: ["users", search, statusFilter],
@@ -140,26 +151,63 @@ export default function AdminUsers() {
                         Suggested member profile {userSuggestions.length > 1 ? "matches" : "match"}
                       </div>
                       <div className="space-y-2">
-                        {userSuggestions.map((s) => (
-                          <div key={s.id} className={`flex flex-col sm:flex-row sm:items-center justify-between gap-2 rounded-md px-3 py-2 ${s.matchType === "close" ? "bg-muted/20 border border-dashed border-border/60" : "bg-muted/40"}`}>
-                            <div className="text-sm">
-                              <span className="font-medium">{s.firstName} {s.lastName}</span>
-                              {s.email && <span className="text-muted-foreground ml-2">{s.email}</span>}
-                              <span className="text-xs text-muted-foreground ml-2">
-                                {s.matchType === "close" ? `(possible match — ${s.matchedOn})` : `(matched on ${s.matchedOn})`}
-                              </span>
+                        {userSuggestions.map((s) => {
+                          const detailsOpen = expandedSuggestions.has(`${user.id}:${s.id}`);
+                          return (
+                            <div key={s.id} className={`rounded-md px-3 py-2 ${s.matchType === "close" ? "bg-muted/20 border border-dashed border-border/60" : "bg-muted/40"}`}>
+                              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                                <div className="text-sm">
+                                  <span className="font-medium">{s.firstName} {s.lastName}</span>
+                                  {s.email && <span className="text-muted-foreground ml-2">{s.email}</span>}
+                                  <span className="text-xs text-muted-foreground ml-2">
+                                    {s.matchType === "close" ? `(possible match — ${s.matchedOn})` : `(matched on ${s.matchedOn})`}
+                                  </span>
+                                </div>
+                                <div className="flex items-center gap-2 shrink-0">
+                                  <Button
+                                    size="sm"
+                                    variant="ghost"
+                                    className="text-muted-foreground hover:text-foreground"
+                                    onClick={() => toggleSuggestionDetails(user.id, s.id)}
+                                    aria-expanded={detailsOpen}
+                                  >
+                                    {detailsOpen ? <ChevronUp className="w-4 h-4 mr-1" /> : <ChevronDown className="w-4 h-4 mr-1" />}
+                                    Details
+                                  </Button>
+                                  <Button
+                                    size="sm"
+                                    variant="outline"
+                                    className="text-primary hover:bg-primary/10 hover:text-primary shrink-0"
+                                    onClick={() => approveAndLinkMut.mutate({ userId: user.id, memberId: s.id })}
+                                    disabled={busy}
+                                  >
+                                    <Link2 className="w-4 h-4 mr-1.5" /> Approve & Link
+                                  </Button>
+                                </div>
+                              </div>
+                              {detailsOpen && (
+                                <div className="mt-2 pt-2 border-t border-border/50 grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-1.5 text-xs text-muted-foreground">
+                                  <div className="flex items-center gap-1.5">
+                                    <Home className="w-3.5 h-3.5 shrink-0" />
+                                    <span>Household: <span className="text-foreground">{s.householdName ?? "None"}</span></span>
+                                  </div>
+                                  <div className="flex items-center gap-1.5">
+                                    <UserCheck className="w-3.5 h-3.5 shrink-0" />
+                                    <span>Status: <span className="text-foreground capitalize">{s.status}</span></span>
+                                  </div>
+                                  <div className="flex items-center gap-1.5">
+                                    <Phone className="w-3.5 h-3.5 shrink-0" />
+                                    <span>Phone: <span className="text-foreground">{s.phone || "Not on file"}</span></span>
+                                  </div>
+                                  <div className="flex items-center gap-1.5">
+                                    <Mail className="w-3.5 h-3.5 shrink-0" />
+                                    <span>Email: <span className="text-foreground">{s.email || "Not on file"}</span></span>
+                                  </div>
+                                </div>
+                              )}
                             </div>
-                            <Button
-                              size="sm"
-                              variant="outline"
-                              className="text-primary hover:bg-primary/10 hover:text-primary shrink-0"
-                              onClick={() => approveAndLinkMut.mutate({ userId: user.id, memberId: s.id })}
-                              disabled={busy}
-                            >
-                              <Link2 className="w-4 h-4 mr-1.5" /> Approve & Link
-                            </Button>
-                          </div>
-                        ))}
+                          );
+                        })}
                       </div>
                     </div>
                   )}

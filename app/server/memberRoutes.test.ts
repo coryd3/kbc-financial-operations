@@ -264,6 +264,7 @@ describe("admin member/household routes are leadership-only", () => {
 
 describe("member-link suggestions rank exact above close matches", () => {
   let fuzzyPendingId: number;
+  let fuzzyHouseholdId: number;
   const memberIds: number[] = [];
 
   beforeAll(async () => {
@@ -280,10 +281,16 @@ describe("member-link suggestions rank exact above close matches", () => {
       .returning({ id: users.id });
     fuzzyPendingId = u.id;
 
+    const [h] = await db
+      .insert(households)
+      .values({ name: `${PREFIX}Smithson Household` })
+      .returning({ id: households.id });
+    fuzzyHouseholdId = h.id;
+
     const inserted = await db
       .insert(members)
       .values([
-        { firstName: "Bob", lastName: "Smithson" }, // exact name
+        { firstName: "Bob", lastName: "Smithson", phone: "555-0100", householdId: fuzzyHouseholdId }, // exact name
         { firstName: "Robert", lastName: "Smithson" }, // nickname
         { firstName: "Bob", lastName: "Smythson" }, // last-name typo
         { firstName: "Carol", lastName: "Smithson", email: "carol@smithsonhome.net" }, // last name + email domain
@@ -296,6 +303,7 @@ describe("member-link suggestions rank exact above close matches", () => {
   afterAll(async () => {
     if (memberIds.length) await db.delete(members).where(inArray(members.id, memberIds));
     if (fuzzyPendingId) await db.delete(users).where(inArray(users.id, [fuzzyPendingId]));
+    if (fuzzyHouseholdId) await db.delete(households).where(inArray(households.id, [fuzzyHouseholdId]));
   });
 
   it("returns exact matches first, then close matches; unrelated profiles excluded", async () => {
@@ -326,6 +334,31 @@ describe("member-link suggestions rank exact above close matches", () => {
 
     const nickname = list.find((s) => `${s.firstName} ${s.lastName}` === "Robert Smithson");
     expect(nickname?.matchedOn).toBe("nickname");
+  });
+
+  it("includes member profile context (household, status, phone) on every suggestion", async () => {
+    const res = await request(app).get("/api/admin/member-link-suggestions").set(as(leaderId));
+    expect(res.status).toBe(200);
+    const list = res.body.suggestions[fuzzyPendingId] as Array<{
+      firstName: string;
+      lastName: string;
+      phone: string | null;
+      status: string;
+      householdName: string | null;
+    }>;
+    expect(list).toBeDefined();
+    for (const s of list) {
+      expect(s).toHaveProperty("phone");
+      expect(s).toHaveProperty("householdName");
+      expect(s).toHaveProperty("status");
+    }
+    const exactBob = list.find((s) => `${s.firstName} ${s.lastName}` === "Bob Smithson");
+    expect(exactBob?.phone).toBe("555-0100");
+    expect(exactBob?.householdName).toBe(`${PREFIX}Smithson Household`);
+    expect(exactBob?.status).toBe("active");
+    const nickname = list.find((s) => `${s.firstName} ${s.lastName}` === "Robert Smithson");
+    expect(nickname?.householdName).toBeNull();
+    expect(nickname?.phone).toBeNull();
   });
 
   it("close matches are capped at 3 per pending user", async () => {

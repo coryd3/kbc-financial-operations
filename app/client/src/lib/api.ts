@@ -100,7 +100,9 @@ export interface MemberLinkSuggestion {
   firstName: string;
   lastName: string;
   email: string | null;
+  phone: string | null;
   status: string;
+  householdName: string | null;
   matchedOn: string;
   matchType: "exact" | "close";
 }
