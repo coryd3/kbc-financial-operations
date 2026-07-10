@@ -194,7 +194,12 @@ export function registerMemberRoutes(app: Express) {
   // bypass that preference for non-leadership viewers.
   app.get("/api/households", requireAuth, async (req, res) => {
     const viewer = getUser(req);
-    const rows = await db.select().from(households).orderBy(asc(households.name));
+    const search = typeof req.query.search === "string" ? req.query.search.trim() : "";
+    const rows = await db
+      .select()
+      .from(households)
+      .where(search ? ilike(households.name, `%${search}%`) : undefined)
+      .orderBy(asc(households.name));
     const leader = isLeadership(viewer);
     res.json({
       households: rows.map((h) => (leader ? h : { ...h, address: null })),

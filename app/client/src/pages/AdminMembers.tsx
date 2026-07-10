@@ -6,6 +6,7 @@ import { MEMBER_STATUS_LABELS, MEMBER_STATUSES, type MemberStatus } from "@share
 import { Search, Plus, Pencil, Trash2, Link2, Unlink, Users, X, Download, Printer, ChevronLeft, ChevronRight } from "lucide-react";
 import { downloadCsv, openPrintView } from "../lib/printDirectory";
 import { useDebounce } from "../lib/useDebounce";
+import { SearchableSelect } from "../components/SearchableSelect";
 
 const PAGE_SIZE = 50;
 
@@ -89,16 +90,13 @@ function MemberFormModal({
               </div>
               <div className="space-y-2">
                 <Label>Household</Label>
-                <select
-                  className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
-                  value={form.householdId ?? ""}
-                  onChange={(e) => set({ householdId: e.target.value ? Number(e.target.value) : null })}
-                >
-                  <option value="">No household</option>
-                  {households.map((h) => (
-                    <option key={h.id} value={h.id}>{h.name}</option>
-                  ))}
-                </select>
+                <SearchableSelect
+                  options={households.map((h) => ({ value: String(h.id), label: h.name }))}
+                  value={form.householdId ? String(form.householdId) : ""}
+                  onChange={(v) => set({ householdId: v ? Number(v) : null })}
+                  emptyLabel="No household"
+                  placeholder="Search households..."
+                />
               </div>
               <div className="space-y-2">
                 <Label>Status</Label>
@@ -250,6 +248,7 @@ function HouseholdsCard() {
   const [editName, setEditName] = useState("");
   const [editAddress, setEditAddress] = useState("");
   const [error, setError] = useState("");
+  const [filter, setFilter] = useState("");
 
   const { data } = useQuery({ queryKey: ["households"], queryFn: () => api.getHouseholds() });
 
@@ -290,13 +289,27 @@ function HouseholdsCard() {
   });
 
   const households = data?.households ?? [];
+  const filterQuery = filter.trim().toLowerCase();
+  const visibleHouseholds = filterQuery
+    ? households.filter((h) => h.name.toLowerCase().includes(filterQuery))
+    : households;
 
   return (
     <Card>
-      <CardHeader>
+      <CardHeader className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
         <CardTitle className="text-xl flex items-center gap-2">
           <Users className="w-5 h-5" /> Households
+          <span className="text-sm font-sans font-normal text-muted-foreground">({households.length})</span>
         </CardTitle>
+        <div className="relative w-full sm:w-64">
+          <Search className="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground" />
+          <Input
+            placeholder="Filter households..."
+            className="pl-9 h-9"
+            value={filter}
+            onChange={(e) => setFilter(e.target.value)}
+          />
+        </div>
       </CardHeader>
       <CardContent className="space-y-4">
         {error && (
@@ -319,9 +332,11 @@ function HouseholdsCard() {
         </form>
         {households.length === 0 ? (
           <p className="text-sm text-muted-foreground">No households yet. Add one to group family members together.</p>
+        ) : visibleHouseholds.length === 0 ? (
+          <p className="text-sm text-muted-foreground">No households match "{filter.trim()}".</p>
         ) : (
           <ul className="divide-y divide-border/60">
-            {households.map((h) => (
+            {visibleHouseholds.map((h) => (
               <li key={h.id} className="py-2 flex items-center gap-2">
                 {editingId === h.id ? (
                   <form

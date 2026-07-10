@@ -294,7 +294,12 @@ export const api = {
     const suffix = qs.toString() ? `?${qs.toString()}` : "";
     return request<{ members: DirectoryMember[]; total: number }>("GET", `/api/members${suffix}`);
   },
-  getHouseholds: () => request<{ households: Household[] }>("GET", "/api/households"),
+  getHouseholds: (params?: { search?: string }) => {
+    const qs = new URLSearchParams();
+    if (params?.search) qs.set("search", params.search);
+    const suffix = qs.toString() ? `?${qs.toString()}` : "";
+    return request<{ households: Household[] }>("GET", `/api/households${suffix}`);
+  },
   getMyMemberProfile: () => request<{ member: DirectoryMember }>("GET", "/api/members/me"),
   updateMyMemberProfile: (data: {
     email?: string;
