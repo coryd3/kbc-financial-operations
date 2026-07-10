@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link, useLocation } from "wouter";
 import { api, ApiError } from "../lib/api";
 import { useAuth } from "../lib/auth";
@@ -10,7 +10,11 @@ export default function Login() {
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [, setLocation] = useLocation();
-  const { refresh } = useAuth();
+  const { user, refresh } = useAuth();
+
+  useEffect(() => {
+    if (user) setLocation("/dashboard");
+  }, [user, setLocation]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
