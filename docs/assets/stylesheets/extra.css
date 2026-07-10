@@ -76,29 +76,34 @@
   background-color: #fef3c7;
 }
 
-.md-typeset table:not([class]) {
+.md-typeset table:not([class]),
+.md-typeset table.docs-matrix-table {
   display: table;
   width: 100%;
   font-size: 0.74rem;
   border: 1px solid #d1d5db;
 }
 
-.md-typeset table:not([class]) th {
+.md-typeset table:not([class]) th,
+.md-typeset table.docs-matrix-table th {
   color: #ffffff;
   background-color: #12355b;
   border-color: #12355b;
 }
 
-.md-typeset table:not([class]) td {
+.md-typeset table:not([class]) td,
+.md-typeset table.docs-matrix-table td {
   vertical-align: top;
   border-color: #e5e7eb;
 }
 
-.md-typeset table:not([class]) tbody tr:nth-child(even) {
+.md-typeset table:not([class]) tbody tr:nth-child(even),
+.md-typeset table.docs-matrix-table tbody tr:nth-child(even) {
   background-color: #f8fafc;
 }
 
-.md-typeset table:not([class]) tbody tr:hover {
+.md-typeset table:not([class]) tbody tr:hover,
+.md-typeset table.docs-matrix-table tbody tr:hover {
   background-color: #eef6ff;
 }
 
@@ -113,8 +118,107 @@
 }
 
 .md-typeset .mermaid svg {
-  max-width: 100%;
+  max-width: none;
   height: auto;
+}
+
+.matrix-table-controls {
+  display: flex;
+  justify-content: flex-end;
+  margin: 0.75rem 0 0.35rem;
+}
+
+.matrix-table-controls button {
+  min-height: 2.15rem;
+  padding: 0.35rem 0.75rem;
+  color: #12355b;
+  font: inherit;
+  font-size: 0.75rem;
+  font-weight: 700;
+  cursor: pointer;
+  background: #ffffff;
+  border: 1px solid #64748b;
+}
+
+.matrix-table-controls button:first-child {
+  border-radius: 0.35rem 0 0 0.35rem;
+}
+
+.matrix-table-controls button:last-child {
+  margin-left: -1px;
+  border-radius: 0 0.35rem 0.35rem 0;
+}
+
+.matrix-table-controls button[aria-pressed="true"] {
+  color: #ffffff;
+  background: #12355b;
+  border-color: #12355b;
+}
+
+.matrix-table-readable {
+  overflow: visible !important;
+}
+
+.matrix-table-readable table.docs-matrix-table {
+  display: block;
+  border: 0;
+}
+
+.matrix-table-readable table.docs-matrix-table thead {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.matrix-table-readable table.docs-matrix-table tbody,
+.matrix-table-readable table.docs-matrix-table tr {
+  display: block;
+}
+
+.matrix-table-readable table.docs-matrix-table tr {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 13rem), 1fr));
+  margin-bottom: 1rem;
+  overflow: hidden;
+  background: #ffffff;
+  border: 1px solid #cbd5e1;
+  border-radius: 0.4rem;
+}
+
+.matrix-table-readable table.docs-matrix-table td {
+  display: block;
+  min-width: 0;
+  padding: 0.7rem 0.8rem;
+  overflow-wrap: anywhere;
+  border: 0;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.matrix-table-readable table.docs-matrix-table td::before {
+  display: block;
+  margin-bottom: 0.2rem;
+  color: #475569;
+  font-size: 0.68rem;
+  font-weight: 700;
+  line-height: 1.3;
+  text-transform: uppercase;
+  content: attr(data-label);
+}
+
+.matrix-table-readable table.docs-matrix-table td:first-child {
+  grid-column: 1 / -1;
+  color: #ffffff;
+  font-weight: 700;
+  background: #12355b;
+}
+
+.matrix-table-readable table.docs-matrix-table td:first-child::before {
+  color: #dbeafe;
 }
 
 .diagram-inline-actions {
@@ -225,7 +329,8 @@ svg.diagram-viewer__content {
     font-size: 0.9rem;
   }
 
-  .md-typeset table:not([class]) {
+  .md-typeset table:not([class]),
+  .md-typeset table.docs-matrix-table {
     display: block;
     width: 100%;
     overflow-x: auto;

@@ -38,3 +38,41 @@
     @apply font-serif;
   }
 }
+
+@layer components {
+  .docs-matrix-readable .docs-matrix-table,
+  .docs-matrix-readable .docs-matrix-table tbody {
+    display: block;
+    width: 100%;
+  }
+
+  .docs-matrix-readable .docs-matrix-table thead {
+    display: none;
+  }
+
+  .docs-matrix-readable .docs-matrix-table tbody {
+    @apply space-y-4;
+  }
+
+  .docs-matrix-readable .docs-matrix-table tr {
+    @apply grid overflow-hidden rounded-md border border-border bg-background;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 13rem), 1fr));
+  }
+
+  .docs-matrix-readable .docs-matrix-table td {
+    @apply block min-w-0 border-b border-r border-border/60 px-3 py-3 text-sm leading-6;
+  }
+
+  .docs-matrix-readable .docs-matrix-table td::before {
+    content: attr(data-label);
+    @apply mb-1 block text-xs font-semibold text-primary;
+  }
+
+  .docs-matrix-readable .docs-matrix-table td:first-child {
+    @apply col-span-full border-r-0 bg-primary/5 font-semibold text-foreground;
+  }
+
+  .docs-matrix-readable .docs-matrix-table td:last-child {
+    @apply border-r-0;
+  }
+}
