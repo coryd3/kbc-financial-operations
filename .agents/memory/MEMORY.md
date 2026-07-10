@@ -4,3 +4,4 @@
 - [Test database isolation](test-db-isolation.md) — vitest runs against an auto-created sibling `*_test` Postgres DB; CREATE DATABASE is allowed on Replit PG; never `push --force` at the live DB.
 - [Replit Mail sends only to the app owner](replit-mail-owner-only.md) — no recipient field; per-user email needs a real provider, and mark "emailed" only after a successful send.
 - [Verifying GIN trigram indexes](gin-trgm-explain-verification.md) — uncommitted bulk inserts inflate GIN pending-list cost so EXPLAIN falsely shows seq scan; commit + VACUUM ANALYZE in the test DB first.
+- [Prod schema via Publish only](prod-schema-via-publish.md) — task envs can't DDL prod; dev DB + post-merge (pg_trgm before db:push) is the source of truth, Publish applies the diff.
