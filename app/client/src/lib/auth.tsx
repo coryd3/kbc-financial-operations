@@ -8,6 +8,7 @@ interface AuthContextValue {
   isLoading: boolean;
   isAdmin: boolean;
   isLeadership: boolean;
+  portalAccess: boolean;
   mfaRequired: boolean;
   mfaVerified: boolean;
   refresh: () => Promise<void>;
@@ -18,6 +19,7 @@ const AuthContext = createContext<AuthContextValue>({
   isLoading: true,
   isAdmin: false,
   isLeadership: false,
+  portalAccess: false,
   mfaRequired: false,
   mfaVerified: false,
   refresh: async () => {},
@@ -52,6 +54,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         isLoading,
         isAdmin,
         isLeadership,
+        portalAccess: data?.portalAccess ?? false,
         mfaRequired: data?.mfaRequired ?? false,
         mfaVerified: data?.mfaVerified ?? false,
         refresh: async () => {

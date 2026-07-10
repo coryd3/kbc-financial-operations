@@ -1,10 +1,12 @@
 # Credit Card And Controlled Payment Policy
 
-Status: Draft
+Status: Draft - Needs Finance Review
 
 ## Purpose
 
 This policy provides a safer, more accountable approach to church purchases by replacing shared debit cards, where practical, with individually assigned church credit cards or another controlled payment method.
+
+This document is part of the [Financial Authority Policy Package](financial-authority-policy-package.md). Card limits do not create spending authority beyond the approved budget and Spending Authority Policy.
 
 ## Policy Goals
 

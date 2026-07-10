@@ -14,7 +14,13 @@ import {
   documentationFeedbackSchema,
   users,
 } from "../shared/schema.ts";
-import type { DocsPageRef, DocsSection } from "../shared/docsNav.ts";
+import {
+  DOCUMENTATION_AUDIENCES,
+  type DocsMetadata,
+  type DocsPageRef,
+  type DocsSection,
+  type DocumentationAudience,
+} from "../shared/docsNav.ts";
 
 const isProduction = process.env.NODE_ENV === "production";
 const contentRoot = isProduction
@@ -22,11 +28,39 @@ const contentRoot = isProduction
   : path.resolve(process.cwd(), "..");
 const docsRoot = path.join(contentRoot, "docs");
 const mkdocsPath = path.join(contentRoot, "mkdocs.yml");
+const metadataPath = path.join(docsRoot, "document-metadata.yml");
 const snippetRoot = isProduction ? path.join(contentRoot, "repo") : contentRoot;
 const assetRoot = path.join(contentRoot, "assets");
 
+const DEFAULT_METADATA: DocsMetadata = {
+  documentType: "Working Document",
+  status: "Draft",
+  owner: "Documentation Stewards",
+  lifecycle: "project",
+  audiences: ["project"],
+};
+
+function loadMetadata(): Map<string, DocsMetadata> {
+  if (!fs.existsSync(metadataPath)) return new Map();
+  const parsed = YAML.parse(fs.readFileSync(metadataPath, "utf8")) as {
+    documents?: Record<string, Partial<DocsMetadata>>;
+  };
+  return new Map(Object.entries(parsed.documents ?? {}).map(([slug, value]) => [slug, {
+    documentType: value.documentType ?? DEFAULT_METADATA.documentType,
+    status: value.status ?? DEFAULT_METADATA.status,
+    owner: value.owner ?? DEFAULT_METADATA.owner,
+    lifecycle: value.lifecycle ?? DEFAULT_METADATA.lifecycle,
+    audiences: (value.audiences ?? DEFAULT_METADATA.audiences).filter(
+      (audience): audience is DocumentationAudience => DOCUMENTATION_AUDIENCES.includes(audience as DocumentationAudience),
+    ),
+  }]));
+}
+
+const METADATA = loadMetadata();
+
 function page(file: string, title: string): DocsPageRef {
-  return { slug: file.replace(/\.md$/, ""), file, title };
+  const slug = file.replace(/\.md$/, "");
+  return { slug, file, title, metadata: METADATA.get(slug) ?? DEFAULT_METADATA };
 }
 
 function flattenPages(value: unknown): DocsPageRef[] {
@@ -155,7 +189,7 @@ function databaseErrorCode(error: unknown): string | undefined {
 }
 
 export function registerDocsRoutes(app: Express) {
-  app.get("/api/docs/nav", (_req, res) => res.json({ sections: DOCS_NAV }));
+  app.get("/api/docs/nav", (_req, res) => res.json({ sections: DOCS_NAV, audiences: DOCUMENTATION_AUDIENCES }));
 
   app.get(/^\/api\/docs\/page\/(.+)$/, (req, res) => {
     const slug = String((req.params as any)[0] ?? "");
@@ -169,6 +203,7 @@ export function registerDocsRoutes(app: Express) {
       slug,
       title: reference.title,
       section: sectionFor(slug)?.title ?? null,
+      metadata: reference.metadata,
       markdown: cached.markdown,
       revision: cached.revision,
       feedbackSections: [...cached.feedbackSections].map(([id, title]) => ({ id, title })),
@@ -179,8 +214,14 @@ export function registerDocsRoutes(app: Express) {
 
   app.get("/api/docs/search", (req, res) => {
     const query = String(req.query.q ?? "").trim().toLowerCase();
+    const requestedAudience = String(req.query.audience ?? "all");
+    const audience = DOCUMENTATION_AUDIENCES.includes(requestedAudience as DocumentationAudience)
+      ? requestedAudience as DocumentationAudience
+      : null;
     if (query.length < 2) return res.json({ results: [] });
-    const results = DOCS_PAGES.flatMap((reference) => {
+    const results = DOCS_PAGES.filter(
+      (reference) => !audience || reference.metadata.audiences.includes(audience),
+    ).flatMap((reference) => {
       const cached = pageCache.get(reference.slug);
       if (!cached) return [];
       const snippets = cached.searchableLines
@@ -190,7 +231,13 @@ export function registerDocsRoutes(app: Express) {
         .slice(0, 3)
         .map((line) => (line.length > 160 ? `${line.slice(0, 157)}...` : line));
       if (!reference.title.toLowerCase().includes(query) && !snippets.length) return [];
-      return [{ slug: reference.slug, title: reference.title, section: sectionFor(reference.slug)?.title ?? null, snippets }];
+      return [{
+        slug: reference.slug,
+        title: reference.title,
+        section: sectionFor(reference.slug)?.title ?? null,
+        metadata: reference.metadata,
+        snippets,
+      }];
     }).slice(0, 25);
     res.json({ results });
   });

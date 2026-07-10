@@ -219,6 +219,7 @@ Render sets `NODE_ENV=production`, but the build still needs Vite, TypeScript, a
 BOOTSTRAP_ADMIN_USERNAME=kbcadmin \
 BOOTSTRAP_ADMIN_PASSWORD='use-a-unique-12-character-or-longer-temporary-password' \
 BOOTSTRAP_ADMIN_FULL_NAME='System Administrator' \
+BOOTSTRAP_ADMIN_EMAIL='administrator@example.org' \
 npm run db:bootstrap-admin
 ```
 
@@ -234,6 +235,23 @@ Do not run `db:seed:baseline` in production. Production begins with a clean data
 - `FINANCIAL_MODE=hybrid`.
 - `VITE_FINANCIAL_MODE=hybrid`.
 - `NODE_ENV=production`.
+
+### Account Email And Verification
+
+The portal uses Resend for transactional account email. Its free transactional tier is sufficient for the expected KBC account volume, but current limits should be confirmed with the provider before launch.
+
+Create a Resend account, verify a sending domain or approved sender, and add these values under the Render web service's **Environment** settings:
+
+- `RESEND_API_KEY`: secret API key; never commit it.
+- `EMAIL_FROM`: verified sender, such as `KBC Operations Portal <portal@church-domain.example>`.
+- `APP_BASE_URL`: the public portal URL with no trailing slash.
+- `OPERATIONS_ALERT_EMAILS`: optional comma-separated fallback recipients for registration and operational notices.
+
+Active users assigned the `Admin` or `Super Admin` role and having an email address also receive new-registration notices. Registrants receive an email-verification link, and approval sends an access-granted email directly to the registered address.
+
+If `RESEND_API_KEY` or `EMAIL_FROM` is missing, registration still succeeds safely, but the portal reports that email delivery is unavailable. Pending users can sign in only to the account-setup page and receive no member, committee, directory, checklist, or financial permissions.
+
+Existing active accounts are treated as verified when this migration is first applied so current users are not unexpectedly locked out. Existing pending accounts and new registrations must verify their email.
 
 Technical administrators do not receive donor or finance access automatically. Treasurer and Bookkeeper access must be assigned intentionally. Privileged roles require MFA.
 

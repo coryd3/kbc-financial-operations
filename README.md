@@ -63,6 +63,8 @@ The recommended production host is Render. Replit may still be used as an option
 
 Production deployment is defined in `render.yaml`. GitHub Actions runs application, migration, documentation, and public-content checks before Render deploys `main`.
 
+New portal registrations require email verification and administrator approval. Pending users may sign in only to view their setup status; they receive no member or operational permissions. Transactional email uses environment-based Resend configuration documented in `SITE_DEPLOYMENT.md`.
+
 See `SITE_DEPLOYMENT.md` for initial Render setup, required environment variables, administrator bootstrap, backups, deployment checks, and rollback guidance.
 
 To install the documentation-site tools:

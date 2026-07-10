@@ -4,9 +4,10 @@ import request from "supertest";
 import bcrypt from "bcryptjs";
 import { eq, like } from "drizzle-orm";
 import { db, pool } from "./db.ts";
-import { users, type User } from "../shared/schema.ts";
+import { emailVerificationTokens, users, type User } from "../shared/schema.ts";
 import { registerRoutes } from "./routes.ts";
 import { resetLoginThrottle } from "./loginThrottle.ts";
+import { hashVerificationToken } from "./accountEmails.ts";
 
 // Build the real Express app with the real route handlers and auth middleware.
 // Only the session layer is substituted: a request header selects which user id
@@ -45,6 +46,7 @@ let activeDeactivateId: number; // active -> deactivated -> reactivated
 let rejectedId: number; // stays rejected
 let deactivatedId: number; // stays deactivated
 let mustChangeId: number; // active, mustChangePassword = true
+let unverifiedId: number; // active status, but email ownership not verified
 
 const as = (userId: number) => ({ "x-test-user-id": String(userId) });
 
@@ -75,6 +77,7 @@ beforeAll(async () => {
       { username: `${PREFIX}rejected`, passwordHash, fullName: "Rejected User", role: "member", status: "rejected" },
       { username: `${PREFIX}deactivated`, passwordHash, fullName: "Deactivated User", role: "member", status: "deactivated" },
       { username: `${PREFIX}mustchange`, passwordHash, fullName: "Must Change", role: "member", status: "active", mustChangePassword: true },
+      { username: `${PREFIX}unverified`, passwordHash, fullName: "Unverified Email", email: `${PREFIX}unverified@example.test`, role: "member", status: "active" },
       { username: `${PREFIX}throttle`, passwordHash, fullName: "Throttle Target", role: "member", status: "active" },
       { username: `${PREFIX}throttle2`, passwordHash, fullName: "Throttle Bystander", role: "member", status: "active" },
     ])
@@ -91,6 +94,7 @@ beforeAll(async () => {
   rejectedId = byName[`${PREFIX}rejected`];
   deactivatedId = byName[`${PREFIX}deactivated`];
   mustChangeId = byName[`${PREFIX}mustchange`];
+  unverifiedId = byName[`${PREFIX}unverified`];
 });
 
 afterAll(async () => {
@@ -108,6 +112,7 @@ describe("registration always creates a pending member", () => {
       username: `${PREFIX}newreg`,
       password: PASSWORD,
       fullName: "New Registrant",
+      email: `${PREFIX}newreg@example.test`,
       // attempt to smuggle in privileged fields — must be ignored
       role: "super_admin",
       status: "active",
@@ -124,9 +129,11 @@ describe("registration always creates a pending member", () => {
     expect(dbUser.status).toBe("pending");
   });
 
-  it("a freshly registered (pending) user cannot log in", async () => {
+  it("a freshly registered user can sign in only to the pending-access state", async () => {
     const res = await login(`${PREFIX}newreg`);
-    expect(res.status).toBe(403);
+    expect(res.status).toBe(200);
+    expect(res.body.user.status).toBe("pending");
+    expect(res.body.portalAccess).toBe(false);
   });
 
   it("rejects duplicate usernames case-insensitively", async () => {
@@ -134,6 +141,7 @@ describe("registration always creates a pending member", () => {
       username: `${PREFIX.toUpperCase()}NEWREG`,
       password: PASSWORD,
       fullName: "Dup",
+      email: `${PREFIX}duplicate@example.test`,
     });
     expect(res.status).toBe(409);
   });
@@ -143,15 +151,17 @@ describe("registration always creates a pending member", () => {
       username: `${PREFIX}weakpw`,
       password: "short",
       fullName: "Weak",
+      email: `${PREFIX}weak@example.test`,
     });
     expect(res.status).toBe(400);
   });
 });
 
-describe("login is refused for every non-active status", () => {
-  it("pending users cannot log in even with the correct password", async () => {
+describe("login separates pending setup from portal access", () => {
+  it("pending users can log in but receive no portal access", async () => {
     const res = await login(`${PREFIX}pending_a`);
-    expect(res.status).toBe(403);
+    expect(res.status).toBe(200);
+    expect(res.body.portalAccess).toBe(false);
   });
 
   it("rejected users cannot log in", async () => {
@@ -178,13 +188,45 @@ describe("login is refused for every non-active status", () => {
     expect(JSON.stringify(res.body)).not.toContain("passwordHash");
   });
 
-  it("a pending user's session is treated as unauthenticated on protected routes", async () => {
+  it("a pending session can read account status while rejected and deactivated sessions cannot", async () => {
     const me = await request(app).get("/api/auth/me").set(as(pendingApproveId));
-    expect(me.status).toBe(401);
+    expect(me.status).toBe(200);
+    expect(me.body.portalAccess).toBe(false);
     const rejected = await request(app).get("/api/auth/me").set(as(rejectedId));
     expect(rejected.status).toBe(401);
     const deactivated = await request(app).get("/api/auth/me").set(as(deactivatedId));
     expect(deactivated.status).toBe(401);
+  });
+
+  it("an active account with an unverified email remains outside protected portal access", async () => {
+    const loginResponse = await login(`${PREFIX}unverified`);
+    expect(loginResponse.status).toBe(200);
+    expect(loginResponse.body.portalAccess).toBe(false);
+    const me = await request(app).get("/api/auth/me").set(as(unverifiedId));
+    expect(me.status).toBe(200);
+    expect(me.body.portalAccess).toBe(false);
+    const protectedResponse = await request(app)
+      .post("/api/auth/change-password")
+      .set(as(unverifiedId))
+      .send({ currentPassword: PASSWORD, newPassword: "AnotherSecure9!" });
+    expect(protectedResponse.status).toBe(401);
+  });
+
+  it("verifies an email with a one-time token without granting approval", async () => {
+    const user = await getDbUser((await db.select().from(users).where(eq(users.username, `${PREFIX}newreg`)))[0].id);
+    const token = "verification-token-with-more-than-thirty-two-characters";
+    await db.insert(emailVerificationTokens).values({
+      userId: user.id,
+      email: user.email!,
+      tokenHash: hashVerificationToken(token),
+      expiresAt: new Date(Date.now() + 60_000),
+    });
+    const response = await request(app).post("/api/auth/email-verification/verify").send({ token });
+    expect(response.status).toBe(200);
+    expect(response.body.portalAccess).toBe(false);
+    const verified = await getDbUser(user.id);
+    expect(verified.emailVerifiedAt).not.toBeNull();
+    expect((await request(app).post("/api/auth/email-verification/verify").send({ token })).status).toBe(400);
   });
 });
 

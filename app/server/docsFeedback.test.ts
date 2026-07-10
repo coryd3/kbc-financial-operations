@@ -60,6 +60,18 @@ afterAll(async () => {
 });
 
 describe("section-aware documentation feedback", () => {
+  it("publishes metadata and filters search results by intended audience", async () => {
+    const nav = await request(app).get("/api/docs/nav");
+    expect(nav.status).toBe(200);
+    const pages = nav.body.sections.flatMap((section: any) => section.pages);
+    expect(pages.every((item: any) => item.metadata?.documentType && item.metadata?.audiences?.length)).toBe(true);
+    const churchSearch = await request(app).get("/api/docs/search?q=Document%20Inventory&audience=congregation");
+    expect(churchSearch.status).toBe(200);
+    expect(churchSearch.body.results).toHaveLength(0);
+    const projectSearch = await request(app).get("/api/docs/search?q=Document%20Inventory&audience=project");
+    expect(projectSearch.body.results.some((item: any) => item.slug === "document-inventory")).toBe(true);
+  });
+
   it("accepts separate comments for separate sections and prevents duplicates", async () => {
     const [firstSection, secondSection] = feedbackSections;
     const first = await request(app)

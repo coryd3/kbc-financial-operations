@@ -52,12 +52,14 @@ At the same time, Finance Committee should confirm the financial duties, control
 | Personnel Committee Packet | Help Personnel review the authorized Bookkeeper role and hiring materials. | Personnel Committee | Needs Personnel Review | Personnel Committee | High | [Open](../communications/personnel-committee-packet.md) |
 | Finance Committee Packet | Help Finance review software, financial controls, reimbursement, spending, cards, and budget questions. | Finance Committee | Needs Finance Review | Finance Committee | High | [Open](../communications/finance-committee-packet.md) |
 | Monthly Finance Committee Checklist | Provide a practical recurring checklist for monthly financial review. | Finance Committee | Draft | Finance Committee, Treasurer, Bookkeeper | High | [Open](../procedures/monthly-finance-committee-meeting-checklist.md) |
+| Documentation Stewardship Guide | Establish shared ownership so the library does not depend on one person. | Leadership Team / Documentation Stewards | Needs Leadership Review | Pastor, Deacons, committee chairs, Church Clerk | High | [Open](../document-stewardship.md) |
 
 ## 5. Documents Needing Finance Committee Input
 
 | Document | Purpose | Owner | Status | Review Needed By | Priority | Link |
 | --- | --- | --- | --- | --- | --- | --- |
 | Responsibility Matrix | Clarify ownership among Treasurer, Bookkeeper, committees, Pastor, Deacons, and Congregation. | Finance Committee | Needs Bylaw Review | Finance Committee, Personnel Committee, Pastor, Deacons, Nominating Committee | High | [Open](../governance/responsibility-matrix.md) |
+| Financial Authority Policy Package | Coordinate spending, reimbursement, cards, exceptions, and church-vote triggers using one Finance decision worksheet. | Finance Committee | Needs Finance Review | Finance Committee, Treasurer, Pastor, Deacons as appropriate | High | [Open](../policies/financial-authority-policy-package.md) |
 | Treasurer vs. Bookkeeper Duty Split | Define which duties belong to Treasurer, Bookkeeper, Finance, Personnel, and outside vendors. | Finance Committee | Needs Finance Review | Finance Committee, Personnel Committee, Nominating Committee | High | [Open](../roles/treasurer-vs-bookkeeper-duty-split.md) |
 | Bookkeeper Job Description | Define the authorized paid Bookkeeper / Financial Administrator role. | Personnel Committee | Needs Finance Review | Personnel Committee, Finance Committee | High | [Open](../roles/bookkeeper-financial-administrator-job-description.md) |
 | Reimbursement Policy | Define routine reimbursements, documentation, exceptions, and pre-approval triggers. | Finance Committee | Needs Finance Review | Finance Committee | High | [Open](../policies/reimbursement-policy.md) |

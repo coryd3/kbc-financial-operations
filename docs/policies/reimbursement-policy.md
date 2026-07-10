@@ -1,12 +1,14 @@
 # Reimbursement Policy
 
-Status: Draft
+Status: Draft - Needs Finance Review
 
 ## Purpose
 
 This policy defines how church-related expenses are reimbursed in a way that supports ministry work while maintaining documentation, accountability, and review.
 
 The guiding principle is that routine expenses within approved ministry budgets should not require excessive pre-approval, but they must be documented and reviewed.
+
+This document is part of the [Financial Authority Policy Package](financial-authority-policy-package.md). Spending thresholds and approval roles should match the Spending Authority Policy.
 
 ## Scope
 

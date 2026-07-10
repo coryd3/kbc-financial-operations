@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link } from "wouter";
 import { api, ApiError } from "../lib/api";
-import { Card, CardContent, CardHeader, CardTitle, Button, Input, Label } from "../components/ui";
+import { Card, CardContent, CardHeader, CardTitle, Button, Input, Label, PasswordInput } from "../components/ui";
 
 export default function Register() {
   const [formData, setFormData] = useState({
@@ -14,6 +14,7 @@ export default function Register() {
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
+  const [emailSent, setEmailSent] = useState(false);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
@@ -25,7 +26,8 @@ export default function Register() {
     setIsLoading(true);
     
     try {
-      await api.register(formData);
+      const result = await api.register(formData);
+      setEmailSent(result.emailSent);
       setIsSuccess(true);
     } catch (err) {
       if (err instanceof ApiError) {
@@ -47,14 +49,16 @@ export default function Register() {
           </CardHeader>
           <CardContent className="space-y-4">
             <p className="text-foreground/80">
-              Your registration has been successfully submitted and is currently awaiting administrator approval.
+              Your account request has been received. You can sign in now to follow the two setup steps.
             </p>
             <p className="text-sm text-muted-foreground">
-              You will be able to log in once an admin has reviewed your account.
+              {emailSent
+                ? "Check your email for a verification link. Member access begins after both email verification and administrator approval."
+                : "Email delivery is not configured yet. Sign in to view your status and contact a portal administrator for help verifying your email."}
             </p>
             <div className="pt-4">
               <Link href="/login" className="text-primary font-medium hover:underline">
-                Return to Login
+                Sign In and View Status
               </Link>
             </div>
           </CardContent>
@@ -106,10 +110,9 @@ export default function Register() {
             
             <div className="space-y-2">
               <Label htmlFor="password">Password</Label>
-              <Input
+              <PasswordInput
                 id="password"
                 name="password"
-                type="password"
                 value={formData.password}
                 onChange={handleChange}
                 required
@@ -118,13 +121,14 @@ export default function Register() {
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="email">Email (Optional)</Label>
+              <Label htmlFor="email">Email</Label>
               <Input
                 id="email"
                 name="email"
                 type="email"
                 value={formData.email}
                 onChange={handleChange}
+                required
                 disabled={isLoading}
               />
             </div>

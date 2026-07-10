@@ -48,60 +48,62 @@ nav:
   - Start Here:
       - Home: index.md
       - Leader-Friendly Dashboard: start-here/project-dashboard.md
-      - Project Brief: 00-project-brief.md
-      - Current State Assessment: 01-current-state-assessment.md
-      - Project Dashboard: project-dashboard.md
-      - Document Inventory: document-inventory.md
-  - Leadership Review:
-      - Overview: leadership-review/index.md
-      - Leadership Review Packet: communications/leadership-review-packet.md
-      - Implementation Roadmap: implementation-roadmap.md
-      - Decision Log: 02-decision-log.md
-      - Open Questions: 03-open-questions.md
-  - Governance and Responsibility:
+  - Church Library:
       - Constitution and Bylaws Reference: governance/constitution-and-bylaws-reference.md
       - Church Organization Chart: governance/church-organization-chart.md
+      - Financial Operations View: governance/financial-operations-view.md
       - Responsibility Matrix: governance/responsibility-matrix.md
+  - Governance and Roles:
       - Finance Committee Charter: governance/finance-committee-charter.md
       - Personnel Committee Role: governance/personnel-committee-role.md
-      - Future Governance Expansion: governance/future-governance-expansion.md
-  - Roles and Hiring:
-      - Treasurer vs. Bookkeeper Duty Split: roles/treasurer-vs-bookkeeper-duty-split.md
       - Treasurer Governance Role: roles/treasurer-governance-role.md
-      - Interim Treasurer Role: roles/interim-treasurer-role.md
       - Bookkeeper Job Description: roles/bookkeeper-financial-administrator-job-description.md
-      - Bookkeeper Application: roles/bookkeeper-job-application.md
-      - Bookkeeper Hiring Process: roles/bookkeeper-hiring-process.md
-      - Job Description Consistency Check: roles/job-description-consistency-check.md
-  - Finance Operations:
-      - Reimbursement Policy: policies/reimbursement-policy.md
-      - Reimbursement Process: procedures/reimbursement-process.md
+      - Treasurer vs. Bookkeeper Duty Split: roles/treasurer-vs-bookkeeper-duty-split.md
+  - Financial Policies:
+      - Financial Authority Policy Package: policies/financial-authority-policy-package.md
       - Spending Authority Policy: policies/spending-authority-policy.md
+      - Reimbursement Policy: policies/reimbursement-policy.md
       - Credit Card Policy: policies/credit-card-policy.md
-      - Monthly Financial Review Policy: policies/monthly-financial-review-policy.md
-      - Monthly Finance Committee Checklist: procedures/monthly-finance-committee-meeting-checklist.md
       - Offering Counting and Deposit Policy: policies/offering-counting-and-deposit-policy.md
+      - Monthly Financial Review Policy: policies/monthly-financial-review-policy.md
+      - Audit and Review Policy: policies/audit-and-review-policy.md
+  - Operating Procedures:
+      - Reimbursement Process: procedures/reimbursement-process.md
+      - Monthly Finance Committee Checklist: procedures/monthly-finance-committee-meeting-checklist.md
       - Contribution Entry Process: procedures/contribution-entry-process.md
       - Weekly Bookkeeping Checklist: procedures/weekly-bookkeeping-checklist.md
       - Monthly Close Checklist: procedures/monthly-close-checklist.md
       - Business Meeting Report Process: procedures/business-meeting-report-process.md
       - Payroll Process: procedures/payroll-process.md
-      - Audit and Review Policy: policies/audit-and-review-policy.md
-  - Software Evaluation:
+  - Committee Workspaces:
+      - Leadership Review Overview: leadership-review/index.md
+      - Leadership Review Packet: communications/leadership-review-packet.md
+      - Personnel Committee Packet: communications/personnel-committee-packet.md
+      - Bookkeeper Application: roles/bookkeeper-job-application.md
+      - Bookkeeper Hiring Process: roles/bookkeeper-hiring-process.md
+      - Finance Committee Packet: communications/finance-committee-packet.md
       - Software Requirements: software-evaluation/software-requirements.md
       - Demo Scorecard: software-evaluation/demo-scorecard.md
       - IconCMO vs. ChurchTrac Comparison: software-evaluation/icon-vs-churchtrac-comparison.md
       - Implementation Plan: software-evaluation/implementation-plan.md
-  - Communications:
-      - Personnel Committee Packet: communications/personnel-committee-packet.md
-      - Finance Committee Packet: communications/finance-committee-packet.md
+  - Project Workroom:
+      - Project Brief: 00-project-brief.md
+      - Current State Assessment: 01-current-state-assessment.md
+      - Implementation Roadmap: implementation-roadmap.md
+      - Decision Log: 02-decision-log.md
+      - Issue Register: 03-open-questions.md
+      - Interim Treasurer Role: roles/interim-treasurer-role.md
+      - Job Description Consistency Check: roles/job-description-consistency-check.md
+      - Future Governance Expansion: governance/future-governance-expansion.md
+      - Documentation Stewardship Guide: document-stewardship.md
+      - Document Inventory: document-inventory.md
+  - Communications and Releases:
       - Personnel Committee Recommendation: communications/personnel-committee-recommendation.md
       - Finance Committee Recommendation: communications/finance-committee-recommendation.md
       - Deacon Update: communications/deacon-update.md
       - Church Business Meeting Summary: communications/church-business-meeting-summary.md
       - One-Page Congregational Summary: communications/one-page-congregational-summary.md
       - Congregational Slide Outline: communications/congregational-slide-outline.md
-  - Exports and Releases:
       - Export Process: export-process.md
       - Exported Files and Release Bundles: exports-and-releases.md
       - Document Workflow Notes: document-workflow-upgrade-notes.md

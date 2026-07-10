@@ -28,6 +28,7 @@ import type {
   Contribution,
   ContributionMethod,
 } from "@shared/schema";
+import type { DocsMetadata, DocumentationAudience } from "@shared/docsNav";
 
 export class ApiError extends Error {
   status: number;
@@ -263,12 +264,16 @@ export type DecisionInput = {
 
 export const api = {
   // auth
-  register: (data: { username: string; password: string; fullName: string; email?: string; phone?: string }) =>
-    request<{ message: string; user: SafeUser }>("POST", "/api/auth/register", data),
+  register: (data: { username: string; password: string; fullName: string; email: string; phone?: string }) =>
+    request<{ message: string; user: SafeUser; emailSent: boolean }>("POST", "/api/auth/register", data),
   login: (data: { username: string; password: string }) =>
-    request<{ user: SafeUser; mfaRequired: boolean; mfaSetupRequired: boolean }>("POST", "/api/auth/login", data),
+    request<{ user: SafeUser; portalAccess: boolean; mfaRequired: boolean; mfaSetupRequired: boolean }>("POST", "/api/auth/login", data),
   logout: () => request<{ message: string }>("POST", "/api/auth/logout"),
-  me: () => request<{ user: SafeUser; mfaRequired: boolean; mfaVerified: boolean }>("GET", "/api/auth/me"),
+  me: () => request<{ user: SafeUser; portalAccess: boolean; mfaRequired: boolean; mfaVerified: boolean }>("GET", "/api/auth/me"),
+  resendEmailVerification: () =>
+    request<{ message: string; emailSent: boolean }>("POST", "/api/auth/email-verification/resend"),
+  verifyEmail: (token: string) =>
+    request<{ message: string; portalAccess: boolean }>("POST", "/api/auth/email-verification/verify", { token }),
   changePassword: (data: { currentPassword: string; newPassword: string }) =>
     request<{ message: string }>("POST", "/api/auth/change-password", data),
   getMfaSetup: () => request<{ secret: string; qrDataUrl: string }>("GET", "/api/auth/mfa/setup"),
@@ -296,7 +301,7 @@ export const api = {
     return request<{ users: ManagedUser[] }>("GET", `/api/admin/users${suffix}`);
   },
   getPendingCount: () => request<{ pendingCount: number }>("GET", "/api/admin/pending-count"),
-  approveUser: (id: number) => request<{ user: SafeUser }>("POST", `/api/admin/users/${id}/approve`),
+  approveUser: (id: number) => request<{ user: SafeUser; notificationSent: boolean }>("POST", `/api/admin/users/${id}/approve`),
   rejectUser: (id: number) => request<{ user: SafeUser }>("POST", `/api/admin/users/${id}/reject`),
   deactivateUser: (id: number) => request<{ user: SafeUser }>("POST", `/api/admin/users/${id}/deactivate`),
   reactivateUser: (id: number) => request<{ user: SafeUser }>("POST", `/api/admin/users/${id}/reactivate`),
@@ -315,15 +320,16 @@ export const api = {
       section: string | null;
       markdown: string;
       revision: string;
+      metadata: DocsMetadata;
       prev: { slug: string; title: string } | null;
       next: { slug: string; title: string } | null;
     }>("GET", `/api/docs/page/${slug}`),
   getDocsNav: () =>
-    request<{ sections: import("@shared/docsNav").DocsSection[] }>("GET", "/api/docs/nav"),
-  searchDocs: (q: string) =>
+    request<{ sections: import("@shared/docsNav").DocsSection[]; audiences: DocumentationAudience[] }>("GET", "/api/docs/nav"),
+  searchDocs: (q: string, audience: DocumentationAudience | "all" = "all") =>
     request<{
-      results: { slug: string; title: string; section: string | null; snippets: string[] }[];
-    }>("GET", `/api/docs/search?q=${encodeURIComponent(q)}`),
+      results: { slug: string; title: string; section: string | null; metadata: DocsMetadata; snippets: string[] }[];
+    }>("GET", `/api/docs/search?q=${encodeURIComponent(q)}&audience=${encodeURIComponent(audience)}`),
   submitDocsFeedback: (data: {
     pageSlug: string;
     documentationRevision: string;
