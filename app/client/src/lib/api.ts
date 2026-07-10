@@ -147,6 +147,17 @@ export interface TemplateHistory {
   instances: HistoryInstance[];
 }
 
+export interface AppNotification {
+  id: number;
+  userId: number;
+  instanceId: number;
+  type: "due_soon" | "overdue";
+  title: string;
+  body: string | null;
+  createdAt: string;
+  readAt: string | null;
+}
+
 export interface ChecklistSummary {
   openCount: number;
   myOpenSteps: number;
@@ -366,4 +377,14 @@ export const api = {
     request<{ decision: Decision }>("PATCH", `/api/decisions/${id}`, data),
   deleteDecision: (id: number) => request<{ message: string }>("DELETE", `/api/decisions/${id}`),
   getGovernanceOverview: () => request<GovernanceOverview>("GET", "/api/governance/overview"),
+
+  // notifications
+  getNotifications: () =>
+    request<{ notifications: AppNotification[]; unreadCount: number }>("GET", "/api/notifications"),
+  markNotificationRead: (id: number) =>
+    request<{ notification: AppNotification }>("POST", `/api/notifications/${id}/read`),
+  markAllNotificationsRead: () =>
+    request<{ message: string }>("POST", "/api/notifications/read-all"),
+  updateNotificationPrefs: (data: { notifyDueSoon: boolean; notifyOverdue: boolean }) =>
+    request<{ user: SafeUser }>("PATCH", "/api/notifications/prefs", data),
 };

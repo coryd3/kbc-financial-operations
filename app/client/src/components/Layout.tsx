@@ -5,6 +5,7 @@ import { api } from "../lib/api";
 import { LogOut, BookOpen, Home, User, Shield, BarChart, LayoutDashboard, Users, ContactRound, CheckSquare, Gavel } from "lucide-react";
 import { cn } from "../lib/utils";
 import { CHURCH_CONTACT } from "../lib/contact";
+import { NotificationBell } from "./NotificationBell";
 
 export function Layout({ children }: { children: React.ReactNode }) {
   const { user, isAdmin, isLeadership, refresh } = useAuth();
@@ -99,6 +100,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
               </div>
             ) : (
               <div className="flex items-center gap-2 ml-2 pl-2 border-l border-primary-foreground/20">
+                <NotificationBell />
                 <Link href="/account" className="flex items-center gap-1.5 px-3 py-2 rounded-md hover:bg-primary-foreground/10 transition-colors">
                   <User className="w-4 h-4" />
                   Account

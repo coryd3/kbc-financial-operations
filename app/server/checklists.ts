@@ -16,6 +16,7 @@ import {
 } from "../shared/schema.ts";
 import { requireAuth, requireRole } from "./auth.ts";
 import { toCsv, sendCsv } from "./csv.ts";
+import { ensureReminders } from "./notifications.ts";
 
 const requireChecklistManager = requireRole(...CHECKLIST_MANAGER_ROLES);
 
@@ -156,6 +157,9 @@ export async function ensureScheduledInstances(force = false) {
       }
     }
   }
+
+  // Piggyback reminder generation on the same throttled schedule.
+  await ensureReminders(force);
 }
 
 const MONTH_NAMES = [

@@ -5,6 +5,7 @@ import { pool } from "./db.ts";
 import { registerRoutes } from "./routes.ts";
 import { registerMemberRoutes } from "./memberRoutes.ts";
 import { registerGovernanceRoutes } from "./governance.ts";
+import { registerNotificationRoutes } from "./notifications.ts";
 import { seed } from "./seed.ts";
 
 const app = express();
@@ -37,6 +38,7 @@ app.use(
 registerRoutes(app);
 registerMemberRoutes(app);
 registerGovernanceRoutes(app);
+registerNotificationRoutes(app);
 
 app.use((err: any, _req: express.Request, res: express.Response, _next: express.NextFunction) => {
   console.error(err);

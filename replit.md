@@ -42,6 +42,12 @@ super_admin, admin, treasurer, bookkeeper, finance_committee, personnel_committe
 - Client pages: `/committees` (list + create for admins), `/committees/:id` (roster, meetings & minutes, decisions), `/decisions` (filterable decision log + link to historical log on the docs site). Dashboard shows "My Committees" and upcoming/recent meetings.
 - Seed: Finance, Personnel (restricted), Deacons, Nominating committees plus three decision log entries carried over from `docs/02-decision-log.md`.
 
+### Checklist reminders & notifications
+- In-app reminders: `notifications` table (unique per user + instance + type). Generation in `app/server/notifications.ts` (`ensureReminders`, piggybacked on `ensureScheduledInstances`, throttled 10 min): "due_soon" within 24h of due date, "overdue" past due. Recipients = active users whose role matches an incomplete step; incomplete unassigned steps notify CHECKLIST_MANAGER_ROLES.
+- Per-user prefs: `users.notify_due_soon` / `users.notify_overdue` (default on), editable on `/account` ("Checklist Reminders" card), API `PATCH /api/notifications/prefs`.
+- UI: bell dropdown in header (`NotificationBell.tsx`), unread badge, click-through to checklist, mark read / mark all read. Routes: `GET /api/notifications`, `POST /api/notifications/:id/read`, `POST /api/notifications/read-all`.
+- Email: Replit Mail integration (`app/server/replitmail.ts`) sends a digest to the **app owner's verified Replit email** only (platform limitation — not per-user email). Sent once per instance per type, gated by `due_soon_email_at` / `overdue_email_at` on `checklist_instances`, marked only after successful send so transient failures retry. Email failures never block in-app reminders.
+
 ### Usage tracking
 - In-app: POST `/api/track` records path/visitor/role in `page_views`; admin analytics at `/admin/analytics` (daily views, top pages, by role).
 - GoatCounter snippet (kbc-financial-operations.goatcounter.com) is embedded in `app/client/index.html` and counts SPA navigations (skips localhost by design).

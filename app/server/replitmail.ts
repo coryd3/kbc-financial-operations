@@ -1,5 +1,6 @@
-// Replit Mail integration (blueprint:replitmail) — do not modify.
-// Emails are sent to the repl owner's verified Replit email address.
+// From the Replit Mail integration (blueprint:replitmail). Do not modify —
+// this is the exact deterministic pattern the integration requires.
+// Emails are sent to the app owner's verified Replit email address.
 import { promisify } from "node:util";
 import { execFile } from "node:child_process";
 import { z } from "zod";
@@ -30,7 +31,7 @@ export type SmtpMessage = z.infer<typeof zSmtpMessage>;
 async function getAuthToken(): Promise<{ authToken: string; hostname: string }> {
   const hostname = process.env.REPLIT_CONNECTORS_HOSTNAME;
   if (!hostname) {
-    throw new Error("REPLIT_CONNECTORS_HOSTNAME is not set");
+    throw new Error("REPLIT_CONNECTORS_HOSTNAME is not set; email sending is unavailable");
   }
   const { stdout } = await promisify(execFile)(
     "replit",

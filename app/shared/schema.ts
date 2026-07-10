@@ -65,6 +65,8 @@ export const users = pgTable("users", {
   role: varchar("role", { length: 32 }).$type<Role>().notNull().default("member"),
   status: varchar("status", { length: 20 }).$type<UserStatus>().notNull().default("pending"),
   mustChangePassword: boolean("must_change_password").notNull().default(false),
+  notifyDueSoon: boolean("notify_due_soon").notNull().default(true),
+  notifyOverdue: boolean("notify_overdue").notNull().default(true),
   createdAt: timestamp("created_at").notNull().defaultNow(),
   approvedAt: timestamp("approved_at"),
   lastLoginAt: timestamp("last_login_at"),
@@ -181,6 +183,8 @@ export const checklistInstances = pgTable(
     createdBy: integer("created_by").references(() => users.id),
     createdAt: timestamp("created_at").notNull().defaultNow(),
     completedAt: timestamp("completed_at"),
+    dueSoonEmailAt: timestamp("due_soon_email_at"),
+    overdueEmailAt: timestamp("overdue_email_at"),
   },
   (table) => [
     index("checklist_instances_status_idx").on(table.status),
@@ -205,7 +209,6 @@ export const checklistInstanceSteps = pgTable(
   (table) => [index("checklist_instance_steps_instance_idx").on(table.instanceId)],
 );
 
-// ---------- Committees & governance ----------
 
 export const COMMITTEE_POSITIONS = ["chair", "vice_chair", "secretary", "member"] as const;
 export type CommitteePosition = (typeof COMMITTEE_POSITIONS)[number];
@@ -298,6 +301,36 @@ export const decisions = pgTable(
   },
   (table) => [index("decisions_committee_idx").on(table.committeeId)],
 );
+export const NOTIFICATION_TYPES = ["due_soon", "overdue"] as const;
+export type NotificationType = (typeof NOTIFICATION_TYPES)[number];
+
+export const notifications = pgTable(
+  "notifications",
+  {
+    id: serial("id").primaryKey(),
+    userId: integer("user_id")
+      .notNull()
+      .references(() => users.id, { onDelete: "cascade" }),
+    instanceId: integer("instance_id")
+      .notNull()
+      .references(() => checklistInstances.id, { onDelete: "cascade" }),
+    type: varchar("type", { length: 20 }).$type<NotificationType>().notNull(),
+    title: varchar("title", { length: 300 }).notNull(),
+    body: text("body"),
+    createdAt: timestamp("created_at").notNull().defaultNow(),
+    readAt: timestamp("read_at"),
+  },
+  (table) => [
+    index("notifications_user_idx").on(table.userId),
+    // One reminder per user + checklist + type; prevents duplicate reminders
+    // on every generation pass.
+    uniqueIndex("notifications_user_instance_type_idx").on(
+      table.userId,
+      table.instanceId,
+      table.type,
+    ),
+  ],
+);
 
 export type User = typeof users.$inferSelect;
 export type Announcement = typeof announcements.$inferSelect;
@@ -312,6 +345,7 @@ export type Committee = typeof committees.$inferSelect;
 export type CommitteeMember = typeof committeeMembers.$inferSelect;
 export type Meeting = typeof meetings.$inferSelect;
 export type Decision = typeof decisions.$inferSelect;
+export type Notification = typeof notifications.$inferSelect;
 
 export type SafeUser = Omit<User, "passwordHash">;
 
@@ -413,6 +447,13 @@ export const checklistTemplateSchema = z.object({
 });
 
 export type ChecklistTemplateInput = z.infer<typeof checklistTemplateSchema>;
+
+export const notificationPrefsSchema = z.object({
+  notifyDueSoon: z.boolean(),
+  notifyOverdue: z.boolean(),
+});
+
+export type NotificationPrefsInput = z.infer<typeof notificationPrefsSchema>;
 
 // Session table managed by connect-pg-simple (defined here so drizzle-kit push
 // does not try to drop it).

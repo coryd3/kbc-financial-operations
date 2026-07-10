@@ -128,6 +128,89 @@ function MemberProfileCard() {
   );
 }
 
+function ReminderPrefsCard() {
+  const { user, refresh } = useAuth();
+  const queryClient = useQueryClient();
+  const [notifyDueSoon, setNotifyDueSoon] = useState(user?.notifyDueSoon ?? true);
+  const [notifyOverdue, setNotifyOverdue] = useState(user?.notifyOverdue ?? true);
+  const [error, setError] = useState("");
+  const [success, setSuccess] = useState(false);
+
+  useEffect(() => {
+    if (user) {
+      setNotifyDueSoon(user.notifyDueSoon);
+      setNotifyOverdue(user.notifyOverdue);
+    }
+  }, [user?.notifyDueSoon, user?.notifyOverdue]);
+
+  const saveMut = useMutation({
+    mutationFn: () => api.updateNotificationPrefs({ notifyDueSoon, notifyOverdue }),
+    onSuccess: async () => {
+      setError("");
+      setSuccess(true);
+      await refresh();
+      queryClient.invalidateQueries({ queryKey: ["notifications"] });
+    },
+    onError: (err) => {
+      setSuccess(false);
+      setError(err instanceof ApiError ? err.message : "Something went wrong");
+    },
+  });
+
+  return (
+    <Card>
+      <CardHeader>
+        <CardTitle className="text-2xl text-primary">Checklist Reminders</CardTitle>
+      </CardHeader>
+      <CardContent>
+        <form
+          className="space-y-4"
+          onSubmit={(e) => {
+            e.preventDefault();
+            saveMut.mutate();
+          }}
+        >
+          {error && (
+            <div className="p-3 bg-destructive/10 border border-destructive/20 rounded-md text-destructive text-sm">
+              {error}
+            </div>
+          )}
+          {success && (
+            <div className="p-3 bg-primary/10 border border-primary/20 rounded-md text-primary font-medium text-sm">
+              Reminder preferences saved.
+            </div>
+          )}
+          <p className="text-sm text-muted-foreground">
+            Choose when you'd like an in-app reminder about checklists with open steps assigned to
+            you. Reminders appear under the bell icon in the header.
+          </p>
+          <div className="space-y-2 text-sm">
+            <label className="flex items-center gap-2">
+              <input
+                type="checkbox"
+                checked={notifyDueSoon}
+                onChange={(e) => setNotifyDueSoon(e.target.checked)}
+              />
+              Remind me the day before a checklist is due
+            </label>
+            <label className="flex items-center gap-2">
+              <input
+                type="checkbox"
+                checked={notifyOverdue}
+                onChange={(e) => setNotifyOverdue(e.target.checked)}
+              />
+              Remind me when a checklist is overdue
+            </label>
+          </div>
+          <Button type="submit" className="w-full" disabled={saveMut.isPending}>
+            {saveMut.isPending ? "Saving..." : "Save Reminder Preferences"}
+          </Button>
+        </form>
+      </CardContent>
+    </Card>
+  );
+}
+
 export default function Account() {
   const { user, refresh } = useAuth();
   const [, setLocation] = useLocation();
@@ -187,6 +270,7 @@ export default function Account() {
       )}
 
       {!user?.mustChangePassword && <MemberProfileCard />}
+      {!user?.mustChangePassword && <ReminderPrefsCard />}
 
       <Card>
         <CardHeader>
