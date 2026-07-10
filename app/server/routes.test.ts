@@ -1,4 +1,4 @@
-import { describe, it, expect, beforeAll, afterAll } from "vitest";
+import { describe, it, expect, beforeAll, beforeEach, afterAll } from "vitest";
 import express from "express";
 import request from "supertest";
 import bcrypt from "bcryptjs";
@@ -6,6 +6,7 @@ import { eq, like } from "drizzle-orm";
 import { db, pool } from "./db.ts";
 import { users, type User } from "../shared/schema.ts";
 import { registerRoutes } from "./routes.ts";
+import { resetLoginThrottle } from "./loginThrottle.ts";
 
 // Build the real Express app with the real route handlers and auth middleware.
 // Only the session layer is substituted: a request header selects which user id
@@ -72,6 +73,8 @@ beforeAll(async () => {
       { username: `${PREFIX}rejected`, passwordHash, fullName: "Rejected User", role: "member", status: "rejected" },
       { username: `${PREFIX}deactivated`, passwordHash, fullName: "Deactivated User", role: "member", status: "deactivated" },
       { username: `${PREFIX}mustchange`, passwordHash, fullName: "Must Change", role: "member", status: "active", mustChangePassword: true },
+      { username: `${PREFIX}throttle`, passwordHash, fullName: "Throttle Target", role: "member", status: "active" },
+      { username: `${PREFIX}throttle2`, passwordHash, fullName: "Throttle Bystander", role: "member", status: "active" },
     ])
     .returning({ id: users.id, username: users.username });
   const byName = Object.fromEntries(inserted.map((u) => [u.username, u.id]));
@@ -417,5 +420,76 @@ describe("must-change-password is enforced end to end", () => {
     const newLogin = await login(`${PREFIX}mustchange`, newPassword);
     expect(newLogin.status).toBe(200);
     expect(newLogin.body.user.mustChangePassword).toBe(false);
+  });
+});
+
+describe("repeated failed logins are throttled", () => {
+  beforeEach(() => {
+    resetLoginThrottle();
+  });
+
+  afterAll(() => {
+    resetLoginThrottle();
+  });
+
+  it("locks a username after 5 failed attempts, even if the 6th password is correct", async () => {
+    for (let i = 0; i < 5; i++) {
+      const res = await login(`${PREFIX}throttle`, "wrong-password");
+      expect(res.status, `attempt ${i + 1}`).toBe(401);
+    }
+    const blocked = await login(`${PREFIX}throttle`, PASSWORD);
+    expect(blocked.status).toBe(429);
+    expect(blocked.body.message).toMatch(/too many failed login attempts/i);
+    expect(Number(blocked.headers["retry-after"])).toBeGreaterThan(0);
+  });
+
+  it("the username lockout is case-insensitive", async () => {
+    for (let i = 0; i < 5; i++) {
+      await login(`${PREFIX}throttle`, "wrong-password");
+    }
+    const blocked = await login(`${PREFIX.toUpperCase()}THROTTLE`, PASSWORD);
+    expect(blocked.status).toBe(429);
+  });
+
+  it("locking one username does not block other users", async () => {
+    for (let i = 0; i < 5; i++) {
+      await login(`${PREFIX}throttle`, "wrong-password");
+    }
+    const other = await login(`${PREFIX}throttle2`, PASSWORD);
+    expect(other.status).toBe(200);
+  });
+
+  it("unknown usernames are throttled the same way", async () => {
+    for (let i = 0; i < 5; i++) {
+      const res = await login(`${PREFIX}ghost`, "wrong-password");
+      expect(res.status, `attempt ${i + 1}`).toBe(401);
+    }
+    const blocked = await login(`${PREFIX}ghost`, "wrong-password");
+    expect(blocked.status).toBe(429);
+  });
+
+  it("a normal user with a few typos can still log in, and success clears the counter", async () => {
+    for (let i = 0; i < 4; i++) {
+      const res = await login(`${PREFIX}throttle`, "wrong-password");
+      expect(res.status).toBe(401);
+    }
+    const ok = await login(`${PREFIX}throttle`, PASSWORD);
+    expect(ok.status).toBe(200);
+
+    // the successful login reset the failure count: 4 more typos still don't lock
+    for (let i = 0; i < 4; i++) {
+      await login(`${PREFIX}throttle`, "wrong-password");
+    }
+    const okAgain = await login(`${PREFIX}throttle`, PASSWORD);
+    expect(okAgain.status).toBe(200);
+  });
+
+  it("spraying many usernames from one source trips the per-IP lockout", async () => {
+    for (let i = 0; i < 20; i++) {
+      await login(`${PREFIX}spray_${i}`, "wrong-password");
+    }
+    // a username never tried before is still blocked because the source is locked
+    const blocked = await login(`${PREFIX}throttle2`, PASSWORD);
+    expect(blocked.status).toBe(429);
   });
 });

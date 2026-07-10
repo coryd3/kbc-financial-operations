@@ -16,6 +16,7 @@ import {
 } from "../shared/schema.ts";
 import { getSessionUser, requireAuth, requireAdmin, toSafeUser } from "./auth.ts";
 import { registerChecklistRoutes } from "./checklists.ts";
+import { loginBlockedForSeconds, recordLoginFailure, recordLoginSuccess } from "./loginThrottle.ts";
 
 function getUser(req: Request): User {
   return (req as any).user as User;
@@ -63,13 +64,24 @@ export function registerRoutes(app: Express) {
       return res.status(400).json({ message: parsed.error.errors[0]?.message ?? "Invalid input" });
     }
     const { username, password } = parsed.data;
+    const ip = req.ip ?? "unknown";
+    const blockedSeconds = loginBlockedForSeconds(ip, username);
+    if (blockedSeconds > 0) {
+      const minutes = Math.max(1, Math.ceil(blockedSeconds / 60));
+      res.set("Retry-After", String(blockedSeconds));
+      return res.status(429).json({
+        message: `Too many failed login attempts. Please wait about ${minutes} minute${minutes === 1 ? "" : "s"} and try again.`,
+      });
+    }
     const [user] = await db
       .select()
       .from(users)
       .where(sql`lower(${users.username}) = lower(${username})`);
     if (!user || !(await bcrypt.compare(password, user.passwordHash))) {
+      recordLoginFailure(ip, username);
       return res.status(401).json({ message: "Incorrect username or password" });
     }
+    recordLoginSuccess(ip, username);
     if (user.status === "pending") {
       return res.status(403).json({ message: "Your registration is still awaiting approval by an administrator." });
     }
