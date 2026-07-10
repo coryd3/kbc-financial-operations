@@ -10,6 +10,7 @@ import {
   date,
   uniqueIndex,
   json,
+  primaryKey,
 } from "drizzle-orm/pg-core";
 import { z } from "zod";
 
@@ -71,6 +72,21 @@ export const users = pgTable("users", {
   approvedAt: timestamp("approved_at"),
   lastLoginAt: timestamp("last_login_at"),
 });
+
+// Failed-login counters shared by every server instance so lockouts survive
+// restarts and apply across autoscale replicas. One row per (scope, key) where
+// scope is "username" or "ip".
+export const loginThrottle = pgTable(
+  "login_throttle",
+  {
+    scope: varchar("scope", { length: 16 }).notNull(),
+    key: varchar("key", { length: 255 }).notNull(),
+    failureCount: integer("failure_count").notNull().default(0),
+    firstFailureAt: timestamp("first_failure_at").notNull().defaultNow(),
+    lockedUntil: timestamp("locked_until"),
+  },
+  (table) => [primaryKey({ columns: [table.scope, table.key] })],
+);
 
 export const announcements = pgTable("announcements", {
   id: serial("id").primaryKey(),

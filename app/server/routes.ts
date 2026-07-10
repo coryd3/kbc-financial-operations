@@ -67,7 +67,7 @@ export function registerRoutes(app: Express) {
     }
     const { username, password } = parsed.data;
     const ip = req.ip ?? "unknown";
-    const blockedSeconds = loginBlockedForSeconds(ip, username);
+    const blockedSeconds = await loginBlockedForSeconds(ip, username);
     if (blockedSeconds > 0) {
       const minutes = Math.max(1, Math.ceil(blockedSeconds / 60));
       res.set("Retry-After", String(blockedSeconds));
@@ -80,10 +80,10 @@ export function registerRoutes(app: Express) {
       .from(users)
       .where(sql`lower(${users.username}) = lower(${username})`);
     if (!user || !(await bcrypt.compare(password, user.passwordHash))) {
-      recordLoginFailure(ip, username);
+      await recordLoginFailure(ip, username);
       return res.status(401).json({ message: "Incorrect username or password" });
     }
-    recordLoginSuccess(ip, username);
+    await recordLoginSuccess(ip, username);
     if (user.status === "pending") {
       return res.status(403).json({ message: "Your registration is still awaiting approval by an administrator." });
     }

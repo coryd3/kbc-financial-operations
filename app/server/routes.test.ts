@@ -424,12 +424,12 @@ describe("must-change-password is enforced end to end", () => {
 });
 
 describe("repeated failed logins are throttled", () => {
-  beforeEach(() => {
-    resetLoginThrottle();
+  beforeEach(async () => {
+    await resetLoginThrottle();
   });
 
-  afterAll(() => {
-    resetLoginThrottle();
+  afterAll(async () => {
+    await resetLoginThrottle();
   });
 
   it("locks a username after 5 failed attempts, even if the 6th password is correct", async () => {
