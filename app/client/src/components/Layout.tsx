@@ -4,6 +4,7 @@ import { useAuth } from "../lib/auth";
 import { api } from "../lib/api";
 import { LogOut, BookOpen, Home, User, Shield, BarChart, LayoutDashboard, Users, ContactRound } from "lucide-react";
 import { cn } from "../lib/utils";
+import { CHURCH_CONTACT } from "../lib/contact";
 
 export function Layout({ children }: { children: React.ReactNode }) {
   const { user, isAdmin, isLeadership, refresh } = useAuth();
@@ -102,9 +103,29 @@ export function Layout({ children }: { children: React.ReactNode }) {
         {children}
       </main>
       <footer className="border-t border-border py-8 text-center text-muted-foreground text-sm">
-        <p className="font-serif text-base text-foreground/80 mb-2">Kingsville Baptist Church</p>
-        <p>PO Box &mdash;, Kingsville (TBD)</p>
-        <p className="mt-4 text-xs opacity-70">&copy; {new Date().getFullYear()} Kingsville Baptist Church. All rights reserved.</p>
+        <p className="font-serif text-base text-foreground/80 mb-2">{CHURCH_CONTACT.name}</p>
+        <p>
+          {CHURCH_CONTACT.addressLine1}, {CHURCH_CONTACT.addressLine2}
+        </p>
+        <p className="mt-1">
+          <a href={`tel:${CHURCH_CONTACT.phone}`} className="hover:text-foreground transition-colors">
+            {CHURCH_CONTACT.phone}
+          </a>
+          {" · "}
+          <a href={`mailto:${CHURCH_CONTACT.email}`} className="hover:text-foreground transition-colors">
+            {CHURCH_CONTACT.email}
+          </a>
+          {" · "}
+          <a
+            href={CHURCH_CONTACT.website}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-foreground transition-colors"
+          >
+            {CHURCH_CONTACT.websiteLabel}
+          </a>
+        </p>
+        <p className="mt-4 text-xs opacity-70">&copy; {new Date().getFullYear()} {CHURCH_CONTACT.name}. All rights reserved.</p>
       </footer>
     </div>
   );

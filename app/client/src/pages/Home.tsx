@@ -5,6 +5,7 @@ import { Link } from "wouter";
 import { format } from "date-fns";
 import { useAuth } from "../lib/auth";
 import { AlertCircle, Calendar, ArrowRight } from "lucide-react";
+import { CHURCH_CONTACT } from "../lib/contact";
 
 export default function Home() {
   const { user } = useAuth();
@@ -92,30 +93,30 @@ export default function Home() {
               <CardTitle className="text-xl">Contact Us</CardTitle>
             </CardHeader>
             <CardContent className="space-y-2 text-sm text-foreground/80">
-              <p className="font-medium text-foreground">Kingsville Baptist Church</p>
-              <p>203 West Adriatic Street</p>
-              <p>Kingsville, MO 64061</p>
+              <p className="font-medium text-foreground">{CHURCH_CONTACT.name}</p>
+              <p>{CHURCH_CONTACT.addressLine1}</p>
+              <p>{CHURCH_CONTACT.addressLine2}</p>
               <p className="pt-2">
                 Phone:{" "}
-                <a href="tel:816-597-3684" className="text-primary hover:text-accent transition-colors">
-                  816-597-3684
+                <a href={`tel:${CHURCH_CONTACT.phone}`} className="text-primary hover:text-accent transition-colors">
+                  {CHURCH_CONTACT.phone}
                 </a>
               </p>
               <p>
                 Email:{" "}
-                <a href="mailto:kingsvillebaptist@gmail.com" className="text-primary hover:text-accent transition-colors">
-                  kingsvillebaptist@gmail.com
+                <a href={`mailto:${CHURCH_CONTACT.email}`} className="text-primary hover:text-accent transition-colors">
+                  {CHURCH_CONTACT.email}
                 </a>
               </p>
               <p>
                 Website:{" "}
                 <a
-                  href="https://www.kingsvillebaptistchurch.net"
+                  href={CHURCH_CONTACT.website}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-primary hover:text-accent transition-colors"
                 >
-                  kingsvillebaptistchurch.net
+                  {CHURCH_CONTACT.websiteLabel}
                 </a>
               </p>
             </CardContent>
