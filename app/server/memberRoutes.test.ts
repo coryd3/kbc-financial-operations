@@ -368,6 +368,80 @@ describe("member-link suggestions rank exact above close matches", () => {
   });
 });
 
+describe("directory pagination", () => {
+  it("returns everything plus a total when no limit is given (legacy behavior)", async () => {
+    const res = await request(app).get("/api/members").set(as(otherUserId)).query({ search: PREFIX });
+    expect(res.status).toBe(200);
+    expect(res.body.total).toBeGreaterThanOrEqual(2);
+    expect(res.body.members.length).toBe(res.body.total);
+    expect(res.body.limit).toBeNull();
+  });
+
+  it("pages through results with limit/offset without skipping or repeating", async () => {
+    const all = await request(app).get("/api/members").set(as(otherUserId)).query({ search: PREFIX });
+    const total = all.body.total as number;
+
+    const page1 = await request(app)
+      .get("/api/members")
+      .set(as(otherUserId))
+      .query({ search: PREFIX, limit: 1, offset: 0 });
+    const page2 = await request(app)
+      .get("/api/members")
+      .set(as(otherUserId))
+      .query({ search: PREFIX, limit: 1, offset: 1 });
+    expect(page1.status).toBe(200);
+    expect(page1.body.members.length).toBe(1);
+    expect(page1.body.total).toBe(total);
+    expect(page2.body.members.length).toBe(1);
+    expect(page1.body.members[0].id).not.toBe(page2.body.members[0].id);
+    // Pages follow the same overall ordering as the full list.
+    expect(page1.body.members[0].id).toBe(all.body.members[0].id);
+    expect(page2.body.members[0].id).toBe(all.body.members[1].id);
+  });
+
+  it("caps the page size at 200 and ignores junk limit/offset values", async () => {
+    const res = await request(app)
+      .get("/api/members")
+      .set(as(otherUserId))
+      .query({ search: PREFIX, limit: 99999, offset: -5 });
+    expect(res.status).toBe(200);
+    expect(res.body.limit).toBe(200);
+    expect(res.body.offset).toBe(0);
+
+    const junk = await request(app)
+      .get("/api/members")
+      .set(as(otherUserId))
+      .query({ search: PREFIX, limit: "abc", offset: "xyz" });
+    expect(junk.status).toBe(200);
+    expect(junk.body.limit).toBeNull();
+    expect(junk.body.members.length).toBe(junk.body.total);
+  });
+
+  it("sort=household orders assigned households before unassigned members", async () => {
+    const res = await request(app)
+      .get("/api/members")
+      .set(as(otherUserId))
+      .query({ search: PREFIX, sort: "household" });
+    expect(res.status).toBe(200);
+    const list = res.body.members as Array<{ householdId: number | null }>;
+    const firstUnassigned = list.findIndex((m) => m.householdId === null);
+    const lastAssigned = list.map((m) => m.householdId !== null).lastIndexOf(true);
+    if (firstUnassigned !== -1 && lastAssigned !== -1) {
+      expect(lastAssigned).toBeLessThan(firstUnassigned);
+    }
+  });
+
+  it("paginated responses stay privacy-filtered for regular members", async () => {
+    const res = await request(app)
+      .get("/api/members")
+      .set(as(otherUserId))
+      .query({ search: PREFIX, limit: 200 });
+    const body = JSON.stringify(res.body);
+    expect(body).not.toContain("private@example.com");
+    expect(body).not.toContain("LEADERSHIP-ONLY-NOTE");
+  });
+});
+
 describe("role configuration guardrails", () => {
   it("LEADERSHIP_ROLES stays limited to super_admin, admin, deacon", () => {
     expect([...LEADERSHIP_ROLES].sort()).toEqual(["admin", "deacon", "super_admin"].sort());

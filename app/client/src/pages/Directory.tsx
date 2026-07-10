@@ -1,10 +1,13 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { api, type DirectoryMember } from "../lib/api";
 import { Card, CardHeader, CardTitle, CardContent, Input, Button } from "../components/ui";
 import { MEMBER_STATUS_LABELS } from "@shared/schema";
-import { Search, Mail, Phone, MapPin, Users, List, Download, Printer } from "lucide-react";
+import { Search, Mail, Phone, MapPin, Users, List, Download, Printer, ChevronLeft, ChevronRight } from "lucide-react";
 import { downloadCsv, openPrintView } from "../lib/printDirectory";
+import { useDebounce } from "../lib/useDebounce";
+
+const PAGE_SIZE = 60;
 
 function StatusBadge({ status }: { status: string }) {
   const cls =
@@ -61,15 +64,32 @@ export default function Directory() {
   const [statusFilter, setStatusFilter] = useState("");
   const [householdFilter, setHouseholdFilter] = useState("");
   const [view, setView] = useState<"list" | "households">("list");
+  const [page, setPage] = useState(0);
+  const [printing, setPrinting] = useState(false);
+
+  const debouncedSearch = useDebounce(search);
+
+  // Any filter/view change starts back at the first page.
+  useEffect(() => {
+    setPage(0);
+  }, [debouncedSearch, statusFilter, householdFilter, view]);
+
+  const queryParams = {
+    search: debouncedSearch || undefined,
+    status: statusFilter || undefined,
+    householdId: householdFilter ? Number(householdFilter) : undefined,
+    sort: view === "households" ? ("household" as const) : undefined,
+  };
 
   const { data: membersData, isLoading } = useQuery({
-    queryKey: ["members", search, statusFilter, householdFilter],
+    queryKey: ["members", debouncedSearch, statusFilter, householdFilter, view, page],
     queryFn: () =>
       api.getMembers({
-        search: search || undefined,
-        status: statusFilter || undefined,
-        householdId: householdFilter ? Number(householdFilter) : undefined,
+        ...queryParams,
+        limit: PAGE_SIZE,
+        offset: page * PAGE_SIZE,
       }),
+    placeholderData: (prev) => prev,
   });
 
   const { data: householdsData } = useQuery({
@@ -78,15 +98,33 @@ export default function Directory() {
   });
 
   const members = membersData?.members ?? [];
+  const total = membersData?.total ?? 0;
+  const pageCount = Math.max(1, Math.ceil(total / PAGE_SIZE));
   const households = householdsData?.households ?? [];
 
   const householdName = (id: number | null) =>
     id ? households.find((h) => h.id === id)?.name ?? "" : "";
 
   const exportFilters = {
-    search: search || undefined,
+    search: debouncedSearch || undefined,
     status: statusFilter || undefined,
     householdId: householdFilter || undefined,
+  };
+
+  // Print pulls the complete filtered list (not just the current page) on demand.
+  const handlePrint = async () => {
+    setPrinting(true);
+    try {
+      const all = await api.getMembers(queryParams);
+      openPrintView({
+        title: "KBC Member Directory",
+        subtitle: "Contact info shown as shared by each member",
+        members: all.members,
+        householdName,
+      });
+    } finally {
+      setPrinting(false);
+    }
   };
 
   const grouped = useMemo(() => {
@@ -118,7 +156,7 @@ export default function Directory() {
           <CardTitle className="text-xl">
             {view === "list" ? "All Members" : "Households"}
             <span className="ml-2 text-sm font-sans font-normal text-muted-foreground">
-              ({members.length})
+              ({total})
             </span>
           </CardTitle>
           <div className="flex flex-wrap gap-2 w-full lg:w-auto">
@@ -184,17 +222,10 @@ export default function Directory() {
               variant="outline"
               size="sm"
               className="h-9"
-              onClick={() =>
-                openPrintView({
-                  title: "KBC Member Directory",
-                  subtitle: "Contact info shown as shared by each member",
-                  members,
-                  householdName,
-                })
-              }
-              disabled={isLoading || members.length === 0}
+              onClick={handlePrint}
+              disabled={isLoading || printing || members.length === 0}
             >
-              <Printer className="w-4 h-4 mr-1.5" /> Print
+              <Printer className="w-4 h-4 mr-1.5" /> {printing ? "Preparing..." : "Print"}
             </Button>
           </div>
         </CardHeader>
@@ -242,6 +273,36 @@ export default function Directory() {
                   </div>
                 </div>
               )}
+            </div>
+          )}
+          {total > PAGE_SIZE && (
+            <div className="flex items-center justify-between gap-2 pt-6">
+              <p className="text-sm text-muted-foreground">
+                Showing {page * PAGE_SIZE + 1}&ndash;{Math.min((page + 1) * PAGE_SIZE, total)} of {total}
+              </p>
+              <div className="flex items-center gap-2">
+                <Button
+                  variant="outline"
+                  size="sm"
+                  className="h-9"
+                  onClick={() => setPage((p) => Math.max(0, p - 1))}
+                  disabled={page === 0}
+                >
+                  <ChevronLeft className="w-4 h-4 mr-1" /> Previous
+                </Button>
+                <span className="text-sm text-muted-foreground">
+                  Page {page + 1} of {pageCount}
+                </span>
+                <Button
+                  variant="outline"
+                  size="sm"
+                  className="h-9"
+                  onClick={() => setPage((p) => Math.min(pageCount - 1, p + 1))}
+                  disabled={page >= pageCount - 1}
+                >
+                  Next <ChevronRight className="w-4 h-4 ml-1" />
+                </Button>
+              </div>
             </div>
           )}
         </CardContent>

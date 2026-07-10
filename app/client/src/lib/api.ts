@@ -276,13 +276,23 @@ export const api = {
     request<{ user: SafeUser }>("PATCH", `/api/admin/users/${id}/role`, { role }),
 
   // membership directory
-  getMembers: (params?: { search?: string; status?: string; householdId?: number }) => {
+  getMembers: (params?: {
+    search?: string;
+    status?: string;
+    householdId?: number;
+    limit?: number;
+    offset?: number;
+    sort?: "household";
+  }) => {
     const qs = new URLSearchParams();
     if (params?.search) qs.set("search", params.search);
     if (params?.status) qs.set("status", params.status);
     if (params?.householdId) qs.set("householdId", String(params.householdId));
+    if (params?.limit) qs.set("limit", String(params.limit));
+    if (params?.offset) qs.set("offset", String(params.offset));
+    if (params?.sort) qs.set("sort", params.sort);
     const suffix = qs.toString() ? `?${qs.toString()}` : "";
-    return request<{ members: DirectoryMember[] }>("GET", `/api/members${suffix}`);
+    return request<{ members: DirectoryMember[]; total: number }>("GET", `/api/members${suffix}`);
   },
   getHouseholds: () => request<{ households: Household[] }>("GET", "/api/households"),
   getMyMemberProfile: () => request<{ member: DirectoryMember }>("GET", "/api/members/me"),

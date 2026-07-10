@@ -1,10 +1,13 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { api, ApiError, type DirectoryMember, type MemberInput } from "../lib/api";
 import { Card, CardHeader, CardTitle, CardContent, Button, Input, Label } from "../components/ui";
 import { MEMBER_STATUS_LABELS, MEMBER_STATUSES, type MemberStatus } from "@shared/schema";
-import { Search, Plus, Pencil, Trash2, Link2, Unlink, Users, X, Download, Printer } from "lucide-react";
+import { Search, Plus, Pencil, Trash2, Link2, Unlink, Users, X, Download, Printer, ChevronLeft, ChevronRight } from "lucide-react";
 import { downloadCsv, openPrintView } from "../lib/printDirectory";
+import { useDebounce } from "../lib/useDebounce";
+
+const PAGE_SIZE = 50;
 
 const emptyForm: MemberInput = {
   firstName: "",
@@ -381,13 +384,28 @@ export default function AdminMembers() {
   const queryClient = useQueryClient();
   const [search, setSearch] = useState("");
   const [statusFilter, setStatusFilter] = useState("");
+  const [page, setPage] = useState(0);
+  const [printing, setPrinting] = useState(false);
   const [modal, setModal] = useState<null | { mode: "add" } | { mode: "edit"; member: DirectoryMember }>(null);
   const [linkTarget, setLinkTarget] = useState<DirectoryMember | null>(null);
   const [formError, setFormError] = useState("");
 
+  const debouncedSearch = useDebounce(search);
+
+  useEffect(() => {
+    setPage(0);
+  }, [debouncedSearch, statusFilter]);
+
   const { data, isLoading } = useQuery({
-    queryKey: ["members", search, statusFilter],
-    queryFn: () => api.getMembers({ search: search || undefined, status: statusFilter || undefined }),
+    queryKey: ["members", debouncedSearch, statusFilter, page],
+    queryFn: () =>
+      api.getMembers({
+        search: debouncedSearch || undefined,
+        status: statusFilter || undefined,
+        limit: PAGE_SIZE,
+        offset: page * PAGE_SIZE,
+      }),
+    placeholderData: (prev) => prev,
   });
 
   const { data: householdsData } = useQuery({
@@ -426,9 +444,31 @@ export default function AdminMembers() {
   });
 
   const members = data?.members ?? [];
+  const total = data?.total ?? 0;
+  const pageCount = Math.max(1, Math.ceil(total / PAGE_SIZE));
   const households = householdsData?.households ?? [];
   const householdName = (id: number | null) =>
     id ? households.find((h) => h.id === id)?.name ?? "—" : "—";
+
+  // Print pulls the complete filtered list (not just the current page) on demand.
+  const handlePrint = async () => {
+    setPrinting(true);
+    try {
+      const all = await api.getMembers({
+        search: debouncedSearch || undefined,
+        status: statusFilter || undefined,
+      });
+      openPrintView({
+        title: "KBC Members — Leadership Roster",
+        subtitle: "Full contact info (includes hidden entries) — leadership use only",
+        members: all.members,
+        householdName: (id) => (id ? householdName(id) : ""),
+        includeNotes: true,
+      });
+    } finally {
+      setPrinting(false);
+    }
+  };
 
   return (
     <div className="space-y-8">
@@ -448,7 +488,7 @@ export default function AdminMembers() {
 
       <Card>
         <CardHeader className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 pb-4">
-          <CardTitle className="text-xl">Members ({members.length})</CardTitle>
+          <CardTitle className="text-xl">Members ({total})</CardTitle>
           <div className="flex gap-2 w-full sm:w-auto">
             <div className="relative flex-1 sm:w-64">
               <Search className="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground" />
@@ -487,18 +527,10 @@ export default function AdminMembers() {
               variant="outline"
               size="sm"
               className="h-9"
-              onClick={() =>
-                openPrintView({
-                  title: "KBC Members — Leadership Roster",
-                  subtitle: "Full contact info (includes hidden entries) — leadership use only",
-                  members,
-                  householdName: (id) => (id ? householdName(id) : ""),
-                  includeNotes: true,
-                })
-              }
-              disabled={isLoading || members.length === 0}
+              onClick={handlePrint}
+              disabled={isLoading || printing || members.length === 0}
             >
-              <Printer className="w-4 h-4 mr-1.5" /> Print
+              <Printer className="w-4 h-4 mr-1.5" /> {printing ? "Preparing..." : "Print"}
             </Button>
           </div>
         </CardHeader>
@@ -587,6 +619,36 @@ export default function AdminMembers() {
               </tbody>
             </table>
           </div>
+          {total > PAGE_SIZE && (
+            <div className="flex items-center justify-between gap-2 pt-4">
+              <p className="text-sm text-muted-foreground">
+                Showing {page * PAGE_SIZE + 1}&ndash;{Math.min((page + 1) * PAGE_SIZE, total)} of {total}
+              </p>
+              <div className="flex items-center gap-2">
+                <Button
+                  variant="outline"
+                  size="sm"
+                  className="h-9"
+                  onClick={() => setPage((p) => Math.max(0, p - 1))}
+                  disabled={page === 0}
+                >
+                  <ChevronLeft className="w-4 h-4 mr-1" /> Previous
+                </Button>
+                <span className="text-sm text-muted-foreground">
+                  Page {page + 1} of {pageCount}
+                </span>
+                <Button
+                  variant="outline"
+                  size="sm"
+                  className="h-9"
+                  onClick={() => setPage((p) => Math.min(pageCount - 1, p + 1))}
+                  disabled={page >= pageCount - 1}
+                >
+                  Next <ChevronRight className="w-4 h-4 ml-1" />
+                </Button>
+              </div>
+            </div>
+          )}
         </CardContent>
       </Card>
 

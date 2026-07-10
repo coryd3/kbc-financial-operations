@@ -142,7 +142,7 @@ export const members = pgTable(
     updatedAt: timestamp("updated_at").notNull().defaultNow(),
   },
   (table) => [
-    index("members_last_name_idx").on(table.lastName),
+    index("members_last_first_idx").on(table.lastName, table.firstName),
     index("members_household_idx").on(table.householdId),
   ],
 );

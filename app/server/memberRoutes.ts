@@ -95,19 +95,58 @@ function normalizeMemberInput(data: Record<string, any>) {
   return out;
 }
 
+const MAX_PAGE_SIZE = 200;
+
 export function registerMemberRoutes(app: Express) {
   // ---------- Directory (all approved users) ----------
+  // Supports optional pagination (limit/offset) and sort=household so the
+  // client can page through large membership lists instead of downloading
+  // everything at once. Without a limit param the full list is returned
+  // (used by print views and older clients). `total` is always included.
   app.get("/api/members", requireAuth, async (req, res) => {
     const viewer = getUser(req);
     const conditions = buildMemberFilters(req);
+    const where = conditions.length ? and(...conditions) : undefined;
 
-    const rows = await db
-      .select()
+    const limitRaw = Number(req.query.limit);
+    const offsetRaw = Number(req.query.offset);
+    const limit =
+      Number.isInteger(limitRaw) && limitRaw > 0 ? Math.min(limitRaw, MAX_PAGE_SIZE) : null;
+    const offset = Number.isInteger(offsetRaw) && offsetRaw > 0 ? offsetRaw : 0;
+    const sort = String(req.query.sort ?? "");
+
+    // Stable ordering (id as tie-break) so pages never skip or repeat rows.
+    const order =
+      sort === "household"
+        ? [
+            sql`${households.name} asc nulls last`,
+            asc(members.lastName),
+            asc(members.firstName),
+            asc(members.id),
+          ]
+        : [asc(members.lastName), asc(members.firstName), asc(members.id)];
+
+    const [{ total }] = await db
+      .select({ total: sql<number>`count(*)::int` })
       .from(members)
-      .where(conditions.length ? and(...conditions) : undefined)
-      .orderBy(asc(members.lastName), asc(members.firstName));
+      .where(where);
 
-    res.json({ members: rows.map((m) => toDirectoryMember(m, viewer)) });
+    let query = db
+      .select({ m: members })
+      .from(members)
+      .leftJoin(households, eq(members.householdId, households.id))
+      .where(where)
+      .orderBy(...order)
+      .$dynamic();
+    if (limit !== null) query = query.limit(limit).offset(offset);
+    const rows = await query;
+
+    res.json({
+      members: rows.map((r) => toDirectoryMember(r.m, viewer)),
+      total,
+      limit,
+      offset,
+    });
   });
 
   // ---------- Directory CSV export (all approved users, privacy-filtered) ----------

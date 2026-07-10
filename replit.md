@@ -25,6 +25,7 @@ super_admin, admin, treasurer, bookkeeper, finance_committee, personnel_committe
 - Tables: `households`, `members` (profiles independent of `users`; optional one-to-one `user_id` link, unique). Member statuses: active / inactive / visitor. Privacy flags `hide_email` / `hide_phone` / `hide_address` control what other members see in the directory.
 - Leadership roles for member management and full detail (incl. leadership-only notes): `LEADERSHIP_ROLES` in `app/shared/schema.ts` = super_admin, admin, deacon.
 - Routes (`app/server/memberRoutes.ts`): `/api/members` + `/api/households` (any logged-in user, privacy-filtered), `/api/members/me` GET/PATCH (self-service contact info + privacy prefs), `/api/admin/members*` + `/api/admin/households*` + `/api/admin/linkable-users` (leadership only).
+- Scale: `GET /api/members` supports server-side pagination (`limit` up to 200, `offset`, always returns `total`) and `sort=household`; no `limit` returns all rows (used by print views). Directory and admin member pages use debounced search + paged queries (60/50 per page); Print fetches the full filtered list on demand.
 - UI: `/directory` (all logged-in users; list + household views, search/status/household filters), `/admin/members` (leadership; add/edit/delete members, households, account linking, notes), "My Member Profile" card on `/account`.
 
 ### Tasks & checklists
