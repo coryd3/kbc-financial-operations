@@ -1,8 +1,132 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { useAuth } from "../lib/auth";
 import { api, ApiError } from "../lib/api";
 import { Card, CardHeader, CardTitle, CardContent, Button, Input, Label } from "../components/ui";
 import { useLocation } from "wouter";
+
+function MemberProfileCard() {
+  const queryClient = useQueryClient();
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
+  const [address, setAddress] = useState("");
+  const [hideEmail, setHideEmail] = useState(false);
+  const [hidePhone, setHidePhone] = useState(false);
+  const [hideAddress, setHideAddress] = useState(false);
+  const [error, setError] = useState("");
+  const [success, setSuccess] = useState(false);
+
+  const { data, isLoading, error: loadError } = useQuery({
+    queryKey: ["myMemberProfile"],
+    queryFn: () => api.getMyMemberProfile(),
+    retry: (count, err) => !(err instanceof ApiError && err.status === 404) && count < 2,
+  });
+
+  const member = data?.member;
+
+  useEffect(() => {
+    if (member) {
+      setEmail(member.email ?? "");
+      setPhone(member.phone ?? "");
+      setAddress(member.address ?? "");
+      setHideEmail(member.hideEmail);
+      setHidePhone(member.hidePhone);
+      setHideAddress(member.hideAddress);
+    }
+  }, [member]);
+
+  const saveMut = useMutation({
+    mutationFn: () =>
+      api.updateMyMemberProfile({ email, phone, address, hideEmail, hidePhone, hideAddress }),
+    onSuccess: () => {
+      setError("");
+      setSuccess(true);
+      queryClient.invalidateQueries({ queryKey: ["myMemberProfile"] });
+      queryClient.invalidateQueries({ queryKey: ["members"] });
+    },
+    onError: (err) => {
+      setSuccess(false);
+      setError(err instanceof ApiError ? err.message : "Something went wrong");
+    },
+  });
+
+  const notLinked = loadError instanceof ApiError && loadError.status === 404;
+
+  return (
+    <Card>
+      <CardHeader>
+        <CardTitle className="text-2xl text-primary">My Member Profile</CardTitle>
+      </CardHeader>
+      <CardContent>
+        {isLoading ? (
+          <p className="text-sm text-muted-foreground">Loading...</p>
+        ) : notLinked ? (
+          <p className="text-sm text-muted-foreground">
+            Your account isn't linked to a member profile yet. Once the church office links your
+            profile, you'll be able to update your contact info and directory privacy here.
+          </p>
+        ) : member ? (
+          <form
+            className="space-y-4"
+            onSubmit={(e) => {
+              e.preventDefault();
+              saveMut.mutate();
+            }}
+          >
+            {error && (
+              <div className="p-3 bg-destructive/10 border border-destructive/20 rounded-md text-destructive text-sm">
+                {error}
+              </div>
+            )}
+            {success && (
+              <div className="p-3 bg-primary/10 border border-primary/20 rounded-md text-primary font-medium text-sm">
+                Profile updated.
+              </div>
+            )}
+            <p className="text-sm text-muted-foreground">
+              {member.firstName} {member.lastName} — this is what appears in the member directory.
+            </p>
+            <div className="space-y-2">
+              <Label htmlFor="profileEmail">Email</Label>
+              <Input id="profileEmail" type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
+            </div>
+            <div className="space-y-2">
+              <Label htmlFor="profilePhone">Phone</Label>
+              <Input id="profilePhone" value={phone} onChange={(e) => setPhone(e.target.value)} />
+            </div>
+            <div className="space-y-2">
+              <Label htmlFor="profileAddress">Address</Label>
+              <Input id="profileAddress" value={address} onChange={(e) => setAddress(e.target.value)} />
+            </div>
+            <div className="space-y-2 pt-2 border-t border-border">
+              <Label className="text-muted-foreground">Privacy — hide from other members in the directory</Label>
+              <div className="flex flex-wrap gap-4 text-sm">
+                <label className="flex items-center gap-2">
+                  <input type="checkbox" checked={hideEmail} onChange={(e) => setHideEmail(e.target.checked)} />
+                  Hide email
+                </label>
+                <label className="flex items-center gap-2">
+                  <input type="checkbox" checked={hidePhone} onChange={(e) => setHidePhone(e.target.checked)} />
+                  Hide phone
+                </label>
+                <label className="flex items-center gap-2">
+                  <input type="checkbox" checked={hideAddress} onChange={(e) => setHideAddress(e.target.checked)} />
+                  Hide address
+                </label>
+              </div>
+              <p className="text-xs text-muted-foreground">
+                Church leadership can always see your contact info for official records.
+              </p>
+            </div>
+            <Button type="submit" className="w-full" disabled={saveMut.isPending}>
+              {saveMut.isPending ? "Saving..." : "Save Profile"}
+            </Button>
+          </form>
+        ) : null}
+      </CardContent>
+    </Card>
+  );
+}
 
 export default function Account() {
   const { user, refresh } = useAuth();
@@ -61,6 +185,8 @@ export default function Account() {
           </p>
         </div>
       )}
+
+      {!user?.mustChangePassword && <MemberProfileCard />}
 
       <Card>
         <CardHeader>

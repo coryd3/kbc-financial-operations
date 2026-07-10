@@ -8,7 +8,9 @@ import Register from "./pages/Register";
 import Docs from "./pages/Docs";
 import Dashboard from "./pages/Dashboard";
 import Account from "./pages/Account";
+import Directory from "./pages/Directory";
 import AdminUsers from "./pages/AdminUsers";
+import AdminMembers from "./pages/AdminMembers";
 import AdminAnnouncements from "./pages/AdminAnnouncements";
 import AdminAnalytics from "./pages/AdminAnalytics";
 
@@ -27,6 +29,14 @@ function Router() {
         
         <Route path="/account">
           <ProtectedRoute><Account /></ProtectedRoute>
+        </Route>
+        
+        <Route path="/directory">
+          <ProtectedRoute><Directory /></ProtectedRoute>
+        </Route>
+        
+        <Route path="/admin/members">
+          <ProtectedRoute requireLeadership><AdminMembers /></ProtectedRoute>
         </Route>
         
         <Route path="/admin">

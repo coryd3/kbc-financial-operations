@@ -1,4 +1,4 @@
-import type { SafeUser, Announcement, Role } from "@shared/schema";
+import type { SafeUser, Announcement, Role, Household, MemberStatus } from "@shared/schema";
 
 export class ApiError extends Error {
   status: number;
@@ -37,6 +37,48 @@ export interface AnalyticsSummary {
   byRole: { role: string | null; views: number }[];
 }
 
+export interface DirectoryMember {
+  id: number;
+  firstName: string;
+  lastName: string;
+  householdId: number | null;
+  status: MemberStatus;
+  joinDate: string | null;
+  userId: number | null;
+  hideEmail: boolean;
+  hidePhone: boolean;
+  hideAddress: boolean;
+  email: string | null;
+  phone: string | null;
+  address: string | null;
+  notes?: string | null;
+  createdAt?: string;
+  updatedAt?: string;
+}
+
+export interface MemberInput {
+  firstName: string;
+  lastName: string;
+  email?: string;
+  phone?: string;
+  address?: string;
+  householdId?: number | null;
+  status: MemberStatus;
+  joinDate?: string;
+  notes?: string;
+  hideEmail: boolean;
+  hidePhone: boolean;
+  hideAddress: boolean;
+}
+
+export interface LinkableUser {
+  id: number;
+  username: string;
+  fullName: string;
+  email: string | null;
+  status: string;
+}
+
 export const api = {
   // auth
   register: (data: { username: string; password: string; fullName: string; email?: string; phone?: string }) =>
@@ -72,6 +114,43 @@ export const api = {
   reactivateUser: (id: number) => request<{ user: SafeUser }>("POST", `/api/admin/users/${id}/reactivate`),
   assignRole: (id: number, role: Role) =>
     request<{ user: SafeUser }>("PATCH", `/api/admin/users/${id}/role`, { role }),
+
+  // membership directory
+  getMembers: (params?: { search?: string; status?: string; householdId?: number }) => {
+    const qs = new URLSearchParams();
+    if (params?.search) qs.set("search", params.search);
+    if (params?.status) qs.set("status", params.status);
+    if (params?.householdId) qs.set("householdId", String(params.householdId));
+    const suffix = qs.toString() ? `?${qs.toString()}` : "";
+    return request<{ members: DirectoryMember[] }>("GET", `/api/members${suffix}`);
+  },
+  getHouseholds: () => request<{ households: Household[] }>("GET", "/api/households"),
+  getMyMemberProfile: () => request<{ member: DirectoryMember }>("GET", "/api/members/me"),
+  updateMyMemberProfile: (data: {
+    email?: string;
+    phone?: string;
+    address?: string;
+    hideEmail?: boolean;
+    hidePhone?: boolean;
+    hideAddress?: boolean;
+  }) => request<{ member: DirectoryMember }>("PATCH", "/api/members/me", data),
+
+  // leadership member management
+  createMember: (data: MemberInput) =>
+    request<{ member: DirectoryMember }>("POST", "/api/admin/members", data),
+  updateMember: (id: number, data: Partial<MemberInput>) =>
+    request<{ member: DirectoryMember }>("PATCH", `/api/admin/members/${id}`, data),
+  deleteMember: (id: number) =>
+    request<{ message: string }>("DELETE", `/api/admin/members/${id}`),
+  linkMember: (id: number, userId: number | null) =>
+    request<{ member: DirectoryMember }>("POST", `/api/admin/members/${id}/link`, { userId }),
+  getLinkableUsers: () => request<{ users: LinkableUser[] }>("GET", "/api/admin/linkable-users"),
+  createHousehold: (data: { name: string; address?: string }) =>
+    request<{ household: Household }>("POST", "/api/admin/households", data),
+  updateHousehold: (id: number, data: Partial<{ name: string; address?: string }>) =>
+    request<{ household: Household }>("PATCH", `/api/admin/households/${id}`, data),
+  deleteHousehold: (id: number) =>
+    request<{ message: string }>("DELETE", `/api/admin/households/${id}`),
 
   // analytics
   track: (path: string) => request<{ ok: boolean }>("POST", "/api/track", { path }),

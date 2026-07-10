@@ -3,6 +3,7 @@ import session from "express-session";
 import connectPgSimple from "connect-pg-simple";
 import { pool } from "./db.ts";
 import { registerRoutes } from "./routes.ts";
+import { registerMemberRoutes } from "./memberRoutes.ts";
 import { seed } from "./seed.ts";
 
 const app = express();
@@ -33,6 +34,7 @@ app.use(
 );
 
 registerRoutes(app);
+registerMemberRoutes(app);
 
 app.use((err: any, _req: express.Request, res: express.Response, _next: express.NextFunction) => {
   console.error(err);

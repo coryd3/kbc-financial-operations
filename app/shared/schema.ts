@@ -7,6 +7,7 @@ import {
   timestamp,
   integer,
   index,
+  date,
 } from "drizzle-orm/pg-core";
 import { z } from "zod";
 
@@ -38,6 +39,19 @@ export const ROLE_LABELS: Record<Role, string> = {
 
 export const USER_STATUSES = ["pending", "active", "rejected", "deactivated"] as const;
 export type UserStatus = (typeof USER_STATUSES)[number];
+
+// Roles allowed to see leadership-only member details (notes, full contact info)
+// and manage member records.
+export const LEADERSHIP_ROLES: Role[] = ["super_admin", "admin", "deacon"];
+
+export const MEMBER_STATUSES = ["active", "inactive", "visitor"] as const;
+export type MemberStatus = (typeof MEMBER_STATUSES)[number];
+
+export const MEMBER_STATUS_LABELS: Record<MemberStatus, string> = {
+  active: "Active",
+  inactive: "Inactive",
+  visitor: "Visitor",
+};
 
 export const users = pgTable("users", {
   id: serial("id").primaryKey(),
@@ -80,9 +94,44 @@ export const pageViews = pgTable(
   ],
 );
 
+export const households = pgTable("households", {
+  id: serial("id").primaryKey(),
+  name: varchar("name", { length: 120 }).notNull(),
+  address: varchar("address", { length: 300 }),
+  createdAt: timestamp("created_at").notNull().defaultNow(),
+});
+
+export const members = pgTable(
+  "members",
+  {
+    id: serial("id").primaryKey(),
+    firstName: varchar("first_name", { length: 80 }).notNull(),
+    lastName: varchar("last_name", { length: 80 }).notNull(),
+    email: varchar("email", { length: 255 }),
+    phone: varchar("phone", { length: 40 }),
+    address: varchar("address", { length: 300 }),
+    householdId: integer("household_id").references(() => households.id, { onDelete: "set null" }),
+    status: varchar("status", { length: 20 }).$type<MemberStatus>().notNull().default("active"),
+    joinDate: date("join_date"),
+    notes: text("notes"),
+    hideEmail: boolean("hide_email").notNull().default(false),
+    hidePhone: boolean("hide_phone").notNull().default(false),
+    hideAddress: boolean("hide_address").notNull().default(false),
+    userId: integer("user_id").references(() => users.id, { onDelete: "set null" }).unique(),
+    createdAt: timestamp("created_at").notNull().defaultNow(),
+    updatedAt: timestamp("updated_at").notNull().defaultNow(),
+  },
+  (table) => [
+    index("members_last_name_idx").on(table.lastName),
+    index("members_household_idx").on(table.householdId),
+  ],
+);
+
 export type User = typeof users.$inferSelect;
 export type Announcement = typeof announcements.$inferSelect;
 export type PageView = typeof pageViews.$inferSelect;
+export type Household = typeof households.$inferSelect;
+export type Member = typeof members.$inferSelect;
 
 export type SafeUser = Omit<User, "passwordHash">;
 
@@ -116,4 +165,44 @@ export const announcementSchema = z.object({
 
 export const assignRoleSchema = z.object({
   role: z.enum(ROLES),
+});
+
+const optionalTrimmed = (max: number) =>
+  z.string().trim().max(max).optional().or(z.literal(""));
+
+export const memberSchema = z.object({
+  firstName: z.string().trim().min(1, "First name is required").max(80),
+  lastName: z.string().trim().min(1, "Last name is required").max(80),
+  email: z.string().trim().email("Please enter a valid email").max(255).optional().or(z.literal("")),
+  phone: optionalTrimmed(40),
+  address: optionalTrimmed(300),
+  householdId: z.number().int().positive().nullable().optional(),
+  status: z.enum(MEMBER_STATUSES).default("active"),
+  joinDate: z
+    .string()
+    .regex(/^\d{4}-\d{2}-\d{2}$/, "Join date must be YYYY-MM-DD")
+    .optional()
+    .or(z.literal("")),
+  notes: z.string().max(5000).optional().or(z.literal("")),
+  hideEmail: z.boolean().default(false),
+  hidePhone: z.boolean().default(false),
+  hideAddress: z.boolean().default(false),
+});
+
+export const selfMemberUpdateSchema = z.object({
+  email: z.string().trim().email("Please enter a valid email").max(255).optional().or(z.literal("")),
+  phone: optionalTrimmed(40),
+  address: optionalTrimmed(300),
+  hideEmail: z.boolean().optional(),
+  hidePhone: z.boolean().optional(),
+  hideAddress: z.boolean().optional(),
+});
+
+export const householdSchema = z.object({
+  name: z.string().trim().min(1, "Household name is required").max(120),
+  address: optionalTrimmed(300),
+});
+
+export const linkMemberSchema = z.object({
+  userId: z.number().int().positive().nullable(),
 });

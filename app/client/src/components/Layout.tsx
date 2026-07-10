@@ -2,11 +2,11 @@ import { useQuery } from "@tanstack/react-query";
 import { Link, useLocation } from "wouter";
 import { useAuth } from "../lib/auth";
 import { api } from "../lib/api";
-import { LogOut, BookOpen, Home, User, Shield, BarChart, LayoutDashboard } from "lucide-react";
+import { LogOut, BookOpen, Home, User, Shield, BarChart, LayoutDashboard, Users, ContactRound } from "lucide-react";
 import { cn } from "../lib/utils";
 
 export function Layout({ children }: { children: React.ReactNode }) {
-  const { user, isAdmin, refresh } = useAuth();
+  const { user, isAdmin, isLeadership, refresh } = useAuth();
   const [location, setLocation] = useLocation();
 
   const { data: pendingCount } = useQuery({
@@ -30,6 +30,8 @@ export function Layout({ children }: { children: React.ReactNode }) {
     { href: "/", label: "Home", icon: Home, show: true },
     { href: "/docs", label: "Documentation", icon: BookOpen, show: true },
     { href: "/dashboard", label: "Dashboard", icon: LayoutDashboard, show: !!user },
+    { href: "/directory", label: "Directory", icon: ContactRound, show: !!user },
+    { href: "/admin/members", label: "Members", icon: Users, show: isLeadership },
     { href: "/admin", label: "Admin", icon: Shield, show: isAdmin, badge: pendingCount ? pendingCount : null },
     { href: "/admin/analytics", label: "Analytics", icon: BarChart, show: isAdmin },
   ];

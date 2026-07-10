@@ -20,6 +20,12 @@ super_admin, admin, treasurer, bookkeeper, finance_committee, personnel_committe
 - Super Admin bootstrap: at server start, if no super_admin exists, one is seeded (username from `SUPER_ADMIN_USERNAME`, default `kbcadmin`) with a one-time temporary password taken from `SUPER_ADMIN_TEMP_PASSWORD` or randomly generated and printed once to the server console. Password change is forced on first login.
 - Production requires a `SESSION_SECRET` secret — the server refuses to start without it when `NODE_ENV=production`.
 
+### Membership directory
+- Tables: `households`, `members` (profiles independent of `users`; optional one-to-one `user_id` link, unique). Member statuses: active / inactive / visitor. Privacy flags `hide_email` / `hide_phone` / `hide_address` control what other members see in the directory.
+- Leadership roles for member management and full detail (incl. leadership-only notes): `LEADERSHIP_ROLES` in `app/shared/schema.ts` = super_admin, admin, deacon.
+- Routes (`app/server/memberRoutes.ts`): `/api/members` + `/api/households` (any logged-in user, privacy-filtered), `/api/members/me` GET/PATCH (self-service contact info + privacy prefs), `/api/admin/members*` + `/api/admin/households*` + `/api/admin/linkable-users` (leadership only).
+- UI: `/directory` (all logged-in users; list + household views, search/status/household filters), `/admin/members` (leadership; add/edit/delete members, households, account linking, notes), "My Member Profile" card on `/account`.
+
 ### Usage tracking
 - In-app: POST `/api/track` records path/visitor/role in `page_views`; admin analytics at `/admin/analytics` (daily views, top pages, by role).
 - GoatCounter snippet (kbc-financial-operations.goatcounter.com) is embedded in `app/client/index.html` and counts SPA navigations (skips localhost by design).
