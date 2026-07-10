@@ -11,6 +11,7 @@ Two things live in this repo:
 - Dev: workflow "Church App" runs `cd app && npm run dev` (tsx server with Vite middleware) on port 5000.
 - Deployment (Replit publish): autoscale, build `cd app && npm run build`, run `cd app && npm start`. Publish happens from the main project after task merge. Set a `SESSION_SECRET` secret for production.
 - Schema changes: edit `app/shared/schema.ts` then `cd app && npm run db:push`.
+- Tests: `cd app && npm test` (vitest). Tests never touch the live database — vitest global setup auto-creates a sibling `<dbname>_test` database on the same Postgres server, syncs the Drizzle schema into it (`drizzle-kit push --force`), and rewrites `DATABASE_URL` for test workers. `app/server/db.ts` refuses to run under vitest against a non-`*_test` database.
 
 ### Roles (most → least privileged)
 super_admin, admin, treasurer, bookkeeper, finance_committee, personnel_committee, deacon, counting_team, member (+ public = not logged in). Admins cannot manage Admins/Super Admins; only Super Admin can assign admin roles. Enforced server-side (`canManage` in `app/server/routes.ts`) and reflected in UI.
