@@ -467,8 +467,11 @@ export const api = {
     request<{ close: MonthlyCloseRow }>("POST", "/api/finance/closes", data),
   toggleCloseItem: (closeId: number, itemId: number, isDone: boolean) =>
     request<{ item: MonthlyCloseItem }>("PATCH", `/api/finance/closes/${closeId}/items/${itemId}`, { isDone }),
-  signoffClose: (id: number, notes?: string) =>
-    request<{ close: MonthlyClose }>("POST", `/api/finance/closes/${id}/signoff`, { notes }),
+  signoffClose: (id: number, notes?: string, acknowledgeOpenBatches?: boolean) =>
+    request<{ close: MonthlyClose }>("POST", `/api/finance/closes/${id}/signoff`, {
+      notes,
+      acknowledgeOpenBatches,
+    }),
   reopenClose: (id: number) =>
     request<{ close: MonthlyClose }>("POST", `/api/finance/closes/${id}/reopen`),
 
@@ -570,9 +573,18 @@ export type TransactionRow = Transaction & {
   enteredByName: string | null;
 };
 
+export type OpenBatchSummary = {
+  id: number;
+  batchDate: string;
+  description: string | null;
+  totalCents: number;
+  contributionCount: number;
+};
+
 export type MonthlyCloseRow = MonthlyClose & {
   signedOffByName?: string | null;
   items: MonthlyCloseItem[];
+  openBatches?: OpenBatchSummary[];
 };
 
 export interface FinanceSummary {

@@ -1,24 +1,27 @@
 import { useState } from "react";
+import { Link } from "wouter";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { api, ApiError } from "../../lib/api";
 import { useAuth } from "../../lib/auth";
-import { CLOSE_MANAGE_ROLES, CLOSE_SIGNOFF_ROLES } from "@shared/schema";
+import { CLOSE_MANAGE_ROLES, CLOSE_SIGNOFF_ROLES, GIVING_ROLES } from "@shared/schema";
 import { FinanceLayout } from "../../components/FinanceLayout";
 import { Button, Card, CardContent, CardHeader, CardTitle, Input, Label } from "../../components/ui";
-import { MONTH_NAMES } from "../../lib/money";
+import { MONTH_NAMES, formatCents } from "../../lib/money";
 import { format } from "date-fns";
-import { CheckCircle2, Lock, RotateCcw } from "lucide-react";
+import { AlertTriangle, CheckCircle2, Lock, RotateCcw } from "lucide-react";
 
 export default function FinanceClose() {
   const { user } = useAuth();
   const queryClient = useQueryClient();
   const canManage = !!user && CLOSE_MANAGE_ROLES.includes(user.role);
   const canSignoff = !!user && CLOSE_SIGNOFF_ROLES.includes(user.role);
+  const canViewGiving = !!user && GIVING_ROLES.includes(user.role);
 
   const now = new Date();
   const [newYear, setNewYear] = useState(String(now.getFullYear()));
   const [newMonth, setNewMonth] = useState(String(now.getMonth() + 1));
   const [signoffNotes, setSignoffNotes] = useState<Record<number, string>>({});
+  const [acknowledged, setAcknowledged] = useState<Record<number, boolean>>({});
   const [error, setError] = useState<string | null>(null);
 
   const { data, isLoading } = useQuery({ queryKey: ["closes"], queryFn: api.getCloses });
@@ -41,7 +44,8 @@ export default function FinanceClose() {
     onError,
   });
   const signoffMutation = useMutation({
-    mutationFn: (v: { id: number; notes?: string }) => api.signoffClose(v.id, v.notes),
+    mutationFn: (v: { id: number; notes?: string; acknowledgeOpenBatches?: boolean }) =>
+      api.signoffClose(v.id, v.notes, v.acknowledgeOpenBatches),
     onSuccess: () => {
       invalidate();
       setError(null);
@@ -127,6 +131,9 @@ export default function FinanceClose() {
               const doneCount = close.items.filter((i) => i.isDone).length;
               const allDone = doneCount === close.items.length && close.items.length > 0;
               const isClosed = close.status === "closed";
+              const openBatches = close.openBatches ?? [];
+              const hasOpenBatches = !isClosed && openBatches.length > 0;
+              const isAcknowledged = !!acknowledged[close.id];
               return (
                 <Card key={close.id}>
                   <CardHeader className="pb-3">
@@ -175,6 +182,46 @@ export default function FinanceClose() {
                       ))}
                     </div>
 
+                    {hasOpenBatches && (
+                      <div className="bg-amber-50 border border-amber-200 rounded-md px-4 py-3 space-y-2">
+                        <p className="text-sm font-medium text-amber-900 flex items-center gap-2">
+                          <AlertTriangle className="w-4 h-4 shrink-0" />
+                          {openBatches.length === 1
+                            ? "1 contribution batch is still open for this month"
+                            : `${openBatches.length} contribution batches are still open for this month`}
+                        </p>
+                        <ul className="text-sm text-amber-900 space-y-1 pl-6">
+                          {openBatches.map((b) => (
+                            <li key={b.id} className="list-disc">
+                              {canViewGiving ? (
+                                <Link
+                                  href={`/finance/giving/${b.id}`}
+                                  className="underline underline-offset-2 hover:text-amber-700"
+                                >
+                                  {format(new Date(b.batchDate + "T00:00:00"), "MMM d, yyyy")}
+                                  {b.description ? ` — ${b.description}` : ""}
+                                </Link>
+                              ) : (
+                                <span>
+                                  {format(new Date(b.batchDate + "T00:00:00"), "MMM d, yyyy")}
+                                  {b.description ? ` — ${b.description}` : ""}
+                                </span>
+                              )}{" "}
+                              <span className="text-amber-700">
+                                ({b.contributionCount} {b.contributionCount === 1 ? "entry" : "entries"},{" "}
+                                {formatCents(b.totalCents)})
+                              </span>
+                            </li>
+                          ))}
+                        </ul>
+                        <p className="text-xs text-amber-800 pl-6">
+                          {canViewGiving
+                            ? "Close these batches in Giving before signing off, or acknowledge below to sign off anyway."
+                            : "These batches must be closed in Giving (Treasurer/Bookkeeper) before sign-off, or acknowledged by the signer."}
+                        </p>
+                      </div>
+                    )}
+
                     {isClosed ? (
                       <div className="flex flex-col md:flex-row md:items-center justify-between gap-2 bg-green-50 border border-green-200 rounded-md px-4 py-3">
                         <p className="text-sm text-green-900 flex items-center gap-2">
@@ -190,21 +237,51 @@ export default function FinanceClose() {
                         )}
                       </div>
                     ) : canSignoff ? (
-                      <div className="flex flex-col md:flex-row gap-2 md:items-center">
-                        <Input
-                          placeholder="Sign-off notes (optional)"
-                          value={signoffNotes[close.id] ?? ""}
-                          onChange={(e) => setSignoffNotes((s) => ({ ...s, [close.id]: e.target.value }))}
-                        />
-                        <Button
-                          variant="accent"
-                          className="whitespace-nowrap"
-                          disabled={!allDone || signoffMutation.isPending}
-                          title={allDone ? "" : "All checklist items must be completed first"}
-                          onClick={() => signoffMutation.mutate({ id: close.id, notes: signoffNotes[close.id] })}
-                        >
-                          <CheckCircle2 className="w-4 h-4 mr-1" /> Treasurer Sign-off
-                        </Button>
+                      <div className="space-y-2">
+                        {hasOpenBatches && (
+                          <label className="flex items-start gap-2 text-sm text-amber-900 cursor-pointer">
+                            <input
+                              type="checkbox"
+                              className="mt-0.5 rounded border-input"
+                              checked={isAcknowledged}
+                              onChange={(e) =>
+                                setAcknowledged((s) => ({ ...s, [close.id]: e.target.checked }))
+                              }
+                            />
+                            <span>
+                              I acknowledge the open contribution {openBatches.length === 1 ? "batch" : "batches"}{" "}
+                              above and want to sign off this month anyway.
+                            </span>
+                          </label>
+                        )}
+                        <div className="flex flex-col md:flex-row gap-2 md:items-center">
+                          <Input
+                            placeholder="Sign-off notes (optional)"
+                            value={signoffNotes[close.id] ?? ""}
+                            onChange={(e) => setSignoffNotes((s) => ({ ...s, [close.id]: e.target.value }))}
+                          />
+                          <Button
+                            variant="accent"
+                            className="whitespace-nowrap"
+                            disabled={!allDone || (hasOpenBatches && !isAcknowledged) || signoffMutation.isPending}
+                            title={
+                              !allDone
+                                ? "All checklist items must be completed first"
+                                : hasOpenBatches && !isAcknowledged
+                                  ? "Close the open contribution batches or acknowledge them first"
+                                  : ""
+                            }
+                            onClick={() =>
+                              signoffMutation.mutate({
+                                id: close.id,
+                                notes: signoffNotes[close.id],
+                                acknowledgeOpenBatches: hasOpenBatches ? isAcknowledged : undefined,
+                              })
+                            }
+                          >
+                            <CheckCircle2 className="w-4 h-4 mr-1" /> Treasurer Sign-off
+                          </Button>
+                        </div>
                       </div>
                     ) : (
                       <p className="text-xs text-muted-foreground">

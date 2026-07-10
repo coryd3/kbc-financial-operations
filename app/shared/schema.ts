@@ -840,6 +840,7 @@ export const monthlyCloseCreateSchema = z.object({
 
 export const closeSignoffSchema = z.object({
   notes: z.string().max(2000).optional().or(z.literal("")),
+  acknowledgeOpenBatches: z.boolean().optional(),
 });
 
 // ---------- Contributions & giving schemas ----------

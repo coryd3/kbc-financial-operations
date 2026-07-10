@@ -8,6 +8,8 @@ import {
   transactions,
   monthlyCloses,
   monthlyCloseItems,
+  contributionBatches,
+  contributions,
   users,
   budgetCategorySchema,
   offeringCountSchema,
@@ -50,6 +52,44 @@ const requireCategoryManage = requireRole(...CATEGORY_MANAGE_ROLES);
 function parseId(raw: string): number | null {
   const id = Number(raw);
   return Number.isInteger(id) && id > 0 ? id : null;
+}
+
+function monthBounds(year: number, month: number): { start: string; end: string } {
+  const mm = String(month).padStart(2, "0");
+  const lastDay = new Date(Date.UTC(year, month, 0)).getUTCDate();
+  return { start: `${year}-${mm}-01`, end: `${year}-${mm}-${String(lastDay).padStart(2, "0")}` };
+}
+
+export type OpenBatchSummary = {
+  id: number;
+  batchDate: string;
+  description: string | null;
+  totalCents: number;
+  contributionCount: number;
+};
+
+async function getOpenBatchesForMonth(year: number, month: number): Promise<OpenBatchSummary[]> {
+  const { start, end } = monthBounds(year, month);
+  const rows = await db
+    .select({
+      id: contributionBatches.id,
+      batchDate: contributionBatches.batchDate,
+      description: contributionBatches.description,
+      totalCents: sql<number>`coalesce(sum(${contributions.amountCents}), 0)::int`,
+      contributionCount: sql<number>`count(${contributions.id})::int`,
+    })
+    .from(contributionBatches)
+    .leftJoin(contributions, eq(contributions.batchId, contributionBatches.id))
+    .where(
+      and(
+        eq(contributionBatches.status, "open"),
+        gte(contributionBatches.batchDate, start),
+        lte(contributionBatches.batchDate, end),
+      ),
+    )
+    .groupBy(contributionBatches.id)
+    .orderBy(asc(contributionBatches.batchDate), asc(contributionBatches.id));
+  return rows;
 }
 
 export function registerFinanceRoutes(app: Express) {
@@ -403,11 +443,18 @@ export function registerFinanceRoutes(app: Express) {
           .where(inArray(monthlyCloseItems.closeId, closeIds))
           .orderBy(asc(monthlyCloseItems.sortOrder))
       : [];
+    const openBatchesByClose = new Map<number, OpenBatchSummary[]>();
+    for (const r of rows) {
+      if (r.close.status !== "closed") {
+        openBatchesByClose.set(r.close.id, await getOpenBatchesForMonth(r.close.year, r.close.month));
+      }
+    }
     res.json({
       closes: rows.map((r) => ({
         ...r.close,
         signedOffByName: r.signedOffByName,
         items: items.filter((i) => i.closeId === r.close.id),
+        openBatches: openBatchesByClose.get(r.close.id) ?? [],
       })),
     });
   });
@@ -479,6 +526,13 @@ export function registerFinanceRoutes(app: Express) {
     if (incomplete.length) {
       return res.status(400).json({
         message: `All checklist items must be completed before sign-off (${incomplete.length} remaining)`,
+      });
+    }
+    const openBatches = await getOpenBatchesForMonth(close.year, close.month);
+    if (openBatches.length && !parsed.data.acknowledgeOpenBatches) {
+      return res.status(409).json({
+        message: `${openBatches.length} contribution ${openBatches.length === 1 ? "batch is" : "batches are"} still open for this month. Close them in Giving, or acknowledge to sign off anyway.`,
+        openBatches,
       });
     }
     const [updated] = await db
