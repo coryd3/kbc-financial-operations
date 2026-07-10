@@ -12,6 +12,7 @@ import {
   json,
   primaryKey,
 } from "drizzle-orm/pg-core";
+import { sql } from "drizzle-orm";
 import { z } from "zod";
 
 export const ROLES = [
@@ -144,6 +145,16 @@ export const members = pgTable(
   (table) => [
     index("members_last_first_idx").on(table.lastName, table.firstName),
     index("members_household_idx").on(table.householdId),
+    // Trigram GIN indexes so the directory's ILIKE '%term%' name search stays
+    // fast at thousands of rows. Requires the pg_trgm extension (created in
+    // the live DB via SQL and in the test DB by vitest.globalSetup.ts).
+    // Expressions must match buildMemberFilters in app/server/memberRoutes.ts.
+    index("members_first_name_trgm_idx").using("gin", sql`${table.firstName} gin_trgm_ops`),
+    index("members_last_name_trgm_idx").using("gin", sql`${table.lastName} gin_trgm_ops`),
+    index("members_full_name_trgm_idx").using(
+      "gin",
+      sql`(${table.firstName} || ' ' || ${table.lastName}) gin_trgm_ops`,
+    ),
   ],
 );
 

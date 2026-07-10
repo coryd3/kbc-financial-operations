@@ -28,6 +28,16 @@ export default async function setup() {
     }
   }
 
+  // Extensions must exist before drizzle-kit push, which creates the trigram
+  // GIN indexes on members (they need pg_trgm's gin_trgm_ops operator class).
+  const testClient = new pg.Client({ connectionString: testUrl });
+  await testClient.connect();
+  try {
+    await testClient.query("CREATE EXTENSION IF NOT EXISTS pg_trgm");
+  } finally {
+    await testClient.end();
+  }
+
   // Sync the Drizzle schema into the test database. --force is safe here:
   // it only ever applies to the dedicated test database.
   execFileSync("npx", ["drizzle-kit", "push", "--force"], {

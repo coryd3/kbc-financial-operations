@@ -3,3 +3,4 @@
 - [drizzle-kit push is interactive](drizzle-push-interactive.md) — db:push hangs on raw-TTY prompts for new tables; create tables via SQL matching schema.ts instead.
 - [Test database isolation](test-db-isolation.md) — vitest runs against an auto-created sibling `*_test` Postgres DB; CREATE DATABASE is allowed on Replit PG; never `push --force` at the live DB.
 - [Replit Mail sends only to the app owner](replit-mail-owner-only.md) — no recipient field; per-user email needs a real provider, and mark "emailed" only after a successful send.
+- [Verifying GIN trigram indexes](gin-trgm-explain-verification.md) — uncommitted bulk inserts inflate GIN pending-list cost so EXPLAIN falsely shows seq scan; commit + VACUUM ANALYZE in the test DB first.
