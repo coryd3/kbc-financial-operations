@@ -204,7 +204,7 @@ export const auditEvents = pgTable(
 
 export const FEEDBACK_CATEGORIES = ["unclear", "inaccurate", "outdated", "suggestion", "other"] as const;
 export type FeedbackCategory = (typeof FEEDBACK_CATEGORIES)[number];
-export const FEEDBACK_STATUSES = ["new", "reviewed", "planned", "resolved", "declined"] as const;
+export const FEEDBACK_STATUSES = ["new", "reviewed", "accepted", "planned", "resolved", "declined"] as const;
 export type FeedbackStatus = (typeof FEEDBACK_STATUSES)[number];
 
 export const documentationFeedback = pgTable(
@@ -213,6 +213,8 @@ export const documentationFeedback = pgTable(
     id: serial("id").primaryKey(),
     pageSlug: varchar("page_slug", { length: 300 }).notNull(),
     documentationRevision: varchar("documentation_revision", { length: 80 }).notNull(),
+    sectionId: varchar("section_id", { length: 200 }).notNull().default(""),
+    sectionTitle: varchar("section_title", { length: 300 }),
     userId: integer("user_id")
       .notNull()
       .references(() => users.id, { onDelete: "cascade" }),
@@ -226,10 +228,11 @@ export const documentationFeedback = pgTable(
     reviewerId: integer("reviewer_id").references(() => users.id, { onDelete: "set null" }),
   },
   (table) => [
-    uniqueIndex("documentation_feedback_user_page_revision_idx").on(
+    uniqueIndex("documentation_feedback_user_page_revision_section_idx").on(
       table.userId,
       table.pageSlug,
       table.documentationRevision,
+      table.sectionId,
     ),
     index("documentation_feedback_status_idx").on(table.status, table.createdAt),
   ],
@@ -805,13 +808,21 @@ export const passwordResetSchema = z.object({
   newPassword: z.string().min(8).max(128),
 });
 
-export const documentationFeedbackSchema = z.object({
-  pageSlug: z.string().min(1).max(300),
-  documentationRevision: z.string().min(1).max(80),
-  helpful: z.boolean(),
-  category: z.enum(FEEDBACK_CATEGORIES),
-  comment: z.string().trim().max(2000).optional().or(z.literal("")),
-});
+export const documentationFeedbackSchema = z
+  .object({
+    pageSlug: z.string().min(1).max(300),
+    documentationRevision: z.string().min(1).max(80),
+    sectionId: z.string().max(200).default(""),
+    sectionTitle: z.string().trim().max(300).optional().or(z.literal("")),
+    helpful: z.boolean(),
+    category: z.enum(FEEDBACK_CATEGORIES),
+    comment: z.string().trim().max(2000).optional().or(z.literal("")),
+  })
+  .superRefine((feedback, context) => {
+    if (feedback.sectionId && !feedback.comment?.trim()) {
+      context.addIssue({ code: z.ZodIssueCode.custom, path: ["comment"], message: "A section comment is required" });
+    }
+  });
 
 export const documentationFeedbackReviewSchema = z.object({
   status: z.enum(FEEDBACK_STATUSES),

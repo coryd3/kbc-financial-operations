@@ -8,6 +8,7 @@ import Register from "./pages/Register";
 import ResetPassword from "./pages/ResetPassword";
 import Docs from "./pages/Docs";
 import DocsReader from "./pages/DocsReader";
+import MyDocsFeedback from "./pages/MyDocsFeedback";
 import Dashboard from "./pages/Dashboard";
 import Account from "./pages/Account";
 import Directory from "./pages/Directory";
@@ -54,6 +55,9 @@ function Router() {
         <Route path="/register" component={Register} />
         <Route path="/reset-password" component={ResetPassword} />
         <Route path="/docs" component={Docs} />
+        <Route path="/docs/my-feedback">
+          <ProtectedRoute><MyDocsFeedback /></ProtectedRoute>
+        </Route>
         <Route path="/docs/*" component={DocsReader} />
         
         <Route path="/dashboard">

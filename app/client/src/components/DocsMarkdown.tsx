@@ -1,9 +1,53 @@
-import { useEffect, useId, useRef, useState } from "react";
+import { isValidElement, useEffect, useId, useRef, useState } from "react";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import rehypeSlug from "rehype-slug";
 import { Link } from "wouter";
-import { ExternalLink, Maximize2, X, ZoomIn, ZoomOut } from "lucide-react";
+import { Check, ExternalLink, Maximize2, MessageSquarePlus, X, ZoomIn, ZoomOut } from "lucide-react";
+
+export type FeedbackSection = { id: string; title: string };
+
+function plainText(children: React.ReactNode): string {
+  if (Array.isArray(children)) return children.map(plainText).join("");
+  if (typeof children === "string" || typeof children === "number") return String(children);
+  if (isValidElement(children)) return plainText((children.props as { children?: React.ReactNode }).children);
+  return "";
+}
+
+function ReviewableHeading({
+  level,
+  id,
+  children,
+  className,
+  onSectionFeedback,
+  hasFeedback,
+}: {
+  level: 2 | 3 | 4;
+  id?: string;
+  children: React.ReactNode;
+  className: string;
+  onSectionFeedback?: (section: FeedbackSection) => void;
+  hasFeedback: boolean;
+}) {
+  const Heading = `h${level}` as "h2" | "h3" | "h4";
+  const title = plainText(children).trim();
+  return (
+    <div className="group flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
+      <Heading id={id} className={className}>{children}</Heading>
+      {id && title && onSectionFeedback && (
+        <button
+          type="button"
+          onClick={() => onSectionFeedback({ id, title })}
+          className="inline-flex shrink-0 items-center gap-1.5 rounded-md px-2 py-1 text-xs font-medium text-primary hover:bg-primary/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+          aria-label={`${hasFeedback ? "Review submitted feedback for" : "Comment on"} ${title}`}
+        >
+          {hasFeedback ? <Check className="h-3.5 w-3.5" /> : <MessageSquarePlus className="h-3.5 w-3.5" />}
+          {hasFeedback ? "Feedback sent" : "Comment"}
+        </button>
+      )}
+    </div>
+  );
+}
 
 /** Resolve a markdown link like "../policies/foo.md" against the current page slug. */
 function resolveDocLink(href: string, currentSlug: string, validSlugs: Set<string>): string | null {
@@ -115,10 +159,14 @@ export function DocsMarkdown({
   markdown,
   currentSlug,
   validSlugs,
+  onSectionFeedback,
+  feedbackSectionIds = new Set<string>(),
 }: {
   markdown: string;
   currentSlug: string;
   validSlugs: Set<string>;
+  onSectionFeedback?: (section: FeedbackSection) => void;
+  feedbackSectionIds?: Set<string>;
 }) {
   return (
     <div className="docs-prose">
@@ -129,14 +177,14 @@ export function DocsMarkdown({
           h1: ({ children, ...props }) => (
             <h1 {...props} className="font-serif text-3xl font-bold text-primary mt-2 mb-4 pb-3 border-b border-border">{children}</h1>
           ),
-          h2: ({ children, ...props }) => (
-            <h2 {...props} className="font-serif text-2xl font-semibold text-primary mt-10 mb-3">{children}</h2>
+          h2: ({ children, node: _node, ...props }) => (
+            <ReviewableHeading level={2} id={props.id} className="font-serif text-2xl font-semibold text-primary mt-10 mb-3" onSectionFeedback={onSectionFeedback} hasFeedback={feedbackSectionIds.has(props.id ?? "")}>{children}</ReviewableHeading>
           ),
-          h3: ({ children, ...props }) => (
-            <h3 {...props} className="font-serif text-xl font-semibold text-foreground mt-8 mb-2">{children}</h3>
+          h3: ({ children, node: _node, ...props }) => (
+            <ReviewableHeading level={3} id={props.id} className="font-serif text-xl font-semibold text-foreground mt-8 mb-2" onSectionFeedback={onSectionFeedback} hasFeedback={feedbackSectionIds.has(props.id ?? "")}>{children}</ReviewableHeading>
           ),
-          h4: ({ children, ...props }) => (
-            <h4 {...props} className="text-base font-semibold text-foreground mt-6 mb-2">{children}</h4>
+          h4: ({ children, node: _node, ...props }) => (
+            <ReviewableHeading level={4} id={props.id} className="text-base font-semibold text-foreground mt-6 mb-2" onSectionFeedback={onSectionFeedback} hasFeedback={feedbackSectionIds.has(props.id ?? "")}>{children}</ReviewableHeading>
           ),
           p: ({ children }) => <p className="leading-7 text-foreground/90 my-4">{children}</p>,
           ul: ({ children }) => <ul className="list-disc pl-6 my-4 space-y-1.5 text-foreground/90">{children}</ul>,

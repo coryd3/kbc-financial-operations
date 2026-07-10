@@ -6,7 +6,7 @@ import { LogOut, BookOpen, Home, User, Shield, BarChart, LayoutDashboard, Users,
 import { cn } from "../lib/utils";
 import { CHURCH_CONTACT } from "../lib/contact";
 import { NotificationBell } from "./NotificationBell";
-import { FINANCE_NAV_ROLES } from "@shared/schema";
+import { FINANCE_NAV_ROLES, ROLE_LABELS } from "@shared/schema";
 
 export function Layout({ children }: { children: React.ReactNode }) {
   const { user, isAdmin, isLeadership, refresh } = useAuth();
@@ -111,9 +111,19 @@ export function Layout({ children }: { children: React.ReactNode }) {
             ) : (
               <div className="flex items-center gap-2 ml-2 pl-2 border-l border-primary-foreground/20">
                 <NotificationBell />
-                <Link href="/account" className="flex items-center gap-1.5 px-3 py-2 rounded-md hover:bg-primary-foreground/10 transition-colors">
-                  <User className="w-4 h-4" />
-                  Account
+                <Link
+                  href="/account"
+                  className="flex min-w-0 items-center gap-2 rounded-md px-2.5 py-1.5 hover:bg-primary-foreground/10 transition-colors"
+                  aria-label={`Account for ${user.fullName}, username ${user.username}`}
+                  title={`Signed in as ${user.fullName} (@${user.username})`}
+                >
+                  <User className="w-4 h-4 shrink-0" />
+                  <span className="min-w-0 text-left leading-tight">
+                    <span className="block max-w-40 truncate text-sm font-semibold">{user.fullName}</span>
+                    <span className="block max-w-40 truncate text-[11px] text-primary-foreground/75">
+                      @{user.username} / {ROLE_LABELS[(user.roles ?? [user.role])[0]]}
+                    </span>
+                  </span>
                 </Link>
                 <button
                   onClick={handleLogout}

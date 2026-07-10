@@ -1,31 +1,63 @@
-import { useMemo, useState } from "react";
+import { useEffect, useId, useMemo, useState } from "react";
 import { Link, useLocation } from "wouter";
-import { useMutation, useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { api } from "../lib/api";
 import { Button, Input } from "../components/ui";
-import { DocsMarkdown } from "../components/DocsMarkdown";
+import { DocsMarkdown, type FeedbackSection } from "../components/DocsMarkdown";
 import { cn } from "../lib/utils";
-import { ArrowLeft, ArrowRight, BookOpen, ChevronLeft, FileText, Menu, Search, X } from "lucide-react";
+import { ArrowLeft, ArrowRight, BookOpen, ChevronLeft, FileText, Menu, MessageSquareText, Search, X } from "lucide-react";
 import { useDebounce } from "../lib/useDebounce";
 import { useAuth } from "../lib/auth";
 
-function DocumentationFeedbackForm({ slug, revision }: { slug: string; revision: string }) {
+function DocumentationFeedbackForm({
+  slug,
+  revision,
+  section,
+  alreadySubmitted = false,
+  onSubmitted,
+}: {
+  slug: string;
+  revision: string;
+  section?: FeedbackSection;
+  alreadySubmitted?: boolean;
+  onSubmitted?: () => void;
+}) {
   const { user } = useAuth();
+  const queryClient = useQueryClient();
+  const feedbackTitleId = useId();
   const [helpful, setHelpful] = useState<boolean | null>(null);
   const [category, setCategory] = useState<"unclear" | "inaccurate" | "outdated" | "suggestion" | "other">("suggestion");
   const [comment, setComment] = useState("");
   const [message, setMessage] = useState("");
   const mutation = useMutation({
-    mutationFn: () => api.submitDocsFeedback({ pageSlug: slug, documentationRevision: revision, helpful: helpful!, category, comment }),
-    onSuccess: () => setMessage("Thank you. Your feedback was sent privately to the review team."),
+    mutationFn: () => api.submitDocsFeedback({
+      pageSlug: slug,
+      documentationRevision: revision,
+      sectionId: section?.id ?? "",
+      sectionTitle: section?.title,
+      helpful: helpful!,
+      category,
+      comment,
+    }),
+    onSuccess: async () => {
+      setMessage("Thank you. Your feedback was sent privately to the review team.");
+      await queryClient.invalidateQueries({ queryKey: ["myDocsFeedback"] });
+      onSubmitted?.();
+    },
     onError: (error: Error) => setMessage(error.message),
   });
 
   return (
-    <section className="mt-10 rounded-md border border-border bg-muted/30 p-4" aria-labelledby="docs-feedback-title">
-      <h2 id="docs-feedback-title" className="text-base font-semibold text-foreground">Was this page helpful?</h2>
+    <section className={cn(section ? "mt-3" : "mt-10", "rounded-md border border-border bg-muted/30 p-4")} aria-labelledby={feedbackTitleId}>
+      <h2 id={feedbackTitleId} className="text-base font-semibold text-foreground">
+        {section ? `Feedback on "${section.title}"` : "Was this page helpful?"}
+      </h2>
       {!user ? (
         <p className="mt-2 text-sm text-muted-foreground"><Link href="/login" className="text-primary underline">Sign in</Link> to submit private feedback.</p>
+      ) : alreadySubmitted ? (
+        <p className="mt-2 text-sm text-muted-foreground">
+          You already submitted feedback for this {section ? "section" : "page"} version. <Link href="/docs/my-feedback" className="text-primary underline">Review my feedback</Link>.
+        </p>
       ) : message ? (
         <p className="mt-2 text-sm" role="status">{message}</p>
       ) : (
@@ -47,11 +79,11 @@ function DocumentationFeedbackForm({ slug, revision }: { slug: string; revision:
                 </select>
               </label>
               <label className="block text-sm font-medium">
-                Comment (optional)
+                Comment {section ? "" : "(optional)"}
                 <textarea className="mt-1 min-h-24 w-full rounded-md border border-border bg-background px-3 py-2" maxLength={2000} value={comment} onChange={(event) => setComment(event.target.value)} />
               </label>
               <p className="text-xs text-muted-foreground">Do not include donor, personnel, pastoral, banking, payroll, or other private information.</p>
-              <Button type="button" size="sm" disabled={mutation.isPending} onClick={() => mutation.mutate()}>{mutation.isPending ? "Sending..." : "Send feedback"}</Button>
+              <Button type="button" size="sm" disabled={mutation.isPending || (!!section && !comment.trim())} onClick={() => mutation.mutate()}>{mutation.isPending ? "Sending..." : "Send feedback"}</Button>
             </>
           )}
         </div>
@@ -61,12 +93,14 @@ function DocumentationFeedbackForm({ slug, revision }: { slug: string; revision:
 }
 
 export default function DocsReader() {
+  const { user } = useAuth();
   const [location, setLocation] = useLocation();
   const slug = location.startsWith("/docs/")
     ? decodeURIComponent(location.slice("/docs/".length)).replace(/\/+$/, "")
     : "";
   const [menuOpen, setMenuOpen] = useState(false);
   const [query, setQuery] = useState("");
+  const [feedbackSection, setFeedbackSection] = useState<FeedbackSection | null>(null);
   const debounced = useDebounce(query, 250);
 
   const { data: navData } = useQuery({ queryKey: ["docsNav"], queryFn: api.getDocsNav, staleTime: Infinity });
@@ -79,6 +113,19 @@ export default function DocsReader() {
     enabled: !!slug,
   });
 
+  const { data: myFeedbackData } = useQuery({
+    queryKey: ["myDocsFeedback"],
+    queryFn: api.getMyDocsFeedback,
+    enabled: !!user,
+  });
+  const currentFeedback = (myFeedbackData?.feedback ?? []).filter(
+    (item) => item.pageSlug === page?.slug && item.documentationRevision === page?.revision,
+  );
+  const feedbackSectionIds = useMemo(
+    () => new Set(currentFeedback.map((item) => item.sectionId).filter(Boolean)),
+    [currentFeedback],
+  );
+
   const { data: searchData, isFetching: searchLoading } = useQuery({
     queryKey: ["docsSearch", debounced],
     queryFn: () => api.searchDocs(debounced),
@@ -88,8 +135,28 @@ export default function DocsReader() {
   const searching = debounced.trim().length >= 2;
   const results = searchData?.results ?? [];
 
+  useEffect(() => {
+    if (!page || !window.location.hash) return;
+    const sectionId = decodeURIComponent(window.location.hash.slice(1));
+    window.setTimeout(() => document.getElementById(sectionId)?.scrollIntoView({ behavior: "smooth", block: "start" }), 50);
+  }, [page]);
+
+  useEffect(() => {
+    if (!feedbackSection) return;
+    const close = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setFeedbackSection(null);
+    };
+    window.addEventListener("keydown", close);
+    return () => window.removeEventListener("keydown", close);
+  }, [feedbackSection]);
+
   const sidebar = (
     <nav className="space-y-6">
+      {user && (
+        <Link href="/docs/my-feedback" className="flex items-center gap-2 rounded-md border border-border px-3 py-2 text-sm font-medium text-primary hover:bg-muted/50">
+          <MessageSquareText className="h-4 w-4" /> My Feedback
+        </Link>
+      )}
       <div className="relative">
         <Search className="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground" />
         <Input
@@ -211,8 +278,18 @@ export default function DocsReader() {
                 {page.section}
               </p>
             )}
-            <DocsMarkdown markdown={page.markdown} currentSlug={page.slug} validSlugs={validSlugs} />
-            <DocumentationFeedbackForm slug={page.slug} revision={page.revision} />
+            <DocsMarkdown
+              markdown={page.markdown}
+              currentSlug={page.slug}
+              validSlugs={validSlugs}
+              onSectionFeedback={user ? setFeedbackSection : undefined}
+              feedbackSectionIds={feedbackSectionIds}
+            />
+            <DocumentationFeedbackForm
+              slug={page.slug}
+              revision={page.revision}
+              alreadySubmitted={currentFeedback.some((item) => !item.sectionId)}
+            />
             <div className="mt-12 pt-6 border-t border-border flex flex-col sm:flex-row justify-between gap-3">
               {page.prev ? (
                 <Link
@@ -244,6 +321,26 @@ export default function DocsReader() {
           </>
         )}
       </article>
+      {page && feedbackSection && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/45 p-4" role="dialog" aria-modal="true" aria-labelledby="section-feedback-title">
+          <div className="w-full max-w-xl rounded-md border border-border bg-background p-5 shadow-xl">
+            <div className="mb-2 flex items-start justify-between gap-4">
+              <div>
+                <p className="text-xs font-semibold uppercase text-muted-foreground">{page.title}</p>
+                <h2 id="section-feedback-title" className="mt-1 text-xl font-serif font-semibold text-primary">Section feedback</h2>
+              </div>
+              <button type="button" onClick={() => setFeedbackSection(null)} className="rounded-md p-2 hover:bg-muted" aria-label="Close feedback form"><X className="h-5 w-5" /></button>
+            </div>
+            <DocumentationFeedbackForm
+              slug={page.slug}
+              revision={page.revision}
+              section={feedbackSection}
+              alreadySubmitted={feedbackSectionIds.has(feedbackSection.id)}
+              onSubmitted={() => window.setTimeout(() => setFeedbackSection(null), 900)}
+            />
+          </div>
+        </div>
+      )}
     </div>
   );
 }
