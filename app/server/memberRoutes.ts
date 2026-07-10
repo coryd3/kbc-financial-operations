@@ -338,6 +338,11 @@ export function registerMemberRoutes(app: Express) {
     if (userId !== null) {
       const [account] = await db.select().from(users).where(eq(users.id, userId));
       if (!account) return res.status(404).json({ message: "User account not found" });
+      if (target.userId !== null && target.userId !== userId) {
+        return res.status(409).json({
+          message: "That member profile is already linked to a different user account. Unlink it first, then link again.",
+        });
+      }
       const [alreadyLinked] = await db
         .select({ id: members.id })
         .from(members)
