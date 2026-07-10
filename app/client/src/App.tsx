@@ -6,6 +6,8 @@ import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import ResetPassword from "./pages/ResetPassword";
+import AccessPending from "./pages/AccessPending";
+import VerifyEmail from "./pages/VerifyEmail";
 import Docs from "./pages/Docs";
 import DocsReader from "./pages/DocsReader";
 import MyDocsFeedback from "./pages/MyDocsFeedback";
@@ -54,6 +56,8 @@ function Router() {
         <Route path="/login" component={Login} />
         <Route path="/register" component={Register} />
         <Route path="/reset-password" component={ResetPassword} />
+        <Route path="/verify-email" component={VerifyEmail} />
+        <Route path="/access-pending" component={AccessPending} />
         <Route path="/docs" component={Docs} />
         <Route path="/docs/my-feedback">
           <ProtectedRoute><MyDocsFeedback /></ProtectedRoute>

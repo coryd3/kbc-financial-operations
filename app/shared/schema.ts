@@ -63,6 +63,8 @@ export const users = pgTable("users", {
   passwordHash: text("password_hash").notNull(),
   fullName: varchar("full_name", { length: 120 }).notNull(),
   email: varchar("email", { length: 255 }),
+  emailVerifiedAt: timestamp("email_verified_at"),
+  accessNotificationSentAt: timestamp("access_notification_sent_at"),
   phone: varchar("phone", { length: 40 }),
   role: varchar("role", { length: 32 }).$type<Role>().notNull().default("member"),
   status: varchar("status", { length: 20 }).$type<UserStatus>().notNull().default("pending"),
@@ -76,6 +78,22 @@ export const users = pgTable("users", {
   approvedAt: timestamp("approved_at"),
   lastLoginAt: timestamp("last_login_at"),
 });
+
+export const emailVerificationTokens = pgTable(
+  "email_verification_tokens",
+  {
+    id: serial("id").primaryKey(),
+    userId: integer("user_id")
+      .notNull()
+      .references(() => users.id, { onDelete: "cascade" }),
+    email: varchar("email", { length: 255 }).notNull(),
+    tokenHash: varchar("token_hash", { length: 64 }).notNull().unique(),
+    expiresAt: timestamp("expires_at").notNull(),
+    createdAt: timestamp("created_at").notNull().defaultNow(),
+    usedAt: timestamp("used_at"),
+  },
+  (table) => [index("email_verification_tokens_user_idx").on(table.userId)],
+);
 
 // The legacy users.role column remains during migration. New authorization
 // checks use this join table so one person can serve in more than one role.
@@ -168,6 +186,9 @@ export const AUDIT_EVENT_TYPES = [
   "auth.password_changed",
   "auth.password_reset_created",
   "auth.password_reset_used",
+  "auth.email_verification_sent",
+  "auth.email_verified",
+  "auth.access_notification_sent",
   "auth.mfa_enabled",
   "auth.mfa_disabled",
   "user.roles_changed",
@@ -770,7 +791,7 @@ export const registerSchema = z.object({
     .regex(/^[a-zA-Z0-9._-]+$/, "Username may only contain letters, numbers, dots, dashes, and underscores"),
   password: z.string().min(8, "Password must be at least 8 characters").max(128),
   fullName: z.string().min(2, "Please enter your full name").max(120),
-  email: z.string().email("Please enter a valid email").max(255).optional().or(z.literal("")),
+  email: z.string().trim().email("Please enter a valid email").max(255),
   phone: z.string().max(40).optional().or(z.literal("")),
 });
 

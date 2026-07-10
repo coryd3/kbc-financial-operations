@@ -14,7 +14,7 @@ export function ProtectedRoute({
   requireLeadership?: boolean;
   allowedRoles?: Role[];
 }) {
-  const { user, isLoading, isAdmin, isLeadership, mfaRequired, mfaVerified } = useAuth();
+  const { user, isLoading, isAdmin, isLeadership, portalAccess, mfaRequired, mfaVerified } = useAuth();
   const [location, setLocation] = useLocation();
 
   const roles = user?.roles ?? (user ? [user.role] : []);
@@ -24,6 +24,8 @@ export function ProtectedRoute({
     if (!isLoading) {
       if (!user) {
         setLocation("/login");
+      } else if (!portalAccess) {
+        setLocation("/access-pending");
       } else if (user.mustChangePassword && location !== "/account") {
         setLocation("/account");
       } else if (mfaRequired && !mfaVerified && location !== "/account") {
@@ -36,7 +38,7 @@ export function ProtectedRoute({
         setLocation("/dashboard");
       }
     }
-  }, [user, isLoading, isAdmin, isLeadership, mfaRequired, mfaVerified, location, setLocation, requireAdmin, requireLeadership, roleAllowed]);
+  }, [user, isLoading, isAdmin, isLeadership, portalAccess, mfaRequired, mfaVerified, location, setLocation, requireAdmin, requireLeadership, roleAllowed]);
 
   if (isLoading) {
     return (
@@ -48,6 +50,7 @@ export function ProtectedRoute({
 
   if (
     !user ||
+    !portalAccess ||
     (requireAdmin && !isAdmin) ||
     (requireLeadership && !isLeadership) ||
     !roleAllowed ||

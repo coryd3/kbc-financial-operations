@@ -7,9 +7,10 @@ async function main() {
   const username = process.env.BOOTSTRAP_ADMIN_USERNAME?.trim();
   const password = process.env.BOOTSTRAP_ADMIN_PASSWORD;
   const fullName = process.env.BOOTSTRAP_ADMIN_FULL_NAME?.trim() || "System Administrator";
+  const email = process.env.BOOTSTRAP_ADMIN_EMAIL?.trim() || null;
   if (!username || !password || password.length < 12) {
     throw new Error(
-      "Set BOOTSTRAP_ADMIN_USERNAME, BOOTSTRAP_ADMIN_PASSWORD (12+ characters), and optionally BOOTSTRAP_ADMIN_FULL_NAME.",
+      "Set BOOTSTRAP_ADMIN_USERNAME, BOOTSTRAP_ADMIN_PASSWORD (12+ characters), and optionally BOOTSTRAP_ADMIN_FULL_NAME and BOOTSTRAP_ADMIN_EMAIL.",
     );
   }
   const [existing] = await db
@@ -22,6 +23,8 @@ async function main() {
     .values({
       username,
       fullName,
+      email,
+      emailVerifiedAt: email ? new Date() : null,
       passwordHash: await bcrypt.hash(password, 12),
       role: "super_admin",
       status: "active",

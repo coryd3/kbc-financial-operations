@@ -14,8 +14,6 @@ This role helps maintain accurate financial records, process routine transaction
 
 This role is both a job and a ministry of service. The Bookkeeper / Financial Administrator is expected to serve with a Christ-like attitude, recognizing that accurate, confidential, and orderly financial work supports the mission and health of the church.
 
-On June 28, 2026, the congregation approved adding a paid, part-time Bookkeeper position. The motion tasked Personnel and Nominating Committees to work together to add the position, gave Personnel Committee authority to hire the right candidate, gave Finance Committee responsibility for adjusting the budget to fund this specific operational need, and set a limit of `$150` per week, described as `$18.75` per hour for approximately 8 hours.
-
 This role is operational. It does not replace the governance responsibilities of the Treasurer or Finance Committee.
 
 Success in this role means KBC's routine financial records are accurate, timely, confidential, well organized, and ready for review by the Treasurer, Finance Committee, and other authorized reviewers.
@@ -117,10 +115,10 @@ The Bookkeeper / Financial Administrator should receive clear written procedures
 
 ## Compensation & Schedule
 
-- Paid position authorized by congregational vote.
+- Paid, part-time position funded through the approved church budget and authorization process.
 - Employment classification: TBD.
-- Expected weekly hours: approximately 8 hours, unless Personnel Committee, Finance Committee, and church approval path confirm otherwise.
-- Compensation limit: not to exceed `$150` per week, described in the June 28, 2026 motion as `$18.75` per hour for approximately 8 hours.
+- Expected weekly hours: documented in the current employment terms and approved budget.
+- Compensation: documented in the current employment terms and kept within the authority and budget approved by the church.
 - Work schedule and reporting deadlines should be defined by Personnel Committee after Finance Committee confirms financial workflow needs.
 
 ## Terms of Service
@@ -133,4 +131,6 @@ Needs Personnel Review: Final title, reporting line, employment classification, 
 
 Needs Finance Review: Finance Committee should confirm financial duties, access, controls, software responsibilities, and budget impact before this role is finalized.
 
-Needs Bylaw Review: The final approval path should be checked against KBC Constitution and Bylaws, church practice, and the June 28, 2026 motion before hiring is completed.
+Needs Bylaw Review: The final approval path should be checked against KBC Constitution and Bylaws and church practice before hiring is completed.
+
+The specific 2026 authorization, initial compensation limit, and recruitment steps are preserved in the [Decision Log](../02-decision-log.md) and [Bookkeeper Hiring Process](bookkeeper-hiring-process.md). They are implementation records rather than permanent duties in this job description.

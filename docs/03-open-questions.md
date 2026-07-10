@@ -1,6 +1,8 @@
-# Open Questions
+# Project Issue Register
 
-Status: Draft
+Status: Working Record
+
+This is a project-management record for committees and documentation stewards. It is not an adopted policy or part of the permanent Operations Manual. Questions should be removed or converted into decision-log entries when the responsible church body resolves them.
 
 ## Personnel Committee
 

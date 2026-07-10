@@ -65,10 +65,10 @@ export function toSafeUser(user: AuthenticatedUser | User, roles?: Role[]): Safe
   return { ...safe, roles: resolvedRoles };
 }
 
-export async function getSessionUser(req: Request): Promise<AuthenticatedUser | null> {
+export async function getSessionAccount(req: Request): Promise<AuthenticatedUser | null> {
   if (!req.session.userId) return null;
   const [user] = await db.select().from(users).where(eq(users.id, req.session.userId));
-  if (!user || user.status !== "active") return null;
+  if (!user || (user.status !== "active" && user.status !== "pending")) return null;
   if (process.env.VITEST && req.session.sessionVersion === undefined) {
     req.session.sessionVersion = user.sessionVersion;
   }
@@ -82,6 +82,15 @@ export async function getSessionUser(req: Request): Promise<AuthenticatedUser | 
     .where(eq(userRoles.userId, user.id));
   const roles = assignedRoles.length ? assignedRoles.map((row) => row.role) : [user.role];
   return { ...user, roles };
+}
+
+export function hasPortalAccess(user: Pick<User, "status" | "email" | "emailVerifiedAt">): boolean {
+  return user.status === "active" && (!user.email || Boolean(user.emailVerifiedAt));
+}
+
+export async function getSessionUser(req: Request): Promise<AuthenticatedUser | null> {
+  const user = await getSessionAccount(req);
+  return user && hasPortalAccess(user) ? user : null;
 }
 
 function sessionReady(user: AuthenticatedUser, req: Request, res: Response): boolean {

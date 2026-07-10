@@ -2,14 +2,14 @@ import { useQuery } from "@tanstack/react-query";
 import { Link, useLocation } from "wouter";
 import { useAuth } from "../lib/auth";
 import { api } from "../lib/api";
-import { LogOut, BookOpen, Home, User, Shield, BarChart, LayoutDashboard, Users, ContactRound, CheckSquare, Gavel, Landmark, MessageSquareText } from "lucide-react";
+import { LogOut, BookOpen, Home, User, Shield, BarChart, LayoutDashboard, Users, ContactRound, CheckSquare, Gavel, Landmark, MessageSquareText, UserRoundCheck } from "lucide-react";
 import { cn } from "../lib/utils";
 import { CHURCH_CONTACT } from "../lib/contact";
 import { NotificationBell } from "./NotificationBell";
 import { FINANCE_NAV_ROLES, ROLE_LABELS } from "@shared/schema";
 
 export function Layout({ children }: { children: React.ReactNode }) {
-  const { user, isAdmin, isLeadership, refresh } = useAuth();
+  const { user, isAdmin, isLeadership, portalAccess, refresh } = useAuth();
   const [location, setLocation] = useLocation();
 
   const { data: pendingCount } = useQuery({
@@ -22,7 +22,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
   const { data: checklistSummary } = useQuery({
     queryKey: ["checklistSummary"],
     queryFn: api.getChecklistSummary,
-    enabled: !!user,
+    enabled: portalAccess,
     refetchInterval: 60000,
   });
 
@@ -46,19 +46,20 @@ export function Layout({ children }: { children: React.ReactNode }) {
   const navItems = [
     { href: "/", label: "Home", icon: Home, show: true },
     { href: "/docs", label: "Documentation", icon: BookOpen, show: true },
-    { href: "/dashboard", label: "Dashboard", icon: LayoutDashboard, show: !!user },
-    { href: "/directory", label: "Directory", icon: ContactRound, show: !!user },
+    { href: "/access-pending", label: "Access Setup", icon: UserRoundCheck, show: !!user && !portalAccess },
+    { href: "/dashboard", label: "Dashboard", icon: LayoutDashboard, show: portalAccess },
+    { href: "/directory", label: "Directory", icon: ContactRound, show: portalAccess },
     { href: "/admin/members", label: "Members", icon: Users, show: isLeadership },
     {
       href: "/checklists",
       label: "Checklists",
       icon: CheckSquare,
-      show: !!user,
+      show: portalAccess,
       badge: checklistSummary?.overdue.length ? checklistSummary.overdue.length : null,
     },
-    { href: "/committees", label: "Committees", icon: Users, show: !!user },
-    { href: "/decisions", label: "Decisions", icon: Gavel, show: !!user },
-    { href: "/finance", label: "Finance", icon: Landmark, show: !!user && (user.roles ?? [user.role]).some((role) => FINANCE_NAV_ROLES.includes(role)) },
+    { href: "/committees", label: "Committees", icon: Users, show: portalAccess },
+    { href: "/decisions", label: "Decisions", icon: Gavel, show: portalAccess },
+    { href: "/finance", label: "Finance", icon: Landmark, show: portalAccess && !!user && (user.roles ?? [user.role]).some((role) => FINANCE_NAV_ROLES.includes(role)) },
     { href: "/admin", label: "Admin", icon: Shield, show: isAdmin, badge: pendingCount ? pendingCount : null },
     { href: "/admin/analytics", label: "Analytics", icon: BarChart, show: isAdmin },
     { href: "/admin/documentation-feedback", label: "Doc Feedback", icon: MessageSquareText, show: isAdmin, badge: feedbackCount || null },
@@ -110,9 +111,9 @@ export function Layout({ children }: { children: React.ReactNode }) {
               </div>
             ) : (
               <div className="flex items-center gap-2 ml-2 pl-2 border-l border-primary-foreground/20">
-                <NotificationBell />
+                {portalAccess && <NotificationBell />}
                 <Link
-                  href="/account"
+                  href={portalAccess ? "/account" : "/access-pending"}
                   className="flex min-w-0 items-center gap-2 rounded-md px-2.5 py-1.5 hover:bg-primary-foreground/10 transition-colors"
                   aria-label={`Account for ${user.fullName}, username ${user.username}`}
                   title={`Signed in as ${user.fullName} (@${user.username})`}

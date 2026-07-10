@@ -2,78 +2,62 @@
 
 Status: Draft
 
-This site gives KBC leaders one place to read and search the financial operations modernization documents without exporting PDFs every time.
+This library gives Kingsville Baptist Church one searchable place for governing references, responsibilities, financial policies, operating procedures, role descriptions, and active committee work.
 
-## What This Site Is
-
-This is a working documentation site for the financial operations project. It gathers the project brief, leadership review materials, governance notes, role descriptions, policies, procedures, software evaluation materials, and communication drafts into one searchable place.
-
-The GitHub repository remains the source of truth. This site is just a clearer way to browse the Markdown files.
-
-## Who This Is For
-
-This site is mainly for:
-
-- Pastor and Deacons.
-- Finance Committee.
-- Personnel Committee.
-- Nominating Committee where officer roles are involved.
-- Treasurer, interim Treasurer, and future Bookkeeper / Financial Administrator reviewers.
-- Project helpers who are organizing the documents.
-
-## Where To Start
-
-Start with these pages:
-
-- [Leader-Friendly Dashboard](start-here/project-dashboard.md) for the quickest view of what needs attention.
-- [Project Brief](00-project-brief.md) for the short purpose and current situation.
-- [Leadership Review Packet](communications/leadership-review-packet.md) for the main leadership alignment document.
-- [Project Dashboard](project-dashboard.md) for document status and review needs.
-- [Implementation Roadmap](implementation-roadmap.md) for immediate, 30-day, 60-day, and 90-day work.
-- [Open Questions](03-open-questions.md) for issues still needing committee or leadership direction.
-
-## Current Project Status
-
-KBC is in a Treasurer transition, and interim coverage is helping the church maintain continuity while leaders review the longer-term structure.
-
-On June 28, 2026, the congregation approved adding a paid, part-time Bookkeeper position. The motion tasked Personnel and Nominating Committees to work together to add the position, gave Personnel Committee authority to hire the right candidate, gave Finance Committee responsibility for adjusting the budget to fund this specific operational need, and set a limit of `$150` per week, described as `$18.75` per hour for approximately 8 hours.
-
-The remaining work is to finalize the job description, application, hiring process, supervision/evaluation process, employment classification, Personnel/Nominating coordination, and Finance Committee input on financial duties, access, controls, software responsibilities, reporting expectations, budget adjustment, and budget impact.
-
-This work should be treated as a stewardship and systems improvement effort, not a blame discussion.
+The goal is shared understanding over time. Important information should remain available when volunteers, officers, committee members, or staff change.
 
 !!! note "Congregation Final Authority"
-    The congregation remains the final authority where KBC bylaws, budget, policy, officer election, major non-budgeted spending, or church practice require a vote. Committee recommendations should preserve that authority, not bypass it.
+    The congregation remains the final authority where KBC bylaws, the annual budget, policy, officer election, major non-budgeted spending, or church practice require a vote. Committees prepare and carry out work within their assigned responsibilities; they do not replace congregational authority.
 
-## Top 5 Decisions Needed
+## Choose A Starting Point
 
-1. Confirm the official June 28, 2026 minutes and keep the hiring plan within the authorization already granted.
-2. Confirm which duties remain with the elected Treasurer / Financial Officer and which duties move to the Bookkeeper / Financial Administrator.
-3. Have Finance Committee define the financial duties, access, controls, software responsibilities, monthly reporting expectations, and budget impact before hiring materials are used.
-4. Have Personnel Committee finalize the job description, application, hiring process, supervision, evaluation process, and employment details, coordinating with Nominating Committee as needed under the motion.
-5. Confirm what remaining items need Deacon review, bylaw review, professional review, church vote, or later congregational updates, especially annual budget approval and major non-budgeted spending.
+### Church Members
 
-## Key Documents
+Start with the documents that explain how the church is governed and how financial responsibility is divided:
 
-- [Responsibility Matrix](governance/responsibility-matrix.md)
 - [Constitution and Bylaws Reference](governance/constitution-and-bylaws-reference.md)
-- [Leader-Friendly Dashboard](start-here/project-dashboard.md)
-- [Treasurer vs. Bookkeeper Duty Split](roles/treasurer-vs-bookkeeper-duty-split.md)
-- [Bookkeeper Job Description](roles/bookkeeper-financial-administrator-job-description.md)
-- [Bookkeeper Hiring Process](roles/bookkeeper-hiring-process.md)
-- [Finance Committee Packet](communications/finance-committee-packet.md)
-- [Personnel Committee Packet](communications/personnel-committee-packet.md)
-- [Future Governance Expansion](governance/future-governance-expansion.md)
-- [Software Requirements](software-evaluation/software-requirements.md)
-- [Export Process](export-process.md)
+- [Church Organization Chart](governance/church-organization-chart.md)
+- [Financial Operations View](governance/financial-operations-view.md)
+- [Responsibility Matrix](governance/responsibility-matrix.md)
+- [Financial Policies](policies/spending-authority-policy.md)
+
+### Church Leadership
+
+Use the [Leader-Friendly Dashboard](start-here/project-dashboard.md) for current priorities, review needs, decisions, and owners.
+
+### Finance Committee And Financial Workers
+
+Start with the [Finance Committee Charter](governance/finance-committee-charter.md), [Responsibility Matrix](governance/responsibility-matrix.md), financial policies, and operating procedures.
+
+### Personnel Committee
+
+Start with the [Personnel Committee Role](governance/personnel-committee-role.md), [Bookkeeper Job Description](roles/bookkeeper-financial-administrator-job-description.md), and the Personnel Committee workspace.
+
+### Documentation And Project Helpers
+
+Use the Project Workroom for the issue register, decision log, implementation roadmap, source inventory, transition material, and other working records. The [Documentation Stewardship Guide](document-stewardship.md) explains how multiple people can share ownership without changing church policy on their own.
+
+## How The Library Is Organized
+
+Every document is classified by:
+
+- **Type:** policy, procedure, role description, charter, reference, review packet, or working record.
+- **Status:** draft, needs review, approved, current, parking lot, or superseded.
+- **Owner:** the body responsible for maintaining its substance.
+- **Audience:** the people most likely to need it. Audience views reduce clutter but do not restrict public access.
+- **Lifecycle:** durable church guidance, temporary project material, communication, reference, or administration.
+
+Situation-specific records remain available in the Project Workroom, while durable governance and operations documents stay in the main church library. This keeps the history without allowing temporary circumstances to take over the permanent manual.
+
+## Current Work
+
+The original modernization project began during the 2026 Treasurer and Bookkeeper transition. That history and the congregational motion remain important records, but they are not the permanent organizing principle for the library.
+
+See the [Leader-Friendly Dashboard](start-here/project-dashboard.md) for current work and the [Decision Log](02-decision-log.md) for recorded decisions.
 
 ## Sensitive Information Warning
 
-Keep confidential information out of this repository and out of this documentation site.
-
-Do not store donor records, giving details, payroll details, bank account numbers, Social Security numbers, passwords, candidate applications, reference-check notes, background-check results, confidential personnel matters, or private pastoral care information here.
-
-Use placeholders such as `TBD`, `Needs Finance Review`, `Needs Personnel Review`, `Needs Bylaw Review`, or `Needs Professional Review` until the proper body supplies the information.
+Do not store donor records, giving details, payroll details, bank account numbers, Social Security numbers, passwords, candidate applications, reference-check notes, background-check results, confidential personnel matters, or private pastoral-care information in this repository or public documentation site.
 
 !!! warning "Public Site Caution"
-    The published GitHub Pages site and public repository should be treated as public unless privacy settings are intentionally changed and verified. Do not add sensitive records or confidential details to this repository or site.
+    The GitHub repository and published site should be treated as public. Audience labels organize information for readers; they are not confidentiality controls.

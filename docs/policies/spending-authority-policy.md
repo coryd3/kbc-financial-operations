@@ -1,12 +1,14 @@
 # Spending Authority Policy
 
-Status: Draft
+Status: Draft - Needs Finance Review
 
 ## Purpose
 
 This policy defines who may approve spending and when additional review, committee approval, or church vote may be required.
 
 Dollar amounts are placeholders until reviewed by the Finance Committee.
+
+This document is part of the [Financial Authority Policy Package](financial-authority-policy-package.md). Terms and thresholds should be approved across the package so the policies do not conflict.
 
 !!! note "Congregation Final Authority"
     The congregation should approve the annual budget and major non-budgeted expenses where KBC bylaws, budget, policy, amount, or church practice require a vote.

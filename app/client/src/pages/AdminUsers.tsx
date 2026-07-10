@@ -18,6 +18,7 @@ export default function AdminUsers() {
   const [pwError, setPwError] = useState("");
   const [pwSuccess, setPwSuccess] = useState("");
   const [roleTarget, setRoleTarget] = useState<{ id: number; fullName: string; roles: Role[] } | null>(null);
+  const [accessMessage, setAccessMessage] = useState("");
 
   const toggleSuggestionDetails = (userId: number, memberId: number) => {
     const key = `${userId}:${memberId}`;
@@ -48,17 +49,28 @@ export default function AdminUsers() {
 
   const approveMut = useMutation({
     mutationFn: api.approveUser,
-    onSuccess: invalidateAfterApproval,
+    onSuccess: (result) => {
+      setAccessMessage(result.notificationSent
+        ? "Account approved and an access email was sent."
+        : "Account approved, but no access email was sent. Check the email configuration or contact the user directly.");
+      invalidateAfterApproval();
+    },
   });
 
   const [linkError, setLinkError] = useState<string | null>(null);
   const approveAndLinkMut = useMutation({
     mutationFn: async ({ userId, memberId }: { userId: number; memberId: number }) => {
-      await api.approveUser(userId);
+      const approval = await api.approveUser(userId);
       await api.linkMember(memberId, userId);
+      return approval;
     },
     onMutate: () => setLinkError(null),
-    onSuccess: invalidateAfterApproval,
+    onSuccess: (result) => {
+      setAccessMessage(result.notificationSent
+        ? "Account approved, linked, and an access email was sent."
+        : "Account approved and linked, but no access email was sent.");
+      invalidateAfterApproval();
+    },
     onError: (err: Error) => {
       setLinkError(err.message);
       invalidateAfterApproval();
@@ -155,6 +167,9 @@ export default function AdminUsers() {
                       </div>
                       <div className="text-xs text-muted-foreground mt-2">
                         Registered: {format(new Date(user.createdAt), "MMM d, yyyy h:mm a")}
+                      </div>
+                      <div className={`mt-2 inline-flex rounded px-2 py-1 text-xs font-medium ${user.emailVerifiedAt ? "bg-primary/10 text-primary" : "bg-amber-100 text-amber-900"}`}>
+                        {user.emailVerifiedAt ? "Email verified" : "Waiting for email verification"}
                       </div>
                     </div>
                     <div className="flex items-center gap-2 shrink-0">
@@ -298,6 +313,12 @@ export default function AdminUsers() {
                       <td className="py-3 px-4">
                         <div className="font-medium">{user.fullName}</div>
                         <div className="text-xs text-muted-foreground mt-0.5">@{user.username}</div>
+                        {user.status === "active" && user.email && (
+                          <div className="mt-1 text-xs text-muted-foreground">
+                            {user.emailVerifiedAt ? "Email verified" : "Email not verified"}
+                            {user.accessNotificationSentAt ? " / approval email sent" : " / approval email not confirmed"}
+                          </div>
+                        )}
                       </td>
                       <td className="py-3 px-4">
                         <div className="flex flex-wrap items-center gap-1">
@@ -376,6 +397,16 @@ export default function AdminUsers() {
           {pwSuccess}
           <button onClick={() => setPwSuccess("")} className="opacity-80 hover:opacity-100">
             <X className="w-4 h-4" />
+          </button>
+        </div>
+      )}
+
+      {accessMessage && (
+        <div className="fixed bottom-6 right-6 z-50 flex max-w-md items-center gap-3 rounded-md bg-primary px-4 py-3 text-sm text-primary-foreground shadow-lg">
+          <CheckCircle className="h-4 w-4 shrink-0" />
+          {accessMessage}
+          <button onClick={() => setAccessMessage("")} className="opacity-80 hover:opacity-100" aria-label="Dismiss access message">
+            <X className="h-4 w-4" />
           </button>
         </div>
       )}

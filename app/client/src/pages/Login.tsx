@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Link, useLocation } from "wouter";
 import { api, ApiError } from "../lib/api";
 import { useAuth } from "../lib/auth";
-import { Card, CardContent, CardHeader, CardTitle, Button, Input, Label } from "../components/ui";
+import { Card, CardContent, CardHeader, CardTitle, Button, Input, Label, PasswordInput } from "../components/ui";
 
 export default function Login() {
   const [username, setUsername] = useState("");
@@ -10,11 +10,13 @@ export default function Login() {
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [, setLocation] = useLocation();
-  const { user, refresh, mfaRequired, mfaVerified } = useAuth();
+  const { user, refresh, portalAccess, mfaRequired, mfaVerified } = useAuth();
 
   useEffect(() => {
-    if (user) setLocation(user.mustChangePassword || (mfaRequired && !mfaVerified) ? "/account" : "/dashboard");
-  }, [user, mfaRequired, mfaVerified, setLocation]);
+    if (user) {
+      setLocation(!portalAccess ? "/access-pending" : user.mustChangePassword || (mfaRequired && !mfaVerified) ? "/account" : "/dashboard");
+    }
+  }, [user, portalAccess, mfaRequired, mfaVerified, setLocation]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -24,7 +26,7 @@ export default function Login() {
     try {
       const result = await api.login({ username, password });
       await refresh();
-      setLocation(result.user.mustChangePassword || result.mfaRequired || result.mfaSetupRequired ? "/account" : "/dashboard");
+      setLocation(!result.portalAccess ? "/access-pending" : result.user.mustChangePassword || result.mfaRequired || result.mfaSetupRequired ? "/account" : "/dashboard");
     } catch (err) {
       if (err instanceof ApiError) {
         setError(err.message);
@@ -63,9 +65,8 @@ export default function Login() {
             </div>
             <div className="space-y-2">
               <Label htmlFor="password">Password</Label>
-              <Input
+              <PasswordInput
                 id="password"
-                type="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 required

@@ -72,56 +72,20 @@ flowchart TD
 
 ## Financial Operations View
 
-```mermaid
-%%{init: {"htmlLabels": false, "flowchart": {"curve": "basis", "nodeSpacing": 48, "rankSpacing": 65, "padding": 20, "wrappingWidth": 220}}}%%
-flowchart TB
-    Congregation["Congregation<br/>Final authority where<br/>a vote is required"]
-    Nominating["Nominating Committee<br/>Officer recommendation"]
-    Treasurer["Treasurer / Financial Officer<br/>Review and reporting"]
-    Finance["Finance Committee<br/>Financial controls and review"]
-    Personnel["Personnel Committee<br/>Authorized hiring process"]
-    Bookkeeper["Bookkeeper /<br/>Financial Administrator<br/>Records and reports"]
-    PastorDeacons["Pastor and Deacons<br/>Counsel, communication,<br/>and recommendations"]
-    Vendor["Outside Vendor<br/>Payroll, tax, and<br/>accounting support"]
+The detailed financial reporting and coordination diagram now has its own navigation entry:
 
-    Congregation --> Nominating
-    Nominating --> Treasurer
-    Congregation --> Finance
-    Congregation --> Personnel
-    Congregation --> PastorDeacons
-
-    Finance <--> Treasurer
-    Finance -. duties and controls .-> Bookkeeper
-    Personnel --> Bookkeeper
-    Bookkeeper -. records and reports .-> Treasurer
-    Bookkeeper -. monthly packet .-> Finance
-    Finance -. vendor scope .-> Vendor
-    Treasurer -. coordinates if assigned .-> Vendor
-    PastorDeacons -. counsel .-> Finance
-    PastorDeacons -. counsel .-> Personnel
-
-    classDef authority fill:#e8f1ff,stroke:#2f5f98,color:#102033,stroke-width:1px;
-    classDef committee fill:#eef8f3,stroke:#2f7d5b,color:#10291f,stroke-width:1px;
-    classDef operations fill:#fff6df,stroke:#a76f00,color:#2d2100,stroke-width:1px;
-    classDef support fill:#f3f6f8,stroke:#6b7280,color:#172033,stroke-width:1px;
-    classDef vendor fill:#f6efff,stroke:#7551a6,color:#241633,stroke-width:1px;
-    class Congregation authority;
-    class Nominating,Finance,Personnel committee;
-    class Treasurer,Bookkeeper operations;
-    class PastorDeacons support;
-    class Vendor vendor;
-```
+[Open the Financial Operations View](financial-operations-view.md)
 
 ## Practical Role Summary
 
-| Body / Role | Primary Accountability | Main Responsibilities In This Project |
+| Body / Role | Primary Accountability | Ongoing Role |
 | --- | --- | --- |
-| Congregation | Final church authority where bylaws, budget, policy, officer election, or church practice require a vote. | On June 28, 2026, authorized adding a paid, part-time Bookkeeper position not to exceed `$150` per week and gave Personnel Committee authority to hire the right candidate; votes later on items that require additional church approval. |
-| Pastor | Spiritual and ministry leadership, communication, and counsel. | Helps keep the process calm, ministry-focused, and aligned with church leadership. |
-| Deacons | Servant leadership, care, counsel, and leadership review where church practice requires. | May review major recommendations, raise concerns, recommend issues back to committees or the congregation through proper process, help preserve unity, and support communication with the church. |
-| Nominating Committee | Officer and committee nomination process where assigned by bylaws. | Works with Personnel Committee to add the paid Bookkeeper position under the June 28, 2026 motion; involved in Treasurer / Financial Officer recommendations if bylaws assign that role. |
-| Finance Committee | Financial governance, controls, budget oversight, software, monthly review, and financial policies. | Defines financial duties, software requirements, reimbursement rules, spending authority, card/payment controls, annual budget and major non-budgeted spending recommendations, audit/review process, and budget impact; adjusts the budget to fund the Bookkeeper need under the June 28, 2026 motion. |
-| Personnel Committee | Job descriptions, hiring, compensation recommendations, and evaluation process. | Leads the authorized hiring process for the paid Bookkeeper / Financial Administrator after Finance Committee confirms financial duties and controls. |
+| Congregation | Final church authority where bylaws, budget, policy, officer election, or church practice require a vote. | Approves the annual budget and other matters reserved for congregational action; receives clear reports and recommendations. |
+| Pastor | Spiritual and ministry leadership, communication, and counsel. | Helps church bodies coordinate their work while preserving the authority assigned to each body. |
+| Deacons | Servant leadership, care, counsel, and leadership review where church practice requires. | May raise concerns, offer counsel, and recommend matters to the appropriate committee or congregation without becoming a unilateral financial authority. |
+| Nominating Committee | Officer and committee nomination process where assigned by bylaws. | Recommends officers and committee members through the process assigned by the bylaws and church practice. |
+| Finance Committee | Financial governance, controls, budget oversight, software, monthly review, and financial policies. | Defines financial controls, recommends policies and budgets, reviews financial activity, and brings matters to the congregation where approval is required. |
+| Personnel Committee | Job descriptions, hiring, compensation recommendations, and evaluation process. | Manages personnel processes while receiving operational requirements from the committee responsible for the work. |
 | Treasurer / Financial Officer | Elected financial accountability, reporting, review, and coordination with Finance Committee. | Reviews reports, helps present financial information, helps carry out approved Finance Committee direction, confirms policies are followed, and coordinates with the Bookkeeper and Finance Committee without becoming the sole point of financial control. |
 | Bookkeeper / Financial Administrator | Day-to-day financial operations under assigned supervision and approved financial controls. | Maintains records, enters transactions, supports deposits, processes reimbursements after approval, prepares report packets, and supports monthly close. |
 | Outside Payroll / Accounting Vendor | Professional processing and compliance support if contracted. | Handles payroll, tax forms, accounting setup, review, or other specialized services assigned by church-approved process. |
@@ -140,14 +104,15 @@ These lines should be confirmed before hiring or final implementation:
 - Personnel Committee should not decide financial controls, software, reimbursement rules, card policy, or spending authority.
 - Other committees, including Benevolence, may need a later governance review, but that should be treated as future expansion unless an urgent issue requires action now.
 
+The 2026 Bookkeeper transition, including the congregational motion and implementation questions, is preserved in the [Project Brief](../00-project-brief.md) and [Decision Log](../02-decision-log.md). Keeping that temporary context in the project workroom allows this organization chart to remain useful after the transition is complete.
+
 ## Open Questions
 
 - Who is the day-to-day supervisor for the Bookkeeper / Financial Administrator?
-- How should Personnel Committee and Nominating Committee coordinate under the June 28, 2026 motion?
 - Do bylaws assign Treasurer nomination to the Nominating Committee, Deacons, or another process?
 - Which financial decisions require Finance Committee recommendation only, and which require church vote?
 - Which recommendations should go to Deacons or broader leadership before coming to the congregation?
 - What reports should go monthly to Finance Committee, Deacons, church leadership, and the congregation?
 - What later governance review is needed for Benevolence or other committees with spending authority?
 
-Final approval path to be confirmed by church leadership, bylaws, church practice, and the June 28, 2026 congregational authorization.
+Final approval path to be confirmed by church leadership, bylaws, and church practice.

@@ -13,42 +13,8 @@ import {
   type User,
 } from "../shared/schema.ts";
 import { requireAuth, toSafeUser } from "./auth.ts";
-import { sendEmail } from "./replitmail.ts";
-
-function appUrl(): string {
-  const devDomain = process.env.REPLIT_DEV_DOMAIN;
-  if (process.env.NODE_ENV === "production") {
-    const domains = process.env.REPLIT_DOMAINS?.split(",")[0];
-    if (domains) return `https://${domains}`;
-  }
-  if (devDomain) return `https://${devDomain}`;
-  return "";
-}
-
-export function notifyNewRegistration(newUser: User): void {
-  if (process.env.NODE_ENV === "test" || process.env.VITEST) return;
-  const url = appUrl();
-  const adminLink = url ? `${url}/admin` : "the Admin page";
-  const submitted = [
-    `Name: ${newUser.fullName}`,
-    `Username: ${newUser.username}`,
-    newUser.email ? `Email: ${newUser.email}` : null,
-    newUser.phone ? `Phone: ${newUser.phone}` : null,
-  ]
-    .filter(Boolean)
-    .join("\n");
-
-  sendEmail({
-    subject: `KBC Portal: New registration from ${newUser.fullName}`,
-    text:
-      `A new account registration is waiting for approval on the KBC Operations Portal.\n\n` +
-      `${submitted}\n\n` +
-      `To approve or reject this request, open the Admin page:\n${adminLink}\n\n` +
-      `(This is an automated notification from the KBC Operations Portal.)`,
-  }).catch((err) => {
-    console.error("[notifications] Failed to send registration email:", err?.message ?? err);
-  });
-}
+import { sendEmail } from "./email.ts";
+import { administrativeEmailRecipients } from "./accountEmails.ts";
 
 const DUE_SOON_WINDOW_MS = 24 * 60 * 60 * 1000; // day before due
 
@@ -76,8 +42,8 @@ const REMINDER_CHECK_INTERVAL_MS = 10 * 60 * 1000; // 10 minutes
  * Recipients are active users whose role matches an incomplete step on the
  * checklist; incomplete steps with no assigned role notify checklist managers.
  * Duplicate sends are prevented by a unique (user, instance, type) index.
- * An email summary also goes to the site owner's Replit email the first time
- * a checklist becomes due soon or overdue.
+ * An email summary also goes to configured administrative recipients the first
+ * time a checklist becomes due soon or overdue.
  */
 export async function ensureReminders(force = false) {
   const now = Date.now();
@@ -168,7 +134,7 @@ async function generateReminders(now: Date) {
         });
     }
 
-    // Owner email digest — once per instance per type.
+    // Administrative email digest - once per instance per type.
     const alreadyEmailed = type === "overdue" ? instance.overdueEmailAt : instance.dueSoonEmailAt;
     if (!alreadyEmailed) {
       emailLines.push({
@@ -189,10 +155,14 @@ async function generateReminders(now: Date) {
       ? `KBC Portal: ${overdueLines.length} overdue checklist${overdueLines.length > 1 ? "s" : ""}`
       : `KBC Portal: checklist${dueSoonLines.length > 1 ? "s" : ""} due soon`;
     try {
-      await sendEmail({
+      const recipients = await administrativeEmailRecipients();
+      if (!recipients.length) throw new Error("No administrative email recipients are configured");
+      const delivered = await sendEmail({
+        to: recipients,
         subject,
         text: `${sections.join("\n\n")}\n\nSign in to the KBC Operations Portal to review and complete these checklists.`,
       });
+      if (!delivered) throw new Error("Email delivery is not configured");
       console.log(`[notifications] Sent reminder email (${emailLines.length} item(s)).`);
       // Only mark as emailed after a successful send, so transient failures
       // (e.g. rate limits) are retried on the next reminder pass.

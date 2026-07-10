@@ -6,6 +6,7 @@ import { db } from "./db.ts";
 import {
   users,
   userRoles,
+  emailVerificationTokens,
   mfaRecoveryCodes,
   passwordResetCodes,
   announcements,
@@ -23,6 +24,8 @@ import {
 } from "../shared/schema.ts";
 import {
   getSessionUser,
+  getSessionAccount,
+  hasPortalAccess,
   hasRole,
   requireAuth,
   requireAdmin,
@@ -31,7 +34,7 @@ import {
 } from "./auth.ts";
 import { registerChecklistRoutes } from "./checklists.ts";
 import { loginBlockedForSeconds, recordLoginFailure, recordLoginSuccess } from "./loginThrottle.ts";
-import { notifyNewRegistration } from "./notifications.ts";
+import { hashVerificationToken, notifyAccessGranted, notifyRegistrationReviewers, sendVerificationEmail } from "./accountEmails.ts";
 import { registerFinanceRoutes } from "./finance.ts";
 import { registerContributionRoutes } from "./contributions.ts";
 import { registerDocsRoutes } from "./docs.ts";
@@ -54,6 +57,7 @@ function getUser(req: Request): AuthenticatedUser {
 const passwordActionLimit = rateLimit({ name: "password-action", limit: 10, windowMs: 15 * 60_000 });
 const mfaActionLimit = rateLimit({ name: "mfa-action", limit: 10, windowMs: 15 * 60_000 });
 const registrationLimit = rateLimit({ name: "registration", limit: 5, windowMs: 60 * 60_000 });
+const emailVerificationLimit = rateLimit({ name: "email-verification", limit: 5, windowMs: 60 * 60_000 });
 
 async function rolesForUser(user: User): Promise<Role[]> {
   const rows = await db.select({ role: userRoles.role }).from(userRoles).where(eq(userRoles.userId, user.id));
@@ -91,17 +95,30 @@ export function registerRoutes(app: Express) {
         username,
         passwordHash,
         fullName,
-        email: email || null,
+        email,
         phone: phone || null,
         role: "member",
         status: "pending",
       })
       .returning();
     await db.insert(userRoles).values({ userId: created.id, role: "member" });
-    notifyNewRegistration(created);
+    const emailSent = await sendVerificationEmail(created).catch((error) => {
+      console.error("[email] Failed to send verification email:", error);
+      return false;
+    });
+    void notifyRegistrationReviewers(created).catch((error) => {
+      console.error("[email] Failed to notify registration reviewers:", error);
+    });
+    await recordAuditEvent(req, "auth.email_verification_sent", {
+      actorUserId: created.id,
+      entityType: "user",
+      entityId: created.id,
+      details: { delivered: emailSent },
+    });
     res.status(201).json({
-      message: "Registration received. An administrator will review your request.",
+      message: "Registration received. Verify your email while an administrator reviews your request.",
       user: toSafeUser(created),
+      emailSent,
     });
   });
 
@@ -129,9 +146,6 @@ export function registerRoutes(app: Express) {
       return res.status(401).json({ message: "Incorrect username or password" });
     }
     await recordLoginSuccess(ip, username);
-    if (user.status === "pending") {
-      return res.status(403).json({ message: "Your registration is still awaiting approval by an administrator." });
-    }
     if (user.status === "rejected") {
       return res.status(403).json({ message: "Your registration was not approved. Please contact the church office." });
     }
@@ -142,6 +156,7 @@ export function registerRoutes(app: Express) {
     await regenerateSession(req);
     req.session.userId = user.id;
     req.session.sessionVersion = user.sessionVersion;
+    const portalAccess = hasPortalAccess(user);
     req.session.mfaVerified = !requiresMfa({ roles });
     req.session.cookie.maxAge = roles.some((role) => ["super_admin", "admin", "treasurer", "bookkeeper"].includes(role))
       ? 12 * 60 * 60_000
@@ -151,8 +166,9 @@ export function registerRoutes(app: Express) {
     await recordAuditEvent(req, "auth.login", { actorUserId: user.id, entityType: "user", entityId: user.id });
     res.json({
       user: toSafeUser({ ...user, lastLoginAt }, roles),
-      mfaRequired: requiresMfa({ roles }) && user.mfaEnabled,
-      mfaSetupRequired: requiresMfa({ roles }) && !user.mfaEnabled,
+      portalAccess,
+      mfaRequired: portalAccess && requiresMfa({ roles }) && user.mfaEnabled,
+      mfaSetupRequired: portalAccess && requiresMfa({ roles }) && !user.mfaEnabled,
     });
   });
 
@@ -163,12 +179,76 @@ export function registerRoutes(app: Express) {
   });
 
   app.get("/api/auth/me", async (req, res) => {
-    const user = await getSessionUser(req);
+    const user = await getSessionAccount(req);
     if (!user) return res.status(401).json({ message: "Not logged in" });
+    const portalAccess = hasPortalAccess(user);
     res.json({
       user: toSafeUser(user),
-      mfaRequired: requiresMfa(user),
-      mfaVerified: Boolean(req.session.mfaVerified),
+      portalAccess,
+      mfaRequired: portalAccess && requiresMfa(user),
+      mfaVerified: !portalAccess || Boolean(req.session.mfaVerified),
+    });
+  });
+
+  app.post("/api/auth/email-verification/resend", emailVerificationLimit, async (req, res) => {
+    const user = await getSessionAccount(req);
+    if (!user) return res.status(401).json({ message: "Sign in to resend verification email" });
+    if (!user.email) return res.status(400).json({ message: "This account does not have an email address" });
+    if (user.emailVerifiedAt) return res.json({ message: "Your email is already verified", emailSent: true });
+    const emailSent = await sendVerificationEmail(user).catch((error) => {
+      console.error("[email] Failed to resend verification email:", error);
+      return false;
+    });
+    await recordAuditEvent(req, "auth.email_verification_sent", {
+      actorUserId: user.id,
+      entityType: "user",
+      entityId: user.id,
+      details: { delivered: emailSent },
+    });
+    res.json({
+      message: emailSent
+        ? "A new verification link was sent. Check your inbox and spam folder."
+        : "Email delivery is not configured. Please contact a portal administrator.",
+      emailSent,
+    });
+  });
+
+  app.post("/api/auth/email-verification/verify", emailVerificationLimit, async (req, res) => {
+    const token = typeof req.body?.token === "string" ? req.body.token.trim() : "";
+    if (token.length < 32 || token.length > 128) {
+      return res.status(400).json({ message: "That verification link is not valid" });
+    }
+    const [record] = await db
+      .select()
+      .from(emailVerificationTokens)
+      .where(and(
+        eq(emailVerificationTokens.tokenHash, hashVerificationToken(token)),
+        isNull(emailVerificationTokens.usedAt),
+        gte(emailVerificationTokens.expiresAt, new Date()),
+      ));
+    if (!record) return res.status(400).json({ message: "That verification link is invalid or expired" });
+    const [user] = await db.select().from(users).where(eq(users.id, record.userId));
+    if (!user || user.email?.toLowerCase() !== record.email.toLowerCase()) {
+      return res.status(400).json({ message: "That verification link no longer matches this account" });
+    }
+    const verifiedAt = new Date();
+    await db.transaction(async (tx) => {
+      await tx.update(users).set({ emailVerifiedAt: verifiedAt }).where(eq(users.id, user.id));
+      await tx
+        .update(emailVerificationTokens)
+        .set({ usedAt: verifiedAt })
+        .where(and(eq(emailVerificationTokens.userId, user.id), isNull(emailVerificationTokens.usedAt)));
+    });
+    await recordAuditEvent(req, "auth.email_verified", {
+      actorUserId: user.id,
+      entityType: "user",
+      entityId: user.id,
+    });
+    res.json({
+      message: user.status === "active"
+        ? "Email verified. Your portal access is ready."
+        : "Email verified. Your access request is still waiting for administrator approval.",
+      portalAccess: user.status === "active",
     });
   });
 
@@ -444,7 +524,17 @@ export function registerRoutes(app: Express) {
       entityId: updated.id,
       details: { status: "active" },
     });
-    res.json({ user: toSafeUser(updated, await rolesForUser(updated)) });
+    const notified = await notifyAccessGranted(updated).catch((error) => {
+      console.error("[email] Failed to send access approval email:", error);
+      return false;
+    });
+    if (notified) {
+      await recordAuditEvent(req, "auth.access_notification_sent", {
+        entityType: "user",
+        entityId: updated.id,
+      });
+    }
+    res.json({ user: toSafeUser(updated, await rolesForUser(updated)), notificationSent: notified });
   });
 
   app.post("/api/admin/users/:id/reject", requireAdmin, async (req, res) => {

@@ -8,6 +8,12 @@ import { cn } from "../lib/utils";
 import { ArrowLeft, ArrowRight, BookOpen, ChevronLeft, FileText, Menu, MessageSquareText, Search, X } from "lucide-react";
 import { useDebounce } from "../lib/useDebounce";
 import { useAuth } from "../lib/auth";
+import {
+  DOCUMENTATION_VIEW_LABELS,
+  pageMatchesView,
+  useDocumentationView,
+  type DocumentationView,
+} from "../lib/docsAudience";
 
 function DocumentationFeedbackForm({
   slug,
@@ -22,7 +28,7 @@ function DocumentationFeedbackForm({
   alreadySubmitted?: boolean;
   onSubmitted?: () => void;
 }) {
-  const { user } = useAuth();
+  const { user, portalAccess } = useAuth();
   const queryClient = useQueryClient();
   const feedbackTitleId = useId();
   const [helpful, setHelpful] = useState<boolean | null>(null);
@@ -54,6 +60,8 @@ function DocumentationFeedbackForm({
       </h2>
       {!user ? (
         <p className="mt-2 text-sm text-muted-foreground"><Link href="/login" className="text-primary underline">Sign in</Link> to submit private feedback.</p>
+      ) : !portalAccess ? (
+        <p className="mt-2 text-sm text-muted-foreground">Documentation feedback becomes available after your account is verified and approved.</p>
       ) : alreadySubmitted ? (
         <p className="mt-2 text-sm text-muted-foreground">
           You already submitted feedback for this {section ? "section" : "page"} version. <Link href="/docs/my-feedback" className="text-primary underline">Review my feedback</Link>.
@@ -93,7 +101,8 @@ function DocumentationFeedbackForm({
 }
 
 export default function DocsReader() {
-  const { user } = useAuth();
+  const { user, portalAccess } = useAuth();
+  const { view, setView } = useDocumentationView(user);
   const [location, setLocation] = useLocation();
   const slug = location.startsWith("/docs/")
     ? decodeURIComponent(location.slice("/docs/".length)).replace(/\/+$/, "")
@@ -104,8 +113,12 @@ export default function DocsReader() {
   const debounced = useDebounce(query, 250);
 
   const { data: navData } = useQuery({ queryKey: ["docsNav"], queryFn: api.getDocsNav, staleTime: Infinity });
-  const docsNav = navData?.sections ?? [];
-  const validSlugs = useMemo(() => new Set(docsNav.flatMap((section) => section.pages.map((page) => page.slug))), [docsNav]);
+  const allDocsNav = navData?.sections ?? [];
+  const docsNav = useMemo(() => allDocsNav.map((section) => ({
+    ...section,
+    pages: section.pages.filter((candidate) => candidate.slug === slug || pageMatchesView(candidate.metadata.audiences, view)),
+  })).filter((section) => section.pages.length > 0), [allDocsNav, slug, view]);
+  const validSlugs = useMemo(() => new Set(allDocsNav.flatMap((section) => section.pages.map((candidate) => candidate.slug))), [allDocsNav]);
 
   const { data: page, isLoading, error } = useQuery({
     queryKey: ["docsPage", slug],
@@ -116,7 +129,7 @@ export default function DocsReader() {
   const { data: myFeedbackData } = useQuery({
     queryKey: ["myDocsFeedback"],
     queryFn: api.getMyDocsFeedback,
-    enabled: !!user,
+    enabled: portalAccess,
   });
   const currentFeedback = (myFeedbackData?.feedback ?? []).filter(
     (item) => item.pageSlug === page?.slug && item.documentationRevision === page?.revision,
@@ -127,8 +140,8 @@ export default function DocsReader() {
   );
 
   const { data: searchData, isFetching: searchLoading } = useQuery({
-    queryKey: ["docsSearch", debounced],
-    queryFn: () => api.searchDocs(debounced),
+    queryKey: ["docsSearch", debounced, view],
+    queryFn: () => api.searchDocs(debounced, view),
     enabled: debounced.trim().length >= 2,
   });
 
@@ -152,7 +165,7 @@ export default function DocsReader() {
 
   const sidebar = (
     <nav className="space-y-6">
-      {user && (
+      {portalAccess && (
         <Link href="/docs/my-feedback" className="flex items-center gap-2 rounded-md border border-border px-3 py-2 text-sm font-medium text-primary hover:bg-muted/50">
           <MessageSquareText className="h-4 w-4" /> My Feedback
         </Link>
@@ -174,6 +187,18 @@ export default function DocsReader() {
             <X className="w-4 h-4" />
           </button>
         )}
+      </div>
+
+      <div>
+        <label htmlFor="reader-documentation-view" className="mb-1 block text-xs font-semibold uppercase tracking-wider text-muted-foreground">View</label>
+        <select
+          id="reader-documentation-view"
+          value={view}
+          onChange={(event) => setView(event.target.value as DocumentationView)}
+          className="h-9 w-full rounded-md border border-input bg-background px-2 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+        >
+          {Object.entries(DOCUMENTATION_VIEW_LABELS).map(([value, label]) => <option key={value} value={value}>{label}</option>)}
+        </select>
       </div>
 
       {searching ? (
@@ -278,11 +303,18 @@ export default function DocsReader() {
                 {page.section}
               </p>
             )}
+            <div className="mb-6 flex flex-wrap gap-x-5 gap-y-2 border-y border-border bg-muted/20 px-3 py-2.5 text-xs text-muted-foreground">
+              <span><strong className="text-foreground">Type:</strong> {page.metadata.documentType}</span>
+              <span><strong className="text-foreground">Status:</strong> {page.metadata.status}</span>
+              <span><strong className="text-foreground">Owner:</strong> {page.metadata.owner}</span>
+              <span><strong className="text-foreground">Lifecycle:</strong> {page.metadata.lifecycle}</span>
+              <span><strong className="text-foreground">Useful for:</strong> {page.metadata.audiences.map((audience) => DOCUMENTATION_VIEW_LABELS[audience]).join(", ")}</span>
+            </div>
             <DocsMarkdown
               markdown={page.markdown}
               currentSlug={page.slug}
               validSlugs={validSlugs}
-              onSectionFeedback={user ? setFeedbackSection : undefined}
+              onSectionFeedback={portalAccess ? setFeedbackSection : undefined}
               feedbackSectionIds={feedbackSectionIds}
             />
             <DocumentationFeedbackForm
