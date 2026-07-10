@@ -15,12 +15,15 @@ import {
   type User,
 } from "../shared/schema.ts";
 import { getSessionUser, requireAuth, requireAdmin, toSafeUser } from "./auth.ts";
+import { registerChecklistRoutes } from "./checklists.ts";
 
 function getUser(req: Request): User {
   return (req as any).user as User;
 }
 
 export function registerRoutes(app: Express) {
+  registerChecklistRoutes(app);
+
   // ---------- Auth ----------
   app.post("/api/auth/register", async (req, res) => {
     const parsed = registerSchema.safeParse(req.body);

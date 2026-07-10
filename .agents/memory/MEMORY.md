@@ -1,1 +1,2 @@
 - [Node app in app/ subdir](app-in-subdir-npm.md) — npm deps must go in app/package.json; platform/subagent installs land at repo root and must be cleaned up.
+- [Drizzle push vs session table](drizzle-push-session-table.md) — db:push prompts to DROP the connect-pg-simple session table unless it's defined in the Drizzle schema; never force through that prompt.

@@ -8,6 +8,8 @@ import {
   integer,
   index,
   date,
+  uniqueIndex,
+  json,
 } from "drizzle-orm/pg-core";
 import { z } from "zod";
 
@@ -127,11 +129,90 @@ export const members = pgTable(
   ],
 );
 
+export const RECURRENCES = ["weekly", "monthly", "on_demand"] as const;
+export type Recurrence = (typeof RECURRENCES)[number];
+
+export const RECURRENCE_LABELS: Record<Recurrence, string> = {
+  weekly: "Weekly",
+  monthly: "Monthly",
+  on_demand: "On Demand",
+};
+
+export const INSTANCE_STATUSES = ["open", "completed"] as const;
+export type InstanceStatus = (typeof INSTANCE_STATUSES)[number];
+
+export const checklistTemplates = pgTable("checklist_templates", {
+  id: serial("id").primaryKey(),
+  name: varchar("name", { length: 200 }).notNull(),
+  description: text("description"),
+  recurrence: varchar("recurrence", { length: 20 }).$type<Recurrence>().notNull().default("on_demand"),
+  isActive: boolean("is_active").notNull().default(true),
+  createdBy: integer("created_by").references(() => users.id),
+  createdAt: timestamp("created_at").notNull().defaultNow(),
+  updatedAt: timestamp("updated_at").notNull().defaultNow(),
+});
+
+export const checklistTemplateSteps = pgTable(
+  "checklist_template_steps",
+  {
+    id: serial("id").primaryKey(),
+    templateId: integer("template_id")
+      .notNull()
+      .references(() => checklistTemplates.id, { onDelete: "cascade" }),
+    position: integer("position").notNull(),
+    title: varchar("title", { length: 300 }).notNull(),
+    assignedRole: varchar("assigned_role", { length: 32 }).$type<Role>(),
+  },
+  (table) => [index("checklist_template_steps_template_idx").on(table.templateId)],
+);
+
+export const checklistInstances = pgTable(
+  "checklist_instances",
+  {
+    id: serial("id").primaryKey(),
+    templateId: integer("template_id").references(() => checklistTemplates.id, {
+      onDelete: "cascade",
+    }),
+    name: varchar("name", { length: 200 }).notNull(),
+    periodKey: varchar("period_key", { length: 20 }),
+    status: varchar("status", { length: 20 }).$type<InstanceStatus>().notNull().default("open"),
+    dueDate: timestamp("due_date"),
+    createdBy: integer("created_by").references(() => users.id),
+    createdAt: timestamp("created_at").notNull().defaultNow(),
+    completedAt: timestamp("completed_at"),
+  },
+  (table) => [
+    index("checklist_instances_status_idx").on(table.status),
+    index("checklist_instances_template_idx").on(table.templateId),
+    uniqueIndex("checklist_instances_template_period_idx").on(table.templateId, table.periodKey),
+  ],
+);
+
+export const checklistInstanceSteps = pgTable(
+  "checklist_instance_steps",
+  {
+    id: serial("id").primaryKey(),
+    instanceId: integer("instance_id")
+      .notNull()
+      .references(() => checklistInstances.id, { onDelete: "cascade" }),
+    position: integer("position").notNull(),
+    title: varchar("title", { length: 300 }).notNull(),
+    assignedRole: varchar("assigned_role", { length: 32 }).$type<Role>(),
+    completedAt: timestamp("completed_at"),
+    completedBy: integer("completed_by").references(() => users.id),
+  },
+  (table) => [index("checklist_instance_steps_instance_idx").on(table.instanceId)],
+);
+
 export type User = typeof users.$inferSelect;
 export type Announcement = typeof announcements.$inferSelect;
 export type PageView = typeof pageViews.$inferSelect;
 export type Household = typeof households.$inferSelect;
 export type Member = typeof members.$inferSelect;
+export type ChecklistTemplate = typeof checklistTemplates.$inferSelect;
+export type ChecklistTemplateStep = typeof checklistTemplateSteps.$inferSelect;
+export type ChecklistInstance = typeof checklistInstances.$inferSelect;
+export type ChecklistInstanceStep = typeof checklistInstanceSteps.$inferSelect;
 
 export type SafeUser = Omit<User, "passwordHash">;
 
@@ -206,3 +287,42 @@ export const householdSchema = z.object({
 export const linkMemberSchema = z.object({
   userId: z.number().int().positive().nullable(),
 });
+
+// Roles allowed to create/edit checklist templates and manage instances.
+export const CHECKLIST_MANAGER_ROLES: Role[] = [
+  "super_admin",
+  "admin",
+  "treasurer",
+  "finance_committee",
+  "deacon",
+];
+
+export const checklistTemplateSchema = z.object({
+  name: z.string().min(1, "Name is required").max(200),
+  description: z.string().max(2000).optional().or(z.literal("")),
+  recurrence: z.enum(RECURRENCES),
+  isActive: z.boolean().default(true),
+  steps: z
+    .array(
+      z.object({
+        title: z.string().min(1, "Step title is required").max(300),
+        assignedRole: z.enum(ROLES).nullable().optional(),
+      }),
+    )
+    .min(1, "Add at least one step")
+    .max(100),
+});
+
+export type ChecklistTemplateInput = z.infer<typeof checklistTemplateSchema>;
+
+// Session table managed by connect-pg-simple (defined here so drizzle-kit push
+// does not try to drop it).
+export const session = pgTable(
+  "session",
+  {
+    sid: varchar("sid").primaryKey(),
+    sess: json("sess").notNull(),
+    expire: timestamp("expire", { precision: 6 }).notNull(),
+  },
+  (table) => [index("IDX_session_expire").on(table.expire)],
+);

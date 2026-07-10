@@ -11,6 +11,9 @@ import Account from "./pages/Account";
 import Directory from "./pages/Directory";
 import AdminUsers from "./pages/AdminUsers";
 import AdminMembers from "./pages/AdminMembers";
+import Checklists from "./pages/Checklists";
+import ChecklistDetail from "./pages/ChecklistDetail";
+import ChecklistTemplates from "./pages/ChecklistTemplates";
 import AdminAnnouncements from "./pages/AdminAnnouncements";
 import AdminAnalytics from "./pages/AdminAnalytics";
 
@@ -29,6 +32,18 @@ function Router() {
         
         <Route path="/account">
           <ProtectedRoute><Account /></ProtectedRoute>
+        </Route>
+
+        <Route path="/checklists">
+          <ProtectedRoute><Checklists /></ProtectedRoute>
+        </Route>
+
+        <Route path="/checklists/templates">
+          <ProtectedRoute><ChecklistTemplates /></ProtectedRoute>
+        </Route>
+
+        <Route path="/checklists/:id">
+          <ProtectedRoute><ChecklistDetail /></ProtectedRoute>
         </Route>
         
         <Route path="/directory">

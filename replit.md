@@ -26,6 +26,13 @@ super_admin, admin, treasurer, bookkeeper, finance_committee, personnel_committe
 - Routes (`app/server/memberRoutes.ts`): `/api/members` + `/api/households` (any logged-in user, privacy-filtered), `/api/members/me` GET/PATCH (self-service contact info + privacy prefs), `/api/admin/members*` + `/api/admin/households*` + `/api/admin/linkable-users` (leadership only).
 - UI: `/directory` (all logged-in users; list + household views, search/status/household filters), `/admin/members` (leadership; add/edit/delete members, households, account linking, notes), "My Member Profile" card on `/account`.
 
+### Tasks & checklists
+- Reusable checklist templates (ordered steps, optional role per step) with recurrence weekly / monthly / on_demand. Managed by CHECKLIST_MANAGER_ROLES (super_admin, admin, treasurer, finance_committee, deacon) at `/checklists/templates`.
+- Recurring instances are spawned lazily via `ensureScheduledInstances()` in `app/server/checklists.ts` (throttled, called on checklist reads + at seed). Duplicate spawns are prevented by a unique index on (template_id, period_key) + `onConflictDoNothing`.
+- Instances snapshot template steps at spawn; step check-off records who/when; completing all steps auto-completes the instance (unchecking reopens it). Non-managers can only check steps matching their role or unassigned; managers can check any.
+- UI: `/checklists` (My Tasks / Active / Completed tabs), `/checklists/:id` detail, Dashboard panel + nav overdue badge fed by `/api/checklists/summary`.
+- Seeded templates: Payroll Run (monthly), Weekly Bookkeeping (weekly), Monthly Close Prep (monthly), Business Meeting Prep (on-demand).
+
 ### Usage tracking
 - In-app: POST `/api/track` records path/visitor/role in `page_views`; admin analytics at `/admin/analytics` (daily views, top pages, by role).
 - GoatCounter snippet (kbc-financial-operations.goatcounter.com) is embedded in `app/client/index.html` and counts SPA navigations (skips localhost by design).

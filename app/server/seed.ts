@@ -2,7 +2,14 @@ import bcrypt from "bcryptjs";
 import crypto from "crypto";
 import { eq } from "drizzle-orm";
 import { db } from "./db.ts";
-import { users, announcements } from "../shared/schema.ts";
+import {
+  users,
+  announcements,
+  checklistTemplates,
+  checklistTemplateSteps,
+  type Role,
+} from "../shared/schema.ts";
+import { ensureScheduledInstances } from "./checklists.ts";
 
 const SUPER_ADMIN_USERNAME = process.env.SUPER_ADMIN_USERNAME || "kbcadmin";
 
@@ -70,4 +77,100 @@ export async function seed() {
     ]);
     console.log("[seed] Created starter announcements.");
   }
+
+  await seedChecklistTemplates();
+  await ensureScheduledInstances(true);
+}
+
+type SeedStep = { title: string; role?: Role };
+
+const SEED_TEMPLATES: {
+  name: string;
+  description: string;
+  recurrence: "weekly" | "monthly" | "on_demand";
+  steps: SeedStep[];
+}[] = [
+  {
+    name: "Payroll Run",
+    description:
+      "Recurring payroll coordination checklist based on the documented payroll process. Start one instance per pay period.",
+    recurrence: "monthly",
+    steps: [
+      { title: "Confirm approved compensation and any changes", role: "treasurer" },
+      { title: "Verify time or salary inputs", role: "bookkeeper" },
+      { title: "Submit payroll through the approved provider or system", role: "bookkeeper" },
+      { title: "Record payroll entries in the books", role: "bookkeeper" },
+      { title: "File payroll reports and confirmations", role: "bookkeeper" },
+      { title: "Review payroll totals during monthly close", role: "treasurer" },
+    ],
+  },
+  {
+    name: "Weekly Bookkeeping",
+    description: "Weekly bookkeeping routine based on the documented weekly bookkeeping checklist.",
+    recurrence: "weekly",
+    steps: [
+      { title: "Record income", role: "bookkeeper" },
+      { title: "Enter bills and expenses", role: "bookkeeper" },
+      { title: "Match receipts and supporting documents", role: "bookkeeper" },
+      { title: "Prepare payments for approval", role: "bookkeeper" },
+      { title: "Review outstanding reimbursement requests", role: "bookkeeper" },
+      { title: "Flag exceptions for Treasurer or Finance Committee review", role: "treasurer" },
+    ],
+  },
+  {
+    name: "Monthly Close Prep",
+    description: "Month-end close routine based on the documented monthly close checklist.",
+    recurrence: "monthly",
+    steps: [
+      { title: "Complete bank reconciliations", role: "bookkeeper" },
+      { title: "Review uncleared transactions", role: "bookkeeper" },
+      { title: "Verify restricted fund balances", role: "bookkeeper" },
+      { title: "Review budget variances", role: "treasurer" },
+      { title: "Prepare monthly reports", role: "bookkeeper" },
+      { title: "Submit report packet for Treasurer and Finance Committee review", role: "treasurer" },
+    ],
+  },
+  {
+    name: "Business Meeting Prep",
+    description:
+      "Preparation for church business meeting financial reporting, based on the documented business meeting report process and Finance Committee meeting checklist. Start on demand before each business meeting.",
+    recurrence: "on_demand",
+    steps: [
+      { title: "Bookkeeper prepares the monthly packet", role: "bookkeeper" },
+      { title: "Treasurer reviews the packet before the meeting", role: "treasurer" },
+      { title: "Flag missing receipts, unclear transactions, and unusual items", role: "treasurer" },
+      { title: "Finance Committee reviews and resolves questions or exceptions", role: "finance_committee" },
+      { title: "Prepare the financial summary for the congregation", role: "finance_committee" },
+      { title: "Confirm presenter and present summary at the business meeting", role: "treasurer" },
+      { title: "Record motions, approvals, and follow-up items" },
+    ],
+  },
+];
+
+async function seedChecklistTemplates() {
+  const existing = await db.select({ id: checklistTemplates.id }).from(checklistTemplates).limit(1);
+  if (existing.length > 0) return;
+
+  const [admin] = await db.select().from(users).where(eq(users.username, SUPER_ADMIN_USERNAME));
+  for (const t of SEED_TEMPLATES) {
+    const [template] = await db
+      .insert(checklistTemplates)
+      .values({
+        name: t.name,
+        description: t.description,
+        recurrence: t.recurrence,
+        isActive: true,
+        createdBy: admin?.id ?? null,
+      })
+      .returning();
+    await db.insert(checklistTemplateSteps).values(
+      t.steps.map((s, i) => ({
+        templateId: template.id,
+        position: i + 1,
+        title: s.title,
+        assignedRole: s.role ?? null,
+      })),
+    );
+  }
+  console.log("[seed] Created starter checklist templates from documented procedures.");
 }

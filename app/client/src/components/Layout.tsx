@@ -2,7 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import { Link, useLocation } from "wouter";
 import { useAuth } from "../lib/auth";
 import { api } from "../lib/api";
-import { LogOut, BookOpen, Home, User, Shield, BarChart, LayoutDashboard, Users, ContactRound } from "lucide-react";
+import { LogOut, BookOpen, Home, User, Shield, BarChart, LayoutDashboard, Users, ContactRound, CheckSquare } from "lucide-react";
 import { cn } from "../lib/utils";
 import { CHURCH_CONTACT } from "../lib/contact";
 
@@ -14,6 +14,13 @@ export function Layout({ children }: { children: React.ReactNode }) {
     queryKey: ["pendingCount"],
     queryFn: () => api.getPendingCount().then((d) => d.pendingCount),
     enabled: isAdmin,
+    refetchInterval: 60000,
+  });
+
+  const { data: checklistSummary } = useQuery({
+    queryKey: ["checklistSummary"],
+    queryFn: api.getChecklistSummary,
+    enabled: !!user,
     refetchInterval: 60000,
   });
 
@@ -33,6 +40,13 @@ export function Layout({ children }: { children: React.ReactNode }) {
     { href: "/dashboard", label: "Dashboard", icon: LayoutDashboard, show: !!user },
     { href: "/directory", label: "Directory", icon: ContactRound, show: !!user },
     { href: "/admin/members", label: "Members", icon: Users, show: isLeadership },
+    {
+      href: "/checklists",
+      label: "Checklists",
+      icon: CheckSquare,
+      show: !!user,
+      badge: checklistSummary?.overdue.length ? checklistSummary.overdue.length : null,
+    },
     { href: "/admin", label: "Admin", icon: Shield, show: isAdmin, badge: pendingCount ? pendingCount : null },
     { href: "/admin/analytics", label: "Analytics", icon: BarChart, show: isAdmin },
   ];

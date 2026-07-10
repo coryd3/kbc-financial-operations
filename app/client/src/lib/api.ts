@@ -1,4 +1,14 @@
-import type { SafeUser, Announcement, Role, Household, MemberStatus } from "@shared/schema";
+import type {
+  SafeUser,
+  Announcement,
+  Role,
+  Household,
+  MemberStatus,
+  ChecklistTemplate,
+  ChecklistTemplateStep,
+  ChecklistInstance,
+  ChecklistTemplateInput,
+} from "@shared/schema";
 
 export class ApiError extends Error {
   status: number;
@@ -79,6 +89,42 @@ export interface LinkableUser {
   status: string;
 }
 
+export type TemplateWithSteps = ChecklistTemplate & { steps: ChecklistTemplateStep[] };
+
+export type InstanceWithProgress = ChecklistInstance & {
+  progress: { total: number; completed: number };
+};
+
+export interface InstanceStepDetail {
+  id: number;
+  instanceId: number;
+  position: number;
+  title: string;
+  assignedRole: Role | null;
+  completedAt: string | null;
+  completedBy: number | null;
+  completedByName: string | null;
+}
+
+export type InstanceDetail = ChecklistInstance & { steps: InstanceStepDetail[] };
+
+export interface MyTask {
+  stepId: number;
+  title: string;
+  position: number;
+  assignedRole: Role | null;
+  instanceId: number;
+  instanceName: string;
+  dueDate: string | null;
+}
+
+export interface ChecklistSummary {
+  openCount: number;
+  myOpenSteps: number;
+  overdue: InstanceWithProgress[];
+  upcoming: InstanceWithProgress[];
+}
+
 export const api = {
   // auth
   register: (data: { username: string; password: string; fullName: string; email?: string; phone?: string }) =>
@@ -156,4 +202,31 @@ export const api = {
   track: (path: string) => request<{ ok: boolean }>("POST", "/api/track", { path }),
   getAnalyticsSummary: (days = 30) =>
     request<AnalyticsSummary>("GET", `/api/admin/analytics/summary?days=${days}`),
+
+  // checklists
+  getChecklistTemplates: () =>
+    request<{ templates: TemplateWithSteps[] }>("GET", "/api/checklists/templates"),
+  createChecklistTemplate: (data: ChecklistTemplateInput) =>
+    request<{ template: ChecklistTemplate }>("POST", "/api/checklists/templates", data),
+  updateChecklistTemplate: (id: number, data: ChecklistTemplateInput) =>
+    request<{ template: ChecklistTemplate }>("PATCH", `/api/checklists/templates/${id}`, data),
+  deleteChecklistTemplate: (id: number) =>
+    request<{ message: string }>("DELETE", `/api/checklists/templates/${id}`),
+  startChecklist: (templateId: number) =>
+    request<{ instance: ChecklistInstance }>("POST", `/api/checklists/templates/${templateId}/start`),
+  getChecklistInstances: (status?: "open" | "completed") =>
+    request<{ instances: InstanceWithProgress[] }>(
+      "GET",
+      `/api/checklists/instances${status ? `?status=${status}` : ""}`,
+    ),
+  getChecklistInstance: (id: number) =>
+    request<{ instance: InstanceDetail }>("GET", `/api/checklists/instances/${id}`),
+  deleteChecklistInstance: (id: number) =>
+    request<{ message: string }>("DELETE", `/api/checklists/instances/${id}`),
+  completeStep: (stepId: number) =>
+    request<{ instance: InstanceDetail }>("POST", `/api/checklists/steps/${stepId}/complete`),
+  uncompleteStep: (stepId: number) =>
+    request<{ instance: InstanceDetail }>("POST", `/api/checklists/steps/${stepId}/uncomplete`),
+  getMyTasks: () => request<{ tasks: MyTask[] }>("GET", "/api/checklists/my-tasks"),
+  getChecklistSummary: () => request<ChecklistSummary>("GET", "/api/checklists/summary"),
 };
