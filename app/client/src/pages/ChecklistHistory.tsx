@@ -181,6 +181,11 @@ export default function ChecklistHistory() {
           <span className="bg-primary/10 text-primary px-2 py-1 rounded font-medium">
             {RECURRENCE_LABELS[template.recurrence]}
           </span>
+          {template.archivedAt && (
+            <span className="bg-muted text-muted-foreground px-2 py-1 rounded font-medium">
+              Retired — history preserved
+            </span>
+          )}
         </div>
         {template.description && <p className="text-sm text-muted-foreground">{template.description}</p>}
       </div>

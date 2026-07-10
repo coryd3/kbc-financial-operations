@@ -122,7 +122,13 @@ export async function ensureScheduledInstances(force = false) {
   const templates = await db
     .select()
     .from(checklistTemplates)
-    .where(and(eq(checklistTemplates.isActive, true), inArray(checklistTemplates.recurrence, ["weekly", "monthly"])));
+    .where(
+      and(
+        eq(checklistTemplates.isActive, true),
+        isNull(checklistTemplates.archivedAt),
+        inArray(checklistTemplates.recurrence, ["weekly", "monthly"]),
+      ),
+    );
 
   const today = new Date();
   for (const template of templates) {
@@ -280,15 +286,47 @@ export function registerChecklistRoutes(app: Express) {
     res.json({ template: updated });
   });
 
+  // Retire (archive) a template that has runs, so history is preserved.
+  // Templates that have never been run are deleted outright.
   app.delete("/api/checklists/templates/:id", requireChecklistManager, async (req, res) => {
     const id = Number(req.params.id);
     if (!Number.isInteger(id)) return res.status(400).json({ message: "Invalid id" });
-    const [deleted] = await db
-      .delete(checklistTemplates)
+    const [template] = await db.select().from(checklistTemplates).where(eq(checklistTemplates.id, id));
+    if (!template) return res.status(404).json({ message: "Template not found" });
+
+    const [runCount] = await db
+      .select({ value: sql<number>`count(*)::int` })
+      .from(checklistInstances)
+      .where(eq(checklistInstances.templateId, id));
+
+    if ((runCount?.value ?? 0) > 0) {
+      // Runs exist — archive instead of deleting so past runs and their
+      // step-level who/when records are preserved.
+      const [archived] = await db
+        .update(checklistTemplates)
+        .set({ archivedAt: new Date(), isActive: false, updatedAt: new Date() })
+        .where(eq(checklistTemplates.id, id))
+        .returning();
+      return res.json({ archived: true, template: archived, message: "Template retired; past runs kept" });
+    }
+
+    await db.delete(checklistTemplates).where(eq(checklistTemplates.id, id));
+    res.json({ archived: false, message: "Deleted" });
+  });
+
+  // Restore a retired template.
+  app.post("/api/checklists/templates/:id/restore", requireChecklistManager, async (req, res) => {
+    const id = Number(req.params.id);
+    if (!Number.isInteger(id)) return res.status(400).json({ message: "Invalid id" });
+    const [template] = await db.select().from(checklistTemplates).where(eq(checklistTemplates.id, id));
+    if (!template) return res.status(404).json({ message: "Template not found" });
+    if (!template.archivedAt) return res.status(400).json({ message: "Template is not retired" });
+    const [restored] = await db
+      .update(checklistTemplates)
+      .set({ archivedAt: null, isActive: true, updatedAt: new Date() })
       .where(eq(checklistTemplates.id, id))
       .returning();
-    if (!deleted) return res.status(404).json({ message: "Template not found" });
-    res.json({ message: "Deleted" });
+    res.json({ template: restored });
   });
 
   // Per-template run history with step-level who/when detail (managers only)
@@ -351,6 +389,9 @@ export function registerChecklistRoutes(app: Express) {
     if (!Number.isInteger(id)) return res.status(400).json({ message: "Invalid id" });
     const [template] = await db.select().from(checklistTemplates).where(eq(checklistTemplates.id, id));
     if (!template) return res.status(404).json({ message: "Template not found" });
+    if (template.archivedAt) {
+      return res.status(400).json({ message: "This template is retired. Restore it before starting a new checklist." });
+    }
     const now = new Date();
     const instance = await spawnInstance(template, {
       createdBy: getUser(req).id,

@@ -147,6 +147,7 @@ export const checklistTemplates = pgTable("checklist_templates", {
   description: text("description"),
   recurrence: varchar("recurrence", { length: 20 }).$type<Recurrence>().notNull().default("on_demand"),
   isActive: boolean("is_active").notNull().default(true),
+  archivedAt: timestamp("archived_at"),
   createdBy: integer("created_by").references(() => users.id),
   createdAt: timestamp("created_at").notNull().defaultNow(),
   updatedAt: timestamp("updated_at").notNull().defaultNow(),

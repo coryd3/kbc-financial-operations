@@ -13,7 +13,7 @@ import {
   type Recurrence,
 } from "@shared/schema";
 import { useAuth } from "../lib/auth";
-import { ArrowLeft, Plus, Pencil, Trash2, Play, GripVertical, X, ArrowUp, ArrowDown, History } from "lucide-react";
+import { ArrowLeft, Plus, Pencil, Trash2, Play, GripVertical, X, ArrowUp, ArrowDown, History, Archive, ArchiveRestore } from "lucide-react";
 import { cn } from "../lib/utils";
 
 interface StepForm {
@@ -50,6 +50,9 @@ export default function ChecklistTemplates() {
     queryFn: api.getChecklistTemplates,
   });
 
+  const activeTemplates = (data?.templates ?? []).filter((t) => !t.archivedAt);
+  const retiredTemplates = (data?.templates ?? []).filter((t) => t.archivedAt);
+
   const invalidateAll = () => {
     queryClient.invalidateQueries({ queryKey: ["checklistTemplates"] });
     queryClient.invalidateQueries({ queryKey: ["checklistInstances"] });
@@ -85,6 +88,10 @@ export default function ChecklistTemplates() {
   });
   const deleteMut = useMutation({
     mutationFn: api.deleteChecklistTemplate,
+    onSuccess: invalidateAll,
+  });
+  const restoreMut = useMutation({
+    mutationFn: api.restoreChecklistTemplate,
     onSuccess: invalidateAll,
   });
   const startMut = useMutation({
@@ -300,12 +307,12 @@ export default function ChecklistTemplates() {
       <div className="space-y-4">
         {isLoading ? (
           <div className="text-muted-foreground py-8">Loading templates...</div>
-        ) : !data?.templates.length ? (
+        ) : !activeTemplates.length && !retiredTemplates.length ? (
           <div className="text-muted-foreground py-8 text-center bg-muted/30 rounded-lg border border-border border-dashed">
             No templates yet. Create one to get started.
           </div>
         ) : (
-          data.templates.map((t) => (
+          activeTemplates.map((t) => (
             <Card key={t.id} className={cn(!t.isActive && "opacity-60")}>
               <CardHeader className="pb-3 flex flex-row justify-between items-start gap-4">
                 <div className="min-w-0">
@@ -348,12 +355,13 @@ export default function ChecklistTemplates() {
                     onClick={() => {
                       if (
                         confirm(
-                          `Delete "${t.name}"? All checklists started from this template (including their history) will also be deleted.`,
+                          `Retire "${t.name}"? It will stop starting new checklists, but all past runs and their history are kept and stay viewable. (Templates that have never been run are removed entirely.)`,
                         )
                       ) {
                         deleteMut.mutate(t.id);
                       }
                     }}
+                    title="Retire this template (past runs and history are kept)"
                   >
                     <Trash2 className="w-4 h-4" />
                   </Button>
@@ -377,6 +385,61 @@ export default function ChecklistTemplates() {
           ))
         )}
       </div>
+
+      {retiredTemplates.length > 0 && (
+        <div className="space-y-4">
+          <div>
+            <h2 className="text-xl font-serif text-primary font-bold flex items-center gap-2">
+              <Archive className="w-5 h-5" /> Retired Templates
+            </h2>
+            <p className="text-sm text-muted-foreground mt-1">
+              These templates no longer start new checklists, but their past runs and history are preserved.
+            </p>
+          </div>
+          {retiredTemplates.map((t) => (
+            <Card key={t.id} className="opacity-75">
+              <CardHeader className="pb-3 flex flex-row justify-between items-start gap-4">
+                <div className="min-w-0">
+                  <CardTitle className="text-xl">{t.name}</CardTitle>
+                  <div className="flex flex-wrap items-center gap-2 mt-2 text-xs">
+                    <span className="bg-muted text-muted-foreground px-2 py-1 rounded font-medium">Retired</span>
+                    <span className="bg-primary/10 text-primary px-2 py-1 rounded font-medium">
+                      {RECURRENCE_LABELS[t.recurrence]}
+                    </span>
+                    {t.archivedAt && (
+                      <span className="text-muted-foreground">
+                        Retired {new Date(t.archivedAt).toLocaleDateString()}
+                      </span>
+                    )}
+                  </div>
+                </div>
+                <div className="flex gap-2 flex-shrink-0">
+                  <Link href={`/checklists/templates/${t.id}/history`}>
+                    <Button variant="outline" size="sm" className="gap-1.5" title="View past runs of this checklist">
+                      <History className="w-3.5 h-3.5" /> History
+                    </Button>
+                  </Link>
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    className="gap-1.5"
+                    disabled={restoreMut.isPending}
+                    onClick={() => restoreMut.mutate(t.id)}
+                    title="Bring this template back so it can start new checklists again"
+                  >
+                    <ArchiveRestore className="w-3.5 h-3.5" /> Restore
+                  </Button>
+                </div>
+              </CardHeader>
+              {t.description && (
+                <CardContent>
+                  <p className="text-sm text-muted-foreground">{t.description}</p>
+                </CardContent>
+              )}
+            </Card>
+          ))}
+        </div>
+      )}
     </div>
   );
 }

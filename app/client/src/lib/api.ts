@@ -306,7 +306,12 @@ export const api = {
   updateChecklistTemplate: (id: number, data: ChecklistTemplateInput) =>
     request<{ template: ChecklistTemplate }>("PATCH", `/api/checklists/templates/${id}`, data),
   deleteChecklistTemplate: (id: number) =>
-    request<{ message: string }>("DELETE", `/api/checklists/templates/${id}`),
+    request<{ archived: boolean; message: string; template?: ChecklistTemplate }>(
+      "DELETE",
+      `/api/checklists/templates/${id}`,
+    ),
+  restoreChecklistTemplate: (id: number) =>
+    request<{ template: ChecklistTemplate }>("POST", `/api/checklists/templates/${id}/restore`),
   getChecklistTemplateHistory: (id: number) =>
     request<TemplateHistory>("GET", `/api/checklists/templates/${id}/history`),
   startChecklist: (templateId: number) =>
