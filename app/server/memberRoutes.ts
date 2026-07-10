@@ -15,6 +15,7 @@ import {
   type User,
 } from "../shared/schema.ts";
 import { requireAuth, requireRole } from "./auth.ts";
+import { scoreMatch } from "./nameMatching.ts";
 
 const requireLeadership = requireRole(...LEADERSHIP_ROLES);
 
@@ -353,9 +354,12 @@ export function registerMemberRoutes(app: Express) {
     res.json({ member: updated });
   });
 
-  // Suggested member-profile matches for pending registrations. For each
-  // pending user, find unlinked member profiles whose email matches exactly
-  // (case-insensitive) or whose full name matches the registration name.
+  // Suggested member-profile matches for pending registrations. Exact matches
+  // (email or full name, case/whitespace-insensitive) rank first; close
+  // matches (nickname aliases, small typos, last name + shared non-generic
+  // email domain) follow, capped per user. Nothing is auto-linked — the admin
+  // always confirms.
+  const MAX_CLOSE_SUGGESTIONS = 3;
   app.get("/api/admin/member-link-suggestions", requireLeadership, async (_req, res) => {
     const pendingUsers = await db
       .select({ id: users.id, fullName: users.fullName, email: users.email })
@@ -368,30 +372,34 @@ export function registerMemberRoutes(app: Express) {
       .from(members)
       .where(sql`${members.userId} is null`);
 
-    const norm = (s: string | null | undefined) =>
-      (s ?? "").trim().toLowerCase().replace(/\s+/g, " ");
-
-    const suggestions: Record<number, Array<{ id: number; firstName: string; lastName: string; email: string | null; status: string; matchedOn: string }>> = {};
+    const suggestions: Record<number, Array<{ id: number; firstName: string; lastName: string; email: string | null; status: string; matchedOn: string; matchType: "exact" | "close" }>> = {};
     for (const u of pendingUsers) {
-      const userEmail = norm(u.email);
-      const userName = norm(u.fullName);
-      const matches = unlinked
+      const scored = unlinked
         .map((m) => {
-          const memberEmail = norm(m.email);
-          const memberName = norm(`${m.firstName} ${m.lastName}`);
-          const emailMatch = !!userEmail && !!memberEmail && userEmail === memberEmail;
-          const nameMatch = !!userName && userName === memberName;
-          if (!emailMatch && !nameMatch) return null;
-          return {
-            id: m.id,
-            firstName: m.firstName,
-            lastName: m.lastName,
-            email: m.email,
-            status: m.status,
-            matchedOn: emailMatch && nameMatch ? "email and name" : emailMatch ? "email" : "name",
-          };
+          const result = scoreMatch(
+            { fullName: u.fullName, email: u.email },
+            { firstName: m.firstName, lastName: m.lastName, email: m.email },
+          );
+          if (!result) return null;
+          return { member: m, result };
         })
-        .filter((m): m is NonNullable<typeof m> => m !== null);
+        .filter((x): x is NonNullable<typeof x> => x !== null)
+        .sort((a, b) => b.result.score - a.result.score);
+
+      const exact = scored.filter((s) => s.result.matchType === "exact");
+      const close = scored
+        .filter((s) => s.result.matchType === "close")
+        .slice(0, MAX_CLOSE_SUGGESTIONS);
+
+      const matches = [...exact, ...close].map(({ member: m, result }) => ({
+        id: m.id,
+        firstName: m.firstName,
+        lastName: m.lastName,
+        email: m.email,
+        status: m.status,
+        matchedOn: result.matchedOn,
+        matchType: result.matchType,
+      }));
       if (matches.length > 0) suggestions[u.id] = matches;
     }
     res.json({ suggestions });

@@ -141,11 +141,13 @@ export default function AdminUsers() {
                       </div>
                       <div className="space-y-2">
                         {userSuggestions.map((s) => (
-                          <div key={s.id} className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 bg-muted/40 rounded-md px-3 py-2">
+                          <div key={s.id} className={`flex flex-col sm:flex-row sm:items-center justify-between gap-2 rounded-md px-3 py-2 ${s.matchType === "close" ? "bg-muted/20 border border-dashed border-border/60" : "bg-muted/40"}`}>
                             <div className="text-sm">
                               <span className="font-medium">{s.firstName} {s.lastName}</span>
                               {s.email && <span className="text-muted-foreground ml-2">{s.email}</span>}
-                              <span className="text-xs text-muted-foreground ml-2">(matched on {s.matchedOn})</span>
+                              <span className="text-xs text-muted-foreground ml-2">
+                                {s.matchType === "close" ? `(possible match — ${s.matchedOn})` : `(matched on ${s.matchedOn})`}
+                              </span>
                             </div>
                             <Button
                               size="sm"

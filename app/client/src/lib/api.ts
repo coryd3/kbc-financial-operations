@@ -102,6 +102,7 @@ export interface MemberLinkSuggestion {
   email: string | null;
   status: string;
   matchedOn: string;
+  matchType: "exact" | "close";
 }
 
 export type TemplateWithSteps = ChecklistTemplate & { steps: ChecklistTemplateStep[] };

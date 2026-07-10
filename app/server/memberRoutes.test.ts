@@ -262,6 +262,79 @@ describe("admin member/household routes are leadership-only", () => {
   });
 });
 
+describe("member-link suggestions rank exact above close matches", () => {
+  let fuzzyPendingId: number;
+  const memberIds: number[] = [];
+
+  beforeAll(async () => {
+    const [u] = await db
+      .insert(users)
+      .values({
+        username: `${PREFIX}fuzzy_pending`,
+        passwordHash: "x",
+        fullName: "Bob Smithson",
+        email: "bob@smithsonhome.net",
+        role: "member",
+        status: "pending",
+      })
+      .returning({ id: users.id });
+    fuzzyPendingId = u.id;
+
+    const inserted = await db
+      .insert(members)
+      .values([
+        { firstName: "Bob", lastName: "Smithson" }, // exact name
+        { firstName: "Robert", lastName: "Smithson" }, // nickname
+        { firstName: "Bob", lastName: "Smythson" }, // last-name typo
+        { firstName: "Carol", lastName: "Smithson", email: "carol@smithsonhome.net" }, // last name + email domain
+        { firstName: "Alice", lastName: "Jonesberg" }, // unrelated
+      ])
+      .returning({ id: members.id });
+    memberIds.push(...inserted.map((m) => m.id));
+  });
+
+  afterAll(async () => {
+    if (memberIds.length) await db.delete(members).where(inArray(members.id, memberIds));
+    if (fuzzyPendingId) await db.delete(users).where(inArray(users.id, [fuzzyPendingId]));
+  });
+
+  it("returns exact matches first, then close matches; unrelated profiles excluded", async () => {
+    const res = await request(app).get("/api/admin/member-link-suggestions").set(as(leaderId));
+    expect(res.status).toBe(200);
+    const list = res.body.suggestions[fuzzyPendingId] as Array<{
+      firstName: string;
+      lastName: string;
+      matchType: string;
+      matchedOn: string;
+    }>;
+    expect(list).toBeDefined();
+
+    const exact = list.filter((s) => s.matchType === "exact");
+    const close = list.filter((s) => s.matchType === "close");
+    expect(exact.map((s) => `${s.firstName} ${s.lastName}`)).toEqual(["Bob Smithson"]);
+    expect(close.length).toBeGreaterThanOrEqual(2);
+    expect(close.map((s) => `${s.firstName} ${s.lastName}`)).toContain("Robert Smithson");
+    expect(close.map((s) => `${s.firstName} ${s.lastName}`)).toContain("Bob Smythson");
+    expect(list.map((s) => `${s.firstName} ${s.lastName}`)).not.toContain("Alice Jonesberg");
+
+    // exact entries always precede close entries in the returned order
+    const firstCloseIdx = list.findIndex((s) => s.matchType === "close");
+    const lastExactIdx = list.map((s) => s.matchType).lastIndexOf("exact");
+    if (firstCloseIdx !== -1 && lastExactIdx !== -1) {
+      expect(lastExactIdx).toBeLessThan(firstCloseIdx);
+    }
+
+    const nickname = list.find((s) => `${s.firstName} ${s.lastName}` === "Robert Smithson");
+    expect(nickname?.matchedOn).toBe("nickname");
+  });
+
+  it("close matches are capped at 3 per pending user", async () => {
+    const res = await request(app).get("/api/admin/member-link-suggestions").set(as(leaderId));
+    const list = res.body.suggestions[fuzzyPendingId] as Array<{ matchType: string }>;
+    expect(list.filter((s) => s.matchType === "close").length).toBeLessThanOrEqual(3);
+  });
+});
+
 describe("role configuration guardrails", () => {
   it("LEADERSHIP_ROLES stays limited to super_admin, admin, deacon", () => {
     expect([...LEADERSHIP_ROLES].sort()).toEqual(["admin", "deacon", "super_admin"].sort());
