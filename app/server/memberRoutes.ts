@@ -15,7 +15,7 @@ import {
   type User,
 } from "../shared/schema.ts";
 import { requireAuth, requireRole } from "./auth.ts";
-import { scoreMatch } from "./nameMatching.ts";
+import { prepareCandidate, prepareRegistration, scoreMatchPrepared } from "./nameMatching.ts";
 import { toCsv, sendCsv } from "./csv.ts";
 
 const requireLeadership = requireRole(...LEADERSHIP_ROLES);
@@ -355,14 +355,17 @@ export function registerMemberRoutes(app: Express) {
       .leftJoin(households, eq(members.householdId, households.id))
       .where(sql`${members.userId} is null`);
 
+    // Precompute normalized names/signatures once per member instead of once
+    // per (pending user × member) pair, so scoring stays fast as the
+    // membership list grows.
+    const candidates = unlinked.map((row) => ({ row, prep: prepareCandidate(row.member) }));
+
     const suggestions: Record<number, Array<{ id: number; firstName: string; lastName: string; email: string | null; phone: string | null; status: string; householdName: string | null; matchedOn: string; matchType: "exact" | "close" }>> = {};
     for (const u of pendingUsers) {
-      const scored = unlinked
-        .map((row) => {
-          const result = scoreMatch(
-            { fullName: u.fullName, email: u.email },
-            { firstName: row.member.firstName, lastName: row.member.lastName, email: row.member.email },
-          );
+      const prepared = prepareRegistration({ fullName: u.fullName, email: u.email });
+      const scored = candidates
+        .map(({ row, prep }) => {
+          const result = scoreMatchPrepared(prepared, prep);
           if (!result) return null;
           return { row, result };
         })
