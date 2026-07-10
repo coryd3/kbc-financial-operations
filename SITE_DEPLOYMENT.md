@@ -196,13 +196,13 @@ If analytics do not show visits:
 The authenticated operations portal under `app/` is separate from the public MkDocs site. The recommended production host is Render:
 
 - Starter Node web service: approximately $7 per month.
-- Basic PostgreSQL database: approximately $6 per month, plus modest storage use.
-- Expected starting total: approximately $13-$15 per month.
+- Basic PostgreSQL database: approximately $6 per month, plus 1 GB of initial storage at approximately $0.30 per month.
+- Expected starting total: approximately $13.30 per month.
 - Working budget: $15 per month; investigate sustained costs above $20.
 
 Current pricing can change. Confirm the plans shown by Render before creating paid resources.
 
-The root `render.yaml` is the production blueprint. It creates one web service and one private PostgreSQL database, waits for GitHub checks, runs checked-in migrations before deployment, and checks `/api/health`.
+The root `render.yaml` is the production blueprint. It creates one web service and one private PostgreSQL database with 1 GB of initial storage, waits for GitHub checks, runs checked-in migrations before deployment, and checks `/api/health`.
 
 ### First Render Setup
 
