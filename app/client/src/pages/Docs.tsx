@@ -1,48 +1,110 @@
-import { DOCS_TOPICS, DOCS_BASE_URL } from "../lib/docs-links";
-import { Card, CardHeader, CardTitle, CardContent } from "../components/ui";
-import { ExternalLink, BookText } from "lucide-react";
+import { useState } from "react";
+import { Link, useLocation } from "wouter";
+import { useQuery } from "@tanstack/react-query";
+import { api } from "../lib/api";
+import { Card, CardHeader, CardTitle, CardContent, Input } from "../components/ui";
+import { DOCS_NAV } from "@shared/docsNav";
+import { BookText, Search, FileText, ChevronRight } from "lucide-react";
+import { useDebounce } from "../lib/useDebounce";
 
 export default function Docs() {
+  const [, setLocation] = useLocation();
+  const [query, setQuery] = useState("");
+  const debounced = useDebounce(query, 250);
+
+  const { data: searchData, isFetching } = useQuery({
+    queryKey: ["docsSearch", debounced],
+    queryFn: () => api.searchDocs(debounced),
+    enabled: debounced.trim().length >= 2,
+  });
+
+  const searching = debounced.trim().length >= 2;
+  const results = searchData?.results ?? [];
+
   return (
     <div className="space-y-8">
       <div className="border-b border-border pb-6">
         <h1 className="text-3xl font-serif text-primary font-bold">Documentation Hub</h1>
         <p className="mt-2 text-muted-foreground max-w-2xl">
-          Central repository for church policies, procedures, committee charters, and operation guides. 
-          Links open in the external documentation site.
+          Church policies, procedures, committee charters, and operation guides — all readable
+          and searchable right here.
         </p>
+        <div className="relative max-w-xl mt-5">
+          <Search className="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground" />
+          <Input
+            placeholder="Search all documentation…"
+            className="pl-9"
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+            onKeyDown={(e) => {
+              if (e.key === "Enter" && results.length > 0) {
+                setLocation(`/docs/${results[0].slug}`);
+              }
+            }}
+          />
+        </div>
       </div>
 
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {DOCS_TOPICS.map((topic, i) => (
-          <Card key={i} className="flex flex-col h-full hover:border-primary/30 transition-colors">
-            <CardHeader className="pb-3">
-              <div className="flex items-center gap-2 text-primary mb-2">
-                <BookText className="w-5 h-5" />
-                <CardTitle className="text-xl">{topic.title}</CardTitle>
+      {searching ? (
+        <div className="space-y-3 max-w-3xl">
+          <p className="text-sm text-muted-foreground">
+            {isFetching ? "Searching…" : `${results.length} page${results.length === 1 ? "" : "s"} found`}
+          </p>
+          {results.map((r) => (
+            <Link
+              key={r.slug}
+              href={`/docs/${r.slug}`}
+              className="block border border-border rounded-md p-4 hover:border-primary/40 hover:bg-muted/20 transition-colors"
+            >
+              <div className="flex items-center gap-2 text-sm text-muted-foreground mb-1">
+                <FileText className="w-3.5 h-3.5" />
+                {r.section}
               </div>
-              <p className="text-sm text-muted-foreground">{topic.description}</p>
-            </CardHeader>
-            <CardContent className="flex-1 flex flex-col pt-0 mt-auto">
-              <ul className="space-y-2 mt-4 border-t border-border pt-4">
-                {topic.links.map((link, j) => (
-                  <li key={j}>
-                    <a
-                      href={`${DOCS_BASE_URL}${link.path}`}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-sm text-foreground/80 hover:text-accent flex items-center gap-1.5 transition-colors group"
-                    >
-                      <ExternalLink className="w-3.5 h-3.5 opacity-50 group-hover:opacity-100" />
-                      {link.label}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </CardContent>
-          </Card>
-        ))}
-      </div>
+              <div className="font-medium text-primary">{r.title}</div>
+              {r.snippets.length > 0 && (
+                <ul className="mt-2 space-y-1">
+                  {r.snippets.map((s, i) => (
+                    <li key={i} className="text-sm text-muted-foreground truncate">
+                      {s}
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </Link>
+          ))}
+          {!isFetching && results.length === 0 && (
+            <p className="text-muted-foreground py-6">No pages match “{debounced}”.</p>
+          )}
+        </div>
+      ) : (
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {DOCS_NAV.map((section) => (
+            <Card key={section.title} className="flex flex-col h-full hover:border-primary/30 transition-colors">
+              <CardHeader className="pb-3">
+                <div className="flex items-center gap-2 text-primary">
+                  <BookText className="w-5 h-5" />
+                  <CardTitle className="text-xl">{section.title}</CardTitle>
+                </div>
+              </CardHeader>
+              <CardContent className="flex-1 pt-0">
+                <ul className="space-y-1.5 border-t border-border pt-4">
+                  {section.pages.map((p) => (
+                    <li key={p.slug}>
+                      <Link
+                        href={`/docs/${p.slug}`}
+                        className="text-sm text-foreground/80 hover:text-accent flex items-center gap-1.5 transition-colors group"
+                      >
+                        <ChevronRight className="w-3.5 h-3.5 opacity-40 group-hover:opacity-100 shrink-0" />
+                        {p.title}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
+      )}
     </div>
   );
 }

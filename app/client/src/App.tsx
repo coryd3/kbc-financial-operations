@@ -6,6 +6,7 @@ import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Docs from "./pages/Docs";
+import DocsReader from "./pages/DocsReader";
 import Dashboard from "./pages/Dashboard";
 import Account from "./pages/Account";
 import Directory from "./pages/Directory";
@@ -50,6 +51,7 @@ function Router() {
         <Route path="/login" component={Login} />
         <Route path="/register" component={Register} />
         <Route path="/docs" component={Docs} />
+        <Route path="/docs/*" component={DocsReader} />
         
         <Route path="/dashboard">
           <ProtectedRoute><Dashboard /></ProtectedRoute>

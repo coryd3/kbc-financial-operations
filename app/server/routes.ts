@@ -21,6 +21,7 @@ import { loginBlockedForSeconds, recordLoginFailure, recordLoginSuccess } from "
 import { notifyNewRegistration } from "./notifications.ts";
 import { registerFinanceRoutes } from "./finance.ts";
 import { registerContributionRoutes } from "./contributions.ts";
+import { registerDocsRoutes } from "./docs.ts";
 
 function getUser(req: Request): User {
   return (req as any).user as User;
@@ -30,6 +31,7 @@ export function registerRoutes(app: Express) {
   registerChecklistRoutes(app);
   registerFinanceRoutes(app);
   registerContributionRoutes(app);
+  registerDocsRoutes(app);
 
   // ---------- Auth ----------
   app.post("/api/auth/register", async (req, res) => {

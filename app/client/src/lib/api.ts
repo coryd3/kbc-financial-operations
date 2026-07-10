@@ -284,6 +284,21 @@ export const api = {
   setUserPassword: (id: number, newPassword: string) =>
     request<{ user: SafeUser }>("POST", `/api/admin/users/${id}/set-password`, { newPassword }),
 
+  // documentation
+  getDocsPage: (slug: string) =>
+    request<{
+      slug: string;
+      title: string;
+      section: string | null;
+      markdown: string;
+      prev: { slug: string; title: string } | null;
+      next: { slug: string; title: string } | null;
+    }>("GET", `/api/docs/page/${slug}`),
+  searchDocs: (q: string) =>
+    request<{
+      results: { slug: string; title: string; section: string | null; snippets: string[] }[];
+    }>("GET", `/api/docs/search?q=${encodeURIComponent(q)}`),
+
   // membership directory
   getMembers: (params?: {
     search?: string;
