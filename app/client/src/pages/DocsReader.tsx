@@ -260,7 +260,7 @@ export default function DocsReader() {
       )}
 
       {/* Content */}
-      <article className="min-w-0 max-w-3xl">
+      <article className="min-w-0 max-w-none">
         {isLoading ? (
           <div className="py-20 text-center text-muted-foreground">Loading…</div>
         ) : error || !page ? (

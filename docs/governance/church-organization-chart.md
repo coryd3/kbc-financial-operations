@@ -22,13 +22,13 @@ Needs Bylaw Review: This chart should be checked against the KBC Constitution an
 ## Simple Governance View
 
 ```mermaid
-%%{init: {"flowchart": {"curve": "basis", "nodeSpacing": 45, "rankSpacing": 60, "padding": 16}}}%%
+%%{init: {"htmlLabels": false, "flowchart": {"curve": "basis", "nodeSpacing": 45, "rankSpacing": 60, "padding": 20, "wrappingWidth": 220}}}%%
 flowchart TD
     Congregation["Congregation<br/>Final authority where required"]
 
     subgraph Leadership [Leadership and Governance]
         Pastor["Pastor<br/>Spiritual and ministry leadership"]
-        Deacons["Deacons<br/>Care, counsel, leadership review, recommendations"]
+        Deacons["Deacons<br/>Care, counsel, leadership review,<br/>and recommendations"]
         Officers["Elected Officers<br/>Roles defined by bylaws"]
         Committees["Church Committees<br/>Assigned church work"]
     end
@@ -40,9 +40,9 @@ flowchart TD
     end
 
     subgraph FinanceOps [Financial Operations]
-        Treasurer["Treasurer / Financial Officer<br/>Elected accountability, review, reporting"]
-        Bookkeeper["Bookkeeper / Financial Administrator<br/>Day-to-day records and support"]
-        Vendor["Outside Payroll / Accounting Vendor<br/>Specialized support if contracted"]
+        Treasurer["Treasurer / Financial Officer<br/>Elected accountability, review,<br/>and reporting"]
+        Bookkeeper["Bookkeeper /<br/>Financial Administrator<br/>Day-to-day records and support"]
+        Vendor["Outside Payroll /<br/>Accounting Vendor<br/>Specialized support if contracted"]
     end
 
     Congregation --> Pastor
@@ -73,16 +73,16 @@ flowchart TD
 ## Financial Operations View
 
 ```mermaid
-%%{init: {"flowchart": {"curve": "basis", "nodeSpacing": 42, "rankSpacing": 55, "padding": 16}}}%%
-flowchart LR
-    Congregation["Congregation<br/>Final authority where vote required"]
+%%{init: {"htmlLabels": false, "flowchart": {"curve": "basis", "nodeSpacing": 48, "rankSpacing": 65, "padding": 20, "wrappingWidth": 220}}}%%
+flowchart TB
+    Congregation["Congregation<br/>Final authority where<br/>a vote is required"]
     Nominating["Nominating Committee<br/>Officer recommendation"]
     Treasurer["Treasurer / Financial Officer<br/>Review and reporting"]
     Finance["Finance Committee<br/>Financial controls and review"]
     Personnel["Personnel Committee<br/>Authorized hiring process"]
-    Bookkeeper["Bookkeeper / Financial Administrator<br/>Records and reports"]
-    PastorDeacons["Pastor and Deacons<br/>Counsel, communication, recommendations"]
-    Vendor["Outside Vendor<br/>Payroll, tax, accounting support"]
+    Bookkeeper["Bookkeeper /<br/>Financial Administrator<br/>Records and reports"]
+    PastorDeacons["Pastor and Deacons<br/>Counsel, communication,<br/>and recommendations"]
+    Vendor["Outside Vendor<br/>Payroll, tax, and<br/>accounting support"]
 
     Congregation --> Nominating
     Nominating --> Treasurer

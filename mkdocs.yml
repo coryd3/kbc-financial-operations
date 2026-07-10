@@ -39,6 +39,7 @@ extra_javascript:
   - assets/javascripts/analytics-config.js
   - assets/javascripts/site-analytics.js
   - assets/javascripts/diagram-viewer.js
+  - assets/javascripts/responsive-tables.js
 
 hooks:
   - scripts/mkdocs_hooks.py
