@@ -1,0 +1,1 @@
+- [Node app in app/ subdir](app-in-subdir-npm.md) — npm deps must go in app/package.json; platform/subagent installs land at repo root and must be cleaned up.

@@ -1,4 +1,4 @@
-modules = ["python-3.12", "bash"]
+modules = ["python-3.12", "bash", "nodejs-20", "postgresql-16"]
 [agent]
 expertMode = true
 stack = "BEST_EFFORT_FALLBACK"
@@ -16,15 +16,15 @@ author = "agent"
 
 [[workflows.workflow.tasks]]
 task = "workflow.run"
-args = "Documentation Site"
+args = "Church App"
 
 [[workflows.workflow]]
-name = "Documentation Site"
+name = "Church App"
 author = "agent"
 
 [[workflows.workflow.tasks]]
 task = "shell.exec"
-args = "python -m mkdocs serve --dev-addr 0.0.0.0:5000"
+args = "cd app && npm run dev"
 waitForPort = 5000
 
 [workflows.workflow.metadata]
@@ -35,6 +35,7 @@ localPort = 5000
 externalPort = 80
 
 [deployment]
-deploymentTarget = "static"
-build = ["python", "-m", "mkdocs", "build"]
+deploymentTarget = "autoscale"
+build = ["bash", "-c", "cd app && npm run build"]
 publicDir = "site"
+run = ["bash", "-c", "cd app && npm start"]
