@@ -48,9 +48,19 @@ super_admin, admin, treasurer, bookkeeper, finance_committee, personnel_committe
 - UI: bell dropdown in header (`NotificationBell.tsx`), unread badge, click-through to checklist, mark read / mark all read. Routes: `GET /api/notifications`, `POST /api/notifications/:id/read`, `POST /api/notifications/read-all`.
 - Email: Replit Mail integration (`app/server/replitmail.ts`) sends a digest to the **app owner's verified Replit email** only (platform limitation — not per-user email). Sent once per instance per type, gated by `due_soon_email_at` / `overdue_email_at` on `checklist_instances`, marked only after successful send so transient failures retry. Email failures never block in-app reminders.
 
+### Finance & bookkeeping module
+- Tables: `budget_categories`, `offering_counts`, `deposits`, `transactions`, `monthly_closes`, `monthly_close_items` (money stored as integer cents). Default categories seeded on first start.
+- Weekly offering counts require two counter names and confirmation by a *different* portal user (dual-control) before they can be linked to a deposit. Verified counts are locked from editing.
+- Deposits link verified counts; Bookkeeper/Treasurer mark them reconciled.
+- Transaction ledger (income/expense) validates that the entry type matches the category type.
+- Monthly close: per-month checklist (template from docs' monthly-close-checklist) — all items must be complete before Treasurer sign-off; closed months are locked (Treasurer/Super Admin can reopen).
+- Role groups exported from `app/shared/schema.ts` (COUNT_ENTRY_ROLES, LEDGER_EDIT_ROLES, CLOSE_SIGNOFF_ROLES, FINANCE_NAV_ROLES, etc.) and enforced via `requireRole` in `app/server/finance.ts`; UI mirrors them. Least-privilege matrix: Counting Team sees counts only; Finance Committee sees reports only; Bookkeeper/Treasurer/Admins get deposits, ledger, and close; only Treasurer/Super Admin sign off closes; only Admins manage categories.
+- Client pages under `app/client/src/pages/finance/` with shared sub-nav in `FinanceLayout.tsx`; routes `/finance/*` gated by `ProtectedRoute allowedRoles`.
+
 ### Usage tracking
 - In-app: POST `/api/track` records path/visitor/role in `page_views`; admin analytics at `/admin/analytics` (daily views, top pages, by role).
 - GoatCounter snippet (kbc-financial-operations.goatcounter.com) is embedded in `app/client/index.html` and counts SPA navigations (skips localhost by design).
 
 ## User preferences
 - Never use the user's work email (cldavis@burnsmcd.com) for anything in this app — no storage, no sending, no notifications. Personal contact email is coryd3@gmail.com. Note: Replit Mail always delivers to the Replit account owner's verified email; if that is ever the work email, do not use Replit Mail until it's changed or replaced with another provider.
+- Do not use the email cldavis@burnsmcd.com anywhere in this app (no seeding, contact info, notifications, or test data).

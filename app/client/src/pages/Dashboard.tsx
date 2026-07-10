@@ -1,7 +1,7 @@
-import { useAuth } from "../lib/auth";
-import { ROLE_LABELS, COMMITTEE_POSITION_LABELS } from "@shared/schema";
-import { useQuery } from "@tanstack/react-query";
 import { Link } from "wouter";
+import { useAuth } from "../lib/auth";
+import { ROLE_LABELS, COMMITTEE_POSITION_LABELS, FINANCE_NAV_ROLES } from "@shared/schema";
+import { useQuery } from "@tanstack/react-query";
 import { api } from "../lib/api";
 import { Card, CardHeader, CardTitle, CardContent } from "../components/ui";
 import { Calendar, Lock, Users, Receipt, FileText, CheckSquare, Settings, AlertTriangle, ArrowRight, ChevronRight } from "lucide-react";
@@ -214,12 +214,60 @@ export default function Dashboard() {
             </>
           ) : null}
 
-          <h2 className="text-2xl font-serif font-semibold border-b border-border pb-2">Future Modules</h2>
+          <h2 className="text-2xl font-serif font-semibold border-b border-border pb-2">Modules</h2>
           <div className="grid gap-3">
+            {FINANCE_NAV_ROLES.includes(user.role) && (
+              <Link href="/finance">
+                <Card className="hover:border-primary/50 hover:shadow-md transition-all cursor-pointer">
+                  <CardContent className="p-4 flex items-center gap-3">
+                    <div className="p-2 bg-primary/10 rounded-md text-primary">
+                      <Receipt className="w-5 h-5" />
+                    </div>
+                    <div>
+                      <h3 className="font-medium text-sm">Finance</h3>
+                      <p className="text-xs text-muted-foreground">Offering counts, ledger, monthly close, reports</p>
+                    </div>
+                    <span className="ml-auto text-[10px] uppercase font-bold tracking-wider text-primary bg-primary/10 px-2 py-1 rounded-sm">
+                      Open
+                    </span>
+                  </CardContent>
+                </Card>
+              </Link>
+            )}
+            <Link href="/committees">
+              <Card className="hover:border-primary/50 hover:shadow-md transition-all cursor-pointer">
+                <CardContent className="p-4 flex items-center gap-3">
+                  <div className="p-2 bg-primary/10 rounded-md text-primary">
+                    <Settings className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <h3 className="font-medium text-sm">Committees</h3>
+                    <p className="text-xs text-muted-foreground">Group workspaces</p>
+                  </div>
+                  <span className="ml-auto text-[10px] uppercase font-bold tracking-wider text-primary bg-primary/10 px-2 py-1 rounded-sm">
+                    Open
+                  </span>
+                </CardContent>
+              </Card>
+            </Link>
+            <Link href="/directory">
+              <Card className="hover:border-primary/50 hover:shadow-md transition-all cursor-pointer">
+                <CardContent className="p-4 flex items-center gap-3">
+                  <div className="p-2 bg-primary/10 rounded-md text-primary">
+                    <Users className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <h3 className="font-medium text-sm">Member Directory</h3>
+                    <p className="text-xs text-muted-foreground">Congregation contact list</p>
+                  </div>
+                  <span className="ml-auto text-[10px] uppercase font-bold tracking-wider text-primary bg-primary/10 px-2 py-1 rounded-sm">
+                    Open
+                  </span>
+                </CardContent>
+              </Card>
+            </Link>
             {[
-              { title: "Finance Dashboard", icon: Receipt, desc: "Budget tracking and reports" },
               { title: "Giving Records", icon: FileText, desc: "Contribution statements" },
-              { title: "Member Directory", icon: Users, desc: "Congregation contact list" },
             ].map((module, i) => (
               <Card key={i} className="opacity-60 grayscale cursor-not-allowed">
                 <CardContent className="p-4 flex items-center gap-3">

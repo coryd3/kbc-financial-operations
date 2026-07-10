@@ -14,6 +14,14 @@ import type {
   Meeting,
   Decision,
   DecisionStatus,
+  BudgetCategory,
+  OfferingCount,
+  Deposit,
+  Transaction,
+  MonthlyClose,
+  MonthlyCloseItem,
+  CategoryType,
+  TransactionType,
 } from "@shared/schema";
 
 export class ApiError extends Error {
@@ -389,4 +397,111 @@ export const api = {
     request<{ message: string }>("POST", "/api/notifications/read-all"),
   updateNotificationPrefs: (data: { notifyDueSoon: boolean; notifyOverdue: boolean }) =>
     request<{ user: SafeUser }>("PATCH", "/api/notifications/prefs", data),
+
+  // finance: categories
+  getCategories: () => request<{ categories: BudgetCategory[] }>("GET", "/api/finance/categories"),
+  createCategory: (data: { name: string; type: CategoryType; isActive?: boolean; sortOrder?: number }) =>
+    request<{ category: BudgetCategory }>("POST", "/api/finance/categories", data),
+  updateCategory: (id: number, data: Partial<{ name: string; type: CategoryType; isActive: boolean; sortOrder: number }>) =>
+    request<{ category: BudgetCategory }>("PATCH", `/api/finance/categories/${id}`, data),
+
+  // finance: offering counts
+  getCounts: (unlinkedOnly = false) =>
+    request<{ counts: OfferingCountRow[] }>("GET", `/api/finance/counts${unlinkedOnly ? "?unlinked=1" : ""}`),
+  createCount: (data: OfferingCountInput) =>
+    request<{ count: OfferingCount }>("POST", "/api/finance/counts", data),
+  updateCount: (id: number, data: OfferingCountInput) =>
+    request<{ count: OfferingCount }>("PATCH", `/api/finance/counts/${id}`, data),
+  verifyCount: (id: number) =>
+    request<{ count: OfferingCount }>("POST", `/api/finance/counts/${id}/verify`),
+
+  // finance: deposits
+  getDeposits: () => request<{ deposits: DepositRow[] }>("GET", "/api/finance/deposits"),
+  createDeposit: (data: { depositDate: string; amountCents: number; bankRef?: string; notes?: string; countIds: number[] }) =>
+    request<{ deposit: Deposit }>("POST", "/api/finance/deposits", data),
+  reconcileDeposit: (id: number) =>
+    request<{ deposit: Deposit }>("POST", `/api/finance/deposits/${id}/reconcile`),
+
+  // finance: transactions
+  getTransactions: (params?: { type?: string; categoryId?: number; search?: string; month?: string }) => {
+    const qs = new URLSearchParams();
+    if (params?.type) qs.set("type", params.type);
+    if (params?.categoryId) qs.set("categoryId", String(params.categoryId));
+    if (params?.search) qs.set("search", params.search);
+    if (params?.month) qs.set("month", params.month);
+    const suffix = qs.toString() ? `?${qs.toString()}` : "";
+    return request<{ transactions: TransactionRow[] }>("GET", `/api/finance/transactions${suffix}`);
+  },
+  createTransaction: (data: TransactionInput) =>
+    request<{ transaction: Transaction }>("POST", "/api/finance/transactions", data),
+  updateTransaction: (id: number, data: TransactionInput) =>
+    request<{ transaction: Transaction }>("PATCH", `/api/finance/transactions/${id}`, data),
+  deleteTransaction: (id: number) =>
+    request<{ message: string }>("DELETE", `/api/finance/transactions/${id}`),
+
+  // finance: monthly close
+  getCloses: () => request<{ closes: MonthlyCloseRow[] }>("GET", "/api/finance/closes"),
+  createClose: (data: { year: number; month: number }) =>
+    request<{ close: MonthlyCloseRow }>("POST", "/api/finance/closes", data),
+  toggleCloseItem: (closeId: number, itemId: number, isDone: boolean) =>
+    request<{ item: MonthlyCloseItem }>("PATCH", `/api/finance/closes/${closeId}/items/${itemId}`, { isDone }),
+  signoffClose: (id: number, notes?: string) =>
+    request<{ close: MonthlyClose }>("POST", `/api/finance/closes/${id}/signoff`, { notes }),
+  reopenClose: (id: number) =>
+    request<{ close: MonthlyClose }>("POST", `/api/finance/closes/${id}/reopen`),
+
+  // finance: reports
+  getFinanceSummary: (year?: number) =>
+    request<FinanceSummary>("GET", `/api/finance/reports/summary${year ? `?year=${year}` : ""}`),
 };
+
+export interface OfferingCountInput {
+  countDate: string;
+  serviceNote?: string;
+  cashCents: number;
+  coinCents: number;
+  checksCents: number;
+  checkCount: number;
+  otherCents: number;
+  notes?: string;
+  counter1: string;
+  counter2: string;
+}
+
+export type OfferingCountRow = OfferingCount & {
+  totalCents: number;
+  enteredByName: string | null;
+  verifiedByName: string | null;
+};
+
+export type DepositRow = Deposit & {
+  counts: { id: number; countDate: string; totalCents: number }[];
+};
+
+export interface TransactionInput {
+  txnDate: string;
+  type: TransactionType;
+  categoryId: number;
+  amountCents: number;
+  payee: string;
+  memo?: string;
+}
+
+export type TransactionRow = Transaction & {
+  categoryName: string;
+  enteredByName: string | null;
+};
+
+export type MonthlyCloseRow = MonthlyClose & {
+  signedOffByName?: string | null;
+  items: MonthlyCloseItem[];
+};
+
+export interface FinanceSummary {
+  year: number;
+  priorYear: number;
+  monthly: { month: number; type: string; totalCents: number }[];
+  byCategory: { categoryId: number; categoryName: string; type: string; totalCents: number }[];
+  ytd: { incomeCents: number; expenseCents: number };
+  prior: { incomeCents: number; expenseCents: number };
+}

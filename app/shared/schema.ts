@@ -348,6 +348,146 @@ export const notifications = pgTable(
   ],
 );
 
+// ---------- Finance & bookkeeping ----------
+
+export const CATEGORY_TYPES = ["income", "expense"] as const;
+export type CategoryType = (typeof CATEGORY_TYPES)[number];
+
+export const budgetCategories = pgTable("budget_categories", {
+  id: serial("id").primaryKey(),
+  name: varchar("name", { length: 120 }).notNull(),
+  type: varchar("type", { length: 10 }).$type<CategoryType>().notNull(),
+  isActive: boolean("is_active").notNull().default(true),
+  sortOrder: integer("sort_order").notNull().default(0),
+  createdAt: timestamp("created_at").notNull().defaultNow(),
+});
+
+export const COUNT_STATUSES = ["submitted", "verified"] as const;
+export type CountStatus = (typeof COUNT_STATUSES)[number];
+
+export const DEPOSIT_STATUSES = ["recorded", "reconciled"] as const;
+export type DepositStatus = (typeof DEPOSIT_STATUSES)[number];
+
+export const deposits = pgTable("deposits", {
+  id: serial("id").primaryKey(),
+  depositDate: date("deposit_date").notNull(),
+  amountCents: integer("amount_cents").notNull(),
+  bankRef: varchar("bank_ref", { length: 120 }),
+  notes: text("notes"),
+  status: varchar("status", { length: 20 }).$type<DepositStatus>().notNull().default("recorded"),
+  recordedBy: integer("recorded_by").references(() => users.id),
+  reconciledBy: integer("reconciled_by").references(() => users.id),
+  reconciledAt: timestamp("reconciled_at"),
+  createdAt: timestamp("created_at").notNull().defaultNow(),
+});
+
+export const offeringCounts = pgTable("offering_counts", {
+  id: serial("id").primaryKey(),
+  countDate: date("count_date").notNull(),
+  serviceNote: varchar("service_note", { length: 120 }),
+  cashCents: integer("cash_cents").notNull().default(0),
+  coinCents: integer("coin_cents").notNull().default(0),
+  checksCents: integer("checks_cents").notNull().default(0),
+  checkCount: integer("check_count").notNull().default(0),
+  otherCents: integer("other_cents").notNull().default(0),
+  notes: text("notes"),
+  counter1: varchar("counter1", { length: 120 }).notNull(),
+  counter2: varchar("counter2", { length: 120 }).notNull(),
+  status: varchar("status", { length: 20 }).$type<CountStatus>().notNull().default("submitted"),
+  enteredBy: integer("entered_by").references(() => users.id),
+  verifiedBy: integer("verified_by").references(() => users.id),
+  verifiedAt: timestamp("verified_at"),
+  depositId: integer("deposit_id").references(() => deposits.id),
+  createdAt: timestamp("created_at").notNull().defaultNow(),
+});
+
+export const TRANSACTION_TYPES = ["income", "expense"] as const;
+export type TransactionType = (typeof TRANSACTION_TYPES)[number];
+
+export const transactions = pgTable(
+  "transactions",
+  {
+    id: serial("id").primaryKey(),
+    txnDate: date("txn_date").notNull(),
+    type: varchar("type", { length: 10 }).$type<TransactionType>().notNull(),
+    categoryId: integer("category_id")
+      .references(() => budgetCategories.id)
+      .notNull(),
+    amountCents: integer("amount_cents").notNull(),
+    payee: varchar("payee", { length: 200 }).notNull(),
+    memo: text("memo"),
+    enteredBy: integer("entered_by").references(() => users.id),
+    createdAt: timestamp("created_at").notNull().defaultNow(),
+    updatedAt: timestamp("updated_at").notNull().defaultNow(),
+  },
+  (table) => [index("transactions_date_idx").on(table.txnDate)],
+);
+
+export const CLOSE_STATUSES = ["open", "in_review", "closed"] as const;
+export type CloseStatus = (typeof CLOSE_STATUSES)[number];
+
+export const monthlyCloses = pgTable(
+  "monthly_closes",
+  {
+    id: serial("id").primaryKey(),
+    year: integer("year").notNull(),
+    month: integer("month").notNull(),
+    status: varchar("status", { length: 20 }).$type<CloseStatus>().notNull().default("open"),
+    notes: text("notes"),
+    signedOffBy: integer("signed_off_by").references(() => users.id),
+    signedOffAt: timestamp("signed_off_at"),
+    createdAt: timestamp("created_at").notNull().defaultNow(),
+  },
+  (table) => [uniqueIndex("monthly_closes_year_month_idx").on(table.year, table.month)],
+);
+
+export const monthlyCloseItems = pgTable("monthly_close_items", {
+  id: serial("id").primaryKey(),
+  closeId: integer("close_id")
+    .references(() => monthlyCloses.id)
+    .notNull(),
+  label: varchar("label", { length: 200 }).notNull(),
+  sortOrder: integer("sort_order").notNull().default(0),
+  isDone: boolean("is_done").notNull().default(false),
+  completedBy: integer("completed_by").references(() => users.id),
+  completedAt: timestamp("completed_at"),
+});
+
+export const MONTHLY_CLOSE_TEMPLATE = [
+  "Complete bank reconciliations",
+  "Review uncleared transactions",
+  "Verify restricted fund balances",
+  "Review budget variances",
+  "Prepare monthly reports",
+  "Submit report packet for treasurer and finance committee review",
+] as const;
+
+// Role groups for finance access (enforced server-side, reflected in UI).
+// Least-privilege matrix: Counting Team = counts only; Bookkeeper edits ledger/deposits;
+// Treasurer signs off closes; Finance Committee = reports only; Admins manage categories.
+export const FINANCE_VIEW_ROLES: Role[] = [
+  "super_admin",
+  "admin",
+  "treasurer",
+  "bookkeeper",
+];
+export const COUNT_ENTRY_ROLES: Role[] = [
+  "super_admin",
+  "admin",
+  "treasurer",
+  "bookkeeper",
+  "counting_team",
+];
+export const COUNT_VIEW_ROLES: Role[] = [...FINANCE_VIEW_ROLES, "counting_team"];
+export const DEPOSIT_MANAGE_ROLES: Role[] = ["super_admin", "admin", "treasurer", "bookkeeper"];
+export const LEDGER_EDIT_ROLES: Role[] = ["super_admin", "admin", "treasurer", "bookkeeper"];
+export const CLOSE_MANAGE_ROLES: Role[] = ["super_admin", "admin", "treasurer", "bookkeeper"];
+export const CLOSE_SIGNOFF_ROLES: Role[] = ["super_admin", "treasurer"];
+export const REPORT_VIEW_ROLES: Role[] = [...FINANCE_VIEW_ROLES, "finance_committee"];
+export const CATEGORY_MANAGE_ROLES: Role[] = ["super_admin", "admin"];
+// Any role that can access some part of the Finance section (nav visibility / index redirect)
+export const FINANCE_NAV_ROLES: Role[] = [...COUNT_VIEW_ROLES, "finance_committee"];
+
 export type User = typeof users.$inferSelect;
 export type Announcement = typeof announcements.$inferSelect;
 export type PageView = typeof pageViews.$inferSelect;
@@ -362,6 +502,12 @@ export type CommitteeMember = typeof committeeMembers.$inferSelect;
 export type Meeting = typeof meetings.$inferSelect;
 export type Decision = typeof decisions.$inferSelect;
 export type Notification = typeof notifications.$inferSelect;
+export type BudgetCategory = typeof budgetCategories.$inferSelect;
+export type OfferingCount = typeof offeringCounts.$inferSelect;
+export type Deposit = typeof deposits.$inferSelect;
+export type Transaction = typeof transactions.$inferSelect;
+export type MonthlyClose = typeof monthlyCloses.$inferSelect;
+export type MonthlyCloseItem = typeof monthlyCloseItems.$inferSelect;
 
 export type SafeUser = Omit<User, "passwordHash">;
 
@@ -516,4 +662,62 @@ export const decisionSchema = z.object({
   owner: z.string().max(200).optional().or(z.literal("")),
   status: z.enum(DECISION_STATUSES).default("proposed"),
   notes: z.string().max(10000).optional().or(z.literal("")),
+});
+
+// ---------- Finance schemas ----------
+
+const cents = z.number().int("Amount must be a whole number of cents").min(0).max(1_000_000_000);
+
+export const budgetCategorySchema = z.object({
+  name: z.string().min(1, "Name is required").max(120),
+  type: z.enum(CATEGORY_TYPES),
+  isActive: z.boolean().default(true),
+  sortOrder: z.number().int().min(0).max(10000).default(0),
+});
+
+export const offeringCountSchema = z
+  .object({
+    countDate: dateString,
+    serviceNote: z.string().max(120).optional().or(z.literal("")),
+    cashCents: cents.default(0),
+    coinCents: cents.default(0),
+    checksCents: cents.default(0),
+    checkCount: z.number().int().min(0).max(10000).default(0),
+    otherCents: cents.default(0),
+    notes: z.string().max(2000).optional().or(z.literal("")),
+    counter1: z.string().min(1, "First counter name is required").max(120),
+    counter2: z.string().min(1, "Second counter name is required").max(120),
+  })
+  .refine((d) => d.cashCents + d.coinCents + d.checksCents + d.otherCents > 0, {
+    message: "The count total must be greater than zero",
+  })
+  .refine((d) => d.counter1.trim().toLowerCase() !== d.counter2.trim().toLowerCase(), {
+    message: "Two different counters are required",
+  });
+
+export const depositSchema = z.object({
+  depositDate: dateString,
+  amountCents: cents.refine((v) => v > 0, "Deposit amount must be greater than zero"),
+  bankRef: z.string().max(120).optional().or(z.literal("")),
+  notes: z.string().max(2000).optional().or(z.literal("")),
+  countIds: z.array(z.number().int().positive()).default([]),
+});
+
+export const transactionSchema = z.object({
+  txnDate: dateString,
+  type: z.enum(TRANSACTION_TYPES),
+  categoryId: z.number().int().positive("Please choose a category"),
+  amountCents: cents.refine((v) => v > 0, "Amount must be greater than zero"),
+  payee: z.string().min(1, "Payee / source is required").max(200),
+  memo: z.string().max(2000).optional().or(z.literal("")),
+});
+
+export const monthlyCloseCreateSchema = z.object({
+  year: z.number().int().min(2000).max(2100),
+  month: z.number().int().min(1).max(12),
+});
+
+
+export const closeSignoffSchema = z.object({
+  notes: z.string().max(2000).optional().or(z.literal("")),
 });

@@ -2,10 +2,11 @@ import { useQuery } from "@tanstack/react-query";
 import { Link, useLocation } from "wouter";
 import { useAuth } from "../lib/auth";
 import { api } from "../lib/api";
-import { LogOut, BookOpen, Home, User, Shield, BarChart, LayoutDashboard, Users, ContactRound, CheckSquare, Gavel } from "lucide-react";
+import { LogOut, BookOpen, Home, User, Shield, BarChart, LayoutDashboard, Users, ContactRound, CheckSquare, Gavel, Landmark } from "lucide-react";
 import { cn } from "../lib/utils";
 import { CHURCH_CONTACT } from "../lib/contact";
 import { NotificationBell } from "./NotificationBell";
+import { FINANCE_NAV_ROLES } from "@shared/schema";
 
 export function Layout({ children }: { children: React.ReactNode }) {
   const { user, isAdmin, isLeadership, refresh } = useAuth();
@@ -50,6 +51,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
     },
     { href: "/committees", label: "Committees", icon: Users, show: !!user },
     { href: "/decisions", label: "Decisions", icon: Gavel, show: !!user },
+    { href: "/finance", label: "Finance", icon: Landmark, show: !!user && FINANCE_NAV_ROLES.includes(user.role) },
     { href: "/admin", label: "Admin", icon: Shield, show: isAdmin, badge: pendingCount ? pendingCount : null },
     { href: "/admin/analytics", label: "Analytics", icon: BarChart, show: isAdmin },
   ];

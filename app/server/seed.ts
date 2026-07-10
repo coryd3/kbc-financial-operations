@@ -9,6 +9,7 @@ import {
   checklistTemplateSteps,
   committees,
   decisions,
+  budgetCategories,
   type Role,
 } from "../shared/schema.ts";
 import { ensureScheduledInstances } from "./checklists.ts";
@@ -150,6 +151,22 @@ export async function seed() {
       },
     ]);
     console.log("[seed] Created starter decision log entries.");
+  }
+
+  const existingCategories = await db.select({ id: budgetCategories.id }).from(budgetCategories).limit(1);
+  if (existingCategories.length === 0) {
+    await db.insert(budgetCategories).values([
+      { name: "Offerings — General Fund", type: "income", sortOrder: 0 },
+      { name: "Designated Gifts", type: "income", sortOrder: 1 },
+      { name: "Other Income", type: "income", sortOrder: 2 },
+      { name: "Personnel", type: "expense", sortOrder: 0 },
+      { name: "Missions", type: "expense", sortOrder: 1 },
+      { name: "Facilities & Utilities", type: "expense", sortOrder: 2 },
+      { name: "Ministry & Programs", type: "expense", sortOrder: 3 },
+      { name: "Administration", type: "expense", sortOrder: 4 },
+      { name: "Other Expense", type: "expense", sortOrder: 5 },
+    ]);
+    console.log("[seed] Created default budget categories.");
   }
 }
 

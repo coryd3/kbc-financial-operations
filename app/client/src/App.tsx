@@ -20,6 +20,20 @@ import AdminAnalytics from "./pages/AdminAnalytics";
 import Committees from "./pages/Committees";
 import CommitteeDetail from "./pages/CommitteeDetail";
 import Decisions from "./pages/Decisions";
+import FinanceCounts from "./pages/finance/FinanceCounts";
+import FinanceDeposits from "./pages/finance/FinanceDeposits";
+import FinanceLedger from "./pages/finance/FinanceLedger";
+import FinanceClose from "./pages/finance/FinanceClose";
+import FinanceReports from "./pages/finance/FinanceReports";
+import FinanceCategories from "./pages/finance/FinanceCategories";
+import { FinanceIndexRedirect } from "./pages/finance/FinanceIndexRedirect";
+import {
+  COUNT_VIEW_ROLES,
+  FINANCE_VIEW_ROLES,
+  FINANCE_NAV_ROLES,
+  REPORT_VIEW_ROLES,
+  CATEGORY_MANAGE_ROLES,
+} from "@shared/schema";
 
 function Router() {
   return (
@@ -74,6 +88,34 @@ function Router() {
           <ProtectedRoute><Decisions /></ProtectedRoute>
         </Route>
         
+        <Route path="/finance">
+          <ProtectedRoute allowedRoles={FINANCE_NAV_ROLES}><FinanceIndexRedirect /></ProtectedRoute>
+        </Route>
+
+        <Route path="/finance/counts">
+          <ProtectedRoute allowedRoles={COUNT_VIEW_ROLES}><FinanceCounts /></ProtectedRoute>
+        </Route>
+
+        <Route path="/finance/deposits">
+          <ProtectedRoute allowedRoles={FINANCE_VIEW_ROLES}><FinanceDeposits /></ProtectedRoute>
+        </Route>
+
+        <Route path="/finance/ledger">
+          <ProtectedRoute allowedRoles={FINANCE_VIEW_ROLES}><FinanceLedger /></ProtectedRoute>
+        </Route>
+
+        <Route path="/finance/close">
+          <ProtectedRoute allowedRoles={FINANCE_VIEW_ROLES}><FinanceClose /></ProtectedRoute>
+        </Route>
+
+        <Route path="/finance/reports">
+          <ProtectedRoute allowedRoles={REPORT_VIEW_ROLES}><FinanceReports /></ProtectedRoute>
+        </Route>
+
+        <Route path="/finance/categories">
+          <ProtectedRoute allowedRoles={CATEGORY_MANAGE_ROLES}><FinanceCategories /></ProtectedRoute>
+        </Route>
+
         <Route path="/admin">
           <ProtectedRoute requireAdmin><AdminUsers /></ProtectedRoute>
         </Route>
