@@ -6,6 +6,7 @@ import { registerRoutes } from "./routes.ts";
 import { registerMemberRoutes } from "./memberRoutes.ts";
 import { registerGovernanceRoutes } from "./governance.ts";
 import { registerNotificationRoutes } from "./notifications.ts";
+import { csrfOriginGuard } from "./csrf.ts";
 import { seed } from "./seed.ts";
 
 const app = express();
@@ -28,12 +29,17 @@ app.use(
     saveUninitialized: false,
     cookie: {
       httpOnly: true,
-      secure: process.env.NODE_ENV === "production",
-      sameSite: "lax",
+      // The app is always served over HTTPS (Replit preview proxy in dev,
+      // *.replit.app in production). sameSite "none" is required for the
+      // session cookie to work inside the workspace preview iframe.
+      secure: true,
+      sameSite: "none",
       maxAge: 1000 * 60 * 60 * 24 * 30, // 30 days
     },
   }),
 );
+
+app.use(csrfOriginGuard);
 
 registerRoutes(app);
 registerMemberRoutes(app);
