@@ -93,10 +93,31 @@ export default function Home() {
             </CardHeader>
             <CardContent className="space-y-2 text-sm text-foreground/80">
               <p className="font-medium text-foreground">Kingsville Baptist Church</p>
-              <p>PO Box &mdash;</p>
-              <p>Kingsville (TBD)</p>
-              <p className="pt-2">Phone: (TBD)</p>
-              <p>Email: admin@kingsvillebaptist.tbd</p>
+              <p>203 West Adriatic Street</p>
+              <p>Kingsville, MO 64061</p>
+              <p className="pt-2">
+                Phone:{" "}
+                <a href="tel:816-597-3684" className="text-primary hover:text-accent transition-colors">
+                  816-597-3684
+                </a>
+              </p>
+              <p>
+                Email:{" "}
+                <a href="mailto:kingsvillebaptist@gmail.com" className="text-primary hover:text-accent transition-colors">
+                  kingsvillebaptist@gmail.com
+                </a>
+              </p>
+              <p>
+                Website:{" "}
+                <a
+                  href="https://www.kingsvillebaptistchurch.net"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-primary hover:text-accent transition-colors"
+                >
+                  kingsvillebaptistchurch.net
+                </a>
+              </p>
             </CardContent>
           </Card>
         </div>
