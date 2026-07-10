@@ -26,6 +26,11 @@ import FinanceLedger from "./pages/finance/FinanceLedger";
 import FinanceClose from "./pages/finance/FinanceClose";
 import FinanceReports from "./pages/finance/FinanceReports";
 import FinanceCategories from "./pages/finance/FinanceCategories";
+import FinanceGiving from "./pages/finance/FinanceGiving";
+import FinanceGivingBatch from "./pages/finance/FinanceGivingBatch";
+import FinanceDonors from "./pages/finance/FinanceDonors";
+import FinanceDonorDetail from "./pages/finance/FinanceDonorDetail";
+import FinanceFunds from "./pages/finance/FinanceFunds";
 import { FinanceIndexRedirect } from "./pages/finance/FinanceIndexRedirect";
 import {
   COUNT_VIEW_ROLES,
@@ -33,6 +38,8 @@ import {
   FINANCE_NAV_ROLES,
   REPORT_VIEW_ROLES,
   CATEGORY_MANAGE_ROLES,
+  GIVING_ROLES,
+  FUND_REPORT_ROLES,
 } from "@shared/schema";
 
 function Router() {
@@ -98,6 +105,26 @@ function Router() {
 
         <Route path="/finance/deposits">
           <ProtectedRoute allowedRoles={FINANCE_VIEW_ROLES}><FinanceDeposits /></ProtectedRoute>
+        </Route>
+
+        <Route path="/finance/giving">
+          <ProtectedRoute allowedRoles={GIVING_ROLES}><FinanceGiving /></ProtectedRoute>
+        </Route>
+
+        <Route path="/finance/giving/:id">
+          <ProtectedRoute allowedRoles={GIVING_ROLES}><FinanceGivingBatch /></ProtectedRoute>
+        </Route>
+
+        <Route path="/finance/donors">
+          <ProtectedRoute allowedRoles={GIVING_ROLES}><FinanceDonors /></ProtectedRoute>
+        </Route>
+
+        <Route path="/finance/donors/:id">
+          <ProtectedRoute allowedRoles={GIVING_ROLES}><FinanceDonorDetail /></ProtectedRoute>
+        </Route>
+
+        <Route path="/finance/funds">
+          <ProtectedRoute allowedRoles={FUND_REPORT_ROLES}><FinanceFunds /></ProtectedRoute>
         </Route>
 
         <Route path="/finance/ledger">

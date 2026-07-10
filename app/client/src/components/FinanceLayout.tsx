@@ -6,13 +6,18 @@ import {
   FINANCE_VIEW_ROLES,
   REPORT_VIEW_ROLES,
   CATEGORY_MANAGE_ROLES,
+  GIVING_ROLES,
+  FUND_REPORT_ROLES,
   type Role,
 } from "@shared/schema";
-import { ClipboardList, Landmark, BookText, CalendarCheck, PieChart, Tags } from "lucide-react";
+import { ClipboardList, Landmark, BookText, CalendarCheck, PieChart, Tags, HandCoins, Users, Layers } from "lucide-react";
 
 export const FINANCE_TABS: { href: string; label: string; icon: any; roles: Role[] }[] = [
   { href: "/finance/counts", label: "Offering Counts", icon: ClipboardList, roles: COUNT_VIEW_ROLES },
   { href: "/finance/deposits", label: "Deposits", icon: Landmark, roles: FINANCE_VIEW_ROLES },
+  { href: "/finance/giving", label: "Giving", icon: HandCoins, roles: GIVING_ROLES },
+  { href: "/finance/donors", label: "Donors", icon: Users, roles: GIVING_ROLES },
+  { href: "/finance/funds", label: "Fund Summary", icon: Layers, roles: FUND_REPORT_ROLES },
   { href: "/finance/ledger", label: "Ledger", icon: BookText, roles: FINANCE_VIEW_ROLES },
   { href: "/finance/close", label: "Monthly Close", icon: CalendarCheck, roles: FINANCE_VIEW_ROLES },
   { href: "/finance/reports", label: "Reports", icon: PieChart, roles: REPORT_VIEW_ROLES },

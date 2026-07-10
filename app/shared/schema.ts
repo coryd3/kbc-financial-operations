@@ -464,6 +464,111 @@ export const monthlyCloseItems = pgTable("monthly_close_items", {
   completedAt: timestamp("completed_at"),
 });
 
+// ---------- Contributions & giving records ----------
+
+export const CONTRIBUTION_METHODS = ["cash", "check", "other"] as const;
+export type ContributionMethod = (typeof CONTRIBUTION_METHODS)[number];
+
+export const CONTRIBUTION_METHOD_LABELS: Record<ContributionMethod, string> = {
+  cash: "Cash",
+  check: "Check",
+  other: "Other",
+};
+
+export const BATCH_STATUSES = ["open", "closed"] as const;
+export type BatchStatus = (typeof BATCH_STATUSES)[number];
+
+export const givingFunds = pgTable("giving_funds", {
+  id: serial("id").primaryKey(),
+  name: varchar("name", { length: 120 }).notNull().unique(),
+  description: text("description"),
+  isActive: boolean("is_active").notNull().default(true),
+  sortOrder: integer("sort_order").notNull().default(0),
+  createdAt: timestamp("created_at").notNull().defaultNow(),
+});
+
+export const donors = pgTable(
+  "donors",
+  {
+    id: serial("id").primaryKey(),
+    firstName: varchar("first_name", { length: 80 }).notNull(),
+    lastName: varchar("last_name", { length: 80 }).notNull(),
+    email: varchar("email", { length: 255 }),
+    phone: varchar("phone", { length: 40 }),
+    address: varchar("address", { length: 300 }),
+    envelopeNumber: varchar("envelope_number", { length: 20 }),
+    memberId: integer("member_id")
+      .references(() => members.id, { onDelete: "set null" })
+      .unique(),
+    notes: text("notes"),
+    isActive: boolean("is_active").notNull().default(true),
+    createdAt: timestamp("created_at").notNull().defaultNow(),
+    updatedAt: timestamp("updated_at").notNull().defaultNow(),
+  },
+  (table) => [index("donors_last_name_idx").on(table.lastName)],
+);
+
+export const contributionBatches = pgTable(
+  "contribution_batches",
+  {
+    id: serial("id").primaryKey(),
+    batchDate: date("batch_date").notNull(),
+    description: varchar("description", { length: 200 }),
+    offeringCountId: integer("offering_count_id").references(() => offeringCounts.id, {
+      onDelete: "set null",
+    }),
+    status: varchar("status", { length: 10 }).$type<BatchStatus>().notNull().default("open"),
+    notes: text("notes"),
+    enteredBy: integer("entered_by").references(() => users.id),
+    closedBy: integer("closed_by").references(() => users.id),
+    closedAt: timestamp("closed_at"),
+    createdAt: timestamp("created_at").notNull().defaultNow(),
+  },
+  (table) => [index("contribution_batches_date_idx").on(table.batchDate)],
+);
+
+export const contributions = pgTable(
+  "contributions",
+  {
+    id: serial("id").primaryKey(),
+    batchId: integer("batch_id")
+      .notNull()
+      .references(() => contributionBatches.id, { onDelete: "cascade" }),
+    donorId: integer("donor_id")
+      .notNull()
+      .references(() => donors.id),
+    fundId: integer("fund_id")
+      .notNull()
+      .references(() => givingFunds.id),
+    contributionDate: date("contribution_date").notNull(),
+    amountCents: integer("amount_cents").notNull(),
+    method: varchar("method", { length: 10 }).$type<ContributionMethod>().notNull(),
+    checkNumber: varchar("check_number", { length: 20 }),
+    note: varchar("note", { length: 300 }),
+    enteredBy: integer("entered_by").references(() => users.id),
+    createdAt: timestamp("created_at").notNull().defaultNow(),
+  },
+  (table) => [
+    index("contributions_batch_idx").on(table.batchId),
+    index("contributions_donor_idx").on(table.donorId),
+    index("contributions_date_idx").on(table.contributionDate),
+  ],
+);
+
+export const DEFAULT_GIVING_FUNDS = [
+  { name: "General Fund", description: "Undesignated tithes and offerings", sortOrder: 0 },
+  { name: "Missions", description: "Designated gifts to missions", sortOrder: 1 },
+  { name: "Building Fund", description: "Designated gifts for building projects and maintenance", sortOrder: 2 },
+  { name: "Benevolence", description: "Designated gifts for benevolence ministry", sortOrder: 3 },
+] as const;
+
+// Individual donor giving data is confidential: only these roles may see
+// donor records, giving history, batch entry detail, and statements.
+export const GIVING_ROLES: Role[] = ["super_admin", "treasurer", "bookkeeper"];
+// Aggregate fund totals (no individual donor detail) additionally visible to
+// the Finance Committee.
+export const FUND_REPORT_ROLES: Role[] = [...GIVING_ROLES, "finance_committee"];
+
 export const MONTHLY_CLOSE_TEMPLATE = [
   "Complete bank reconciliations",
   "Review uncleared transactions",
@@ -519,6 +624,10 @@ export type Deposit = typeof deposits.$inferSelect;
 export type Transaction = typeof transactions.$inferSelect;
 export type MonthlyClose = typeof monthlyCloses.$inferSelect;
 export type MonthlyCloseItem = typeof monthlyCloseItems.$inferSelect;
+export type GivingFund = typeof givingFunds.$inferSelect;
+export type Donor = typeof donors.$inferSelect;
+export type ContributionBatch = typeof contributionBatches.$inferSelect;
+export type Contribution = typeof contributions.$inferSelect;
 
 export type SafeUser = Omit<User, "passwordHash">;
 
@@ -731,4 +840,54 @@ export const monthlyCloseCreateSchema = z.object({
 
 export const closeSignoffSchema = z.object({
   notes: z.string().max(2000).optional().or(z.literal("")),
+});
+
+// ---------- Contributions & giving schemas ----------
+
+export const givingFundSchema = z.object({
+  name: z.string().trim().min(1, "Fund name is required").max(120),
+  description: z.string().max(2000).optional().or(z.literal("")),
+  isActive: z.boolean().default(true),
+  sortOrder: z.number().int().min(0).max(10000).default(0),
+});
+
+export const donorSchema = z.object({
+  firstName: z.string().trim().min(1, "First name is required").max(80),
+  lastName: z.string().trim().min(1, "Last name is required").max(80),
+  email: z.string().trim().email("Please enter a valid email").max(255).optional().or(z.literal("")),
+  phone: optionalTrimmed(40),
+  address: optionalTrimmed(300),
+  envelopeNumber: optionalTrimmed(20),
+  memberId: z.number().int().positive().nullable().optional(),
+  notes: z.string().max(5000).optional().or(z.literal("")),
+  isActive: z.boolean().default(true),
+});
+
+export const contributionBatchSchema = z.object({
+  batchDate: dateString,
+  description: z.string().max(200).optional().or(z.literal("")),
+  offeringCountId: z.number().int().positive().nullable().optional(),
+  notes: z.string().max(2000).optional().or(z.literal("")),
+});
+
+export const contributionSchema = z
+  .object({
+    donorId: z.number().int().positive("Please choose a donor"),
+    fundId: z.number().int().positive("Please choose a fund"),
+    contributionDate: dateString.optional().or(z.literal("")),
+    amountCents: cents.refine((v) => v > 0, "Amount must be greater than zero"),
+    method: z.enum(CONTRIBUTION_METHODS),
+    checkNumber: optionalTrimmed(20),
+    note: z.string().max(300).optional().or(z.literal("")),
+  })
+  .refine((d) => d.method !== "check" || (d.checkNumber ?? "").trim() !== "", {
+    message: "A check number is required for check contributions",
+  });
+
+export const donorMergeSchema = z.object({
+  intoDonorId: z.number().int().positive(),
+});
+
+export const batchCloseSchema = z.object({
+  allowMismatch: z.boolean().default(false),
 });

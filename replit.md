@@ -58,6 +58,15 @@ super_admin, admin, treasurer, bookkeeper, finance_committee, personnel_committe
 - Role groups exported from `app/shared/schema.ts` (COUNT_ENTRY_ROLES, LEDGER_EDIT_ROLES, CLOSE_SIGNOFF_ROLES, FINANCE_NAV_ROLES, etc.) and enforced via `requireRole` in `app/server/finance.ts`; UI mirrors them. Least-privilege matrix: Counting Team sees counts only; Finance Committee sees reports only; Bookkeeper/Treasurer/Admins get deposits, ledger, and close; only Treasurer/Super Admin sign off closes; only Admins manage categories.
 - Client pages under `app/client/src/pages/finance/` with shared sub-nav in `FinanceLayout.tsx`; routes `/finance/*` gated by `ProtectedRoute allowedRoles`.
 
+### Contributions & giving records module
+- Tables: `giving_funds` (default funds seeded: General Fund, Missions, Building Fund, Benevolence), `donors` (optional unique link to `members`), `contribution_batches` (optional unique link to an `offering_counts` row, open/closed status), `contributions` (cents; method cash/check/other, check # required for checks; cascade-deleted with their batch).
+- Confidentiality: individual giving data (donors, batches, contributions, statements) is restricted to GIVING_ROLES = super_admin, treasurer, bookkeeper — admins are deliberately excluded. Fund-level aggregates (`/api/giving/reports/funds`) additionally allow finance_committee (FUND_REPORT_ROLES) with no donor detail. Enforced in `app/server/contributions.ts` and mirrored in nav/routes.
+- Batch workflow: start a batch (optionally linked to an offering count), enter contributions (date defaults to batch date), then close. Closing with a linked count returns 409 with the variance if totals mismatch unless `allowMismatch` override is sent; closed batches lock all contribution edits until reopened. Empty batches can't be closed; only open, empty-or-draft batches can be deleted.
+- Donors: searchable list with lifetime totals, edit, member linking (one donor per member), delete only when no contributions — otherwise deactivate or merge (`POST /api/giving/donors/:id/merge` moves contributions, transfers member link if target lacks one, deletes source).
+- Statements: `GET /api/giving/donors/:id/statement?start&end` powers printable annual/custom-range statements (`printGivingStatement` in `printExport.ts`, church letterhead + tax wording) from `/finance/donors/:id`.
+- Client pages: `/finance/giving` (batches), `/finance/giving/:id` (entry + reconciliation), `/finance/donors`, `/finance/donors/:id` (history + statement), `/finance/funds` (aggregates + fund management for GIVING_ROLES). Tabs in `FinanceLayout.tsx`.
+- Tests: `app/server/contributions.test.ts` (role gating incl. admin exclusion, reconciliation 409/override, closed-batch locking, merge, statement ranges, member-link uniqueness).
+
 ### Usage tracking
 - In-app: POST `/api/track` records path/visitor/role in `page_views`; admin analytics at `/admin/analytics` (daily views, top pages, by role).
 - GoatCounter snippet (kbc-financial-operations.goatcounter.com) is embedded in `app/client/index.html` and counts SPA navigations (skips localhost by design).

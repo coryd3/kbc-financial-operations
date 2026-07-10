@@ -7,3 +7,5 @@ description: How to apply schema changes when db:push prompts about renamed/crea
 **Why:** drizzle-kit uses raw-TTY arrow-key prompts; non-TTY input is ignored.
 
 **How to apply:** In an agent shell, if db:push stalls on a prompt, create the new tables directly with SQL matching `app/shared/schema.ts` (drizzle then treats them as in sync). Column names are snake_case versions of the schema fields.
+
+Also: an isolated task environment's dev DB can be missing tables from previously merged tasks — check with `\dt` before assuming schema is in sync, and create all missing tables via SQL, not just the new ones.

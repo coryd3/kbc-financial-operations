@@ -10,6 +10,8 @@ import {
   committees,
   decisions,
   budgetCategories,
+  givingFunds,
+  DEFAULT_GIVING_FUNDS,
   type Role,
 } from "../shared/schema.ts";
 import { ensureScheduledInstances } from "./checklists.ts";
@@ -167,6 +169,18 @@ export async function seed() {
       { name: "Other Expense", type: "expense", sortOrder: 5 },
     ]);
     console.log("[seed] Created default budget categories.");
+  }
+
+  const existingFunds = await db.select({ id: givingFunds.id }).from(givingFunds).limit(1);
+  if (existingFunds.length === 0) {
+    await db.insert(givingFunds).values(
+      DEFAULT_GIVING_FUNDS.map((f) => ({
+        name: f.name,
+        description: f.description,
+        sortOrder: f.sortOrder,
+      })),
+    );
+    console.log("[seed] Created default giving funds.");
   }
 }
 

@@ -195,6 +195,105 @@ export function printMeetingMinutes(
   );
 }
 
+export type PrintableStatement = {
+  donorName: string;
+  address: string | null;
+  envelopeNumber: string | null;
+  start: string;
+  end: string;
+  contributions: {
+    contributionDate: string;
+    fundName: string;
+    methodLabel: string;
+    checkNumber: string | null;
+    amountLabel: string;
+  }[];
+  fundTotals: { fundName: string; amountLabel: string }[];
+  totalLabel: string;
+};
+
+export function printGivingStatement(s: PrintableStatement): boolean {
+  const sections: string[] = [];
+
+  sections.push(`<header class="doc-header">
+    <div class="org">Kingsville Baptist Church</div>
+    <h1>Statement of Giving</h1>
+    <p class="subtitle">${escapeHtml(formatDate(s.start))} &ndash; ${escapeHtml(formatDate(s.end))}</p>
+  </header>`);
+
+  sections.push(`<table class="meta-table">
+    <tr><td class="label">Donor</td><td>${escapeHtml(s.donorName)}</td></tr>
+    ${s.envelopeNumber ? `<tr><td class="label">Envelope #</td><td>${escapeHtml(s.envelopeNumber)}</td></tr>` : ""}
+    ${s.address ? `<tr><td class="label">Address</td><td>${multiline(s.address)}</td></tr>` : ""}
+    <tr><td class="label">Period</td><td>${escapeHtml(formatDate(s.start))} through ${escapeHtml(formatDate(s.end))}</td></tr>
+  </table>`);
+
+  sections.push(`<h2 class="section">Contributions</h2>
+  ${
+    s.contributions.length
+      ? `<table class="log">
+      <thead>
+        <tr>
+          <th style="width: 110px;">Date</th>
+          <th>Fund</th>
+          <th style="width: 100px;">Method</th>
+          <th style="width: 90px;">Check #</th>
+          <th style="width: 100px; text-align: right;">Amount</th>
+        </tr>
+      </thead>
+      <tbody>
+        ${s.contributions
+          .map(
+            (c) => `<tr>
+              <td>${escapeHtml(formatDate(c.contributionDate))}</td>
+              <td>${escapeHtml(c.fundName)}</td>
+              <td>${escapeHtml(c.methodLabel)}</td>
+              <td>${c.checkNumber ? escapeHtml(c.checkNumber) : "—"}</td>
+              <td style="text-align: right;">${escapeHtml(c.amountLabel)}</td>
+            </tr>`,
+          )
+          .join("")}
+      </tbody>
+    </table>`
+      : '<p class="empty">No contributions were recorded during this period.</p>'
+  }`);
+
+  sections.push(`<h2 class="section">Totals by Fund</h2>
+  <table class="log">
+    <tbody>
+      ${s.fundTotals
+        .map(
+          (f) => `<tr>
+            <td>${escapeHtml(f.fundName)}</td>
+            <td style="text-align: right; width: 120px;">${escapeHtml(f.amountLabel)}</td>
+          </tr>`,
+        )
+        .join("")}
+      <tr>
+        <td style="font-weight: bold;">Total Contributions</td>
+        <td style="text-align: right; font-weight: bold;">${escapeHtml(s.totalLabel)}</td>
+      </tr>
+    </tbody>
+  </table>`);
+
+  sections.push(`<p style="margin-top: 28px; font-size: 12px; color: #555;">
+    This statement is provided for tax purposes. No goods or services were provided in exchange for these
+    contributions other than intangible religious benefits. Please retain this statement for your records.
+  </p>`);
+
+  sections.push(`<div class="signature-block">
+    <div class="line"><div class="rule"></div><div class="caption">Treasurer / Financial Secretary</div></div>
+    <div class="line"><div class="rule"></div><div class="caption">Date</div></div>
+  </div>`);
+
+  sections.push(docFooter());
+
+  return openPrintWindow(
+    `Giving Statement — ${s.donorName} — ${formatDate(s.start)} to ${formatDate(s.end)}`,
+    sections.join("\n"),
+  );
+}
+
 export type PrintableDecisionRow = {
   decisionDate: string | null;
   decision: string;

@@ -22,6 +22,11 @@ import type {
   MonthlyCloseItem,
   CategoryType,
   TransactionType,
+  GivingFund,
+  Donor,
+  ContributionBatch,
+  Contribution,
+  ContributionMethod,
 } from "@shared/schema";
 
 export class ApiError extends Error {
@@ -468,6 +473,60 @@ export const api = {
   // finance: reports
   getFinanceSummary: (year?: number) =>
     request<FinanceSummary>("GET", `/api/finance/reports/summary${year ? `?year=${year}` : ""}`),
+
+  // giving: funds
+  getGivingFunds: () => request<{ funds: GivingFund[] }>("GET", "/api/giving/funds"),
+  createGivingFund: (data: { name: string; description?: string; isActive?: boolean; sortOrder?: number }) =>
+    request<{ fund: GivingFund }>("POST", "/api/giving/funds", data),
+  updateGivingFund: (id: number, data: Partial<{ name: string; description: string; isActive: boolean; sortOrder: number }>) =>
+    request<{ fund: GivingFund }>("PATCH", `/api/giving/funds/${id}`, data),
+
+  // giving: donors
+  getDonors: (params?: { search?: string; activeOnly?: boolean }) => {
+    const qs = new URLSearchParams();
+    if (params?.search) qs.set("search", params.search);
+    if (params?.activeOnly) qs.set("active", "1");
+    const suffix = qs.toString() ? `?${qs.toString()}` : "";
+    return request<{ donors: DonorRow[] }>("GET", `/api/giving/donors${suffix}`);
+  },
+  getDonor: (id: number) => request<DonorDetail>("GET", `/api/giving/donors/${id}`),
+  createDonor: (data: DonorInput) => request<{ donor: Donor }>("POST", "/api/giving/donors", data),
+  updateDonor: (id: number, data: Partial<DonorInput>) =>
+    request<{ donor: Donor }>("PATCH", `/api/giving/donors/${id}`, data),
+  deleteDonor: (id: number) => request<{ message: string }>("DELETE", `/api/giving/donors/${id}`),
+  mergeDonor: (id: number, intoDonorId: number) =>
+    request<{ message: string }>("POST", `/api/giving/donors/${id}/merge`, { intoDonorId }),
+  getDonorStatement: (id: number, start: string, end: string) =>
+    request<DonorStatement>("GET", `/api/giving/donors/${id}/statement?start=${start}&end=${end}`),
+
+  // giving: batches & contributions
+  getGivingBatches: () => request<{ batches: GivingBatchRow[] }>("GET", "/api/giving/batches"),
+  getGivingBatch: (id: number) => request<GivingBatchDetail>("GET", `/api/giving/batches/${id}`),
+  createGivingBatch: (data: GivingBatchInput) =>
+    request<{ batch: ContributionBatch }>("POST", "/api/giving/batches", data),
+  updateGivingBatch: (id: number, data: Partial<GivingBatchInput>) =>
+    request<{ batch: ContributionBatch }>("PATCH", `/api/giving/batches/${id}`, data),
+  deleteGivingBatch: (id: number) => request<{ message: string }>("DELETE", `/api/giving/batches/${id}`),
+  closeGivingBatch: (id: number, allowMismatch = false) =>
+    request<{ batch: ContributionBatch }>("POST", `/api/giving/batches/${id}/close`, { allowMismatch }),
+  reopenGivingBatch: (id: number) =>
+    request<{ batch: ContributionBatch }>("POST", `/api/giving/batches/${id}/reopen`),
+  createContribution: (batchId: number, data: ContributionInput) =>
+    request<{ contribution: Contribution }>("POST", `/api/giving/batches/${batchId}/contributions`, data),
+  updateContribution: (id: number, data: ContributionInput) =>
+    request<{ contribution: Contribution }>("PATCH", `/api/giving/contributions/${id}`, data),
+  deleteContribution: (id: number) =>
+    request<{ message: string }>("DELETE", `/api/giving/contributions/${id}`),
+
+  // giving: fund summary (aggregates only)
+  getFundSummary: (params?: { year?: number; start?: string; end?: string }) => {
+    const qs = new URLSearchParams();
+    if (params?.year) qs.set("year", String(params.year));
+    if (params?.start) qs.set("start", params.start);
+    if (params?.end) qs.set("end", params.end);
+    const suffix = qs.toString() ? `?${qs.toString()}` : "";
+    return request<FundSummary>("GET", `/api/giving/reports/funds${suffix}`);
+  },
 };
 
 export interface OfferingCountInput {
@@ -519,4 +578,95 @@ export interface FinanceSummary {
   byCategory: { categoryId: number; categoryName: string; type: string; totalCents: number }[];
   ytd: { incomeCents: number; expenseCents: number };
   prior: { incomeCents: number; expenseCents: number };
+}
+
+// ---------- Giving types ----------
+
+export interface DonorInput {
+  firstName: string;
+  lastName: string;
+  email?: string;
+  phone?: string;
+  address?: string;
+  envelopeNumber?: string;
+  memberId?: number | null;
+  notes?: string;
+  isActive?: boolean;
+}
+
+export type DonorRow = Donor & {
+  memberName: string | null;
+  totalCents: number;
+  contributionCount: number;
+  lastContributionDate: string | null;
+};
+
+export type ContributionRow = Contribution & {
+  fundName: string;
+  batchDate: string;
+  batchStatus: string;
+};
+
+export interface DonorDetail {
+  donor: Donor & { memberName: string | null };
+  contributions: ContributionRow[];
+  byYear: { year: number; totalCents: number; count: number }[];
+}
+
+export interface DonorStatement {
+  donor: Donor;
+  start: string;
+  end: string;
+  contributions: (Contribution & { fundName: string })[];
+  fundTotals: { fundName: string; totalCents: number }[];
+  totalCents: number;
+}
+
+export interface GivingBatchInput {
+  batchDate: string;
+  description?: string;
+  offeringCountId?: number | null;
+  notes?: string;
+}
+
+export type GivingBatchRow = ContributionBatch & {
+  enteredByName: string | null;
+  totalCents: number;
+  contributionCount: number;
+  countTotalCents: number | null;
+  countDate: string | null;
+};
+
+export interface ContributionInput {
+  donorId: number;
+  fundId: number;
+  contributionDate?: string;
+  amountCents: number;
+  method: ContributionMethod;
+  checkNumber?: string;
+  note?: string;
+}
+
+export type BatchContributionRow = Contribution & {
+  donorName: string;
+  fundName: string;
+};
+
+export interface GivingBatchDetail {
+  batch: GivingBatchRow;
+  contributions: BatchContributionRow[];
+}
+
+export interface FundSummary {
+  start: string;
+  end: string;
+  byFund: {
+    fundId: number;
+    fundName: string;
+    totalCents: number;
+    contributionCount: number;
+    donorCount: number;
+  }[];
+  monthly: { month: string; fundId: number; totalCents: number }[];
+  totalCents: number;
 }
