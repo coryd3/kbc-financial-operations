@@ -1,5 +1,5 @@
 import type { Express, Request, Response } from "express";
-import { and, asc, desc, eq, inArray, isNull, sql } from "drizzle-orm";
+import { and, asc, desc, eq, inArray, isNull, or, sql } from "drizzle-orm";
 import { db } from "./db.ts";
 import {
   users,
@@ -12,20 +12,20 @@ import {
   ROLE_LABELS,
   type ChecklistTemplate,
   type Recurrence,
-  type User,
+  type AuthenticatedUser,
 } from "../shared/schema.ts";
-import { requireAuth, requireRole } from "./auth.ts";
+import { hasRole, requireAuth, requireRole } from "./auth.ts";
 import { toCsv, sendCsv } from "./csv.ts";
 import { ensureReminders } from "./notifications.ts";
 
 const requireChecklistManager = requireRole(...CHECKLIST_MANAGER_ROLES);
 
-function getUser(req: Request): User {
-  return (req as any).user as User;
+function getUser(req: Request): AuthenticatedUser {
+  return (req as any).user as AuthenticatedUser;
 }
 
-function isManager(user: User): boolean {
-  return CHECKLIST_MANAGER_ROLES.includes(user.role);
+function isManager(user: AuthenticatedUser): boolean {
+  return hasRole(user, ...CHECKLIST_MANAGER_ROLES);
 }
 
 // ---------- Period helpers ----------
@@ -536,7 +536,7 @@ export function registerChecklistRoutes(app: Express) {
       .where(eq(checklistInstanceSteps.id, id));
     if (!step) return res.status(404).json({ message: "Step not found" });
     if (step.completedAt) return res.status(400).json({ message: "Step is already completed" });
-    if (step.assignedRole && step.assignedRole !== user.role && !isManager(user)) {
+    if (step.assignedRole && !user.roles.includes(step.assignedRole) && !isManager(user)) {
       return res.status(403).json({ message: "This step is assigned to a different role" });
     }
     await db
@@ -609,7 +609,7 @@ export function registerChecklistRoutes(app: Express) {
           isNull(checklistInstanceSteps.completedAt),
           isManager(user)
             ? undefined
-            : sql`(${checklistInstanceSteps.assignedRole} = ${user.role} OR ${checklistInstanceSteps.assignedRole} IS NULL)`,
+            : or(inArray(checklistInstanceSteps.assignedRole, user.roles), isNull(checklistInstanceSteps.assignedRole)),
         ),
       )
       .orderBy(asc(checklistInstances.dueDate), asc(checklistInstances.id), asc(checklistInstanceSteps.position));
@@ -644,7 +644,7 @@ export function registerChecklistRoutes(app: Express) {
           isNull(checklistInstanceSteps.completedAt),
           isManager(user)
             ? undefined
-            : sql`(${checklistInstanceSteps.assignedRole} = ${user.role} OR ${checklistInstanceSteps.assignedRole} IS NULL)`,
+            : or(inArray(checklistInstanceSteps.assignedRole, user.roles), isNull(checklistInstanceSteps.assignedRole)),
         ),
       );
 

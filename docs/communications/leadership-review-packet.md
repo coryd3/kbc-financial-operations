@@ -12,6 +12,9 @@ The recommended direction is to clarify responsibilities while moving toward imp
 
 No final recommendation should be treated as approved until the proper committee, bylaw, leadership, and church approval steps are complete.
 
+!!! note "Congregation Final Authority"
+    The congregation remains the final authority where KBC bylaws, budget, policy, officer election, major non-budgeted spending, or church practice require a vote.
+
 ## 2. Current Situation
 
 - The Treasurer position is in transition.
@@ -44,7 +47,7 @@ This should be framed as a maturity and stewardship issue, not a person failure.
 | Finance Committee | Owner of financial controls, software selection, reimbursement policy, spending authority, card/payment policy, budget oversight, monthly review, audit/review process, outside-budget spending recommendations, and the budget adjustment assigned by the June 28 motion. |
 | Personnel Committee | Owner of job description, application, hiring process, references/background checks, compensation recommendation, and evaluation process for the authorized paid Bookkeeper role; authorized to hire the right candidate. |
 | Nominating Committee | Works with Personnel Committee to add the Bookkeeper position as named in the June 28 motion; involved where bylaws assign responsibility for elected officer recommendations. |
-| Pastor and Deacons | Provide leadership review, communication support, counsel, and review where church practice requires. |
+| Pastor and Deacons | Provide leadership review, communication support, counsel, and review where church practice requires; Deacons may raise concerns and recommend issues back to committees or the congregation through proper process, but should not become a unilateral financial authority. |
 | Congregation | Authorized the paid, part-time Bookkeeper position on June 28, 2026, with a limit of `$150` per week; votes later where bylaws, budget, compensation beyond prior authorization, software contracts, policy changes, or church practice require. |
 
 ## 5. Treasurer vs. Bookkeeper Distinction
@@ -87,6 +90,8 @@ The responsibility matrix points toward this leadership pattern:
 
 The most important boundary is this: Personnel Committee should not make Finance Committee decisions about software, reimbursement, spending authority, card policy, monthly financial review, or audit/review process. Personnel can prepare role materials, but Finance should define the financial duties, controls, budget impact, and review expectations.
 
+Another important boundary is that Deacon counsel should help keep the process faithful, orderly, and unified, but it should not replace Finance Committee ownership, Personnel Committee ownership, bylaw requirements, or congregational approval where a vote is required.
+
 ## 7. Decisions Needed From Personnel Committee
 
 Personnel Committee needs to decide or recommend:
@@ -115,6 +120,7 @@ Finance Committee needs to decide or recommend:
 - What audit/review process is appropriate.
 - Whether payroll or accounting work should be supported by an outside vendor.
 - What budget impact should be recommended for software, bookkeeping support, or outside services.
+- What annual budget and major non-budgeted spending approval path should be documented so congregational authority remains clear.
 
 ## 9. Decisions Likely Requiring Church Approval
 
@@ -123,6 +129,7 @@ These items may require church approval depending on bylaws, budget, and church 
 - Election or confirmation of a Treasurer / Financial Officer.
 - Bookkeeper compensation, hours, or budget impact beyond the June 28, 2026 authorization.
 - Budget changes needed for software, payroll/accounting vendor, or staffing.
+- Annual budget approval and major non-budgeted expenses where bylaws, amount, policy, or church practice require a vote.
 - Software contracts or recurring financial commitments above church-approved thresholds.
 - Spending authority or policy changes that affect church approval rights.
 - Major purchases, debt, or long-term commitments.
@@ -143,6 +150,7 @@ Goal: Stabilize the transition and clarify ownership.
 - Review the responsibility matrix.
 - Have Personnel Committee review role, application, and hiring process materials.
 - Have Finance Committee review financial decision areas.
+- Begin practical Bookkeeper candidate outreach, bulletin/announcement preparation, and application-window planning after Personnel confirms the process.
 - Identify which items need bylaw review, Deacon review, or church vote.
 
 ### 60 Days

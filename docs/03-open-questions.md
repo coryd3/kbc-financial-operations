@@ -18,9 +18,12 @@ Status: Draft
 - What financial software should KBC use going forward?
 - What reimbursement process should be adopted?
 - What spending authority thresholds should apply?
+- What annual budget approval process should be documented so the congregation remains clearly involved where required?
+- What threshold or type of major non-budgeted expense should require congregational approval?
 - Should shared debit cards be replaced with individual church credit cards or another controlled payment method?
 - What should be included in the monthly financial review packet?
 - What audit, review, or outside accounting support is needed?
+- How should confidential committee spending, including Benevolence, be reviewed without exposing private details?
 
 ## Nominating Committee
 
@@ -31,6 +34,7 @@ Status: Draft
 
 - What leadership review or counsel should Deacons provide before recommendations go to the church?
 - How should this transition be communicated to avoid alarm or blame?
+- How can Deacons raise concerns or recommend matters back to committees or the congregation without becoming a unilateral financial authority?
 
 ## Pastor
 
@@ -40,8 +44,17 @@ Status: Draft
 ## Congregation
 
 - Which decisions require a church vote?
+- How should annual budget approval and major non-budgeted expenses be handled so congregational authority remains clear?
 - Does any proposed Bookkeeper compensation, hours, budget impact, or classification exceed the June 28, 2026 authorization of a paid, part-time Bookkeeper position not to exceed `$150` per week, described as `$18.75` per hour for approximately 8 hours?
 - Do any policies require adoption at a business meeting?
+
+## Future Governance Expansion / Parking Lot
+
+- What written guidance is needed for Benevolence Committee spending authority, documentation, and reporting?
+- How can Benevolence confidentiality be protected while still avoiding secrecy or lack of financial oversight?
+- What other committees or ministries currently spend money, recommend projects, manage designated funds, or create recurring commitments?
+- Should the organization chart and responsibility matrix eventually include additional committees beyond Finance, Personnel, and Nominating?
+- Which future governance questions should wait until the immediate Bookkeeper hiring and Treasurer transition work is stable?
 
 ## Professional Review
 

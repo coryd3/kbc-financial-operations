@@ -4,6 +4,9 @@ Status: Reference
 
 This page gives leaders a single place to find the current KBC Constitution, Bylaws, and Covenant reference while reviewing financial operations documents.
 
+!!! note "Congregation Final Authority"
+    Use the Constitution and Bylaws to confirm when the congregation must approve budgets, officers, policies, major non-budgeted spending, contracts, role changes, or other church decisions. Committee recommendations should not be treated as final when church approval is required.
+
 ## Primary Reference
 
 [Open KBC Constitution, Bylaws, and Covenant 2018 PDF](../generated/source-materials/bylaws/Constitution-Bylaws-and-Covenant-2018.pdf){ target="_blank" rel="noopener" }
@@ -34,6 +37,9 @@ These are the main areas in the current project that should be checked against t
 | Nonministerial staff | The Bookkeeper / Financial Administrator role should fit the existing authority for nonministerial staff and the June 28, 2026 congregational motion. | [Bookkeeper Job Description](../roles/bookkeeper-financial-administrator-job-description.md), [Bookkeeper Hiring Process](../roles/bookkeeper-hiring-process.md) |
 | Personnel Committee authority | Personnel Committee responsibilities for employment matters, salaries, benefits, policies, and job descriptions should be confirmed. | [Personnel Committee Role](personnel-committee-role.md), [Personnel Committee Packet](../communications/personnel-committee-packet.md) |
 | Finance / stewardship responsibilities | Budget preparation, approval, funds handling, reporting, and accounting procedures may affect Finance Committee recommendations. | [Finance Committee Charter](finance-committee-charter.md), [Monthly Financial Review Policy](../policies/monthly-financial-review-policy.md) |
+| Annual budget and major non-budgeted expenses | Congregational authority should remain clear where the annual budget, major projects, or large outside-budget spending require a vote. | [Spending Authority Policy](../policies/spending-authority-policy.md), [Responsibility Matrix](responsibility-matrix.md) |
+| Deacon counsel and escalation | Deacons may have a meaningful review or counsel role, but final authority and committee lanes should be confirmed before assigning decision power. | [Church Organization Chart](church-organization-chart.md), [Future Governance Expansion](future-governance-expansion.md) |
+| Benevolence and other committee spending | Confidential care and committee spending may need future review to balance privacy, oversight, reporting, and approval authority. | [Future Governance Expansion](future-governance-expansion.md), [Open Questions](../03-open-questions.md) |
 | Annual audit or review | Treasurer and Finance Committee responsibilities should align with any bylaw language about annual audit or account review. | [Audit and Review Policy](../policies/audit-and-review-policy.md), [Monthly Finance Committee Checklist](../procedures/monthly-finance-committee-meeting-checklist.md) |
 
 ## Practical Review Questions
@@ -44,6 +50,8 @@ These are the main areas in the current project that should be checked against t
 4. What exact bylaw language controls Personnel Committee responsibility for job descriptions, salaries, benefits, policies, and employment matters?
 5. What exact bylaw language controls budget approval, accounting procedures, funds handling, and annual audit or review?
 6. Which financial operations decisions can be made by committee, and which must come back to the congregation?
+7. What bylaw or church-practice language applies to annual budget approval and major non-budgeted expenses?
+8. What role, if any, do Deacons have in raising concerns, reviewing recommendations, or bringing unresolved items to the congregation?
 
 ## Review Note
 

@@ -1,12 +1,12 @@
 import { useEffect, useId, useRef, useState } from "react";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
+import rehypeSlug from "rehype-slug";
 import { Link } from "wouter";
-import { ExternalLink } from "lucide-react";
-import { DOCS_PAGES } from "@shared/docsNav";
+import { ExternalLink, Maximize2, X, ZoomIn, ZoomOut } from "lucide-react";
 
 /** Resolve a markdown link like "../policies/foo.md" against the current page slug. */
-function resolveDocLink(href: string, currentSlug: string): string | null {
+function resolveDocLink(href: string, currentSlug: string, validSlugs: Set<string>): string | null {
   const [rawPath, hash] = href.split("#");
   if (!rawPath.endsWith(".md")) return null;
   const baseDir = currentSlug.includes("/") ? currentSlug.slice(0, currentSlug.lastIndexOf("/")) : "";
@@ -18,7 +18,7 @@ function resolveDocLink(href: string, currentSlug: string): string | null {
     else resolved.push(part);
   }
   const slug = resolved.join("/").replace(/\.md$/, "");
-  if (!DOCS_PAGES.some((p) => p.slug === slug)) return null;
+  if (!validSlugs.has(slug)) return null;
   return `/docs/${slug}${hash ? `#${hash}` : ""}`;
 }
 
@@ -26,15 +26,18 @@ function MermaidDiagram({ code }: { code: string }) {
   const id = useId().replace(/[^a-zA-Z0-9]/g, "");
   const ref = useRef<HTMLDivElement>(null);
   const [error, setError] = useState(false);
+  const [svg, setSvg] = useState("");
+  const [expanded, setExpanded] = useState(false);
+  const [zoom, setZoom] = useState(1);
 
   useEffect(() => {
     let cancelled = false;
     (async () => {
       try {
         const mermaid = (await import("mermaid")).default;
-        mermaid.initialize({ startOnLoad: false, theme: "neutral", securityLevel: "loose" });
-        const { svg } = await mermaid.render(`mmd${id}`, code);
-        if (!cancelled && ref.current) ref.current.innerHTML = svg;
+        mermaid.initialize({ startOnLoad: false, theme: "neutral", securityLevel: "strict" });
+        const rendered = await mermaid.render(`mmd${id}`, code);
+        if (!cancelled) setSvg(rendered.svg);
       } catch {
         if (!cancelled) setError(true);
       }
@@ -44,6 +47,19 @@ function MermaidDiagram({ code }: { code: string }) {
     };
   }, [code, id]);
 
+  useEffect(() => {
+    if (ref.current) ref.current.innerHTML = svg;
+  }, [svg]);
+
+  useEffect(() => {
+    if (!expanded) return;
+    const close = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setExpanded(false);
+    };
+    window.addEventListener("keydown", close);
+    return () => window.removeEventListener("keydown", close);
+  }, [expanded]);
+
   if (error) {
     return (
       <pre className="bg-muted/50 border border-border rounded-md p-4 text-xs overflow-x-auto">
@@ -51,26 +67,76 @@ function MermaidDiagram({ code }: { code: string }) {
       </pre>
     );
   }
-  return <div ref={ref} className="my-6 overflow-x-auto flex justify-center [&_svg]:max-w-full" />;
+  return (
+    <>
+      <button
+        type="button"
+        onClick={() => setExpanded(true)}
+        className="group relative my-6 block w-full overflow-x-auto rounded-md border border-border bg-background p-3 focus:outline-none focus:ring-2 focus:ring-primary"
+        aria-label="Enlarge diagram"
+      >
+        <span ref={ref} className="flex justify-center [&_svg]:max-w-full" />
+        <span className="absolute right-2 top-2 rounded bg-background/95 p-1.5 text-primary shadow-sm opacity-80 group-hover:opacity-100">
+          <Maximize2 className="h-4 w-4" />
+        </span>
+      </button>
+      {expanded && (
+        <div
+          role="dialog"
+          aria-modal="true"
+          aria-label="Enlarged diagram"
+          className="fixed inset-0 z-50 flex flex-col bg-background/95 p-3 sm:p-6"
+        >
+          <div className="mb-3 flex justify-end gap-2">
+            <button className="rounded border p-2" onClick={() => setZoom((value) => Math.max(0.5, value - 0.25))} aria-label="Zoom out">
+              <ZoomOut className="h-5 w-5" />
+            </button>
+            <button className="rounded border p-2" onClick={() => setZoom((value) => Math.min(3, value + 0.25))} aria-label="Zoom in">
+              <ZoomIn className="h-5 w-5" />
+            </button>
+            <button className="rounded border p-2" onClick={() => setExpanded(false)} aria-label="Close diagram">
+              <X className="h-5 w-5" />
+            </button>
+          </div>
+          <div className="flex-1 overflow-auto rounded-md border bg-white p-6">
+            <div
+              className="mx-auto min-w-max origin-top-left [&_svg]:max-w-none"
+              style={{ transform: `scale(${zoom})` }}
+              dangerouslySetInnerHTML={{ __html: svg }}
+            />
+          </div>
+        </div>
+      )}
+    </>
+  );
 }
 
-export function DocsMarkdown({ markdown, currentSlug }: { markdown: string; currentSlug: string }) {
+export function DocsMarkdown({
+  markdown,
+  currentSlug,
+  validSlugs,
+}: {
+  markdown: string;
+  currentSlug: string;
+  validSlugs: Set<string>;
+}) {
   return (
     <div className="docs-prose">
       <ReactMarkdown
         remarkPlugins={[remarkGfm]}
+        rehypePlugins={[rehypeSlug]}
         components={{
-          h1: ({ children }) => (
-            <h1 className="font-serif text-3xl font-bold text-primary mt-2 mb-4 pb-3 border-b border-border">{children}</h1>
+          h1: ({ children, ...props }) => (
+            <h1 {...props} className="font-serif text-3xl font-bold text-primary mt-2 mb-4 pb-3 border-b border-border">{children}</h1>
           ),
-          h2: ({ children }) => (
-            <h2 className="font-serif text-2xl font-semibold text-primary mt-10 mb-3">{children}</h2>
+          h2: ({ children, ...props }) => (
+            <h2 {...props} className="font-serif text-2xl font-semibold text-primary mt-10 mb-3">{children}</h2>
           ),
-          h3: ({ children }) => (
-            <h3 className="font-serif text-xl font-semibold text-foreground mt-8 mb-2">{children}</h3>
+          h3: ({ children, ...props }) => (
+            <h3 {...props} className="font-serif text-xl font-semibold text-foreground mt-8 mb-2">{children}</h3>
           ),
-          h4: ({ children }) => (
-            <h4 className="text-base font-semibold text-foreground mt-6 mb-2">{children}</h4>
+          h4: ({ children, ...props }) => (
+            <h4 {...props} className="text-base font-semibold text-foreground mt-6 mb-2">{children}</h4>
           ),
           p: ({ children }) => <p className="leading-7 text-foreground/90 my-4">{children}</p>,
           ul: ({ children }) => <ul className="list-disc pl-6 my-4 space-y-1.5 text-foreground/90">{children}</ul>,
@@ -114,7 +180,7 @@ export function DocsMarkdown({ markdown, currentSlug }: { markdown: string; curr
             if (h.startsWith("#")) {
               return <a href={h} className="text-primary underline underline-offset-2 hover:text-accent">{children}</a>;
             }
-            const internal = resolveDocLink(h, currentSlug);
+            const internal = resolveDocLink(h, currentSlug, validSlugs);
             if (internal) {
               return (
                 <Link href={internal} className="text-primary underline underline-offset-2 hover:text-accent">

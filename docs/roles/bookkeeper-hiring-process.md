@@ -31,9 +31,20 @@ Target Hire Date: ____________________
 - [ ] Confirm expected weekly hours and compensation fit within the authorized limit of `$150` per week, described as `$18.75` per hour for approximately 8 hours.
 - [ ] Confirm employment classification and onboarding requirements.
 - [ ] Confirm who will supervise the role day to day.
+- [ ] Mark the final supervision and financial-review path as needing committee confirmation before hiring is finalized.
 - [ ] Confirm how Personnel Committee and Nominating Committee should coordinate under the motion.
 - [ ] Ask Finance Committee to confirm financial duties, access, controls, reporting expectations, and software responsibilities.
 - [ ] Finalize job description, application, and hiring process materials.
+
+### Phase 1A: Candidate Outreach And Application Window
+
+- [ ] Contact the three known interested candidates and invite them to complete the approved application process.
+- [ ] Prepare a short bulletin or announcement request for additional candidates.
+- [ ] Confirm who should submit the bulletin or announcement request and by what deadline.
+- [ ] Define the application collection period: start date, end date, and how late applications will be handled.
+- [ ] Confirm where applications will be received and securely stored.
+- [ ] Tell interested people that KBC is authorized for one paid Bookkeeper role unless additional approval is granted.
+- [ ] Consider whether other interested people may serve through Finance Committee involvement, controlled volunteer helper roles, or future support roles after confidentiality, access, and financial controls are approved.
 
 ### Phase 2: Receive And Review Applications
 
@@ -68,6 +79,7 @@ Target Hire Date: ____________________
 - [ ] Document the decision and reason.
 - [ ] Contact the selected candidate.
 - [ ] Contact other candidates respectfully after the decision is final.
+- [ ] Invite candidates who are not selected, if appropriate, to consider other approved service opportunities only after the proper committee confirms the role, access level, and confidentiality requirements.
 
 ### Phase 6: Onboard And Support
 

@@ -7,7 +7,8 @@ import { Button, Card, CardContent, CardHeader, CardTitle, Input, Label } from "
 import { formatCents, parseDollars } from "../../lib/money";
 import { CONTRIBUTION_METHODS, CONTRIBUTION_METHOD_LABELS, type ContributionMethod } from "@shared/schema";
 import { format } from "date-fns";
-import { ArrowLeft, Lock, Trash2, Pencil, AlertTriangle, CheckCircle2 } from "lucide-react";
+import { ArrowLeft, Lock, Trash2, Pencil, AlertTriangle, CheckCircle2, RotateCcw, X } from "lucide-react";
+import { useAuth } from "../../lib/auth";
 
 function fmtDate(d: string) {
   return format(new Date(d + "T00:00:00"), "MMM d, yyyy");
@@ -28,10 +29,25 @@ export default function FinanceGivingBatch() {
   const id = Number(params.id);
   const [, setLocation] = useLocation();
   const queryClient = useQueryClient();
+  const { user } = useAuth();
+  const roles = user?.roles ?? (user ? [user.role] : []);
+  const canApprove = roles.includes("treasurer");
+  const canPrepare = roles.includes("bookkeeper");
 
   const [entry, setEntry] = useState({ ...emptyEntry });
   const [editingId, setEditingId] = useState<number | null>(null);
   const [error, setError] = useState<string | null>(null);
+  const [externalLedgerReference, setExternalLedgerReference] = useState("");
+  const [mismatchOverrideReason, setMismatchOverrideReason] = useState("");
+  const [adjustment, setAdjustment] = useState<null | {
+    id: number;
+    donorName: string;
+    fundId: number;
+    amount: string;
+    date: string;
+    reason: string;
+    externalLedgerReference: string;
+  }>(null);
   const [mismatch, setMismatch] = useState<{
     varianceCents: number | null;
     batchTotalCents: number | null;
@@ -78,7 +94,11 @@ export default function FinanceGivingBatch() {
   });
 
   const closeMutation = useMutation({
-    mutationFn: (allowMismatch: boolean) => api.closeGivingBatch(id, allowMismatch),
+    mutationFn: (allowMismatch: boolean) => api.closeGivingBatch(id, {
+      allowMismatch,
+      externalLedgerReference,
+      mismatchOverrideReason: allowMismatch ? mismatchOverrideReason : undefined,
+    }),
     onSuccess: () => {
       invalidate();
       setMismatch(null);
@@ -99,12 +119,6 @@ export default function FinanceGivingBatch() {
     },
   });
 
-  const reopenMutation = useMutation({
-    mutationFn: () => api.reopenGivingBatch(id),
-    onSuccess: () => invalidate(),
-    onError: (e) => setError(e instanceof ApiError ? e.message : "Something went wrong"),
-  });
-
   const deleteBatchMutation = useMutation({
     mutationFn: () => api.deleteGivingBatch(id),
     onSuccess: () => {
@@ -112,6 +126,26 @@ export default function FinanceGivingBatch() {
       setLocation("/finance/giving");
     },
     onError: (e) => setError(e instanceof ApiError ? e.message : "Something went wrong"),
+  });
+
+  const adjustmentMutation = useMutation({
+    mutationFn: (value: NonNullable<typeof adjustment>) => {
+      const replacementAmountCents = parseDollars(value.amount);
+      if (!replacementAmountCents || replacementAmountCents <= 0) throw new Error("Enter a valid replacement amount");
+      return api.adjustContribution(value.id, {
+        replacementFundId: value.fundId,
+        replacementAmountCents,
+        replacementDate: value.date,
+        reason: value.reason,
+        externalLedgerReference: value.externalLedgerReference,
+      });
+    },
+    onSuccess: (result) => {
+      queryClient.invalidateQueries({ queryKey: ["givingBatches"] });
+      setAdjustment(null);
+      setLocation(`/finance/giving/${result.batch.id}`);
+    },
+    onError: (cause) => setError(cause instanceof Error ? cause.message : "Unable to create adjustment"),
   });
 
   if (isLoading || !data) {
@@ -124,6 +158,7 @@ export default function FinanceGivingBatch() {
 
   const { batch, contributions } = data;
   const isOpen = batch.status === "open";
+  const canEdit = isOpen && canPrepare;
   const variance = batch.countTotalCents != null ? batch.totalCents - batch.countTotalCents : null;
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -179,7 +214,7 @@ export default function FinanceGivingBatch() {
         <div className="flex items-center gap-2">
           {isOpen ? (
             <>
-              {contributions.length === 0 && (
+              {canPrepare && contributions.length === 0 && (
                 <Button
                   size="sm"
                   variant="destructive"
@@ -191,17 +226,30 @@ export default function FinanceGivingBatch() {
                   Delete Batch
                 </Button>
               )}
-              <Button size="sm" onClick={() => closeMutation.mutate(false)} disabled={closeMutation.isPending}>
-                <Lock className="w-4 h-4 mr-1.5" /> Close Batch
-              </Button>
+              {canApprove && (
+                <Button size="sm" onClick={() => closeMutation.mutate(false)} disabled={closeMutation.isPending || !externalLedgerReference.trim()}>
+                  <Lock className="w-4 h-4 mr-1.5" /> Approve and Close
+                </Button>
+              )}
             </>
           ) : (
-            <Button size="sm" variant="outline" onClick={() => reopenMutation.mutate()} disabled={reopenMutation.isPending}>
-              Reopen Batch
-            </Button>
+            <span className="text-sm text-muted-foreground">Closed records are corrected through an adjustment.</span>
           )}
         </div>
       </div>
+
+      {isOpen && canApprove && (
+        <div className="mb-4 max-w-xl space-y-1.5 rounded-md border border-border bg-muted/30 p-4">
+          <Label htmlFor="external-ledger-reference">External ledger reference</Label>
+          <Input
+            id="external-ledger-reference"
+            value={externalLedgerReference}
+            onChange={(event) => setExternalLedgerReference(event.target.value)}
+            placeholder="Deposit, journal, or accounting-system reference"
+          />
+          <p className="text-xs text-muted-foreground">Required before Treasurer approval. The external accounting system remains the official ledger.</p>
+        </div>
+      )}
 
       <div className="grid sm:grid-cols-3 gap-4 mb-6">
         <Card>
@@ -284,17 +332,21 @@ export default function FinanceGivingBatch() {
                 variant="destructive"
                 className="mt-3"
                 onClick={() => closeMutation.mutate(true)}
-                disabled={closeMutation.isPending}
+                disabled={closeMutation.isPending || !mismatchOverrideReason.trim() || !externalLedgerReference.trim()}
               >
                 Close anyway with the discrepancy noted
               </Button>
+              <div className="mt-3 max-w-xl space-y-1.5">
+                <Label htmlFor="mismatch-reason">Written reason for the mismatch override</Label>
+                <Input id="mismatch-reason" value={mismatchOverrideReason} onChange={(event) => setMismatchOverrideReason(event.target.value)} />
+              </div>
             </>
           )}
         </div>
       )}
 
       <div className="grid lg:grid-cols-5 gap-8">
-        {isOpen && (
+        {canEdit && (
           <Card className="lg:col-span-2 h-max">
             <CardHeader>
               <CardTitle className="text-xl">{editingId ? `Edit Contribution #${editingId}` : "Add Contribution"}</CardTitle>
@@ -418,7 +470,7 @@ export default function FinanceGivingBatch() {
           </Card>
         )}
 
-        <div className={isOpen ? "lg:col-span-3" : "lg:col-span-5"}>
+        <div className={canEdit ? "lg:col-span-3" : "lg:col-span-5"}>
           {contributions.length ? (
             <div className="border border-border rounded-lg overflow-hidden">
               <table className="w-full text-sm">
@@ -429,7 +481,7 @@ export default function FinanceGivingBatch() {
                     <th className="px-3 py-2 font-medium">Date</th>
                     <th className="px-3 py-2 font-medium">Method</th>
                     <th className="px-3 py-2 font-medium text-right">Amount</th>
-                    {isOpen && <th className="px-3 py-2 w-20" />}
+                    {(canEdit || (canPrepare && !isOpen && batch.kind === "regular")) && <th className="px-3 py-2 w-20" />}
                   </tr>
                 </thead>
                 <tbody>
@@ -446,7 +498,7 @@ export default function FinanceGivingBatch() {
                         {c.checkNumber ? ` #${c.checkNumber}` : ""}
                       </td>
                       <td className="px-3 py-2 text-right font-medium whitespace-nowrap">{formatCents(c.amountCents)}</td>
-                      {isOpen && (
+                      {canEdit && (
                         <td className="px-3 py-2">
                           <div className="flex justify-end gap-1">
                             <button
@@ -468,6 +520,25 @@ export default function FinanceGivingBatch() {
                           </div>
                         </td>
                       )}
+                      {!isOpen && canPrepare && batch.kind === "regular" && (
+                        <td className="px-3 py-2 text-right">
+                          <button
+                            className="rounded p-1.5 text-muted-foreground hover:bg-muted hover:text-foreground"
+                            title="Create correction adjustment"
+                            onClick={() => setAdjustment({
+                              id: c.id,
+                              donorName: c.donorName,
+                              fundId: c.fundId,
+                              amount: (c.amountCents / 100).toFixed(2),
+                              date: c.contributionDate,
+                              reason: "",
+                              externalLedgerReference: "",
+                            })}
+                          >
+                            <RotateCcw className="h-4 w-4" />
+                          </button>
+                        </td>
+                      )}
                     </tr>
                   ))}
                 </tbody>
@@ -475,7 +546,7 @@ export default function FinanceGivingBatch() {
                   <tr className="border-t border-border">
                     <td className="px-3 py-2 font-semibold" colSpan={4}>Total</td>
                     <td className="px-3 py-2 text-right font-semibold">{formatCents(batch.totalCents)}</td>
-                    {isOpen && <td />}
+                    {(canEdit || (canPrepare && !isOpen && batch.kind === "regular")) && <td />}
                   </tr>
                 </tfoot>
               </table>
@@ -487,6 +558,39 @@ export default function FinanceGivingBatch() {
           )}
         </div>
       </div>
+      {adjustment && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 p-4">
+          <Card className="w-full max-w-lg">
+            <CardHeader className="flex flex-row items-center justify-between">
+              <CardTitle className="text-xl">Create Contribution Adjustment</CardTitle>
+              <button onClick={() => setAdjustment(null)} aria-label="Close"><X className="h-5 w-5" /></button>
+            </CardHeader>
+            <CardContent className="space-y-4">
+              <p className="text-sm text-muted-foreground">
+                The original entry for {adjustment.donorName} will remain unchanged. This creates a reversal and replacement batch for Treasurer approval.
+              </p>
+              <div>
+                <Label htmlFor="adjust-fund">Replacement fund</Label>
+                <select id="adjust-fund" className="mt-1 flex h-10 w-full rounded-md border border-input bg-background px-3" value={adjustment.fundId} onChange={(event) => setAdjustment({ ...adjustment, fundId: Number(event.target.value) })}>
+                  {activeFunds.map((fund) => <option key={fund.id} value={fund.id}>{fund.name}</option>)}
+                </select>
+              </div>
+              <div className="grid gap-3 sm:grid-cols-2">
+                <div><Label htmlFor="adjust-amount">Replacement amount</Label><Input id="adjust-amount" value={adjustment.amount} onChange={(event) => setAdjustment({ ...adjustment, amount: event.target.value })} /></div>
+                <div><Label htmlFor="adjust-date">Replacement date</Label><Input id="adjust-date" type="date" value={adjustment.date} onChange={(event) => setAdjustment({ ...adjustment, date: event.target.value })} /></div>
+              </div>
+              <div><Label htmlFor="adjust-reason">Reason</Label><textarea id="adjust-reason" className="mt-1 min-h-24 w-full rounded-md border border-input bg-background px-3 py-2" value={adjustment.reason} onChange={(event) => setAdjustment({ ...adjustment, reason: event.target.value })} /></div>
+              <div><Label htmlFor="adjust-ledger">External ledger reference</Label><Input id="adjust-ledger" value={adjustment.externalLedgerReference} onChange={(event) => setAdjustment({ ...adjustment, externalLedgerReference: event.target.value })} /></div>
+              <div className="flex justify-end gap-2">
+                <Button variant="outline" onClick={() => setAdjustment(null)}>Cancel</Button>
+                <Button disabled={adjustmentMutation.isPending || adjustment.reason.trim().length < 10 || !adjustment.externalLedgerReference.trim()} onClick={() => adjustmentMutation.mutate(adjustment)}>
+                  {adjustmentMutation.isPending ? "Creating..." : "Create Adjustment"}
+                </Button>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+      )}
     </FinanceLayout>
   );
 }

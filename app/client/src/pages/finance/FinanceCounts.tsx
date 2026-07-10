@@ -29,7 +29,7 @@ export default function FinanceCounts() {
   const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState<string | null>(null);
 
-  const canEnter = !!user && COUNT_ENTRY_ROLES.includes(user.role);
+  const canEnter = !!user && (user.roles ?? [user.role]).some((role) => COUNT_ENTRY_ROLES.includes(role));
 
   const { data, isLoading } = useQuery({ queryKey: ["counts"], queryFn: () => api.getCounts() });
 

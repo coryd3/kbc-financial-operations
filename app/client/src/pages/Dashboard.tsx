@@ -40,7 +40,7 @@ export default function Dashboard() {
       <header className="border-b border-border pb-6 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
         <div>
           <h1 className="text-3xl font-serif text-primary font-bold">Welcome, {user.fullName}</h1>
-          <p className="text-muted-foreground mt-1">Role: <span className="font-medium text-foreground">{ROLE_LABELS[user.role]}</span></p>
+          <p className="text-muted-foreground mt-1">Roles: <span className="font-medium text-foreground">{(user.roles ?? [user.role]).map((role) => ROLE_LABELS[role]).join(", ")}</span></p>
         </div>
       </header>
 
@@ -216,7 +216,7 @@ export default function Dashboard() {
 
           <h2 className="text-2xl font-serif font-semibold border-b border-border pb-2">Modules</h2>
           <div className="grid gap-3">
-            {FINANCE_NAV_ROLES.includes(user.role) && (
+            {(user.roles ?? [user.role]).some((role) => FINANCE_NAV_ROLES.includes(role)) && (
               <Link href="/finance">
                 <Card className="hover:border-primary/50 hover:shadow-md transition-all cursor-pointer">
                   <CardContent className="p-4 flex items-center gap-3">

@@ -7,7 +7,6 @@ import { registerMemberRoutes } from "./memberRoutes.ts";
 import { registerGovernanceRoutes } from "./governance.ts";
 import { registerNotificationRoutes } from "./notifications.ts";
 import { csrfOriginGuard } from "./csrf.ts";
-import { seed } from "./seed.ts";
 
 const app = express();
 app.set("trust proxy", 1);
@@ -19,27 +18,36 @@ if (isProduction && !process.env.SESSION_SECRET) {
     "SESSION_SECRET must be set in production. Add it as a deployment secret before publishing.",
   );
 }
+if (isProduction && !process.env.MFA_ENCRYPTION_KEY) {
+  throw new Error("MFA_ENCRYPTION_KEY must be set in production.");
+}
 
 const PgStore = connectPgSimple(session);
 app.use(
   session({
-    store: new PgStore({ pool, createTableIfMissing: true }),
+    store: new PgStore({ pool, createTableIfMissing: false }),
     secret: process.env.SESSION_SECRET || "kbc-dev-only-secret",
     resave: false,
     saveUninitialized: false,
     cookie: {
       httpOnly: true,
-      // The app is always served over HTTPS (Replit preview proxy in dev,
-      // *.replit.app in production). sameSite "none" is required for the
-      // session cookie to work inside the workspace preview iframe.
-      secure: true,
-      sameSite: "none",
-      maxAge: 1000 * 60 * 60 * 24 * 30, // 30 days
+      secure: isProduction,
+      sameSite: "lax",
+      maxAge: 1000 * 60 * 60 * 24 * 7,
     },
   }),
 );
 
 app.use(csrfOriginGuard);
+
+app.get("/api/health", async (_req, res) => {
+  try {
+    await pool.query("select 1");
+    res.json({ status: "ok", financialMode: process.env.FINANCIAL_MODE || "hybrid" });
+  } catch {
+    res.status(503).json({ status: "unavailable" });
+  }
+});
 
 registerRoutes(app);
 registerMemberRoutes(app);
@@ -56,8 +64,6 @@ app.use((err: any, _req: express.Request, res: express.Response, _next: express.
 const port = Number(process.env.PORT) || 5000;
 
 async function start() {
-  await seed();
-
   const { createServer } = await import("http");
   const httpServer = createServer(app);
 

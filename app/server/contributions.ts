@@ -14,15 +14,17 @@ import {
   donorMergeSchema,
   contributionBatchSchema,
   contributionSchema,
+  contributionAdjustmentSchema,
   batchCloseSchema,
   GIVING_ROLES,
   FUND_REPORT_ROLES,
-  type User,
+  type AuthenticatedUser,
 } from "../shared/schema.ts";
-import { requireRole } from "./auth.ts";
+import { hasRole, requireRole } from "./auth.ts";
+import { recordAuditEvent } from "./audit.ts";
 
-function getUser(req: Request): User {
-  return (req as any).user as User;
+function getUser(req: Request): AuthenticatedUser {
+  return (req as any).user as AuthenticatedUser;
 }
 
 function firstError(parsed: { error: { errors: { message?: string }[] } }): string {
@@ -40,6 +42,7 @@ const DATE_RE = /^\d{4}-\d{2}-\d{2}$/;
 // Super Admin only). Fund-level aggregates additionally allow the Finance
 // Committee, with no donor-level detail.
 const requireGiving = requireRole(...GIVING_ROLES);
+const requireGivingPrepare = requireRole("bookkeeper");
 const requireFundReport = requireRole(...FUND_REPORT_ROLES);
 
 function countTotal(c: {
@@ -354,9 +357,11 @@ export function registerContributionRoutes(app: Express) {
       })
       .from(contributions)
       .innerJoin(givingFunds, eq(contributions.fundId, givingFunds.id))
+      .innerJoin(contributionBatches, eq(contributions.batchId, contributionBatches.id))
       .where(
         and(
           eq(contributions.donorId, id),
+          eq(contributionBatches.status, "closed"),
           gte(contributions.contributionDate, start),
           lte(contributions.contributionDate, end),
         ),
@@ -396,7 +401,12 @@ export function registerContributionRoutes(app: Express) {
       .from(contributions)
       .innerJoin(givingFunds, eq(contributions.fundId, givingFunds.id))
       .innerJoin(donors, eq(contributions.donorId, donors.id))
-      .where(and(gte(contributions.contributionDate, start), lte(contributions.contributionDate, end)))
+      .innerJoin(contributionBatches, eq(contributions.batchId, contributionBatches.id))
+      .where(and(
+        eq(contributionBatches.status, "closed"),
+        gte(contributions.contributionDate, start),
+        lte(contributions.contributionDate, end),
+      ))
       .orderBy(
         asc(donors.lastName),
         asc(donors.firstName),
@@ -471,7 +481,7 @@ export function registerContributionRoutes(app: Express) {
     return null;
   }
 
-  app.post("/api/giving/batches", requireGiving, async (req, res) => {
+  app.post("/api/giving/batches", requireGivingPrepare, async (req, res) => {
     const parsed = contributionBatchSchema.safeParse(req.body);
     if (!parsed.success) return res.status(400).json({ message: firstError(parsed) });
     const d = parsed.data;
@@ -534,7 +544,7 @@ export function registerContributionRoutes(app: Express) {
     });
   });
 
-  app.patch("/api/giving/batches/:id", requireGiving, async (req, res) => {
+  app.patch("/api/giving/batches/:id", requireGivingPrepare, async (req, res) => {
     const id = parseId(req.params.id);
     if (!id) return res.status(400).json({ message: "Invalid id" });
     const [batch] = await db.select().from(contributionBatches).where(eq(contributionBatches.id, id));
@@ -562,7 +572,7 @@ export function registerContributionRoutes(app: Express) {
     res.json({ batch: updated });
   });
 
-  app.delete("/api/giving/batches/:id", requireGiving, async (req, res) => {
+  app.delete("/api/giving/batches/:id", requireGivingPrepare, async (req, res) => {
     const id = parseId(req.params.id);
     if (!id) return res.status(400).json({ message: "Invalid id" });
     const [batch] = await db.select().from(contributionBatches).where(eq(contributionBatches.id, id));
@@ -587,6 +597,13 @@ export function registerContributionRoutes(app: Express) {
     const [batch] = await db.select().from(contributionBatches).where(eq(contributionBatches.id, id));
     if (!batch) return res.status(404).json({ message: "Batch not found" });
     if (batch.status === "closed") return res.status(400).json({ message: "This batch is already closed" });
+    const actor = getUser(req);
+    if (!hasRole(actor, "treasurer")) {
+      return res.status(403).json({ message: "The Treasurer must approve and close a prepared batch" });
+    }
+    if (batch.enteredBy === actor.id) {
+      return res.status(403).json({ message: "A different person must prepare and approve the batch" });
+    }
     const totals = await batchTotals([id]);
     const totalCents = totals.get(id)?.totalCents ?? 0;
     const entryCount = totals.get(id)?.count ?? 0;
@@ -612,13 +629,31 @@ export function registerContributionRoutes(app: Express) {
             countTotalCents: expected,
           });
         }
+        if (variance !== 0 && parsed.data.allowMismatch && !parsed.data.mismatchOverrideReason) {
+          return res.status(400).json({ message: "A written reason is required for a mismatch override" });
+        }
       }
     }
     const [updated] = await db
       .update(contributionBatches)
-      .set({ status: "closed", closedBy: getUser(req).id, closedAt: new Date() })
+      .set({
+        status: "closed",
+        closedBy: actor.id,
+        closedAt: new Date(),
+        externalLedgerReference: parsed.data.externalLedgerReference,
+        mismatchOverrideReason: parsed.data.mismatchOverrideReason || null,
+      })
       .where(eq(contributionBatches.id, id))
       .returning();
+    await recordAuditEvent(req, "finance.batch_closed", {
+      entityType: "contribution_batch",
+      entityId: updated.id,
+      details: {
+        preparedBy: batch.enteredBy,
+        approvedBy: actor.id,
+        mismatchOverride: Boolean(parsed.data.allowMismatch),
+      },
+    });
     res.json({ batch: updated });
   });
 
@@ -627,17 +662,13 @@ export function registerContributionRoutes(app: Express) {
     if (!id) return res.status(400).json({ message: "Invalid id" });
     const [batch] = await db.select().from(contributionBatches).where(eq(contributionBatches.id, id));
     if (!batch) return res.status(404).json({ message: "Batch not found" });
-    if (batch.status !== "closed") return res.status(400).json({ message: "Only a closed batch can be reopened" });
-    const [updated] = await db
-      .update(contributionBatches)
-      .set({ status: "open", closedBy: null, closedAt: null })
-      .where(eq(contributionBatches.id, id))
-      .returning();
-    res.json({ batch: updated });
+    return res.status(409).json({
+      message: "Closed batches are immutable. Record a reversal and replacement adjustment instead.",
+    });
   });
 
   // ---------- Contributions within a batch ----------
-  app.post("/api/giving/batches/:id/contributions", requireGiving, async (req, res) => {
+  app.post("/api/giving/batches/:id/contributions", requireGivingPrepare, async (req, res) => {
     const id = parseId(req.params.id);
     if (!id) return res.status(400).json({ message: "Invalid id" });
     const [batch] = await db.select().from(contributionBatches).where(eq(contributionBatches.id, id));
@@ -679,7 +710,7 @@ export function registerContributionRoutes(app: Express) {
     return row ?? null;
   }
 
-  app.patch("/api/giving/contributions/:id", requireGiving, async (req, res) => {
+  app.patch("/api/giving/contributions/:id", requireGivingPrepare, async (req, res) => {
     const id = parseId(req.params.id);
     if (!id) return res.status(400).json({ message: "Invalid id" });
     const row = await loadContributionWithBatch(id);
@@ -710,7 +741,7 @@ export function registerContributionRoutes(app: Express) {
     res.json({ contribution: updated });
   });
 
-  app.delete("/api/giving/contributions/:id", requireGiving, async (req, res) => {
+  app.delete("/api/giving/contributions/:id", requireGivingPrepare, async (req, res) => {
     const id = parseId(req.params.id);
     if (!id) return res.status(400).json({ message: "Invalid id" });
     const row = await loadContributionWithBatch(id);
@@ -720,6 +751,75 @@ export function registerContributionRoutes(app: Express) {
     }
     await db.delete(contributions).where(eq(contributions.id, id));
     res.json({ message: "Deleted" });
+  });
+
+  app.post("/api/giving/contributions/:id/adjust", requireGivingPrepare, async (req, res) => {
+    const id = parseId(req.params.id);
+    if (!id) return res.status(400).json({ message: "Invalid id" });
+    const parsed = contributionAdjustmentSchema.safeParse(req.body);
+    if (!parsed.success) return res.status(400).json({ message: firstError(parsed) });
+    const actor = getUser(req);
+    if (!hasRole(actor, "bookkeeper")) {
+      return res.status(403).json({ message: "The Bookkeeper prepares contribution adjustments" });
+    }
+    const [original] = await db
+      .select({ contribution: contributions, batch: contributionBatches })
+      .from(contributions)
+      .innerJoin(contributionBatches, eq(contributions.batchId, contributionBatches.id))
+      .where(eq(contributions.id, id));
+    if (!original) return res.status(404).json({ message: "Contribution not found" });
+    if (original.batch.status !== "closed") {
+      return res.status(400).json({ message: "Open-batch entries should be corrected directly before approval" });
+    }
+    const replacementAmount = parsed.data.replacementAmountCents ?? original.contribution.amountCents;
+    const replacementFundId = parsed.data.replacementFundId ?? original.contribution.fundId;
+    const replacementDate = parsed.data.replacementDate ?? original.contribution.contributionDate;
+    const [adjustmentBatch] = await db.transaction(async (tx) => {
+      const [batch] = await tx
+        .insert(contributionBatches)
+        .values({
+          batchDate: replacementDate,
+          description: `Correction for contribution #${id}`,
+          kind: "adjustment",
+          adjustmentReason: parsed.data.reason,
+          externalLedgerReference: parsed.data.externalLedgerReference,
+          enteredBy: actor.id,
+        })
+        .returning();
+      await tx.insert(contributions).values([
+        {
+          batchId: batch.id,
+          donorId: original.contribution.donorId,
+          fundId: original.contribution.fundId,
+          contributionDate: original.contribution.contributionDate,
+          amountCents: -original.contribution.amountCents,
+          method: original.contribution.method,
+          checkNumber: original.contribution.checkNumber,
+          note: `Reversal of contribution #${id}`,
+          adjustsContributionId: id,
+          enteredBy: actor.id,
+        },
+        {
+          batchId: batch.id,
+          donorId: original.contribution.donorId,
+          fundId: replacementFundId,
+          contributionDate: replacementDate,
+          amountCents: replacementAmount,
+          method: original.contribution.method,
+          checkNumber: original.contribution.checkNumber,
+          note: `Replacement for contribution #${id}`,
+          adjustsContributionId: id,
+          enteredBy: actor.id,
+        },
+      ]);
+      return [batch];
+    });
+    await recordAuditEvent(req, "finance.adjustment_created", {
+      entityType: "contribution_batch",
+      entityId: adjustmentBatch.id,
+      details: { originalContributionId: id },
+    });
+    res.status(201).json({ batch: adjustmentBatch });
   });
 
   // ---------- Fund summaries (aggregates only — no donor detail) ----------
@@ -742,6 +842,7 @@ export function registerContributionRoutes(app: Express) {
     const range = and(
       gte(contributions.contributionDate, start),
       lte(contributions.contributionDate, end),
+      eq(contributionBatches.status, "closed"),
     );
 
     const byFund = await db
@@ -752,8 +853,10 @@ export function registerContributionRoutes(app: Express) {
         contributionCount: sql<number>`count(${contributions.id})::int`,
         donorCount: sql<number>`count(distinct ${contributions.donorId})::int`,
       })
-      .from(givingFunds)
-      .leftJoin(contributions, and(eq(contributions.fundId, givingFunds.id), range))
+      .from(contributions)
+      .innerJoin(givingFunds, eq(contributions.fundId, givingFunds.id))
+      .innerJoin(contributionBatches, eq(contributions.batchId, contributionBatches.id))
+      .where(range)
       .groupBy(givingFunds.id, givingFunds.name, givingFunds.sortOrder)
       .orderBy(asc(givingFunds.sortOrder), asc(givingFunds.name));
 
@@ -764,11 +867,46 @@ export function registerContributionRoutes(app: Express) {
         totalCents: sql<number>`coalesce(sum(${contributions.amountCents}), 0)::int`,
       })
       .from(contributions)
+      .innerJoin(contributionBatches, eq(contributions.batchId, contributionBatches.id))
       .where(range)
       .groupBy(sql`to_char(${contributions.contributionDate}, 'YYYY-MM')`, contributions.fundId)
       .orderBy(asc(sql`to_char(${contributions.contributionDate}, 'YYYY-MM')`));
 
     const totalCents = byFund.reduce((s, f) => s + f.totalCents, 0);
     res.json({ start, end, byFund, monthly, totalCents });
+  });
+
+  app.get("/api/giving/exports/external-ledger.csv", requireFundReport, async (req, res) => {
+    const start = String(req.query.start ?? "");
+    const end = String(req.query.end ?? "");
+    if (!DATE_RE.test(start) || !DATE_RE.test(end) || start > end) {
+      return res.status(400).json({ message: "A valid start and end date are required" });
+    }
+    const rows = await db
+      .select({
+        contributionDate: contributions.contributionDate,
+        fundName: givingFunds.name,
+        method: contributions.method,
+        totalCents: sql<number>`sum(${contributions.amountCents})::int`,
+      })
+      .from(contributions)
+      .innerJoin(givingFunds, eq(contributions.fundId, givingFunds.id))
+      .innerJoin(contributionBatches, eq(contributions.batchId, contributionBatches.id))
+      .where(and(
+        eq(contributionBatches.status, "closed"),
+        gte(contributions.contributionDate, start),
+        lte(contributions.contributionDate, end),
+      ))
+      .groupBy(contributions.contributionDate, givingFunds.name, contributions.method)
+      .orderBy(asc(contributions.contributionDate), asc(givingFunds.name));
+    const csv = ["date,fund,method,amount"]
+      .concat(rows.map((row) => [row.contributionDate, JSON.stringify(row.fundName), row.method, (row.totalCents / 100).toFixed(2)].join(",")))
+      .join("\n");
+    await recordAuditEvent(req, "finance.export_created", {
+      entityType: "external_ledger_export",
+      details: { start, end, rowCount: rows.length },
+    });
+    res.set({ "Content-Type": "text/csv; charset=utf-8", "Content-Disposition": `attachment; filename="kbc-external-ledger-${start}-to-${end}.csv"` });
+    res.send(csv);
   });
 }

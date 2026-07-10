@@ -190,3 +190,81 @@ If analytics do not show visits:
 - Confirm `goatcounterCode` is set to `kbc-financial-operations`.
 - Confirm the visit is on `https://coryd3.github.io/kbc-financial-operations/`, not local preview.
 - Check whether a browser ad blocker is blocking GoatCounter.
+
+## Operations Portal Production Hosting
+
+The authenticated operations portal under `app/` is separate from the public MkDocs site. The recommended production host is Render:
+
+- Starter Node web service: approximately $7 per month.
+- Basic PostgreSQL database: approximately $6 per month, plus modest storage use.
+- Expected starting total: approximately $13-$15 per month.
+- Working budget: $15 per month; investigate sustained costs above $20.
+
+Current pricing can change. Confirm the plans shown by Render before creating paid resources.
+
+The root `render.yaml` is the production blueprint. It creates one web service and one private PostgreSQL database, waits for GitHub checks, runs checked-in migrations before deployment, and checks `/api/health`.
+
+### First Render Setup
+
+1. Merge a tested branch into `main` on GitHub.
+2. In Render, choose **New > Blueprint** and connect `coryd3/kbc-financial-operations`.
+3. Review the resources described by `render.yaml` before accepting charges.
+4. Confirm `SESSION_SECRET` and `MFA_ENCRYPTION_KEY` were generated as secret values.
+5. Let the first build and pre-deploy migration finish.
+6. Open a Render Shell for the web service and create the first administrator with temporary environment variables:
+
+```sh
+BOOTSTRAP_ADMIN_USERNAME=kbcadmin \
+BOOTSTRAP_ADMIN_PASSWORD='use-a-unique-12-character-or-longer-temporary-password' \
+BOOTSTRAP_ADMIN_FULL_NAME='System Administrator' \
+npm run db:bootstrap-admin
+```
+
+Do not place the bootstrap password in GitHub, documentation, chat, or source files. Remove temporary environment values after the command. The administrator must change the password and enroll MFA on first sign-in.
+
+Do not run `db:seed:baseline` in production. Production begins with a clean database and church-approved users and records.
+
+### Required Production Settings
+
+- `DATABASE_URL`: supplied through Render's private database connection.
+- `SESSION_SECRET`: generated secret, never committed.
+- `MFA_ENCRYPTION_KEY`: generated secret, never committed.
+- `FINANCIAL_MODE=hybrid`.
+- `VITE_FINANCIAL_MODE=hybrid`.
+- `NODE_ENV=production`.
+
+Technical administrators do not receive donor or finance access automatically. Treasurer and Bookkeeper access must be assigned intentionally. Privileged roles require MFA.
+
+### Normal Deployment
+
+1. Develop locally or in Replit on a feature branch.
+2. Push the branch and open a pull request.
+3. Merge only after `App CI` and documentation checks pass.
+4. Render sees the successful checks on `main`, builds the application, runs migrations, and deploys it.
+5. Verify `/api/health`, login, MFA, documentation, feedback, giving, and audit behavior.
+
+If a build or migration fails, Render keeps the prior successful deployment active. Use a temporary preview environment for risky schema migrations, then remove it after verification to control cost.
+
+### Database Backups
+
+- Keep the paid Render database so managed point-in-time recovery is available under the selected plan.
+- Create an on-demand logical export before significant migrations.
+- Download a logical backup monthly to a restricted church-controlled location outside this repository.
+- Perform a restore rehearsal before entering real donor data and at least annually afterward.
+- Never commit a database dump, donor export, payroll record, or backup archive.
+
+### Replit and Local Development
+
+Replit is optional development tooling only. It is not the production database or deployment authority. Do not copy Replit sample users or test data into production.
+
+For local application work, use a separate development PostgreSQL database, then run:
+
+```sh
+cd app
+npm ci
+npm run build
+npm run db:migrate
+npm run dev
+```
+
+Keep development, test, and production database URLs separate.

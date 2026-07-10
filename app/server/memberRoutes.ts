@@ -12,27 +12,27 @@ import {
   LEADERSHIP_ROLES,
   MEMBER_STATUSES,
   type Member,
-  type User,
+  type AuthenticatedUser,
 } from "../shared/schema.ts";
-import { requireAuth, requireRole } from "./auth.ts";
+import { hasRole, requireAuth, requireRole } from "./auth.ts";
 import { prepareCandidate, prepareRegistration, scoreMatchPrepared } from "./nameMatching.ts";
 import { toCsv, sendCsv } from "./csv.ts";
 
 const requireLeadership = requireRole(...LEADERSHIP_ROLES);
 
-function getUser(req: Request): User {
-  return (req as any).user as User;
+function getUser(req: Request): AuthenticatedUser {
+  return (req as any).user as AuthenticatedUser;
 }
 
-function isLeadership(user: User): boolean {
-  return LEADERSHIP_ROLES.includes(user.role);
+function isLeadership(user: AuthenticatedUser): boolean {
+  return hasRole(user, ...LEADERSHIP_ROLES);
 }
 
 // Shape a member record for the directory based on the viewer's privileges.
 // Leadership sees everything (including notes). A member always sees their own
 // full record (minus notes unless leadership). Everyone else gets privacy-
 // filtered contact info and no notes.
-function toDirectoryMember(member: Member, viewer: User) {
+function toDirectoryMember(member: Member, viewer: AuthenticatedUser) {
   const leader = isLeadership(viewer);
   const isSelf = member.userId != null && member.userId === viewer.id;
   const base = {

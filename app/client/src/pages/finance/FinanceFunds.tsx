@@ -7,11 +7,12 @@ import { FinanceLayout } from "../../components/FinanceLayout";
 import { Button, Card, CardContent, CardHeader, CardTitle, Input, Label } from "../../components/ui";
 import { formatCents } from "../../lib/money";
 import { format } from "date-fns";
+import { Download } from "lucide-react";
 
 export default function FinanceFunds() {
   const { user } = useAuth();
   const queryClient = useQueryClient();
-  const canManageFunds = !!user && GIVING_ROLES.includes(user.role);
+  const canManageFunds = !!user && (user.roles ?? [user.role]).some((role) => GIVING_ROLES.includes(role));
 
   const currentYear = new Date().getFullYear();
   const [year, setYear] = useState(currentYear);
@@ -64,7 +65,7 @@ export default function FinanceFunds() {
   return (
     <FinanceLayout
       title="Fund Summary"
-      description="Aggregate giving totals by fund and designation — no individual donor detail. Available to the Treasurer, Bookkeeper, Finance Committee, and Super Admin."
+      description="Aggregate giving totals by fund and designation — no individual donor detail. Available to authorized finance roles."
     >
       <div className="flex items-center gap-3 mb-6">
         <Label htmlFor="year" className="whitespace-nowrap">Year</Label>
@@ -78,6 +79,12 @@ export default function FinanceFunds() {
             <option key={y} value={y}>{y}</option>
           ))}
         </select>
+        <a
+          href={`/api/giving/exports/external-ledger.csv?start=${year}-01-01&end=${year}-12-31`}
+          className="ml-auto inline-flex h-10 items-center gap-2 rounded-md border border-input bg-background px-3 text-sm font-medium hover:bg-muted"
+        >
+          <Download className="h-4 w-4" /> External Ledger CSV
+        </a>
       </div>
 
       {error && (

@@ -146,7 +146,7 @@ export default function ChecklistTemplates() {
     else createMut.mutate();
   };
 
-  if (user && !CHECKLIST_MANAGER_ROLES.includes(user.role)) {
+  if (user && !(user.roles ?? [user.role]).some((role) => CHECKLIST_MANAGER_ROLES.includes(role))) {
     return (
       <div className="text-center py-12 space-y-4">
         <p className="text-muted-foreground">You don't have permission to manage checklist templates.</p>

@@ -55,7 +55,7 @@ export function DueBadge({ dueDate, status }: { dueDate: string | Date | null; s
 export default function Checklists() {
   const { user } = useAuth();
   const [tab, setTab] = useState<Tab>("my-tasks");
-  const isManager = !!user && CHECKLIST_MANAGER_ROLES.includes(user.role);
+  const isManager = !!user && (user.roles ?? [user.role]).some((role) => CHECKLIST_MANAGER_ROLES.includes(role));
 
   const myTasksQuery = useQuery({
     queryKey: ["myTasks"],

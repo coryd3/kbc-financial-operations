@@ -1,0 +1,67 @@
+name: App CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: kbc_ci
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U postgres -d kbc_ci"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+    env:
+      DATABASE_URL: postgresql://postgres:postgres@localhost:5432/kbc_ci
+      SESSION_SECRET: ci-session-secret-not-for-production
+      MFA_ENCRYPTION_KEY: ci-mfa-key-not-for-production
+      FINANCIAL_MODE: hybrid
+      VITE_FINANCIAL_MODE: hybrid
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: app/package-lock.json
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Reject private dependency URLs
+        run: '! grep -R "package-firewall.replit.local" app/package-lock.json app/package.json'
+      - name: Install app dependencies
+        working-directory: app
+        run: npm ci --ignore-scripts --no-audit --no-fund
+      - name: TypeScript check
+        working-directory: app
+        run: npm run typecheck
+      - name: Build application
+        working-directory: app
+        run: npm run build
+      - name: Test clean production migration
+        working-directory: app
+        run: npm run db:migrate
+      - name: Run application tests
+        working-directory: app
+        run: npm test
+      - name: Install documentation dependencies
+        run: python -m pip install -r requirements.txt
+      - name: Build documentation strictly
+        run: python -m mkdocs build --strict
+      - name: Audit public content
+        run: python scripts/audit_public_content.py

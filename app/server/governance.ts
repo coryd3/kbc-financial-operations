@@ -11,23 +11,24 @@ import {
   committeeMemberSchema,
   meetingSchema,
   decisionSchema,
-  type User,
+  type AuthenticatedUser,
   type Committee,
 } from "../shared/schema.ts";
-import { requireAuth, requireAdmin } from "./auth.ts";
+import { hasCapability, hasRole, requireAuth, requireAdmin } from "./auth.ts";
+import { recordAuditEvent } from "./audit.ts";
 
-function getUser(req: Request): User {
-  return (req as any).user as User;
+function getUser(req: Request): AuthenticatedUser {
+  return (req as any).user as AuthenticatedUser;
 }
 
 const LEADERSHIP_ROLES = ["super_admin", "admin", "deacon"] as const;
 
-function isLeadership(user: User): boolean {
-  return (LEADERSHIP_ROLES as readonly string[]).includes(user.role);
+function isLeadership(user: AuthenticatedUser): boolean {
+  return user.roles.some((role) => (LEADERSHIP_ROLES as readonly string[]).includes(role));
 }
 
-function isAdminRole(user: User): boolean {
-  return user.role === "super_admin" || user.role === "admin";
+function isAdminRole(user: AuthenticatedUser): boolean {
+  return hasRole(user, "super_admin", "admin");
 }
 
 async function getMembership(userId: number, committeeId: number) {
@@ -41,8 +42,8 @@ async function getMembership(userId: number, committeeId: number) {
 // Visibility rules:
 // - Sensitive committees (e.g. Personnel): only committee members + Super Admin.
 // - Other committees: committee members, plus leadership (Super Admin, Admin, Deacon).
-async function canViewCommittee(user: User, committee: Committee): Promise<boolean> {
-  if (user.role === "super_admin") return true;
+async function canViewCommittee(user: AuthenticatedUser, committee: Committee): Promise<boolean> {
+  if (hasRole(user, "super_admin")) return true;
   const membership = await getMembership(user.id, committee.id);
   if (membership) return true;
   if (committee.isSensitive) return false;
@@ -52,8 +53,8 @@ async function canViewCommittee(user: User, committee: Committee): Promise<boole
 // Management rules (roster, meetings, decisions):
 // - Sensitive committees: Super Admin, or the committee's chair/secretary.
 // - Other committees: Admin/Super Admin, or the committee's chair/secretary.
-async function canManageCommittee(user: User, committee: Committee): Promise<boolean> {
-  if (user.role === "super_admin") return true;
+async function canManageCommittee(user: AuthenticatedUser, committee: Committee): Promise<boolean> {
+  if (hasRole(user, "super_admin")) return true;
   const membership = await getMembership(user.id, committee.id);
   if (membership && (membership.position === "chair" || membership.position === "secretary")) {
     return true;
@@ -76,9 +77,9 @@ async function loadCommittee(req: Request, res: Response): Promise<Committee | n
   return committee;
 }
 
-async function visibleCommitteeIds(user: User): Promise<number[]> {
+async function visibleCommitteeIds(user: AuthenticatedUser): Promise<number[]> {
   const all = await db.select().from(committees);
-  if (user.role === "super_admin") return all.map((c) => c.id);
+  if (hasRole(user, "super_admin")) return all.map((c) => c.id);
   const memberships = await db
     .select({ committeeId: committeeMembers.committeeId })
     .from(committeeMembers)
@@ -114,7 +115,7 @@ export function registerGovernanceRoutes(app: Express) {
     for (const committee of all) {
       const membership = membershipByCommittee.get(committee.id) ?? null;
       const canView =
-        user.role === "super_admin" ||
+        hasRole(user, "super_admin") ||
         !!membership ||
         (!committee.isSensitive && isLeadership(user));
       if (!canView) continue;
@@ -139,6 +140,10 @@ export function registerGovernanceRoutes(app: Express) {
       .where(sql`lower(${committees.name}) = lower(${parsed.data.name})`);
     if (existing) {
       return res.status(409).json({ message: "A committee with that name already exists" });
+    }
+    const user = getUser(req);
+    if (parsed.data.isSensitive && !hasCapability(user, "committee_sensitivity_manage")) {
+      return res.status(403).json({ message: "Only a System Administrator can create a restricted committee" });
     }
     const [created] = await db
       .insert(committees)
@@ -165,12 +170,24 @@ export function registerGovernanceRoutes(app: Express) {
     const updates: Record<string, unknown> = {};
     if (parsed.data.name !== undefined) updates.name = parsed.data.name;
     if (parsed.data.description !== undefined) updates.description = emptyToNull(parsed.data.description);
-    if (parsed.data.isSensitive !== undefined) updates.isSensitive = parsed.data.isSensitive;
+    if (parsed.data.isSensitive !== undefined && parsed.data.isSensitive !== committee.isSensitive) {
+      if (!hasCapability(user, "committee_sensitivity_manage")) {
+        return res.status(403).json({ message: "Only a System Administrator can change committee privacy" });
+      }
+      updates.isSensitive = parsed.data.isSensitive;
+    }
     const [updated] = await db
       .update(committees)
       .set(updates)
       .where(eq(committees.id, committee.id))
       .returning();
+    if (updated.isSensitive !== committee.isSensitive) {
+      await recordAuditEvent(req, "committee.sensitivity_changed", {
+        entityType: "committee",
+        entityId: updated.id,
+        details: { isSensitive: updated.isSensitive },
+      });
+    }
     res.json({ committee: updated });
   });
 
@@ -178,7 +195,7 @@ export function registerGovernanceRoutes(app: Express) {
     const committee = await loadCommittee(req, res);
     if (!committee) return;
     const user = getUser(req);
-    if (committee.isSensitive && user.role !== "super_admin") {
+    if (committee.isSensitive && !hasCapability(user, "committee_sensitivity_manage")) {
       return res.status(403).json({ message: "Only a Super Admin can delete a restricted committee" });
     }
     await db.delete(committees).where(eq(committees.id, committee.id));

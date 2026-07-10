@@ -1,0 +1,66 @@
+Recommended application sections:
+
+Applicant information.
+Employment information.
+Availability.
+Bookkeeping and accounting experience.
+Software experience.
+Confidentiality and accuracy.
+Church and ministry perspective.
+References.
+Applicant statement and certification.
+
+Key screening questions currently included:
+
+Previous bookkeeping, accounting, payroll, office administration, or financial recordkeeping experience.
+Experience with transaction entry, bank reconciliation, accounts payable, reimbursements, contributions, payroll coordination, budget reports, and financial statements.
+Experience with ChurchTrac, IconCMO, QuickBooks, Excel/Google Sheets, or payroll provider portals.
+Willingness to maintain confidentiality and follow KBC financial policies and procedures.
+Ability to explain how the applicant approaches accuracy, confidentiality, and asking questions when financial information is unclear.
+
+Full draft: docs/roles/bookkeeper-job-application.md.
+
+Needs Personnel Review: Personnel Committee should decide whether to add background-check consent language, membership/attendance expectations, compensation expectations, conflict-of-interest language, or financial confidentiality acknowledgment.
+
+Section: Draft Bookkeeper Hiring Process.
+
+The standalone hiring process should be treated as the source of truth:
+
+docs/roles/bookkeeper-hiring-process.md.
+
+It adapts the prior KBC Custodian hiring workflow for a financial role and includes:
+
+Role-confirmation checklist before posting.
+Application review steps.
+Reference-check process.
+Interview guide.
+Candidate evaluation rubric.
+Onboarding and support checklist.
+
+Needs Personnel Review: Personnel Committee should confirm the hiring lead, interview team, reference process, background-check process, secure storage location for hiring records, and final candidate selection process.
+
+Needs Finance Review: Finance Committee should confirm financial duties and controls before the position is posted, interviews begin, or an offer is made.
+
+Section: Immediate Hiring Next Steps.
+
+Personnel Committee can begin preparing the hiring process while Finance Committee confirms duties and controls.
+
+Recommended immediate steps:
+
+Contact the three known interested candidates and invite them to complete the approved application process.
+Prepare a short bulletin or announcement request so other interested candidates have a fair opportunity to apply.
+Define the application collection period, including start date, deadline, submission method, and secure storage location.
+Coordinate interviews, reference checks, and candidate evaluation after applications are received.
+Confirm the interim supervision path, likely tied to Finance Committee and Treasurer / Financial Officer review, while marking the final supervisor as needing committee confirmation.
+Clarify that KBC is authorized for one paid Bookkeeper role unless further approval is granted.
+Consider whether other interested people could serve later through Finance Committee involvement, controlled volunteer helper roles, or other approved service opportunities after confidentiality, access, and controls are defined.
+
+Needs Personnel Review: Candidate outreach, application timing, interview team, and final selection process should be approved by Personnel Committee before use.
+
+Section: Recommendations To Finance Committee.
+
+The Personnel Committee should consider sending the following recommendation to the Finance Committee:
+
+The Personnel Committee recognizes that the congregation authorized adding a paid, part-time Bookkeeper position on June 28, 2026. The motion gave Personnel Committee authority to hire the right candidate and gave Finance Committee responsibility for adjusting the budget to fund this specific operational need. Before finalizing the job description, application, hiring process, or compensation details, we request that the Finance Committee provide direction on financial software, reimbursement procedures, spending authority, credit/debit card use, monthly financial review, budget impact, and the long-term division of responsibilities between the Treasurer, Bookkeeper, and Finance Committee.
+
+Recommended requests for Finance Committee direction:

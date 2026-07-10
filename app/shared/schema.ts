@@ -67,12 +67,60 @@ export const users = pgTable("users", {
   role: varchar("role", { length: 32 }).$type<Role>().notNull().default("member"),
   status: varchar("status", { length: 20 }).$type<UserStatus>().notNull().default("pending"),
   mustChangePassword: boolean("must_change_password").notNull().default(false),
+  sessionVersion: integer("session_version").notNull().default(1),
+  mfaEnabled: boolean("mfa_enabled").notNull().default(false),
+  mfaSecretEncrypted: text("mfa_secret_encrypted"),
   notifyDueSoon: boolean("notify_due_soon").notNull().default(true),
   notifyOverdue: boolean("notify_overdue").notNull().default(true),
   createdAt: timestamp("created_at").notNull().defaultNow(),
   approvedAt: timestamp("approved_at"),
   lastLoginAt: timestamp("last_login_at"),
 });
+
+// The legacy users.role column remains during migration. New authorization
+// checks use this join table so one person can serve in more than one role.
+export const userRoles = pgTable(
+  "user_roles",
+  {
+    userId: integer("user_id")
+      .notNull()
+      .references(() => users.id, { onDelete: "cascade" }),
+    role: varchar("role", { length: 32 }).$type<Role>().notNull(),
+    assignedBy: integer("assigned_by").references(() => users.id, { onDelete: "set null" }),
+    assignedAt: timestamp("assigned_at").notNull().defaultNow(),
+  },
+  (table) => [primaryKey({ columns: [table.userId, table.role] })],
+);
+
+export const mfaRecoveryCodes = pgTable(
+  "mfa_recovery_codes",
+  {
+    id: serial("id").primaryKey(),
+    userId: integer("user_id")
+      .notNull()
+      .references(() => users.id, { onDelete: "cascade" }),
+    codeHash: text("code_hash").notNull(),
+    usedAt: timestamp("used_at"),
+    createdAt: timestamp("created_at").notNull().defaultNow(),
+  },
+  (table) => [index("mfa_recovery_codes_user_idx").on(table.userId)],
+);
+
+export const passwordResetCodes = pgTable(
+  "password_reset_codes",
+  {
+    id: serial("id").primaryKey(),
+    userId: integer("user_id")
+      .notNull()
+      .references(() => users.id, { onDelete: "cascade" }),
+    codeHash: text("code_hash").notNull(),
+    expiresAt: timestamp("expires_at").notNull(),
+    createdBy: integer("created_by").references(() => users.id, { onDelete: "set null" }),
+    createdAt: timestamp("created_at").notNull().defaultNow(),
+    usedAt: timestamp("used_at"),
+  },
+  (table) => [index("password_reset_codes_user_idx").on(table.userId)],
+);
 
 // Failed-login counters shared by every server instance so lockouts survive
 // restarts and apply across autoscale replicas. One row per (scope, key) where
@@ -112,6 +160,78 @@ export const pageViews = pgTable(
   (table) => [
     index("page_views_viewed_at_idx").on(table.viewedAt),
     index("page_views_path_idx").on(table.path),
+  ],
+);
+
+export const AUDIT_EVENT_TYPES = [
+  "auth.login",
+  "auth.password_changed",
+  "auth.password_reset_created",
+  "auth.password_reset_used",
+  "auth.mfa_enabled",
+  "auth.mfa_disabled",
+  "user.roles_changed",
+  "user.status_changed",
+  "committee.sensitivity_changed",
+  "finance.count_verified",
+  "finance.deposit_reconciled",
+  "finance.batch_closed",
+  "finance.adjustment_created",
+  "finance.export_created",
+  "docs.feedback_created",
+  "docs.feedback_reviewed",
+] as const;
+
+export type AuditEventType = (typeof AUDIT_EVENT_TYPES)[number];
+
+export const auditEvents = pgTable(
+  "audit_events",
+  {
+    id: serial("id").primaryKey(),
+    eventType: varchar("event_type", { length: 80 }).$type<AuditEventType>().notNull(),
+    actorUserId: integer("actor_user_id").references(() => users.id, { onDelete: "set null" }),
+    entityType: varchar("entity_type", { length: 80 }),
+    entityId: varchar("entity_id", { length: 120 }),
+    details: json("details").$type<Record<string, unknown>>().notNull().default({}),
+    ipAddress: varchar("ip_address", { length: 64 }),
+    createdAt: timestamp("created_at").notNull().defaultNow(),
+  },
+  (table) => [
+    index("audit_events_created_at_idx").on(table.createdAt),
+    index("audit_events_entity_idx").on(table.entityType, table.entityId),
+  ],
+);
+
+export const FEEDBACK_CATEGORIES = ["unclear", "inaccurate", "outdated", "suggestion", "other"] as const;
+export type FeedbackCategory = (typeof FEEDBACK_CATEGORIES)[number];
+export const FEEDBACK_STATUSES = ["new", "reviewed", "planned", "resolved", "declined"] as const;
+export type FeedbackStatus = (typeof FEEDBACK_STATUSES)[number];
+
+export const documentationFeedback = pgTable(
+  "documentation_feedback",
+  {
+    id: serial("id").primaryKey(),
+    pageSlug: varchar("page_slug", { length: 300 }).notNull(),
+    documentationRevision: varchar("documentation_revision", { length: 80 }).notNull(),
+    userId: integer("user_id")
+      .notNull()
+      .references(() => users.id, { onDelete: "cascade" }),
+    helpful: boolean("helpful").notNull(),
+    category: varchar("category", { length: 20 }).$type<FeedbackCategory>().notNull(),
+    comment: text("comment"),
+    status: varchar("status", { length: 20 }).$type<FeedbackStatus>().notNull().default("new"),
+    createdAt: timestamp("created_at").notNull().defaultNow(),
+    reviewedAt: timestamp("reviewed_at"),
+    resolvedAt: timestamp("resolved_at"),
+    reviewerId: integer("reviewer_id").references(() => users.id, { onDelete: "set null" }),
+  },
+  (table) => [
+    uniqueIndex("documentation_feedback_user_page_revision_idx").on(
+      table.userId,
+      table.pageSlug,
+      table.documentationRevision,
+    ),
+    index("documentation_feedback_status_idx").on(table.status, table.createdAt),
   ],
 );
 
@@ -445,6 +565,7 @@ export const monthlyCloses = pgTable(
     month: integer("month").notNull(),
     status: varchar("status", { length: 20 }).$type<CloseStatus>().notNull().default("open"),
     notes: text("notes"),
+    externalLedgerReference: varchar("external_ledger_reference", { length: 200 }),
     signedOffBy: integer("signed_off_by").references(() => users.id),
     signedOffAt: timestamp("signed_off_at"),
     createdAt: timestamp("created_at").notNull().defaultNow(),
@@ -477,6 +598,8 @@ export const CONTRIBUTION_METHOD_LABELS: Record<ContributionMethod, string> = {
 
 export const BATCH_STATUSES = ["open", "closed"] as const;
 export type BatchStatus = (typeof BATCH_STATUSES)[number];
+export const BATCH_KINDS = ["regular", "adjustment"] as const;
+export type BatchKind = (typeof BATCH_KINDS)[number];
 
 export const givingFunds = pgTable("giving_funds", {
   id: serial("id").primaryKey(),
@@ -518,6 +641,10 @@ export const contributionBatches = pgTable(
       onDelete: "set null",
     }),
     status: varchar("status", { length: 10 }).$type<BatchStatus>().notNull().default("open"),
+    kind: varchar("kind", { length: 20 }).$type<BatchKind>().notNull().default("regular"),
+    adjustmentReason: text("adjustment_reason"),
+    externalLedgerReference: varchar("external_ledger_reference", { length: 200 }),
+    mismatchOverrideReason: text("mismatch_override_reason"),
     notes: text("notes"),
     enteredBy: integer("entered_by").references(() => users.id),
     closedBy: integer("closed_by").references(() => users.id),
@@ -545,6 +672,7 @@ export const contributions = pgTable(
     method: varchar("method", { length: 10 }).$type<ContributionMethod>().notNull(),
     checkNumber: varchar("check_number", { length: 20 }),
     note: varchar("note", { length: 300 }),
+    adjustsContributionId: integer("adjusts_contribution_id"),
     enteredBy: integer("entered_by").references(() => users.id),
     createdAt: timestamp("created_at").notNull().defaultNow(),
   },
@@ -564,7 +692,7 @@ export const DEFAULT_GIVING_FUNDS = [
 
 // Individual donor giving data is confidential: only these roles may see
 // donor records, giving history, batch entry detail, and statements.
-export const GIVING_ROLES: Role[] = ["super_admin", "treasurer", "bookkeeper"];
+export const GIVING_ROLES: Role[] = ["treasurer", "bookkeeper"];
 // Aggregate fund totals (no individual donor detail) additionally visible to
 // the Finance Committee.
 export const FUND_REPORT_ROLES: Role[] = [...GIVING_ROLES, "finance_committee"];
@@ -582,29 +710,27 @@ export const MONTHLY_CLOSE_TEMPLATE = [
 // Least-privilege matrix: Counting Team = counts only; Bookkeeper edits ledger/deposits;
 // Treasurer signs off closes; Finance Committee = reports only; Admins manage categories.
 export const FINANCE_VIEW_ROLES: Role[] = [
-  "super_admin",
-  "admin",
   "treasurer",
   "bookkeeper",
 ];
 export const COUNT_ENTRY_ROLES: Role[] = [
-  "super_admin",
-  "admin",
   "treasurer",
   "bookkeeper",
   "counting_team",
 ];
 export const COUNT_VIEW_ROLES: Role[] = [...FINANCE_VIEW_ROLES, "counting_team"];
-export const DEPOSIT_MANAGE_ROLES: Role[] = ["super_admin", "admin", "treasurer", "bookkeeper"];
-export const LEDGER_EDIT_ROLES: Role[] = ["super_admin", "admin", "treasurer", "bookkeeper"];
-export const CLOSE_MANAGE_ROLES: Role[] = ["super_admin", "admin", "treasurer", "bookkeeper"];
-export const CLOSE_SIGNOFF_ROLES: Role[] = ["super_admin", "treasurer"];
+export const DEPOSIT_MANAGE_ROLES: Role[] = ["treasurer", "bookkeeper"];
+export const LEDGER_EDIT_ROLES: Role[] = ["treasurer", "bookkeeper"];
+export const CLOSE_MANAGE_ROLES: Role[] = ["treasurer", "bookkeeper"];
+export const CLOSE_SIGNOFF_ROLES: Role[] = ["treasurer"];
 export const REPORT_VIEW_ROLES: Role[] = [...FINANCE_VIEW_ROLES, "finance_committee"];
-export const CATEGORY_MANAGE_ROLES: Role[] = ["super_admin", "admin"];
+export const CATEGORY_MANAGE_ROLES: Role[] = ["treasurer"];
 // Any role that can access some part of the Finance section (nav visibility / index redirect)
 export const FINANCE_NAV_ROLES: Role[] = [...COUNT_VIEW_ROLES, "finance_committee"];
 
 export type User = typeof users.$inferSelect;
+export type UserRole = typeof userRoles.$inferSelect;
+export type AuthenticatedUser = User & { roles: Role[] };
 export type Announcement = typeof announcements.$inferSelect;
 export type PageView = typeof pageViews.$inferSelect;
 export type Household = typeof households.$inferSelect;
@@ -628,8 +754,10 @@ export type GivingFund = typeof givingFunds.$inferSelect;
 export type Donor = typeof donors.$inferSelect;
 export type ContributionBatch = typeof contributionBatches.$inferSelect;
 export type Contribution = typeof contributions.$inferSelect;
+export type DocumentationFeedback = typeof documentationFeedback.$inferSelect;
+export type AuditEvent = typeof auditEvents.$inferSelect;
 
-export type SafeUser = Omit<User, "passwordHash">;
+export type SafeUser = Omit<User, "passwordHash" | "mfaSecretEncrypted"> & { roles: Role[] };
 
 export const registerSchema = z.object({
   username: z
@@ -665,6 +793,28 @@ export const announcementSchema = z.object({
 
 export const assignRoleSchema = z.object({
   role: z.enum(ROLES),
+});
+
+export const assignRolesSchema = z.object({
+  roles: z.array(z.enum(ROLES)).min(1).max(ROLES.length),
+});
+
+export const passwordResetSchema = z.object({
+  username: z.string().min(1).max(64),
+  resetCode: z.string().min(8).max(128),
+  newPassword: z.string().min(8).max(128),
+});
+
+export const documentationFeedbackSchema = z.object({
+  pageSlug: z.string().min(1).max(300),
+  documentationRevision: z.string().min(1).max(80),
+  helpful: z.boolean(),
+  category: z.enum(FEEDBACK_CATEGORIES),
+  comment: z.string().trim().max(2000).optional().or(z.literal("")),
+});
+
+export const documentationFeedbackReviewSchema = z.object({
+  status: z.enum(FEEDBACK_STATUSES),
 });
 
 const optionalTrimmed = (max: number) =>
@@ -844,6 +994,7 @@ export const monthlyCloseCreateSchema = z.object({
 
 export const closeSignoffSchema = z.object({
   notes: z.string().max(2000).optional().or(z.literal("")),
+  externalLedgerReference: z.string().trim().min(1).max(200),
   acknowledgeOpenBatches: z.boolean().optional(),
 });
 
@@ -895,4 +1046,14 @@ export const donorMergeSchema = z.object({
 
 export const batchCloseSchema = z.object({
   allowMismatch: z.boolean().default(false),
+  mismatchOverrideReason: z.string().trim().max(2000).optional().or(z.literal("")),
+  externalLedgerReference: z.string().trim().min(1).max(200),
+});
+
+export const contributionAdjustmentSchema = z.object({
+  replacementFundId: z.number().int().positive().optional(),
+  replacementAmountCents: cents.refine((v) => v > 0, "Amount must be greater than zero").optional(),
+  replacementDate: dateString.optional(),
+  reason: z.string().trim().min(10, "Please explain the correction").max(2000),
+  externalLedgerReference: z.string().trim().min(1).max(200),
 });

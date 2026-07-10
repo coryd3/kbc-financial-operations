@@ -27,12 +27,13 @@ import {
   CLOSE_SIGNOFF_ROLES,
   REPORT_VIEW_ROLES,
   CATEGORY_MANAGE_ROLES,
-  type User,
+  type AuthenticatedUser,
 } from "../shared/schema.ts";
-import { requireRole } from "./auth.ts";
+import { hasRole, requireRole } from "./auth.ts";
+import { recordAuditEvent } from "./audit.ts";
 
-function getUser(req: Request): User {
-  return (req as any).user as User;
+function getUser(req: Request): AuthenticatedUser {
+  return (req as any).user as AuthenticatedUser;
 }
 
 function firstError(parsed: { error: { errors: { message?: string }[] } }): string {
@@ -93,6 +94,14 @@ async function getOpenBatchesForMonth(year: number, month: number): Promise<Open
 }
 
 export function registerFinanceRoutes(app: Express) {
+  app.use(["/api/finance/categories", "/api/finance/transactions", "/api/finance/reports"], (_req, res, next) => {
+    if ((process.env.FINANCIAL_MODE || "hybrid") === "hybrid") {
+      return res.status(404).json({
+        message: "The external accounting system is the official ledger. This portal does not edit the general ledger in hybrid mode.",
+      });
+    }
+    next();
+  });
   // ---------- Budget categories ----------
   app.get("/api/finance/categories", requireCountView, async (_req, res) => {
     const rows = await db
@@ -196,6 +205,11 @@ export function registerFinanceRoutes(app: Express) {
       .set({ status: "verified", verifiedBy: actor.id, verifiedAt: new Date() })
       .where(eq(offeringCounts.id, id))
       .returning();
+    await recordAuditEvent(req, "finance.count_verified", {
+      entityType: "offering_count",
+      entityId: updated.id,
+      details: { enteredBy: row.enteredBy, verifiedBy: actor.id },
+    });
     res.json({ count: updated });
   });
 
@@ -266,6 +280,9 @@ export function registerFinanceRoutes(app: Express) {
   });
 
   app.post("/api/finance/deposits", requireDepositManage, async (req, res) => {
+    if (!hasRole(getUser(req), "bookkeeper")) {
+      return res.status(403).json({ message: "The Bookkeeper prepares deposit records" });
+    }
     const parsed = depositSchema.safeParse(req.body);
     if (!parsed.success) return res.status(400).json({ message: firstError(parsed) });
     const d = parsed.data;
@@ -311,11 +328,23 @@ export function registerFinanceRoutes(app: Express) {
     const [row] = await db.select().from(deposits).where(eq(deposits.id, id));
     if (!row) return res.status(404).json({ message: "Deposit not found" });
     if (row.status === "reconciled") return res.status(400).json({ message: "Deposit is already reconciled" });
+    const actor = getUser(req);
+    if (!hasRole(actor, "treasurer")) {
+      return res.status(403).json({ message: "The Treasurer must reconcile the prepared deposit" });
+    }
+    if (row.recordedBy === actor.id) {
+      return res.status(403).json({ message: "A different person must prepare and reconcile the deposit" });
+    }
     const [updated] = await db
       .update(deposits)
-      .set({ status: "reconciled", reconciledBy: getUser(req).id, reconciledAt: new Date() })
+      .set({ status: "reconciled", reconciledBy: actor.id, reconciledAt: new Date() })
       .where(eq(deposits.id, id))
       .returning();
+    await recordAuditEvent(req, "finance.deposit_reconciled", {
+      entityType: "deposit",
+      entityId: updated.id,
+      details: { recordedBy: row.recordedBy, reconciledBy: actor.id },
+    });
     res.json({ deposit: updated });
   });
 
@@ -540,6 +569,7 @@ export function registerFinanceRoutes(app: Express) {
       .set({
         status: "closed",
         notes: parsed.data.notes || close.notes,
+        externalLedgerReference: parsed.data.externalLedgerReference,
         signedOffBy: getUser(req).id,
         signedOffAt: new Date(),
       })

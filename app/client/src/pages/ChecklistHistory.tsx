@@ -131,7 +131,7 @@ export default function ChecklistHistory() {
   const params = useParams<{ id: string }>();
   const id = Number(params.id);
   const { user } = useAuth();
-  const isManager = !!user && CHECKLIST_MANAGER_ROLES.includes(user.role);
+  const isManager = !!user && (user.roles ?? [user.role]).some((role) => CHECKLIST_MANAGER_ROLES.includes(role));
 
   const { data, isLoading, error } = useQuery({
     queryKey: ["checklistTemplateHistory", id],
