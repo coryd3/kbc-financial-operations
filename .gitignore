@@ -33,3 +33,7 @@ dist/*.xlsx
 # Local audiobook audio/model output
 dist/audiobook/audio/
 dist/audiobook/piper-voices/
+
+# Church app (Node)
+node_modules/
+app/dist/
