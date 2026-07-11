@@ -2,7 +2,7 @@
 
 # Bookkeeper / Financial Administrator - Job Description
 
-Status: Draft
+Status: Needs Personnel Review
 
 Rev. July 2026
 

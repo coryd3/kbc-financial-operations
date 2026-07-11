@@ -1,6 +1,6 @@
 # Treasurer vs Bookkeeper Duty Split
 
-Status: Draft
+Status: Needs Finance Review
 
 ## Purpose
 

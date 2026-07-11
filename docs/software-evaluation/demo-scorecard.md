@@ -1,6 +1,6 @@
 # Demo Scorecard
 
-Status: Draft
+Status: Working Record
 
 Use this scorecard during IconCMO and ChurchTrac demos. Do not fill in vendor capabilities until they are confirmed by official materials, a live demo, or written vendor response.
 

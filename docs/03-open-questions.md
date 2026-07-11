@@ -1,8 +1,8 @@
-# Project Issue Register
+# 2026 Financial Operations Issue Register
 
 Status: Working Record
 
-This is a project-management record for committees and documentation stewards. It is not an adopted policy or part of the permanent Operations Manual. Questions should be removed or converted into decision-log entries when the responsible church body resolves them.
+This is a current-work record for committees and documentation stewards. It is not an adopted policy or part of the permanent Handbook. Questions should be removed or converted into decision-log entries when the responsible church body resolves them.
 
 ## Personnel Committee
 

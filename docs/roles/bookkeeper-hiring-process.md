@@ -1,6 +1,6 @@
 # Bookkeeper / Financial Administrator Hiring Process
 
-Status: Draft
+Status: Needs Personnel Review
 
 ## Purpose
 

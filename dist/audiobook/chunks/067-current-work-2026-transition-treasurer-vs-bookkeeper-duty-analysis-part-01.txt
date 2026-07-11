@@ -1,0 +1,32 @@
+Chapter: Treasurer vs. Bookkeeper Duty Analysis.
+Current document status: Needs Finance Review.
+
+Section: Treasurer vs Bookkeeper Duty Split.
+
+Section: Purpose.
+
+This document compares the current approved Treasurer job description with the proposed Treasurer / Financial Officer governance role and the proposed Bookkeeper / Financial Administrator job description.
+
+The goal is not to remove accountability from the elected Treasurer. The goal is to separate governance, review, and church accountability from routine bookkeeping operations so KBC's financial work is clear, transferable, and sustainable.
+
+Context: On June 28, 2026, the congregation approved adding a paid, part-time Bookkeeper position not to exceed $150 per week, described as $18.75 per hour for approximately 8 hours. The motion tasked Personnel and Nominating Committees to work together to add the position, gave Personnel Committee authority to hire the right candidate, and gave Finance Committee responsibility for adjusting the budget to fund this specific operational need. This document should help define what that authorized role should do and what should remain with the Treasurer, Finance Committee, Personnel Committee, Nominating Committee, and any outside vendor.
+
+Section: Sources Reviewed.
+
+source-materials/existing-job-descriptions/final-approved/KBC_Treasurer_Job_Description_Rev_Nov2025.pdf.
+source-materials/existing-job-descriptions/working-drafts/4_Treasurer Job Description.docx.
+docs/roles/treasurer-governance-role.md.
+docs/roles/bookkeeper-financial-administrator-job-description.md.
+docs/governance/responsibility-matrix.md.
+
+Note: The approved Treasurer job description uses "Stewardship Committee" in one qualification item. Current project documents generally use "Finance Committee." Confirm whether these refer to the same body or different bodies.
+
+Section: Recommended Role Boundaries.
+
+Table summary.
+Role / Body: Elected Treasurer / Financial Officer. Primary Focus: Governance, accountability, review, reporting, and church trust.. Should Own: Oversight of financial integrity, report review/presentation, policy compliance, audit coordination, liaison with Finance Committee and outside providers, and carrying out approved Finance Committee direction.. Should Not Own Alone: All routine transaction entry, payroll filings, contribution entry, card administration, recordkeeping by default, or sole control over financial knowledge and approval..
+Role / Body: Bookkeeper / Financial Administrator. Primary Focus: Day-to-day financial operations.. Should Own: Transaction entry, deposits documentation, reimbursement processing, bill/payment preparation, report packet preparation, records organization, software workflow, reconciliation support.. Should Not Own Alone: Final financial policy authority, committee decisions, audit scope, budget approval, or elected officer accountability..
+Role / Body: Finance Committee. Primary Focus: Financial governance and controls.. Should Own: Budget oversight, software selection, financial policies, spending authority, reimbursement rules, credit card policy, monthly review, audit/review process.. Should Not Own Alone: Personnel hiring process or employment evaluation details..
+Role / Body: Personnel Committee. Primary Focus: Role definition, hiring, compensation recommendation, and evaluation process for the authorized paid Bookkeeper role.. Should Own: Job descriptions, applications, interviews, background-check process, compensation recommendation, evaluation framework.. Should Not Own Alone: Financial software, spending authority, reimbursement rules, or financial controls..
+Role / Body: Nominating Committee. Primary Focus: Coordination for adding the Bookkeeper position under the June 28, 2026 motion; elected officer recommendations where bylaws require.. Should Own: Coordination with Personnel Committee on adding the position; Treasurer nomination process if assigned by bylaws.. Should Not Own Alone: Candidate hiring decision for the paid Bookkeeper unless bylaws or policy assign that role..
+Role / Body: Outside Payroll / Accounting Vendor. Primary Focus: Specialized processing, filings, and professional support.. Should Own: Payroll processing, W-2/1099 preparation, payroll tax filings, accounting support, audit/review support, compliance guidance as contracted.. Should Not Own Alone: Church governance decisions, budget approval, spending authorization, or committee accountability..

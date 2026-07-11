@@ -1,0 +1,22 @@
+Table summary.
+Document: Leadership Review Packet. Purpose: Align leaders around the situation, proposed structure, decisions, roadmap, and risks.. Owner: Pastor / leadership team. Status: Needs Leadership Review. Review Needed By: Pastor, Deacons, Finance Committee, Personnel Committee. Priority: High. Link: Open.
+Document: Project Brief. Purpose: Provide a short orientation to the project purpose and current situation.. Owner: Project lead TBD. Status: Needs Leadership Review. Review Needed By: Pastor, Deacons, Finance Committee, Personnel Committee. Priority: High. Link: Open.
+Document: Personnel Committee Packet. Purpose: Help Personnel review the authorized Bookkeeper role and hiring materials.. Owner: Personnel Committee. Status: Needs Personnel Review. Review Needed By: Personnel Committee. Priority: High. Link: Open.
+Document: Finance Committee Packet. Purpose: Help Finance review software, financial controls, reimbursement, spending, cards, and budget questions.. Owner: Finance Committee. Status: Needs Finance Review. Review Needed By: Finance Committee. Priority: High. Link: Open.
+Document: Monthly Finance Committee Checklist. Purpose: Provide a practical recurring checklist for monthly financial review.. Owner: Finance Committee. Status: Draft. Review Needed By: Finance Committee, Treasurer, Bookkeeper. Priority: High. Link: Open.
+Document: Documentation Stewardship Guide. Purpose: Establish shared ownership so the library does not depend on one person.. Owner: Leadership Team / Documentation Stewards. Status: Needs Leadership Review. Review Needed By: Pastor, Deacons, committee chairs, Church Clerk. Priority: High. Link: Open.
+
+Section: 5. Documents Needing Finance Committee Input.
+
+Table summary.
+Document: Responsibility Matrix. Purpose: Clarify ownership among Treasurer, Bookkeeper, committees, Pastor, Deacons, and Congregation.. Owner: Finance Committee. Status: Needs Bylaw Review. Review Needed By: Finance Committee, Personnel Committee, Pastor, Deacons, Nominating Committee. Priority: High. Link: Open.
+Document: Financial Authority Policy Package. Purpose: Coordinate spending, reimbursement, cards, exceptions, and church-vote triggers using one Finance decision worksheet.. Owner: Finance Committee. Status: Needs Finance Review. Review Needed By: Finance Committee, Treasurer, Pastor, Deacons as appropriate. Priority: High. Link: Open.
+Document: Treasurer vs. Bookkeeper Duty Split. Purpose: Define which duties belong to Treasurer, Bookkeeper, Finance, Personnel, and outside vendors.. Owner: Finance Committee. Status: Needs Finance Review. Review Needed By: Finance Committee, Personnel Committee, Nominating Committee. Priority: High. Link: Open.
+Document: Bookkeeper Job Description. Purpose: Define the authorized paid Bookkeeper / Financial Administrator role.. Owner: Personnel Committee. Status: Needs Finance Review. Review Needed By: Personnel Committee, Finance Committee. Priority: High. Link: Open.
+Document: Reimbursement Policy. Purpose: Define routine reimbursements, documentation, exceptions, and pre-approval triggers.. Owner: Finance Committee. Status: Needs Finance Review. Review Needed By: Finance Committee. Priority: High. Link: Open.
+Document: Spending Authority Policy. Purpose: Define thresholds and approval paths for budgeted, over-budget, outside-budget, emergency, and major spending.. Owner: Finance Committee. Status: Needs Bylaw Review. Review Needed By: Finance Committee, Pastor, Deacons. Priority: High. Link: Open.
+Document: Credit Card Policy. Purpose: Define cardholder eligibility, limits, receipt rules, and monthly review.. Owner: Finance Committee. Status: Needs Finance Review. Review Needed By: Finance Committee, Treasurer, Pastor. Priority: High. Link: Open.
+Document: Software Requirements. Purpose: Define requirements before demos or purchase.. Owner: Finance Committee. Status: Needs Finance Review. Review Needed By: Finance Committee, Treasurer, Bookkeeper. Priority: High. Link: Open.
+Document: IconCMO vs. ChurchTrac Comparison. Purpose: Compare candidate systems after vendor claims are confirmed.. Owner: Finance Committee. Status: Needs Finance Review. Review Needed By: Finance Committee. Priority: High. Link: Open.
+
+Section: 6. Documents Needing Personnel Committee Input.

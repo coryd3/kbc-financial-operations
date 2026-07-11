@@ -1,6 +1,6 @@
 # Financial Operations View
 
-Status: Draft - Needs Bylaw Review
+Status: Needs Bylaw Review
 
 ## Purpose
 

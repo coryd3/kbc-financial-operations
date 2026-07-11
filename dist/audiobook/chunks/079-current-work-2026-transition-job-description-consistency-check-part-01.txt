@@ -1,0 +1,67 @@
+Chapter: Job Description Consistency Check.
+Current document status: Working Record.
+
+Section: Job Description Consistency Check.
+
+Section: Purpose.
+
+This note compares the draft Bookkeeper / Financial Administrator job description with existing KBC job-description patterns so future role documents can stay consistent.
+
+Section: Source Documents Reviewed.
+
+Current repository source copies:
+source-materials/existing-job-descriptions/working-drafts/1_Pastor Job Description.docx.
+source-materials/existing-job-descriptions/working-drafts/2_Student Ministry Director Job Description.docx.
+source-materials/existing-job-descriptions/working-drafts/3_Church Clerk Job Description.docx.
+source-materials/existing-job-descriptions/working-drafts/4_Treasurer Job Description.docx.
+source-materials/existing-job-descriptions/working-drafts/5_Young Adult Director Job Description.docx.
+source-materials/existing-job-descriptions/working-drafts/6_Church Administrative Assistant Job Description.docx.
+source-materials/existing-job-descriptions/working-drafts/8_Custonian Job Description.docx.
+Original Personnel Committee working files:
+Kingsville Baptist Church/Personnel Committee/4_Committee Working Docs/Custodian Job Description 102524a.docx.
+Kingsville Baptist Church/Personnel Committee/4_Committee Working Docs/Job Description for Pastor 2024.docx.
+Kingsville Baptist Church/Personnel Committee/4_Committee Working Docs/Part-Time Student Ministry Director Role and Responsibilities One Page Brandon.docx.
+Kingsville Baptist Church/Personnel Committee/4_Committee Working Docs/Part-Time Young Adult Ministry Director Role and Responsibilities One Page Brandon.docx.
+Kingsville Baptist Church/Personnel Committee/4_Committee Working Docs/Kingsville Baptist Church Secretary Job Descriptiondocx.docx.
+Kingsville Baptist Church/Personnel Committee/1_Job Descriptions/0_Working Drafts/8_Custonian Job Description.docx.
+Original final approved PDF locations:
+Kingsville Baptist Church/Personnel Committee/1_Job Descriptions/1_Final Approved Versions/.
+Kingsville Baptist Church/Personnel Committee/5_Final Approved Documents (PDF only)/Job Descriptions/.
+docs/roles/bookkeeper-financial-administrator-job-description.md.
+
+Note: The final approved PDFs are retained as source materials. This check primarily used editable DOCX working drafts and source copies because local PDF text extraction tools are not installed.
+
+Section: KBC Pattern Worth Keeping.
+
+Existing KBC job descriptions generally use this structure:
+
+Church name.
+Role title and job-description label.
+Revision date when applicable.
+Position Summary.
+Purpose Statement for ministry roles when helpful.
+Qualifications or Biblical Qualifications, depending on the role.
+Core Responsibilities, often grouped into numbered responsibility areas.
+Accountability & Support.
+Expectations for Character & Lifestyle or Expectations for Character & Work Ethic.
+Compensation & Vocational Status or Compensation & Schedule for paid roles.
+Terms of Service.
+
+The tone is usually calm, church-centered, and service-oriented. The best examples describe the role as ministry, clarify accountability, and frame evaluation as support and growth rather than criticism.
+
+The older files are not perfectly uniform. Some use a compact one-page ministry format with Purpose, Role, Qualifications, Expectations, and Compensation and Time Expectations. Some operational roles include practical sections such as Responsible & Reports To, Typical Duties, Limits of Authority, and Relationships to Others. The strongest format for future use is the newer, clearer structure reflected in the current Custodian draft and the updated repository template.
+
+Section: Bookkeeper Draft Alignment.
+
+The Bookkeeper / Financial Administrator job description is broadly consistent with the KBC pattern.
+
+Strengths:
+
+Starts with church name, role title, status, and revision date.
+Uses a clear Position Summary.
+Separates operational responsibilities from Treasurer and Finance Committee governance responsibilities.
+Includes confidentiality, controls, reporting, and committee coordination.
+Includes Accountability & Support, Expectations for Character & Work Ethic, Compensation & Schedule, and Terms of Service.
+Reflects the June 28, 2026 congregational authorization and compensation limit.
+
+Adjustments made from this consistency check:

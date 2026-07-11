@@ -1,5 +1,7 @@
 # Export and Release Process
 
+Status: Current
+
 This page explains how to turn selected Markdown artifacts into review files and release bundles.
 
 ## What To Edit

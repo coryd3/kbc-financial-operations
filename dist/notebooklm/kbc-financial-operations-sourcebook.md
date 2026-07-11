@@ -1,6 +1,6 @@
 # KBC Financial Operations Sourcebook
 
-Generated: 2026-07-08
+Generated: 2026-07-10
 
 > **Sensitive Information Warning:** This sourcebook must not contain donor records, payroll details, bank account numbers, passwords, Social Security numbers, confidential personnel issues, or private financial data.
 
@@ -10,8 +10,10 @@ The GitHub repository remains the source of truth. If this sourcebook is out of 
 
 ## Included Sources
 
-- [Project Overview](#project-overview): `docs/00-project-brief.md`
-- [Current Situation](#current-situation): `docs/01-current-state-assessment.md`
+- [Handbook And Workspace Overview](#handbook-and-workspace-overview): `docs/index.md`
+- [Why This Handbook Exists](#why-this-handbook-exists): `docs/start-here/why-this-exists.md`
+- [2026 Transition Project Overview](#2026-transition-project-overview): `docs/00-project-brief.md`
+- [2026 Transition Current-State Assessment](#2026-transition-current-state-assessment): `docs/01-current-state-assessment.md`
 - [Responsibility Matrix](#responsibility-matrix): `docs/governance/responsibility-matrix.md`
 - [Treasurer vs. Bookkeeper Distinction](#treasurer-vs-bookkeeper-distinction): `docs/roles/treasurer-vs-bookkeeper-duty-split.md`
 - [Bookkeeper Job Description](#bookkeeper-job-description): `docs/roles/bookkeeper-financial-administrator-job-description.md`
@@ -24,30 +26,215 @@ The GitHub repository remains the source of truth. If this sourcebook is out of 
 - [Monthly Finance Committee Review Checklist](#monthly-finance-committee-review-checklist): `docs/procedures/monthly-finance-committee-meeting-checklist.md`
 - [Software Requirements](#software-requirements): `docs/software-evaluation/software-requirements.md`
 - [ChurchTrac vs. IconCMO Comparison](#churchtrac-vs-iconcmo-comparison): `docs/software-evaluation/icon-vs-churchtrac-comparison.md`
-- [30/60/90 Roadmap](#306090-roadmap): `docs/implementation-roadmap.md`
-- [Open Questions](#open-questions): `docs/03-open-questions.md`
+- [2026 Transition Roadmap](#2026-transition-roadmap): `docs/implementation-roadmap.md`
+- [2026 Financial Operations Issue Register](#2026-financial-operations-issue-register): `docs/03-open-questions.md`
 - [Decision Log](#decision-log): `docs/02-decision-log.md`
 - [Constitution and Bylaws Reference](#constitution-and-bylaws-reference): `docs/governance/constitution-and-bylaws-reference.md`
 - [Leadership Review Packet Summary](#leadership-review-packet-summary): `docs/communications/leadership-review-packet.md`
 
 ---
 
-# Project Overview
+# Handbook And Workspace Overview
+
+- Source file path: `docs/index.md`
+- Status: Needs Leadership Review
+- Owner: Documentation Stewards
+- Last updated: 2026-07-10
+
+---
+
+### KBC Financial Operations Handbook And Workspace
+
+Status: Needs Leadership Review
+
+This is KBC's shared starting point for financial governance, responsibilities, policies, procedures, current committee work, and recorded decisions.
+
+The goal is simple: people should be able to find the right guidance, know whether it is approved or still under review, see who owns it, and understand what happens next without depending on one person's memory.
+
+!!! note "The Short Explanation"
+    A shared folder stores files. This handbook and workspace show which guidance is current, who is responsible for it, what is still being decided, and where people can ask questions or suggest changes.
+
+[Read the plain-language explanation](start-here/why-this-exists.md)
+
+!!! note "Congregation Final Authority"
+    The congregation remains the final authority where the Constitution and Bylaws, annual budget, policy, officer election, major non-budgeted spending, or church practice require a vote. The handbook records and supports that authority; it does not replace it.
+
+#### Three Parts
+
+##### 1. The Handbook
+
+The handbook contains guidance meant to remain useful as people and positions change:
+
+- Constitution and Bylaws reference.
+- Church organization and responsibility matrix.
+- Committee charters and role descriptions.
+- Approved financial policies.
+- Practical procedures and recurring checklists.
+
+Draft material is clearly marked. A draft does not become church policy simply because it appears here.
+
+##### 2. Current Work
+
+The workroom contains items that help leaders and committees move active work forward:
+
+- [Current Work Dashboard](start-here/project-dashboard.md).
+- Committee review packets and recommendations.
+- Open questions and decisions needed.
+- Implementation roadmaps and evaluation tools.
+- Assigned action items, due dates, and feedback.
+
+These records are useful while work is underway, but they should not take over the permanent handbook. Completed packets and outdated drafts should move to the archive.
+
+##### 3. Church Record And History
+
+The record layer preserves the reason behind decisions:
+
+- Constitution and Bylaws source material.
+- Congregational motions and decision summaries.
+- Approved versions and dated releases.
+- Superseded documents retained for reference.
+
+Official church minutes remain with the Church Clerk or other records steward. This library may link to or summarize them, but it does not replace the authoritative record.
+
+#### Where To Start
+
+##### Church Members
+
+Start with:
+
+- [Constitution and Bylaws Reference](governance/constitution-and-bylaws-reference.md)
+- [Church Organization Chart](governance/church-organization-chart.md)
+- [Financial Operations View](governance/financial-operations-view.md)
+- [Responsibility Matrix](governance/responsibility-matrix.md)
+
+Approved financial policies will be added to the Church Member Library after the proper review and adoption process. Draft policies remain available through the Finance, Leadership, Operations, and All Documents views.
+
+##### Church Leadership
+
+Use the [Current Work Dashboard](start-here/project-dashboard.md) to see decisions, owners, priorities, and review needs.
+
+##### Finance Committee And Financial Workers
+
+Start with the [Finance Committee Charter](governance/finance-committee-charter.md), [Responsibility Matrix](governance/responsibility-matrix.md), financial policies, and operating procedures.
+
+##### Personnel Committee
+
+Start with the [Personnel Committee Role](governance/personnel-committee-role.md), [Bookkeeper Job Description](roles/bookkeeper-financial-administrator-job-description.md), and Personnel Committee workspace.
+
+##### Documentation And Project Helpers
+
+Use the Current Workroom for the issue register, decision log, implementation roadmap, source inventory, transition material, and other working records. The [Handbook And Workspace Stewardship Guide](document-stewardship.md) explains how multiple people can share ownership without changing church policy on their own.
+
+#### What This Adds Beyond A Shared Folder
+
+| A shared folder helps us... | The handbook and workspace also help us... |
+| --- | --- |
+| Store and edit files. | Identify the current document and distinguish it from drafts or superseded copies. |
+| Share a link with a group. | Show the right starting point for members, leaders, committees, and financial workers. |
+| Keep supporting material. | Record the owner, review status, intended audience, and approval path. |
+| Collect comments in individual files. | Route section-level feedback into a review process that can be accepted, planned, resolved, or declined. |
+| Preserve meeting files. | Connect decisions, responsibilities, procedures, and recurring work so the system survives leadership changes. |
+
+Google Drive can still hold editable office files and properly restricted private records. This handbook is the organized reference point; the portal workspace supports recurring work, decisions, assignments, and feedback.
+
+#### Current Project Context
+
+The 2026 Treasurer and Bookkeeper transition helped reveal the need for this system. That project remains documented in the [2026 Transition Project Brief](00-project-brief.md), [Current Work Dashboard](start-here/project-dashboard.md), and [Decision Log](02-decision-log.md). It is one project within the workspace, not the permanent organizing principle for the handbook.
+
+#### Sensitive Information Warning
+
+Do not store donor records, giving details, payroll details, bank account numbers, Social Security numbers, passwords, candidate applications, reference-check notes, background-check results, confidential personnel matters, or private pastoral-care information in this repository or public documentation site.
+
+!!! warning "Public Site Caution"
+    The GitHub repository and published site should be treated as public. Audience labels organize information for readers; they are not confidentiality controls.
+# Why This Handbook Exists
+
+- Source file path: `docs/start-here/why-this-exists.md`
+- Status: Needs Leadership Review
+- Owner: Leadership Team / Documentation Stewards
+- Last updated: 2026-07-10
+
+---
+
+### Why KBC Has A Financial Operations Handbook
+
+Status: Needs Leadership Review
+
+#### The Short Version
+
+A shared folder is useful for storing files. This handbook and workspace solve a different problem: they help the church know which guidance to trust, who owns it, what still needs a decision, and how work continues when people change roles.
+
+#### A Simple Picture
+
+- **Google Drive is the filing cabinet.** It holds working files, forms, and private records with the right sharing settings.
+- **The handbook is the labeled binder.** It points people to the current guidance and clearly marks drafts, approved material, owners, and responsibilities.
+- **The workspace is the committee agenda and task list.** It shows current decisions, assignments, due dates, recurring checklists, and feedback.
+- **The record is the history.** It preserves decisions and prior versions so future leaders understand why something changed.
+
+KBC may use all four. One does not have to replace the others.
+
+#### Why A Folder Alone Is Not Enough
+
+A folder can contain several versions of the same document without answering:
+
+- Which version should we follow?
+- Is this approved, or is it only a draft?
+- Who is responsible for keeping it current?
+- Which committee should review a change?
+- Does the congregation need to vote?
+- What work is still open?
+- Where should a reader leave feedback?
+
+The handbook and workspace put those answers beside the content.
+
+#### A Practical Example
+
+Suppose a ministry leader asks how to be reimbursed.
+
+In a normal folder, the person may find several forms, an old policy, meeting notes, and a draft procedure. They may still need to ask around to learn which one applies.
+
+In this system, the person can find the current reimbursement guidance, see whether it is approved or awaiting Finance Committee review, identify the owner, follow the procedure, and submit a specific question on the section that is unclear.
+
+#### What This Does Not Replace
+
+This system does not replace:
+
+- The authority of the congregation.
+- The Constitution and Bylaws.
+- Committee discussion, judgment, or prayer.
+- Official minutes maintained by the Church Clerk.
+- Google Drive or another properly restricted location for confidential records.
+
+It gives those things an organized, searchable, and transferable structure.
+
+#### How It Becomes Church-Owned
+
+- Committees own the substance in their area.
+- Document owners keep guidance accurate.
+- Documentation stewards maintain organization, links, status labels, and archives.
+- Members and leaders can suggest changes without changing policy on their own.
+- The proper committee, leadership body, or congregation approves substantive changes.
+- Completed projects move out of the main reading path while their history remains available.
+
+#### Short Explanation To Share
+
+> Google Drive stores the files. The KBC handbook and workspace tell us which guidance is current, whether it is approved or still a draft, who owns it, what work is still open, and where feedback belongs. It gives the church a shared operating memory so responsibilities and decisions do not have to be rebuilt every time people change roles.
+# 2026 Transition Project Overview
 
 - Source file path: `docs/00-project-brief.md`
-- Status: Draft
+- Status: Needs Leadership Review
 - Owner: Project lead TBD
 - Last updated: 2026-07-07
 
 ---
 
-### Project Brief
+### 2026 Financial Operations Transition Project Brief
 
-Status: Draft
+Status: Needs Leadership Review
 
 #### Purpose
 
-This project organizes and modernizes Kingsville Baptist Church financial operations documentation during a Treasurer transition.
+This dated project record explains the Treasurer and Bookkeeper transition work that led KBC to strengthen its financial operations handbook, responsibilities, controls, and recurring processes.
 
 The goal is not simply to replace one Treasurer with another Treasurer. The goal is to build a financial operations structure that is clear, accountable, transferable, sustainable, and easier for future volunteers or paid staff to follow.
 
@@ -86,22 +273,22 @@ KBC should have a financial operations model where:
 - Procedures are documented clearly enough that the work can continue when people change roles.
 
 Needs Committee Review: Any final recommendation should be reviewed against KBC bylaws, the June 28, 2026 congregational authorization, and the appropriate committee, leadership, and congregational process.
-# Current Situation
+# 2026 Transition Current-State Assessment
 
 - Source file path: `docs/01-current-state-assessment.md`
-- Status: Draft
+- Status: Needs Leadership Review
 - Owner: Project lead TBD
 - Last updated: 2026-07-07
 
 ---
 
-### Current State Assessment
+### 2026 Transition Current-State Assessment
 
-Status: Draft
+Status: Needs Leadership Review
 
 #### Summary
 
-The current Treasurer vacancy has exposed broader financial operations needs. The issue is not one person's performance. It is that the system has become too dependent on individual knowledge and too light on documented roles, controls, procedures, and committee ownership.
+This assessment records the conditions observed during the 2026 Treasurer transition. The issue is not one person's performance. It is that the system had become too dependent on individual knowledge and too light on documented roles, controls, procedures, and committee ownership.
 
 #### Role Clarity
 
@@ -202,15 +389,15 @@ Needs Committee Review: This assessment is a working draft and should be reviewe
 # Responsibility Matrix
 
 - Source file path: `docs/governance/responsibility-matrix.md`
-- Status: Draft
+- Status: Needs Bylaw Review
 - Owner: Finance Committee
-- Last updated: 2026-07-07
+- Last updated: 2026-07-10
 
 ---
 
 ### Responsibility Matrix
 
-Status: Draft
+Status: Needs Bylaw Review
 
 This matrix separates governance, operations, recommendations, and approvals. It should be reviewed against KBC bylaws and actual committee practice before use.
 
@@ -223,9 +410,9 @@ This matrix separates governance, operations, recommendations, and approvals. It
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | Software selection | Provides finance requirements; reviews reporting and control needs. | Provides workflow input; tests usability; supports setup if assigned. | Leads evaluation, recommendation, implementation direction, and control requirements. | Consults on staffing, training, and job-impact questions. | No primary role. | Consults on ministry and administrative needs. | Reviews if cost, policy, or leadership impact requires. | Votes if required by budget, contract, or church policy. |
 | Treasurer candidate / officer recommendation | Provides transition input if currently serving or interim. | No role. | Consults on needed finance skills and role expectations. | Consults only if personnel policy or job-description language is involved. | Leads nomination if bylaws assign this role. | Consults and supports transition communication. | Reviews or counsels if church practice requires. | Votes if bylaws require election or confirmation. |
-| Bookkeeper / Financial Administrator hiring | Provides role and workflow input; may participate in interviews if assigned. | Applicant or role holder; no approval role. | Defines finance duties, controls, budget impact, and reporting needs; adjusts budget to fund this specific operational need under the June 28, 2026 motion. | Leads hiring process, application, interview, references, compensation recommendation, and evaluation process under the authority already granted by congregational vote. | Works with Personnel Committee to add the position as named in the June 28, 2026 motion; no candidate hiring authority unless bylaws or policy assign it. | Consults on supervision, office workflow, and ministry fit. | Reviews if leadership practice or budget impact requires. | Authorized a paid, part-time Bookkeeper position on June 28, 2026, not to exceed `$150` per week, described as `$18.75` per hour for approximately 8 hours; votes again only if scope, compensation, budget, or policy exceeds that authorization. |
+| Bookkeeper / Financial Administrator hiring | Provides role and workflow input; may participate in interviews if assigned. | Applicant or role holder; no approval role. | Defines finance duties, controls, budget impact, and reporting needs. | Leads job-description, application, interview, reference, compensation-recommendation, and evaluation processes within the authority granted by the church. | Coordinates only when bylaws, a congregational motion, or church practice assign a role; does not select the candidate unless specifically authorized. | Consults on supervision, office workflow, and ministry fit. | Reviews if leadership practice or budget impact requires. | Authorizes the role, compensation, or budget when bylaws, budget, policy, or church practice require congregational action. |
 | Treasurer job description approval | Provides input on practicality and transition needs. | No role. | Defines financial governance, controls, reporting, and committee relationship. | Helps format and maintain role description if assigned. | Reviews if tied to elected officer nomination. | Consults. | Reviews if church practice requires. | Approves if bylaws or church policy require. |
-| Bookkeeper job description approval | Provides workflow and reporting input. | Provides practical feedback if role is already filled. | Approves or recommends finance duties, access, controls, and reporting requirements. | Leads drafting and recommends final job description, qualifications, compensation, and evaluation process. | No primary role. | Consults on supervision and office workflow. | Reviews if leadership practice requires. | Prior authorization supports hiring; votes again only if compensation, budget change, or policy requires. |
+| Bookkeeper job description approval | Provides workflow and reporting input. | Provides practical feedback if role is already filled. | Approves or recommends finance duties, access, controls, and reporting requirements. | Leads drafting and recommends final job description, qualifications, compensation, and evaluation process. | No primary role unless governing documents assign one. | Consults on supervision and office workflow. | Reviews if leadership practice requires. | Votes when creation of the role, compensation, budget change, or church policy requires congregational approval. |
 | Reimbursement approval | Reviews documentation and policy compliance; approves if assigned by policy. | Processes requests after documentation and approval are complete; tracks missing receipts. | Owns reimbursement policy, approval thresholds, exceptions, and monthly review. | Consults only if staff or volunteer-role accountability is affected. | No role. | May approve ministry expenses if assigned by policy. | Reviews exceptions if leadership practice requires. | Votes only if reimbursement policy or budget impact requires. |
 | Budget oversight | Reviews reports and helps explain variances. | Records transactions and prepares reports if assigned. | Owns budget monitoring, variance review, budget exceptions, and recommendations. | Reviews staffing and compensation budget implications. | No primary role. | Consults on ministry priorities and operational needs. | Reviews major budget matters if church practice requires. | Approves annual budget and major budget changes if required. |
 | Annual budget approval | Helps review and present financial information. | Prepares supporting reports if assigned. | Leads budget development, review, and recommendation. | Reviews staffing and compensation budget implications. | No primary role unless bylaws assign. | Consults on ministry priorities. | Reviews and counsels if church practice requires. | Approves the annual budget where bylaws or church practice require. |
@@ -242,27 +429,29 @@ This matrix separates governance, operations, recommendations, and approvals. It
 - Finance Committee should own financial policy, controls, software direction, budget oversight, monthly review, audit/review process, reimbursement rules, card policy, and outside-budget spending recommendations.
 - The Treasurer / Financial Officer is an elected officer who should coordinate with Finance Committee, review reports, help carry out approved financial direction, and keep the church informed without becoming the sole point of financial control.
 - The Bookkeeper / Financial Administrator should support day-to-day records and reports under clear supervision, approved duties, controlled access, and regular Finance Committee review.
-- Personnel Committee should own job descriptions, hiring process, applications, interviews, compensation recommendations, and evaluation process for the paid Bookkeeper role already authorized by congregational vote.
-- Nominating Committee should work with Personnel Committee to add the paid Bookkeeper position as named in the June 28, 2026 motion and should also be involved where bylaws assign responsibility for elected officer recommendations.
+- Personnel Committee should own job descriptions, hiring process, applications, interviews, compensation recommendations, and evaluation process for paid non-ministerial roles authorized by the church.
+- Nominating Committee should be involved where bylaws, a congregational motion, or church practice assign responsibility, including elected-officer recommendations.
 - Congregation should vote where bylaws, budget, policy, or church practice require.
 - Deacons may counsel, raise concerns, and recommend that issues go back to committees or to the congregation through the proper process, but should not become a unilateral financial authority.
 - No one person should have too much control over church money; responsibilities should be documented, reviewed, and transferable.
 
 Needs Bylaw Review: Confirm each ownership area with KBC Constitution and Bylaws, committee charters, and church practice before treating this matrix as authoritative.
 
-Final approval path to be confirmed by church leadership, bylaws, church practice, and the June 28, 2026 congregational authorization for elected officers, compensation beyond `$150` per week, software contracts, spending authority, policies, and any remaining church votes.
+Final approval paths for elected officers, compensation, software contracts, spending authority, policies, and church votes must be confirmed by church leadership, bylaws, and church practice.
+
+Time-limited authorizations, interim assignments, and implementation decisions belong in the [Current Workroom](../start-here/project-dashboard.md) and [Decision Log](../02-decision-log.md). They do not change this durable responsibility model unless the proper church body adopts a lasting change.
 # Treasurer vs. Bookkeeper Distinction
 
 - Source file path: `docs/roles/treasurer-vs-bookkeeper-duty-split.md`
-- Status: Draft
+- Status: Needs Finance Review
 - Owner: Finance Committee
-- Last updated: 2026-07-07
+- Last updated: 2026-07-10
 
 ---
 
 ### Treasurer vs Bookkeeper Duty Split
 
-Status: Draft
+Status: Needs Finance Review
 
 #### Purpose
 
@@ -399,9 +588,9 @@ Needs Professional Review: Payroll, tax, accounting, employment, and legal quest
 # Bookkeeper Job Description
 
 - Source file path: `docs/roles/bookkeeper-financial-administrator-job-description.md`
-- Status: Draft
+- Status: Needs Personnel Review
 - Owner: Personnel Committee
-- Last updated: 2026-07-07
+- Last updated: 2026-07-10
 
 ---
 
@@ -409,7 +598,7 @@ Needs Professional Review: Payroll, tax, accounting, employment, and legal quest
 
 ### Bookkeeper / Financial Administrator - Job Description
 
-Status: Draft
+Status: Needs Personnel Review
 
 Rev. July 2026
 
@@ -420,8 +609,6 @@ The Bookkeeper / Financial Administrator is a part-time, non-ministerial staff r
 This role helps maintain accurate financial records, process routine transactions, support financial reporting, and keep documentation organized according to approved church policy and financial controls.
 
 This role is both a job and a ministry of service. The Bookkeeper / Financial Administrator is expected to serve with a Christ-like attitude, recognizing that accurate, confidential, and orderly financial work supports the mission and health of the church.
-
-On June 28, 2026, the congregation approved adding a paid, part-time Bookkeeper position. The motion tasked Personnel and Nominating Committees to work together to add the position, gave Personnel Committee authority to hire the right candidate, gave Finance Committee responsibility for adjusting the budget to fund this specific operational need, and set a limit of `$150` per week, described as `$18.75` per hour for approximately 8 hours.
 
 This role is operational. It does not replace the governance responsibilities of the Treasurer or Finance Committee.
 
@@ -524,10 +711,10 @@ The Bookkeeper / Financial Administrator should receive clear written procedures
 
 #### Compensation & Schedule
 
-- Paid position authorized by congregational vote.
+- Paid, part-time position funded through the approved church budget and authorization process.
 - Employment classification: TBD.
-- Expected weekly hours: approximately 8 hours, unless Personnel Committee, Finance Committee, and church approval path confirm otherwise.
-- Compensation limit: not to exceed `$150` per week, described in the June 28, 2026 motion as `$18.75` per hour for approximately 8 hours.
+- Expected weekly hours: documented in the current employment terms and approved budget.
+- Compensation: documented in the current employment terms and kept within the authority and budget approved by the church.
 - Work schedule and reporting deadlines should be defined by Personnel Committee after Finance Committee confirms financial workflow needs.
 
 #### Terms of Service
@@ -540,11 +727,13 @@ Needs Personnel Review: Final title, reporting line, employment classification, 
 
 Needs Finance Review: Finance Committee should confirm financial duties, access, controls, software responsibilities, and budget impact before this role is finalized.
 
-Needs Bylaw Review: The final approval path should be checked against KBC Constitution and Bylaws, church practice, and the June 28, 2026 motion before hiring is completed.
+Needs Bylaw Review: The final approval path should be checked against KBC Constitution and Bylaws and church practice before hiring is completed.
+
+The specific 2026 authorization, initial compensation limit, and recruitment steps are preserved in the [Decision Log](../02-decision-log.md) and [Bookkeeper Hiring Process](bookkeeper-hiring-process.md). They are implementation records rather than permanent duties in this job description.
 # Bookkeeper Application Summary
 
 - Source file path: `docs/roles/bookkeeper-job-application.md`
-- Status: Draft
+- Status: Needs Personnel Review
 - Owner: Personnel Committee
 - Last updated: 2026-07-06
 - Note: This section summarizes the draft application structure. Do not include actual applicant responses, reference notes, background-check results, or private personnel information in this sourcebook.
@@ -569,15 +758,15 @@ Needs Professional Review: Employment eligibility, background-check, privacy, an
 # Finance Committee Charter
 
 - Source file path: `docs/governance/finance-committee-charter.md`
-- Status: Draft
+- Status: Needs Bylaw Review
 - Owner: Finance Committee
-- Last updated: 2026-07-06
+- Last updated: 2026-07-10
 
 ---
 
 ### Finance Committee Charter
 
-Status: Draft
+Status: Needs Bylaw Review
 
 #### Purpose
 
@@ -664,7 +853,7 @@ Needs Bylaw Review: Final committee authority, reporting lines, policy authority
 - Source file path: `docs/governance/future-governance-expansion.md`
 - Status: Parking Lot
 - Owner: Pastor / Deacons / Finance Committee
-- Last updated: 2026-07-08
+- Last updated: 2026-07-10
 - Note: This is a parking-lot governance review item. It should not be treated as approved policy or allowed to slow the immediate Bookkeeper hiring work unless an urgent issue requires action.
 
 ---
@@ -755,21 +944,23 @@ Needs Leadership Review: Pastor, Deacons, Finance Committee, Personnel Committee
 # Reimbursement Policy
 
 - Source file path: `docs/policies/reimbursement-policy.md`
-- Status: Draft
+- Status: Needs Finance Review
 - Owner: Finance Committee
-- Last updated: 2026-07-06
+- Last updated: 2026-07-10
 
 ---
 
 ### Reimbursement Policy
 
-Status: Draft
+Status: Needs Finance Review
 
 #### Purpose
 
 This policy defines how church-related expenses are reimbursed in a way that supports ministry work while maintaining documentation, accountability, and review.
 
 The guiding principle is that routine expenses within approved ministry budgets should not require excessive pre-approval, but they must be documented and reviewed.
+
+This document is part of the [Financial Authority Policy Package](financial-authority-policy-package.md). Spending thresholds and approval roles should match the Spending Authority Policy.
 
 #### Scope
 
@@ -834,21 +1025,23 @@ Needs Bylaw Review: Reimbursement thresholds, spending authority, and church vot
 # Spending Authority Policy
 
 - Source file path: `docs/policies/spending-authority-policy.md`
-- Status: Draft
+- Status: Needs Finance Review
 - Owner: Finance Committee
-- Last updated: 2026-07-06
+- Last updated: 2026-07-10
 
 ---
 
 ### Spending Authority Policy
 
-Status: Draft
+Status: Needs Finance Review
 
 #### Purpose
 
 This policy defines who may approve spending and when additional review, committee approval, or church vote may be required.
 
 Dollar amounts are placeholders until reviewed by the Finance Committee.
+
+This document is part of the [Financial Authority Policy Package](financial-authority-policy-package.md). Terms and thresholds should be approved across the package so the policies do not conflict.
 
 !!! note "Congregation Final Authority"
     The congregation should approve the annual budget and major non-budgeted expenses where KBC bylaws, budget, policy, amount, or church practice require a vote.
@@ -889,19 +1082,21 @@ Needs Bylaw Review: Church vote triggers and final approval path must be checked
 # Credit Card Policy
 
 - Source file path: `docs/policies/credit-card-policy.md`
-- Status: Draft
+- Status: Needs Finance Review
 - Owner: Finance Committee
-- Last updated: 2026-07-06
+- Last updated: 2026-07-10
 
 ---
 
 ### Credit Card And Controlled Payment Policy
 
-Status: Draft
+Status: Needs Finance Review
 
 #### Purpose
 
 This policy provides a safer, more accountable approach to church purchases by replacing shared debit cards, where practical, with individually assigned church credit cards or another controlled payment method.
+
+This document is part of the [Financial Authority Policy Package](financial-authority-policy-package.md). Card limits do not create spending authority beyond the approved budget and Spending Authority Policy.
 
 #### Policy Goals
 
@@ -991,7 +1186,7 @@ Needs Bylaw Review: Cardholder authority, spending limits, reimbursement interac
 # Monthly Finance Committee Review Checklist
 
 - Source file path: `docs/procedures/monthly-finance-committee-meeting-checklist.md`
-- Status: Draft
+- Status: Needs Finance Review
 - Owner: Finance Committee
 - Last updated: 2026-07-06
 
@@ -999,7 +1194,7 @@ Needs Bylaw Review: Cardholder authority, spending limits, reimbursement interac
 
 ### Monthly Finance Committee Meeting Checklist
 
-Status: Draft
+Status: Needs Finance Review
 
 #### Purpose
 
@@ -1133,7 +1328,7 @@ Needs Finance Review: Finance Committee should confirm the monthly packet format
 # Software Requirements
 
 - Source file path: `docs/software-evaluation/software-requirements.md`
-- Status: Draft
+- Status: Needs Finance Review
 - Owner: Finance Committee
 - Last updated: 2026-07-06
 
@@ -1141,7 +1336,7 @@ Needs Finance Review: Finance Committee should confirm the monthly packet format
 
 ### Software Requirements
 
-Status: Draft
+Status: Needs Finance Review
 
 KBC should define requirements before selecting ChurchTrac, IconCMO, QuickBooks, or another system. Software should support the financial structure KBC chooses; it should not be used as a substitute for clear governance.
 
@@ -1193,7 +1388,7 @@ Needs Finance Review: Requirements should be approved by the Finance Committee b
 # ChurchTrac vs. IconCMO Comparison
 
 - Source file path: `docs/software-evaluation/icon-vs-churchtrac-comparison.md`
-- Status: Draft
+- Status: Needs Finance Review
 - Owner: Finance Committee
 - Last updated: 2026-07-06
 
@@ -1201,7 +1396,7 @@ Needs Finance Review: Requirements should be approved by the Finance Committee b
 
 ### IconCMO vs ChurchTrac Comparison
 
-Status: Draft
+Status: Needs Finance Review
 
 Use this template during vendor research and demos. Do not fill in vendor claims unless confirmed from source documents, vendor demos, contracts, or official vendor materials.
 
@@ -1240,22 +1435,22 @@ Use this template during vendor research and demos. Do not fill in vendor claims
 TBD
 
 Needs Finance Review: Finance Committee should approve the final comparison and recommendation.
-# 30/60/90 Roadmap
+# 2026 Transition Roadmap
 
 - Source file path: `docs/implementation-roadmap.md`
-- Status: Draft
+- Status: Needs Leadership Review
 - Owner: Finance Committee / project lead TBD
-- Last updated: 2026-07-07
+- Last updated: 2026-07-10
 
 ---
 
-### Implementation Roadmap
+### 2026 Financial Operations Transition Roadmap
 
-Status: Draft
+Status: Needs Leadership Review
 
 #### Purpose
 
-This roadmap organizes the financial operations modernization work into practical phases. It is intended to help KBC stabilize the current Treasurer transition, clarify responsibilities, make committee decisions in the right order, and gradually build an Operations Manual that future volunteers or staff can follow.
+This dated roadmap organizes the 2026 transition work into practical phases. It is intended to help KBC stabilize financial operations, clarify responsibilities, make committee decisions in the right order, and move durable results into a handbook that future volunteers or staff can follow.
 
 Start date: TBD
 
@@ -1267,7 +1462,7 @@ Start date: TBD
 | 30-day plan | Clarify responsibilities and prepare authorized hiring materials. | Finance Committee, Personnel Committee | Duty split, review packets, Bookkeeper job description/application/hiring process, and first-round committee decisions. |
 | 60-day plan | Choose operating model and begin implementation materials. | Finance Committee, Personnel Committee | Software recommendation, policy drafts, hiring process, and budget impact review. |
 | 90-day plan | Begin implementation and monthly operating rhythm. | Finance Committee, Treasurer, Bookkeeper / Financial Administrator | Software/setup plan, monthly review rhythm, Bookkeeper onboarding if hired, and reporting process. |
-| Long-term Operations Manual integration | Convert approved documents into a maintained manual. | Finance Committee, document owner TBD | Approved manual sections, review schedule, and document control process. |
+| Long-term handbook integration | Move approved results into the maintained Financial Operations Handbook. | Finance Committee, document owner TBD | Approved handbook sections, review schedule, and document control process. |
 
 #### Immediate Stabilization
 
@@ -1364,14 +1559,14 @@ Start date: TBD
 - [ ] Move approved decisions from open questions into `docs/02-decision-log.md`.
 - [ ] Move broader committee-spending questions, including Benevolence, into a future governance review only after the immediate hiring and control work is stable.
 
-#### Long-Term Operations Manual Integration
+#### Long-Term Handbook Integration
 
 | Item | Details |
 | --- | --- |
-| Goal | Convert approved drafts into a stable KBC Financial Operations Manual that can be reviewed, updated, and handed off. |
+| Goal | Convert approved drafts into a stable KBC Financial Operations Handbook that can be reviewed, updated, and handed off. |
 | Owner | Finance Committee, with document owner TBD. |
 | Supporting bodies | Personnel Committee, Treasurer, Bookkeeper, Pastor, Deacons, Congregation where approval is required. |
-| Deliverables | Approved Operations Manual table of contents; approved governance, role, policy, procedure, software, and reporting sections; annual review schedule; document owner list; archive process for superseded drafts. |
+| Deliverables | Approved Handbook table of contents; approved governance, role, policy, procedure, software, and reporting sections; annual review schedule; document owner list; archive process for superseded drafts. |
 | Dependencies | Approved policies and role definitions; software decision; monthly review rhythm; church vote outcomes; committee ownership decisions. |
 | Open questions | Who maintains the manual? What sections require church vote to amend? How often should policies be reviewed? Where should approved versions live? |
 
@@ -1420,22 +1615,24 @@ Start date: TBD
 - Does any Bookkeeper recommendation exceed the June 28, 2026 authorization of a paid, part-time Bookkeeper position not to exceed `$150` per week, described as `$18.75` per hour for approximately 8 hours?
 - What professional review is needed for payroll, tax, accounting, employment, or legal questions?
 - What software best supports KBC's actual workflow and monthly review needs?
-- Who will maintain the Operations Manual after initial adoption?
+- Who will maintain the Handbook after initial adoption?
 - What later governance review is needed for Benevolence or other committees with spending authority?
 
 Needs Committee Review: This roadmap should be reviewed by Finance Committee, Personnel Committee, Pastor, Deacons, and any other body required by KBC bylaws or church practice.
-# Open Questions
+# 2026 Financial Operations Issue Register
 
 - Source file path: `docs/03-open-questions.md`
-- Status: Draft
+- Status: Working Record
 - Owner: Project lead TBD
-- Last updated: 2026-07-07
+- Last updated: 2026-07-10
 
 ---
 
-### Open Questions
+### 2026 Financial Operations Issue Register
 
-Status: Draft
+Status: Working Record
+
+This is a current-work record for committees and documentation stewards. It is not an adopted policy or part of the permanent Handbook. Questions should be removed or converted into decision-log entries when the responsible church body resolves them.
 
 #### Personnel Committee
 
@@ -1498,21 +1695,21 @@ Status: Draft
 # Decision Log
 
 - Source file path: `docs/02-decision-log.md`
-- Status: Draft
+- Status: Working Record
 - Owner: Project lead TBD
-- Last updated: 2026-07-07
+- Last updated: 2026-07-10
 
 ---
 
 ### Decision Log
 
-Status: Draft
+Status: Working Record
 
 Use this log for meaningful project decisions, committee direction, approval steps, and superseded assumptions.
 
 | Date | Decision | Owner | Status | Notes |
 | --- | --- | --- | --- | --- |
-| 2026-07-06 | Repository structure created for KBC financial operations modernization. | Cory Davis | Complete | Created source-materials, docs, templates, and archive structure. |
+| 2026-07-06 | Initial repository structure created for the KBC financial operations project. | Cory Davis | Complete | Created source-materials, docs, templates, and archive structure. |
 | 2026-06-28 | Congregation approved adding a paid, part-time Bookkeeper position. | Congregation / Personnel Committee / Nominating Committee / Finance Committee | Complete - recorded | Motion tasked Personnel and Nominating Committees to work together to add a paid, part-time Bookkeeper position, not to exceed $150 per week, described as $18.75 per hour for approximately 8 hours. The congregation gave Personnel Committee authority to hire the right candidate and gave Finance Committee responsibility for adjusting the budget to fund this specific operational need. |
 | 2026-07-08 | Leadership review feedback captured for the next phase. | Project lead / leadership reviewers | Review input captured | Keep congregational authority prominent; clarify Finance, Treasurer, Bookkeeper, Deacon, and committee lanes; preserve Benevolence and other committee-spending questions for future governance review. This is review input, not approved policy. |
 | TBD | Confirm Treasurer and authorized Bookkeeper / Financial Administrator duty split. | Finance Committee | Needs Finance Review | Personnel Committee owns hiring, but Finance should define duties, access, controls, reporting expectations, and budget impact before hiring materials are finalized. |
@@ -1535,7 +1732,7 @@ Motion language provided for review:
 - Source file path: `docs/governance/constitution-and-bylaws-reference.md`
 - Status: Reference
 - Owner: Church / Clerk TBD
-- Last updated: 2026-07-07
+- Last updated: 2026-07-10
 - Note: This sourcebook includes the reference page and review questions, not the full PDF. Check the Constitution, Bylaws, and Covenant PDF before making final governance decisions.
 
 ---
@@ -1576,7 +1773,7 @@ These are the main areas in the current project that should be checked against t
 | --- | --- | --- |
 | Church authority and congregational votes | Some decisions may require church action rather than committee action alone. | [Responsibility Matrix](responsibility-matrix.md), [Spending Authority Policy](../policies/spending-authority-policy.md) |
 | Treasurer role | Treasurer duties, election, reporting, bonding, and annual review may be defined or constrained by bylaws. | [Treasurer Governance Role](../roles/treasurer-governance-role.md), [Treasurer vs. Bookkeeper Duty Split](../roles/treasurer-vs-bookkeeper-duty-split.md) |
-| Nonministerial staff | The Bookkeeper / Financial Administrator role should fit the existing authority for nonministerial staff and the June 28, 2026 congregational motion. | [Bookkeeper Job Description](../roles/bookkeeper-financial-administrator-job-description.md), [Bookkeeper Hiring Process](../roles/bookkeeper-hiring-process.md) |
+| Nonministerial staff | Hiring, supervision, compensation, and termination should fit the authority assigned for nonministerial staff. Situation-specific congregational motions remain controlling records for the action they authorized. | [Bookkeeper Job Description](../roles/bookkeeper-financial-administrator-job-description.md), [Bookkeeper Hiring Process](../roles/bookkeeper-hiring-process.md) |
 | Personnel Committee authority | Personnel Committee responsibilities for employment matters, salaries, benefits, policies, and job descriptions should be confirmed. | [Personnel Committee Role](personnel-committee-role.md), [Personnel Committee Packet](../communications/personnel-committee-packet.md) |
 | Finance / stewardship responsibilities | Budget preparation, approval, funds handling, reporting, and accounting procedures may affect Finance Committee recommendations. | [Finance Committee Charter](finance-committee-charter.md), [Monthly Financial Review Policy](../policies/monthly-financial-review-policy.md) |
 | Annual budget and major non-budgeted expenses | Congregational authority should remain clear where the annual budget, major projects, or large outside-budget spending require a vote. | [Spending Authority Policy](../policies/spending-authority-policy.md), [Responsibility Matrix](responsibility-matrix.md) |
@@ -1601,15 +1798,15 @@ Needs Bylaw Review: This page is a reference aid only. Final approval paths shou
 # Leadership Review Packet Summary
 
 - Source file path: `docs/communications/leadership-review-packet.md`
-- Status: Draft
+- Status: Needs Leadership Review
 - Owner: Pastor / leadership team
-- Last updated: 2026-07-07
+- Last updated: 2026-07-10
 
 ---
 
 ### Leadership Review Packet
 
-Status: Draft
+Status: Needs Leadership Review
 
 #### 1. Executive Summary
 

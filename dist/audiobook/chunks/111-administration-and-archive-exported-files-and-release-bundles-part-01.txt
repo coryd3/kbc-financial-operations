@@ -1,0 +1,95 @@
+Chapter: Exported Files and Release Bundles.
+Current document status: Current.
+
+Section: Exported Files and Release Bundles.
+
+The handbook site is for browsing current guidance, current work, and safe historical records. Exports and releases are for formal review packets.
+
+Section: Main Difference.
+
+Use the handbook site when leaders need to read, search, or review material.
+Use exports when leaders need PDF, DOCX, PPTX, or spreadsheet files for a meeting packet.
+Use releases when the church needs a dated bundle of review files.
+Use the NotebookLM sourcebook when leaders need one Markdown source that can be uploaded to NotebookLM for question-and-answer review across the current materials.
+Use the audiobook/TTS bundle when leaders want a listening version of the documentation.
+
+Section: Source Files.
+
+The main release source files live in dist/:
+
+dist/leadership-review-packet.md.
+dist/one-page-congregational-summary.md.
+dist/congregational-slide-deck.md.
+dist/leadership-review-task-tracker.csv.
+
+The NotebookLM sourcebook is generated at:
+
+dist/notebooklm/kbc-financial-operations-sourcebook.md.
+dist/notebooklm/kbc-financial-operations-sourcebook.pdf if the local PDF tools are available.
+
+The audiobook/TTS bundle is generated at:
+
+dist/audiobook/kbc-financial-operations-complete-document.md.
+dist/audiobook/kbc-financial-operations-tts-script.txt.
+dist/audiobook/chunks/.
+dist/audiobook/chunk-index.csv.
+
+The Bookkeeper job description export is generated from:
+
+docs/roles/bookkeeper-financial-administrator-job-description.md.
+
+Section: Generated Files.
+
+Generated review files are placed in dist/exports/.
+
+Dated release bundles are placed in dist/releases/YYYY-MM-DD/ and zipped as dist/releases/YYYY-MM-DD.zip.
+
+Generated files are not the long-term source of truth. If a PDF, DOCX, PPTX, or spreadsheet needs a content change, update the Markdown or CSV source first and regenerate the exports.
+
+Section: Commands.
+
+Run:
+
+Command or example: make export.
+
+to create review files and validate them.
+
+Run:
+
+Command or example: make release.
+
+to create a dated release bundle.
+
+Run:
+
+Command or example: make notebooklm.
+
+to create the NotebookLM sourcebook.
+
+Run:
+
+Command or example: make audiobook.
+
+to create a comprehensive compiled Markdown document and a cleaner text-to-speech script.
+
+Run:
+
+Command or example: make tts-local-sample.
+
+to create one sample WAV file with Piper after Piper and a voice model have been installed.
+
+Run:
+
+Command or example: make tts-local.
+
+to generate local Piper WAV files for the full audiobook.
+
+Section: GitHub Pages Warning.
+
+The MkDocs site is published through GitHub Pages when the manual deploy workflow is run.
+
+Treat the live site and public repository as public unless settings are intentionally changed and verified. Review content before deploying updates.
+
+Run make audit-public before broad public sharing or major publishing updates.
+
+End of chapter: Exported Files and Release Bundles.

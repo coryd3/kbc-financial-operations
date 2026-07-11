@@ -1,8 +1,11 @@
-# Leader-Friendly Project Dashboard
+# Current Work Dashboard
 
-Status: Draft
+Status: Needs Leadership Review
 
-This page is a quick starting point for KBC leaders. It shows what needs attention now, what documents are ready to review, and which committee or body should review each item.
+This page is the quick starting point for active financial operations work. It shows what needs attention now, what documents are ready to review, and which committee or body should review each item. It is a work-management page, not part of the permanent handbook.
+
+!!! tip "How Work Moves"
+    Put assigned actions and due dates in a portal checklist or approved task tracker. Put unresolved questions in the Issue Register. Record completed decisions in the Decision Log. Move lasting results into the Handbook, and archive the working packet when the project is complete.
 
 Status labels used on this page:
 
@@ -103,7 +106,7 @@ At the same time, Finance Committee should confirm the financial duties, control
 
 | Date | Decision | Owner | Status | Link |
 | --- | --- | --- | --- | --- |
-| 2026-07-06 | Repository structure created for KBC financial operations modernization. | Cory Davis | Approved | [Decision Log](../02-decision-log.md) |
+| 2026-07-06 | Initial repository structure created for the KBC financial operations project. | Cory Davis | Approved | [Decision Log](../02-decision-log.md) |
 | 2026-06-28 | Congregation approved adding a paid, part-time Bookkeeper position, not to exceed `$150` per week, and gave Personnel Committee authority to hire the right candidate. | Congregation / Personnel Committee / Nominating Committee / Finance Committee | Approved | [Decision Log](../02-decision-log.md) |
 
 ## 10. Open Questions

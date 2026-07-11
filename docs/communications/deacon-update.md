@@ -1,6 +1,6 @@
 # Deacon Update
 
-Status: Draft
+Status: Parking Lot
 
 ## Summary
 

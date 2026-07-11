@@ -1,10 +1,10 @@
-# Project Brief
+# 2026 Financial Operations Transition Project Brief
 
-Status: Draft
+Status: Needs Leadership Review
 
 ## Purpose
 
-This project organizes and modernizes Kingsville Baptist Church financial operations documentation during a Treasurer transition.
+This dated project record explains the Treasurer and Bookkeeper transition work that led KBC to strengthen its financial operations handbook, responsibilities, controls, and recurring processes.
 
 The goal is not simply to replace one Treasurer with another Treasurer. The goal is to build a financial operations structure that is clear, accountable, transferable, sustainable, and easier for future volunteers or paid staff to follow.
 

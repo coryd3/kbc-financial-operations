@@ -1,6 +1,6 @@
 # Responsibility Matrix
 
-Status: Draft
+Status: Needs Bylaw Review
 
 This matrix separates governance, operations, recommendations, and approvals. It should be reviewed against KBC bylaws and actual committee practice before use.
 
@@ -42,4 +42,4 @@ Needs Bylaw Review: Confirm each ownership area with KBC Constitution and Bylaws
 
 Final approval paths for elected officers, compensation, software contracts, spending authority, policies, and church votes must be confirmed by church leadership, bylaws, and church practice.
 
-The specific June 28, 2026 Bookkeeper authorization remains recorded in the [Decision Log](../02-decision-log.md). This matrix describes the durable division of responsibilities after that transition is complete.
+Time-limited authorizations, interim assignments, and implementation decisions belong in the [Current Workroom](../start-here/project-dashboard.md) and [Decision Log](../02-decision-log.md). They do not change this durable responsibility model unless the proper church body adopts a lasting change.

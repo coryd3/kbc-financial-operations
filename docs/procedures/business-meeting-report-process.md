@@ -1,6 +1,6 @@
 # Business Meeting Report Process
 
-Status: Draft
+Status: Needs Finance Review
 
 ## Purpose
 

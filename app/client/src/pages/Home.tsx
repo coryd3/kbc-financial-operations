@@ -76,14 +76,14 @@ export default function Home() {
         <div className="space-y-6">
           <Card className="bg-primary/5 border-primary/10">
             <CardHeader>
-              <CardTitle className="text-primary text-xl">Documentation Hub</CardTitle>
+              <CardTitle className="text-primary text-xl">Financial Operations Handbook</CardTitle>
             </CardHeader>
             <CardContent className="space-y-4">
               <p className="text-sm text-foreground/80">
-                Access our church policies, procedures, committee packets, and operation guides.
+                Find current guidance, see what is still under review, and know who owns the next step.
               </p>
               <Link href="/docs" className="inline-flex items-center gap-2 text-sm font-medium text-primary hover:text-accent transition-colors">
-                Browse Documents <ArrowRight className="w-4 h-4" />
+                Open the Handbook <ArrowRight className="w-4 h-4" />
               </Link>
             </CardContent>
           </Card>

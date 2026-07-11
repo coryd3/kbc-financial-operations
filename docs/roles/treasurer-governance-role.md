@@ -1,6 +1,6 @@
 # Treasurer / Financial Officer Governance Role
 
-Status: Draft
+Status: Needs Bylaw Review
 
 ## Purpose
 

@@ -1,10 +1,23 @@
-# Documentation Stewardship Guide
+# Handbook And Workspace Stewardship Guide
 
-Status: Draft - Needs Leadership Review
+Status: Needs Leadership Review
 
 ## Purpose
 
-This guide keeps the documentation library maintainable as officers, committee members, volunteers, and staff change. The library should be church-owned work, not a private project that depends on one person.
+This guide keeps the financial operations handbook, current workroom, and church record maintainable as officers, committee members, volunteers, and staff change. The system should be church-owned work, not a private project that depends on one person.
+
+## What Belongs Where
+
+| Information | Proper Home | Why |
+| --- | --- | --- |
+| Durable governance, policy, role, or procedure | Handbook | It should remain useful after current people and projects change. |
+| Assigned task, due date, or recurring work | Portal checklist, current dashboard, or approved task tracker | Work should have a visible owner and next action rather than being buried in narrative. |
+| Question awaiting a decision | Issue register or committee workspace | It is working material, not settled guidance. |
+| Committee or congregational decision | Decision log and authoritative minutes where applicable | Future leaders need the decision, date, owner, and approval source. |
+| Review packet, implementation note, or evaluation | Current Workroom | It supports a time-limited project and should be archived when complete. |
+| Approved or superseded release | Church record / archive | The history remains available without competing with current guidance. |
+
+Google Drive or another restricted system may remain the proper home for editable office files and confidential records. The public handbook should link to safe source material only when useful.
 
 ## Shared Responsibilities
 
@@ -25,7 +38,7 @@ This guide keeps the documentation library maintainable as officers, committee m
 5. **Superseded:** a newer approved version replaced it; the old version remains in the archive.
 6. **Parking Lot:** useful future work that is not an active priority.
 
-Review packets, issue registers, implementation roadmaps, and evaluation notes are project records. They should not be labeled as approved policies simply because they contain useful analysis.
+Review packets, issue registers, implementation roadmaps, and evaluation notes are current-work records. They should not be labeled as approved policies simply because they contain useful analysis.
 
 ## Minimum Metadata
 

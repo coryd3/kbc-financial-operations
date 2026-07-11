@@ -1,0 +1,16 @@
+Chapter: Document Inventory.
+Current document status: Working Record.
+
+Section: Document Inventory.
+
+This inventory lists the active draft documents, templates, and imported source materials currently in the repository.
+
+Important: Source materials are reference copies. A source document should not be treated as current policy unless the appropriate committee, leadership body, or congregation confirms it.
+
+Section: Inventory Conventions.
+
+Handbook: Yes means the document should likely become a direct section of the future KBC Financial Handbook.
+Handbook: Maybe means the content should inform the manual, or may belong in an appendix, but needs review first.
+Handbook: No means the document should remain a source, project-control document, template, communication draft, or archived reference.
+
+Section: Active Draft Documents.

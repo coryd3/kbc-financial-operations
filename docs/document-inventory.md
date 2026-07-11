@@ -1,6 +1,6 @@
 # Document Inventory
 
-Status: Draft
+Status: Working Record
 
 This inventory lists the active draft documents, templates, and imported source materials currently in the repository.
 
@@ -8,13 +8,13 @@ Important: Source materials are reference copies. A source document should not b
 
 ## Inventory Conventions
 
-- `Operations Manual: Yes` means the document should likely become a direct section of the future KBC Financial Operations Manual.
-- `Operations Manual: Maybe` means the content should inform the manual, or may belong in an appendix, but needs review first.
-- `Operations Manual: No` means the document should remain a source, project-control document, template, communication draft, or archived reference.
+- `Handbook: Yes` means the document should likely become a direct section of the future KBC Financial Handbook.
+- `Handbook: Maybe` means the content should inform the manual, or may belong in an appendix, but needs review first.
+- `Handbook: No` means the document should remain a source, project-control document, template, communication draft, or archived reference.
 
 ## Active Draft Documents
 
-| File name | Type of document | Purpose | Current status | Related committee/body | Operations Manual | Open questions |
+| File name | Type of document | Purpose | Current status | Related committee/body | Handbook | Open questions |
 | --- | --- | --- | --- | --- | --- | --- |
 | `docs/document-inventory.md` | Inventory / project control | Track source and draft documents in the repository. | Draft | All project reviewers | No | Who owns keeping this inventory current? |
 | `docs/project-dashboard.md` | Superseded dashboard redirect | Preserve older links while directing readers to the canonical leader-friendly dashboard. | Superseded | Documentation stewards | No | None; update only if the canonical dashboard path changes. |
@@ -23,7 +23,7 @@ Important: Source materials are reference copies. A source document should not b
 | `docs/01-current-state-assessment.md` | Assessment | Organize current problems by role clarity, committee ownership, manual processes, software, spending, budget, and documentation. | Draft | Finance Committee, Personnel Committee, Pastor, Deacons | Maybe | Which observations should be validated by Finance Committee before being used publicly? |
 | `docs/02-decision-log.md` | Decision log | Record project decisions, owners, status, and notes. | Draft | All project reviewers | No | Who is responsible for updating decisions after meetings? |
 | `docs/03-open-questions.md` | Project issue register | Track unresolved questions for Personnel, Finance, Nominating, Deacons, Pastor, Congregation, and professional review. | Working Record | All project reviewers | No | Which questions must be answered before any church vote? |
-| `docs/implementation-roadmap.md` | Implementation roadmap | Organize stabilization, 30-day, 60-day, 90-day, and long-term Operations Manual integration work. | Draft | Finance Committee, Personnel Committee, Pastor, Deacons, Treasurer, Bookkeeper | No | Who owns roadmap updates and phase completion tracking? |
+| `docs/implementation-roadmap.md` | Implementation roadmap | Organize stabilization, 30-day, 60-day, 90-day, and long-term Handbook integration work. | Draft | Finance Committee, Personnel Committee, Pastor, Deacons, Treasurer, Bookkeeper | No | Who owns roadmap updates and phase completion tracking? |
 | `docs/document-workflow-upgrade-notes.md` | Workflow review note | Capture useful patterns and upgrade opportunities from the prior KBC Personnel Committee repository. | Draft | Personnel Committee, document maintainers | No | Which workflow improvements should be implemented next, especially Windows-friendly local export? |
 | `docs/governance/constitution-and-bylaws-reference.md` | Governance reference page | Provide site access to the 2018 Constitution, Bylaws, and Covenant source and key financial-operations review questions. | Reference | Congregation, Pastor, Deacons, Nominating Committee, Finance Committee, Personnel Committee | Maybe | Is the 2018 PDF the current authoritative version? |
 | `docs/governance/financial-operations-view.md` | Governance diagram | Provide a durable visual of financial accountability, operations, committee oversight, and congregational authority. | Needs Bylaw Review | Congregation, Finance Committee, Personnel Committee, Treasurer, Bookkeeper | Yes | Does the diagram match the bylaws and adopted reporting relationships? |
@@ -65,7 +65,7 @@ Important: Source materials are reference copies. A source document should not b
 
 ## Repository Support Documents
 
-| File name | Type of document | Purpose | Current status | Related committee/body | Operations Manual | Open questions |
+| File name | Type of document | Purpose | Current status | Related committee/body | Handbook | Open questions |
 | --- | --- | --- | --- | --- | --- | --- |
 | `README.md` | Repository overview | Explain repository purpose, privacy warnings, layout, working principles, and immediate next steps. | Active repository guide | All project reviewers | No | Should this be updated after the project moves from setup to active committee review? |
 | `AGENTS.md` | Agent instructions | Provide durable guidance for future Codex sessions, including tone, governance boundaries, safety rules, and documentation standards. | Active repository guide | All project reviewers | No | Who approves changes to future agent instructions? |
@@ -73,7 +73,7 @@ Important: Source materials are reference copies. A source document should not b
 
 ## Templates
 
-| File name | Type of document | Purpose | Current status | Related committee/body | Operations Manual | Open questions |
+| File name | Type of document | Purpose | Current status | Related committee/body | Handbook | Open questions |
 | --- | --- | --- | --- | --- | --- | --- |
 | `templates/meeting-agenda-template.md` | Template | Provide reusable committee meeting agenda format. | Draft template | All committees | No | Should each committee have its own agenda format? |
 | `templates/committee-recommendation-template.md` | Template | Provide reusable recommendation format with background, rationale, financial impact, motion, and implementation plan. | Draft template | All committees | No | Should this become the standard format for committee recommendations? |
@@ -83,7 +83,7 @@ Important: Source materials are reference copies. A source document should not b
 
 ## Source Material Administration
 
-| File name | Type of document | Purpose | Current status | Related committee/body | Operations Manual | Open questions |
+| File name | Type of document | Purpose | Current status | Related committee/body | Handbook | Open questions |
 | --- | --- | --- | --- | --- | --- | --- |
 | `source-materials/README.md` | Source folder guide | Explain import policy and what source materials are intentionally excluded. | Repository guide | All project reviewers | No | Should any additional exclusion categories be added? |
 | `source-materials/import-manifest.md` | Import manifest | Record what was imported and intentionally excluded from the original document archive. | Draft / source control note | All project reviewers | No | Who approves future source imports? |
@@ -93,14 +93,14 @@ Important: Source materials are reference copies. A source document should not b
 
 ### Bylaws And Governance Sources
 
-| File name | Type of document | Purpose | Current status | Related committee/body | Operations Manual | Open questions |
+| File name | Type of document | Purpose | Current status | Related committee/body | Handbook | Open questions |
 | --- | --- | --- | --- | --- | --- | --- |
 | `source-materials/bylaws/Constitution, Bylaws, and Covenant 2018.pdf` | Bylaws / covenant source | Provide current governance authority for officer, committee, and church approval questions. | Imported source reference | Congregation, Pastor, Deacons, Nominating Committee, Finance Committee, Personnel Committee | Maybe | Surfaced in the site through `docs/governance/constitution-and-bylaws-reference.md`; confirm this is the current authoritative bylaws version. |
 | `source-materials/bylaws/archived/KBC_Constitution_ByLaws_Converted to Editable form.docx` | Archived bylaws source | Provide editable historical reference for bylaws text. | Imported archived source | Congregation, Pastor, Deacons | No | Is this superseded by the 2018 bylaws PDF or still useful for text extraction? |
 
 ### Existing Job Descriptions And Role Sources
 
-| File name | Type of document | Purpose | Current status | Related committee/body | Operations Manual | Open questions |
+| File name | Type of document | Purpose | Current status | Related committee/body | Handbook | Open questions |
 | --- | --- | --- | --- | --- | --- | --- |
 | `source-materials/existing-job-descriptions/accountability-frameworks/4_Treasurer Evaluation & Accountability Framework.docx` | Accountability framework | Source for Treasurer accountability and review expectations. | Imported source reference | Personnel Committee, Finance Committee, Treasurer | Maybe | Is this approved, draft, or superseded? |
 | `source-materials/existing-job-descriptions/final-approved/KBC_Church_Clerk_Job_Description_Rev_Nov2025.pdf` | Final approved job description | Source for current Church Clerk role. | Imported final approved source | Personnel Committee, Church Clerk | No | Does Clerk role affect financial records or business meeting reporting? |
@@ -123,7 +123,7 @@ Important: Source materials are reference copies. A source document should not b
 
 ### Applications And Background-Check Form Sources
 
-| File name | Type of document | Purpose | Current status | Related committee/body | Operations Manual | Open questions |
+| File name | Type of document | Purpose | Current status | Related committee/body | Handbook | Open questions |
 | --- | --- | --- | --- | --- | --- | --- |
 | `source-materials/applications/background-check-forms/Employee Authorization Form.pdf` | Background-check authorization form | Source for employee authorization process. | Imported blank form source | Personnel Committee | No | Is this the current approved provider form? |
 | `source-materials/applications/background-check-forms/Summary of Rights FCRA 2018.002.pdf` | Background-check rights notice | Source for required applicant/employee rights notice. | Imported blank/legal notice source | Personnel Committee | No | Does this need updated provider, legal, or attorney review before use? |
@@ -134,7 +134,7 @@ Important: Source materials are reference copies. A source document should not b
 
 ### Prior Proposals And Finance Sources
 
-| File name | Type of document | Purpose | Current status | Related committee/body | Operations Manual | Open questions |
+| File name | Type of document | Purpose | Current status | Related committee/body | Handbook | Open questions |
 | --- | --- | --- | --- | --- | --- | --- |
 | `source-materials/prior-proposals/finance/July 20th, 2025 budget meeting handout.pdf` | Budget meeting handout | Source for prior finance/budget discussion. | Imported source reference | Finance Committee, Congregation | Maybe | What decisions or assumptions from this handout remain current? |
 | `source-materials/prior-proposals/treasurer/KBC Treasurer - Alternative Proposal 010926.pdf` | Treasurer proposal | Source for alternative Treasurer structure or transition idea. | Imported source reference | Finance Committee, Personnel Committee, Treasurer, Nominating Committee | Maybe | Which proposal elements should be carried into the new structure? |
@@ -147,7 +147,7 @@ Important: Source materials are reference copies. A source document should not b
 
 ### Software And Document Management Sources
 
-| File name | Type of document | Purpose | Current status | Related committee/body | Operations Manual | Open questions |
+| File name | Type of document | Purpose | Current status | Related committee/body | Handbook | Open questions |
 | --- | --- | --- | --- | --- | --- | --- |
 | `source-materials/software-notes/document-management/KBC_File_Naming_and_Folder_Guide.docx` | Document management guide | Source for file naming and folder practices. | Imported source reference | Personnel Committee, all document owners | Maybe | Should finance operations adopt this naming system? |
 | `source-materials/software-notes/document-management/KBC_File_Naming_and_Folder_Guide_Rev_Oct2025.pdf` | Document management guide | Source PDF version for file naming and folder practices. | Imported source reference | Personnel Committee, all document owners | Maybe | Which version is authoritative? |

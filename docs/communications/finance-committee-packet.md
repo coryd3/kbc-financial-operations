@@ -1,6 +1,6 @@
 # Finance Committee Review Packet
 
-Status: Draft
+Status: Needs Finance Review
 
 ## Purpose
 

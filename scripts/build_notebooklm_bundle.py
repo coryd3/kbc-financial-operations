@@ -34,8 +34,10 @@ class SourceDoc:
 
 
 SOURCE_DOCS = [
-    SourceDoc("Project Overview", "docs/00-project-brief.md", "Project lead TBD"),
-    SourceDoc("Current Situation", "docs/01-current-state-assessment.md", "Project lead TBD"),
+    SourceDoc("Handbook And Workspace Overview", "docs/index.md", "Documentation Stewards"),
+    SourceDoc("Why This Handbook Exists", "docs/start-here/why-this-exists.md", "Leadership Team / Documentation Stewards"),
+    SourceDoc("2026 Transition Project Overview", "docs/00-project-brief.md", "Project lead TBD"),
+    SourceDoc("2026 Transition Current-State Assessment", "docs/01-current-state-assessment.md", "Project lead TBD"),
     SourceDoc("Responsibility Matrix", "docs/governance/responsibility-matrix.md", "Finance Committee"),
     SourceDoc(
         "Treasurer vs. Bookkeeper Distinction",
@@ -82,8 +84,8 @@ SOURCE_DOCS = [
         "docs/software-evaluation/icon-vs-churchtrac-comparison.md",
         "Finance Committee",
     ),
-    SourceDoc("30/60/90 Roadmap", "docs/implementation-roadmap.md", "Finance Committee / project lead TBD"),
-    SourceDoc("Open Questions", "docs/03-open-questions.md", "Project lead TBD"),
+    SourceDoc("2026 Transition Roadmap", "docs/implementation-roadmap.md", "Finance Committee / project lead TBD"),
+    SourceDoc("2026 Financial Operations Issue Register", "docs/03-open-questions.md", "Project lead TBD"),
     SourceDoc("Decision Log", "docs/02-decision-log.md", "Project lead TBD"),
     SourceDoc(
         "Constitution and Bylaws Reference",

@@ -1,6 +1,6 @@
 # Personnel Committee Review Packet
 
-Status: Draft
+Status: Needs Personnel Review
 
 ## Purpose
 

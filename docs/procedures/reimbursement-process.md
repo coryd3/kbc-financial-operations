@@ -1,6 +1,6 @@
 # Reimbursement Process
 
-Status: Draft
+Status: Needs Finance Review
 
 ## Guiding Principle
 

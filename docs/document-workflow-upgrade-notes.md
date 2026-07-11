@@ -1,6 +1,6 @@
 # Document Workflow Upgrade Notes
 
-Status: Draft
+Status: Working Record
 
 ## Purpose
 

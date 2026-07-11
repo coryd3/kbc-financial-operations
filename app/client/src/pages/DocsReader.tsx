@@ -265,7 +265,7 @@ export default function DocsReader() {
             href="/docs"
             className="flex items-center gap-2 text-sm font-medium text-primary mb-5 hover:text-accent transition-colors"
           >
-            <BookOpen className="w-4 h-4" /> Documentation Hub
+            <BookOpen className="w-4 h-4" /> Handbook Home
           </Link>
           {sidebar}
         </div>
@@ -274,7 +274,7 @@ export default function DocsReader() {
       {/* Mobile controls */}
       <div className="lg:hidden mb-4 flex items-center justify-between gap-3">
         <Link href="/docs" className="flex items-center gap-1.5 text-sm text-primary font-medium">
-          <ChevronLeft className="w-4 h-4" /> All docs
+          <ChevronLeft className="w-4 h-4" /> Handbook
         </Link>
         <Button variant="outline" size="sm" onClick={() => setMenuOpen((o) => !o)}>
           <Menu className="w-4 h-4 mr-1.5" /> {menuOpen ? "Hide contents" : "Contents"}
@@ -291,9 +291,9 @@ export default function DocsReader() {
         ) : error || !page ? (
           <div className="py-20 text-center space-y-3">
             <p className="text-lg font-medium">Page not found</p>
-            <p className="text-muted-foreground text-sm">This documentation page doesn't exist.</p>
+            <p className="text-muted-foreground text-sm">This handbook page doesn't exist.</p>
             <Button variant="outline" onClick={() => setLocation("/docs")}>
-              <ArrowLeft className="w-4 h-4 mr-1.5" /> Back to Documentation Hub
+              <ArrowLeft className="w-4 h-4 mr-1.5" /> Back to Handbook
             </Button>
           </div>
         ) : (

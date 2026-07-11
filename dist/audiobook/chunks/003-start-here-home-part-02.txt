@@ -1,6 +1,0 @@
-Use placeholders such as TBD, Needs Finance Review, Needs Personnel Review, Needs Bylaw Review, or Needs Professional Review until the proper body supplies the information.
-
-Warning: Public Site Caution.
-The published GitHub Pages site and public repository should be treated as public unless privacy settings are intentionally changed and verified. Do not add sensitive records or confidential details to this repository or site.
-
-End of chapter: Home.

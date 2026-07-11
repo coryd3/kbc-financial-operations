@@ -1,6 +1,6 @@
 # Monthly Close Checklist
 
-Status: Draft
+Status: Needs Finance Review
 
 - [ ] Complete bank reconciliations.
 - [ ] Review uncleared transactions.

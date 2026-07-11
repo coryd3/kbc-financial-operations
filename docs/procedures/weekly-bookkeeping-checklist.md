@@ -1,6 +1,6 @@
 # Weekly Bookkeeping Checklist
 
-Status: Draft
+Status: Needs Finance Review
 
 - [ ] Record income.
 - [ ] Enter bills and expenses.

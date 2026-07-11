@@ -1,0 +1,21 @@
+Table summary.
+A shared folder helps us...: Store and edit files.. The handbook and workspace also help us...: Identify the current document and distinguish it from drafts or superseded copies..
+A shared folder helps us...: Share a link with a group.. The handbook and workspace also help us...: Show the right starting point for members, leaders, committees, and financial workers..
+A shared folder helps us...: Keep supporting material.. The handbook and workspace also help us...: Record the owner, review status, intended audience, and approval path..
+A shared folder helps us...: Collect comments in individual files.. The handbook and workspace also help us...: Route section-level feedback into a review process that can be accepted, planned, resolved, or declined..
+A shared folder helps us...: Preserve meeting files.. The handbook and workspace also help us...: Connect decisions, responsibilities, procedures, and recurring work so the system survives leadership changes..
+
+Google Drive can still hold editable office files and properly restricted private records. This handbook is the organized reference point; the portal workspace supports recurring work, decisions, assignments, and feedback.
+
+Section: Current Project Context.
+
+The 2026 Treasurer and Bookkeeper transition helped reveal the need for this system. That project remains documented in the 2026 Transition Project Brief, Current Work Dashboard, and Decision Log. It is one project within the workspace, not the permanent organizing principle for the handbook.
+
+Section: Sensitive Information Warning.
+
+Do not store donor records, giving details, payroll details, bank account numbers, Social Security numbers, passwords, candidate applications, reference-check notes, background-check results, confidential personnel matters, or private pastoral-care information in this repository or public documentation site.
+
+Warning: Public Site Caution.
+The GitHub repository and published site should be treated as public. Audience labels organize information for readers; they are not confidentiality controls.
+
+End of chapter: Handbook And Workspace Home.

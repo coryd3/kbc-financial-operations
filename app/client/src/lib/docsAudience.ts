@@ -10,7 +10,7 @@ export const DOCUMENTATION_VIEW_LABELS: Record<DocumentationView, string> = {
   finance: "Finance Committee View",
   personnel: "Personnel Committee View",
   operations: "Financial Operations View",
-  project: "Project Workroom",
+  project: "Current Workroom",
   all: "All Documents",
 };
 

@@ -1,10 +1,10 @@
-# Implementation Roadmap
+# 2026 Financial Operations Transition Roadmap
 
-Status: Draft
+Status: Needs Leadership Review
 
 ## Purpose
 
-This roadmap organizes the financial operations modernization work into practical phases. It is intended to help KBC stabilize the current Treasurer transition, clarify responsibilities, make committee decisions in the right order, and gradually build an Operations Manual that future volunteers or staff can follow.
+This dated roadmap organizes the 2026 transition work into practical phases. It is intended to help KBC stabilize financial operations, clarify responsibilities, make committee decisions in the right order, and move durable results into a handbook that future volunteers or staff can follow.
 
 Start date: TBD
 
@@ -16,7 +16,7 @@ Start date: TBD
 | 30-day plan | Clarify responsibilities and prepare authorized hiring materials. | Finance Committee, Personnel Committee | Duty split, review packets, Bookkeeper job description/application/hiring process, and first-round committee decisions. |
 | 60-day plan | Choose operating model and begin implementation materials. | Finance Committee, Personnel Committee | Software recommendation, policy drafts, hiring process, and budget impact review. |
 | 90-day plan | Begin implementation and monthly operating rhythm. | Finance Committee, Treasurer, Bookkeeper / Financial Administrator | Software/setup plan, monthly review rhythm, Bookkeeper onboarding if hired, and reporting process. |
-| Long-term Operations Manual integration | Convert approved documents into a maintained manual. | Finance Committee, document owner TBD | Approved manual sections, review schedule, and document control process. |
+| Long-term handbook integration | Move approved results into the maintained Financial Operations Handbook. | Finance Committee, document owner TBD | Approved handbook sections, review schedule, and document control process. |
 
 ## Immediate Stabilization
 
@@ -113,14 +113,14 @@ Start date: TBD
 - [ ] Move approved decisions from open questions into `docs/02-decision-log.md`.
 - [ ] Move broader committee-spending questions, including Benevolence, into a future governance review only after the immediate hiring and control work is stable.
 
-## Long-Term Operations Manual Integration
+## Long-Term Handbook Integration
 
 | Item | Details |
 | --- | --- |
-| Goal | Convert approved drafts into a stable KBC Financial Operations Manual that can be reviewed, updated, and handed off. |
+| Goal | Convert approved drafts into a stable KBC Financial Operations Handbook that can be reviewed, updated, and handed off. |
 | Owner | Finance Committee, with document owner TBD. |
 | Supporting bodies | Personnel Committee, Treasurer, Bookkeeper, Pastor, Deacons, Congregation where approval is required. |
-| Deliverables | Approved Operations Manual table of contents; approved governance, role, policy, procedure, software, and reporting sections; annual review schedule; document owner list; archive process for superseded drafts. |
+| Deliverables | Approved Handbook table of contents; approved governance, role, policy, procedure, software, and reporting sections; annual review schedule; document owner list; archive process for superseded drafts. |
 | Dependencies | Approved policies and role definitions; software decision; monthly review rhythm; church vote outcomes; committee ownership decisions. |
 | Open questions | Who maintains the manual? What sections require church vote to amend? How often should policies be reviewed? Where should approved versions live? |
 
@@ -169,7 +169,7 @@ Start date: TBD
 - Does any Bookkeeper recommendation exceed the June 28, 2026 authorization of a paid, part-time Bookkeeper position not to exceed `$150` per week, described as `$18.75` per hour for approximately 8 hours?
 - What professional review is needed for payroll, tax, accounting, employment, or legal questions?
 - What software best supports KBC's actual workflow and monthly review needs?
-- Who will maintain the Operations Manual after initial adoption?
+- Who will maintain the Handbook after initial adoption?
 - What later governance review is needed for Benevolence or other committees with spending authority?
 
 Needs Committee Review: This roadmap should be reviewed by Finance Committee, Personnel Committee, Pastor, Deacons, and any other body required by KBC bylaws or church practice.

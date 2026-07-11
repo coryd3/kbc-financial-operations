@@ -2,12 +2,12 @@
 
 Status: Draft
 
-This section gathers the documents leaders can use to align around the financial operations modernization plan.
+This section gathers the time-limited review materials leaders can use to align around the 2026 Treasurer and Bookkeeper transition. These packets belong in the Current Workroom and should be archived when their decisions and actions are complete.
 
 ## Recommended Review Order
 
 1. Read the [Leadership Review Packet](../communications/leadership-review-packet.md).
-2. Check the [Project Dashboard](../project-dashboard.md) for document status and review needs.
+2. Check the [Current Work Dashboard](../start-here/project-dashboard.md) for document status and review needs.
 3. Review the [Implementation Roadmap](../implementation-roadmap.md) for sequencing.
 4. Add confirmed decisions to the [Decision Log](../02-decision-log.md).
 5. Keep unresolved items in [Open Questions](../03-open-questions.md).

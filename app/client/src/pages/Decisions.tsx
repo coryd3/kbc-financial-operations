@@ -158,7 +158,7 @@ export default function Decisions() {
 
       <div className="bg-muted/50 border border-border rounded-md px-4 py-3 text-sm flex items-center justify-between gap-3 flex-wrap">
         <span className="text-muted-foreground">
-          Looking for older decisions? The historical decision log lives on the documentation site.
+          Looking for older decisions? The historical decision log lives in the handbook's Current Workroom.
         </span>
         <a
           href={DOCS_DECISION_LOG_URL}

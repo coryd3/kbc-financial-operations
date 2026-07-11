@@ -1,0 +1,18 @@
+Chapter: Implementation Plan.
+Current document status: Parking Lot.
+
+Section: Implementation Plan.
+
+Section: Phases.
+
+Confirm requirements.
+Select software.
+Clean source data.
+Configure accounts, funds, roles, and permissions.
+Migrate opening balances and required history.
+Test reports and workflows.
+Train users.
+Go live.
+Review first monthly close.
+
+End of chapter: Implementation Plan.

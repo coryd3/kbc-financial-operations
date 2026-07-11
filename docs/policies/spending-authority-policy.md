@@ -1,6 +1,6 @@
 # Spending Authority Policy
 
-Status: Draft - Needs Finance Review
+Status: Needs Finance Review
 
 ## Purpose
 
