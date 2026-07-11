@@ -116,7 +116,9 @@ export default function Docs() {
                         <ChevronRight className="mt-0.5 h-3.5 w-3.5 shrink-0 opacity-40 group-hover:opacity-100" />
                         <span>
                           <span className="block">{page.title}</span>
-                          <span className="block text-xs text-muted-foreground">{page.metadata.documentType}</span>
+                          <span className="block text-xs text-muted-foreground">
+                            {page.metadata.documentType} / {page.metadata.status}
+                          </span>
                         </span>
                       </Link>
                     </li>

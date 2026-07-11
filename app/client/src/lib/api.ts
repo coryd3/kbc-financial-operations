@@ -265,13 +265,13 @@ export type DecisionInput = {
 export const api = {
   // auth
   register: (data: { username: string; password: string; fullName: string; email: string; phone?: string }) =>
-    request<{ message: string; user: SafeUser; emailSent: boolean }>("POST", "/api/auth/register", data),
+    request<{ message: string; user: SafeUser; emailSent: boolean; emailVerificationRequired: boolean }>("POST", "/api/auth/register", data),
   login: (data: { username: string; password: string }) =>
-    request<{ user: SafeUser; portalAccess: boolean; mfaRequired: boolean; mfaSetupRequired: boolean }>("POST", "/api/auth/login", data),
+    request<{ user: SafeUser; portalAccess: boolean; emailVerificationRequired: boolean; mfaRequired: boolean; mfaSetupRequired: boolean }>("POST", "/api/auth/login", data),
   logout: () => request<{ message: string }>("POST", "/api/auth/logout"),
-  me: () => request<{ user: SafeUser; portalAccess: boolean; mfaRequired: boolean; mfaVerified: boolean }>("GET", "/api/auth/me"),
+  me: () => request<{ user: SafeUser; portalAccess: boolean; emailVerificationRequired: boolean; mfaRequired: boolean; mfaVerified: boolean }>("GET", "/api/auth/me"),
   resendEmailVerification: () =>
-    request<{ message: string; emailSent: boolean }>("POST", "/api/auth/email-verification/resend"),
+    request<{ message: string; emailSent: boolean; emailVerificationRequired?: boolean }>("POST", "/api/auth/email-verification/resend"),
   verifyEmail: (token: string) =>
     request<{ message: string; portalAccess: boolean }>("POST", "/api/auth/email-verification/verify", { token }),
   changePassword: (data: { currentPassword: string; newPassword: string }) =>

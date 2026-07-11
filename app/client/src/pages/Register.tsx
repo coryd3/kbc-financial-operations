@@ -15,6 +15,7 @@ export default function Register() {
   const [isLoading, setIsLoading] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   const [emailSent, setEmailSent] = useState(false);
+  const [emailVerificationRequired, setEmailVerificationRequired] = useState(true);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
@@ -28,6 +29,7 @@ export default function Register() {
     try {
       const result = await api.register(formData);
       setEmailSent(result.emailSent);
+      setEmailVerificationRequired(result.emailVerificationRequired);
       setIsSuccess(true);
     } catch (err) {
       if (err instanceof ApiError) {
@@ -49,10 +51,12 @@ export default function Register() {
           </CardHeader>
           <CardContent className="space-y-4">
             <p className="text-foreground/80">
-              Your account request has been received. You can sign in now to follow the two setup steps.
+              Your account request has been received. You can sign in now to follow its approval status.
             </p>
             <p className="text-sm text-muted-foreground">
-              {emailSent
+              {!emailVerificationRequired
+                ? "Email verification is temporarily not required. Member access begins after a church administrator approves your account."
+                : emailSent
                 ? "Check your email for a verification link. Member access begins after both email verification and administrator approval."
                 : "Email delivery is not configured yet. Sign in to view your status and contact a portal administrator for help verifying your email."}
             </p>

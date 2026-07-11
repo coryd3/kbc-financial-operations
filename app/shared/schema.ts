@@ -187,6 +187,7 @@ export const AUDIT_EVENT_TYPES = [
   "auth.password_reset_created",
   "auth.password_reset_used",
   "auth.email_verification_sent",
+  "auth.email_verification_not_required",
   "auth.email_verified",
   "auth.access_notification_sent",
   "auth.mfa_enabled",

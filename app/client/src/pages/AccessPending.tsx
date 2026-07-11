@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
 import { useLocation } from "wouter";
-import { CheckCircle2, Circle, MailCheck, ShieldCheck } from "lucide-react";
+import { CheckCircle2, Circle, Info, MailCheck, ShieldCheck } from "lucide-react";
 import { api, ApiError } from "../lib/api";
 import { useAuth } from "../lib/auth";
 import { Button, Card, CardContent, CardHeader, CardTitle } from "../components/ui";
 
 export default function AccessPending() {
-  const { user, isLoading, portalAccess, refresh } = useAuth();
+  const { user, isLoading, portalAccess, emailVerificationRequired, refresh } = useAuth();
   const [, setLocation] = useLocation();
   const [message, setMessage] = useState("");
   const [error, setError] = useState("");
@@ -42,17 +42,25 @@ export default function AccessPending() {
         <CardHeader>
           <CardTitle className="text-2xl text-primary">Account Setup</CardTitle>
           <p className="text-sm text-muted-foreground">
-            Welcome, {user.fullName}. Your account is signed in, but member information and operations tools remain locked until setup is complete.
+            Welcome, {user.fullName}. Your account is signed in, but member information and operations tools remain locked until administrator review is complete.
           </p>
         </CardHeader>
         <CardContent className="space-y-5">
           <div className="grid gap-3 sm:grid-cols-2">
             <div className="flex gap-3 rounded-md border p-4">
-              {emailVerified ? <CheckCircle2 className="h-5 w-5 shrink-0 text-primary" /> : <Circle className="h-5 w-5 shrink-0 text-muted-foreground" />}
+              {!emailVerificationRequired
+                ? <Info className="h-5 w-5 shrink-0 text-primary" />
+                : emailVerified
+                  ? <CheckCircle2 className="h-5 w-5 shrink-0 text-primary" />
+                  : <Circle className="h-5 w-5 shrink-0 text-muted-foreground" />}
               <div>
-                <p className="font-semibold">Verify your email</p>
+                <p className="font-semibold">Email verification</p>
                 <p className="mt-1 text-sm text-muted-foreground">
-                  {emailVerified ? `Verified: ${user.email}` : `Use the link sent to ${user.email}.`}
+                  {!emailVerificationRequired
+                    ? "Temporarily not required. Administrator approval is the only remaining access step."
+                    : emailVerified
+                      ? `Verified: ${user.email}`
+                      : `Use the link sent to ${user.email}.`}
                 </p>
               </div>
             </div>
@@ -67,7 +75,7 @@ export default function AccessPending() {
             </div>
           </div>
 
-          {!emailVerified && (
+          {emailVerificationRequired && !emailVerified && (
             <Button onClick={resend} disabled={sending} className="gap-2">
               <MailCheck className="h-4 w-4" /> {sending ? "Sending..." : "Resend Verification Email"}
             </Button>
