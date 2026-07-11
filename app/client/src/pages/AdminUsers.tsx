@@ -154,6 +154,18 @@ export default function AdminUsers() {
         </div>
       )}
 
+      {!isLoading && !search && !statusFilter && pendingUsers.length === 0 && (
+        <div className="flex gap-3 rounded-md border border-primary/25 bg-primary/5 p-4 text-sm">
+          <CheckCircle className="mt-0.5 h-5 w-5 shrink-0 text-primary" />
+          <div>
+            <p className="font-semibold text-primary">No registrations are waiting for approval</p>
+            <p className="mt-1 text-muted-foreground">
+              Accounts marked Approved / Active below already have portal access and can sign in.
+            </p>
+          </div>
+        </div>
+      )}
+
       {pendingUsers.length > 0 && (
         <Card className="border-accent/40 bg-accent/5">
           <CardHeader>
@@ -333,14 +345,21 @@ export default function AdminUsers() {
                       <td className="py-3 px-4">
                         <div className="font-medium">{user.fullName}</div>
                         <div className="text-xs text-muted-foreground mt-0.5">@{user.username}</div>
-                        {user.status === "active" && user.email && (
-                          <div className="mt-1 text-xs text-muted-foreground">
-                            {user.emailVerifiedAt
-                              ? "Email verified"
-                              : emailVerificationRequired
-                                ? "Email not verified"
-                                : "Email verification temporarily not required"}
-                            {user.accessNotificationSentAt ? " / approval email sent" : " / approval email not confirmed"}
+                        {user.status === "active" && (
+                          <div className="mt-1 space-y-0.5 text-xs text-muted-foreground">
+                            <div className="font-medium text-primary">
+                              Access approved{user.approvedAt ? ` ${format(new Date(user.approvedAt), "MMM d, yyyy")}` : ""}
+                            </div>
+                            {user.email && (
+                              <div>
+                                {user.emailVerifiedAt
+                                  ? "Email verified"
+                                  : emailVerificationRequired
+                                    ? "Email not verified"
+                                    : "Email verification temporarily paused"}
+                                {user.accessNotificationSentAt ? " / approval email sent" : " / approval email not sent"}
+                              </div>
+                            )}
                           </div>
                         )}
                       </td>
@@ -362,7 +381,11 @@ export default function AdminUsers() {
                           user.status === 'deactivated' ? 'bg-muted text-muted-foreground' : 
                           'bg-destructive/10 text-destructive'
                         }`}>
-                          {user.status}
+                          {user.status === "active"
+                            ? "Approved / Active"
+                            : user.status === "deactivated"
+                              ? "Deactivated"
+                              : "Rejected"}
                         </span>
                       </td>
                       <td className="py-3 px-4">
