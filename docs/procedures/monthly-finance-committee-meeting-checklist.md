@@ -1,6 +1,6 @@
 # Monthly Finance Committee Meeting Checklist
 
-Status: Draft
+Status: Needs Finance Review
 
 ## Purpose
 

@@ -1,6 +1,6 @@
 # Offering Counting And Deposit Policy
 
-Status: Draft
+Status: Needs Finance Review
 
 ## Purpose
 

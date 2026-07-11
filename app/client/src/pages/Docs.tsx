@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link, useLocation } from "wouter";
 import { useQuery } from "@tanstack/react-query";
-import { BookText, ChevronRight, FileText, MessageSquareText, Search } from "lucide-react";
+import { BookOpen, BookText, ChevronRight, FileText, LayoutDashboard, MessageSquareText, Search } from "lucide-react";
 import { api } from "../lib/api";
 import { useAuth } from "../lib/auth";
 import {
@@ -38,10 +38,20 @@ export default function Docs() {
   return (
     <div className="space-y-8">
       <div className="border-b border-border pb-6">
-        <h1 className="text-3xl font-serif text-primary font-bold">Documentation Hub</h1>
+        <h1 className="text-3xl font-serif text-primary font-bold">Financial Operations Handbook</h1>
         <p className="mt-2 max-w-2xl text-muted-foreground">
-          Browse church references, governance, policies, procedures, and active committee work without having to sort through every project file.
+          Find current guidance, current committee work, and the record behind important decisions without sorting through every stored file.
         </p>
+        <div className="mt-4 flex flex-wrap gap-2">
+          <Link href="/docs/start-here/why-this-exists" className="inline-flex items-center gap-2 rounded-md border border-border px-3 py-2 text-sm font-medium text-primary hover:bg-muted/50">
+            <BookOpen className="h-4 w-4" /> Why this exists
+          </Link>
+          {view !== "congregation" && (
+            <Link href="/docs/start-here/project-dashboard" className="inline-flex items-center gap-2 rounded-md border border-border px-3 py-2 text-sm font-medium text-primary hover:bg-muted/50">
+              <LayoutDashboard className="h-4 w-4" /> Current work
+            </Link>
+          )}
+        </div>
         {portalAccess && (
           <Link href="/docs/my-feedback" className="mt-4 inline-flex items-center gap-2 rounded-md border border-border px-3 py-2 text-sm font-medium text-primary hover:bg-muted/50">
             <MessageSquareText className="h-4 w-4" /> Review my feedback
@@ -51,7 +61,7 @@ export default function Docs() {
           <div className="relative">
             <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
             <Input
-              placeholder="Search this documentation view..."
+              placeholder="Search this handbook view..."
               className="pl-9"
               value={query}
               onChange={(event) => setQuery(event.target.value)}

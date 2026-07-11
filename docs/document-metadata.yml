@@ -1,8 +1,9 @@
 # Audience labels organize the library; they are not security boundaries.
 # Everything committed to this public repository must be safe to publish.
 documents:
-  index: { documentType: Library Guide, status: Draft, owner: Documentation Stewards, lifecycle: durable, audiences: [congregation, leadership, finance, personnel, operations, project] }
-  start-here/project-dashboard: { documentType: Leadership Dashboard, status: Needs Leadership Review, owner: Leadership Team, lifecycle: project, audiences: [leadership, finance, personnel, project] }
+  index: { documentType: Handbook Home, status: Needs Leadership Review, owner: Documentation Stewards, lifecycle: durable, audiences: [congregation, leadership, finance, personnel, operations, project] }
+  start-here/why-this-exists: { documentType: Orientation Guide, status: Needs Leadership Review, owner: Leadership Team / Documentation Stewards, lifecycle: durable, audiences: [congregation, leadership, finance, personnel, operations, project] }
+  start-here/project-dashboard: { documentType: Current Work Dashboard, status: Needs Leadership Review, owner: Leadership Team, lifecycle: project, audiences: [leadership, finance, personnel, project] }
   00-project-brief: { documentType: Project Brief, status: Needs Leadership Review, owner: Project Team, lifecycle: project, audiences: [leadership, finance, personnel, project] }
   01-current-state-assessment: { documentType: Assessment, status: Needs Leadership Review, owner: Project Team, lifecycle: project, audiences: [leadership, finance, personnel, project] }
   02-decision-log: { documentType: Decision Record, status: Working Record, owner: Church Clerk / Project Team, lifecycle: project, audiences: [leadership, finance, personnel, project] }

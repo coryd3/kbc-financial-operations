@@ -1,6 +1,6 @@
 # Monthly Financial Review Policy
 
-Status: Draft
+Status: Needs Finance Review
 
 ## Purpose
 

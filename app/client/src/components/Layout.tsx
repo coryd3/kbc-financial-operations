@@ -45,7 +45,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
 
   const navItems = [
     { href: "/", label: "Home", icon: Home, show: true },
-    { href: "/docs", label: "Documentation", icon: BookOpen, show: true },
+    { href: "/docs", label: "Handbook", icon: BookOpen, show: true },
     { href: "/access-pending", label: "Access Setup", icon: UserRoundCheck, show: !!user && !portalAccess },
     { href: "/dashboard", label: "Dashboard", icon: LayoutDashboard, show: portalAccess },
     { href: "/directory", label: "Directory", icon: ContactRound, show: portalAccess },

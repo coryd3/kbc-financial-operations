@@ -1,0 +1,28 @@
+Chapter: Decision Log.
+Current document status: Working Record.
+
+Section: Decision Log.
+
+Use this log for meaningful project decisions, committee direction, approval steps, and superseded assumptions.
+
+Table summary.
+Date: 2026-07-06. Decision: Initial repository structure created for the KBC financial operations project.. Owner: Cory Davis. Status: Complete. Notes: Created source-materials, docs, templates, and archive structure..
+Date: 2026-06-28. Decision: Congregation approved adding a paid, part-time Bookkeeper position.. Owner: Congregation / Personnel Committee / Nominating Committee / Finance Committee. Status: Complete - recorded. Notes: Motion tasked Personnel and Nominating Committees to work together to add a paid, part-time Bookkeeper position, not to exceed $150 per week, described as $18.75 per hour for approximately 8 hours. The congregation gave Personnel Committee authority to hire the right candidate and gave Finance Committee responsibility for adjusting the budget to fund this specific operational need..
+Date: 2026-07-08. Decision: Leadership review feedback captured for the next phase.. Owner: Project lead / leadership reviewers. Status: Review input captured. Notes: Keep congregational authority prominent; clarify Finance, Treasurer, Bookkeeper, Deacon, and committee lanes; preserve Benevolence and other committee-spending questions for future governance review. This is review input, not approved policy..
+Date: TBD. Decision: Confirm Treasurer and authorized Bookkeeper / Financial Administrator duty split.. Owner: Finance Committee. Status: Needs Finance Review. Notes: Personnel Committee owns hiring, but Finance should define duties, access, controls, reporting expectations, and budget impact before hiring materials are finalized..
+
+Section: Recorded Motion Summary.
+
+At the June 28, 2026 business meeting, the Pastor and Moderator moved that the congregation task the Personnel and Nominating Committees to work together to add a paid, part-time Bookkeeper position as soon as possible.
+
+The motion stated that the position should not exceed $150 per week, described as $18.75 per hour for approximately 8 hours.
+
+The congregation gave Personnel Committee authority to hire the right candidate and gave Finance Committee responsibility for adjusting the budget to fund this specific operational need.
+
+This decision should be checked against the official meeting minutes before final publication or formal action.
+
+Motion language provided for review:
+
+Therefore... I, the pastor and moderator, move that the congregation task the Personnel and Nominating Committees to work together to add a paid, part-time bookkeeper position, not to exceed $150 per week ($18.75 per hour for approximately 8 hours), as soon as possible. The congregation hereby gives the Personnel Committee authority to hire the right candidate, and gives the Finance Committee responsibility for adjusting the budget to fund this specific operational need.
+
+End of chapter: Decision Log.

@@ -1,6 +1,6 @@
 # Leadership Review Packet
 
-Status: Draft
+Status: Needs Leadership Review
 
 ## 1. Executive Summary
 

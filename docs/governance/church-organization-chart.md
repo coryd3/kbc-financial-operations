@@ -1,10 +1,10 @@
 # KBC Organization Chart
 
-Status: Draft
+Status: Needs Bylaw Review
 
 ## Purpose
 
-This document provides a working organization chart for Kingsville Baptist Church based on the current financial operations modernization documents.
+This document provides a working organization chart for Kingsville Baptist Church and shows how financial governance, ministry leadership, committees, elected officers, and operational support relate to one another.
 
 It is intended to help leaders see the difference between:
 
@@ -92,7 +92,7 @@ The detailed financial reporting and coordination diagram now has its own naviga
 
 ## Recommended Reporting And Coordination Lines
 
-These lines should be confirmed before hiring or final implementation:
+These lines should be confirmed through the Constitution and Bylaws, committee charters, adopted policies, and church practice:
 
 - The Bookkeeper / Financial Administrator should have one clear day-to-day supervisor.
 - The Finance Committee should define the Bookkeeper's financial duties, access, reports, and controls.
@@ -103,8 +103,6 @@ These lines should be confirmed before hiring or final implementation:
 - Finance Committee should not run the hiring process.
 - Personnel Committee should not decide financial controls, software, reimbursement rules, card policy, or spending authority.
 - Other committees, including Benevolence, may need a later governance review, but that should be treated as future expansion unless an urgent issue requires action now.
-
-The 2026 Bookkeeper transition, including the congregational motion and implementation questions, is preserved in the [Project Brief](../00-project-brief.md) and [Decision Log](../02-decision-log.md). Keeping that temporary context in the project workroom allows this organization chart to remain useful after the transition is complete.
 
 ## Open Questions
 

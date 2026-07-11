@@ -1,6 +1,6 @@
 # IconCMO vs ChurchTrac Comparison
 
-Status: Draft
+Status: Needs Finance Review
 
 Use this template during vendor research and demos. Do not fill in vendor claims unless confirmed from source documents, vendor demos, contracts, or official vendor materials.
 

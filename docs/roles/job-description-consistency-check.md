@@ -1,6 +1,6 @@
 # Job Description Consistency Check
 
-Status: Draft
+Status: Working Record
 
 ## Purpose
 

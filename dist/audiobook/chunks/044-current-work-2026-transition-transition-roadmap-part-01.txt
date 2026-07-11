@@ -1,0 +1,40 @@
+Chapter: Transition Roadmap.
+Current document status: Needs Leadership Review.
+
+Section: 2026 Financial Operations Transition Roadmap.
+
+Section: Purpose.
+
+This dated roadmap organizes the 2026 transition work into practical phases. It is intended to help KBC stabilize financial operations, clarify responsibilities, make committee decisions in the right order, and move durable results into a handbook that future volunteers or staff can follow.
+
+Start date: TBD.
+
+Section: Roadmap Summary.
+
+Table summary.
+Phase: Immediate stabilization. Main Goal: Keep financial work moving safely during Treasurer transition.. Primary Owner: Interim Treasurer, Finance Committee. Main Output: Continuity plan and immediate control checklist..
+Phase: 30-day plan. Main Goal: Clarify responsibilities and prepare authorized hiring materials.. Primary Owner: Finance Committee, Personnel Committee. Main Output: Duty split, review packets, Bookkeeper job description/application/hiring process, and first-round committee decisions..
+Phase: 60-day plan. Main Goal: Choose operating model and begin implementation materials.. Primary Owner: Finance Committee, Personnel Committee. Main Output: Software recommendation, policy drafts, hiring process, and budget impact review..
+Phase: 90-day plan. Main Goal: Begin implementation and monthly operating rhythm.. Primary Owner: Finance Committee, Treasurer, Bookkeeper / Financial Administrator. Main Output: Software/setup plan, monthly review rhythm, Bookkeeper onboarding if hired, and reporting process..
+Phase: Long-term handbook integration. Main Goal: Move approved results into the maintained Financial Operations Handbook.. Primary Owner: Finance Committee, document owner TBD. Main Output: Approved handbook sections, review schedule, and document control process..
+
+Section: Immediate Stabilization.
+
+Table summary.
+Item: Goal. Details: Maintain continuity, protect financial records, and avoid urgent decisions being made without committee review..
+Item: Owner. Details: Interim Treasurer with Finance Committee support..
+Item: Supporting bodies. Details: Pastor, Deacons, Personnel Committee, Bookkeeper / financial support if assigned..
+Item: Deliverables. Details: Interim Treasurer coverage plan; list of recurring financial tasks; access and records checklist; current software/account list without passwords; immediate monthly review packet; list of urgent risks or blocked tasks..
+Item: Dependencies. Details: Interim Treasurer availability; access to current records and systems; current bank/card/payment workflow; current budget and reporting files..
+Item: Open questions. Details: What tasks must be covered weekly? Who has access to bank, giving, payroll, and accounting systems? What records are missing or hard to find? What payments, reports, or filings are time-sensitive?.
+
+Section: Immediate Actions.
+
+Confirm who is serving as interim Treasurer and what authority that role has.
+Identify weekly must-do tasks: deposits, bills, payroll coordination, reimbursements, reports, and account review.
+Locate current budget, bank records, giving records, payroll records, vendor records, and prior reports.
+Confirm who can approve and release payments during the transition.
+Begin monthly Finance Committee review using docs/procedures/monthly-finance-committee-meeting-checklist.md.
+Record urgent unresolved questions in docs/03-open-questions.md.
+
+Section: 30-Day Plan.

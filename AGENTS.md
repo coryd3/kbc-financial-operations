@@ -1,19 +1,28 @@
 # Agent Instructions
 
-This repository contains church governance, finance, personnel, and operations material for Kingsville Baptist Church. Work carefully and assume the repository may contain sensitive internal information.
+This repository contains the Kingsville Baptist Church financial operations handbook, current-work records, governance references, and operations portal. Work carefully and assume the repository may contain sensitive internal information.
 
-The project is about a Treasurer transition, financial operations modernization, and clearer church administrative structure. The goal is to build documentation that helps KBC move from person-dependent financial processes to a clear, accountable, transferable, and sustainable system.
+The permanent goal is a clear, accountable, transferable, and sustainable church-owned operating system. The repository began during a Treasurer and Bookkeeper transition, but durable documents should not be written as though that temporary situation is the repository's permanent purpose.
 
-## Project Context
+## Repository Model
 
-- KBC is an old, small Baptist church in Kingsville, Missouri.
+- **Handbook:** durable governing references, responsibilities, policies, procedures, charters, and role descriptions.
+- **Current Workroom:** time-limited projects, committee packets, open questions, roadmaps, evaluations, tasks, and recommendations.
+- **Church Record and History:** governing source material, recorded decisions, dated releases, and superseded versions. Official minutes remain with the Church Clerk or assigned records steward.
+- **Operations Portal:** role-based workflows, recurring checklists, committee activity, decisions, feedback, and permitted financial operations.
+
+Keep transition-specific dates, compensation limits, interim assignments, and hiring action items in project records. Keep handbook language general enough to remain useful when people and circumstances change.
+
+## Current Project Context
+
+- KBC is a small, long-established Baptist church in Kingsville, Missouri.
 - KBC uses congregational governance and must remain faithful to its bylaws.
 - The Treasurer position is in transition.
 - Interim Treasurer coverage is helping maintain continuity while KBC reviews the longer-term structure.
 - The congregation has authorized Personnel Committee to hire a paid Bookkeeper / Financial Administrator.
 - The deeper issue is that finance operations have historically depended too much on one person's knowledge and manual process.
 
-Do not frame this as a person failure. Frame it as a systems maturity issue.
+Do not frame the transition as a person failure. Frame it as an opportunity to strengthen shared systems and stewardship.
 
 Preferred framing:
 
@@ -98,3 +107,7 @@ Use one of these near the top of active documents:
 - `Status: Ready for Church Consideration`
 - `Status: Approved`
 - `Status: Superseded`
+- `Status: Working Record`
+- `Status: Current`
+- `Status: Reference`
+- `Status: Parking Lot`

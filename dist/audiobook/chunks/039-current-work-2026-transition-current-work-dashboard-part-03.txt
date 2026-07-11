@@ -1,0 +1,27 @@
+Table summary.
+Document: Bookkeeper Hiring Process. Purpose: Provide hiring checklist, interview guide, reference questions, and candidate rubric.. Owner: Personnel Committee. Status: Needs Personnel Review. Review Needed By: Personnel Committee, Finance Committee, Pastor. Priority: High. Link: Open.
+Document: Bookkeeper Application. Purpose: Provide draft application questions and applicant acknowledgment language.. Owner: Personnel Committee. Status: Needs Personnel Review. Review Needed By: Personnel Committee. Priority: High. Link: Open.
+Document: Job Description Consistency Check. Purpose: Compare the Bookkeeper job description with prior KBC job-description patterns.. Owner: Personnel Committee. Status: Needs Personnel Review. Review Needed By: Personnel Committee. Priority: Medium. Link: Open.
+Document: Personnel Committee Role. Purpose: Clarify Personnel's responsibilities in finance-related staffing without taking over Finance decisions.. Owner: Personnel Committee. Status: Needs Personnel Review. Review Needed By: Personnel Committee, Finance Committee. Priority: Medium. Link: Open.
+Document: Personnel Committee Recommendation. Purpose: Draft request from Personnel to Finance for financial-duty direction.. Owner: Personnel Committee. Status: Needs Personnel Review. Review Needed By: Personnel Committee. Priority: High. Link: Open.
+
+Section: 7. Documents Needing Bylaw Or Church Approval Review.
+
+Table summary.
+Document: Constitution and Bylaws Reference. Purpose: Provide quick access to the 2018 Constitution, Bylaws, and Covenant source and key review questions.. Owner: Church / Clerk TBD. Status: Needs Bylaw Review. Review Needed By: Pastor, Deacons, Finance Committee, Personnel Committee, Nominating Committee. Priority: High. Link: Open.
+Document: Decision Log. Purpose: Record decisions, owners, status, and notes.. Owner: Project lead TBD. Status: Draft. Review Needed By: Finance Committee, Personnel Committee, Church Clerk. Priority: High. Link: Open.
+Document: Church Organization Chart. Purpose: Show draft governance and financial-operations relationships.. Owner: Pastor / leadership team. Status: Needs Bylaw Review. Review Needed By: Pastor, Deacons, Finance Committee, Personnel Committee, Nominating Committee. Priority: High. Link: Open.
+Document: Treasurer Governance Role. Purpose: Draft governance-focused Treasurer / Financial Officer role.. Owner: Finance Committee. Status: Needs Bylaw Review. Review Needed By: Finance Committee, Nominating Committee, Personnel Committee. Priority: High. Link: Open.
+Document: Interim Treasurer Role. Purpose: Define temporary Treasurer coverage expectations.. Owner: Finance Committee. Status: Needs Bylaw Review. Review Needed By: Finance Committee, Nominating Committee, Pastor, Deacons. Priority: High. Link: Open.
+Document: Finance Committee Charter. Purpose: Clarify Finance Committee purpose, review cadence, reporting, and policy/software ownership.. Owner: Finance Committee. Status: Needs Bylaw Review. Review Needed By: Finance Committee, Pastor, Deacons. Priority: High. Link: Open.
+
+Section: 8. Parking Lot / Later.
+
+Table summary.
+Document: Software Implementation Plan. Purpose: Outline software setup and transition after a system is selected.. Owner: Finance Committee. Status: Parking Lot. Review Needed By: Finance Committee. Priority: Medium. Link: Open.
+Document: Deacon Update. Purpose: Placeholder for Deacon update or counsel request.. Owner: Pastor / leadership team. Status: Parking Lot. Review Needed By: Deacons, Pastor. Priority: Low. Link: Open.
+Document: Audit and Review Policy. Purpose: Draft annual financial review or audit expectations.. Owner: Finance Committee. Status: Needs Finance Review. Review Needed By: Finance Committee, CPA/accounting advisor if used. Priority: Medium. Link: Open.
+Document: Payroll Process. Purpose: Draft payroll coordination process.. Owner: Finance Committee. Status: Needs Finance Review. Review Needed By: Finance Committee, Personnel Committee, payroll/accounting advisor. Priority: Medium. Link: Open.
+Document: Future Governance Expansion. Purpose: Preserve later questions about Benevolence, other committee spending, confidentiality, Deacon counsel, and congregational approval paths.. Owner: Pastor / Deacons / Finance Committee. Status: Parking Lot. Review Needed By: Pastor, Deacons, Finance Committee, Personnel Committee, Nominating Committee. Priority: Medium. Link: Open.
+
+Section: 9. Recent Decisions.

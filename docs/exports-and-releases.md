@@ -1,12 +1,12 @@
 # Exported Files and Release Bundles
 
-Status: Draft
+Status: Current
 
-The documentation site is for browsing and searching working Markdown documents. Exports and releases are for formal review packets.
+The handbook site is for browsing current guidance, current work, and safe historical records. Exports and releases are for formal review packets.
 
 ## Main Difference
 
-- Use the documentation site when leaders need to read, search, or review working material.
+- Use the handbook site when leaders need to read, search, or review material.
 - Use exports when leaders need PDF, DOCX, PPTX, or spreadsheet files for a meeting packet.
 - Use releases when the church needs a dated bundle of review files.
 - Use the NotebookLM sourcebook when leaders need one Markdown source that can be uploaded to NotebookLM for question-and-answer review across the current materials.

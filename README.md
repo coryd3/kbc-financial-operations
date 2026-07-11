@@ -2,11 +2,17 @@
 
 ## Project Purpose
 
-This repository manages Kingsville Baptist Church financial operations modernization documents.
+This repository maintains the Kingsville Baptist Church Financial Operations Handbook and the workspace used to review, improve, and carry out that guidance.
 
-It supports the current Treasurer transition, the review of finance and bookkeeping responsibilities, the implementation of the paid Bookkeeper / Financial Administrator role already authorized by congregational vote, and the creation of clearer policies, procedures, role descriptions, committee responsibilities, software evaluation materials, and public review documents.
+It has three documentation layers:
 
-The purpose is not simply to replace one person with another person. The purpose is to build a financial system that is clear, accountable, transferable, and sustainable.
+- **Handbook:** durable governance, responsibilities, policies, procedures, committee charters, and role descriptions.
+- **Current Workroom:** committee packets, open questions, roadmaps, evaluations, assigned actions, and feedback for work still underway.
+- **Church Record and History:** governing references, recorded decisions, dated releases, and superseded versions.
+
+The repository began during the 2026 Treasurer and Bookkeeper transition. That work remains documented in the Current Workroom, but it is not the permanent organizing principle. The long-term purpose is a financial operations system that is clear, accountable, transferable, and sustainable.
+
+For a short, non-technical explanation of how this differs from a shared folder, see `docs/start-here/why-this-exists.md`.
 
 ## Source of Truth
 
@@ -32,18 +38,18 @@ The NotebookLM sourcebook is generated from the most important current Markdown 
 - `dist/notebooklm/kbc-financial-operations-sourcebook.md`
 - `dist/notebooklm/kbc-financial-operations-sourcebook.pdf` if Pandoc can create it locally
 
-The audiobook/TTS bundle is generated from the current documentation site sources:
+The audiobook/TTS bundle is generated from the current handbook site sources:
 
 - `dist/audiobook/kbc-financial-operations-complete-document.md`
 - `dist/audiobook/kbc-financial-operations-tts-script.txt`
 - `dist/audiobook/chunks/`
 - `dist/audiobook/chunk-index.csv`
 
-## Documentation Site
+## Handbook Site
 
-This repository includes a searchable documentation site built with MkDocs and Material for MkDocs.
+This repository includes a searchable handbook site built with MkDocs and Material for MkDocs.
 
-Use the site when leaders need to browse or search the working documents. Use exports when you need formal PDF, DOCX, PPTX, or spreadsheet files for a meeting packet.
+Use the site to browse current guidance, current work, and recorded decisions. Use exports when you need formal PDF, DOCX, PPTX, or spreadsheet files for a meeting packet.
 
 Published site:
 
@@ -109,7 +115,7 @@ The live site is published by the manual GitHub Actions workflow named `Deploy D
 
 GitHub Pages can expose the documentation publicly depending on repository, account, organization, and GitHub Pages settings. Because this repository has been used with a public Pages site, all committed content should be safe for public viewing.
 
-The local documentation site and the GitHub build artifact are safer ways to review material before publishing updates to the live site.
+The local handbook site and the GitHub build artifact are safer ways to review material before publishing updates to the live site.
 
 The GitHub workflow named `Build Docs Site` only builds a site artifact for review. It does not publish a website.
 

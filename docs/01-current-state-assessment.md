@@ -1,10 +1,10 @@
-# Current State Assessment
+# 2026 Transition Current-State Assessment
 
-Status: Draft
+Status: Needs Leadership Review
 
 ## Summary
 
-The current Treasurer vacancy has exposed broader financial operations needs. The issue is not one person's performance. It is that the system has become too dependent on individual knowledge and too light on documented roles, controls, procedures, and committee ownership.
+This assessment records the conditions observed during the 2026 Treasurer transition. The issue is not one person's performance. It is that the system had become too dependent on individual knowledge and too light on documented roles, controls, procedures, and committee ownership.
 
 ## Role Clarity
 

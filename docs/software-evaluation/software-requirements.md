@@ -1,6 +1,6 @@
 # Software Requirements
 
-Status: Draft
+Status: Needs Finance Review
 
 KBC should define requirements before selecting ChurchTrac, IconCMO, QuickBooks, or another system. Software should support the financial structure KBC chooses; it should not be used as a substitute for clear governance.
 

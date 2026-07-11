@@ -1,6 +1,6 @@
 # Interim Treasurer Role
 
-Status: Draft
+Status: Needs Bylaw Review
 
 ## Purpose
 

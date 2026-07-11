@@ -1,6 +1,6 @@
 # Personnel Committee Role
 
-Status: Draft
+Status: Needs Personnel Review
 
 ## Purpose
 

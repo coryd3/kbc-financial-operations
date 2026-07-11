@@ -1,0 +1,65 @@
+Chapter: Handbook And Workspace Stewardship.
+Current document status: Needs Leadership Review.
+
+Section: Handbook And Workspace Stewardship Guide.
+
+Section: Purpose.
+
+This guide keeps the financial operations handbook, current workroom, and church record maintainable as officers, committee members, volunteers, and staff change. The system should be church-owned work, not a private project that depends on one person.
+
+Section: What Belongs Where.
+
+Table summary.
+Information: Durable governance, policy, role, or procedure. Proper Home: Handbook. Why: It should remain useful after current people and projects change..
+Information: Assigned task, due date, or recurring work. Proper Home: Portal checklist, current dashboard, or approved task tracker. Why: Work should have a visible owner and next action rather than being buried in narrative..
+Information: Question awaiting a decision. Proper Home: Issue register or committee workspace. Why: It is working material, not settled guidance..
+Information: Committee or congregational decision. Proper Home: Decision log and authoritative minutes where applicable. Why: Future leaders need the decision, date, owner, and approval source..
+Information: Review packet, implementation note, or evaluation. Proper Home: Current Workroom. Why: It supports a time-limited project and should be archived when complete..
+Information: Approved or superseded release. Proper Home: Church record / archive. Why: The history remains available without competing with current guidance..
+
+Google Drive or another restricted system may remain the proper home for editable office files and confidential records. The public handbook should link to safe source material only when useful.
+
+Section: Shared Responsibilities.
+
+Table summary.
+Responsibility: Document owner. Assigned To: Committee, officer, or church body responsible for the subject. Meaning: Decides what the document should say and requests review or approval..
+Responsibility: Documentation steward. Assigned To: One or more trusted helpers. Meaning: Maintains formatting, links, metadata, status labels, navigation, and archives without changing policy on their own..
+Responsibility: Reviewer. Assigned To: People affected by or knowledgeable about the document. Meaning: Tests clarity, accuracy, practicality, and alignment with other documents..
+Responsibility: Approval body. Assigned To: Committee, leadership body, or congregation with authority. Meaning: Approves the document when required and establishes its effective date..
+Responsibility: Church Clerk / records steward. Assigned To: As assigned by church practice. Meaning: Preserves authoritative minutes, motions, and approved versions..
+
+Section: Document Lifecycle.
+
+Working Draft: an owner is developing the content.
+Needs Review: the appropriate committee, leadership body, bylaw reviewer, or professional is reviewing it.
+Ready for Church Consideration: committee review is complete and congregational action is required.
+Approved / Current: the authorized body approved it and the effective date is recorded.
+Superseded: a newer approved version replaced it; the old version remains in the archive.
+Parking Lot: useful future work that is not an active priority.
+
+Review packets, issue registers, implementation roadmaps, and evaluation notes are current-work records. They should not be labeled as approved policies simply because they contain useful analysis.
+
+Section: Minimum Metadata.
+
+Every document in the portal catalog should identify:
+
+Document type.
+Status.
+Owner.
+Intended audiences.
+Lifecycle category.
+Approval body and effective date once approved.
+Next review date for policies, procedures, charters, and role descriptions.
+
+Audience labels organize the reading experience. They do not make public repository content confidential.
+
+Section: Change Process.
+
+A reader submits feedback or contacts the document owner.
+A documentation steward records or routes the request.
+The owner decides whether the change is editorial, operational, policy-related, or governance-related.
+Editorial corrections may be prepared directly; substantive changes return to the proper reviewer or approval body.
+The decision and resulting status are recorded.
+Approved changes are published, and any replaced version is marked superseded.
+
+Section: Review Rhythm.

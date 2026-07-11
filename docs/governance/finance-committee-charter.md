@@ -1,6 +1,6 @@
 # Finance Committee Charter
 
-Status: Draft
+Status: Needs Bylaw Review
 
 ## Purpose
 

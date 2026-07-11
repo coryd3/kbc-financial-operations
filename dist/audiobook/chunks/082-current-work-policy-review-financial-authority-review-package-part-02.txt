@@ -1,0 +1,37 @@
+Table summary.
+Decision: Routine budgeted purchase limit. Proposed Direction: Allow normal ministry work without individual committee approval, within an approved budget and assigned authority.. Final Value / Decision: $TBD per purchase. Approval Path: Finance review; church approval if required. Owner: Finance Committee.
+Decision: Large purchase threshold. Proposed Direction: Require written pre-approval and funding review.. Final Value / Decision: $TBD. Approval Path: Finance recommendation; determine church-vote trigger. Owner: Finance Committee.
+Decision: Outside-budget spending. Proposed Direction: Require approval before commitment except a documented emergency.. Final Value / Decision: Any amount / $TBD. Approval Path: Finance; congregation when required. Owner: Finance Committee.
+Decision: Over-budget spending. Proposed Direction: Require budget-transfer or exception approval before purchase.. Final Value / Decision: $TBD variance or any overage. Approval Path: Finance; congregation when required. Owner: Finance Committee.
+Decision: Contract and recurring commitment limit. Proposed Direction: Review the full annual obligation, renewal terms, and cancellation terms.. Final Value / Decision: $TBD monthly / $TBD annual. Approval Path: Finance; congregation when required. Owner: Finance Committee.
+Decision: Emergency authority. Proposed Direction: Permit limited action when delay would cause harm, followed by prompt written review.. Final Value / Decision: $TBD. Approval Path: Named emergency approvers; Finance after-the-fact review. Owner: Finance Committee.
+Decision: Reimbursement submission period. Proposed Direction: Require prompt documentation while allowing reasonable ministry circumstances.. Final Value / Decision: TBD days. Approval Path: Finance Committee. Owner: Finance Committee.
+Decision: Missing receipt exception. Proposed Direction: Use a signed explanation and secondary evidence; repeated exceptions trigger review.. Final Value / Decision: TBD frequency/limit. Approval Path: Assigned reviewer / Finance Committee. Owner: Finance Committee.
+Decision: Cardholder eligibility. Proposed Direction: Assign cards to named people, never shared groups.. Final Value / Decision: TBD roles or individuals. Approval Path: Finance Committee. Owner: Finance Committee.
+Decision: Card transaction and account limits. Proposed Direction: Match limits to role and approved budget authority.. Final Value / Decision: $TBD. Approval Path: Finance Committee. Owner: Finance Committee.
+Decision: Church-vote trigger. Proposed Direction: Preserve congregational authority for major non-budgeted commitments.. Final Value / Decision: $TBD and/or defined categories. Approval Path: Bylaw and congregational review. Owner: Church leadership / Congregation.
+
+Section: Recommended Review Sequence.
+
+Confirm the current bylaw and annual-budget approval requirements.
+Agree on the control model before debating individual dollar amounts.
+Complete the decision worksheet in a Finance Committee meeting.
+Check that the three policies use the same definitions and approval paths.
+Ask the Treasurer, Bookkeeper, ministry leaders, and Pastor to test the proposed workflow against common situations.
+Obtain professional review where employment, tax, legal, insurance, banking, or accounting questions arise.
+Bring any policy or threshold requiring congregational approval to the church with a concise recommendation.
+Record the effective date, owner, and annual review date after adoption.
+
+Section: Questions To Test Before Adoption.
+
+Can a ministry leader understand what they may purchase without calling several people?
+Can the Bookkeeper see proof of approval before processing an exception?
+Can Finance Committee identify all exceptions during monthly review?
+Is the Treasurer providing meaningful oversight without becoming the only gatekeeper?
+Are recurring contracts evaluated based on their full commitment rather than one monthly payment?
+Does the policy clearly return major matters to the congregation?
+Are emergency provisions narrow enough to prevent routine bypassing of normal approval?
+
+Needs review against the KBC Constitution and Bylaws before final approval.
+
+End of chapter: Financial Authority Review Package.

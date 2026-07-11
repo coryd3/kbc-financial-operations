@@ -1,5 +1,5 @@
-site_name: KBC Financial Operations Documentation
-site_description: Searchable working documentation for KBC financial operations modernization.
+site_name: KBC Financial Operations Handbook
+site_description: KBC's searchable financial operations handbook, current workroom, and decision record.
 repo_url: https://github.com/coryd3/kbc-financial-operations
 
 theme:
@@ -47,7 +47,9 @@ hooks:
 nav:
   - Start Here:
       - Home: index.md
-      - Leader-Friendly Dashboard: start-here/project-dashboard.md
+      - Why This Exists: start-here/why-this-exists.md
+      - Current Work Dashboard: start-here/project-dashboard.md
+      - Handbook And Workspace Stewardship Guide: document-stewardship.md
   - Church Library:
       - Constitution and Bylaws Reference: governance/constitution-and-bylaws-reference.md
       - Church Organization Chart: governance/church-organization-chart.md
@@ -58,9 +60,7 @@ nav:
       - Personnel Committee Role: governance/personnel-committee-role.md
       - Treasurer Governance Role: roles/treasurer-governance-role.md
       - Bookkeeper Job Description: roles/bookkeeper-financial-administrator-job-description.md
-      - Treasurer vs. Bookkeeper Duty Split: roles/treasurer-vs-bookkeeper-duty-split.md
   - Financial Policies:
-      - Financial Authority Policy Package: policies/financial-authority-policy-package.md
       - Spending Authority Policy: policies/spending-authority-policy.md
       - Reimbursement Policy: policies/reimbursement-policy.md
       - Credit Card Policy: policies/credit-card-policy.md
@@ -82,25 +82,26 @@ nav:
       - Bookkeeper Application: roles/bookkeeper-job-application.md
       - Bookkeeper Hiring Process: roles/bookkeeper-hiring-process.md
       - Finance Committee Packet: communications/finance-committee-packet.md
+      - Personnel Committee Recommendation: communications/personnel-committee-recommendation.md
+      - Finance Committee Recommendation: communications/finance-committee-recommendation.md
+      - Deacon Update: communications/deacon-update.md
+      - Financial Authority Review Package: policies/financial-authority-policy-package.md
       - Software Requirements: software-evaluation/software-requirements.md
       - Demo Scorecard: software-evaluation/demo-scorecard.md
       - IconCMO vs. ChurchTrac Comparison: software-evaluation/icon-vs-churchtrac-comparison.md
       - Implementation Plan: software-evaluation/implementation-plan.md
-  - Project Workroom:
-      - Project Brief: 00-project-brief.md
-      - Current State Assessment: 01-current-state-assessment.md
-      - Implementation Roadmap: implementation-roadmap.md
+  - Current Workroom:
+      - 2026 Transition Project Brief: 00-project-brief.md
+      - 2026 Current-State Assessment: 01-current-state-assessment.md
+      - 2026 Transition Roadmap: implementation-roadmap.md
       - Decision Log: 02-decision-log.md
       - Issue Register: 03-open-questions.md
+      - Treasurer vs. Bookkeeper Duty Analysis: roles/treasurer-vs-bookkeeper-duty-split.md
       - Interim Treasurer Role: roles/interim-treasurer-role.md
       - Job Description Consistency Check: roles/job-description-consistency-check.md
       - Future Governance Expansion: governance/future-governance-expansion.md
-      - Documentation Stewardship Guide: document-stewardship.md
       - Document Inventory: document-inventory.md
   - Communications and Releases:
-      - Personnel Committee Recommendation: communications/personnel-committee-recommendation.md
-      - Finance Committee Recommendation: communications/finance-committee-recommendation.md
-      - Deacon Update: communications/deacon-update.md
       - Church Business Meeting Summary: communications/church-business-meeting-summary.md
       - One-Page Congregational Summary: communications/one-page-congregational-summary.md
       - Congregational Slide Outline: communications/congregational-slide-outline.md

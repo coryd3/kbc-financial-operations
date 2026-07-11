@@ -2,11 +2,11 @@
 
 Last updated: 2026-07-07
 
-This file is for repository/site administration. It is not part of the church-facing documentation site navigation.
+This file is for repository/site administration. It is not part of the church-facing handbook navigation.
 
 ## Live Site
 
-Published documentation site:
+Published handbook site:
 
 ```text
 https://coryd3.github.io/kbc-financial-operations/

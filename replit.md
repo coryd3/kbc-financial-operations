@@ -2,7 +2,7 @@
 
 ## Overview
 Two things live in this repo:
-1. **Church operations web app** (`app/`) — the Kingsville Baptist Church Operations Portal: public site, member registration with admin approval, role-based logins, admin management, documentation hub, and usage analytics. This is the primary app served by the "Church App" workflow on port 5000.
+1. **Church operations web app** (`app/`) — the Kingsville Baptist Church Operations Portal: public site, member registration with admin approval, role-based logins, admin management, handbook and current-work reader, and usage analytics. This is the primary app served by the "Church App" workflow on port 5000.
 2. **MkDocs Material documentation site** (`docs/`, `mkdocs.yml`, `scripts/`, `Makefile`) — the public GitHub Pages reading layer. The portal packages the same approved public Markdown into its searchable Documentation Hub, so both readers use the repository as the source of truth.
 
 ## Church app (`app/`)
