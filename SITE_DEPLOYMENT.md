@@ -249,9 +249,28 @@ Create a Resend account, verify a sending domain or approved sender, and add the
 
 Active users assigned the `Admin` or `Super Admin` role and having an email address also receive new-registration notices. Registrants receive an email-verification link, and approval sends an access-granted email directly to the registered address.
 
+#### Temporary Approval-Only Onboarding
+
+Until a church-controlled sending domain can be verified, production may use:
+
+```text
+REQUIRE_EMAIL_VERIFICATION=false
+```
+
+In this temporary mode:
+
+- Registration remains open.
+- Every registration starts as a pending `Member` with no committee, directory, financial, or administrative access.
+- A portal administrator must still review and approve the account.
+- After approval, the person may sign in without completing an email-verification link.
+- The portal clearly labels the email as unverified and records that verification was not required; it does not falsely mark the address as verified.
+- Account and operational email notifications remain unavailable until Resend is configured.
+
+This is the current Render Blueprint setting. After the church sending domain and Resend API key are configured and tested, change `REQUIRE_EMAIL_VERIFICATION` to `true`. The secure code default is `true` when the variable is absent.
+
 If `RESEND_API_KEY` or `EMAIL_FROM` is missing, registration still succeeds safely, but the portal reports that email delivery is unavailable. Pending users can sign in only to the account-setup page and receive no member, committee, directory, checklist, or financial permissions.
 
-Existing active accounts are treated as verified when this migration is first applied so current users are not unexpectedly locked out. Existing pending accounts and new registrations must verify their email.
+Existing active accounts were treated as verified when the email-verification migration was first applied so current users were not unexpectedly locked out. When `REQUIRE_EMAIL_VERIFICATION=true`, pending accounts and new registrations must verify their email; when it is `false`, administrator approval is sufficient for Member access.
 
 Technical administrators do not receive donor or finance access automatically. Treasurer and Bookkeeper access must be assigned intentionally. Privileged roles require MFA.
 

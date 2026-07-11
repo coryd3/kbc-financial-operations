@@ -9,7 +9,7 @@ import { format } from "date-fns";
 
 export default function AdminUsers() {
   const queryClient = useQueryClient();
-  const { user: me } = useAuth();
+  const { user: me, emailVerificationRequired } = useAuth();
   const [search, setSearch] = useState("");
   const [statusFilter, setStatusFilter] = useState("");
   const [expandedSuggestions, setExpandedSuggestions] = useState<Set<string>>(new Set());
@@ -52,7 +52,9 @@ export default function AdminUsers() {
     onSuccess: (result) => {
       setAccessMessage(result.notificationSent
         ? "Account approved and an access email was sent."
-        : "Account approved, but no access email was sent. Check the email configuration or contact the user directly.");
+        : emailVerificationRequired
+          ? "Account approved, but no access email was sent. Check the email configuration or contact the user directly."
+          : "Account approved. Email verification is temporarily not required, so the user can sign in now.");
       invalidateAfterApproval();
     },
   });
@@ -68,7 +70,9 @@ export default function AdminUsers() {
     onSuccess: (result) => {
       setAccessMessage(result.notificationSent
         ? "Account approved, linked, and an access email was sent."
-        : "Account approved and linked, but no access email was sent.");
+        : emailVerificationRequired
+          ? "Account approved and linked, but no access email was sent."
+          : "Account approved and linked. Email verification is temporarily not required, so the user can sign in now.");
       invalidateAfterApproval();
     },
     onError: (err: Error) => {
@@ -138,6 +142,18 @@ export default function AdminUsers() {
         <p className="text-muted-foreground mt-1">Approve registrations and manage access roles.</p>
       </div>
 
+      {!emailVerificationRequired && (
+        <div className="flex gap-3 rounded-md border border-amber-300 bg-amber-50 p-4 text-sm text-amber-950">
+          <ShieldAlert className="mt-0.5 h-5 w-5 shrink-0" />
+          <div>
+            <p className="font-semibold">Approval-only onboarding is active</p>
+            <p className="mt-1">
+              Email verification is temporarily paused. Review each registration carefully; approved Members can sign in immediately, but no approval email will be sent until transactional email is configured.
+            </p>
+          </div>
+        </div>
+      )}
+
       {pendingUsers.length > 0 && (
         <Card className="border-accent/40 bg-accent/5">
           <CardHeader>
@@ -168,8 +184,12 @@ export default function AdminUsers() {
                       <div className="text-xs text-muted-foreground mt-2">
                         Registered: {format(new Date(user.createdAt), "MMM d, yyyy h:mm a")}
                       </div>
-                      <div className={`mt-2 inline-flex rounded px-2 py-1 text-xs font-medium ${user.emailVerifiedAt ? "bg-primary/10 text-primary" : "bg-amber-100 text-amber-900"}`}>
-                        {user.emailVerifiedAt ? "Email verified" : "Waiting for email verification"}
+                      <div className={`mt-2 inline-flex rounded px-2 py-1 text-xs font-medium ${user.emailVerifiedAt ? "bg-primary/10 text-primary" : emailVerificationRequired ? "bg-amber-100 text-amber-900" : "bg-muted text-muted-foreground"}`}>
+                        {user.emailVerifiedAt
+                          ? "Email verified"
+                          : emailVerificationRequired
+                            ? "Waiting for email verification"
+                            : "Email verification temporarily not required"}
                       </div>
                     </div>
                     <div className="flex items-center gap-2 shrink-0">
@@ -315,7 +335,11 @@ export default function AdminUsers() {
                         <div className="text-xs text-muted-foreground mt-0.5">@{user.username}</div>
                         {user.status === "active" && user.email && (
                           <div className="mt-1 text-xs text-muted-foreground">
-                            {user.emailVerifiedAt ? "Email verified" : "Email not verified"}
+                            {user.emailVerifiedAt
+                              ? "Email verified"
+                              : emailVerificationRequired
+                                ? "Email not verified"
+                                : "Email verification temporarily not required"}
                             {user.accessNotificationSentAt ? " / approval email sent" : " / approval email not confirmed"}
                           </div>
                         )}

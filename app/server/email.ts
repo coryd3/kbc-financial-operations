@@ -21,6 +21,10 @@ export function emailDeliveryConfigured(): boolean {
   return Boolean(process.env.RESEND_API_KEY?.trim() && process.env.EMAIL_FROM?.trim());
 }
 
+export function emailVerificationRequired(): boolean {
+  return process.env.REQUIRE_EMAIL_VERIFICATION?.trim().toLowerCase() !== "false";
+}
+
 export async function sendEmail(message: EmailMessage): Promise<boolean> {
   if (process.env.NODE_ENV === "test" || process.env.VITEST) return true;
 

@@ -19,7 +19,8 @@ Start with the documents that explain how the church is governed and how financi
 - [Church Organization Chart](governance/church-organization-chart.md)
 - [Financial Operations View](governance/financial-operations-view.md)
 - [Responsibility Matrix](governance/responsibility-matrix.md)
-- [Financial Policies](policies/spending-authority-policy.md)
+
+Approved financial policies will be added to the Church Member Library after the proper review and adoption process. Draft policies remain available through the Finance, Leadership, Operations, and All Documents views.
 
 ### Church Leadership
 

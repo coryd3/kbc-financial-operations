@@ -155,6 +155,37 @@ describe("registration always creates a pending member", () => {
     });
     expect(res.status).toBe(400);
   });
+
+  it("keeps registration pending but skips the email step in approval-only mode", async () => {
+    const previous = process.env.REQUIRE_EMAIL_VERIFICATION;
+    process.env.REQUIRE_EMAIL_VERIFICATION = "false";
+    try {
+      const registration = await request(app).post("/api/auth/register").send({
+        username: `${PREFIX}bypassreg`,
+        password: PASSWORD,
+        fullName: "Approval Only Registrant",
+        email: `${PREFIX}bypassreg@example.test`,
+      });
+      expect(registration.status).toBe(201);
+      expect(registration.body.user.status).toBe("pending");
+      expect(registration.body.user.role).toBe("member");
+      expect(registration.body.emailSent).toBe(false);
+      expect(registration.body.emailVerificationRequired).toBe(false);
+
+      const userId = registration.body.user.id;
+      expect((await db.select().from(emailVerificationTokens).where(eq(emailVerificationTokens.userId, userId))).length).toBe(0);
+      expect((await login(`${PREFIX}bypassreg`)).body.portalAccess).toBe(false);
+
+      const approval = await request(app)
+        .post(`/api/admin/users/${userId}/approve`)
+        .set(as(adminId));
+      expect(approval.status).toBe(200);
+      expect((await login(`${PREFIX}bypassreg`)).body.portalAccess).toBe(true);
+    } finally {
+      if (previous === undefined) delete process.env.REQUIRE_EMAIL_VERIFICATION;
+      else process.env.REQUIRE_EMAIL_VERIFICATION = previous;
+    }
+  });
 });
 
 describe("login separates pending setup from portal access", () => {
@@ -210,6 +241,28 @@ describe("login separates pending setup from portal access", () => {
       .set(as(unverifiedId))
       .send({ currentPassword: PASSWORD, newPassword: "AnotherSecure9!" });
     expect(protectedResponse.status).toBe(401);
+  });
+
+  it("allows an approved member to enter when email verification is explicitly paused", async () => {
+    const previous = process.env.REQUIRE_EMAIL_VERIFICATION;
+    process.env.REQUIRE_EMAIL_VERIFICATION = "false";
+    try {
+      const loginResponse = await login(`${PREFIX}unverified`);
+      expect(loginResponse.status).toBe(200);
+      expect(loginResponse.body.portalAccess).toBe(true);
+      expect(loginResponse.body.emailVerificationRequired).toBe(false);
+
+      const me = await request(app).get("/api/auth/me").set(as(unverifiedId));
+      expect(me.status).toBe(200);
+      expect(me.body.portalAccess).toBe(true);
+      expect(me.body.emailVerificationRequired).toBe(false);
+
+      const unchanged = await getDbUser(unverifiedId);
+      expect(unchanged.emailVerifiedAt).toBeNull();
+    } finally {
+      if (previous === undefined) delete process.env.REQUIRE_EMAIL_VERIFICATION;
+      else process.env.REQUIRE_EMAIL_VERIFICATION = previous;
+    }
   });
 
   it("verifies an email with a one-time token without granting approval", async () => {

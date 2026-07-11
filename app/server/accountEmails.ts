@@ -2,7 +2,7 @@ import crypto from "node:crypto";
 import { and, eq, inArray, isNull } from "drizzle-orm";
 import { nanoid } from "nanoid";
 import { db } from "./db.ts";
-import { appBaseUrl, sendEmail } from "./email.ts";
+import { appBaseUrl, emailVerificationRequired, sendEmail } from "./email.ts";
 import { emailVerificationTokens, userRoles, users, type User } from "../shared/schema.ts";
 
 const VERIFICATION_LIFETIME_MS = 24 * 60 * 60 * 1000;
@@ -50,7 +50,11 @@ export async function notifyAccessGranted(user: User): Promise<boolean> {
       `Hello ${user.fullName},\n\n` +
       `A church administrator has approved your KBC Operations Portal account.\n\n` +
       `Sign in here:\n${signInUrl}\n\n` +
-      `${user.emailVerifiedAt ? "Your email is already verified." : "You must also verify your email before member access becomes available."}\n\n` +
+      `${!emailVerificationRequired()
+        ? "Email verification is temporarily not required; you may sign in now."
+        : user.emailVerifiedAt
+          ? "Your email is already verified."
+          : "You must also verify your email before member access becomes available."}\n\n` +
       `Your permissions will be based on the church roles assigned to your account.`,
     idempotencyKey: `access-approved-${user.id}-${user.sessionVersion}`,
   });
@@ -76,7 +80,10 @@ export async function notifyRegistrationReviewers(newUser: User): Promise<number
     text:
       `A new account registration is waiting for review.\n\n${details}\n\n` +
       `Open the Admin page:\n${appBaseUrl()}/admin\n\n` +
-      `The registrant can verify their email and view pending status, but cannot access member information until approved.`,
+      `${emailVerificationRequired()
+        ? "The registrant can verify their email and view pending status"
+        : "Email verification is temporarily not required, and the registrant can view pending status"}, ` +
+      `but they cannot access member information until approved.`,
     idempotencyKey: `registration-${newUser.id}-${hashVerificationToken(to).slice(0, 12)}`,
   })));
   return results.filter((result) => result.status === "fulfilled" && result.value).length;

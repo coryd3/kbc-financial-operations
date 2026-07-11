@@ -3,27 +3,27 @@
 ## Overview
 Two things live in this repo:
 1. **Church operations web app** (`app/`) — the Kingsville Baptist Church Operations Portal: public site, member registration with admin approval, role-based logins, admin management, documentation hub, and usage analytics. This is the primary app served by the "Church App" workflow on port 5000.
-2. **MkDocs Material documentation site** (`docs/`, `mkdocs.yml`, `scripts/`, `Makefile`) — unchanged; it continues to deploy to GitHub Pages (https://coryd3.github.io/kbc-financial-operations/) via GitHub Actions. The app's Documentation section links out to it by topic.
+2. **MkDocs Material documentation site** (`docs/`, `mkdocs.yml`, `scripts/`, `Makefile`) — the public GitHub Pages reading layer. The portal packages the same approved public Markdown into its searchable Documentation Hub, so both readers use the repository as the source of truth.
 
 ## Church app (`app/`)
-- Stack: Express + Vite React (TypeScript) + Tailwind + wouter + react-query, Drizzle ORM on Replit PostgreSQL, session auth (express-session + connect-pg-simple, bcryptjs).
+- Stack: Express + Vite React (TypeScript) + Tailwind + wouter + react-query, Drizzle ORM on PostgreSQL, session auth (express-session + connect-pg-simple, bcryptjs).
 - Layout: `app/server/` (Express API, seed, auth middleware), `app/shared/schema.ts` (Drizzle tables + zod schemas + roles), `app/client/` (React SPA).
-- Dev: workflow "Church App" runs `cd app && npm run dev` (tsx server with Vite middleware) on port 5000.
-- Deployment (Replit publish): autoscale, build `cd app && npm run build`, run `cd app && npm start`. Publish happens from the main project after task merge. Set a `SESSION_SECRET` secret for production.
-- Schema changes: edit `app/shared/schema.ts` then `cd app && npm run db:push`.
+- Dev: run `cd app && npm run dev` (tsx server with Vite middleware) on port 5000. Replit may still be used as an optional editor.
+- Deployment: Render builds and deploys `main` from the root `render.yaml` after GitHub checks pass. Production is not hosted by Replit.
+- Schema changes: edit `app/shared/schema.ts`, generate and review a checked-in migration with `npm run db:generate`, and test it with `npm run db:migrate`. Do not use `db:push` against production.
 - Tests: `cd app && npm test` (vitest). Tests never touch the live database — vitest global setup auto-creates a sibling `<dbname>_test` database on the same Postgres server, syncs the Drizzle schema into it (`drizzle-kit push --force`), and rewrites `DATABASE_URL` for test workers. `app/server/db.ts` refuses to run under vitest against a non-`*_test` database.
 
 ### Roles (most → least privileged)
 super_admin, admin, treasurer, bookkeeper, finance_committee, personnel_committee, deacon, counting_team, member (+ public = not logged in). Admins cannot manage Admins/Super Admins; only Super Admin can assign admin roles. Enforced server-side (`canManage` in `app/server/routes.ts`) and reflected in UI.
 
 ### Auth & registration
-- Registration creates a `pending` user; admin must approve before login works. Statuses: pending / active / rejected / deactivated.
-- Super Admin bootstrap: at server start, if no super_admin exists, one is seeded (username from `SUPER_ADMIN_USERNAME`, default `kbcadmin`) with a one-time temporary password taken from `SUPER_ADMIN_TEMP_PASSWORD` or randomly generated and printed once to the server console. Password change is forced on first login.
-- Production requires a `SESSION_SECRET` secret — the server refuses to start without it when `NODE_ENV=production`.
+- Registration creates a pending `member`. The person may sign in only to view account status until an administrator approves the account. Email verification is normally required; temporary approval-only onboarding uses `REQUIRE_EMAIL_VERIFICATION=false`.
+- Super Admin bootstrap is an intentional one-time command: set temporary `BOOTSTRAP_ADMIN_*` environment values and run `npm run db:bootstrap-admin`. It does not seed an administrator automatically at startup.
+- Production requires `SESSION_SECRET` and `MFA_ENCRYPTION_KEY` secrets. Privileged roles must complete MFA.
 
 ### Test accounts & password management
-- Super Admin can set any manageable user's password from `/admin` ("Set Password" button per row): `POST /api/admin/users/:id/set-password` (super_admin only, canManage enforced, min 8 chars). Sets `mustChangePassword=false` and clears that username's login-throttle lockout.
-- Dev DB has 8 seeded role test accounts `test_<role>` (test_admin, test_treasurer, test_bookkeeper, test_finance_committee, test_personnel_committee, test_deacon, test_counting_team, test_member), all active; passwords are managed by the Super Admin via the Set Password button.
+- Administrators create one-time password reset codes from `/admin`; they do not assign or learn a user's permanent password.
+- A development database may use seeded `test_<role>` accounts for local testing. Never run the baseline seed against production or copy Replit test accounts into Render.
 
 ### Membership directory
 - Tables: `households`, `members` (profiles independent of `users`; optional one-to-one `user_id` link, unique). Member statuses: active / inactive / visitor. Privacy flags `hide_email` / `hide_phone` / `hide_address` control what other members see in the directory.

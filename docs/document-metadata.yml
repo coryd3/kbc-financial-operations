@@ -29,13 +29,14 @@ documents:
   roles/bookkeeper-hiring-process: { documentType: Hiring Procedure, status: Needs Personnel Review, owner: Personnel Committee, lifecycle: project, audiences: [leadership, personnel, project] }
   roles/job-description-consistency-check: { documentType: Working Analysis, status: Working Record, owner: Personnel Committee, lifecycle: project, audiences: [personnel, project] }
 
-  policies/spending-authority-policy: { documentType: Policy, status: Needs Finance Review, owner: Finance Committee, lifecycle: durable, audiences: [congregation, leadership, finance, operations] }
+  # Add congregation after a policy completes the proper review and adoption process.
+  policies/spending-authority-policy: { documentType: Policy, status: Needs Finance Review, owner: Finance Committee, lifecycle: durable, audiences: [leadership, finance, operations] }
   policies/financial-authority-policy-package: { documentType: Policy Review Package, status: Needs Finance Review, owner: Finance Committee, lifecycle: project, audiences: [leadership, finance, operations, project] }
-  policies/reimbursement-policy: { documentType: Policy, status: Needs Finance Review, owner: Finance Committee, lifecycle: durable, audiences: [congregation, leadership, finance, operations] }
-  policies/credit-card-policy: { documentType: Policy, status: Needs Finance Review, owner: Finance Committee, lifecycle: durable, audiences: [congregation, leadership, finance, operations] }
-  policies/offering-counting-and-deposit-policy: { documentType: Policy, status: Needs Finance Review, owner: Finance Committee, lifecycle: durable, audiences: [congregation, leadership, finance, operations] }
-  policies/monthly-financial-review-policy: { documentType: Policy, status: Needs Finance Review, owner: Finance Committee, lifecycle: durable, audiences: [congregation, leadership, finance, operations] }
-  policies/audit-and-review-policy: { documentType: Policy, status: Needs Professional Review, owner: Finance Committee, lifecycle: durable, audiences: [congregation, leadership, finance, operations] }
+  policies/reimbursement-policy: { documentType: Policy, status: Needs Finance Review, owner: Finance Committee, lifecycle: durable, audiences: [leadership, finance, operations] }
+  policies/credit-card-policy: { documentType: Policy, status: Needs Finance Review, owner: Finance Committee, lifecycle: durable, audiences: [leadership, finance, operations] }
+  policies/offering-counting-and-deposit-policy: { documentType: Policy, status: Needs Finance Review, owner: Finance Committee, lifecycle: durable, audiences: [leadership, finance, operations] }
+  policies/monthly-financial-review-policy: { documentType: Policy, status: Needs Finance Review, owner: Finance Committee, lifecycle: durable, audiences: [leadership, finance, operations] }
+  policies/audit-and-review-policy: { documentType: Policy, status: Needs Professional Review, owner: Finance Committee, lifecycle: durable, audiences: [leadership, finance, operations] }
 
   procedures/reimbursement-process: { documentType: Procedure, status: Needs Finance Review, owner: Finance Committee, lifecycle: durable, audiences: [finance, operations] }
   procedures/monthly-finance-committee-meeting-checklist: { documentType: Checklist, status: Needs Finance Review, owner: Finance Committee, lifecycle: durable, audiences: [leadership, finance, operations] }

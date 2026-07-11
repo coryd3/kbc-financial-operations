@@ -9,6 +9,7 @@ import {
   type SafeUser,
   type User,
 } from "../shared/schema.ts";
+import { emailVerificationRequired } from "./email.ts";
 
 declare module "express-session" {
   interface SessionData {
@@ -85,7 +86,8 @@ export async function getSessionAccount(req: Request): Promise<AuthenticatedUser
 }
 
 export function hasPortalAccess(user: Pick<User, "status" | "email" | "emailVerifiedAt">): boolean {
-  return user.status === "active" && (!user.email || Boolean(user.emailVerifiedAt));
+  return user.status === "active"
+    && (!emailVerificationRequired() || !user.email || Boolean(user.emailVerifiedAt));
 }
 
 export async function getSessionUser(req: Request): Promise<AuthenticatedUser | null> {

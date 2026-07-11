@@ -35,6 +35,7 @@ import {
 import { registerChecklistRoutes } from "./checklists.ts";
 import { loginBlockedForSeconds, recordLoginFailure, recordLoginSuccess } from "./loginThrottle.ts";
 import { hashVerificationToken, notifyAccessGranted, notifyRegistrationReviewers, sendVerificationEmail } from "./accountEmails.ts";
+import { emailVerificationRequired } from "./email.ts";
 import { registerFinanceRoutes } from "./finance.ts";
 import { registerContributionRoutes } from "./contributions.ts";
 import { registerDocsRoutes } from "./docs.ts";
@@ -102,23 +103,29 @@ export function registerRoutes(app: Express) {
       })
       .returning();
     await db.insert(userRoles).values({ userId: created.id, role: "member" });
-    const emailSent = await sendVerificationEmail(created).catch((error) => {
-      console.error("[email] Failed to send verification email:", error);
-      return false;
-    });
+    const verificationRequired = emailVerificationRequired();
+    const emailSent = verificationRequired
+      ? await sendVerificationEmail(created).catch((error) => {
+          console.error("[email] Failed to send verification email:", error);
+          return false;
+        })
+      : false;
     void notifyRegistrationReviewers(created).catch((error) => {
       console.error("[email] Failed to notify registration reviewers:", error);
     });
-    await recordAuditEvent(req, "auth.email_verification_sent", {
+    await recordAuditEvent(req, verificationRequired ? "auth.email_verification_sent" : "auth.email_verification_not_required", {
       actorUserId: created.id,
       entityType: "user",
       entityId: created.id,
-      details: { delivered: emailSent },
+      details: { delivered: emailSent, required: verificationRequired },
     });
     res.status(201).json({
-      message: "Registration received. Verify your email while an administrator reviews your request.",
+      message: verificationRequired
+        ? "Registration received. Verify your email while an administrator reviews your request."
+        : "Registration received. Email verification is temporarily not required; an administrator will review your request.",
       user: toSafeUser(created),
       emailSent,
+      emailVerificationRequired: verificationRequired,
     });
   });
 
@@ -167,6 +174,7 @@ export function registerRoutes(app: Express) {
     res.json({
       user: toSafeUser({ ...user, lastLoginAt }, roles),
       portalAccess,
+      emailVerificationRequired: emailVerificationRequired(),
       mfaRequired: portalAccess && requiresMfa({ roles }) && user.mfaEnabled,
       mfaSetupRequired: portalAccess && requiresMfa({ roles }) && !user.mfaEnabled,
     });
@@ -185,6 +193,7 @@ export function registerRoutes(app: Express) {
     res.json({
       user: toSafeUser(user),
       portalAccess,
+      emailVerificationRequired: emailVerificationRequired(),
       mfaRequired: portalAccess && requiresMfa(user),
       mfaVerified: !portalAccess || Boolean(req.session.mfaVerified),
     });
@@ -193,6 +202,13 @@ export function registerRoutes(app: Express) {
   app.post("/api/auth/email-verification/resend", emailVerificationLimit, async (req, res) => {
     const user = await getSessionAccount(req);
     if (!user) return res.status(401).json({ message: "Sign in to resend verification email" });
+    if (!emailVerificationRequired()) {
+      return res.json({
+        message: "Email verification is temporarily not required. Your account only needs administrator approval.",
+        emailSent: false,
+        emailVerificationRequired: false,
+      });
+    }
     if (!user.email) return res.status(400).json({ message: "This account does not have an email address" });
     if (user.emailVerifiedAt) return res.json({ message: "Your email is already verified", emailSent: true });
     const emailSent = await sendVerificationEmail(user).catch((error) => {
@@ -210,6 +226,7 @@ export function registerRoutes(app: Express) {
         ? "A new verification link was sent. Check your inbox and spam folder."
         : "Email delivery is not configured. Please contact a portal administrator.",
       emailSent,
+      emailVerificationRequired: true,
     });
   });
 
