@@ -36,6 +36,7 @@ class SourceDoc:
 SOURCE_DOCS = [
     SourceDoc("Handbook And Workspace Overview", "docs/index.md", "Documentation Stewards"),
     SourceDoc("How To Use The Handbook", "docs/start-here/why-this-exists.md", "Leadership Team / Documentation Stewards"),
+    SourceDoc("Treasurer And Finance Chair Quick Start", "docs/start-here/treasurer-finance-chair-quick-start.md", "Finance Committee"),
     SourceDoc("2026 Transition Project Overview", "docs/00-project-brief.md", "Project lead TBD"),
     SourceDoc("2026 Transition Current-State Assessment", "docs/01-current-state-assessment.md", "Project lead TBD"),
     SourceDoc("Responsibility Matrix", "docs/governance/responsibility-matrix.md", "Finance Committee"),

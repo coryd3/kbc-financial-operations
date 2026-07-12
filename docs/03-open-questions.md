@@ -27,6 +27,19 @@ This is a current-work record for committees and documentation stewards. It is n
 - What audit, review, or outside accounting support is needed?
 - How should confidential committee spending, including Benevolence, be reviewed without exposing private details?
 
+### Operational Practices Requiring Confirmation
+
+- Which bank, card, and payment-processor accounts are currently active, and who prepares and independently reviews each reconciliation?
+- What is the approved recurring-payment register, including vendor, purpose, expected timing, budget authority, and contract owner?
+- What mission-allocation percentages and internal transfers are currently authorized, and where is the congregational or budget approval recorded?
+- Which contribution and financial report is authoritative when the accounting system, contribution system, spreadsheet, bank record, or check register differ?
+- How should online-giving payouts, processing fees, refunds, and fund designations be reconciled?
+- What written policy should govern memorial acknowledgments, church-funded memorial gifts, donor-restricted memorial gifts, and proposed payments to outside organizations?
+- What approval and tax-review process should apply to supply-minister payments, staff appreciation gifts, Christmas gifts, bonuses, honoraria, or other supplemental compensation?
+- What payroll schedule, service-period documentation, benefit classifications, housing treatment, tax-deposit cadence, and filing cadence have been confirmed with the approved payroll provider or qualified professional?
+- Which historical spreadsheet reports should be retained, replaced, or converted into system-generated reports?
+- What aggregate giving and mission-distribution information should be reported in the bulletin, monthly Finance packet, and church business meeting?
+
 ## Nominating Committee
 
 - What do the bylaws require for recommending or filling the Treasurer / Financial Officer role?

@@ -22,7 +22,11 @@ The packet should include:
 - [ ] Balance sheet or fund balance summary.
 - [ ] Designated/restricted fund activity.
 - [ ] Bank reconciliation summary.
+- [ ] Online-giving payout and processing-fee reconciliation summary.
 - [ ] Credit card or controlled payment activity.
+- [ ] Recurring-payment and automatic-draft exception summary.
+- [ ] Mission allocation and internal transfer calculation, if applicable.
+- [ ] Payroll liability and filing confirmation without individual compensation detail.
 - [ ] Reimbursement summary.
 - [ ] Missing receipt list or documentation exceptions.
 - [ ] Unusual, over-budget, or outside-budget spending.
@@ -43,6 +47,7 @@ The packet should include:
 - [ ] Review total expenses for the prior month.
 - [ ] Identify unusual changes from normal monthly activity.
 - [ ] Confirm income and expenses are coded to the correct ministry, fund, or category.
+- [ ] Confirm aggregate physical deposits and online-giving payouts reconcile to the recorded contribution totals.
 - [ ] Note any corrections needed.
 
 ### 3. Review Budget Vs. Actuals
@@ -59,6 +64,7 @@ The packet should include:
 - [ ] Confirm designated fund expenses match donor or church-approved purpose.
 - [ ] Identify restricted funds with unclear purpose or stale balances.
 - [ ] Note any designated fund questions needing follow-up.
+- [ ] Confirm mission allocations or internal transfers use the currently approved basis and have independent review.
 
 ### 5. Review Credit Card / Controlled Payment Activity
 
@@ -84,6 +90,7 @@ The packet should include:
 - [ ] Review expenses that caused a budget category to go over budget.
 - [ ] Review unusual or non-routine expenses.
 - [ ] Review recurring commitments, subscriptions, contracts, or large purchases.
+- [ ] Confirm expected automatic drafts and recurring payments agree with the current approved register.
 - [ ] Confirm approval path was documented.
 - [ ] Decide whether additional review, Deacon input, or church vote is required.
 

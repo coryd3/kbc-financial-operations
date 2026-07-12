@@ -12,6 +12,7 @@ The GitHub repository remains the source of truth. If this sourcebook is out of 
 
 - [Handbook And Workspace Overview](#handbook-and-workspace-overview): `docs/index.md`
 - [How To Use The Handbook](#how-to-use-the-handbook): `docs/start-here/why-this-exists.md`
+- [Treasurer And Finance Chair Quick Start](#treasurer-and-finance-chair-quick-start): `docs/start-here/treasurer-finance-chair-quick-start.md`
 - [2026 Transition Project Overview](#2026-transition-project-overview): `docs/00-project-brief.md`
 - [2026 Transition Current-State Assessment](#2026-transition-current-state-assessment): `docs/01-current-state-assessment.md`
 - [Responsibility Matrix](#responsibility-matrix): `docs/governance/responsibility-matrix.md`
@@ -39,7 +40,7 @@ The GitHub repository remains the source of truth. If this sourcebook is out of 
 - Source file path: `docs/index.md`
 - Status: Needs Leadership Review
 - Owner: Documentation Stewards
-- Last updated: 2026-07-10
+- Last updated: 2026-07-12
 
 ---
 
@@ -112,7 +113,7 @@ Do not place donor records, giving details, payroll details, bank account number
 - Source file path: `docs/start-here/why-this-exists.md`
 - Status: Needs Leadership Review
 - Owner: Leadership Team / Documentation Stewards
-- Last updated: 2026-07-10
+- Last updated: 2026-07-12
 
 ---
 
@@ -126,6 +127,7 @@ This guide explains how to find the right information, tell what is current, and
 
 - **Church Member Library:** governing references, organization, responsibilities, approved policies, and congregational communications.
 - **Leadership View:** current decisions, governance questions, recommendations, and roadmaps.
+- **Treasurer / Finance Chair View:** a focused set of governing references, role boundaries, recurring procedures, and current financial decisions.
 - **Finance Committee View:** financial controls, policies, reporting, software, and operating procedures.
 - **Personnel Committee View:** role descriptions, hiring materials, and personnel review items.
 - **Financial Operations View:** practical procedures and recurring work for authorized financial workers.
@@ -168,6 +170,87 @@ Time-limited project material should not become permanent handbook language unle
 Authenticated readers may leave feedback on a whole document or a specific section. Include enough detail to explain the concern or suggestion, but do not include confidential personal, financial, donor, personnel, or pastoral information.
 
 The document owner may accept, plan, resolve, or decline feedback. Substantive changes still follow the normal review and approval process.
+# Treasurer And Finance Chair Quick Start
+
+- Source file path: `docs/start-here/treasurer-finance-chair-quick-start.md`
+- Status: Needs Finance Review
+- Owner: Finance Committee
+- Last updated: 2026-07-12
+
+---
+
+### Treasurer / Finance Chair Quick Start
+
+Status: Needs Finance Review
+
+This page is a concise starting point for a person carrying Treasurer or Finance Committee chair responsibilities. It brings together the documents most relevant to financial continuity, oversight, and current decisions without requiring an initial review of the full library.
+
+!!! note "In Progress"
+    These materials are working drafts unless a page is clearly marked Approved, Current, or Reference. This view is intended to support review and correction; it does not change the authority of the Treasurer, Finance Committee, or congregation.
+
+#### Begin With These Five Items
+
+1. [Constitution and Bylaws Reference](../governance/constitution-and-bylaws-reference.md) - confirm the governing source and officer/committee questions.
+2. [Responsibility Matrix](../governance/responsibility-matrix.md) - review who prepares, reviews, recommends, and approves.
+3. [Treasurer / Financial Officer Governance Role](../roles/treasurer-governance-role.md) - review the proposed durable role.
+4. [Finance Committee Charter](../governance/finance-committee-charter.md) - review the committee's proposed oversight rhythm.
+5. [Bookkeeper Job Description](../roles/bookkeeper-financial-administrator-job-description.md) - confirm which operational duties may be assigned to paid support.
+
+#### Recurring Operating Rhythm
+
+##### Weekly
+
+- [Weekly Bookkeeping Checklist](../procedures/weekly-bookkeeping-checklist.md)
+- [Contribution Entry Process](../procedures/contribution-entry-process.md)
+
+The weekly focus is to keep deposits, online giving, expenses, documentation, payroll preparation, and exceptions current without allowing one person to prepare and approve everything.
+
+##### Monthly
+
+- [Monthly Close Checklist](../procedures/monthly-close-checklist.md)
+- [Monthly Finance Committee Meeting Checklist](../procedures/monthly-finance-committee-meeting-checklist.md)
+- [Business Meeting Report Process](../procedures/business-meeting-report-process.md)
+
+The monthly focus is to reconcile every active account, review outstanding items and recurring payments, verify designated funds and approved mission allocations, prepare reports, and record decisions or follow-up.
+
+##### Payroll And Restricted Records
+
+- [Payroll Process](../procedures/payroll-process.md)
+
+Private compensation, donor, banking, tax, and personnel records do not belong in this public handbook. The process belongs here; the underlying records belong in the approved restricted system.
+
+#### Finance Input Needed
+
+The most useful initial feedback from the Treasurer / Finance Chair is:
+
+- Which recurring tasks, accounts, reports, and deadlines are missing or inaccurate?
+- Which tasks should be prepared by the Bookkeeper and reviewed by the Treasurer?
+- Which report should be treated as the authoritative monthly financial report?
+- What correction and mismatch process should be required?
+- Which recurring payments, mission allocations, and internal transfers are currently authorized?
+- What should the Finance Committee review each month?
+- Which spending, reimbursement, card, memorial-gift, payroll, or reporting practices need a policy decision?
+
+Two draft control documents are especially relevant to this operational review:
+
+- [Offering Counting And Deposit Policy](../policies/offering-counting-and-deposit-policy.md)
+- [Monthly Financial Review Policy](../policies/monthly-financial-review-policy.md)
+
+Use the [Current Work Dashboard](project-dashboard.md) for active priorities and the [Issue Register](../03-open-questions.md) for unresolved questions. Specific comments may also be submitted directly on the relevant document section.
+
+#### Not Required For Initial Review
+
+The first review does not require reading:
+
+- Personnel Committee hiring forms and candidate materials.
+- Detailed software demo scorecards.
+- Old communication packets or congregational presentation drafts.
+- Document inventory, export instructions, or technical administration notes.
+- Superseded drafts or archived project material.
+
+Those materials remain available through other audience views or **All Documents** when needed.
+
+Needs Finance Review: Confirm whether this is the right starting set for the Treasurer / Finance Chair and which links should be added, removed, or reordered.
 # 2026 Transition Project Overview
 
 - Source file path: `docs/00-project-brief.md`
@@ -1165,7 +1248,11 @@ The packet should include:
 - [ ] Balance sheet or fund balance summary.
 - [ ] Designated/restricted fund activity.
 - [ ] Bank reconciliation summary.
+- [ ] Online-giving payout and processing-fee reconciliation summary.
 - [ ] Credit card or controlled payment activity.
+- [ ] Recurring-payment and automatic-draft exception summary.
+- [ ] Mission allocation and internal transfer calculation, if applicable.
+- [ ] Payroll liability and filing confirmation without individual compensation detail.
 - [ ] Reimbursement summary.
 - [ ] Missing receipt list or documentation exceptions.
 - [ ] Unusual, over-budget, or outside-budget spending.
@@ -1186,6 +1273,7 @@ The packet should include:
 - [ ] Review total expenses for the prior month.
 - [ ] Identify unusual changes from normal monthly activity.
 - [ ] Confirm income and expenses are coded to the correct ministry, fund, or category.
+- [ ] Confirm aggregate physical deposits and online-giving payouts reconcile to the recorded contribution totals.
 - [ ] Note any corrections needed.
 
 ##### 3. Review Budget Vs. Actuals
@@ -1202,6 +1290,7 @@ The packet should include:
 - [ ] Confirm designated fund expenses match donor or church-approved purpose.
 - [ ] Identify restricted funds with unclear purpose or stale balances.
 - [ ] Note any designated fund questions needing follow-up.
+- [ ] Confirm mission allocations or internal transfers use the currently approved basis and have independent review.
 
 ##### 5. Review Credit Card / Controlled Payment Activity
 
@@ -1227,6 +1316,7 @@ The packet should include:
 - [ ] Review expenses that caused a budget category to go over budget.
 - [ ] Review unusual or non-routine expenses.
 - [ ] Review recurring commitments, subscriptions, contracts, or large purchases.
+- [ ] Confirm expected automatic drafts and recurring payments agree with the current approved register.
 - [ ] Confirm approval path was documented.
 - [ ] Decide whether additional review, Deacon input, or church vote is required.
 
@@ -1294,16 +1384,18 @@ KBC should define requirements before selecting ChurchTrac, IconCMO, QuickBooks,
 | Requirement | Description | Notes |
 | --- | --- | --- |
 | Contribution tracking | Record gifts by donor, fund, date, and giving method. | Must protect donor confidentiality. |
+| Online-giving payout reconciliation | Tie processor payouts to underlying gifts, fees, refunds, dates, and fund designations. | Net bank deposits must be traceable to gross contribution activity. |
 | Year-end giving statements | Produce accurate annual giving statements. | Confirm format and correction process. |
 | Fund accounting | Track general, designated, restricted, and ministry funds appropriately. | Needs Finance Committee review. |
 | Budget reporting | Show budget-to-actual reports by category or ministry. | Must support monthly review. |
 | Expense tracking | Record bills, reimbursements, card transactions, and other expenses. | Must preserve documentation. |
 | Receipt attachment or documentation link | Attach receipts if available, or clearly link transactions to supporting files. | Vendor confirmation needed. |
-| Bank reconciliation | Support monthly reconciliation or provide clean reconciliation workflow. | Required for monthly close. |
+| Multi-account reconciliation | Reconcile every active bank, card, and payment-processor account and retain outstanding items. | Must distinguish issued, pending, and cleared activity and prevent duplicate entry. |
 | User permissions | Assign appropriate access by role. | Treasurer, Bookkeeper, Finance Committee, Pastor, and staff access may differ. |
 | Monthly reports | Produce reports useful for Treasurer and Finance Committee review. | Define exact packet. |
 | Payroll handling or integration | Either process payroll or integrate/support payroll recordkeeping. | Needs professional review. |
 | Audit/review support | Provide exports, reports, and audit trail. | Important for accountability. |
+| Closed-period corrections | Preserve original entries and use documented adjustments after a period or batch is closed. | Do not permit silent overwrites that remove the audit trail. |
 | Data export | Export financial and contribution records in usable formats. | Avoid lock-in where possible. |
 
 #### Should Have
@@ -1313,6 +1405,7 @@ KBC should define requirements before selecting ChurchTrac, IconCMO, QuickBooks,
 | Approval workflow | Support reimbursement or spending review steps. | If unavailable, process can be handled outside software. |
 | Credit card transaction import | Import or match card transactions. | Helpful for monthly review. |
 | Bank feed | Import bank activity. | Must be reviewed for controls and access. |
+| Recurring-payment register | Track approved subscriptions, automatic drafts, contracts, expected dates, and owners. | Helpful for monthly review and transition continuity. |
 | Role-specific dashboards | Provide simple views for Treasurer, Bookkeeper, or committee. | Nice to have. |
 | Document storage | Store receipts, invoices, and supporting records. | Confirm storage limits and privacy. |
 | Migration tools | Import donors, accounts, funds, balances, or vendors. | Needed if moving from existing systems. |
@@ -1326,7 +1419,11 @@ KBC should define requirements before selecting ChurchTrac, IconCMO, QuickBooks,
 - Can users have different permission levels?
 - Can receipts be attached to transactions?
 - Can it import bank or credit card transactions?
+- Can it prevent duplicate entries when checks, bill payments, bank feeds, and processor payouts post at different times?
+- Can it reconcile online-giving payouts to gross gifts, fees, refunds, and fund designations?
 - How are corrections and audit trails handled?
+- Can a closed batch or period be locked, with later corrections recorded as adjustments rather than overwrites?
+- Can it maintain or export a recurring-payment schedule?
 - What data can be exported if KBC changes systems later?
 - How are year-end giving statements produced and corrected?
 - How does payroll work, or what payroll systems does it integrate with?
@@ -1605,6 +1702,19 @@ This is a current-work record for committees and documentation stewards. It is n
 - What should be included in the monthly financial review packet?
 - What audit, review, or outside accounting support is needed?
 - How should confidential committee spending, including Benevolence, be reviewed without exposing private details?
+
+##### Operational Practices Requiring Confirmation
+
+- Which bank, card, and payment-processor accounts are currently active, and who prepares and independently reviews each reconciliation?
+- What is the approved recurring-payment register, including vendor, purpose, expected timing, budget authority, and contract owner?
+- What mission-allocation percentages and internal transfers are currently authorized, and where is the congregational or budget approval recorded?
+- Which contribution and financial report is authoritative when the accounting system, contribution system, spreadsheet, bank record, or check register differ?
+- How should online-giving payouts, processing fees, refunds, and fund designations be reconciled?
+- What written policy should govern memorial acknowledgments, church-funded memorial gifts, donor-restricted memorial gifts, and proposed payments to outside organizations?
+- What approval and tax-review process should apply to supply-minister payments, staff appreciation gifts, Christmas gifts, bonuses, honoraria, or other supplemental compensation?
+- What payroll schedule, service-period documentation, benefit classifications, housing treatment, tax-deposit cadence, and filing cadence have been confirmed with the approved payroll provider or qualified professional?
+- Which historical spreadsheet reports should be retained, replaced, or converted into system-generated reports?
+- What aggregate giving and mission-distribution information should be reported in the bulletin, monthly Finance packet, and church business meeting?
 
 #### Nominating Committee
 

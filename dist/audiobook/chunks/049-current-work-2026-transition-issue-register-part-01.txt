@@ -28,6 +28,19 @@ What should be included in the monthly financial review packet?
 What audit, review, or outside accounting support is needed?
 How should confidential committee spending, including Benevolence, be reviewed without exposing private details?
 
+Section: Operational Practices Requiring Confirmation.
+
+Which bank, card, and payment-processor accounts are currently active, and who prepares and independently reviews each reconciliation?
+What is the approved recurring-payment register, including vendor, purpose, expected timing, budget authority, and contract owner?
+What mission-allocation percentages and internal transfers are currently authorized, and where is the congregational or budget approval recorded?
+Which contribution and financial report is authoritative when the accounting system, contribution system, spreadsheet, bank record, or check register differ?
+How should online-giving payouts, processing fees, refunds, and fund designations be reconciled?
+What written policy should govern memorial acknowledgments, church-funded memorial gifts, donor-restricted memorial gifts, and proposed payments to outside organizations?
+What approval and tax-review process should apply to supply-minister payments, staff appreciation gifts, Christmas gifts, bonuses, honoraria, or other supplemental compensation?
+What payroll schedule, service-period documentation, benefit classifications, housing treatment, tax-deposit cadence, and filing cadence have been confirmed with the approved payroll provider or qualified professional?
+Which historical spreadsheet reports should be retained, replaced, or converted into system-generated reports?
+What aggregate giving and mission-distribution information should be reported in the bulletin, monthly Finance packet, and church business meeting?
+
 Section: Nominating Committee.
 
 What do the bylaws require for recommending or filling the Treasurer / Financial Officer role?
@@ -45,23 +58,3 @@ What pastoral or administrative support is needed during the Treasurer transitio
 Should the Pastor help frame the change as stewardship, clarity, and support?
 
 Section: Congregation.
-
-Which decisions require a church vote?
-How should annual budget approval and major non-budgeted expenses be handled so congregational authority remains clear?
-Does any proposed Bookkeeper compensation, hours, budget impact, or classification exceed the June 28, 2026 authorization of a paid, part-time Bookkeeper position not to exceed $150 per week, described as $18.75 per hour for approximately 8 hours?
-Do any policies require adoption at a business meeting?
-
-Section: Future Governance Expansion / Parking Lot.
-
-What written guidance is needed for Benevolence Committee spending authority, documentation, and reporting?
-How can Benevolence confidentiality be protected while still avoiding secrecy or lack of financial oversight?
-What other committees or ministries currently spend money, recommend projects, manage designated funds, or create recurring commitments?
-Should the organization chart and responsibility matrix eventually include additional committees beyond Finance, Personnel, and Nominating?
-Which future governance questions should wait until the immediate Bookkeeper hiring and Treasurer transition work is stable?
-
-Section: Professional Review.
-
-What items need review by a CPA, attorney, payroll provider, or insurance provider?
-Are there legal, tax, employment, or accounting constraints before final approval?
-
-End of chapter: Issue Register.

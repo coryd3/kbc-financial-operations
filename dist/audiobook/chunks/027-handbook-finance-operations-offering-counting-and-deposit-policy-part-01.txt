@@ -1,0 +1,33 @@
+Chapter: Offering Counting and Deposit Policy.
+Current document status: Needs Finance Review.
+
+Section: Offering Counting And Deposit Policy.
+
+Section: Purpose.
+
+Define controls for counting, recording, depositing, reconciling, and correcting physical and online contributions.
+
+Section: Policy.
+
+At least $TBD authorized counters should participate in each physical count. No counter should work alone.
+Counters should complete and sign a count sheet showing the date, payment types, totals, and fund designations.
+The deposit should be prepared from the completed count and made on the approved schedule by authorized people.
+The person entering contributions should receive the count sheet and deposit record but should not silently alter either source record.
+The contribution batch, signed count sheet, deposit record, and posted bank deposit should agree.
+Online-giving payouts should be reconciled to underlying gifts, fees, refunds, dates, and fund designations.
+Differences should be investigated, documented, and corrected through an approved adjustment process that preserves the original records.
+Material differences, overrides, or closed-batch corrections require Treasurer review and should be reported to the Finance Committee.
+Donor information should be accessible only to authorized roles and should not appear in general financial reports.
+Designated and restricted gifts should be handled according to the donor's written designation and approved church policy.
+Aggregate physical and online contribution totals should be included in the monthly financial review as approved.
+Count sheets, deposit evidence, batch reports, payout detail, corrections, and reviews should be retained in the approved restricted records system.
+
+Section: Separation Of Duties.
+
+Where staffing allows, different people should perform counting, deposit delivery, contribution entry, reconciliation, and review. When full separation is not practical, the Finance Committee should approve compensating review controls.
+
+Needs Finance Review: Confirm counter minimums, eligibility, deposit timing, authorized depositors, contribution-entry roles, online-giving reconciliation, discrepancy thresholds, correction authority, retention, and compensating controls before adoption.
+
+Needs Bylaw Review: Confirm the final approval path and any Treasurer, committee, or congregational responsibilities against the KBC Constitution and Bylaws and church practice.
+
+End of chapter: Offering Counting and Deposit Policy.

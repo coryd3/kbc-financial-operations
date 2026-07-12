@@ -9,6 +9,7 @@ Section: Choose The Right Starting Point.
 
 Church Member Library: governing references, organization, responsibilities, approved policies, and congregational communications.
 Leadership View: current decisions, governance questions, recommendations, and roadmaps.
+Treasurer / Finance Chair View: a focused set of governing references, role boundaries, recurring procedures, and current financial decisions.
 Finance Committee View: financial controls, policies, reporting, software, and operating procedures.
 Personnel Committee View: role descriptions, hiring materials, and personnel review items.
 Financial Operations View: practical procedures and recurring work for authorized financial workers.
