@@ -9,6 +9,7 @@ import { ArrowLeft, ArrowRight, BookOpen, ChevronLeft, FileText, Menu, MessageSq
 import { useDebounce } from "../lib/useDebounce";
 import { useAuth } from "../lib/auth";
 import {
+  DOCUMENTATION_VIEW_DESCRIPTIONS,
   DOCUMENTATION_VIEW_LABELS,
   pageMatchesView,
   useDocumentationView,
@@ -199,6 +200,7 @@ export default function DocsReader() {
         >
           {Object.entries(DOCUMENTATION_VIEW_LABELS).map(([value, label]) => <option key={value} value={value}>{label}</option>)}
         </select>
+        <p className="mt-2 text-xs leading-relaxed text-muted-foreground">{DOCUMENTATION_VIEW_DESCRIPTIONS[view]}</p>
       </div>
 
       {searching ? (

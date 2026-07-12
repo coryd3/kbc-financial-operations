@@ -15,6 +15,17 @@ export const DOCUMENTATION_VIEW_LABELS: Record<DocumentationView, string> = {
   all: "All Documents",
 };
 
+export const DOCUMENTATION_VIEW_DESCRIPTIONS: Record<DocumentationView, string> = {
+  congregation: "Governing references, approved guidance, responsibilities, and updates relevant to the whole church.",
+  leadership: "Current decisions, governance questions, committee recommendations, and leadership planning.",
+  treasurer: "A focused starting set for Treasurer accountability, Finance Committee leadership, recurring review, and current financial decisions.",
+  finance: "Committee oversight: policy, budget review, spending controls, software decisions, and review of financial reports.",
+  personnel: "Role descriptions, hiring materials, supervision questions, and Personnel Committee review work.",
+  operations: "Hands-on work: contributions, deposits, reimbursements, payroll steps, reconciliations, monthly close, and reporting.",
+  project: "Draft packets, issue registers, evaluations, implementation notes, and other active project material.",
+  all: "Every public handbook and workroom document. Best for research, but usually more information than a routine reader needs.",
+};
+
 const STORAGE_KEY = "kbc-documentation-view";
 
 function recommendedView(user: SafeUser | null): DocumentationView {

@@ -178,12 +178,14 @@ This guide explains how to find the right information, tell what is current, and
 - **Church Member Library:** governing references, organization, responsibilities, approved policies, and congregational communications.
 - **Leadership View:** current decisions, governance questions, recommendations, and roadmaps.
 - **Treasurer / Finance Chair View:** a focused set of governing references, role boundaries, recurring procedures, and current financial decisions.
-- **Finance Committee View:** financial controls, policies, reporting, software, and operating procedures.
+- **Finance Committee View:** committee oversight of policy, budget review, spending controls, software decisions, and financial reports.
 - **Personnel Committee View:** role descriptions, hiring materials, and personnel review items.
-- **Financial Operations View:** practical procedures and recurring work for authorized financial workers.
+- **Financial Operations View:** hands-on recurring work such as contributions, deposits, reimbursements, payroll steps, reconciliations, monthly close, and reporting.
 - **Current Workroom:** issue registers, review packets, evaluations, implementation notes, and dated project records.
 
 The **All Documents** view is useful for research, but it is not the best starting point for routine use.
+
+The Finance Committee View and Financial Operations View are intentionally different. The Finance Committee sets direction and reviews whether the system is working. Authorized financial workers carry out the approved procedures shown in Financial Operations. Some documents appear in both views when both groups need them.
 
 #### Check The Status
 
@@ -1431,7 +1433,7 @@ Needs Bylaw Review: Cardholder authority, spending limits, reimbursement interac
 
 - Source file path: `docs/policies/offering-counting-and-deposit-policy.md`
 - Status: Needs Finance Review
-- Last updated: 2026-07-10
+- Last updated: 2026-07-12
 
 ### Offering Counting And Deposit Policy
 
@@ -1468,7 +1470,7 @@ Needs Bylaw Review: Confirm the final approval path and any Treasurer, committee
 
 - Source file path: `docs/policies/monthly-financial-review-policy.md`
 - Status: Needs Finance Review
-- Last updated: 2026-07-10
+- Last updated: 2026-07-12
 
 ### Monthly Financial Review Policy
 
@@ -1517,7 +1519,7 @@ Needs Bylaw Review: Confirm reporting duties and final approval requirements aga
 
 - Source file path: `docs/procedures/monthly-finance-committee-meeting-checklist.md`
 - Status: Needs Finance Review
-- Last updated: 2026-07-10
+- Last updated: 2026-07-12
 
 ### Monthly Finance Committee Meeting Checklist
 
@@ -1664,7 +1666,7 @@ Needs Finance Review: Finance Committee should confirm the monthly packet format
 
 - Source file path: `docs/procedures/contribution-entry-process.md`
 - Status: Needs Finance Review
-- Last updated: 2026-07-10
+- Last updated: 2026-07-12
 
 ### Contribution Entry Process
 
@@ -1728,7 +1730,7 @@ Needs Professional Review: Confirm contribution acknowledgment, restricted-gift,
 
 - Source file path: `docs/procedures/weekly-bookkeeping-checklist.md`
 - Status: Needs Finance Review
-- Last updated: 2026-07-10
+- Last updated: 2026-07-12
 
 ### Weekly Bookkeeping Checklist
 
@@ -1773,7 +1775,7 @@ Needs Finance Review: Confirm the weekly cutoff, who performs each step, require
 
 - Source file path: `docs/procedures/monthly-close-checklist.md`
 - Status: Needs Finance Review
-- Last updated: 2026-07-10
+- Last updated: 2026-07-12
 
 ### Monthly Close Checklist
 
@@ -1836,7 +1838,7 @@ Needs Professional Review: Confirm payroll-tax, accounting-basis, liability, and
 
 - Source file path: `docs/procedures/business-meeting-report-process.md`
 - Status: Needs Finance Review
-- Last updated: 2026-07-10
+- Last updated: 2026-07-12
 
 ### Business Meeting Report Process
 
@@ -1887,7 +1889,7 @@ Needs Bylaw Review: Confirm the Treasurer's reporting duties and any financial-r
 
 - Source file path: `docs/procedures/payroll-process.md`
 - Status: Needs Professional Review
-- Last updated: 2026-07-10
+- Last updated: 2026-07-12
 
 ### Payroll Process
 
@@ -2485,7 +2487,7 @@ Motion language provided for review:
 
 - Source file path: `docs/03-open-questions.md`
 - Status: Working Record
-- Last updated: 2026-07-10
+- Last updated: 2026-07-12
 
 ### 2026 Financial Operations Issue Register
 
@@ -4330,7 +4332,7 @@ Needs Leadership Review: Pastor, Deacons, Finance Committee, Personnel Committee
 
 - Source file path: `docs/software-evaluation/software-requirements.md`
 - Status: Needs Finance Review
-- Last updated: 2026-07-10
+- Last updated: 2026-07-12
 
 ### Software Requirements
 
@@ -4732,7 +4734,7 @@ This redirect page remains only so older links and exported references do not br
 
 - Source file path: `docs/document-inventory.md`
 - Status: Working Record
-- Last updated: 2026-07-10
+- Last updated: 2026-07-12
 
 ### Document Inventory
 

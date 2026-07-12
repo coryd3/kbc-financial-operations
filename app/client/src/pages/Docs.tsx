@@ -5,6 +5,7 @@ import { BookText, ChevronRight, FileText, LayoutDashboard, MessageSquareText, S
 import { api } from "../lib/api";
 import { useAuth } from "../lib/auth";
 import {
+  DOCUMENTATION_VIEW_DESCRIPTIONS,
   DOCUMENTATION_VIEW_LABELS,
   pageMatchesView,
   useDocumentationView,
@@ -54,7 +55,32 @@ export default function Docs() {
             <MessageSquareText className="h-4 w-4" /> Review my feedback
           </Link>
         )}
-        <div className="mt-5 grid max-w-3xl gap-3 sm:grid-cols-[minmax(0,1fr)_15rem]">
+        <div className="mt-5 max-w-3xl rounded-md border border-border bg-muted/20 p-4">
+          <div className="grid gap-3 sm:grid-cols-[minmax(0,1fr)_17rem] sm:items-end">
+            <div>
+              <p className="text-sm font-semibold text-foreground">Choose what you need to see</p>
+              <p className="mt-1 text-sm text-muted-foreground">Each view emphasizes documents for a particular responsibility. You can change views at any time.</p>
+            </div>
+            <div>
+              <label className="mb-1 block text-sm font-medium" htmlFor="documentation-view">Handbook view</label>
+              <select
+                id="documentation-view"
+                value={view}
+                onChange={(event) => setView(event.target.value as DocumentationView)}
+                className="h-10 w-full rounded-md border border-input bg-background px-3 text-sm font-medium focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+              >
+                {Object.entries(DOCUMENTATION_VIEW_LABELS).map(([value, label]) => (
+                  <option key={value} value={value}>{label}</option>
+                ))}
+              </select>
+            </div>
+          </div>
+          <p className="mt-3 border-t border-border pt-3 text-sm text-muted-foreground">
+            <strong className="text-foreground">{DOCUMENTATION_VIEW_LABELS[view]}:</strong>{" "}
+            {DOCUMENTATION_VIEW_DESCRIPTIONS[view]}
+          </p>
+        </div>
+        <div className="mt-4 max-w-3xl">
           <div className="relative">
             <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
             <Input
@@ -67,20 +93,9 @@ export default function Docs() {
               }}
             />
           </div>
-          <label className="sr-only" htmlFor="documentation-view">Documentation view</label>
-          <select
-            id="documentation-view"
-            value={view}
-            onChange={(event) => setView(event.target.value as DocumentationView)}
-            className="h-10 rounded-md border border-input bg-background px-3 text-sm font-medium focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
-          >
-            {Object.entries(DOCUMENTATION_VIEW_LABELS).map(([value, label]) => (
-              <option key={value} value={value}>{label}</option>
-            ))}
-          </select>
         </div>
         <p className="mt-2 text-xs text-muted-foreground">
-          Showing {DOCUMENTATION_VIEW_LABELS[view]}. This changes what is emphasized, not what public information may be accessed.
+          Views organize public information by relevance; they are not security permissions.
         </p>
       </div>
 

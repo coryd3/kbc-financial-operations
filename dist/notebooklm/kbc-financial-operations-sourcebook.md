@@ -128,12 +128,14 @@ This guide explains how to find the right information, tell what is current, and
 - **Church Member Library:** governing references, organization, responsibilities, approved policies, and congregational communications.
 - **Leadership View:** current decisions, governance questions, recommendations, and roadmaps.
 - **Treasurer / Finance Chair View:** a focused set of governing references, role boundaries, recurring procedures, and current financial decisions.
-- **Finance Committee View:** financial controls, policies, reporting, software, and operating procedures.
+- **Finance Committee View:** committee oversight of policy, budget review, spending controls, software decisions, and financial reports.
 - **Personnel Committee View:** role descriptions, hiring materials, and personnel review items.
-- **Financial Operations View:** practical procedures and recurring work for authorized financial workers.
+- **Financial Operations View:** hands-on recurring work such as contributions, deposits, reimbursements, payroll steps, reconciliations, monthly close, and reporting.
 - **Current Workroom:** issue registers, review packets, evaluations, implementation notes, and dated project records.
 
 The **All Documents** view is useful for research, but it is not the best starting point for routine use.
+
+The Finance Committee View and Financial Operations View are intentionally different. The Finance Committee sets direction and reviews whether the system is working. Authorized financial workers carry out the approved procedures shown in Financial Operations. Some documents appear in both views when both groups need them.
 
 #### Check The Status
 
@@ -1220,7 +1222,7 @@ Needs Bylaw Review: Cardholder authority, spending limits, reimbursement interac
 - Source file path: `docs/procedures/monthly-finance-committee-meeting-checklist.md`
 - Status: Needs Finance Review
 - Owner: Finance Committee
-- Last updated: 2026-07-10
+- Last updated: 2026-07-12
 
 ---
 
@@ -1369,7 +1371,7 @@ Needs Finance Review: Finance Committee should confirm the monthly packet format
 - Source file path: `docs/software-evaluation/software-requirements.md`
 - Status: Needs Finance Review
 - Owner: Finance Committee
-- Last updated: 2026-07-10
+- Last updated: 2026-07-12
 
 ---
 
@@ -1670,7 +1672,7 @@ Needs Committee Review: This roadmap should be reviewed by Finance Committee, Pe
 - Source file path: `docs/03-open-questions.md`
 - Status: Working Record
 - Owner: Project lead TBD
-- Last updated: 2026-07-10
+- Last updated: 2026-07-12
 
 ---
 
