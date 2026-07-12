@@ -1,63 +1,52 @@
-# Why KBC Has A Financial Operations Handbook
+# How To Use This Handbook
 
 Status: Needs Leadership Review
 
-## The Short Version
+This guide explains how to find the right information, tell what is current, and participate in review without confusing working material with adopted guidance.
 
-A shared folder is useful for storing files. This handbook and workspace solve a different problem: they help the church know which guidance to trust, who owns it, what still needs a decision, and how work continues when people change roles.
+## Choose The Right Starting Point
 
-## A Simple Picture
+- **Church Member Library:** governing references, organization, responsibilities, approved policies, and congregational communications.
+- **Leadership View:** current decisions, governance questions, recommendations, and roadmaps.
+- **Finance Committee View:** financial controls, policies, reporting, software, and operating procedures.
+- **Personnel Committee View:** role descriptions, hiring materials, and personnel review items.
+- **Financial Operations View:** practical procedures and recurring work for authorized financial workers.
+- **Current Workroom:** issue registers, review packets, evaluations, implementation notes, and dated project records.
 
-- **Google Drive is the filing cabinet.** It holds working files, forms, and private records with the right sharing settings.
-- **The handbook is the labeled binder.** It points people to the current guidance and clearly marks drafts, approved material, owners, and responsibilities.
-- **The workspace is the committee agenda and task list.** It shows current decisions, assignments, due dates, recurring checklists, and feedback.
-- **The record is the history.** It preserves decisions and prior versions so future leaders understand why something changed.
+The **All Documents** view is useful for research, but it is not the best starting point for routine use.
 
-KBC may use all four. One does not have to replace the others.
+## Check The Status
 
-## Why A Folder Alone Is Not Enough
+| Status | Meaning |
+| --- | --- |
+| Approved | Formally adopted guidance. Check the approval record and effective date where applicable. |
+| Current | Maintained for present use. Check the owner and approval path; this label alone does not mean congregational adoption. |
+| Reference | A governing source or established record used for context. |
+| Ready for Church Consideration | Committee review is complete and congregational action is expected. |
+| Needs Review | The named committee, leadership body, bylaw reviewer, or professional still needs to review it. |
+| Draft | Content is being developed and has not been approved. |
+| Working Record | An active list, log, dashboard, or project-management record rather than standing guidance. |
+| Superseded / Parking Lot | Retained for history or possible later work; not current guidance. |
 
-A folder can contain several versions of the same document without answering:
+Publishing a draft does not make it policy.
 
-- Which version should we follow?
-- Is this approved, or is it only a draft?
-- Who is responsible for keeping it current?
-- Which committee should review a change?
-- Does the congregation need to vote?
-- What work is still open?
-- Where should a reader leave feedback?
+## Understand Ownership And Approval
 
-The handbook and workspace put those answers beside the content.
+- The **owner** is responsible for the document's subject and accuracy.
+- A **reviewer** checks the document from the perspective of the people affected by it.
+- The **approval body** is the committee, leadership body, or congregation authorized to approve it.
+- A **documentation steward** maintains formatting, links, status labels, navigation, and archives without changing policy independently.
 
-## A Practical Example
+The congregation remains the final authority wherever the Constitution and Bylaws, budget, policy, officer election, major spending decision, or church practice require congregational approval.
 
-Suppose a ministry leader asks how to be reimbursed.
+## Follow Current Work
 
-In a normal folder, the person may find several forms, an old policy, meeting notes, and a draft procedure. They may still need to ask around to learn which one applies.
+Use the [Current Work Dashboard](project-dashboard.md) to see active priorities, owners, and review needs. Assigned tasks and due dates should be tracked as work items, while unresolved questions belong in the Issue Register and completed decisions belong in the Decision Log.
 
-In this system, the person can find the current reimbursement guidance, see whether it is approved or awaiting Finance Committee review, identify the owner, follow the procedure, and submit a specific question on the section that is unclear.
+Time-limited project material should not become permanent handbook language unless the proper owner and approval body adopt a lasting change.
 
-## What This Does Not Replace
+## Submit Feedback
 
-This system does not replace:
+Authenticated readers may leave feedback on a whole document or a specific section. Include enough detail to explain the concern or suggestion, but do not include confidential personal, financial, donor, personnel, or pastoral information.
 
-- The authority of the congregation.
-- The Constitution and Bylaws.
-- Committee discussion, judgment, or prayer.
-- Official minutes maintained by the Church Clerk.
-- Google Drive or another properly restricted location for confidential records.
-
-It gives those things an organized, searchable, and transferable structure.
-
-## How It Becomes Church-Owned
-
-- Committees own the substance in their area.
-- Document owners keep guidance accurate.
-- Documentation stewards maintain organization, links, status labels, and archives.
-- Members and leaders can suggest changes without changing policy on their own.
-- The proper committee, leadership body, or congregation approves substantive changes.
-- Completed projects move out of the main reading path while their history remains available.
-
-## Short Explanation To Share
-
-> Google Drive stores the files. The KBC handbook and workspace tell us which guidance is current, whether it is approved or still a draft, who owns it, what work is still open, and where feedback belongs. It gives the church a shared operating memory so responsibilities and decisions do not have to be rebuilt every time people change roles.
+The document owner may accept, plan, resolve, or decline feedback. Substantive changes still follow the normal review and approval process.

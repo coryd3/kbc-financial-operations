@@ -1,0 +1,54 @@
+Chapter: How To Use The Handbook.
+Current document status: Needs Leadership Review.
+
+Section: How To Use This Handbook.
+
+This guide explains how to find the right information, tell what is current, and participate in review without confusing working material with adopted guidance.
+
+Section: Choose The Right Starting Point.
+
+Church Member Library: governing references, organization, responsibilities, approved policies, and congregational communications.
+Leadership View: current decisions, governance questions, recommendations, and roadmaps.
+Finance Committee View: financial controls, policies, reporting, software, and operating procedures.
+Personnel Committee View: role descriptions, hiring materials, and personnel review items.
+Financial Operations View: practical procedures and recurring work for authorized financial workers.
+Current Workroom: issue registers, review packets, evaluations, implementation notes, and dated project records.
+
+The All Documents view is useful for research, but it is not the best starting point for routine use.
+
+Section: Check The Status.
+
+Table summary.
+Status: Approved. Meaning: Formally adopted guidance. Check the approval record and effective date where applicable..
+Status: Current. Meaning: Maintained for present use. Check the owner and approval path; this label alone does not mean congregational adoption..
+Status: Reference. Meaning: A governing source or established record used for context..
+Status: Ready for Church Consideration. Meaning: Committee review is complete and congregational action is expected..
+Status: Needs Review. Meaning: The named committee, leadership body, bylaw reviewer, or professional still needs to review it..
+Status: Draft. Meaning: Content is being developed and has not been approved..
+Status: Working Record. Meaning: An active list, log, dashboard, or project-management record rather than standing guidance..
+Status: Superseded / Parking Lot. Meaning: Retained for history or possible later work; not current guidance..
+
+Publishing a draft does not make it policy.
+
+Section: Understand Ownership And Approval.
+
+The owner is responsible for the document's subject and accuracy.
+A reviewer checks the document from the perspective of the people affected by it.
+The approval body is the committee, leadership body, or congregation authorized to approve it.
+A documentation steward maintains formatting, links, status labels, navigation, and archives without changing policy independently.
+
+The congregation remains the final authority wherever the Constitution and Bylaws, budget, policy, officer election, major spending decision, or church practice require congregational approval.
+
+Section: Follow Current Work.
+
+Use the Current Work Dashboard to see active priorities, owners, and review needs. Assigned tasks and due dates should be tracked as work items, while unresolved questions belong in the Issue Register and completed decisions belong in the Decision Log.
+
+Time-limited project material should not become permanent handbook language unless the proper owner and approval body adopt a lasting change.
+
+Section: Submit Feedback.
+
+Authenticated readers may leave feedback on a whole document or a specific section. Include enough detail to explain the concern or suggestion, but do not include confidential personal, financial, donor, personnel, or pastoral information.
+
+The document owner may accept, plan, resolve, or decline feedback. Substantive changes still follow the normal review and approval process.
+
+End of chapter: How To Use The Handbook.

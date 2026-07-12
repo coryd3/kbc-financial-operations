@@ -12,7 +12,7 @@ It has three documentation layers:
 
 The repository began during the 2026 Treasurer and Bookkeeper transition. That work remains documented in the Current Workroom, but it is not the permanent organizing principle. The long-term purpose is a financial operations system that is clear, accountable, transferable, and sustainable.
 
-For a short, non-technical explanation of how this differs from a shared folder, see `docs/start-here/why-this-exists.md`.
+For reader orientation and status guidance, see `docs/start-here/why-this-exists.md`.
 
 ## Source of Truth
 
@@ -334,6 +334,22 @@ python scripts/audit_public_content.py
 The audit checks tracked text files for obvious private-data or secret patterns, reports high-risk terms that may need review, and reminds you that binary files under `source-materials/` need manual review before broad public sharing.
 
 The audit is a helper, not a substitute for human review.
+
+## How to Check Document Consistency
+
+Run:
+
+```sh
+make audit-docs
+```
+
+Without `make`, use:
+
+```sh
+python scripts/audit_document_consistency.py
+```
+
+This check confirms that navigation pages have metadata, visible status labels match the catalog, the superseded dashboard stays out of navigation, and permanent handbook pages remain free of platform-specific or transition-specific project language. GitHub Actions runs the same check before changes can deploy.
 
 ## How to Validate
 

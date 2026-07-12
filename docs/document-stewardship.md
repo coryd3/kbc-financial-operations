@@ -17,7 +17,7 @@ This guide keeps the financial operations handbook, current workroom, and church
 | Review packet, implementation note, or evaluation | Current Workroom | It supports a time-limited project and should be archived when complete. |
 | Approved or superseded release | Church record / archive | The history remains available without competing with current guidance. |
 
-Google Drive or another restricted system may remain the proper home for editable office files and confidential records. The public handbook should link to safe source material only when useful.
+An appropriately restricted records system remains the proper home for editable working files and confidential records. The public handbook should link to safe source material only when useful.
 
 ## Shared Responsibilities
 

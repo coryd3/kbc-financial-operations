@@ -57,7 +57,7 @@ class TtsChunk:
 
 DOCS: list[DocEntry] = [
     DocEntry("Start Here", "Handbook And Workspace Home", "docs/index.md"),
-    DocEntry("Start Here", "Why This Handbook Exists", "docs/start-here/why-this-exists.md"),
+    DocEntry("Start Here", "How To Use The Handbook", "docs/start-here/why-this-exists.md"),
     DocEntry("Start Here", "Handbook And Workspace Stewardship", "docs/document-stewardship.md"),
     DocEntry("Handbook - Governance", "Constitution and Bylaws Reference", "docs/governance/constitution-and-bylaws-reference.md"),
     DocEntry("Handbook - Governance", "Church Organization Chart", "docs/governance/church-organization-chart.md"),

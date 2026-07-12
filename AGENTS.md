@@ -13,14 +13,16 @@ The permanent goal is a clear, accountable, transferable, and sustainable church
 
 Keep transition-specific dates, compensation limits, interim assignments, and hiring action items in project records. Keep handbook language general enough to remain useful when people and circumstances change.
 
-## Current Project Context
+## Historical 2026 Project Context
 
 - KBC is a small, long-established Baptist church in Kingsville, Missouri.
 - KBC uses congregational governance and must remain faithful to its bylaws.
-- The Treasurer position is in transition.
-- Interim Treasurer coverage is helping maintain continuity while KBC reviews the longer-term structure.
-- The congregation has authorized Personnel Committee to hire a paid Bookkeeper / Financial Administrator.
-- The deeper issue is that finance operations have historically depended too much on one person's knowledge and manual process.
+- The repository began during a 2026 Treasurer and Bookkeeper transition.
+- Interim Treasurer coverage maintained continuity while KBC reviewed the longer-term structure.
+- The congregation authorized Personnel Committee to hire a paid Bookkeeper / Financial Administrator.
+- The project identified a broader need for financial operations that do not depend too heavily on one person's knowledge or manual process.
+
+Use this context in dated project records, decision history, and transition communications only. Do not use it as the organizing premise of permanent handbook pages.
 
 Do not frame the transition as a person failure. Frame it as an opportunity to strengthen shared systems and stewardship.
 
@@ -84,6 +86,15 @@ Other governance notes:
 - Do not blame any current or former Treasurer, interim helper, committee, staff member, or volunteer.
 - Separate governance decisions from procedures.
 - Use "proposed" or "draft" labels until the church has formally approved a document.
+
+## Permanent Reader-Facing Guardrails
+
+- Orient readers to guidance, status, ownership, authority, and next steps. Do not make the homepage defend the project against a particular person's objection.
+- Keep durable handbook pages platform-neutral. Named software, hosting, storage, and development platforms belong only in technical administration, deployment, export, or software-evaluation material where the name is necessary.
+- Do not compare the handbook to a particular storage product as its primary value explanation.
+- Keep dated transitions, vacancies, compensation limits, interim assignments, and hiring actions in the Current Workroom or decision history.
+- Maintain one canonical current-work dashboard and one concise reader-orientation guide.
+- Add links when they support the reader's current task. Avoid prominent links that pull a reader away before the page has provided enough context.
 
 ## Documentation Standards
 

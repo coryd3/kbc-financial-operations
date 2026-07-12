@@ -1,7 +1,7 @@
 PYTHON ?= python
 MKDOCS ?= $(PYTHON) -m mkdocs
 
-.PHONY: export validate release notebooklm audiobook audiobook-chunks tts-local tts-local-sample tts-local-download-voice audit-public clean clean-exports serve docs-build docs-deploy
+.PHONY: export validate release notebooklm audiobook audiobook-chunks tts-local tts-local-sample tts-local-download-voice audit-public audit-docs clean clean-exports serve docs-build docs-deploy
 
 export:
 	@./scripts/export.sh
@@ -33,10 +33,13 @@ tts-local:
 audit-public:
 	@$(PYTHON) scripts/audit_public_content.py
 
+audit-docs:
+	@$(PYTHON) scripts/audit_document_consistency.py
+
 serve:
 	@$(MKDOCS) serve
 
-docs-build:
+docs-build: audit-docs
 	@$(MKDOCS) build --strict
 
 docs-deploy:

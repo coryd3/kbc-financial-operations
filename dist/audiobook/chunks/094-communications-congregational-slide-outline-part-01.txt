@@ -1,5 +1,5 @@
 Chapter: Congregational Slide Outline.
-Current document status: TBD.
+Current document status: Draft.
 
 --8<-- "dist/congregational-slide-outline.md".
 

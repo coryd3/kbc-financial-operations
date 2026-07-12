@@ -1,6 +1,6 @@
 KBC Financial Operations Listening Script.
 
-Generated on 2026-07-10.
+Generated on 2026-07-12.
 
 This is a text to speech version of the current KBC financial operations handbook and workspace.
 The GitHub repository Markdown files remain the source of truth.
