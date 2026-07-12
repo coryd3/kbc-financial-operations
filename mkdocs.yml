@@ -47,9 +47,8 @@ hooks:
 nav:
   - Start Here:
       - Home: index.md
-      - Why This Exists: start-here/why-this-exists.md
+      - How To Use The Handbook: start-here/why-this-exists.md
       - Current Work Dashboard: start-here/project-dashboard.md
-      - Handbook And Workspace Stewardship Guide: document-stewardship.md
   - Church Library:
       - Constitution and Bylaws Reference: governance/constitution-and-bylaws-reference.md
       - Church Organization Chart: governance/church-organization-chart.md
@@ -101,6 +100,7 @@ nav:
       - Job Description Consistency Check: roles/job-description-consistency-check.md
       - Future Governance Expansion: governance/future-governance-expansion.md
       - Document Inventory: document-inventory.md
+      - Handbook And Workspace Stewardship Guide: document-stewardship.md
   - Communications and Releases:
       - Church Business Meeting Summary: communications/church-business-meeting-summary.md
       - One-Page Congregational Summary: communications/one-page-congregational-summary.md

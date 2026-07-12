@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link, useLocation } from "wouter";
 import { useQuery } from "@tanstack/react-query";
-import { BookOpen, BookText, ChevronRight, FileText, LayoutDashboard, MessageSquareText, Search } from "lucide-react";
+import { BookText, ChevronRight, FileText, LayoutDashboard, MessageSquareText, Search } from "lucide-react";
 import { api } from "../lib/api";
 import { useAuth } from "../lib/auth";
 import {
@@ -40,12 +40,9 @@ export default function Docs() {
       <div className="border-b border-border pb-6">
         <h1 className="text-3xl font-serif text-primary font-bold">Financial Operations Handbook</h1>
         <p className="mt-2 max-w-2xl text-muted-foreground">
-          Find current guidance, current committee work, and the record behind important decisions without sorting through every stored file.
+          Find current guidance, active committee work, and the record behind important decisions.
         </p>
         <div className="mt-4 flex flex-wrap gap-2">
-          <Link href="/docs/start-here/why-this-exists" className="inline-flex items-center gap-2 rounded-md border border-border px-3 py-2 text-sm font-medium text-primary hover:bg-muted/50">
-            <BookOpen className="h-4 w-4" /> Why this exists
-          </Link>
           {view !== "congregation" && (
             <Link href="/docs/start-here/project-dashboard" className="inline-flex items-center gap-2 rounded-md border border-border px-3 py-2 text-sm font-medium text-primary hover:bg-muted/50">
               <LayoutDashboard className="h-4 w-4" /> Current work

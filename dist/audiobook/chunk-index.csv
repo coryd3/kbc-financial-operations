@@ -1,114 +1,113 @@
 sequence,file,group,title,part,characters,words
 1,dist/audiobook/chunks/001-introduction-introduction-part-01.txt,Introduction,Introduction,1,504,67
-2,dist/audiobook/chunks/002-start-here-handbook-and-workspace-home-part-01.txt,Start Here,Handbook And Workspace Home,1,3669,504
-3,dist/audiobook/chunks/003-start-here-handbook-and-workspace-home-part-02.txt,Start Here,Handbook And Workspace Home,2,2125,296
-4,dist/audiobook/chunks/004-start-here-why-this-handbook-exists-part-01.txt,Start Here,Why This Handbook Exists,1,3249,501
-5,dist/audiobook/chunks/005-start-here-handbook-and-workspace-stewardship-part-01.txt,Start Here,Handbook And Workspace Stewardship,1,4328,577
-6,dist/audiobook/chunks/006-start-here-handbook-and-workspace-stewardship-part-02.txt,Start Here,Handbook And Workspace Stewardship,2,1594,219
-7,dist/audiobook/chunks/007-handbook-governance-constitution-and-bylaws-reference-part-01.txt,Handbook - Governance,Constitution and Bylaws Reference,1,4132,525
-8,dist/audiobook/chunks/008-handbook-governance-constitution-and-bylaws-reference-part-02.txt,Handbook - Governance,Constitution and Bylaws Reference,2,1173,160
-9,dist/audiobook/chunks/009-handbook-governance-church-organization-chart-part-01.txt,Handbook - Governance,Church Organization Chart,1,4146,510
-10,dist/audiobook/chunks/010-handbook-governance-church-organization-chart-part-02.txt,Handbook - Governance,Church Organization Chart,2,1852,250
-11,dist/audiobook/chunks/011-handbook-governance-financial-operations-view-part-01.txt,Handbook - Governance,Financial Operations View,1,1679,220
-12,dist/audiobook/chunks/012-handbook-governance-responsibility-matrix-part-01.txt,Handbook - Governance,Responsibility Matrix,1,502,62
-13,dist/audiobook/chunks/013-handbook-governance-responsibility-matrix-part-02.txt,Handbook - Governance,Responsibility Matrix,2,4499,530
-14,dist/audiobook/chunks/014-handbook-governance-responsibility-matrix-part-03.txt,Handbook - Governance,Responsibility Matrix,3,4418,534
-15,dist/audiobook/chunks/015-handbook-governance-responsibility-matrix-part-04.txt,Handbook - Governance,Responsibility Matrix,4,995,124
-16,dist/audiobook/chunks/016-handbook-governance-responsibility-matrix-part-05.txt,Handbook - Governance,Responsibility Matrix,5,2080,267
-17,dist/audiobook/chunks/017-handbook-governance-finance-committee-charter-part-01.txt,Handbook - Governance,Finance Committee Charter,1,4091,519
-18,dist/audiobook/chunks/018-handbook-governance-personnel-committee-role-part-01.txt,Handbook - Governance,Personnel Committee Role,1,1524,185
-19,dist/audiobook/chunks/019-handbook-roles-treasurer-governance-role-part-01.txt,Handbook - Roles,Treasurer Governance Role,1,3582,464
-20,dist/audiobook/chunks/020-handbook-roles-bookkeeper-job-description-part-01.txt,Handbook - Roles,Bookkeeper Job Description,1,4483,550
-21,dist/audiobook/chunks/021-handbook-roles-bookkeeper-job-description-part-02.txt,Handbook - Roles,Bookkeeper Job Description,2,3297,422
-22,dist/audiobook/chunks/022-handbook-finance-operations-spending-authority-policy-part-01.txt,Handbook - Finance Operations,Spending Authority Policy,1,4250,572
-23,dist/audiobook/chunks/023-handbook-finance-operations-reimbursement-policy-part-01.txt,Handbook - Finance Operations,Reimbursement Policy,1,3265,426
-24,dist/audiobook/chunks/024-handbook-finance-operations-reimbursement-process-part-01.txt,Handbook - Finance Operations,Reimbursement Process,1,4308,560
-25,dist/audiobook/chunks/025-handbook-finance-operations-reimbursement-process-part-02.txt,Handbook - Finance Operations,Reimbursement Process,2,1438,178
-26,dist/audiobook/chunks/026-handbook-finance-operations-credit-card-policy-part-01.txt,Handbook - Finance Operations,Credit Card Policy,1,3652,478
-27,dist/audiobook/chunks/027-handbook-finance-operations-offering-counting-and-deposit-policy-part-01.txt,Handbook - Finance Operations,Offering Counting and Deposit Policy,1,772,94
-28,dist/audiobook/chunks/028-handbook-finance-operations-monthly-financial-review-policy-part-01.txt,Handbook - Finance Operations,Monthly Financial Review Policy,1,802,100
-29,dist/audiobook/chunks/029-handbook-finance-operations-monthly-finance-committee-checklist-part-01.txt,Handbook - Finance Operations,Monthly Finance Committee Checklist,1,4380,578
-30,dist/audiobook/chunks/030-handbook-finance-operations-monthly-finance-committee-checklist-part-02.txt,Handbook - Finance Operations,Monthly Finance Committee Checklist,2,1362,183
-31,dist/audiobook/chunks/031-handbook-finance-operations-contribution-entry-process-part-01.txt,Handbook - Finance Operations,Contribution Entry Process,1,504,60
-32,dist/audiobook/chunks/032-handbook-finance-operations-weekly-bookkeeping-checklist-part-01.txt,Handbook - Finance Operations,Weekly Bookkeeping Checklist,1,388,47
-33,dist/audiobook/chunks/033-handbook-finance-operations-monthly-close-checklist-part-01.txt,Handbook - Finance Operations,Monthly Close Checklist,1,368,45
-34,dist/audiobook/chunks/034-handbook-finance-operations-business-meeting-report-process-part-01.txt,Handbook - Finance Operations,Business Meeting Report Process,1,489,62
-35,dist/audiobook/chunks/035-handbook-finance-operations-payroll-process-part-01.txt,Handbook - Finance Operations,Payroll Process,1,494,62
-36,dist/audiobook/chunks/036-handbook-finance-operations-audit-and-review-policy-part-01.txt,Handbook - Finance Operations,Audit and Review Policy,1,874,112
-37,dist/audiobook/chunks/037-current-work-2026-transition-current-work-dashboard-part-01.txt,Current Work - 2026 Transition,Current Work Dashboard,1,3288,469
-38,dist/audiobook/chunks/038-current-work-2026-transition-current-work-dashboard-part-02.txt,Current Work - 2026 Transition,Current Work Dashboard,2,4293,525
-39,dist/audiobook/chunks/039-current-work-2026-transition-current-work-dashboard-part-03.txt,Current Work - 2026 Transition,Current Work Dashboard,3,4480,544
-40,dist/audiobook/chunks/040-current-work-2026-transition-current-work-dashboard-part-04.txt,Current Work - 2026 Transition,Current Work Dashboard,4,1582,203
-41,dist/audiobook/chunks/041-current-work-2026-transition-transition-project-brief-part-01.txt,Current Work - 2026 Transition,Transition Project Brief,1,3246,436
-42,dist/audiobook/chunks/042-current-work-2026-transition-transition-current-state-assessment-part-01.txt,Current Work - 2026 Transition,Transition Current-State Assessment,1,4414,575
-43,dist/audiobook/chunks/043-current-work-2026-transition-transition-current-state-assessment-part-02.txt,Current Work - 2026 Transition,Transition Current-State Assessment,2,254,35
-44,dist/audiobook/chunks/044-current-work-2026-transition-transition-roadmap-part-01.txt,Current Work - 2026 Transition,Transition Roadmap,1,3424,423
-45,dist/audiobook/chunks/045-current-work-2026-transition-transition-roadmap-part-02.txt,Current Work - 2026 Transition,Transition Roadmap,2,3493,413
-46,dist/audiobook/chunks/046-current-work-2026-transition-transition-roadmap-part-03.txt,Current Work - 2026 Transition,Transition Roadmap,3,3950,464
-47,dist/audiobook/chunks/047-current-work-2026-transition-transition-roadmap-part-04.txt,Current Work - 2026 Transition,Transition Roadmap,4,1951,242
-48,dist/audiobook/chunks/048-current-work-2026-transition-decision-log-part-01.txt,Current Work - 2026 Transition,Decision Log,1,3014,408
-49,dist/audiobook/chunks/049-current-work-2026-transition-issue-register-part-01.txt,Current Work - 2026 Transition,Issue Register,1,3942,527
-50,dist/audiobook/chunks/050-current-work-2026-transition-leadership-review-overview-part-01.txt,Current Work - 2026 Transition,Leadership Review Overview,1,1109,151
-51,dist/audiobook/chunks/051-current-work-2026-transition-leadership-review-packet-part-01.txt,Current Work - 2026 Transition,Leadership Review Packet,1,3174,427
-52,dist/audiobook/chunks/052-current-work-2026-transition-leadership-review-packet-part-02.txt,Current Work - 2026 Transition,Leadership Review Packet,2,4246,521
-53,dist/audiobook/chunks/053-current-work-2026-transition-leadership-review-packet-part-03.txt,Current Work - 2026 Transition,Leadership Review Packet,3,4365,569
-54,dist/audiobook/chunks/054-current-work-2026-transition-leadership-review-packet-part-04.txt,Current Work - 2026 Transition,Leadership Review Packet,4,1589,219
-55,dist/audiobook/chunks/055-current-work-2026-transition-personnel-committee-packet-part-01.txt,Current Work - 2026 Transition,Personnel Committee Packet,1,4296,538
-56,dist/audiobook/chunks/056-current-work-2026-transition-personnel-committee-packet-part-02.txt,Current Work - 2026 Transition,Personnel Committee Packet,2,4480,540
-57,dist/audiobook/chunks/057-current-work-2026-transition-personnel-committee-packet-part-03.txt,Current Work - 2026 Transition,Personnel Committee Packet,3,4219,507
-58,dist/audiobook/chunks/058-current-work-2026-transition-personnel-committee-packet-part-04.txt,Current Work - 2026 Transition,Personnel Committee Packet,4,4019,543
-59,dist/audiobook/chunks/059-current-work-2026-transition-finance-committee-packet-part-01.txt,Current Work - 2026 Transition,Finance Committee Packet,1,4487,526
-60,dist/audiobook/chunks/060-current-work-2026-transition-finance-committee-packet-part-02.txt,Current Work - 2026 Transition,Finance Committee Packet,2,4461,563
-61,dist/audiobook/chunks/061-current-work-2026-transition-finance-committee-packet-part-03.txt,Current Work - 2026 Transition,Finance Committee Packet,3,4347,602
-62,dist/audiobook/chunks/062-current-work-2026-transition-finance-committee-packet-part-04.txt,Current Work - 2026 Transition,Finance Committee Packet,4,3894,495
-63,dist/audiobook/chunks/063-current-work-2026-transition-finance-committee-packet-part-05.txt,Current Work - 2026 Transition,Finance Committee Packet,5,1399,184
-64,dist/audiobook/chunks/064-current-work-2026-transition-personnel-committee-recommendation-part-01.txt,Current Work - 2026 Transition,Personnel Committee Recommendation,1,2996,382
-65,dist/audiobook/chunks/065-current-work-2026-transition-finance-committee-recommendation-part-01.txt,Current Work - 2026 Transition,Finance Committee Recommendation,1,584,72
-66,dist/audiobook/chunks/066-current-work-2026-transition-deacon-update-part-01.txt,Current Work - 2026 Transition,Deacon Update,1,435,60
-67,dist/audiobook/chunks/067-current-work-2026-transition-treasurer-vs-bookkeeper-duty-analysis-part-01.txt,Current Work - 2026 Transition,Treasurer vs. Bookkeeper Duty Analysis,1,4474,523
-68,dist/audiobook/chunks/068-current-work-2026-transition-treasurer-vs-bookkeeper-duty-analysis-part-02.txt,Current Work - 2026 Transition,Treasurer vs. Bookkeeper Duty Analysis,2,26,4
-69,dist/audiobook/chunks/069-current-work-2026-transition-treasurer-vs-bookkeeper-duty-analysis-part-03.txt,Current Work - 2026 Transition,Treasurer vs. Bookkeeper Duty Analysis,3,4434,545
-70,dist/audiobook/chunks/070-current-work-2026-transition-treasurer-vs-bookkeeper-duty-analysis-part-04.txt,Current Work - 2026 Transition,Treasurer vs. Bookkeeper Duty Analysis,4,4468,566
-71,dist/audiobook/chunks/071-current-work-2026-transition-treasurer-vs-bookkeeper-duty-analysis-part-05.txt,Current Work - 2026 Transition,Treasurer vs. Bookkeeper Duty Analysis,5,2331,282
-72,dist/audiobook/chunks/072-current-work-2026-transition-treasurer-vs-bookkeeper-duty-analysis-part-06.txt,Current Work - 2026 Transition,Treasurer vs. Bookkeeper Duty Analysis,6,4468,564
-73,dist/audiobook/chunks/073-current-work-2026-transition-treasurer-vs-bookkeeper-duty-analysis-part-07.txt,Current Work - 2026 Transition,Treasurer vs. Bookkeeper Duty Analysis,7,520,67
-74,dist/audiobook/chunks/074-current-work-2026-transition-interim-treasurer-role-part-01.txt,Current Work - 2026 Transition,Interim Treasurer Role,1,775,95
-75,dist/audiobook/chunks/075-current-work-2026-transition-bookkeeper-application-part-01.txt,Current Work - 2026 Transition,Bookkeeper Application,1,3668,478
-76,dist/audiobook/chunks/076-current-work-2026-transition-bookkeeper-hiring-process-part-01.txt,Current Work - 2026 Transition,Bookkeeper Hiring Process,1,4086,542
-77,dist/audiobook/chunks/077-current-work-2026-transition-bookkeeper-hiring-process-part-02.txt,Current Work - 2026 Transition,Bookkeeper Hiring Process,2,4407,616
-78,dist/audiobook/chunks/078-current-work-2026-transition-bookkeeper-hiring-process-part-03.txt,Current Work - 2026 Transition,Bookkeeper Hiring Process,3,1383,193
-79,dist/audiobook/chunks/079-current-work-2026-transition-job-description-consistency-check-part-01.txt,Current Work - 2026 Transition,Job Description Consistency Check,1,4361,448
-80,dist/audiobook/chunks/080-current-work-2026-transition-job-description-consistency-check-part-02.txt,Current Work - 2026 Transition,Job Description Consistency Check,2,1708,232
-81,dist/audiobook/chunks/081-current-work-policy-review-financial-authority-review-package-part-01.txt,Current Work - Policy Review,Financial Authority Review Package,1,2748,338
-82,dist/audiobook/chunks/082-current-work-policy-review-financial-authority-review-package-part-02.txt,Current Work - Policy Review,Financial Authority Review Package,2,4254,533
-83,dist/audiobook/chunks/083-current-work-governance-future-governance-expansion-part-01.txt,Current Work - Governance,Future Governance Expansion,1,4340,576
-84,dist/audiobook/chunks/084-current-work-governance-future-governance-expansion-part-02.txt,Current Work - Governance,Future Governance Expansion,2,655,87
-85,dist/audiobook/chunks/085-current-work-software-software-requirements-part-01.txt,Current Work - Software,Software Requirements,1,4062,506
-86,dist/audiobook/chunks/086-current-work-software-demo-scorecard-part-01.txt,Current Work - Software,Demo Scorecard,1,924,126
-87,dist/audiobook/chunks/087-current-work-software-demo-scorecard-part-02.txt,Current Work - Software,Demo Scorecard,2,4442,560
-88,dist/audiobook/chunks/088-current-work-software-demo-scorecard-part-03.txt,Current Work - Software,Demo Scorecard,3,929,119
-89,dist/audiobook/chunks/089-current-work-software-demo-scorecard-part-04.txt,Current Work - Software,Demo Scorecard,4,4476,621
-90,dist/audiobook/chunks/090-current-work-software-demo-scorecard-part-05.txt,Current Work - Software,Demo Scorecard,5,615,85
-91,dist/audiobook/chunks/091-current-work-software-iconcmo-vs-churchtrac-comparison-part-01.txt,Current Work - Software,IconCMO vs. ChurchTrac Comparison,1,2545,299
-92,dist/audiobook/chunks/092-current-work-software-implementation-plan-part-01.txt,Current Work - Software,Implementation Plan,1,389,49
-93,dist/audiobook/chunks/093-communications-church-business-meeting-summary-part-01.txt,Communications,Church Business Meeting Summary,1,1773,260
-94,dist/audiobook/chunks/094-communications-one-page-congregational-summary-part-01.txt,Communications,One-Page Congregational Summary,1,174,16
-95,dist/audiobook/chunks/095-communications-congregational-slide-outline-part-01.txt,Communications,Congregational Slide Outline,1,163,16
-96,dist/audiobook/chunks/096-administration-and-archive-superseded-project-dashboard-part-01.txt,Administration And Archive,Superseded Project Dashboard,1,458,62
-97,dist/audiobook/chunks/097-administration-and-archive-document-inventory-part-01.txt,Administration And Archive,Document Inventory,1,835,113
-98,dist/audiobook/chunks/098-administration-and-archive-document-inventory-part-02.txt,Administration And Archive,Document Inventory,2,4393,503
-99,dist/audiobook/chunks/099-administration-and-archive-document-inventory-part-03.txt,Administration And Archive,Document Inventory,3,4470,494
-100,dist/audiobook/chunks/100-administration-and-archive-document-inventory-part-04.txt,Administration And Archive,Document Inventory,4,4481,490
-101,dist/audiobook/chunks/101-administration-and-archive-document-inventory-part-05.txt,Administration And Archive,Document Inventory,5,4492,494
-102,dist/audiobook/chunks/102-administration-and-archive-document-inventory-part-06.txt,Administration And Archive,Document Inventory,6,473,56
-103,dist/audiobook/chunks/103-administration-and-archive-document-inventory-part-07.txt,Administration And Archive,Document Inventory,7,3867,458
-104,dist/audiobook/chunks/104-administration-and-archive-document-inventory-part-08.txt,Administration And Archive,Document Inventory,8,1044,116
-105,dist/audiobook/chunks/105-administration-and-archive-document-inventory-part-09.txt,Administration And Archive,Document Inventory,9,4463,444
-106,dist/audiobook/chunks/106-administration-and-archive-document-inventory-part-10.txt,Administration And Archive,Document Inventory,10,3407,361
-107,dist/audiobook/chunks/107-administration-and-archive-document-inventory-part-11.txt,Administration And Archive,Document Inventory,11,2514,257
-108,dist/audiobook/chunks/108-administration-and-archive-document-inventory-part-12.txt,Administration And Archive,Document Inventory,12,3495,360
-109,dist/audiobook/chunks/109-administration-and-archive-document-inventory-part-13.txt,Administration And Archive,Document Inventory,13,1585,166
-110,dist/audiobook/chunks/110-administration-and-archive-export-process-part-01.txt,Administration And Archive,Export Process,1,4079,551
-111,dist/audiobook/chunks/111-administration-and-archive-exported-files-and-release-bundles-part-01.txt,Administration And Archive,Exported Files and Release Bundles,1,2965,372
-112,dist/audiobook/chunks/112-administration-and-archive-document-workflow-notes-part-01.txt,Administration And Archive,Document Workflow Notes,1,4457,554
-113,dist/audiobook/chunks/113-administration-and-archive-document-workflow-notes-part-02.txt,Administration And Archive,Document Workflow Notes,2,1374,167
+2,dist/audiobook/chunks/002-start-here-handbook-and-workspace-home-part-01.txt,Start Here,Handbook And Workspace Home,1,3690,490
+3,dist/audiobook/chunks/003-start-here-how-to-use-the-handbook-part-01.txt,Start Here,How To Use The Handbook,1,3552,484
+4,dist/audiobook/chunks/004-start-here-handbook-and-workspace-stewardship-part-01.txt,Start Here,Handbook And Workspace Stewardship,1,4327,575
+5,dist/audiobook/chunks/005-start-here-handbook-and-workspace-stewardship-part-02.txt,Start Here,Handbook And Workspace Stewardship,2,1594,219
+6,dist/audiobook/chunks/006-handbook-governance-constitution-and-bylaws-reference-part-01.txt,Handbook - Governance,Constitution and Bylaws Reference,1,4132,525
+7,dist/audiobook/chunks/007-handbook-governance-constitution-and-bylaws-reference-part-02.txt,Handbook - Governance,Constitution and Bylaws Reference,2,1173,160
+8,dist/audiobook/chunks/008-handbook-governance-church-organization-chart-part-01.txt,Handbook - Governance,Church Organization Chart,1,4146,510
+9,dist/audiobook/chunks/009-handbook-governance-church-organization-chart-part-02.txt,Handbook - Governance,Church Organization Chart,2,1852,250
+10,dist/audiobook/chunks/010-handbook-governance-financial-operations-view-part-01.txt,Handbook - Governance,Financial Operations View,1,1679,220
+11,dist/audiobook/chunks/011-handbook-governance-responsibility-matrix-part-01.txt,Handbook - Governance,Responsibility Matrix,1,502,62
+12,dist/audiobook/chunks/012-handbook-governance-responsibility-matrix-part-02.txt,Handbook - Governance,Responsibility Matrix,2,4499,530
+13,dist/audiobook/chunks/013-handbook-governance-responsibility-matrix-part-03.txt,Handbook - Governance,Responsibility Matrix,3,4418,534
+14,dist/audiobook/chunks/014-handbook-governance-responsibility-matrix-part-04.txt,Handbook - Governance,Responsibility Matrix,4,995,124
+15,dist/audiobook/chunks/015-handbook-governance-responsibility-matrix-part-05.txt,Handbook - Governance,Responsibility Matrix,5,2080,267
+16,dist/audiobook/chunks/016-handbook-governance-finance-committee-charter-part-01.txt,Handbook - Governance,Finance Committee Charter,1,4091,519
+17,dist/audiobook/chunks/017-handbook-governance-personnel-committee-role-part-01.txt,Handbook - Governance,Personnel Committee Role,1,1524,185
+18,dist/audiobook/chunks/018-handbook-roles-treasurer-governance-role-part-01.txt,Handbook - Roles,Treasurer Governance Role,1,3582,464
+19,dist/audiobook/chunks/019-handbook-roles-bookkeeper-job-description-part-01.txt,Handbook - Roles,Bookkeeper Job Description,1,4483,550
+20,dist/audiobook/chunks/020-handbook-roles-bookkeeper-job-description-part-02.txt,Handbook - Roles,Bookkeeper Job Description,2,3297,422
+21,dist/audiobook/chunks/021-handbook-finance-operations-spending-authority-policy-part-01.txt,Handbook - Finance Operations,Spending Authority Policy,1,4250,572
+22,dist/audiobook/chunks/022-handbook-finance-operations-reimbursement-policy-part-01.txt,Handbook - Finance Operations,Reimbursement Policy,1,3265,426
+23,dist/audiobook/chunks/023-handbook-finance-operations-reimbursement-process-part-01.txt,Handbook - Finance Operations,Reimbursement Process,1,4308,560
+24,dist/audiobook/chunks/024-handbook-finance-operations-reimbursement-process-part-02.txt,Handbook - Finance Operations,Reimbursement Process,2,1438,178
+25,dist/audiobook/chunks/025-handbook-finance-operations-credit-card-policy-part-01.txt,Handbook - Finance Operations,Credit Card Policy,1,3652,478
+26,dist/audiobook/chunks/026-handbook-finance-operations-offering-counting-and-deposit-policy-part-01.txt,Handbook - Finance Operations,Offering Counting and Deposit Policy,1,772,94
+27,dist/audiobook/chunks/027-handbook-finance-operations-monthly-financial-review-policy-part-01.txt,Handbook - Finance Operations,Monthly Financial Review Policy,1,802,100
+28,dist/audiobook/chunks/028-handbook-finance-operations-monthly-finance-committee-checklist-part-01.txt,Handbook - Finance Operations,Monthly Finance Committee Checklist,1,4380,578
+29,dist/audiobook/chunks/029-handbook-finance-operations-monthly-finance-committee-checklist-part-02.txt,Handbook - Finance Operations,Monthly Finance Committee Checklist,2,1362,183
+30,dist/audiobook/chunks/030-handbook-finance-operations-contribution-entry-process-part-01.txt,Handbook - Finance Operations,Contribution Entry Process,1,504,60
+31,dist/audiobook/chunks/031-handbook-finance-operations-weekly-bookkeeping-checklist-part-01.txt,Handbook - Finance Operations,Weekly Bookkeeping Checklist,1,388,47
+32,dist/audiobook/chunks/032-handbook-finance-operations-monthly-close-checklist-part-01.txt,Handbook - Finance Operations,Monthly Close Checklist,1,368,45
+33,dist/audiobook/chunks/033-handbook-finance-operations-business-meeting-report-process-part-01.txt,Handbook - Finance Operations,Business Meeting Report Process,1,489,62
+34,dist/audiobook/chunks/034-handbook-finance-operations-payroll-process-part-01.txt,Handbook - Finance Operations,Payroll Process,1,494,62
+35,dist/audiobook/chunks/035-handbook-finance-operations-audit-and-review-policy-part-01.txt,Handbook - Finance Operations,Audit and Review Policy,1,874,112
+36,dist/audiobook/chunks/036-current-work-2026-transition-current-work-dashboard-part-01.txt,Current Work - 2026 Transition,Current Work Dashboard,1,3288,469
+37,dist/audiobook/chunks/037-current-work-2026-transition-current-work-dashboard-part-02.txt,Current Work - 2026 Transition,Current Work Dashboard,2,4293,525
+38,dist/audiobook/chunks/038-current-work-2026-transition-current-work-dashboard-part-03.txt,Current Work - 2026 Transition,Current Work Dashboard,3,4480,544
+39,dist/audiobook/chunks/039-current-work-2026-transition-current-work-dashboard-part-04.txt,Current Work - 2026 Transition,Current Work Dashboard,4,1582,203
+40,dist/audiobook/chunks/040-current-work-2026-transition-transition-project-brief-part-01.txt,Current Work - 2026 Transition,Transition Project Brief,1,3246,436
+41,dist/audiobook/chunks/041-current-work-2026-transition-transition-current-state-assessment-part-01.txt,Current Work - 2026 Transition,Transition Current-State Assessment,1,4414,575
+42,dist/audiobook/chunks/042-current-work-2026-transition-transition-current-state-assessment-part-02.txt,Current Work - 2026 Transition,Transition Current-State Assessment,2,254,35
+43,dist/audiobook/chunks/043-current-work-2026-transition-transition-roadmap-part-01.txt,Current Work - 2026 Transition,Transition Roadmap,1,3424,423
+44,dist/audiobook/chunks/044-current-work-2026-transition-transition-roadmap-part-02.txt,Current Work - 2026 Transition,Transition Roadmap,2,3493,413
+45,dist/audiobook/chunks/045-current-work-2026-transition-transition-roadmap-part-03.txt,Current Work - 2026 Transition,Transition Roadmap,3,3950,464
+46,dist/audiobook/chunks/046-current-work-2026-transition-transition-roadmap-part-04.txt,Current Work - 2026 Transition,Transition Roadmap,4,1951,242
+47,dist/audiobook/chunks/047-current-work-2026-transition-decision-log-part-01.txt,Current Work - 2026 Transition,Decision Log,1,3014,408
+48,dist/audiobook/chunks/048-current-work-2026-transition-issue-register-part-01.txt,Current Work - 2026 Transition,Issue Register,1,3942,527
+49,dist/audiobook/chunks/049-current-work-2026-transition-leadership-review-overview-part-01.txt,Current Work - 2026 Transition,Leadership Review Overview,1,1109,151
+50,dist/audiobook/chunks/050-current-work-2026-transition-leadership-review-packet-part-01.txt,Current Work - 2026 Transition,Leadership Review Packet,1,3174,427
+51,dist/audiobook/chunks/051-current-work-2026-transition-leadership-review-packet-part-02.txt,Current Work - 2026 Transition,Leadership Review Packet,2,4246,521
+52,dist/audiobook/chunks/052-current-work-2026-transition-leadership-review-packet-part-03.txt,Current Work - 2026 Transition,Leadership Review Packet,3,4365,569
+53,dist/audiobook/chunks/053-current-work-2026-transition-leadership-review-packet-part-04.txt,Current Work - 2026 Transition,Leadership Review Packet,4,1589,219
+54,dist/audiobook/chunks/054-current-work-2026-transition-personnel-committee-packet-part-01.txt,Current Work - 2026 Transition,Personnel Committee Packet,1,4296,538
+55,dist/audiobook/chunks/055-current-work-2026-transition-personnel-committee-packet-part-02.txt,Current Work - 2026 Transition,Personnel Committee Packet,2,4480,540
+56,dist/audiobook/chunks/056-current-work-2026-transition-personnel-committee-packet-part-03.txt,Current Work - 2026 Transition,Personnel Committee Packet,3,4219,507
+57,dist/audiobook/chunks/057-current-work-2026-transition-personnel-committee-packet-part-04.txt,Current Work - 2026 Transition,Personnel Committee Packet,4,4019,543
+58,dist/audiobook/chunks/058-current-work-2026-transition-finance-committee-packet-part-01.txt,Current Work - 2026 Transition,Finance Committee Packet,1,4487,526
+59,dist/audiobook/chunks/059-current-work-2026-transition-finance-committee-packet-part-02.txt,Current Work - 2026 Transition,Finance Committee Packet,2,4461,563
+60,dist/audiobook/chunks/060-current-work-2026-transition-finance-committee-packet-part-03.txt,Current Work - 2026 Transition,Finance Committee Packet,3,4347,602
+61,dist/audiobook/chunks/061-current-work-2026-transition-finance-committee-packet-part-04.txt,Current Work - 2026 Transition,Finance Committee Packet,4,3894,495
+62,dist/audiobook/chunks/062-current-work-2026-transition-finance-committee-packet-part-05.txt,Current Work - 2026 Transition,Finance Committee Packet,5,1399,184
+63,dist/audiobook/chunks/063-current-work-2026-transition-personnel-committee-recommendation-part-01.txt,Current Work - 2026 Transition,Personnel Committee Recommendation,1,2996,382
+64,dist/audiobook/chunks/064-current-work-2026-transition-finance-committee-recommendation-part-01.txt,Current Work - 2026 Transition,Finance Committee Recommendation,1,584,72
+65,dist/audiobook/chunks/065-current-work-2026-transition-deacon-update-part-01.txt,Current Work - 2026 Transition,Deacon Update,1,435,60
+66,dist/audiobook/chunks/066-current-work-2026-transition-treasurer-vs-bookkeeper-duty-analysis-part-01.txt,Current Work - 2026 Transition,Treasurer vs. Bookkeeper Duty Analysis,1,4474,523
+67,dist/audiobook/chunks/067-current-work-2026-transition-treasurer-vs-bookkeeper-duty-analysis-part-02.txt,Current Work - 2026 Transition,Treasurer vs. Bookkeeper Duty Analysis,2,26,4
+68,dist/audiobook/chunks/068-current-work-2026-transition-treasurer-vs-bookkeeper-duty-analysis-part-03.txt,Current Work - 2026 Transition,Treasurer vs. Bookkeeper Duty Analysis,3,4434,545
+69,dist/audiobook/chunks/069-current-work-2026-transition-treasurer-vs-bookkeeper-duty-analysis-part-04.txt,Current Work - 2026 Transition,Treasurer vs. Bookkeeper Duty Analysis,4,4468,566
+70,dist/audiobook/chunks/070-current-work-2026-transition-treasurer-vs-bookkeeper-duty-analysis-part-05.txt,Current Work - 2026 Transition,Treasurer vs. Bookkeeper Duty Analysis,5,2331,282
+71,dist/audiobook/chunks/071-current-work-2026-transition-treasurer-vs-bookkeeper-duty-analysis-part-06.txt,Current Work - 2026 Transition,Treasurer vs. Bookkeeper Duty Analysis,6,4468,564
+72,dist/audiobook/chunks/072-current-work-2026-transition-treasurer-vs-bookkeeper-duty-analysis-part-07.txt,Current Work - 2026 Transition,Treasurer vs. Bookkeeper Duty Analysis,7,520,67
+73,dist/audiobook/chunks/073-current-work-2026-transition-interim-treasurer-role-part-01.txt,Current Work - 2026 Transition,Interim Treasurer Role,1,775,95
+74,dist/audiobook/chunks/074-current-work-2026-transition-bookkeeper-application-part-01.txt,Current Work - 2026 Transition,Bookkeeper Application,1,3668,478
+75,dist/audiobook/chunks/075-current-work-2026-transition-bookkeeper-hiring-process-part-01.txt,Current Work - 2026 Transition,Bookkeeper Hiring Process,1,4086,542
+76,dist/audiobook/chunks/076-current-work-2026-transition-bookkeeper-hiring-process-part-02.txt,Current Work - 2026 Transition,Bookkeeper Hiring Process,2,4407,616
+77,dist/audiobook/chunks/077-current-work-2026-transition-bookkeeper-hiring-process-part-03.txt,Current Work - 2026 Transition,Bookkeeper Hiring Process,3,1383,193
+78,dist/audiobook/chunks/078-current-work-2026-transition-job-description-consistency-check-part-01.txt,Current Work - 2026 Transition,Job Description Consistency Check,1,4361,448
+79,dist/audiobook/chunks/079-current-work-2026-transition-job-description-consistency-check-part-02.txt,Current Work - 2026 Transition,Job Description Consistency Check,2,1708,232
+80,dist/audiobook/chunks/080-current-work-policy-review-financial-authority-review-package-part-01.txt,Current Work - Policy Review,Financial Authority Review Package,1,2748,338
+81,dist/audiobook/chunks/081-current-work-policy-review-financial-authority-review-package-part-02.txt,Current Work - Policy Review,Financial Authority Review Package,2,4254,533
+82,dist/audiobook/chunks/082-current-work-governance-future-governance-expansion-part-01.txt,Current Work - Governance,Future Governance Expansion,1,4340,576
+83,dist/audiobook/chunks/083-current-work-governance-future-governance-expansion-part-02.txt,Current Work - Governance,Future Governance Expansion,2,655,87
+84,dist/audiobook/chunks/084-current-work-software-software-requirements-part-01.txt,Current Work - Software,Software Requirements,1,4062,506
+85,dist/audiobook/chunks/085-current-work-software-demo-scorecard-part-01.txt,Current Work - Software,Demo Scorecard,1,924,126
+86,dist/audiobook/chunks/086-current-work-software-demo-scorecard-part-02.txt,Current Work - Software,Demo Scorecard,2,4442,560
+87,dist/audiobook/chunks/087-current-work-software-demo-scorecard-part-03.txt,Current Work - Software,Demo Scorecard,3,929,119
+88,dist/audiobook/chunks/088-current-work-software-demo-scorecard-part-04.txt,Current Work - Software,Demo Scorecard,4,4476,621
+89,dist/audiobook/chunks/089-current-work-software-demo-scorecard-part-05.txt,Current Work - Software,Demo Scorecard,5,615,85
+90,dist/audiobook/chunks/090-current-work-software-iconcmo-vs-churchtrac-comparison-part-01.txt,Current Work - Software,IconCMO vs. ChurchTrac Comparison,1,2545,299
+91,dist/audiobook/chunks/091-current-work-software-implementation-plan-part-01.txt,Current Work - Software,Implementation Plan,1,389,49
+92,dist/audiobook/chunks/092-communications-church-business-meeting-summary-part-01.txt,Communications,Church Business Meeting Summary,1,1773,260
+93,dist/audiobook/chunks/093-communications-one-page-congregational-summary-part-01.txt,Communications,One-Page Congregational Summary,1,174,16
+94,dist/audiobook/chunks/094-communications-congregational-slide-outline-part-01.txt,Communications,Congregational Slide Outline,1,165,16
+95,dist/audiobook/chunks/095-administration-and-archive-superseded-project-dashboard-part-01.txt,Administration And Archive,Superseded Project Dashboard,1,458,62
+96,dist/audiobook/chunks/096-administration-and-archive-document-inventory-part-01.txt,Administration And Archive,Document Inventory,1,835,113
+97,dist/audiobook/chunks/097-administration-and-archive-document-inventory-part-02.txt,Administration And Archive,Document Inventory,2,4393,503
+98,dist/audiobook/chunks/098-administration-and-archive-document-inventory-part-03.txt,Administration And Archive,Document Inventory,3,4470,494
+99,dist/audiobook/chunks/099-administration-and-archive-document-inventory-part-04.txt,Administration And Archive,Document Inventory,4,4481,490
+100,dist/audiobook/chunks/100-administration-and-archive-document-inventory-part-05.txt,Administration And Archive,Document Inventory,5,4492,494
+101,dist/audiobook/chunks/101-administration-and-archive-document-inventory-part-06.txt,Administration And Archive,Document Inventory,6,473,56
+102,dist/audiobook/chunks/102-administration-and-archive-document-inventory-part-07.txt,Administration And Archive,Document Inventory,7,3867,458
+103,dist/audiobook/chunks/103-administration-and-archive-document-inventory-part-08.txt,Administration And Archive,Document Inventory,8,1044,116
+104,dist/audiobook/chunks/104-administration-and-archive-document-inventory-part-09.txt,Administration And Archive,Document Inventory,9,4463,444
+105,dist/audiobook/chunks/105-administration-and-archive-document-inventory-part-10.txt,Administration And Archive,Document Inventory,10,3407,361
+106,dist/audiobook/chunks/106-administration-and-archive-document-inventory-part-11.txt,Administration And Archive,Document Inventory,11,2514,257
+107,dist/audiobook/chunks/107-administration-and-archive-document-inventory-part-12.txt,Administration And Archive,Document Inventory,12,3495,360
+108,dist/audiobook/chunks/108-administration-and-archive-document-inventory-part-13.txt,Administration And Archive,Document Inventory,13,1585,166
+109,dist/audiobook/chunks/109-administration-and-archive-export-process-part-01.txt,Administration And Archive,Export Process,1,4079,551
+110,dist/audiobook/chunks/110-administration-and-archive-exported-files-and-release-bundles-part-01.txt,Administration And Archive,Exported Files and Release Bundles,1,2965,372
+111,dist/audiobook/chunks/111-administration-and-archive-document-workflow-notes-part-01.txt,Administration And Archive,Document Workflow Notes,1,4457,554
+112,dist/audiobook/chunks/112-administration-and-archive-document-workflow-notes-part-02.txt,Administration And Archive,Document Workflow Notes,2,1374,167

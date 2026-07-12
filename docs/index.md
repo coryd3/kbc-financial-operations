@@ -1,104 +1,64 @@
-# KBC Financial Operations Handbook And Workspace
+# KBC Financial Operations Handbook
 
 Status: Needs Leadership Review
 
-This is KBC's shared starting point for financial governance, responsibilities, policies, procedures, current committee work, and recorded decisions.
+This handbook brings together KBC's financial governance, responsibilities, policies, procedures, and active review work. It is intended to help members and leaders find current guidance, understand who is responsible, and see what still needs a decision.
 
-The goal is simple: people should be able to find the right guidance, know whether it is approved or still under review, see who owns it, and understand what happens next without depending on one person's memory.
+## Start Here
 
-!!! note "The Short Explanation"
-    A shared folder stores files. This handbook and workspace show which guidance is current, who is responsible for it, what is still being decided, and where people can ask questions or suggest changes.
+- **Church members:** begin with the governing references and responsibility documents below.
+- **Church leadership:** use the [Current Work Dashboard](start-here/project-dashboard.md) for active decisions, owners, and next steps.
+- **Committee members and financial workers:** choose the audience view that matches your responsibilities, then use the applicable workspace, policies, and procedures.
+- **Anyone reviewing a document:** check its status before relying on it or suggesting a change.
 
-[Read the plain-language explanation](start-here/why-this-exists.md)
-
-!!! note "Congregation Final Authority"
-    The congregation remains the final authority where the Constitution and Bylaws, annual budget, policy, officer election, major non-budgeted spending, or church practice require a vote. The handbook records and supports that authority; it does not replace it.
-
-## Three Parts
-
-### 1. The Handbook
-
-The handbook contains guidance meant to remain useful as people and positions change:
-
-- Constitution and Bylaws reference.
-- Church organization and responsibility matrix.
-- Committee charters and role descriptions.
-- Approved financial policies.
-- Practical procedures and recurring checklists.
-
-Draft material is clearly marked. A draft does not become church policy simply because it appears here.
-
-### 2. Current Work
-
-The workroom contains items that help leaders and committees move active work forward:
-
-- [Current Work Dashboard](start-here/project-dashboard.md).
-- Committee review packets and recommendations.
-- Open questions and decisions needed.
-- Implementation roadmaps and evaluation tools.
-- Assigned action items, due dates, and feedback.
-
-These records are useful while work is underway, but they should not take over the permanent handbook. Completed packets and outdated drafts should move to the archive.
-
-### 3. Church Record And History
-
-The record layer preserves the reason behind decisions:
-
-- Constitution and Bylaws source material.
-- Congregational motions and decision summaries.
-- Approved versions and dated releases.
-- Superseded documents retained for reference.
-
-Official church minutes remain with the Church Clerk or other records steward. This library may link to or summarize them, but it does not replace the authoritative record.
-
-## Where To Start
-
-### Church Members
-
-Start with:
+## Core References
 
 - [Constitution and Bylaws Reference](governance/constitution-and-bylaws-reference.md)
 - [Church Organization Chart](governance/church-organization-chart.md)
 - [Financial Operations View](governance/financial-operations-view.md)
 - [Responsibility Matrix](governance/responsibility-matrix.md)
 
-Approved financial policies will be added to the Church Member Library after the proper review and adoption process. Draft policies remain available through the Finance, Leadership, Operations, and All Documents views.
+These pages provide orientation. The Constitution and Bylaws, recorded congregational action, approved budgets, and adopted policies remain the controlling authorities.
 
-### Church Leadership
+## Status And Authority
 
-Use the [Current Work Dashboard](start-here/project-dashboard.md) to see decisions, owners, priorities, and review needs.
+A page's status distinguishes approved guidance from material that is still being developed or reviewed.
 
-### Finance Committee And Financial Workers
+- **Approved** material has a recorded approval and may be used within its adopted scope and effective date.
+- **Current** material is maintained for present use, but the label does not by itself mean that the congregation adopted it.
+- **Reference** material points to an authoritative source or established record.
+- **Draft**, **Needs Review**, and **Working Record** material is not adopted policy.
+- **Superseded** material is retained for history and should not guide current work.
 
-Start with the [Finance Committee Charter](governance/finance-committee-charter.md), [Responsibility Matrix](governance/responsibility-matrix.md), financial policies, and operating procedures.
+This handbook does not create authority. Committees, officers, leaders, and the congregation continue to act within the Constitution and Bylaws, adopted policy, approved budgets, and church practice. The congregation remains the final authority wherever congregational approval is required.
 
-### Personnel Committee
+## Handbook And Current Work
 
-Start with the [Personnel Committee Role](governance/personnel-committee-role.md), [Bookkeeper Job Description](roles/bookkeeper-financial-administrator-job-description.md), and Personnel Committee workspace.
+The **Handbook** contains guidance intended to remain useful as people and assignments change:
 
-### Documentation And Project Helpers
+- Governing references and responsibility documents.
+- Committee charters and role descriptions.
+- Approved financial policies.
+- Practical procedures and recurring checklists.
 
-Use the Current Workroom for the issue register, decision log, implementation roadmap, source inventory, transition material, and other working records. The [Handbook And Workspace Stewardship Guide](document-stewardship.md) explains how multiple people can share ownership without changing church policy on their own.
+The **Current Workroom** contains time-limited work:
 
-## What This Adds Beyond A Shared Folder
+- Decisions and questions awaiting review.
+- Committee packets and recommendations.
+- Implementation plans, evaluations, and assigned actions.
+- Dated transition records and project history.
 
-| A shared folder helps us... | The handbook and workspace also help us... |
-| --- | --- |
-| Store and edit files. | Identify the current document and distinguish it from drafts or superseded copies. |
-| Share a link with a group. | Show the right starting point for members, leaders, committees, and financial workers. |
-| Keep supporting material. | Record the owner, review status, intended audience, and approval path. |
-| Collect comments in individual files. | Route section-level feedback into a review process that can be accepted, planned, resolved, or declined. |
-| Preserve meeting files. | Connect decisions, responsibilities, procedures, and recurring work so the system survives leadership changes. |
+When current work is completed, lasting results should move into the handbook and working material should be archived or marked superseded.
 
-Google Drive can still hold editable office files and properly restricted private records. This handbook is the organized reference point; the portal workspace supports recurring work, decisions, assignments, and feedback.
+## Feedback And Stewardship
 
-## Current Project Context
+Readers may submit feedback on a document or a specific section. Feedback does not change guidance by itself; it is reviewed by the document owner and routed through the appropriate committee or approval process.
 
-The 2026 Treasurer and Bookkeeper transition helped reveal the need for this system. That project remains documented in the [2026 Transition Project Brief](00-project-brief.md), [Current Work Dashboard](start-here/project-dashboard.md), and [Decision Log](02-decision-log.md). It is one project within the workspace, not the permanent organizing principle for the handbook.
+Each maintained document should identify an owner, status, intended audience, and approval path. The [Handbook and Workspace Stewardship Guide](document-stewardship.md) explains how that information is maintained.
 
-## Sensitive Information Warning
+## Sensitive Information
 
-Do not store donor records, giving details, payroll details, bank account numbers, Social Security numbers, passwords, candidate applications, reference-check notes, background-check results, confidential personnel matters, or private pastoral-care information in this repository or public documentation site.
+Do not place donor records, giving details, payroll details, bank account numbers, Social Security numbers, passwords, candidate applications, reference-check notes, background-check results, confidential personnel matters, or private pastoral-care information in the handbook.
 
-!!! warning "Public Site Caution"
-    The GitHub repository and published site should be treated as public. Audience labels organize information for readers; they are not confidentiality controls.
+!!! warning "Public Access Caution"
+    Treat published handbook content as publicly accessible. Audience views reduce clutter; they are not confidentiality controls.
