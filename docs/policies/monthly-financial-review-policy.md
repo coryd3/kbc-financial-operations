@@ -4,17 +4,39 @@ Status: Needs Finance Review
 
 ## Purpose
 
-Define the monthly review process for financial reports, reconciliations, budget status, and exceptions.
+Define the monthly review of reconciliations, reports, fund activity, recurring payments, payroll summaries, and exceptions before financial information is presented to the church.
 
-## Review Items
+## Required Review
 
-- Bank reconciliations.
-- Income and expense report.
-- Budget comparison.
-- Balance sheet.
-- Restricted funds.
-- Unusual or unapproved transactions.
+The Bookkeeper / Financial Administrator or assigned preparer should complete the monthly close and prepare a review packet. The Treasurer should review it before or with the Finance Committee. The person who prepares a reconciliation should not be its only reviewer.
 
-Needs Finance Review: Finance Committee should confirm the monthly review packet, review owner, report recipients, exception process, and business meeting reporting expectations before adoption.
+The monthly packet should include:
 
-Needs Bylaw Review: Final reporting and approval requirements should be checked against KBC Constitution and Bylaws and church practice.
+- Reconciliation summary for every active bank, card, and payment-processor account.
+- Outstanding checks, deposits in transit, pending payments, and old reconciling items.
+- Income-and-expense report and year-to-date budget comparison.
+- Balance sheet or account and fund balance summary.
+- Designated/restricted fund activity and internal transfers.
+- Aggregate physical and online contribution totals and payout reconciliation.
+- Approved mission allocation calculation, if applicable.
+- Recurring-payment, automatic-draft, subscription, and contract exceptions.
+- Card activity, reimbursements, and missing-documentation exceptions.
+- Payroll totals, liabilities, and filing confirmation without unnecessary individual compensation detail.
+- Material corrections, unusual activity, outside-budget spending, and significant variances.
+
+## Review Rules
+
+- Reports should be tied to reconciled records, with timing differences and outstanding items explained.
+- Transactions should not be added, deleted, or changed merely to force unrelated reports to show the same total.
+- Corrections should preserve the original record, supporting evidence, preparer, reviewer, and approval.
+- The Finance Committee should assign an owner and due date for unresolved items.
+- Items outside committee authority should be referred to the proper leadership body or congregation.
+- The approved monthly packet and review record should be retained in the restricted records system.
+
+## Reporting
+
+The Treasurer and Finance Committee should determine which aggregate information is appropriate for leadership and church business meetings. Donor identities, individual giving, private payroll detail, bank account information, credentials, and confidential personnel information should not appear in general reports.
+
+Needs Finance Review: Confirm the monthly close deadline, packet format, preparer, reviewer, meeting cadence, mission-allocation review, materiality thresholds, correction method, report recipients, and business-meeting expectations before adoption.
+
+Needs Bylaw Review: Confirm reporting duties and final approval requirements against the KBC Constitution and Bylaws and church practice.

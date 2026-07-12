@@ -1,6 +1,7 @@
 export const DOCUMENTATION_AUDIENCES = [
   "congregation",
   "leadership",
+  "treasurer",
   "finance",
   "personnel",
   "operations",

@@ -15,6 +15,16 @@ DOCS = ROOT / "docs"
 METADATA_PATH = DOCS / "document-metadata.yml"
 MKDOCS_PATH = ROOT / "mkdocs.yml"
 
+ALLOWED_AUDIENCES = {
+    "congregation",
+    "leadership",
+    "treasurer",
+    "finance",
+    "personnel",
+    "operations",
+    "project",
+}
+
 PLATFORM_PATTERNS = {
     "Google Drive": re.compile(r"\bGoogle Drive\b", re.IGNORECASE),
     "GitHub": re.compile(r"\bGitHub\b", re.IGNORECASE),
@@ -99,6 +109,17 @@ def main() -> int:
             )
 
         lifecycle = str(record.get("lifecycle", "")).strip()
+        audiences = record.get("audiences", [])
+        if not isinstance(audiences, list) or not audiences:
+            failures.append(f"Metadata has no audience: docs/{slug}.md")
+        else:
+            unknown_audiences = sorted(set(audiences) - ALLOWED_AUDIENCES)
+            if unknown_audiences:
+                failures.append(
+                    f"Metadata has unknown audience(s) in docs/{slug}.md: "
+                    + ", ".join(unknown_audiences)
+                )
+
         if lifecycle not in {"durable", "reference"}:
             continue
 

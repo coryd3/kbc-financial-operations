@@ -3,7 +3,8 @@
 documents:
   index: { documentType: Handbook Home, status: Needs Leadership Review, owner: Documentation Stewards, lifecycle: durable, audiences: [congregation, leadership, finance, personnel, operations, project] }
   start-here/why-this-exists: { documentType: Orientation Guide, status: Needs Leadership Review, owner: Leadership Team / Documentation Stewards, lifecycle: durable, audiences: [congregation, leadership, finance, personnel, operations, project] }
-  start-here/project-dashboard: { documentType: Current Work Dashboard, status: Needs Leadership Review, owner: Leadership Team, lifecycle: project, audiences: [leadership, finance, personnel, project] }
+  start-here/treasurer-finance-chair-quick-start: { documentType: Audience Guide, status: Needs Finance Review, owner: Finance Committee, lifecycle: durable, audiences: [treasurer] }
+  start-here/project-dashboard: { documentType: Current Work Dashboard, status: Needs Leadership Review, owner: Leadership Team, lifecycle: project, audiences: [leadership, treasurer, finance, personnel, project] }
   00-project-brief: { documentType: Project Brief, status: Needs Leadership Review, owner: Project Team, lifecycle: project, audiences: [leadership, finance, personnel, project] }
   01-current-state-assessment: { documentType: Assessment, status: Needs Leadership Review, owner: Project Team, lifecycle: project, audiences: [leadership, finance, personnel, project] }
   02-decision-log: { documentType: Decision Record, status: Working Record, owner: Church Clerk / Project Team, lifecycle: project, audiences: [leadership, finance, personnel, project] }
@@ -14,18 +15,18 @@ documents:
   implementation-roadmap: { documentType: Project Roadmap, status: Needs Leadership Review, owner: Leadership Team, lifecycle: project, audiences: [leadership, finance, personnel, project] }
   leadership-review/index: { documentType: Review Guide, status: Draft, owner: Leadership Team, lifecycle: project, audiences: [leadership, project] }
 
-  governance/constitution-and-bylaws-reference: { documentType: Governing Reference, status: Reference, owner: Congregation / Church Clerk, lifecycle: reference, audiences: [congregation, leadership, finance, personnel, operations] }
+  governance/constitution-and-bylaws-reference: { documentType: Governing Reference, status: Reference, owner: Congregation / Church Clerk, lifecycle: reference, audiences: [congregation, leadership, treasurer, finance, personnel, operations] }
   governance/church-organization-chart: { documentType: Governance Guide, status: Needs Bylaw Review, owner: Congregation / Leadership Team, lifecycle: durable, audiences: [congregation, leadership, finance, personnel, operations] }
-  governance/financial-operations-view: { documentType: Governance Guide, status: Needs Bylaw Review, owner: Finance Committee, lifecycle: durable, audiences: [congregation, leadership, finance, personnel, operations] }
-  governance/responsibility-matrix: { documentType: Responsibility Matrix, status: Needs Bylaw Review, owner: Finance Committee, lifecycle: durable, audiences: [congregation, leadership, finance, personnel, operations] }
-  governance/finance-committee-charter: { documentType: Committee Charter, status: Needs Bylaw Review, owner: Finance Committee, lifecycle: durable, audiences: [congregation, leadership, finance, operations] }
+  governance/financial-operations-view: { documentType: Governance Guide, status: Needs Bylaw Review, owner: Finance Committee, lifecycle: durable, audiences: [congregation, leadership, treasurer, finance, personnel, operations] }
+  governance/responsibility-matrix: { documentType: Responsibility Matrix, status: Needs Bylaw Review, owner: Finance Committee, lifecycle: durable, audiences: [congregation, leadership, treasurer, finance, personnel, operations] }
+  governance/finance-committee-charter: { documentType: Committee Charter, status: Needs Bylaw Review, owner: Finance Committee, lifecycle: durable, audiences: [congregation, leadership, treasurer, finance, operations] }
   governance/personnel-committee-role: { documentType: Committee Charter, status: Needs Personnel Review, owner: Personnel Committee, lifecycle: durable, audiences: [congregation, leadership, personnel] }
   governance/future-governance-expansion: { documentType: Planning Memo, status: Parking Lot, owner: Leadership Team, lifecycle: project, audiences: [leadership, project] }
 
-  roles/treasurer-governance-role: { documentType: Officer Role, status: Needs Bylaw Review, owner: Congregation / Finance Committee, lifecycle: durable, audiences: [congregation, leadership, finance, operations] }
+  roles/treasurer-governance-role: { documentType: Officer Role, status: Needs Bylaw Review, owner: Congregation / Finance Committee, lifecycle: durable, audiences: [congregation, leadership, treasurer, finance, operations] }
   roles/treasurer-vs-bookkeeper-duty-split: { documentType: Role Analysis, status: Needs Finance Review, owner: Finance Committee, lifecycle: project, audiences: [leadership, finance, personnel, operations, project] }
   roles/interim-treasurer-role: { documentType: Interim Role Memo, status: Needs Bylaw Review, owner: Finance Committee, lifecycle: project, audiences: [leadership, finance, project] }
-  roles/bookkeeper-financial-administrator-job-description: { documentType: Job Description, status: Needs Personnel Review, owner: Personnel Committee, lifecycle: durable, audiences: [leadership, finance, personnel, operations] }
+  roles/bookkeeper-financial-administrator-job-description: { documentType: Job Description, status: Needs Personnel Review, owner: Personnel Committee, lifecycle: durable, audiences: [leadership, treasurer, finance, personnel, operations] }
   roles/bookkeeper-job-application: { documentType: Hiring Form, status: Needs Personnel Review, owner: Personnel Committee, lifecycle: project, audiences: [personnel, project] }
   roles/bookkeeper-hiring-process: { documentType: Hiring Procedure, status: Needs Personnel Review, owner: Personnel Committee, lifecycle: project, audiences: [leadership, personnel, project] }
   roles/job-description-consistency-check: { documentType: Working Analysis, status: Working Record, owner: Personnel Committee, lifecycle: project, audiences: [personnel, project] }
@@ -35,17 +36,17 @@ documents:
   policies/financial-authority-policy-package: { documentType: Policy Review Package, status: Needs Finance Review, owner: Finance Committee, lifecycle: project, audiences: [leadership, finance, operations, project] }
   policies/reimbursement-policy: { documentType: Policy, status: Needs Finance Review, owner: Finance Committee, lifecycle: durable, audiences: [leadership, finance, operations] }
   policies/credit-card-policy: { documentType: Policy, status: Needs Finance Review, owner: Finance Committee, lifecycle: durable, audiences: [leadership, finance, operations] }
-  policies/offering-counting-and-deposit-policy: { documentType: Policy, status: Needs Finance Review, owner: Finance Committee, lifecycle: durable, audiences: [leadership, finance, operations] }
-  policies/monthly-financial-review-policy: { documentType: Policy, status: Needs Finance Review, owner: Finance Committee, lifecycle: durable, audiences: [leadership, finance, operations] }
+  policies/offering-counting-and-deposit-policy: { documentType: Policy, status: Needs Finance Review, owner: Finance Committee, lifecycle: durable, audiences: [leadership, treasurer, finance, operations] }
+  policies/monthly-financial-review-policy: { documentType: Policy, status: Needs Finance Review, owner: Finance Committee, lifecycle: durable, audiences: [leadership, treasurer, finance, operations] }
   policies/audit-and-review-policy: { documentType: Policy, status: Needs Professional Review, owner: Finance Committee, lifecycle: durable, audiences: [leadership, finance, operations] }
 
   procedures/reimbursement-process: { documentType: Procedure, status: Needs Finance Review, owner: Finance Committee, lifecycle: durable, audiences: [finance, operations] }
-  procedures/monthly-finance-committee-meeting-checklist: { documentType: Checklist, status: Needs Finance Review, owner: Finance Committee, lifecycle: durable, audiences: [leadership, finance, operations] }
-  procedures/contribution-entry-process: { documentType: Procedure, status: Needs Finance Review, owner: Finance Committee, lifecycle: durable, audiences: [finance, operations] }
-  procedures/weekly-bookkeeping-checklist: { documentType: Checklist, status: Needs Finance Review, owner: Finance Committee, lifecycle: durable, audiences: [finance, operations] }
-  procedures/monthly-close-checklist: { documentType: Checklist, status: Needs Finance Review, owner: Finance Committee, lifecycle: durable, audiences: [finance, operations] }
-  procedures/business-meeting-report-process: { documentType: Procedure, status: Needs Finance Review, owner: Finance Committee, lifecycle: durable, audiences: [leadership, finance, operations] }
-  procedures/payroll-process: { documentType: Procedure, status: Needs Professional Review, owner: Finance / Personnel Committees, lifecycle: durable, audiences: [finance, personnel, operations] }
+  procedures/monthly-finance-committee-meeting-checklist: { documentType: Checklist, status: Needs Finance Review, owner: Finance Committee, lifecycle: durable, audiences: [leadership, treasurer, finance, operations] }
+  procedures/contribution-entry-process: { documentType: Procedure, status: Needs Finance Review, owner: Finance Committee, lifecycle: durable, audiences: [treasurer, finance, operations] }
+  procedures/weekly-bookkeeping-checklist: { documentType: Checklist, status: Needs Finance Review, owner: Finance Committee, lifecycle: durable, audiences: [treasurer, finance, operations] }
+  procedures/monthly-close-checklist: { documentType: Checklist, status: Needs Finance Review, owner: Finance Committee, lifecycle: durable, audiences: [treasurer, finance, operations] }
+  procedures/business-meeting-report-process: { documentType: Procedure, status: Needs Finance Review, owner: Finance Committee, lifecycle: durable, audiences: [leadership, treasurer, finance, operations] }
+  procedures/payroll-process: { documentType: Procedure, status: Needs Professional Review, owner: Finance / Personnel Committees, lifecycle: durable, audiences: [treasurer, finance, personnel, operations] }
 
   software-evaluation/software-requirements: { documentType: Requirements, status: Needs Finance Review, owner: Finance Committee, lifecycle: project, audiences: [finance, operations, project] }
   software-evaluation/demo-scorecard: { documentType: Evaluation Tool, status: Working Record, owner: Finance Committee, lifecycle: project, audiences: [finance, operations, project] }

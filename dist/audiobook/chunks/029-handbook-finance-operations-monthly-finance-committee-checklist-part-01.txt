@@ -23,7 +23,11 @@ Budget vs. actual report.
 Balance sheet or fund balance summary.
 Designated/restricted fund activity.
 Bank reconciliation summary.
+Online-giving payout and processing-fee reconciliation summary.
 Credit card or controlled payment activity.
+Recurring-payment and automatic-draft exception summary.
+Mission allocation and internal transfer calculation, if applicable.
+Payroll liability and filing confirmation without individual compensation detail.
 Reimbursement summary.
 Missing receipt list or documentation exceptions.
 Unusual, over-budget, or outside-budget spending.
@@ -44,6 +48,7 @@ Review total income for the prior month.
 Review total expenses for the prior month.
 Identify unusual changes from normal monthly activity.
 Confirm income and expenses are coded to the correct ministry, fund, or category.
+Confirm aggregate physical deposits and online-giving payouts reconcile to the recorded contribution totals.
 Note any corrections needed.
 
 Section: 3. Review Budget Vs. Actuals.
@@ -60,6 +65,7 @@ Review beginning balance, income, expenses, and ending balance for designated/re
 Confirm designated fund expenses match donor or church-approved purpose.
 Identify restricted funds with unclear purpose or stale balances.
 Note any designated fund questions needing follow-up.
+Confirm mission allocations or internal transfers use the currently approved basis and have independent review.
 
 Section: 5. Review Credit Card / Controlled Payment Activity.
 
@@ -85,23 +91,8 @@ Review expenses outside the approved budget.
 Review expenses that caused a budget category to go over budget.
 Review unusual or non-routine expenses.
 Review recurring commitments, subscriptions, contracts, or large purchases.
+Confirm expected automatic drafts and recurring payments agree with the current approved register.
 Confirm approval path was documented.
 Decide whether additional review, Deacon input, or church vote is required.
 
 Section: 8. Approve Exceptions.
-
-Review any exception requests presented for approval.
-Confirm the reason, amount, funding source, and urgency.
-Approve, deny, table, or escalate each exception.
-Record the decision, owner, and follow-up action.
-Add approved exceptions to the decision log if appropriate.
-
-Section: 9. Identify Items Needing Church Vote.
-
-Identify budget changes requiring congregational approval.
-Identify role, compensation, software, contract, debt, or major purchase items requiring church vote.
-Confirm whether Deacon review or Pastor/leadership review should happen first.
-Draft or assign preparation of any motion needed.
-Confirm who will present the item at the business meeting.
-
-Section: 10. Prepare Report For Business Meeting.

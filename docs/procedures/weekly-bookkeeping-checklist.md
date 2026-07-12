@@ -2,10 +2,37 @@
 
 Status: Needs Finance Review
 
-- [ ] Record income.
-- [ ] Enter bills and expenses.
-- [ ] Match receipts and supporting documents.
-- [ ] Prepare payments for approval.
-- [ ] Review outstanding reimbursement requests.
-- [ ] Flag exceptions for treasurer or finance committee review.
+## Purpose
 
+Use this checklist to keep weekly contribution, banking, payment, and documentation work current. The Bookkeeper / Financial Administrator or assigned worker prepares the records; the Treasurer reviews exceptions and the Finance Committee reviews the overall process.
+
+## Contributions And Deposits
+
+- [ ] Receive the completed count sheet, deposit record, and any approved contribution-entry documentation.
+- [ ] Confirm each physical deposit agrees with the signed count sheet and contribution-system total.
+- [ ] Match the deposit to the bank activity after it posts.
+- [ ] Review online-giving processor payouts and match each payout to its underlying gifts, dates, fees, and fund designations.
+- [ ] Record physical and online contributions in the correct funds without exposing donor detail in general reports.
+- [ ] Route verified donor contact changes to the authorized recordkeeper.
+
+## Transactions And Documentation
+
+- [ ] Review newly imported or posted bank, card, and payment-processor transactions.
+- [ ] Match receipts, invoices, approvals, and other supporting documents to each transaction.
+- [ ] Identify issued, pending, and cleared payments so the same expense is not entered twice.
+- [ ] Review upcoming recurring payments and confirm the vendor, purpose, coding, and approval remain current.
+- [ ] Enter bills and expenses using the approved account, fund, ministry, and budget categories.
+- [ ] Prepare checks or electronic payments for the required approval; do not approve a payment prepared for oneself.
+- [ ] Review outstanding reimbursement requests and follow up on missing information.
+- [ ] Complete assigned payroll-preparation steps using the approved payroll schedule and private compensation records.
+
+## Exceptions And Handoff
+
+- [ ] Investigate any difference among a count sheet, deposit record, processor payout, bank activity, and ledger entry.
+- [ ] Preserve the original source records. Do not simply change an entry to force a match.
+- [ ] Document the reason, correction, reviewer, and approval for any adjustment.
+- [ ] Flag missing receipts, unusual activity, outside-budget spending, duplicate transactions, or unresolved differences for Treasurer review.
+- [ ] File the week's records in the approved restricted location.
+- [ ] Note incomplete items, owner, and due date for the next weekly review.
+
+Needs Finance Review: Confirm the weekly cutoff, who performs each step, required Treasurer review, correction authority, recurring-payment review, and where confidential records are maintained.

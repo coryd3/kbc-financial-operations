@@ -1,0 +1,20 @@
+Can the system handle both contributions and accounting in one place?
+Can it track restricted/designated funds cleanly?
+Can it produce the exact reports KBC needs monthly?
+Can users have different permission levels?
+Can receipts be attached to transactions?
+Can it import bank or credit card transactions?
+Can it prevent duplicate entries when checks, bill payments, bank feeds, and processor payouts post at different times?
+Can it reconcile online-giving payouts to gross gifts, fees, refunds, and fund designations?
+How are corrections and audit trails handled?
+Can a closed batch or period be locked, with later corrections recorded as adjustments rather than overwrites?
+Can it maintain or export a recurring-payment schedule?
+What data can be exported if KBC changes systems later?
+How are year-end giving statements produced and corrected?
+How does payroll work, or what payroll systems does it integrate with?
+What support is available during setup and migration?
+What is the total annual cost, including add-ons?
+
+Needs Finance Review: Requirements should be approved by the Finance Committee before demos or final selection.
+
+End of chapter: Software Requirements.

@@ -1,3 +1,19 @@
+Review any exception requests presented for approval.
+Confirm the reason, amount, funding source, and urgency.
+Approve, deny, table, or escalate each exception.
+Record the decision, owner, and follow-up action.
+Add approved exceptions to the decision log if appropriate.
+
+Section: 9. Identify Items Needing Church Vote.
+
+Identify budget changes requiring congregational approval.
+Identify role, compensation, software, contract, debt, or major purchase items requiring church vote.
+Confirm whether Deacon review or Pastor/leadership review should happen first.
+Draft or assign preparation of any motion needed.
+Confirm who will present the item at the business meeting.
+
+Section: 10. Prepare Report For Business Meeting.
+
 Decide what financial summary should be presented.
 Confirm whether detailed reports, summary reports, or motion language are needed.
 Identify key explanations for unusual activity or decisions.

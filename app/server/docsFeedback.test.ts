@@ -63,6 +63,7 @@ describe("section-aware documentation feedback", () => {
   it("publishes metadata and filters search results by intended audience", async () => {
     const nav = await request(app).get("/api/docs/nav");
     expect(nav.status).toBe(200);
+    expect(nav.body.audiences).toContain("treasurer");
     const pages = nav.body.sections.flatMap((section: any) => section.pages);
     expect(pages.every((item: any) => item.metadata?.documentType && item.metadata?.audiences?.length)).toBe(true);
     const churchSearch = await request(app).get("/api/docs/search?q=Document%20Inventory&audience=congregation");
@@ -70,6 +71,10 @@ describe("section-aware documentation feedback", () => {
     expect(churchSearch.body.results).toHaveLength(0);
     const projectSearch = await request(app).get("/api/docs/search?q=Document%20Inventory&audience=project");
     expect(projectSearch.body.results.some((item: any) => item.slug === "document-inventory")).toBe(true);
+    const treasurerSearch = await request(app).get("/api/docs/search?q=Quick%20Start&audience=treasurer");
+    expect(treasurerSearch.body.results.some((item: any) => item.slug === "start-here/treasurer-finance-chair-quick-start")).toBe(true);
+    const churchQuickStart = await request(app).get("/api/docs/search?q=Quick%20Start&audience=congregation");
+    expect(churchQuickStart.body.results).toHaveLength(0);
   });
 
   it("accepts separate comments for separate sections and prevents duplicates", async () => {
