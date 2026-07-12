@@ -340,15 +340,21 @@ export function registerDocsRoutes(app: Express) {
 
   app.get("/api/admin/docs/feedback/export", reviewFeedback, async (req, res) => {
     const requestedStatus = typeof req.query.status === "string" ? req.query.status : "accepted";
-    if (!["accepted", "planned", "resolved"].includes(requestedStatus)) {
-      return res.status(400).json({ message: "Export status must be accepted, planned, or resolved" });
+    if (!["all", "accepted", "planned", "resolved"].includes(requestedStatus)) {
+      return res.status(400).json({ message: "Export status must be all, accepted, planned, or resolved" });
     }
-    const rows = await db
-      .select({ feedback: documentationFeedback, submittedBy: users.fullName })
-      .from(documentationFeedback)
-      .innerJoin(users, eq(users.id, documentationFeedback.userId))
-      .where(eq(documentationFeedback.status, requestedStatus as any))
-      .orderBy(documentationFeedback.pageSlug, documentationFeedback.sectionTitle, documentationFeedback.createdAt);
+    const rows = requestedStatus === "all"
+      ? await db
+        .select({ feedback: documentationFeedback, submittedBy: users.fullName })
+        .from(documentationFeedback)
+        .innerJoin(users, eq(users.id, documentationFeedback.userId))
+        .orderBy(documentationFeedback.status, documentationFeedback.pageSlug, documentationFeedback.sectionTitle, documentationFeedback.createdAt)
+      : await db
+        .select({ feedback: documentationFeedback, submittedBy: users.fullName })
+        .from(documentationFeedback)
+        .innerJoin(users, eq(users.id, documentationFeedback.userId))
+        .where(eq(documentationFeedback.status, requestedStatus as any))
+        .orderBy(documentationFeedback.pageSlug, documentationFeedback.sectionTitle, documentationFeedback.createdAt);
     const lines = [
       "# KBC Documentation Feedback Export",
       "",
@@ -367,6 +373,8 @@ export function registerDocsRoutes(app: Express) {
         `## ${pageTitle}: ${sectionLabel}`,
         "",
         `- Source: /docs/${item.pageSlug}${anchor}`,
+        `- Feedback ID: ${item.id}`,
+        `- Current status: ${item.status}`,
         `- Revision: ${item.documentationRevision}`,
         `- Category: ${item.category}`,
         `- Submitted by: ${row.submittedBy}`,

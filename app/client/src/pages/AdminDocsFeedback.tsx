@@ -31,9 +31,14 @@ export default function AdminDocsFeedback() {
           <h1 className="text-3xl font-serif font-bold text-primary">Documentation Feedback</h1>
           <p className="mt-1 text-sm text-muted-foreground">Private comments submitted by signed-in reviewers.</p>
         </div>
-        <a href="/api/admin/docs/feedback/export?status=accepted" className="inline-flex h-9 items-center justify-center gap-2 rounded-md border border-input bg-background px-3 text-sm font-medium hover:bg-accent hover:text-accent-foreground">
-          <Download className="h-4 w-4" /> Export accepted feedback
-        </a>
+        <div className="flex flex-wrap gap-2">
+          <a href="/api/admin/docs/feedback/export?status=all" className="inline-flex h-9 items-center justify-center gap-2 rounded-md border border-input bg-background px-3 text-sm font-medium hover:bg-accent hover:text-accent-foreground">
+            <Download className="h-4 w-4" /> Export all feedback
+          </a>
+          <a href="/api/admin/docs/feedback/export?status=accepted" className="inline-flex h-9 items-center justify-center gap-2 rounded-md border border-input bg-background px-3 text-sm font-medium hover:bg-accent hover:text-accent-foreground">
+            <Download className="h-4 w-4" /> Export accepted
+          </a>
+        </div>
       </header>
       {isLoading ? <p>Loading...</p> : data?.feedback.length ? (
         <div className="space-y-4">

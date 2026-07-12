@@ -173,6 +173,17 @@ describe("section-aware documentation feedback", () => {
     expect(exported.headers["content-type"]).toContain("text/markdown");
     expect(exported.text).toContain(feedbackSections[0].title);
     expect(exported.text).toContain(`/docs/${page.slug}#${feedbackSections[0].id}`);
+    expect(exported.text).toContain(`- Feedback ID: ${target.id}`);
+    expect(exported.text).toContain("- Current status: accepted");
+
+    const allFeedback = await request(app)
+      .get("/api/admin/docs/feedback/export?status=all")
+      .set(as(adminId));
+    expect(allFeedback.status).toBe(200);
+    expect(allFeedback.headers["content-disposition"]).toContain("documentation-feedback-all.md");
+    expect(allFeedback.text).toContain("Status: all");
+    expect(allFeedback.text).toContain("- Current status: accepted");
+    expect(allFeedback.text).toContain("- Current status: new");
 
     const memberExport = await request(app)
       .get("/api/admin/docs/feedback/export?status=accepted")
