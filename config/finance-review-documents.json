@@ -1,0 +1,32 @@
+{
+  "packetTitle": "KBC Finance Committee Document Review",
+  "documents": [
+    { "category": "Start Here", "title": "Treasurer and Finance Chair Quick Start", "slug": "treasurer-finance-chair-quick-start", "path": "docs/start-here/treasurer-finance-chair-quick-start.md" },
+    { "category": "Governance", "title": "Constitution and Bylaws Reference", "slug": "constitution-and-bylaws-reference", "path": "docs/governance/constitution-and-bylaws-reference.md" },
+    { "category": "Governance", "title": "Financial Operations View", "slug": "financial-operations-view", "path": "docs/governance/financial-operations-view.md" },
+    { "category": "Governance", "title": "Responsibility Matrix", "slug": "responsibility-matrix", "path": "docs/governance/responsibility-matrix.md" },
+    { "category": "Governance", "title": "Finance Committee Charter", "slug": "finance-committee-charter", "path": "docs/governance/finance-committee-charter.md" },
+    { "category": "Roles", "title": "Treasurer Governance Role", "slug": "treasurer-governance-role", "path": "docs/roles/treasurer-governance-role.md" },
+    { "category": "Roles", "title": "Bookkeeper and Financial Administrator Job Description", "slug": "bookkeeper-financial-administrator-job-description", "path": "docs/roles/bookkeeper-financial-administrator-job-description.md" },
+    { "category": "Roles", "title": "Treasurer and Bookkeeper Duty Split", "slug": "treasurer-bookkeeper-duty-split", "path": "docs/roles/treasurer-vs-bookkeeper-duty-split.md" },
+    { "category": "Policies", "title": "Financial Authority Policy Review Package", "slug": "financial-authority-policy-package", "path": "docs/policies/financial-authority-policy-package.md" },
+    { "category": "Policies", "title": "Spending Authority Policy", "slug": "spending-authority-policy", "path": "docs/policies/spending-authority-policy.md" },
+    { "category": "Policies", "title": "Reimbursement Policy", "slug": "reimbursement-policy", "path": "docs/policies/reimbursement-policy.md" },
+    { "category": "Policies", "title": "Credit Card and Controlled Payment Policy", "slug": "credit-card-policy", "path": "docs/policies/credit-card-policy.md" },
+    { "category": "Policies", "title": "Offering Counting and Deposit Policy", "slug": "offering-counting-and-deposit-policy", "path": "docs/policies/offering-counting-and-deposit-policy.md" },
+    { "category": "Policies", "title": "Monthly Financial Review Policy", "slug": "monthly-financial-review-policy", "path": "docs/policies/monthly-financial-review-policy.md" },
+    { "category": "Policies", "title": "Audit and Review Policy", "slug": "audit-and-review-policy", "path": "docs/policies/audit-and-review-policy.md" },
+    { "category": "Procedures", "title": "Weekly Bookkeeping Checklist", "slug": "weekly-bookkeeping-checklist", "path": "docs/procedures/weekly-bookkeeping-checklist.md" },
+    { "category": "Procedures", "title": "Contribution Entry Process", "slug": "contribution-entry-process", "path": "docs/procedures/contribution-entry-process.md" },
+    { "category": "Procedures", "title": "Reimbursement Process", "slug": "reimbursement-process", "path": "docs/procedures/reimbursement-process.md" },
+    { "category": "Procedures", "title": "Monthly Close Checklist", "slug": "monthly-close-checklist", "path": "docs/procedures/monthly-close-checklist.md" },
+    { "category": "Procedures", "title": "Monthly Finance Committee Meeting Checklist", "slug": "monthly-finance-committee-meeting-checklist", "path": "docs/procedures/monthly-finance-committee-meeting-checklist.md" },
+    { "category": "Procedures", "title": "Business Meeting Report Process", "slug": "business-meeting-report-process", "path": "docs/procedures/business-meeting-report-process.md" },
+    { "category": "Procedures", "title": "Payroll Process", "slug": "payroll-process", "path": "docs/procedures/payroll-process.md" },
+    { "category": "Software Review", "title": "Software Requirements", "slug": "software-requirements", "path": "docs/software-evaluation/software-requirements.md" },
+    { "category": "Software Review", "title": "IconCMO and ChurchTrac Comparison", "slug": "icon-churchtrac-comparison", "path": "docs/software-evaluation/icon-vs-churchtrac-comparison.md" },
+    { "category": "Software Review", "title": "Software Demo Scorecard", "slug": "software-demo-scorecard", "path": "docs/software-evaluation/demo-scorecard.md" },
+    { "category": "Software Review", "title": "Software Implementation Plan", "slug": "software-implementation-plan", "path": "docs/software-evaluation/implementation-plan.md" },
+    { "category": "Committee Review", "title": "Finance Committee Review Packet", "slug": "finance-committee-review-packet", "path": "docs/communications/finance-committee-packet.md" }
+  ]
+}

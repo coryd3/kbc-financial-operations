@@ -33,6 +33,16 @@ Command or example: make export.
 
 This creates PDF, DOCX, and PPTX review files in dist/exports/ and then validates them.
 
+Section: Export Finance Committee Review Files.
+
+Run:
+
+Command or example: make finance-review.
+
+This creates a timestamped packet under dist/finance-review/ with one DOCX and PDF per selected financial document. The manual GitHub Action named Export Finance Committee Review creates the same packet as a downloadable artifact.
+
+For returned Word comments and tracked changes, follow the Finance Committee Document Review Workflow. Returned files are converted into a local comparison workspace and never overwrite Markdown automatically.
+
 Section: Validate Existing Exports.
 
 Run:
@@ -118,7 +128,3 @@ Command or example: make audit-public.
 This checks tracked text files for obvious private-data or secret patterns and warns that binary files under source-materials/ need manual review before broad public sharing.
 
 Section: Sensitive Information Warning.
-
-Do not store donor records, payroll details, bank account numbers, Social Security numbers, passwords, candidate applications, background-check results, or confidential personnel information in this repository or in generated release packets.
-
-End of chapter: Export Process.

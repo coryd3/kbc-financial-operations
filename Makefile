@@ -1,7 +1,7 @@
 PYTHON ?= python
 MKDOCS ?= $(PYTHON) -m mkdocs
 
-.PHONY: export validate release notebooklm audiobook audiobook-chunks tts-local tts-local-sample tts-local-download-voice audit-public audit-docs clean clean-exports serve docs-build docs-deploy
+.PHONY: export validate release finance-review finance-review-validate finance-review-ingest notebooklm audiobook audiobook-chunks tts-local tts-local-sample tts-local-download-voice audit-public audit-docs clean clean-exports serve docs-build docs-deploy
 
 export:
 	@./scripts/export.sh
@@ -11,6 +11,16 @@ validate:
 
 release:
 	@./scripts/release.sh
+
+finance-review:
+	@$(PYTHON) scripts/export_finance_review.py
+
+finance-review-validate:
+	@$(PYTHON) scripts/validate_finance_review.py
+
+finance-review-ingest:
+	@if [ -z "$(INPUT)" ]; then echo "Usage: make finance-review-ingest INPUT=path/to/returned-review.zip"; exit 1; fi
+	@$(PYTHON) scripts/ingest_finance_review.py "$(INPUT)"
 
 notebooklm:
 	@$(PYTHON) scripts/build_notebooklm_bundle.py

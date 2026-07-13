@@ -195,6 +195,28 @@ Generated files are placed in `dist/exports/`:
 
 If your computer does not have the export tools installed, use the GitHub Action named `Export Docs`. It creates the same exports and a release packet as downloadable workflow artifacts.
 
+## Finance Committee Review Packets
+
+The GitHub Action named `Export Finance Committee Review` creates a committee-review artifact with one timestamped DOCX and PDF for every selected financial policy, procedure, governance document, role description, and software-review document.
+
+To create the same packet locally with Pandoc and LibreOffice installed, run:
+
+```sh
+make finance-review
+```
+
+The packet is written under `dist/finance-review/`. The included manifest records each title, source file, document status, source hash, Git revision, and export time.
+
+For returned Word files, run:
+
+```sh
+python scripts/ingest_finance_review.py "path/to/returned-review-folder-or.zip"
+```
+
+This creates an ignored workspace under `review-intake/finance/` for reviewing comments, tracked changes, and source comparisons. It never overwrites Markdown automatically.
+
+See `docs/finance-committee-review-workflow.md` for committee instructions and the repeatable human/AI update process.
+
 ## How to Build the NotebookLM Sourcebook
 
 Run:

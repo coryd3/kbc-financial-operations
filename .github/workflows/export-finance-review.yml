@@ -1,0 +1,53 @@
+name: Export Finance Committee Review
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  export:
+    name: Build Finance Committee packet
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v5
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: 22
+
+      - name: Install document tools
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y make pandoc libreoffice-writer fonts-liberation poppler-utils zip
+          npm install --global @mermaid-js/mermaid-cli
+
+      - name: Export Finance Committee documents
+        run: make finance-review
+        env:
+          MERMAID_PUPPETEER_CONFIG: config/mermaid-puppeteer-ci.json
+
+      - name: Validate Finance Committee packet
+        run: make finance-review-validate
+
+      - name: Smoke-test returned Word intake
+        run: |
+          batch_dir="$(find dist/finance-review -mindepth 1 -maxdepth 1 -type d -print -quit)"
+          python scripts/ingest_finance_review.py "$batch_dir"
+
+      - name: Upload Finance Committee review packet
+        uses: actions/upload-artifact@v7
+        with:
+          name: kbc-finance-committee-review-${{ github.run_number }}
+          path: dist/finance-review/
+          if-no-files-found: error
+          retention-days: 30

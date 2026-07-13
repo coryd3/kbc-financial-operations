@@ -98,11 +98,11 @@ sequence,file,group,title,part,characters,words
 97,dist/audiobook/chunks/097-communications-congregational-slide-outline-part-01.txt,Communications,Congregational Slide Outline,1,165,16
 98,dist/audiobook/chunks/098-administration-and-archive-superseded-project-dashboard-part-01.txt,Administration And Archive,Superseded Project Dashboard,1,458,62
 99,dist/audiobook/chunks/099-administration-and-archive-document-inventory-part-01.txt,Administration And Archive,Document Inventory,1,835,113
-100,dist/audiobook/chunks/100-administration-and-archive-document-inventory-part-02.txt,Administration And Archive,Document Inventory,2,4406,512
-101,dist/audiobook/chunks/101-administration-and-archive-document-inventory-part-03.txt,Administration And Archive,Document Inventory,3,4473,494
-102,dist/audiobook/chunks/102-administration-and-archive-document-inventory-part-04.txt,Administration And Archive,Document Inventory,4,4410,484
-103,dist/audiobook/chunks/103-administration-and-archive-document-inventory-part-05.txt,Administration And Archive,Document Inventory,5,4486,483
-104,dist/audiobook/chunks/104-administration-and-archive-document-inventory-part-06.txt,Administration And Archive,Document Inventory,6,1630,186
+100,dist/audiobook/chunks/100-administration-and-archive-document-inventory-part-02.txt,Administration And Archive,Document Inventory,2,4399,510
+101,dist/audiobook/chunks/101-administration-and-archive-document-inventory-part-03.txt,Administration And Archive,Document Inventory,3,4466,491
+102,dist/audiobook/chunks/102-administration-and-archive-document-inventory-part-04.txt,Administration And Archive,Document Inventory,4,4374,483
+103,dist/audiobook/chunks/103-administration-and-archive-document-inventory-part-05.txt,Administration And Archive,Document Inventory,5,4440,479
+104,dist/audiobook/chunks/104-administration-and-archive-document-inventory-part-06.txt,Administration And Archive,Document Inventory,6,2174,245
 105,dist/audiobook/chunks/105-administration-and-archive-document-inventory-part-07.txt,Administration And Archive,Document Inventory,7,3867,458
 106,dist/audiobook/chunks/106-administration-and-archive-document-inventory-part-08.txt,Administration And Archive,Document Inventory,8,1044,116
 107,dist/audiobook/chunks/107-administration-and-archive-document-inventory-part-09.txt,Administration And Archive,Document Inventory,9,4463,444
@@ -110,7 +110,10 @@ sequence,file,group,title,part,characters,words
 109,dist/audiobook/chunks/109-administration-and-archive-document-inventory-part-11.txt,Administration And Archive,Document Inventory,11,2514,257
 110,dist/audiobook/chunks/110-administration-and-archive-document-inventory-part-12.txt,Administration And Archive,Document Inventory,12,3495,360
 111,dist/audiobook/chunks/111-administration-and-archive-document-inventory-part-13.txt,Administration And Archive,Document Inventory,13,1585,166
-112,dist/audiobook/chunks/112-administration-and-archive-export-process-part-01.txt,Administration And Archive,Export Process,1,4079,551
-113,dist/audiobook/chunks/113-administration-and-archive-exported-files-and-release-bundles-part-01.txt,Administration And Archive,Exported Files and Release Bundles,1,2965,372
-114,dist/audiobook/chunks/114-administration-and-archive-document-workflow-notes-part-01.txt,Administration And Archive,Document Workflow Notes,1,4457,554
-115,dist/audiobook/chunks/115-administration-and-archive-document-workflow-notes-part-02.txt,Administration And Archive,Document Workflow Notes,2,1374,167
+112,dist/audiobook/chunks/112-administration-and-archive-export-process-part-01.txt,Administration And Archive,Export Process,1,4342,589
+113,dist/audiobook/chunks/113-administration-and-archive-export-process-part-02.txt,Administration And Archive,Export Process,2,275,35
+114,dist/audiobook/chunks/114-administration-and-archive-finance-committee-review-workflow-part-01.txt,Administration And Archive,Finance Committee Review Workflow,1,4332,581
+115,dist/audiobook/chunks/115-administration-and-archive-finance-committee-review-workflow-part-02.txt,Administration And Archive,Finance Committee Review Workflow,2,458,59
+116,dist/audiobook/chunks/116-administration-and-archive-exported-files-and-release-bundles-part-01.txt,Administration And Archive,Exported Files and Release Bundles,1,2965,372
+117,dist/audiobook/chunks/117-administration-and-archive-document-workflow-notes-part-01.txt,Administration And Archive,Document Workflow Notes,1,4457,554
+118,dist/audiobook/chunks/118-administration-and-archive-document-workflow-notes-part-02.txt,Administration And Archive,Document Workflow Notes,2,1374,167
