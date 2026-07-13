@@ -64,5 +64,6 @@ documents:
   communications/congregational-slide-outline: { documentType: Congregational Communication, status: Draft, owner: Leadership Team, lifecycle: communication, audiences: [congregation, leadership, project] }
 
   export-process: { documentType: Administrative Guide, status: Current, owner: Documentation Stewards, lifecycle: administration, audiences: [project] }
+  finance-committee-review-workflow: { documentType: Administrative Guide, status: Current, owner: Documentation Stewards, lifecycle: administration, audiences: [finance, project] }
   exports-and-releases: { documentType: Administrative Guide, status: Current, owner: Documentation Stewards, lifecycle: administration, audiences: [project] }
   document-workflow-upgrade-notes: { documentType: Administrative Memo, status: Working Record, owner: Documentation Stewards, lifecycle: administration, audiences: [project] }

@@ -83,6 +83,7 @@ This compiled document gathers the current handbook, current-work records, and s
 - Superseded Project Dashboard: `docs/project-dashboard.md`
 - Document Inventory: `docs/document-inventory.md`
 - Export Process: `docs/export-process.md`
+- Finance Committee Review Workflow: `docs/finance-committee-review-workflow.md`
 - Exported Files and Release Bundles: `docs/exports-and-releases.md`
 - Document Workflow Notes: `docs/document-workflow-upgrade-notes.md`
 
@@ -4764,6 +4765,7 @@ Important: Source materials are reference copies. A source document should not b
 | `docs/03-open-questions.md` | Project issue register | Track unresolved questions for Personnel, Finance, Nominating, Deacons, Pastor, Congregation, and professional review. | Working Record | All project reviewers | No | Which questions must be answered before any church vote? |
 | `docs/implementation-roadmap.md` | Implementation roadmap | Organize stabilization, 30-day, 60-day, 90-day, and long-term Handbook integration work. | Draft | Finance Committee, Personnel Committee, Pastor, Deacons, Treasurer, Bookkeeper | No | Who owns roadmap updates and phase completion tracking? |
 | `docs/document-workflow-upgrade-notes.md` | Workflow review note | Capture useful patterns and upgrade opportunities from the prior KBC Personnel Committee repository. | Draft | Personnel Committee, document maintainers | No | Which workflow improvements should be implemented next, especially Windows-friendly local export? |
+| `docs/finance-committee-review-workflow.md` | Administrative guide | Define the timestamped Finance Committee export, returned-DOCX intake, source comparison, and controlled Markdown update process. | Current | Finance Committee, document owners, documentation stewards | No | Who will coordinate each review round and confirm committee dispositions? |
 | `docs/governance/constitution-and-bylaws-reference.md` | Governance reference page | Provide site access to the 2018 Constitution, Bylaws, and Covenant source and key financial-operations review questions. | Reference | Congregation, Pastor, Deacons, Nominating Committee, Finance Committee, Personnel Committee | Maybe | Is the 2018 PDF the current authoritative version? |
 | `docs/governance/financial-operations-view.md` | Governance diagram | Provide a durable visual of financial accountability, operations, committee oversight, and congregational authority. | Needs Bylaw Review | Congregation, Finance Committee, Personnel Committee, Treasurer, Bookkeeper | Yes | Does the diagram match the bylaws and adopted reporting relationships? |
 | `docs/governance/finance-committee-charter.md` | Committee charter | Define Finance Committee purpose, responsibilities, meeting cadence, monthly review, software ownership, and reporting. | Draft | Finance Committee | Yes | Does this match KBC bylaws and current committee authority? |
@@ -4897,7 +4899,7 @@ Important: Source materials are reference copies. A source document should not b
 
 - Source file path: `docs/export-process.md`
 - Status: Current
-- Last updated: 2026-07-10
+- Last updated: 2026-07-12
 
 ### Export and Release Process
 
@@ -4934,6 +4936,18 @@ make export
 ```
 
 This creates PDF, DOCX, and PPTX review files in `dist/exports/` and then validates them.
+
+#### Export Finance Committee Review Files
+
+Run:
+
+```sh
+make finance-review
+```
+
+This creates a timestamped packet under `dist/finance-review/` with one DOCX and PDF per selected financial document. The manual GitHub Action named `Export Finance Committee Review` creates the same packet as a downloadable artifact.
+
+For returned Word comments and tracked changes, follow the [Finance Committee Document Review Workflow](finance-committee-review-workflow.md). Returned files are converted into a local comparison workspace and never overwrite Markdown automatically.
 
 #### Validate Existing Exports
 
@@ -5040,6 +5054,130 @@ This checks tracked text files for obvious private-data or secret patterns and w
 #### Sensitive Information Warning
 
 Do not store donor records, payroll details, bank account numbers, Social Security numbers, passwords, candidate applications, background-check results, or confidential personnel information in this repository or in generated release packets.
+
+## Finance Committee Review Workflow
+
+- Source file path: `docs/finance-committee-review-workflow.md`
+- Status: Current
+- Last updated: 2026-07-12
+
+### Finance Committee Document Review Workflow
+
+Status: Current
+
+#### Purpose
+
+This workflow creates a dated Finance Committee review packet with one Word document and one PDF for every selected financial policy, procedure, governance document, role description, and software-review document. It also provides a controlled way to compare returned Word edits with the exact Markdown source the committee received.
+
+Markdown under `docs/` remains the source of truth. A returned Word file is review input, not an automatic replacement.
+
+#### Create The Review Packet In GitHub
+
+1. Open the repository in GitHub.
+2. Select **Actions**.
+3. Open **Export Finance Committee Review**.
+4. Select **Run workflow**.
+5. When the workflow finishes, download the artifact named `kbc-finance-committee-review-<run-number>`.
+
+The artifact contains a timestamped folder and ZIP file under `dist/finance-review/`. Each document is exported separately as DOCX and PDF. Filenames, document covers, and the manifest record the UTC export time and source revision.
+
+The GitHub workflow also renders Mermaid governance diagrams as images inside the Word and PDF review copies. The source snapshots retain the editable Mermaid definitions.
+
+The selected source list is maintained in:
+
+```text
+config/finance-review-documents.json
+```
+
+#### Review Instructions For The Committee
+
+- Use the PDF for reading when no edits are needed.
+- Use the DOCX file for comments or proposed changes.
+- Turn on Track Changes when changing wording.
+- Comment on the specific sentence or section whenever possible.
+- Do not add donor, payroll, banking, personnel, pastoral, or other private information.
+- Return edited DOCX files with the packet's `manifest.json` and `source-snapshots/` folder.
+- A timestamped review copy is not approved policy. Normal committee, bylaw, professional, leadership, or congregational approval still applies.
+
+Reviewers do not need to return files they did not edit.
+
+#### Create A Review Packet Locally
+
+When Pandoc and LibreOffice are installed, run:
+
+```sh
+make finance-review
+```
+
+or:
+
+```sh
+python scripts/export_finance_review.py
+```
+
+Generated packets are placed in `dist/finance-review/` and ignored by Git.
+
+Install Mermaid CLI as well when local review copies should include rendered diagrams:
+
+```sh
+npm install --global @mermaid-js/mermaid-cli
+```
+
+#### Ingest Returned Word Documents
+
+Keep the returned folder or ZIP outside the repository, then run:
+
+```sh
+python scripts/ingest_finance_review.py "path/to/returned-review-folder-or.zip"
+```
+
+With `make`, use:
+
+```sh
+make finance-review-ingest INPUT="path/to/returned-review-folder-or.zip"
+```
+
+The command creates a local workspace under `review-intake/finance/` containing:
+
+- `review-summary.md` with document links and source-change warnings.
+- A Markdown conversion of each returned DOCX, including tracked changes where Pandoc can preserve them.
+- A proposed document body for review.
+- A comparison against the exact source snapshot included in the export packet.
+
+The intake workspace is ignored by Git because committee comments may contain information that should not be published.
+
+#### Apply Review Decisions
+
+1. Read `review-summary.md` and each comparison file.
+2. Separate substantive suggestions from formatting changes introduced by Word conversion.
+3. Clarify ambiguous comments with the reviewer or document owner.
+4. Apply accepted changes deliberately to the corresponding Markdown file under `docs/`.
+5. Preserve the document status, owner, approval body, and bylaw or professional-review safeguards unless the authorized body has changed them.
+6. Record actual decisions in the Decision Log and unresolved issues in the Issue Register.
+7. Run:
+
+```sh
+make audit-docs
+make audit-public
+make docs-build
+```
+
+8. Create a new Finance Committee review packet if another review round is needed.
+
+If a proposed change came through the portal's documentation-feedback system, update that feedback item to `resolved`, `planned`, or `declined` after recording what happened. Do not mark a suggestion resolved merely because it was read.
+
+#### AI-Assisted Review Guardrails
+
+An AI coding assistant may summarize comments, compare returned text, and draft Markdown updates. It must not:
+
+- Treat every Word edit as approved.
+- Replace canonical Markdown automatically.
+- remove draft or review status language without evidence of approval.
+- infer committee, officer, or congregational authority.
+- copy private information into the public repository.
+- resolve disagreements that require committee discussion.
+
+The document owner and authorized approval body remain responsible for substance and approval.
 
 ## Exported Files and Release Bundles
 

@@ -1,0 +1,10 @@
+Treat every Word edit as approved.
+Replace canonical Markdown automatically.
+remove draft or review status language without evidence of approval.
+infer committee, officer, or congregational authority.
+copy private information into the public repository.
+resolve disagreements that require committee discussion.
+
+The document owner and authorized approval body remain responsible for substance and approval.
+
+End of chapter: Finance Committee Review Workflow.

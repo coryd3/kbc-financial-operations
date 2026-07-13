@@ -34,6 +34,18 @@ make export
 
 This creates PDF, DOCX, and PPTX review files in `dist/exports/` and then validates them.
 
+## Export Finance Committee Review Files
+
+Run:
+
+```sh
+make finance-review
+```
+
+This creates a timestamped packet under `dist/finance-review/` with one DOCX and PDF per selected financial document. The manual GitHub Action named `Export Finance Committee Review` creates the same packet as a downloadable artifact.
+
+For returned Word comments and tracked changes, follow the [Finance Committee Document Review Workflow](finance-committee-review-workflow.md). Returned files are converted into a local comparison workspace and never overwrite Markdown automatically.
+
 ## Validate Existing Exports
 
 Run:

@@ -105,6 +105,20 @@ Other governance notes:
 - Record open issues in `docs/03-open-questions.md`.
 - Record final decisions in `docs/02-decision-log.md`.
 
+## Finance Committee Review Round Trip
+
+- Use `config/finance-review-documents.json` to control the documents included in a Finance Committee packet.
+- Run `make finance-review` to generate one timestamped DOCX and PDF per selected document.
+- Treat generated files and returned Word documents as review copies, never as the canonical source.
+- Run `python scripts/ingest_finance_review.py <folder-or-zip>` to convert returned Word files into the ignored `review-intake/finance/` workspace.
+- Read `review-summary.md`, the converted review, and the comparison before editing source Markdown.
+- Apply only changes supported by the reviewer comments and the proper document owner or approval body.
+- Preserve status and governance safeguards unless approval evidence supports changing them.
+- Record adopted decisions and unresolved issues in their proper records, then rerun document and public-content audits.
+- Never commit returned Word files or intake output without a specific privacy review; the folders are ignored intentionally.
+
+See `docs/finance-committee-review-workflow.md` for the complete human and AI workflow.
+
 ## Document Status Labels
 
 Use one of these near the top of active documents:

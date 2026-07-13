@@ -29,6 +29,10 @@ dist/exports/*
 dist/releases/*
 !dist/releases/README.md
 dist/*.xlsx
+dist/finance-review/
+
+# Returned committee review files may contain private comments
+review-intake/finance/
 
 # Local audiobook audio/model output
 dist/audiobook/audio/

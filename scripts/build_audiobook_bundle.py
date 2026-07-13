@@ -111,6 +111,7 @@ DOCS: list[DocEntry] = [
     DocEntry("Administration And Archive", "Superseded Project Dashboard", "docs/project-dashboard.md"),
     DocEntry("Administration And Archive", "Document Inventory", "docs/document-inventory.md"),
     DocEntry("Administration And Archive", "Export Process", "docs/export-process.md"),
+    DocEntry("Administration And Archive", "Finance Committee Review Workflow", "docs/finance-committee-review-workflow.md"),
     DocEntry("Administration And Archive", "Exported Files and Release Bundles", "docs/exports-and-releases.md"),
     DocEntry("Administration And Archive", "Document Workflow Notes", "docs/document-workflow-upgrade-notes.md"),
 ]
