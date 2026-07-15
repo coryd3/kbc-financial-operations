@@ -11,6 +11,7 @@ Use this checklist for the monthly Finance Committee review meeting. The goal is
 - [ ] Bookkeeper / Financial Administrator prepares the monthly packet.
 - [ ] Treasurer / Financial Officer reviews the packet before the meeting.
 - [ ] Missing receipts, unclear transactions, and unusual items are flagged.
+- [ ] Quote documentation, contract approvals, and conflict-of-interest disclosures are included where applicable.
 - [ ] Agenda includes any items needing Finance Committee approval, Deacon review, church vote, or follow-up.
 
 ## Monthly Review Packet
@@ -29,7 +30,9 @@ The packet should include:
 - [ ] Payroll liability and filing confirmation without individual compensation detail.
 - [ ] Reimbursement summary.
 - [ ] Missing receipt list or documentation exceptions.
+- [ ] Late reimbursement requests and approved timing exceptions.
 - [ ] Unusual, over-budget, or outside-budget spending.
+- [ ] Competitive-quote exceptions, new contracts, recurring commitments, and conflict-of-interest disclosures.
 - [ ] Prior month action items and unresolved questions.
 
 ## Meeting Checklist
@@ -73,6 +76,7 @@ The packet should include:
 - [ ] Confirm receipts or documentation are present.
 - [ ] Confirm transactions are coded correctly.
 - [ ] Identify any personal, unclear, over-budget, or outside-policy charges.
+- [ ] Identify any shared-card, shared-credential, or unattributed use.
 - [ ] Decide whether any cardholder follow-up, limit change, suspension, or policy update is needed.
 
 ### 6. Review Reimbursements
@@ -82,6 +86,7 @@ The packet should include:
 - [ ] Confirm required receipts or missing-receipt explanations are present.
 - [ ] Review reimbursements by ministry or budget category.
 - [ ] Identify late, incomplete, unusual, over-budget, or above-threshold reimbursements.
+- [ ] Confirm reimbursement requests were normally submitted within 30 days or have an approved exception.
 - [ ] Decide whether any follow-up or policy clarification is needed.
 
 ### 7. Review Unusual Or Outside-Budget Spending
@@ -90,6 +95,9 @@ The packet should include:
 - [ ] Review expenses that caused a budget category to go over budget.
 - [ ] Review unusual or non-routine expenses.
 - [ ] Review recurring commitments, subscriptions, contracts, or large purchases.
+- [ ] Confirm contracts and recurring commitments were evaluated using the full expected obligation, including setup, renewal, cancellation, and termination costs.
+- [ ] Confirm required quotes were retained or a practical exception was documented.
+- [ ] Review any conflict-of-interest disclosure, abstention, and independent approval.
 - [ ] Confirm expected automatic drafts and recurring payments agree with the current approved register.
 - [ ] Confirm approval path was documented.
 - [ ] Decide whether additional review, Deacon input, or church vote is required.

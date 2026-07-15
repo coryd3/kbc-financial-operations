@@ -4,92 +4,97 @@ Status: Needs Finance Review
 
 ## Purpose
 
-This policy provides a safer, more accountable approach to church purchases by replacing shared debit cards, where practical, with individually assigned church credit cards or another controlled payment method.
+This policy provides an accountable approach to church cards, virtual cards, online payment credentials, and other controlled payment access.
 
-This document is part of the [Financial Authority Policy Package](financial-authority-policy-package.md). Card limits do not create spending authority beyond the approved budget and Spending Authority Policy.
+This document is part of the [Financial Authority Policy Package](financial-authority-policy-package.md). A card limit or possession of payment access does not independently create spending authority beyond the approved budget and [Spending Authority Policy](spending-authority-policy.md).
 
 ## Policy Goals
 
-- Reduce risk from shared payment cards.
-- Connect each purchase to an authorized cardholder or purchaser.
-- Require receipts and ministry purpose for each transaction.
-- Allow routine ministry work to continue without unnecessary delays.
-- Make monthly review easier for Treasurer and Finance Committee.
+- Connect each transaction to a specifically approved person.
+- Protect cards and payment credentials from sharing or unauthorized use.
+- Require the church purpose, approval, receipt, and budget category for every transaction.
+- Support timely monthly review and corrective action.
+- Maintain separation between approval, payment, recording, reconciliation, and review.
 
-## Authorized Cardholders
+## Authorized Access
 
-Church credit cards or controlled payment access may be assigned only to approved individuals.
+- Cards and controlled payment credentials may be issued only to specifically approved individuals.
+- Cards, card numbers, virtual-card credentials, login credentials, or other payment access may not be shared with another person.
+- Group or committee access should not use a shared credential. Finance Committee should approve a safer individually attributable method.
+- The Finance Committee should document each approved cardholder or credential holder, purpose, account limit, transaction limit, and review date.
+- The Bookkeeper / Financial Administrator may receive payment access only if specifically approved; processing duties alone do not create spending authority.
 
-Potential cardholders:
+Needs Finance Review: Finance Committee should decide which individuals may receive access and whether KBC uses credit cards, controlled debit cards, prepaid cards, software-based virtual cards, or another method.
 
-- Pastor: TBD.
-- Treasurer / Financial Officer: TBD.
-- Bookkeeper / Financial Administrator: TBD.
-- Ministry leaders: TBD.
-- Other approved staff or volunteers: TBD.
+## Spending Authority And Limits
 
-Needs Finance Review: Finance Committee should decide who may receive cards and whether cards are credit cards, controlled debit cards, prepaid cards, software-based virtual cards, or another method.
+The Finance Committee should propose limits that match each person's role and the approved budget. A limit controls the payment method; it does not replace required prior approval.
 
-## Spending Limits
+| Approved Individual / Role | Proposed Limit | Approved Purpose | Review Date |
+| --- | ---: | --- | --- |
+| Pastor | `$TBD` | TBD | TBD |
+| Treasurer / Financial Officer | `$TBD` | TBD | TBD |
+| Bookkeeper / Financial Administrator, if approved | `$TBD` | TBD | TBD |
+| Ministry leader or other approved individual | `$TBD` | TBD | TBD |
 
-| Cardholder / Role | Suggested Limit | Notes |
-| --- | ---: | --- |
-| Pastor | `$TBD` | TBD |
-| Treasurer / Financial Officer | `$TBD` | TBD |
-| Bookkeeper / Financial Administrator | `$TBD` | TBD |
-| Ministry leader | `$TBD` | TBD |
-| Other approved cardholder | `$TBD` | TBD |
+## Cardholder And Credential-Holder Responsibilities
 
-## Cardholder Responsibilities
+Each approved user must:
 
-Cardholders must:
+- Use payment access only for a valid church purpose.
+- Stay within the approved budget, payment limits, and Spending Authority Policy.
+- Obtain and retain any required pre-approval.
+- Protect the physical card, card number, virtual-card credentials, login credentials, and other payment access.
+- Never share payment access with another person.
+- Never use church payment access for personal purchases.
+- Report a lost, stolen, or compromised card or credential immediately to the issuer and the church's assigned contact.
+- Submit complete transaction documentation promptly.
+- Cooperate with monthly review and correction requests.
 
-- Use the card only for approved church purposes.
-- Stay within approved budget and spending authority.
-- Keep and submit receipts promptly.
-- Identify the ministry, category, or fund for each purchase.
-- Report lost, stolen, or compromised cards immediately.
-- Not share the card with another person.
-- Not use the card for personal purchases.
-- Cooperate with monthly review.
+## Transaction Documentation
 
-## Receipt And Documentation Requirements
+Every transaction must include:
 
-Each card transaction should include:
-
-- Date.
 - Vendor.
+- Date.
 - Amount.
-- Church purpose.
-- Ministry or budget category.
+- Church or ministry purpose.
+- Ministry, fund, or budget category.
 - Receipt or invoice.
-- Any required pre-approval.
+- Evidence of any required pre-approval.
 
-Missing receipts should be documented and reviewed. Repeated missing receipts may lead to card suspension or revocation.
+Missing documentation must follow the approved exception process. Repeated missing receipts or incomplete documentation should be reported to Finance Committee.
 
 ## Monthly Review
 
-The Bookkeeper / Financial Administrator or assigned staff may collect receipts and prepare transaction coding.
+The Bookkeeper / Financial Administrator or assigned staff may collect documentation and prepare transaction coding. An independent reviewer should compare the documentation to the card or payment statement.
 
-The Treasurer and Finance Committee should review card activity monthly, including:
+The Treasurer / Financial Officer and Finance Committee should review activity monthly, including:
 
-- Missing receipts.
-- Unusual purchases.
-- Over-budget items.
-- Personal or unclear charges.
-- Spending limit concerns.
-- Policy exceptions.
+- Missing receipts or incomplete transaction records.
+- Unusual transactions.
+- Over-budget or outside-budget spending.
+- Personal, unclear, or disputed charges.
+- Shared-card, shared-credential, or other unattributed use.
+- Spending-limit or approval concerns.
+- Lost, stolen, or compromised access.
+- Policy exceptions and corrective actions.
 
-## Revocation Or Suspension
+## Suspension, Investigation, And Revocation
 
-Card access may be suspended or revoked if:
+The church may suspend payment access immediately while a concern is reviewed. Depending on the circumstances, the response may include investigation, documentation, repayment, training, a control change, temporary suspension, or revocation.
 
-- Receipts are repeatedly missing.
-- The card is used outside approved purpose.
+Access may be suspended or revoked when:
+
+- Payment access is shared or used by an unapproved person.
+- Personal or unauthorized purchases occur.
+- Required receipts, documentation, or approvals are repeatedly missing.
 - Spending limits or approval rules are ignored.
-- The cardholder leaves the role requiring access.
-- The Finance Committee, Treasurer, Pastor, or assigned supervisor identifies a control concern.
+- The cardholder changes or leaves the role requiring access.
+- The Finance Committee, Treasurer / Financial Officer, Pastor, or other authorized reviewer identifies a control or security concern.
 
-Needs Finance Review: Finance Committee should recommend cardholder eligibility, issuance, suspension, revocation, review process, and controls before adoption.
+No language in this policy requires automatic permanent cancellation for every violation. The response should protect church funds, preserve evidence, and remain proportionate to the circumstances.
 
-Needs Bylaw Review: Cardholder authority, spending limits, reimbursement interaction, and church vote triggers should be checked against KBC Constitution and Bylaws, budget requirements, and church practice.
+Needs Finance Review: Finance Committee must confirm eligibility, issuance, individual limits, statement review, suspension and revocation authority, corrective-action process, and record retention before adoption.
+
+Needs Bylaw Review: Payment authority, spending limits, contract use, reimbursement interaction, and congregational approval triggers should be checked against the KBC Constitution and Bylaws, approved budget, and church practice.

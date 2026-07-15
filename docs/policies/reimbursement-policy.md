@@ -4,69 +4,80 @@ Status: Needs Finance Review
 
 ## Purpose
 
-This policy defines how church-related expenses are reimbursed in a way that supports ministry work while maintaining documentation, accountability, and review.
+This policy defines how church-related expenses are reimbursed in a way that supports ministry work while maintaining prior approval, documentation, accountability, and review.
 
-The guiding principle is that routine expenses within approved ministry budgets should not require excessive pre-approval, but they must be documented and reviewed.
-
-This document is part of the [Financial Authority Policy Package](financial-authority-policy-package.md). Spending thresholds and approval roles should match the Spending Authority Policy.
+This document is part of the [Financial Authority Policy Package](financial-authority-policy-package.md). Approval levels and exception paths must remain consistent with the [Spending Authority Policy](spending-authority-policy.md).
 
 ## Scope
 
-This policy applies to reimbursement requests from staff, volunteers, ministry leaders, committee members, and others who purchase approved items for KBC ministry or operations.
+This policy applies to reimbursement requests from staff, volunteers, ministry leaders, committee members, and others who purchase authorized items for KBC ministry or operations.
 
 ## General Policy
 
 - Reimbursements must be for a valid church purpose.
-- Requests must include a receipt, invoice, or other acceptable documentation.
-- Requests must identify the ministry, budget category, or fund.
-- Requests should be submitted within TBD days of the expense.
-- The person requesting reimbursement should not be the only approver.
-- Reimbursements are subject to Finance Committee review.
+- The expense must follow the approved budget and the prior-approval requirements in the Spending Authority Policy.
+- Reimbursement after a purchase does not cure an expense that should have received pre-approval.
+- Requests should normally be submitted within 30 days of the expense.
+- A documented late-submission exception may be approved by the appropriate independent reviewer.
+- The requester may not be the only approver.
+- The Bookkeeper / Financial Administrator may verify and process a complete request but does not gain approval authority merely by processing it.
+- Reimbursement activity and exceptions are subject to monthly Finance Committee review.
 
-## Routine Expenses Within Approved Budget
+## Required Documentation
 
-Routine ministry expenses that are within an approved budget may be reimbursed without special pre-approval when:
-
-- The expense is ordinary for that ministry or committee.
-- The amount is within the approved budget.
-- The purchase does not create an ongoing obligation.
-- Required receipts and documentation are provided.
-- The request is reviewed by the appropriate ministry leader, committee chair, Treasurer, or assigned approver.
-
-## Expenses Requiring Pre-Approval
-
-Pre-approval is required for:
-
-- Expenses outside the approved budget.
-- Expenses that would cause a ministry or category to exceed budget.
-- Large purchases above `$TBD`.
-- Equipment, technology, furniture, or capital items above `$TBD`.
-- Recurring subscriptions, contracts, or commitments.
-- Travel, mileage, lodging, or conference expenses, unless already approved.
-- Emergency purchases above `$TBD`, unless delay would create harm or prevent urgent ministry need.
-- Any expense that may require church vote under bylaws or church policy.
-
-## Documentation Required
-
-Each reimbursement request should include:
+Every reimbursement request must include:
 
 - Requester name.
 - Date of purchase.
 - Vendor.
 - Amount.
-- Ministry or account/category.
-- Explanation of church purpose.
-- Receipt or invoice.
-- Approval signature or documented approval.
+- Church or ministry purpose.
+- Ministry, fund, or budget category.
+- Receipt, invoice, or acceptable supporting documentation.
+- Evidence of the approval required by the Spending Authority Policy.
+
+## Routine Expenses Within Approved Budget
+
+A routine expense may be processed without additional escalation when:
+
+- The expense is ordinary for the ministry or committee.
+- It fits within the approved budget.
+- The applicable approval was documented before purchase.
+- It does not create an unapproved recurring or contractual obligation.
+- The request is complete and submitted within 30 days, or an approved timing exception is documented.
+
+## Expenses Requiring Additional Pre-Approval
+
+Follow the escalation and approval requirements in the Spending Authority Policy for:
+
+- Expenses outside the approved budget.
+- Expenses that would cause a ministry, fund, or category to exceed its approved budget.
+- Purchases at an approval level requiring more than the requester's ordinary authorization.
+- Equipment, technology, furniture, capital items, or other non-routine purchases.
+- Recurring subscriptions, contracts, or commitments, based on the full expected obligation.
+- Travel, mileage, lodging, conferences, or training unless already approved.
+- Emergency purchases.
+- Any expense that may require congregational approval under the Constitution and Bylaws, budget, policy, amount, or church practice.
+
+## Missing Receipt Exceptions
+
+Missing receipts should be exceptions, not normal practice. A request without the original receipt or invoice must include:
+
+- A signed explanation from the requester stating why the documentation is unavailable.
+- The vendor, date, amount, church purpose, and budget category.
+- Available secondary evidence, such as a vendor reprint, order confirmation, packing slip, card record, or other reliable support.
+- Documented approval from the appropriate independent reviewer before payment.
+
+Repeated late submissions or missing-receipt requests should be reported to Finance Committee for review and follow-up.
 
 ## Review Process
 
-1. Requester submits the reimbursement form and documentation.
-2. Approver confirms ministry purpose and budget/category.
-3. Bookkeeper / Financial Administrator prepares reimbursement if assigned.
-4. Treasurer or assigned reviewer checks documentation and policy compliance.
-5. Finance Committee reviews reimbursement activity as part of monthly financial review.
+1. The requester submits the reimbursement request, documentation, and evidence of required approval.
+2. The assigned approver confirms the church purpose, budget category, timing, and compliance with the Spending Authority Policy.
+3. The Bookkeeper / Financial Administrator verifies completeness and prepares the reimbursement if assigned.
+4. The Treasurer / Financial Officer or other assigned independent reviewer checks documentation and policy compliance.
+5. The Finance Committee reviews reimbursement totals, late requests, missing receipts, unusual items, and other exceptions during its monthly review.
 
-Needs Finance Review: Finance Committee should set dollar thresholds, approval roles, timing, documentation requirements, and any exceptions before adoption.
+Needs Finance Review: Finance Committee must confirm approver roles, the proposed 30-day submission period, late-submission exceptions, missing-receipt standards, payment release, and monthly reporting before adoption.
 
-Needs Bylaw Review: Reimbursement thresholds, spending authority, and church vote triggers should be checked against KBC Constitution and Bylaws, budget requirements, and church practice.
+Needs Bylaw Review: Reimbursement approval levels, spending authority, budget exceptions, and congregational approval triggers should be checked against the KBC Constitution and Bylaws, approved budget, and church practice.

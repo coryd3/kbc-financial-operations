@@ -65,9 +65,9 @@ Needs Bylaw Review: These lanes are a working draft and should be confirmed agai
 | --- | --- | --- | --- |
 | Treasurer vs. Bookkeeper division | Decide which financial duties belong with the elected Treasurer, Bookkeeper / Financial Administrator, Finance Committee, and outside vendor. | Personnel Committee, Treasurer, Nominating Committee, Congregation if required | Personnel needs this before the job description, application, and hiring process are finalized. |
 | Financial software | Decide requirements, shortlist, demo process, recommendation, and implementation direction. | Treasurer, Bookkeeper, Pastor, Personnel Committee where staffing is affected | Software should support governance and controls, not replace them. |
-| Reimbursement policy | Decide approval roles, required documentation, routine expense handling, exceptions, and review process. | Treasurer, Bookkeeper, ministry leaders | Routine budgeted expenses should not be overburdened, but must be documented. |
-| Spending authority | Set dollar thresholds and approval paths for routine, outside-budget, over-budget, large, recurring, emergency, and church vote items. | Pastor, Deacons, Congregation if required | Thresholds are currently `TBD`. |
-| Credit/debit card policy | Decide whether to replace shared debit cards with individual cards or another controlled payment method. | Treasurer, Bookkeeper, Pastor, ministry leaders, Personnel Committee for accountability | Policy should cover limits, receipts, review, suspension, and revocation. |
+| Reimbursement policy | Review the proposed 30-day submission period, approval roles, required documentation, late and missing-receipt exceptions, and monthly review. | Treasurer, Bookkeeper, ministry leaders | Reimbursement does not cure an expense that required pre-approval. |
+| Spending authority | Review the proposed `$250`, `$1,000`, and `$3,000` approval levels plus budget exceptions, quotes, contracts, emergencies, and conflicts of interest. | Pastor, Deacons, Congregation if required | These are proposed recommendations, not adopted authority; church-vote requirements need bylaw review. |
+| Credit/debit card policy | Decide which controlled payment methods and specifically approved individuals KBC will use. | Treasurer, Bookkeeper, Pastor, ministry leaders, Personnel Committee for accountability | Cards and credentials should not be shared; limits do not create spending authority. |
 | Budget impact | Decide how software cost, authorized bookkeeping compensation, vendor cost, and policy changes affect the budget. | Personnel Committee, Deacons, Congregation if required | The June 28 motion gave Finance Committee responsibility for adjusting the budget to fund this specific operational need; determine whether any cost exceeds the authorization or current budget authority. |
 | Monthly review rhythm | Decide cadence, required packet, reviewers, follow-up process, and business meeting reporting. | Treasurer, Bookkeeper, Pastor, Deacons if appropriate | Monthly review is the main accountability rhythm. |
 | Audit / financial review | Decide scope, frequency, reviewer type, and follow-up process. | Treasurer, Bookkeeper, outside accountant or CPA, Congregation if required | May be internal, external, CPA-led, or another model. |
@@ -110,16 +110,16 @@ Needs Finance Review: Finance Committee should approve software requirements bef
 
 ## Reimbursement Policy Questions
 
-The proposed principle is that routine ministry expenses within approved budgets should not require excessive pre-approval, but they must be documented and reviewed.
+The proposed principle is that routine ministry expenses should be processed promptly after the approval required by the Spending Authority Policy. Requests should normally be submitted within 30 days and must be documented and reviewed.
 
 Finance Committee should answer:
 
 - Who can approve routine reimbursements within approved ministry budgets?
 - What dollar amount can be reimbursed without advance Finance Committee approval?
 - What expenses always require pre-approval?
-- How quickly must reimbursement requests be submitted?
+- Should Finance Committee recommend the proposed 30-day submission period and documented late-request exception?
 - What form or software workflow should requesters use?
-- What documentation is required when a receipt is missing?
+- Does the proposed signed missing-receipt explanation, secondary evidence, and independent approval provide sufficient control?
 - Who confirms the correct ministry, fund, or budget category?
 - Can the Bookkeeper prepare reimbursements after approval, or must the Treasurer prepare them?
 - Who releases payment?
@@ -130,33 +130,36 @@ Needs Finance Review: Finance Committee should set approval roles, submission de
 
 ## Spending Authority Questions
 
-Current spending authority thresholds are placeholders. Finance Committee should define the approval path before spending questions become urgent.
+The current draft proposes four approval levels: Pastor up to `$250`; Pastor and Finance Committee Chair from `$251-$1,000`; Finance Committee from `$1,001-$3,000`; and congregational approval above `$3,000`, subject to the Constitution and Bylaws. These are recommendations for review, not adopted authority.
 
 Finance Committee should answer:
 
-- What is the threshold for routine ministry spending within approved budget?
-- What is the threshold for routine operating expenses?
-- What dollar amount requires Finance Committee review before purchase?
-- What dollar amount requires Deacon review, if any?
-- What dollar amount or category requires church vote?
+- Should Finance Committee recommend the proposed four-level matrix as written or revise it?
+- Who provides independent approval when the Pastor requests or benefits from a purchase at the first approval level?
+- Do any approval levels conflict with the approved budget, Constitution and Bylaws, or established church practice?
+- Should Deacons have a counsel or review role for any category without becoming a separate spending-approval body?
+- What notice, quorum, and voting requirements do the Constitution and Bylaws apply to congregational approval?
 - What large non-budgeted expenses should go to the congregation even if Finance Committee recommends them?
 - How should over-budget expenses be handled?
 - Can funds be transferred between budget categories, and who approves that?
-- What recurring subscriptions, contracts, or commitments require committee review?
-- What emergency spending authority should Pastor, Treasurer, Finance Chair, or Deacon Chair have?
+- Should the proposed quote requirements be adopted: reasonable pricing under `$1,000`, two quotes from `$1,000-$3,000` when practical, and three written quotes over `$3,000` when practical?
+- How should emergency, sole-source, compatibility, and lack-of-qualified-vendor quote exceptions be documented?
+- Who may sign a contract, and how will the full setup, recurring, renewal, cancellation, and termination obligation be approved?
+- Who should have emergency spending authority, and what limit should apply?
 - How quickly must emergency spending be reported back to Finance Committee?
 - How will outside-budget spending be documented in monthly reports?
+- How will financial-interest disclosures, abstention, and independent approval be recorded?
 
 Needs Bylaw Review: Spending thresholds must be checked against KBC Constitution and Bylaws, budget practice, and church vote requirements.
 
 ## Credit Card / Debit Card Questions
 
-The current policy draft proposes replacing shared debit cards, where practical, with individually assigned church credit cards or another controlled payment method.
+The current policy draft proposes individually attributable cards or controlled payment access. Cards, card numbers, virtual-card credentials, login credentials, and other payment access would not be shared.
 
 Finance Committee should answer:
 
 - Should KBC continue using debit cards, move to individually assigned credit cards, use prepaid/controlled cards, use software-based virtual cards, or use another method?
-- Should shared cards be discontinued?
+- Should Finance Committee adopt the proposed prohibition on shared cards and payment credentials?
 - Who may hold a card or controlled payment access?
 - What spending limit should apply to each role?
 - What purchases require pre-approval even if a cardholder has a card?
@@ -167,6 +170,7 @@ Finance Committee should answer:
 - What purchases are prohibited?
 - Who can suspend or revoke card access?
 - What happens when a cardholder changes roles or leaves the role?
+- How should lost, stolen, or compromised cards and credentials be reported and contained?
 
 Needs Finance Review: Card policy should reduce risk, connect each purchase to a responsible person, and make monthly review easier.
 
@@ -259,7 +263,7 @@ Needs Finance Review: Finance Committee should decide the monthly review cadence
 2. Review the Treasurer vs. Bookkeeper duty split and provide direction to Personnel Committee.
 3. Approve software requirements before scheduling demos.
 4. Set draft reimbursement and spending authority thresholds.
-5. Decide whether shared debit cards should be replaced.
+5. Decide which individually assigned cards or controlled payment methods to use and confirm that payment access may not be shared.
 6. Define monthly review packet and meeting rhythm.
 7. Identify budget impact for bookkeeping support, software, and outside payroll/accounting support.
 8. Confirm the interim and long-term financial review line for the Bookkeeper role, including whether the supervisor should be Treasurer/Finance-related or another role confirmed by committee action.

@@ -75,7 +75,7 @@ Start date: TBD
 | Supporting bodies | Personnel Committee, Treasurer / interim Treasurer, Pastor, Deacons, outside payroll/accounting advisor if needed. |
 | Deliverables | Software requirements approved for demos; completed demo scorecards; recommended software direction; draft reimbursement, spending authority, credit card/payment, monthly review, and audit/review policies; finalized Bookkeeper role materials and budget impact estimate. |
 | Dependencies | Finance Committee software requirements; demo availability; cost information; policy threshold decisions; Personnel Committee role/hiring input; budget review. |
-| Open questions | Which software best supports KBC's monthly review and handoff needs? What spending and reimbursement thresholds should apply? Should payroll or accounting support be outsourced? What budget changes are needed? |
+| Open questions | Which software best supports KBC's monthly review and handoff needs? Should Finance Committee recommend the proposed spending levels, 30-day reimbursement period, and related purchasing controls? Should payroll or accounting support be outsourced? What budget changes are needed? |
 
 ### 60-Day Actions
 
@@ -83,8 +83,8 @@ Start date: TBD
 - [ ] Schedule and complete IconCMO and ChurchTrac demos using `docs/software-evaluation/demo-scorecard.md`.
 - [ ] Complete `docs/software-evaluation/icon-vs-churchtrac-comparison.md`.
 - [ ] Draft Finance Committee recommendation for software and operating model.
-- [ ] Set proposed `TBD` thresholds in spending and reimbursement drafts.
-- [ ] Decide whether shared debit cards should be replaced with individual cards or another controlled payment method.
+- [ ] Review and recommend revisions or approval of the proposed spending levels, quote requirements, contract authority, emergency controls, conflict safeguards, and 30-day reimbursement period.
+- [ ] Select individually assigned cards or another controlled payment method and prohibit shared cards or credentials.
 - [ ] Identify budget impact for software, bookkeeping support, outside payroll/accounting support, bonding, background checks, or audit/review.
 - [ ] Personnel Committee finalizes Bookkeeper job description, application, and hiring process based on Finance direction.
 - [ ] Coordinate interviews, reference checks, and candidate evaluation for the authorized Bookkeeper role.

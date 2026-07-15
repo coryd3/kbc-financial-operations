@@ -14,6 +14,7 @@ Public Caution: This repository and its GitHub Pages site should be treated as p
 - Blank job application forms.
 - Blank employee/volunteer background-check authorization forms.
 - Finance budget meeting handout.
+- July 2026 purchasing policy guidelines proposal used as review input for the modular financial authority policies.
 - Treasurer alternative proposal.
 - Personnel committee operating/context documents.
 - Miller Management accounting/QuickBooks proposal and conversion sheet.

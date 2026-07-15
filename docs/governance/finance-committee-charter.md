@@ -18,6 +18,7 @@ The committee's role is governance and accountability. It should not depend on o
 - Prepare annual budget and major non-budgeted spending recommendations for congregational approval where required.
 - Define spending authority and reimbursement requirements.
 - Own credit/debit card or controlled payment policy.
+- Define competitive-quote practices, contract review, authorized signers, emergency controls, and conflict-of-interest safeguards for purchases.
 - Own accounting and church finance software evaluation and recommendation.
 - Review monthly financial reports, reconciliations, restricted funds, and unusual transactions.
 - Coordinate with the Treasurer / Financial Officer.
@@ -61,10 +62,14 @@ The Finance Committee should own policies for:
 - Reimbursements.
 - Credit/debit card or controlled payment methods.
 - Documentation and receipt retention.
+- Quotes and documented purchasing exceptions.
+- Contract and recurring-commitment authority based on the full expected obligation.
+- Emergency purchasing and after-the-fact review.
+- Conflict-of-interest disclosure, abstention, and independent approval.
 - Monthly review.
 - Audit or financial review.
 
-The committee should also define which routine expenses can move quickly within approved budgets, which expenses require Finance Committee approval, and which major or outside-budget expenses should come to the congregation.
+The committee should also define which routine expenses can move quickly within approved budgets, which expenses require Finance Committee approval, and which major or outside-budget expenses should come to the congregation. Possession of a card or a place in the approved budget does not independently create spending authority.
 
 ## Reporting Expectations
 

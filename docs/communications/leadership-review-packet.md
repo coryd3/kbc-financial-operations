@@ -113,9 +113,10 @@ Finance Committee needs to decide or recommend:
 - Which duties should be assigned to a Bookkeeper / Financial Administrator.
 - What software requirements should be approved before demos.
 - Whether to evaluate IconCMO, ChurchTrac, QuickBooks, Miller Management, or other options.
-- What reimbursement process should be adopted.
-- What spending authority thresholds should apply.
-- Whether shared debit cards should be replaced with individual cards or another controlled payment method.
+- Whether to recommend the proposed reimbursement period, documentation, and exception process.
+- Whether to recommend the proposed spending approval levels and purchasing controls after bylaw review.
+- Which individually assigned cards or controlled payment methods to use and how to prohibit shared access.
+- What quote, contract, emergency, and conflict-of-interest controls should apply.
 - What monthly financial review packet should be required.
 - What audit/review process is appropriate.
 - Whether payroll or accounting work should be supported by an outside vendor.
