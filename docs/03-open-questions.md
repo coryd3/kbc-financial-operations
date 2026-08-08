@@ -18,16 +18,18 @@ This is a current-work record for committees and documentation stewards. It is n
 - What responsibilities must remain with the elected Treasurer?
 - Which day-to-day tasks can be assigned to a Bookkeeper / Financial Administrator?
 - What financial software should KBC use going forward?
-- Should Finance Committee recommend the proposed 30-day reimbursement period, required documentation, and late or missing-receipt exceptions?
-- Should Finance Committee recommend the proposed purchase approval levels of Pastor up to `$250`, Pastor and Finance Committee Chair from `$251-$1,000`, Finance Committee from `$1,001-$3,000`, and congregational approval above `$3,000`, subject to bylaw review?
+- Where are the July 19, 2026 Finance Committee minutes or written approval record retained?
 - Who independently approves a purchase when the Pastor is the requester or beneficiary?
-- Should the proposed competitive-quote requirements and documented exceptions be adopted?
-- Who may authorize and sign contracts, and how will the full contractual obligation be evaluated?
-- Who may act under the narrow emergency-purchase exception, and what limits and reporting requirements apply?
+- Do approval thresholds apply to the full contract or annual commitment rather than each invoice or payment?
+- Who may sign contracts after authorization, and who reviews renewal, cancellation, insurance, and legal terms?
+- What documentation is required when the normal number of competitive quotes is impractical?
+- Does emergency authority belong to each named body or require action by the body as a whole, and what limits, documentation, and after-the-fact review apply?
 - How should financial-interest disclosures, abstention, and independent approval be documented?
 - What annual budget approval process should be documented so the congregation remains clearly involved where required?
-- What threshold or type of major non-budgeted expense should require congregational approval?
-- Which individually assigned card or controlled payment methods should KBC use, and how should the proposed no-sharing rule be enforced?
+- How should late reimbursements, missing receipts, and purchases made without required pre-approval be handled?
+- Who may receive a church card, what limits apply, and what process applies to lost, compromised, or disputed cards?
+- What separation of duties is required so one person cannot request, approve, pay, record, and reconcile the same transaction?
+- Does KBC have a current Missouri Sales and Use Tax Exemption Letter, and who maintains and distributes it?
 - What should be included in the monthly financial review packet?
 - What audit, review, or outside accounting support is needed?
 - How should confidential committee spending, including Benevolence, be reviewed without exposing private details?
@@ -63,10 +65,10 @@ This is a current-work record for committees and documentation stewards. It is n
 
 ## Congregation
 
-- Which decisions require a church vote?
+- Should a future governance review reconcile the approved Spending Policy's special-called business meeting, two-thirds vote, and 30-percent quorum language with Constitution Article 5 and Bylaws Article 10?
 - How should annual budget approval and major non-budgeted expenses be handled so congregational authority remains clear?
 - Does any proposed Bookkeeper compensation, hours, budget impact, or classification exceed the June 28, 2026 authorization of a paid, part-time Bookkeeper position not to exceed `$150` per week, described as `$18.75` per hour for approximately 8 hours?
-- Do any policies require adoption at a business meeting?
+- Which future policy changes require adoption at a business meeting?
 
 ## Future Governance Expansion / Parking Lot
 

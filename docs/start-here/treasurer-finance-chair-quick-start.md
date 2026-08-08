@@ -7,13 +7,14 @@ This page is a concise starting point for a person carrying Treasurer or Finance
 !!! note "In Progress"
     These materials are working drafts unless a page is clearly marked Approved, Current, or Reference. This view is intended to support review and correction; it does not change the authority of the Treasurer, Finance Committee, or congregation.
 
-## Begin With These Five Items
+## Begin With These Six Items
 
 1. [Constitution and Bylaws Reference](../governance/constitution-and-bylaws-reference.md) - confirm the governing source and officer/committee questions.
 2. [Responsibility Matrix](../governance/responsibility-matrix.md) - review who prepares, reviews, recommends, and approves.
 3. [Treasurer / Financial Officer Governance Role](../roles/treasurer-governance-role.md) - review the proposed durable role.
 4. [Finance Committee Charter](../governance/finance-committee-charter.md) - review the committee's proposed oversight rhythm.
 5. [Bookkeeper Job Description](../roles/bookkeeper-financial-administrator-job-description.md) - confirm which operational duties may be assigned to paid support.
+6. [Approved Spending Policy](../policies/spending-authority-policy.md) - follow the current requirements for approvals, purchasing, reimbursements, cards, contracts, emergencies, and conflicts of interest.
 
 ## Recurring Operating Rhythm
 
@@ -52,8 +53,8 @@ The most useful initial feedback from the Treasurer / Finance Chair is:
 
 Two draft control documents are especially relevant to this operational review:
 
-- [Offering Counting And Deposit Policy](../policies/offering-counting-and-deposit-policy.md)
-- [Monthly Financial Review Policy](../policies/monthly-financial-review-policy.md)
+- [Draft Offering Counting And Deposit Policy](../policies/offering-counting-and-deposit-policy.md)
+- [Draft Monthly Financial Review Policy](../policies/monthly-financial-review-policy.md)
 
 Use the [Current Work Dashboard](project-dashboard.md) for active priorities and the [Issue Register](../03-open-questions.md) for unresolved questions. Specific comments may also be submitted directly on the relevant document section.
 

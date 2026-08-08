@@ -31,11 +31,11 @@ documents:
   roles/bookkeeper-hiring-process: { documentType: Hiring Procedure, status: Needs Personnel Review, owner: Personnel Committee, lifecycle: project, audiences: [leadership, personnel, project] }
   roles/job-description-consistency-check: { documentType: Working Analysis, status: Working Record, owner: Personnel Committee, lifecycle: project, audiences: [personnel, project] }
 
-  # Add congregation after a policy completes the proper review and adoption process.
-  policies/spending-authority-policy: { documentType: Policy, status: Needs Finance Review, owner: Finance Committee, lifecycle: durable, audiences: [leadership, finance, operations] }
-  policies/financial-authority-policy-package: { documentType: Policy Review Package, status: Needs Finance Review, owner: Finance Committee, lifecycle: project, audiences: [leadership, finance, operations, project] }
-  policies/reimbursement-policy: { documentType: Policy, status: Needs Finance Review, owner: Finance Committee, lifecycle: durable, audiences: [leadership, finance, operations] }
-  policies/credit-card-policy: { documentType: Policy, status: Needs Finance Review, owner: Finance Committee, lifecycle: durable, audiences: [leadership, finance, operations] }
+  # Finance Committee adopted one combined policy on July 19, 2026.
+  policies/spending-authority-policy: { documentType: Approved Policy, status: Approved, owner: Finance Committee, lifecycle: durable, audiences: [congregation, leadership, finance, operations] }
+  policies/financial-authority-policy-package: { documentType: Superseded Working Record, status: Superseded, owner: Documentation Stewards, lifecycle: archive, audiences: [project] }
+  policies/reimbursement-policy: { documentType: Superseded Draft, status: Superseded, owner: Documentation Stewards, lifecycle: archive, audiences: [project] }
+  policies/credit-card-policy: { documentType: Superseded Draft, status: Superseded, owner: Documentation Stewards, lifecycle: archive, audiences: [project] }
   policies/offering-counting-and-deposit-policy: { documentType: Policy, status: Needs Finance Review, owner: Finance Committee, lifecycle: durable, audiences: [leadership, treasurer, finance, operations] }
   policies/monthly-financial-review-policy: { documentType: Policy, status: Needs Finance Review, owner: Finance Committee, lifecycle: durable, audiences: [leadership, treasurer, finance, operations] }
   policies/audit-and-review-policy: { documentType: Policy, status: Needs Professional Review, owner: Finance Committee, lifecycle: durable, audiences: [leadership, finance, operations] }

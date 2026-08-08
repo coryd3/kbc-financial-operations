@@ -2,6 +2,8 @@
 
 Status: Needs Finance Review
 
+The approved Spending Policy requires requests within 15 days and requires the receipt, ministry purpose, budget category, and required approvals. The detailed workflow and exception rules below are operating guidance under review and do not alter the approved policy.
+
 ## Guiding Principle
 
 Routine expenses within approved ministry budgets should be easy to submit and reimbursed promptly after the approval required by the Spending Authority Policy, with monthly Finance Committee review.
@@ -19,7 +21,7 @@ Use this process for ordinary ministry expenses that are within an approved budg
 3. Obtain and retain evidence of the approval required by the [Spending Authority Policy](../policies/spending-authority-policy.md).
 4. When practical, use the church's current valid tax-exempt purchasing documentation. Ask the assigned church contact when eligibility or use is unclear.
 5. Make the purchase and keep the receipt or invoice.
-6. Submit the reimbursement request within 30 days. If that is not possible, include a written explanation for the appropriate reviewer.
+6. Submit the reimbursement request within 15 days. If that is not possible, include a written explanation for the appropriate reviewer.
 7. Include:
    - Requester name.
    - Date of purchase.
@@ -112,7 +114,7 @@ Receipts should be required whenever possible. Missing receipts should be except
 
 ## Late Submission Process
 
-1. Requester explains in writing why the request was not submitted within 30 days.
+1. Requester explains in writing why the request was not submitted within 15 days.
 2. The appropriate independent reviewer approves or denies the timing exception.
 3. Bookkeeper retains the explanation and approval with the transaction.
 4. Repeated late submissions are included in the monthly Finance Committee review.
@@ -130,4 +132,4 @@ The reimbursement section of the monthly Finance Committee packet should include
 - Late requests and requests pending approval or documentation.
 - Recommended follow-up items.
 
-Needs Finance Review: Finance Committee should confirm the proposed 30-day submission period, approved reviewer roles, Spending Authority Policy alignment, emergency authority, tax-exempt-document custody, late-request exceptions, and missing-receipt approval standard.
+Needs Finance Review: The 15-day submission period and core documentation requirements come from the approved Spending Policy. Finance Committee should still confirm reviewer roles, emergency authority, tax-exempt-document custody, late-request exceptions, and the missing-receipt approval standard for this operating procedure.

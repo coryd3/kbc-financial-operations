@@ -61,12 +61,7 @@ nav:
       - Treasurer Governance Role: roles/treasurer-governance-role.md
       - Bookkeeper Job Description: roles/bookkeeper-financial-administrator-job-description.md
   - Financial Policies:
-      - Spending Authority Policy: policies/spending-authority-policy.md
-      - Reimbursement Policy: policies/reimbursement-policy.md
-      - Credit Card Policy: policies/credit-card-policy.md
-      - Offering Counting and Deposit Policy: policies/offering-counting-and-deposit-policy.md
-      - Monthly Financial Review Policy: policies/monthly-financial-review-policy.md
-      - Audit and Review Policy: policies/audit-and-review-policy.md
+      - Approved Spending Policy: policies/spending-authority-policy.md
   - Operating Procedures:
       - Reimbursement Process: procedures/reimbursement-process.md
       - Monthly Finance Committee Checklist: procedures/monthly-finance-committee-meeting-checklist.md
@@ -85,7 +80,9 @@ nav:
       - Personnel Committee Recommendation: communications/personnel-committee-recommendation.md
       - Finance Committee Recommendation: communications/finance-committee-recommendation.md
       - Deacon Update: communications/deacon-update.md
-      - Financial Authority Review Package: policies/financial-authority-policy-package.md
+      - Draft Offering Counting and Deposit Policy: policies/offering-counting-and-deposit-policy.md
+      - Draft Monthly Financial Review Policy: policies/monthly-financial-review-policy.md
+      - Draft Audit and Review Policy: policies/audit-and-review-policy.md
       - Software Requirements: software-evaluation/software-requirements.md
       - Demo Scorecard: software-evaluation/demo-scorecard.md
       - IconCMO vs. ChurchTrac Comparison: software-evaluation/icon-vs-churchtrac-comparison.md

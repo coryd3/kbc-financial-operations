@@ -113,10 +113,10 @@ Finance Committee needs to decide or recommend:
 - Which duties should be assigned to a Bookkeeper / Financial Administrator.
 - What software requirements should be approved before demos.
 - Whether to evaluate IconCMO, ChurchTrac, QuickBooks, Miller Management, or other options.
-- Whether to recommend the proposed reimbursement period, documentation, and exception process.
-- Whether to recommend the proposed spending approval levels and purchasing controls after bylaw review.
-- Which individually assigned cards or controlled payment methods to use and how to prohibit shared access.
-- What quote, contract, emergency, and conflict-of-interest controls should apply.
+- How to implement the recommended 15-day reimbursement deadline and documentation requirements, including late and missing-receipt exceptions.
+- How to communicate and administer Finance Committee's approved spending levels and purchasing controls.
+- Who may receive a card, what limits apply, and how lost, compromised, disputed, or shared access is handled under the recommended card controls.
+- What additional detail is needed for self-approval, full contract value, quote exceptions, emergency action, conflicts, and separation of duties.
 - What monthly financial review packet should be required.
 - What audit/review process is appropriate.
 - Whether payroll or accounting work should be supported by an outside vendor.
@@ -137,6 +137,8 @@ These items may require church approval depending on bylaws, budget, and church 
 - Any bylaw-related change to officer responsibilities.
 
 Needs Bylaw Review: Leadership should confirm the approval path before presenting recommendations.
+
+Finance Committee adopted its final combined Spending Policy on July 19, 2026. The minutes should be retained or referenced. The policy is authoritative for this area. Any future changes should be presented as explicit revisions rather than silently introduced through procedures or summaries.
 
 ## 10. Recommended 30/60/90 Day Roadmap
 
@@ -160,8 +162,9 @@ Goal: Move from role clarity to recommendations.
 
 - Approve software requirements for demos.
 - Complete software demos and scorecards.
-- Set draft reimbursement and spending thresholds.
-- Decide the preferred card/payment direction.
+- Retain the July 19 Finance Committee approval record and communicate the single combined Spending Policy.
+- Verify KBC's Missouri sales-tax exemption documentation and preserve governance questions for a future review.
+- Define the remaining implementation controls for exceptions, contracts, emergencies, card incidents, and separation of duties.
 - Identify budget impact for software, bookkeeping support, and outside services.
 - Finalize Bookkeeper job description, application, hiring process, and candidate review materials after Finance Committee input.
 

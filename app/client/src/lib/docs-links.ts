@@ -52,18 +52,15 @@ export const DOCS_TOPICS: DocsTopic[] = [
     ],
   },
   {
-    title: "Finance Policies & Procedures",
-    description: "Money handling policies, checklists, and step-by-step procedures.",
+    title: "Approved Policy & Operating Procedures",
+    description: "The current approved financial policy and supporting operating guidance.",
     links: [
-      { label: "Reimbursement Policy", path: "/policies/reimbursement-policy/" },
-      { label: "Spending Authority Policy", path: "/policies/spending-authority-policy/" },
-      { label: "Credit Card Policy", path: "/policies/credit-card-policy/" },
-      { label: "Monthly Financial Review Policy", path: "/policies/monthly-financial-review-policy/" },
-      { label: "Offering Counting & Deposit Policy", path: "/policies/offering-counting-and-deposit-policy/" },
+      { label: "Approved Spending Policy", path: "/policies/spending-authority-policy/" },
+      { label: "Reimbursement Process", path: "/procedures/reimbursement-process/" },
+      { label: "Monthly Finance Committee Checklist", path: "/procedures/monthly-finance-committee-meeting-checklist/" },
       { label: "Weekly Bookkeeping Checklist", path: "/procedures/weekly-bookkeeping-checklist/" },
       { label: "Monthly Close Checklist", path: "/procedures/monthly-close-checklist/" },
       { label: "Payroll Process", path: "/procedures/payroll-process/" },
-      { label: "Audit and Review Policy", path: "/policies/audit-and-review-policy/" },
     ],
   },
   {

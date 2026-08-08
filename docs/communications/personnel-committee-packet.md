@@ -228,8 +228,8 @@ Recommended requests for Finance Committee direction:
 1. Should the Treasurer role be primarily governance/accountability rather than day-to-day bookkeeping?
 2. What financial duties should be assigned to the authorized Bookkeeper role?
 3. What software should KBC use for contributions, bookkeeping, reports, and records?
-4. Should Finance Committee recommend the proposed reimbursement period, documentation, and exception process?
-5. Should Finance Committee recommend the proposed spending approval levels and purchasing controls after bylaw review?
+4. What effect do the approved 15-day reimbursement and documentation requirements have on the Bookkeeper's duties and workflow?
+5. What parts of the approved spending and card requirements should be reflected in the job description, training, access, or supervision plan?
 6. Which individually assigned cards or controlled payment methods should KBC use, with shared access prohibited?
 7. What should be included in the monthly financial review packet?
 8. Should payroll and tax filings be outsourced to a payroll/accounting vendor?

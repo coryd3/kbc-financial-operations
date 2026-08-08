@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import filecmp
 import shutil
 from pathlib import Path
 
@@ -23,6 +24,10 @@ def on_pre_build(config, **kwargs):
     """Copy selected source references into docs/generated so the site can link to them."""
     if BYLAWS_SOURCE.exists():
         BYLAWS_SITE_COPY.parent.mkdir(parents=True, exist_ok=True)
+        if BYLAWS_SITE_COPY.exists() and filecmp.cmp(
+            BYLAWS_SOURCE, BYLAWS_SITE_COPY, shallow=False
+        ):
+            return
         shutil.copy2(BYLAWS_SOURCE, BYLAWS_SITE_COPY)
 
 

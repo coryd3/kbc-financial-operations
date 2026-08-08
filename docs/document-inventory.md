@@ -39,10 +39,10 @@ Important: Source materials are reference copies. A source document should not b
 | `docs/roles/bookkeeper-job-application.md` | Job application | Provide a draft application for a Bookkeeper / Financial Administrator in the style of existing KBC forms. | Draft | Personnel Committee | No | What final application language and background-check requirements are needed? |
 | `docs/roles/interim-treasurer-role.md` | Interim role description | Define temporary coverage expectations while Treasurer role is vacant or transitioning. | Draft | Finance Committee, Nominating Committee, Deacons, Congregation | Maybe | What is the term, authority, and reporting path for the interim Treasurer? |
 | `docs/roles/treasurer-vs-bookkeeper-duty-split.md` | Duty split analysis | Compare current Treasurer duties with proposed Treasurer, Bookkeeper, committee, and outside vendor responsibilities. | Draft | Finance Committee, Personnel Committee, Treasurer, Bookkeeper, Nominating Committee | Maybe | Which duty split changes require bylaw review, committee approval, or church vote? |
-| `docs/policies/spending-authority-policy.md` | Policy | Propose purchase approval levels and controls for budgets, quotes, contracts, emergencies, and conflicts of interest. | Needs Finance Review | Finance Committee, Congregation if vote required | Yes | Should Finance recommend the proposed thresholds and controls, and what requires bylaw or church approval? |
-| `docs/policies/financial-authority-policy-package.md` | Policy review package | Coordinate spending, reimbursement, payment access, quotes, contracts, exceptions, conflicts, and congregational approval decisions. | Needs Finance Review | Finance Committee, Treasurer, Congregation if required | No | Which proposed thresholds and approval paths should Finance recommend? |
-| `docs/policies/reimbursement-policy.md` | Policy | Define a proposed 30-day period, required documentation, prior approval, missing-receipt exceptions, and review. | Needs Finance Review | Finance Committee | Yes | Who approves requests and timing exceptions? |
-| `docs/policies/credit-card-policy.md` | Policy | Define individually controlled payment access, no-sharing rules, transaction documentation, monthly review, and corrective action. | Needs Finance Review | Finance Committee | Yes | What payment methods, individuals, limits, and reviewers should Finance approve? |
+| `docs/policies/spending-authority-policy.md` | Approved policy | Preserve Finance Committee's July 19 authoritative policy for spending, reimbursements, cards, contracts, emergencies, conflicts, and tax guidance. | Approved | Finance Committee, church leaders, ministry leaders, Treasurer, Bookkeeper | Yes | When should Finance Committee schedule its first policy review? |
+| `docs/policies/financial-authority-policy-package.md` | Superseded working record | Preserve a stable redirect to the archived pre-decision policy package. | Superseded | Documentation stewards | No | None. |
+| `docs/policies/reimbursement-policy.md` | Superseded draft | Preserve a stable redirect to the archived unadopted reimbursement draft. | Superseded | Documentation stewards | No | None. |
+| `docs/policies/credit-card-policy.md` | Superseded draft | Preserve a stable redirect to the archived unadopted card draft. | Superseded | Documentation stewards | No | None. |
 | `docs/policies/offering-counting-and-deposit-policy.md` | Policy | Define controls for counting, recording, and depositing offerings. | Draft | Finance Committee, Treasurer, Bookkeeper | Yes | What current counting process is used and what controls are required? |
 | `docs/policies/monthly-financial-review-policy.md` | Policy | Define monthly review items for reports, reconciliations, budget status, and exceptions. | Draft | Finance Committee, Treasurer | Yes | What exact monthly packet should be required? |
 | `docs/policies/audit-and-review-policy.md` | Policy | Define periodic audit, review, or external accounting expectations. | Draft | Finance Committee, Congregation if vote required | Yes | What level of review is appropriate for KBC and who performs it? |
@@ -92,6 +92,12 @@ Important: Source materials are reference copies. A source document should not b
 | `source-materials/reference-archive/README.md` | Archive guide | Explain use of reference archive for context-only materials. | Repository guide | All project reviewers | No | What criteria should move a source file into reference archive? |
 
 ## Imported Source Documents
+
+### Committee-Approved Finance Sources
+
+| File name | Type of document | Purpose | Current status | Related committee/body | Handbook | Open questions |
+| --- | --- | --- | --- | --- | --- | --- |
+| `source-materials/committee-approved/finance/Kingsville Baptist Church Spending Policy Final.md` | Finance Committee-approved policy source | Preserve the exact final combined source adopted July 19, 2026. | Approved source | Finance Committee | No | Where are the approval minutes retained? |
 
 ### Bylaws And Governance Sources
 

@@ -14,6 +14,8 @@ Status labels used on this page:
 - Needs Finance Review
 - Needs Leadership Review
 - Needs Bylaw Review
+- Ready for Church Consideration
+- Working Record
 - Ready to Share
 - Approved
 - Parking Lot
@@ -24,27 +26,29 @@ KBC is in a Treasurer transition, and interim coverage is helping the church mai
 
 On June 28, 2026, the congregation approved adding a paid, part-time Bookkeeper position. The motion tasked Personnel and Nominating Committees to work together to add the position, gave Personnel Committee authority to hire the right candidate, gave Finance Committee responsibility for adjusting the budget to fund this specific operational need, and set a limit of `$150` per week, described as `$18.75` per hour for approximately 8 hours.
 
-The main work now is to move carefully from authorization to implementation: clarify duties, confirm controls, finalize hiring materials, coordinate the committees named in the motion, and document decisions.
+Finance Committee adopted the combined Kingsville Baptist Church Spending Policy Guidelines on July 19, 2026. It is the current authoritative policy for spending approvals, purchasing, reimbursements, cards, contracts, emergencies, conflicts of interest, and related controls.
+
+The main work now is implementation: communicate the approved policy, align procedures and checklists to it, finalize hiring materials, clarify remaining duties, and document any future improvement requests without changing the approved text.
 
 !!! note "Congregation Final Authority"
     The congregation remains the final authority where KBC bylaws, budget, policy, officer election, major non-budgeted spending, or church practice require a vote. The current committee work should prepare clear recommendations and preserve that authority.
 
 ## 2. Most Important Next Step
 
-Confirm the official minutes for the June 28, 2026 motion and make sure the job description, hiring process, supervision plan, compensation, and budget adjustment stay within the authorization already granted.
+Publish and use the July 19 approved policy, retain the committee approval record, and confirm that operating procedures and checklists support it without adding conflicting authority.
 
-At the same time, Finance Committee should confirm the financial duties, controls, access, software responsibilities, monthly reporting expectations, and budget impact before Personnel Committee uses final hiring materials.
+At the same time, Finance Committee should confirm the financial duties, controls, access, software responsibilities, monthly reporting expectations, and budget impact needed for the Bookkeeper role.
 
 !!! tip "Immediate Next Step"
-    Personnel Committee should prepare candidate outreach and an application window, while Finance Committee confirms the financial duties, controls, reporting line, and interim supervision expectations.
+    Share the approved policy with the people who purchase, approve, process, or review expenses while Personnel and Finance continue the authorized Bookkeeper hiring and operational-control work.
 
 ## 3. Top Decisions Needed
 
-1. Do the job description, hours, compensation, and budget adjustment stay within the June 28, 2026 motion?
-2. Which duties stay with the elected Treasurer / Financial Officer?
-3. Which duties should be assigned to the Bookkeeper / Financial Administrator?
-4. What Finance Committee direction is needed before the job is posted, interviews begin, or an offer is made?
-5. Which items still need Deacon review, bylaw review, professional review, church vote, or later congregational updates?
+1. Where are the July 19 Finance Committee minutes or written approval record retained?
+2. How will the approved policy be communicated and incorporated into routine financial work?
+3. Does KBC have a current Missouri Sales and Use Tax Exemption Letter?
+4. Which additional transaction controls should Finance Committee consider in a future revision or procedure?
+5. Which Treasurer and Bookkeeper duties, access, reporting, and supervision details still need confirmation?
 
 ## 4. Documents Ready For Review
 
@@ -54,6 +58,7 @@ At the same time, Finance Committee should confirm the financial duties, control
 | Project Brief | Provide a short orientation to the project purpose and current situation. | Project lead TBD | Needs Leadership Review | Pastor, Deacons, Finance Committee, Personnel Committee | High | [Open](../00-project-brief.md) |
 | Personnel Committee Packet | Help Personnel review the authorized Bookkeeper role and hiring materials. | Personnel Committee | Needs Personnel Review | Personnel Committee | High | [Open](../communications/personnel-committee-packet.md) |
 | Finance Committee Packet | Help Finance review software, financial controls, reimbursement, spending, cards, and budget questions. | Finance Committee | Needs Finance Review | Finance Committee | High | [Open](../communications/finance-committee-packet.md) |
+| Kingsville Baptist Church Spending Policy Guidelines | Provide the current approved requirements for spending, quotes, contracts, emergencies, reimbursements, cards, conflicts, and tax guidance. | Finance Committee | Approved | Church leaders, ministry leaders, Treasurer, Bookkeeper, cardholders, purchasers | High | [Open](../policies/spending-authority-policy.md) |
 | Monthly Finance Committee Checklist | Provide a practical recurring checklist for monthly financial review. | Finance Committee | Draft | Finance Committee, Treasurer, Bookkeeper | High | [Open](../procedures/monthly-finance-committee-meeting-checklist.md) |
 | Documentation Stewardship Guide | Establish shared ownership so the library does not depend on one person. | Leadership Team / Documentation Stewards | Needs Leadership Review | Pastor, Deacons, committee chairs, Church Clerk | High | [Open](../document-stewardship.md) |
 
@@ -62,12 +67,8 @@ At the same time, Finance Committee should confirm the financial duties, control
 | Document | Purpose | Owner | Status | Review Needed By | Priority | Link |
 | --- | --- | --- | --- | --- | --- | --- |
 | Responsibility Matrix | Clarify ownership among Treasurer, Bookkeeper, committees, Pastor, Deacons, and Congregation. | Finance Committee | Needs Bylaw Review | Finance Committee, Personnel Committee, Pastor, Deacons, Nominating Committee | High | [Open](../governance/responsibility-matrix.md) |
-| Financial Authority Policy Package | Review the proposed approval matrix, reimbursements, quotes, contracts, cards, emergencies, conflicts, and church-vote safeguards in one decision worksheet. | Finance Committee | Needs Finance Review | Finance Committee, Treasurer, Pastor, Deacons as appropriate | High | [Open](../policies/financial-authority-policy-package.md) |
 | Treasurer vs. Bookkeeper Duty Split | Define which duties belong to Treasurer, Bookkeeper, Finance, Personnel, and outside vendors. | Finance Committee | Needs Finance Review | Finance Committee, Personnel Committee, Nominating Committee | High | [Open](../roles/treasurer-vs-bookkeeper-duty-split.md) |
 | Bookkeeper Job Description | Define the authorized paid Bookkeeper / Financial Administrator role. | Personnel Committee | Needs Finance Review | Personnel Committee, Finance Committee | High | [Open](../roles/bookkeeper-financial-administrator-job-description.md) |
-| Reimbursement Policy | Review the proposed 30-day period, required documentation, independent approval, and exception process. | Finance Committee | Needs Finance Review | Finance Committee | High | [Open](../policies/reimbursement-policy.md) |
-| Spending Authority Policy | Review proposed approval levels, budget exceptions, quotes, contracts, emergencies, conflicts, and congregational safeguards. | Finance Committee | Needs Finance Review | Finance Committee, Pastor, Deacons; bylaw and church review where required | High | [Open](../policies/spending-authority-policy.md) |
-| Credit Card Policy | Define individually approved access, limits, no-sharing controls, transaction documentation, monthly review, and corrective action. | Finance Committee | Needs Finance Review | Finance Committee, Treasurer, Pastor | High | [Open](../policies/credit-card-policy.md) |
 | Software Requirements | Define requirements before demos or purchase. | Finance Committee | Needs Finance Review | Finance Committee, Treasurer, Bookkeeper | High | [Open](../software-evaluation/software-requirements.md) |
 | IconCMO vs. ChurchTrac Comparison | Compare candidate systems after vendor claims are confirmed. | Finance Committee | Needs Finance Review | Finance Committee | High | [Open](../software-evaluation/icon-vs-churchtrac-comparison.md) |
 
@@ -108,11 +109,15 @@ At the same time, Finance Committee should confirm the financial duties, control
 | --- | --- | --- | --- | --- |
 | 2026-07-06 | Initial repository structure created for the KBC financial operations project. | Cory Davis | Approved | [Decision Log](../02-decision-log.md) |
 | 2026-06-28 | Congregation approved adding a paid, part-time Bookkeeper position, not to exceed `$150` per week, and gave Personnel Committee authority to hire the right candidate. | Congregation / Personnel Committee / Nominating Committee / Finance Committee | Approved | [Decision Log](../02-decision-log.md) |
+| 2026-07-19 | Finance Committee adopted the combined Spending Policy Guidelines as the authoritative policy for this area. | Finance Committee | Approved | [Decision Log](../02-decision-log.md) |
 
 ## 10. Open Questions
 
+- Where are the July 19 Finance Committee minutes or written approval record retained?
+- Should a future governance review reconcile the policy's special-meeting, voting, and quorum language with KBC's governing documents?
+- Does KBC have a current Missouri Sales and Use Tax Exemption Letter?
+- What implementation controls remain needed for self-approval, contracts, emergencies, exceptions, cards, and separation of duties?
 - What duties must remain with the elected Treasurer under KBC bylaws?
-- What financial controls must Finance Committee define before hiring materials are used?
 - What employment classification, supervision, evaluation process, and start date should Personnel Committee recommend within the June 28, 2026 authorization?
 - How should Personnel Committee and Nominating Committee coordinate under the motion?
 - Which remaining items need Deacon review, church vote, CPA/accounting review, attorney/HR review, or software/vendor review?

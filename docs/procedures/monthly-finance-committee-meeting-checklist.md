@@ -86,7 +86,7 @@ The packet should include:
 - [ ] Confirm required receipts or missing-receipt explanations are present.
 - [ ] Review reimbursements by ministry or budget category.
 - [ ] Identify late, incomplete, unusual, over-budget, or above-threshold reimbursements.
-- [ ] Confirm reimbursement requests were normally submitted within 30 days or have an approved exception.
+- [ ] Confirm reimbursement requests were submitted within 15 days or have a documented exception.
 - [ ] Decide whether any follow-up or policy clarification is needed.
 
 ### 7. Review Unusual Or Outside-Budget Spending

@@ -26,6 +26,17 @@ Archived editable conversion:
 - Use this page when reviewing Treasurer duties, committee authority, business meeting votes, staff roles, budget decisions, spending authority, and annual financial review requirements.
 - Do not treat summaries in this repository as a substitute for the bylaws themselves.
 
+## Confirmed Policy-Adoption Requirements
+
+The 2018 governing document currently in the repository states:
+
+- Constitution Article 5 places church business before the congregation at a regularly scheduled business meeting and uses a majority vote unless the Bylaws require otherwise.
+- Bylaws Article 10 states that a proposed new church policy must be announced at least two weeks before the business meeting and becomes church policy only after approval by three-fourths of the church members present.
+
+The Finance Committee-approved Spending Policy includes a special-called business meeting, a two-thirds vote, and a quorum equal to 30 percent of average Sunday morning attendance for purchases above `$25,000`. No matching quorum provision was located in the 2018 Constitution and Bylaws during this review. This is a governance question for a future policy or bylaw review; it does not change the text recorded on the approved policy page.
+
+This summary should be confirmed with the Church Clerk against the current authoritative governing document and official church practice.
+
 ## Financial Operations Areas To Check
 
 These are the main areas in the current project that should be checked against the Constitution and Bylaws:
@@ -52,6 +63,7 @@ These are the main areas in the current project that should be checked against t
 6. Which financial operations decisions can be made by committee, and which must come back to the congregation?
 7. What bylaw or church-practice language applies to annual budget approval and major non-budgeted expenses?
 8. What role, if any, do Deacons have in raising concerns, reviewing recommendations, or bringing unresolved items to the congregation?
+9. Should a future review align the Spending Policy's special-meeting, voting, and quorum provisions with Article 5 and Article 10 through a policy revision or separate bylaw process?
 
 ## Review Note
 

@@ -13,6 +13,7 @@ This handbook brings together KBC's financial governance, responsibilities, poli
 
 ## Core References
 
+- [Approved Spending Policy](policies/spending-authority-policy.md)
 - [Constitution and Bylaws Reference](governance/constitution-and-bylaws-reference.md)
 - [Church Organization Chart](governance/church-organization-chart.md)
 - [Financial Operations View](governance/financial-operations-view.md)

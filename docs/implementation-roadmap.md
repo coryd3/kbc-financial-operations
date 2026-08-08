@@ -14,7 +14,7 @@ Start date: TBD
 | --- | --- | --- | --- |
 | Immediate stabilization | Keep financial work moving safely during Treasurer transition. | Interim Treasurer, Finance Committee | Continuity plan and immediate control checklist. |
 | 30-day plan | Clarify responsibilities and prepare authorized hiring materials. | Finance Committee, Personnel Committee | Duty split, review packets, Bookkeeper job description/application/hiring process, and first-round committee decisions. |
-| 60-day plan | Choose operating model and begin implementation materials. | Finance Committee, Personnel Committee | Software recommendation, policy drafts, hiring process, and budget impact review. |
+| 60-day plan | Implement the approved Spending Policy and choose the operating model. | Finance Committee, Personnel Committee | Policy communication, software recommendation, implementation controls, hiring process, and budget impact review. |
 | 90-day plan | Begin implementation and monthly operating rhythm. | Finance Committee, Treasurer, Bookkeeper / Financial Administrator | Software/setup plan, monthly review rhythm, Bookkeeper onboarding if hired, and reporting process. |
 | Long-term handbook integration | Move approved results into the maintained Financial Operations Handbook. | Finance Committee, document owner TBD | Approved handbook sections, review schedule, and document control process. |
 
@@ -73,9 +73,9 @@ Start date: TBD
 | Goal | Move from role clarity to recommended operating model, software direction, policy drafts, and budget impact review. |
 | Owner | Finance Committee. |
 | Supporting bodies | Personnel Committee, Treasurer / interim Treasurer, Pastor, Deacons, outside payroll/accounting advisor if needed. |
-| Deliverables | Software requirements approved for demos; completed demo scorecards; recommended software direction; draft reimbursement, spending authority, credit card/payment, monthly review, and audit/review policies; finalized Bookkeeper role materials and budget impact estimate. |
-| Dependencies | Finance Committee software requirements; demo availability; cost information; policy threshold decisions; Personnel Committee role/hiring input; budget review. |
-| Open questions | Which software best supports KBC's monthly review and handoff needs? Should Finance Committee recommend the proposed spending levels, 30-day reimbursement period, and related purchasing controls? Should payroll or accounting support be outsourced? What budget changes are needed? |
+| Deliverables | Software requirements approved for demos; completed demo scorecards; recommended software direction; approved Spending Policy communicated and reflected in procedures; detailed implementation controls; finalized Bookkeeper role materials and budget impact estimate. |
+| Dependencies | Finance Committee software requirements; demo availability; cost information; July 19 policy approval record; Missouri tax-exemption verification; Personnel Committee role/hiring input; budget review. |
+| Open questions | Which software best supports KBC's monthly review and handoff needs? What implementation controls remain undefined? Should payroll or accounting support be outsourced? What budget changes are needed? |
 
 ### 60-Day Actions
 
@@ -83,8 +83,11 @@ Start date: TBD
 - [ ] Schedule and complete IconCMO and ChurchTrac demos using `docs/software-evaluation/demo-scorecard.md`.
 - [ ] Complete `docs/software-evaluation/icon-vs-churchtrac-comparison.md`.
 - [ ] Draft Finance Committee recommendation for software and operating model.
-- [ ] Review and recommend revisions or approval of the proposed spending levels, quote requirements, contract authority, emergency controls, conflict safeguards, and 30-day reimbursement period.
-- [ ] Select individually assigned cards or another controlled payment method and prohibit shared cards or credentials.
+- [x] Finance Committee adopted its final combined policy for spending levels, quote requirements, contract authority, emergency controls, conflict safeguards, a 15-day reimbursement period, and card controls on July 19, 2026; retain or reference the minutes.
+- [ ] Communicate the approved policy and align operating procedures and checklists without changing its authority.
+- [ ] Preserve meeting, vote, and quorum questions for a future governance review if leadership chooses to revisit them.
+- [ ] Confirm KBC's Missouri Sales and Use Tax Exemption Letter and correct the tax guidance if necessary.
+- [ ] Define remaining implementation controls for self-approval, contract value and terms, quote exceptions, emergency action, reimbursement exceptions, card incidents, and separation of duties.
 - [ ] Identify budget impact for software, bookkeeping support, outside payroll/accounting support, bonding, background checks, or audit/review.
 - [ ] Personnel Committee finalizes Bookkeeper job description, application, and hiring process based on Finance direction.
 - [ ] Coordinate interviews, reference checks, and candidate evaluation for the authorized Bookkeeper role.

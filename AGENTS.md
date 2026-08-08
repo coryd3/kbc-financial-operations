@@ -74,6 +74,7 @@ Other governance notes:
 - Do not add actual candidate applications, reference checks, background-check results, financial account credentials, member lists, donor records, payroll records, bank information, Social Security numbers, tax forms, or private personnel details.
 - Do not publish or make the repository public without explicit user instruction.
 - Preserve original source documents under `source-materials/`; draft new content in Markdown under `docs/`.
+- Treat a committee-approved combined document as one approved policy unless the committee explicitly approves separate modular documents. Preserve its exact substantive wording, keep added analysis outside the approved text, and label derived procedures or implementation pages as drafts.
 - When summarizing source materials, cite the source file path and avoid copying unnecessary personal details.
 - Use `TBD` for unresolved facts, dollar amounts, dates, owners, and approval thresholds.
 - Use clear review callouts such as `Needs Committee Review`, `Needs Finance Review`, `Needs Personnel Review`, `Needs Bylaw Review`, or `Needs Professional Review` where committee, professional, leadership, or church approval may be required.
@@ -114,6 +115,7 @@ Other governance notes:
 - Read `review-summary.md`, the converted review, and the comparison before editing source Markdown.
 - Apply only changes supported by the reviewer comments and the proper document owner or approval body.
 - Preserve status and governance safeguards unless approval evidence supports changing them.
+- Do not conform an approved committee document to the repository's preferred structure in a way that changes what the committee approved. Archive rejected alternatives and use clearly labeled procedures or drafts for additional detail.
 - Record adopted decisions and unresolved issues in their proper records, then rerun document and public-content audits.
 - Never commit returned Word files or intake output without a specific privacy review; the folders are ignored intentionally.
 
