@@ -4,13 +4,13 @@
 
 Status: Needs Personnel Review
 
-Rev. July 2026
+Rev. August 2026
 
 ## Position Summary
 
 The Bookkeeper / Financial Administrator is a part-time, non-ministerial staff role that supports the day-to-day financial operations of Kingsville Baptist Church.
 
-This role helps maintain accurate financial records, process routine transactions, support financial reporting, and keep documentation organized according to approved church policy and financial controls.
+This role helps maintain accurate financial records, process routine transactions, prepare monthly bank reconciliations and financial reports, and keep documentation organized according to approved church policy and financial controls.
 
 This role is both a job and a ministry of service. The Bookkeeper / Financial Administrator is expected to serve with a Christ-like attitude, recognizing that accurate, confidential, and orderly financial work supports the mission and health of the church.
 
@@ -25,11 +25,11 @@ Success in this role means KBC's routine financial records are accurate, timely,
 - Enter income, expenses, transfers, and other financial activity into the approved system.
 - Maintain supporting documentation for transactions.
 - Keep financial records organized and accessible to authorized reviewers.
-- Assist with monthly close tasks.
-- Prepare routine financial reports for Treasurer and Finance Committee review.
+- Complete monthly close tasks.
 
 ### 2. Contributions & Deposits
 
+- Coordinate accounts receivable records with the Counters, including contributions and other incoming funds, according to approved procedures.
 - Enter contributions according to approved procedures.
 - Confirm contribution totals match count sheets and deposit records.
 - Maintain donor confidentiality.
@@ -37,7 +37,7 @@ Success in this role means KBC's routine financial records are accurate, timely,
 
 ### 3. Bills, Reimbursements & Payments
 
-- Process bills and reimbursement requests according to approved policy.
+- Manage accounts payable, including entering and processing bills and reimbursement requests according to approved policy.
 - Confirm required documentation and approvals are present.
 - Prepare checks, electronic payments, or payment batches as assigned.
 - Track missing receipts or incomplete reimbursement requests.
@@ -54,7 +54,7 @@ Success in this role means KBC's routine financial records are accurate, timely,
 
 - Use the church's approved finance or church management software.
 - Maintain accurate vendor, fund, account, and budget coding.
-- Assist with bank reconciliation and report preparation.
+- Prepare monthly bank reconciliations and financial reports for Treasurer and Finance Committee review.
 - Support software migration, cleanup, and process documentation as needed.
 
 ### 6. Confidentiality, Controls & Records
