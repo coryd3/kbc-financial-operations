@@ -57,6 +57,8 @@ documents:
   communications/personnel-committee-packet: { documentType: Review Packet, status: Needs Personnel Review, owner: Personnel Committee, lifecycle: communication, audiences: [personnel, project] }
   communications/finance-committee-packet: { documentType: Review Packet, status: Needs Finance Review, owner: Finance Committee, lifecycle: communication, audiences: [finance, project] }
   communications/personnel-committee-recommendation: { documentType: Committee Memo, status: Draft, owner: Personnel Committee, lifecycle: communication, audiences: [leadership, finance, personnel, project] }
+  communications/personnel-evaluation-process-recommendation: { documentType: Committee Memo, status: Draft, owner: Personnel Committee, lifecycle: communication, audiences: [leadership, personnel, project] }
+  communications/personnel-evaluation-business-meeting-slides: { documentType: Congregational Communication, status: Draft, owner: Personnel Committee, lifecycle: communication, audiences: [congregation, leadership, personnel] }
   communications/finance-committee-recommendation: { documentType: Committee Memo, status: Draft, owner: Finance Committee, lifecycle: communication, audiences: [leadership, finance, project] }
   communications/deacon-update: { documentType: Leadership Memo, status: Parking Lot, owner: Leadership Team, lifecycle: communication, audiences: [leadership, project] }
   communications/church-business-meeting-summary: { documentType: Congregational Communication, status: Draft, owner: Leadership Team, lifecycle: communication, audiences: [congregation, leadership, project] }

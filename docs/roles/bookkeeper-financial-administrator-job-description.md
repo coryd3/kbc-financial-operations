@@ -83,6 +83,7 @@ The Bookkeeper / Financial Administrator should:
 - Willingness to work within KBC policies, bylaws, and committee direction.
 - Ability to work cooperatively with the Treasurer, Finance Committee, Personnel Committee, Pastor, and assigned supervisor.
 - Willingness to complete any required background check, confidentiality agreement, or onboarding process.
+- Willingness to obtain and maintain fidelity bonding (employee dishonesty coverage) as required by church policy and Finance Committee direction.
 
 ## Preferred Qualifications
 
@@ -116,6 +117,7 @@ The Bookkeeper / Financial Administrator should receive clear written procedures
 ## Compensation & Schedule
 
 - Paid, part-time position funded through the approved church budget and authorization process.
+- Required fidelity bonding for this role will be obtained and paid for by the church.
 - Employment classification: TBD.
 - Expected weekly hours: documented in the current employment terms and approved budget.
 - Compensation: documented in the current employment terms and kept within the authority and budget approved by the church.
