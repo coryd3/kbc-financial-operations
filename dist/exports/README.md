@@ -11,6 +11,7 @@ The export set may include:
 - Leadership review packet PDF/DOCX.
 - One-page congregational summary PDF/DOCX.
 - Congregational slide deck PDF/PPTX.
+- Treasurer / Financial Officer role description PDF/DOCX.
 - Bookkeeper / Financial Administrator job description PDF/DOCX.
 - Leadership review task tracker CSV/XLSX.
 
@@ -74,6 +75,12 @@ To validate existing exports:
 make validate
 ```
 
+To generate and validate only the candidate-ready Treasurer and Bookkeeper materials:
+
+```sh
+make candidate-roles
+```
+
 To remove generated files:
 
 ```sh
@@ -96,8 +103,9 @@ Use this when local export tools are not installed.
 2. Go to `Actions`.
 3. Choose `Export Docs`.
 4. Click `Run workflow`.
-5. Wait for the workflow to finish.
-6. Download the generated artifacts:
+5. Select `candidate-roles` to create only the Treasurer and Bookkeeper materials, or select `all` for the full release bundle.
+6. Wait for the workflow to finish.
+7. Download the generated artifact. Candidate-role exports are provided as `kbc-candidate-role-descriptions`; the full export provides:
    - `kbc-financial-operations-exports`
    - `kbc-financial-operations-release`
 
@@ -136,6 +144,7 @@ Edit these source files, then regenerate exports:
 - `dist/congregational-slide-deck.md`
 - `dist/leadership-review-task-tracker.csv`
 - `docs/roles/bookkeeper-financial-administrator-job-description.md`
+- `docs/roles/treasurer-governance-role.md`
 
 The files generated here are review copies and should be regenerated when the source files change.
 

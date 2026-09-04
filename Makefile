@@ -1,10 +1,13 @@
 PYTHON ?= python
 MKDOCS ?= $(PYTHON) -m mkdocs
 
-.PHONY: export validate release finance-review finance-review-validate finance-review-ingest notebooklm audiobook audiobook-chunks tts-local tts-local-sample tts-local-download-voice audit-public audit-docs clean clean-exports serve docs-build docs-deploy
+.PHONY: export candidate-roles validate release finance-review finance-review-validate finance-review-ingest notebooklm audiobook audiobook-chunks tts-local tts-local-sample tts-local-download-voice audit-public audit-docs clean clean-exports serve docs-build docs-deploy
 
 export:
 	@./scripts/export.sh
+
+candidate-roles:
+	@./scripts/export.sh candidate-roles
 
 validate:
 	@./scripts/validate-exports.sh

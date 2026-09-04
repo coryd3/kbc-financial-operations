@@ -23,10 +23,10 @@ documents:
   governance/personnel-committee-role: { documentType: Committee Charter, status: Needs Personnel Review, owner: Personnel Committee, lifecycle: durable, audiences: [congregation, leadership, personnel] }
   governance/future-governance-expansion: { documentType: Planning Memo, status: Parking Lot, owner: Leadership Team, lifecycle: project, audiences: [leadership, project] }
 
-  roles/treasurer-governance-role: { documentType: Officer Role, status: Needs Bylaw Review, owner: Congregation / Finance Committee, lifecycle: durable, audiences: [congregation, leadership, treasurer, finance, operations] }
+  roles/treasurer-governance-role: { documentType: Officer Role, status: Current, owner: Congregation / Finance Committee, lifecycle: durable, audiences: [congregation, leadership, treasurer, finance, operations] }
   roles/treasurer-vs-bookkeeper-duty-split: { documentType: Role Analysis, status: Needs Finance Review, owner: Finance Committee, lifecycle: project, audiences: [leadership, finance, personnel, operations, project] }
   roles/interim-treasurer-role: { documentType: Interim Role Memo, status: Needs Bylaw Review, owner: Finance Committee, lifecycle: project, audiences: [leadership, finance, project] }
-  roles/bookkeeper-financial-administrator-job-description: { documentType: Job Description, status: Needs Personnel Review, owner: Personnel Committee, lifecycle: durable, audiences: [leadership, treasurer, finance, personnel, operations] }
+  roles/bookkeeper-financial-administrator-job-description: { documentType: Job Description, status: Current, owner: Personnel Committee, lifecycle: durable, audiences: [leadership, treasurer, finance, personnel, operations] }
   roles/bookkeeper-job-application: { documentType: Hiring Form, status: Needs Personnel Review, owner: Personnel Committee, lifecycle: project, audiences: [personnel, project] }
   roles/bookkeeper-hiring-process: { documentType: Hiring Procedure, status: Needs Personnel Review, owner: Personnel Committee, lifecycle: project, audiences: [leadership, personnel, project] }
   roles/job-description-consistency-check: { documentType: Working Analysis, status: Working Record, owner: Personnel Committee, lifecycle: project, audiences: [personnel, project] }

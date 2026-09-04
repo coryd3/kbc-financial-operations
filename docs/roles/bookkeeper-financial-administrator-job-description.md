@@ -2,13 +2,13 @@
 
 # Bookkeeper / Financial Administrator - Job Description
 
-Status: Needs Personnel Review
+Status: Current
 
-Rev. August 2026
+Rev. September 2026
 
 ## Position Summary
 
-The Bookkeeper / Financial Administrator is a part-time, non-ministerial staff role that supports the day-to-day financial operations of Kingsville Baptist Church.
+The Bookkeeper / Financial Administrator is a paid, part-time, non-ministerial staff role that supports the day-to-day financial operations of Kingsville Baptist Church.
 
 This role helps maintain accurate financial records, process routine transactions, prepare monthly bank reconciliations and financial reports, and keep documentation organized according to approved church policy and financial controls.
 
@@ -17,6 +17,14 @@ This role is both a job and a ministry of service. The Bookkeeper / Financial Ad
 This role is operational. It does not replace the governance responsibilities of the Treasurer or Finance Committee.
 
 Success in this role means KBC's routine financial records are accurate, timely, confidential, well organized, and ready for review by the Treasurer, Finance Committee, and other authorized reviewers.
+
+## Coordinated Staffing Arrangement
+
+Kingsville Baptist Church's preferred staffing arrangement is to select one qualified person to serve as Treasurer and perform the paid Bookkeeper / Financial Administrator duties described in this document. The Treasurer remains a church officer recommended by the Nominating Committee and selected by the church in accordance with the Constitution and Bylaws. Compensation does not change the Treasurer's accountability to the church or the authority of the church, Finance Committee, or other governing bodies.
+
+If the combined arrangement cannot be filled, the church may employ a separate Bookkeeper / Financial Administrator and fill the Treasurer office separately as a volunteer position.
+
+When one person performs both roles, that person carries both sets of responsibilities but must still follow the controls and approval requirements that apply to each task. Work that requires review must be reviewed by the Finance Committee or another reviewer designated under approved church policy; the preparer should not be the only reviewer.
 
 ## Core Responsibilities
 
@@ -32,6 +40,7 @@ Success in this role means KBC's routine financial records are accurate, timely,
 - Coordinate accounts receivable records with the Counters, including contributions and other incoming funds, according to approved procedures.
 - Enter contributions according to approved procedures.
 - Confirm contribution totals match count sheets and deposit records.
+- Maintain contribution, count-sheet, deposit, and related receipt documentation.
 - Maintain donor confidentiality.
 - Assist with year-end giving statements if assigned.
 
@@ -39,7 +48,7 @@ Success in this role means KBC's routine financial records are accurate, timely,
 
 - Manage accounts payable, including entering and processing bills and reimbursement requests according to approved policy.
 - Confirm required documentation and approvals are present.
-- Prepare checks, electronic payments, or payment batches as assigned.
+- Prepare checks, electronic payments, or payment batches after required approvals are documented.
 - Track missing receipts or incomplete reimbursement requests.
 - Flag unusual, outside-budget, over-budget, or unclear expenses before payment when required by policy.
 
@@ -68,6 +77,7 @@ Success in this role means KBC's routine financial records are accurate, timely,
 
 - Work with the Treasurer / Financial Officer on reports, reconciliations, and exceptions.
 - Support the Finance Committee's monthly review process.
+- Provide reports, records, and supporting documentation to the Treasurer, Finance Committee, and other authorized reviewers.
 - Communicate process gaps, missing documentation, or unusual transactions promptly.
 - Coordinate with Personnel Committee only on employment, evaluation, and role matters.
 
@@ -76,31 +86,28 @@ Success in this role means KBC's routine financial records are accurate, timely,
 The Bookkeeper / Financial Administrator should:
 
 - Have demonstrated bookkeeping, accounting, office administration, or equivalent financial recordkeeping experience.
-- Ability to maintain confidentiality.
-- Careful attention to detail.
-- Basic comfort with spreadsheets and financial software.
-- Ability to follow written procedures and ask questions when something is unclear.
-- Willingness to work within KBC policies, bylaws, and committee direction.
-- Ability to work cooperatively with the Treasurer, Finance Committee, Personnel Committee, Pastor, and assigned supervisor.
-- Willingness to complete any required background check, confidentiality agreement, or onboarding process.
+- Be able to maintain confidentiality.
+- Demonstrate careful attention to detail.
+- Be comfortable with spreadsheets and financial software.
+- Be able to follow written procedures and ask questions when something is unclear.
+- Be willing to work within KBC policies, bylaws, and committee direction.
+- Be able to work cooperatively with the Treasurer, Finance Committee, Personnel Committee, Pastor, and assigned supervisor.
+- Be willing to complete any required background check, confidentiality agreement, or onboarding process.
 
 ## Preferred Qualifications
 
-The following are helpful but not required unless Personnel Committee decides otherwise:
-
 - Experience with church, nonprofit, or fund accounting.
 - Experience with contribution records and donor confidentiality.
-- Experience with ChurchTrac, IconCMO, QuickBooks, or similar systems.
+- Experience with accounting or church-management software.
 - Familiarity with payroll coordination.
 - Ability to help document repeatable procedures.
 
 ## Accountability & Support
 
-- Reports to: TBD.
-- Day-to-day supervision: TBD.
-- Financial workflow direction and review: Finance Committee and Treasurer / Financial Officer.
-- Employment oversight: Personnel Committee or assigned supervisor, according to church practice.
-- Evaluation process: TBD by Personnel Committee with input from Finance Committee on financial duties and controls.
+- Employment oversight and day-to-day supervision: Personnel Committee or a supervisor designated in accordance with church practice.
+- Financial workflow direction and review: Finance Committee and the Treasurer / Financial Officer when the roles are held by separate individuals.
+- When one person performs both roles, required review is completed by the Finance Committee or another reviewer designated under approved church policy.
+- Evaluation is coordinated by the Personnel Committee with Finance Committee input on financial duties and controls.
 
 The Bookkeeper / Financial Administrator should receive clear written procedures, regular support, and timely feedback. The goal of supervision and review is clarity, encouragement, accountability, and healthy continuity for the church rather than surprise criticism.
 
@@ -113,24 +120,13 @@ The Bookkeeper / Financial Administrator should receive clear written procedures
 - Take initiative to identify missing documentation, unclear transactions, or process gaps.
 - Serve with a cooperative and Christ-like attitude, recognizing this work as a ministry of service to the church.
 
-## Compensation & Schedule
+## Compensation
 
-- Paid, part-time position funded through the approved church budget and authorization process.
-- Employment classification: TBD.
-- Expected weekly hours: documented in the current employment terms and approved budget.
-- Compensation: documented in the current employment terms and kept within the authority and budget approved by the church.
-- Work schedule and reporting deadlines should be defined by Personnel Committee after Finance Committee confirms financial workflow needs.
+- This is a paid position funded through the church's approved budget and authorization process.
+- When one person serves as Treasurer and performs the Bookkeeper / Financial Administrator duties, the combined service arrangement is compensated under terms approved separately by the church.
+- Compensation does not change the authority of the church or Finance Committee and does not replace the selection process required for the Treasurer as a church officer.
+- Work schedules and reporting deadlines are established through the church's employment and financial review processes.
 
 ## Terms of Service
 
-The Bookkeeper / Financial Administrator is employed as needed by Kingsville Baptist Church. Employment and continuation in this role are overseen by Personnel Committee or the assigned supervisor, in coordination with the Finance Committee for financial duties and controls, and in accordance with KBC Constitution and Bylaws, church practice, and approved policies.
-
-## Review Notes
-
-Needs Personnel Review: Final title, reporting line, employment classification, compensation, time expectations, application process, supervision, evaluation process, and hiring timeline must be confirmed by Personnel Committee before use.
-
-Needs Finance Review: Finance Committee should confirm financial duties, access, controls, software responsibilities, and budget impact before this role is finalized.
-
-Needs Bylaw Review: The final approval path should be checked against KBC Constitution and Bylaws and church practice before hiring is completed.
-
-The specific 2026 authorization, initial compensation limit, and recruitment steps are preserved in the [Decision Log](../02-decision-log.md) and [Bookkeeper Hiring Process](bookkeeper-hiring-process.md). They are implementation records rather than permanent duties in this job description.
+The Bookkeeper / Financial Administrator is employed by Kingsville Baptist Church under the church's approved authority and employment process. Employment and continuation in this role are overseen by the Personnel Committee or assigned supervisor, in coordination with the Finance Committee for financial duties and controls. Serving as Bookkeeper / Financial Administrator does not by itself select the person as Treasurer; service as Treasurer requires the separate church-officer process established by the Constitution and Bylaws.
