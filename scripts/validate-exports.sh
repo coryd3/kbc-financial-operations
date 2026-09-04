@@ -8,16 +8,27 @@ cd "${REPO_ROOT}"
 EXPORT_DIR="dist/exports"
 WORK_DIR="$(mktemp -d)"
 
-EXPECTED_FILES=(
-  "dist/exports/leadership-review-packet.pdf"
-  "dist/exports/leadership-review-packet.docx"
-  "dist/exports/one-page-congregational-summary.pdf"
-  "dist/exports/one-page-congregational-summary.docx"
-  "dist/exports/bookkeeper-financial-administrator-job-description.pdf"
-  "dist/exports/bookkeeper-financial-administrator-job-description.docx"
-  "dist/exports/congregational-slide-deck.pptx"
-  "dist/exports/congregational-slide-deck.pdf"
-)
+VALIDATION_SET="${VALIDATION_SET:-all}"
+
+if [[ "${VALIDATION_SET}" == "candidate-roles" ]]; then
+  EXPECTED_FILES=(
+    "dist/exports/kingsville-baptist-church-treasurer-financial-officer-role-description.pdf"
+    "dist/exports/kingsville-baptist-church-treasurer-financial-officer-role-description.docx"
+    "dist/exports/kingsville-baptist-church-bookkeeper-financial-administrator-job-description.pdf"
+    "dist/exports/kingsville-baptist-church-bookkeeper-financial-administrator-job-description.docx"
+  )
+else
+  EXPECTED_FILES=(
+    "dist/exports/leadership-review-packet.pdf"
+    "dist/exports/leadership-review-packet.docx"
+    "dist/exports/one-page-congregational-summary.pdf"
+    "dist/exports/one-page-congregational-summary.docx"
+    "dist/exports/bookkeeper-financial-administrator-job-description.pdf"
+    "dist/exports/bookkeeper-financial-administrator-job-description.docx"
+    "dist/exports/congregational-slide-deck.pptx"
+    "dist/exports/congregational-slide-deck.pdf"
+  )
+fi
 
 failures=()
 warnings=()
@@ -376,19 +387,26 @@ main() {
   check_required_tools
   check_expected_files
 
-  check_pdf_header "${EXPORT_DIR}/leadership-review-packet.pdf"
-  check_pdf_header "${EXPORT_DIR}/one-page-congregational-summary.pdf"
-  check_pdf_header "${EXPORT_DIR}/bookkeeper-financial-administrator-job-description.pdf"
-  check_pdf_header "${EXPORT_DIR}/congregational-slide-deck.pdf"
+  if [[ "${VALIDATION_SET}" == "candidate-roles" ]]; then
+    check_pdf_header "${EXPORT_DIR}/kingsville-baptist-church-treasurer-financial-officer-role-description.pdf"
+    check_pdf_header "${EXPORT_DIR}/kingsville-baptist-church-bookkeeper-financial-administrator-job-description.pdf"
+    check_docx_structure "${EXPORT_DIR}/kingsville-baptist-church-treasurer-financial-officer-role-description.docx"
+    check_docx_structure "${EXPORT_DIR}/kingsville-baptist-church-bookkeeper-financial-administrator-job-description.docx"
+  else
+    check_pdf_header "${EXPORT_DIR}/leadership-review-packet.pdf"
+    check_pdf_header "${EXPORT_DIR}/one-page-congregational-summary.pdf"
+    check_pdf_header "${EXPORT_DIR}/bookkeeper-financial-administrator-job-description.pdf"
+    check_pdf_header "${EXPORT_DIR}/congregational-slide-deck.pdf"
 
-  check_docx_structure "${EXPORT_DIR}/leadership-review-packet.docx"
-  check_docx_structure "${EXPORT_DIR}/one-page-congregational-summary.docx"
-  check_docx_structure "${EXPORT_DIR}/bookkeeper-financial-administrator-job-description.docx"
-  check_pptx_structure "${EXPORT_DIR}/congregational-slide-deck.pptx"
-  check_pptx_slide_count_max "${EXPORT_DIR}/congregational-slide-deck.pptx" 10
+    check_docx_structure "${EXPORT_DIR}/leadership-review-packet.docx"
+    check_docx_structure "${EXPORT_DIR}/one-page-congregational-summary.docx"
+    check_docx_structure "${EXPORT_DIR}/bookkeeper-financial-administrator-job-description.docx"
+    check_pptx_structure "${EXPORT_DIR}/congregational-slide-deck.pptx"
+    check_pptx_slide_count_max "${EXPORT_DIR}/congregational-slide-deck.pptx" 10
 
-  check_pdf_pages_exact "${EXPORT_DIR}/one-page-congregational-summary.pdf" 1
-  check_pdf_pages_max "${EXPORT_DIR}/leadership-review-packet.pdf" 12
+    check_pdf_pages_exact "${EXPORT_DIR}/one-page-congregational-summary.pdf" 1
+    check_pdf_pages_max "${EXPORT_DIR}/leadership-review-packet.pdf" 12
+  fi
 
   local export_file
   for export_file in "${EXPECTED_FILES[@]}"; do
